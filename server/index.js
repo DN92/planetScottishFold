@@ -12,7 +12,7 @@ const express = require('express')
 const morgan = require('morgan')
 const compression = require('compression')  // note to self = read docs about this
 const db = require('./db')
-const PORT = process.env.PORT || 8080
+const PORT = process.env.PORT || 8081
 const app = express()
 
 if (process.env.NODE_ENV !== 'production') require('../secrets')
@@ -25,11 +25,15 @@ const createApp = () => {
   app.use(express.json())
   app.use(express.urlencoded({extended: true}))
 
-  // compression middleware
-  app.use(compression())
+  // // compression middleware
+  // app.use(compression())
 
   // api routes
   app.use('./api', require('./api'))
+
+  app.get('/', (req, res) =>
+    res.sendFile(path.join(__dirname, '..', 'public/index.html'))
+  )
 
   // file serving middleware
   app.use(express.static(path.join(__dirname, '..', 'public')))
@@ -39,6 +43,7 @@ const createApp = () => {
   app.use((req, res, next) => {
     if (path.extname(req.path).length) {
       const err = new Error('File Could not be located- custom error')
+      console.log('request :: ', req)
       err.status = 404
       next(err)
     } else {
@@ -77,9 +82,11 @@ async function bootStartApp() {
 }
 
 if (require.main === module) {
-  bootApp()
+  bootStartApp()
+  console.log(' boot start')
 } else {
   createApp()
+  console.log( ' create app')
 }
 
  module.exports = app
