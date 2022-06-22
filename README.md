@@ -1,3 +1,13 @@
+This is a development project for a cat breeder website.
+The Desired URL is https://planetscottishfold.com
+work beginning on June 22 2022
+This project will be my first using REACT v18
+
+
+
+
+REACT BASE README BELOW THIS LINE
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
