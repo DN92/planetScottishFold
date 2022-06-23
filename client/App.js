@@ -1,4 +1,5 @@
-import '../public/App.css';
+// import '../public/App.css'
+import React from 'react'
 
 function App() {
   return (

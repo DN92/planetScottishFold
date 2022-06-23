@@ -23,17 +23,21 @@ const createApp = () => {
 
   // body parsers
   app.use(express.json())
-  app.use(express.urlencoded({extended: true}))
+  // app.use(express.urlencoded({extended: true}))
 
   // // compression middleware
   // app.use(compression())
 
   // api routes
-  app.use('./api', require('./api'))
+  app.use('/api', require('./api'))
 
-  app.get('/', (req, res) =>
+  // app.get('/', (req, res) =>
+  //   res.sendFile(path.join(__dirname, '..', 'public/index.html'))
+  // )
+
+  app.get('/', (req, res)=> {
     res.sendFile(path.join(__dirname, '..', 'public/index.html'))
-  )
+  });
 
   // file serving middleware
   app.use(express.static(path.join(__dirname, '..', 'public')))
@@ -43,7 +47,7 @@ const createApp = () => {
   app.use((req, res, next) => {
     if (path.extname(req.path).length) {
       const err = new Error('File Could not be located- custom error')
-      console.log('request :: ', req)
+      // console.log('request :: ', req)
       err.status = 404
       next(err)
     } else {
@@ -64,7 +68,7 @@ const createApp = () => {
   })
 }
 
-const startListening = () => {
+const startListening = async () => {
   // start listening and creates a server object
   const server = app.listen(PORT, () => {
     console.log(`App initialising. Now running on Port ${PORT}`)

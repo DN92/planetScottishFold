@@ -1,26 +1,15 @@
 {
   "name": "psf",
   "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "@testing-library/jest-dom": "^5.16.4",
-    "@testing-library/react": "^13.3.0",
-    "@testing-library/user-event": "^13.5.0",
-    "compression": "^1.7.4",
-    "express": "^4.18.1",
-    "morgan": "^1.10.0",
-    "nodemon": "^2.0.16",
-    "path": "^0.12.7",
-    "pg": "^8.7.3",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-scripts": "5.0.1",
-    "sequelize": "^6.21.0",
-    "web-vitals": "^2.1.4"
-  },
+  "main": "index.js",
   "scripts": {
-    "start": "node server",
     "build": "webpack --mode production",
+    "build:dev": "npm run build -- --watch --mode=development",
+    "start": "node server",
+    "start:dev": "npm run build:dev & npm run start-server",
+    "start:dev:logger": "LOGGING=true npm run start:dev",
+    "start:windows": "set JWT=shh&&nodemon server",
+    "start-server": "JWT=shh nodemon server -e html,js,scss --ignore public --ignore client",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -42,10 +31,29 @@
       "last 1 safari version"
     ]
   },
+  "dependencies": {
+    "axios": "^0.27.2",
+    "compression": "^1.7.4",
+    "express": "^4.18.1",
+    "history": "^5.3.0",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.16",
+    "path": "^0.12.7",
+    "pg": "^8.7.3",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-scripts": "5.0.1",
+    "sequelize": "^6.21.0"
+  },
   "devDependencies": {
+    "@babel/core": "^7.18.5",
+    "@babel/preset-react": "^7.17.12",
+    "@babel/register": "^7.17.7",
     "babel-loader": "^8.2.5",
     "css-loader": "^6.7.1",
     "icon-maker": "^0.2.6",
+    "json-loader": "^0.5.7",
+    "react-test-renderer": "^18.2.0",
     "sass-loader": "^13.0.0",
     "style-loader": "^3.3.1",
     "webpack": "^5.73.0",
