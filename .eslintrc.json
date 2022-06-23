@@ -1,0 +1,8 @@
+{
+  "extends": "fullstack",
+  "root": true,
+  "avoidEscape": true,
+  "rules": {
+    "no-unused-vars": "off"
+  }
+}

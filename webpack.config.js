@@ -1,5 +1,3 @@
-const path = require('path')
-
 module.exports = {
   entry: [
     './client/index.js'
@@ -33,7 +31,6 @@ module.exports = {
         test: /\.json$/,
         loader: 'json-loader'
       }
-
     ]
   }
 }
