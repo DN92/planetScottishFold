@@ -1,0 +1,5 @@
+const aboutUs = "Planet Scottish Fold is a family breeding cattery\n with locations in New Jersey, North Carolina and\n Florida.\n We have been breeding Scottish Folds since 2016,\n with a focus on producing healthy and purebred\n kittens with an amazing personality.\n All kittens and their parents are raised in our\n homes in a good, loving environment.\n We are against captivity, closed cages, declawing and backyard breeding.\n With us, you'll get your new family member with\n it's vaccinations, deworming, contract, and life\n time of breeder support."
+
+export const aboutUsNoP = "Planet Scottish Fold is a family breeding cattery with locations in New Jersey, North Carolina and Florida. We have been breeding Scottish Folds since 2016, with a focus on producing healthy and purebred kittens with an amazing personality. All kittens and their parents are raised in our homes in a good, loving environment. We are against captivity, closed cages, declawing and backyard breeding. With us, you'll get your new family member with it's vaccinations, deworming, contract, and life time of breeder support."
+
+export default aboutUs

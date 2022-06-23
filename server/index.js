@@ -31,10 +31,6 @@ const createApp = () => {
   // api routes
   app.use('/api', require('./api'))
 
-  // app.get('/', (req, res) =>
-  //   res.sendFile(path.join(__dirname, '..', 'public/index.html'))
-  // )
-
   app.get('/', (req, res)=> {
     res.sendFile(path.join(__dirname, '..', 'public/index.html'))
   });
@@ -42,7 +38,7 @@ const createApp = () => {
   // file serving middleware
   app.use(express.static(path.join(__dirname, '..', 'public')))
 
-  // remaining requests with extentions (.js, .css, other) send 404
+  // remaining requests with an extension (.js, .css, other) send 404
 
   app.use((req, res, next) => {
     if (path.extname(req.path).length) {
