@@ -1,15 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { Router } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 // import '../public/App.css';
 import history from './history'
-import App from './App.js';
+// import FrontEndRoutes from './FrontEndRoutes';
+import App from './components/App'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    {/* <Router history = {history}> */}
-      <App />
-    {/* </Router> */}
+     <App />
   </React.StrictMode>
 );

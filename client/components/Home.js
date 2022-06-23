@@ -1,5 +1,5 @@
 import React from 'react'
-import aboutUs from '../../public/aboutUs'
+import AboutUs from './AboutUs'
 
 const homeComponent = () => {
 
@@ -10,10 +10,7 @@ const homeComponent = () => {
 
         <article>Family breeders of purebred Scottish Fold {'&'} Straight Kittens</article>
       </div>
-
-      <div>
-        <p> {aboutUs} </p>
-      </div>
+      <AboutUs />
     </div>
   )
 }

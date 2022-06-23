@@ -2,34 +2,10 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./client/App.js":
-/*!***********************!*\
-  !*** ./client/App.js ***!
-  \***********************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _Routes__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Routes */ "./client/Routes.js");
-// import '../public/App.css'
-
-
-
-const App = () => {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "App"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "in the app component"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Routes__WEBPACK_IMPORTED_MODULE_1__["default"], null));
-};
-
-/* harmony default export */ __webpack_exports__["default"] = (App);
-
-/***/ }),
-
-/***/ "./client/Routes.js":
-/*!**************************!*\
-  !*** ./client/Routes.js ***!
-  \**************************/
+/***/ "./client/FrontEndRoutes.js":
+/*!**********************************!*\
+  !*** ./client/FrontEndRoutes.js ***!
+  \**********************************/
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 __webpack_require__.r(__webpack_exports__);
@@ -37,86 +13,131 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/index.js");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/index.js");
-/* harmony import */ var _components_placeHolder__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/placeHolder */ "./client/components/placeHolder.js");
-/* harmony import */ var _components_home__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/home */ "./client/components/home.js");
+/* harmony import */ var _components_PlaceHolder__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/PlaceHolder */ "./client/components/PlaceHolder.js");
+/* harmony import */ var _components_Home__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/Home */ "./client/components/Home.js");
 
 
 
 
 
-const frontEndRoutes = () => {
+const FrontEndRoutes = () => {
   //  later, there should be guest, user, adminViewer, and admin Route views
   const userType = 'guest';
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.BrowserRouter, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Routes, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Route, {
+  console.log('hehehe');
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.BrowserRouter, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Routes, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Route, {
     exact: true,
     path: "/home",
-    component: _components_home__WEBPACK_IMPORTED_MODULE_2__["default"]
+    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_Home__WEBPACK_IMPORTED_MODULE_2__["default"], null)
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Route, {
     exact: true,
     path: "/about",
-    component: _components_placeHolder__WEBPACK_IMPORTED_MODULE_1__["default"]
+    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_PlaceHolder__WEBPACK_IMPORTED_MODULE_1__["default"], null)
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Route, {
     exact: true,
     path: "/reviews",
-    component: _components_placeHolder__WEBPACK_IMPORTED_MODULE_1__["default"]
+    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_PlaceHolder__WEBPACK_IMPORTED_MODULE_1__["default"], null)
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Route, {
     exact: true,
     path: "/waitingListForm",
-    component: _components_placeHolder__WEBPACK_IMPORTED_MODULE_1__["default"]
+    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_PlaceHolder__WEBPACK_IMPORTED_MODULE_1__["default"], null)
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Route, {
     exact: true,
     path: "/contact",
-    component: _components_placeHolder__WEBPACK_IMPORTED_MODULE_1__["default"]
+    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_PlaceHolder__WEBPACK_IMPORTED_MODULE_1__["default"], null)
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Route, {
     exact: true,
     path: "/instagram",
-    component: _components_placeHolder__WEBPACK_IMPORTED_MODULE_1__["default"]
+    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_PlaceHolder__WEBPACK_IMPORTED_MODULE_1__["default"], null)
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Route, {
     exact: true,
     path: "/facebook",
-    component: _components_placeHolder__WEBPACK_IMPORTED_MODULE_1__["default"]
+    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_PlaceHolder__WEBPACK_IMPORTED_MODULE_1__["default"], null)
   }), " */", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Route, {
-    to: "/home",
-    component: _components_home__WEBPACK_IMPORTED_MODULE_2__["default"]
-  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "hello there"));
+    to: "/",
+    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_Home__WEBPACK_IMPORTED_MODULE_2__["default"], null)
+  })));
 }; // The `withRouter` wrapper makes sure that updates are not blocked
 // when the url changes
 
 
-/* harmony default export */ __webpack_exports__["default"] = (frontEndRoutes);
+/* harmony default export */ __webpack_exports__["default"] = (FrontEndRoutes);
 
 /***/ }),
 
-/***/ "./client/components/home.js":
+/***/ "./client/components/AboutUs.js":
+/*!**************************************!*\
+  !*** ./client/components/AboutUs.js ***!
+  \**************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+const AboutUs = () => {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", null, "About Us"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Planet Scottish Fold is a family breeding cattery", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), " with locations in New Jersey, North Carolina and", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), " Florida.", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), " We have been breeding Scottish Folds since 2016,", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), " with a focus on producing healthy and purebred", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), " kittens with an amazing personality.", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), " All kittens and their parents are raised in our", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), " homes in a good, loving environment.", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), " We are against captivity, closed cages, declawing", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), " and backyard breeding.", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), " With us, you'll get your new family member with", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), " it's vaccinations, deworming, contract, and life", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), " time of breeder support."));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (AboutUs);
+
+/***/ }),
+
+/***/ "./client/components/App.js":
+/*!**********************************!*\
+  !*** ./client/components/App.js ***!
+  \**********************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _FrontEndRoutes__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../FrontEndRoutes */ "./client/FrontEndRoutes.js");
+
+
+
+const App = () => {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_FrontEndRoutes__WEBPACK_IMPORTED_MODULE_1__["default"], null);
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (App);
+
+/***/ }),
+
+/***/ "./client/components/Home.js":
 /*!***********************************!*\
-  !*** ./client/components/home.js ***!
+  !*** ./client/components/Home.js ***!
   \***********************************/
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _public_aboutUs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../public/aboutUs */ "./public/aboutUs.js");
+/* harmony import */ var _AboutUs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./AboutUs */ "./client/components/AboutUs.js");
 
 
 
 const homeComponent = () => {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", null, "Welcome to Planet Scottish Fold!"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("article", null, "Family breeders of purebred Scottish Fold ", '&', " Straight Kittens")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, " ", _public_aboutUs__WEBPACK_IMPORTED_MODULE_1__["default"], " ")));
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", null, "Welcome to Planet Scottish Fold!"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("article", null, "Family breeders of purebred Scottish Fold ", '&', " Straight Kittens")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_AboutUs__WEBPACK_IMPORTED_MODULE_1__["default"], null));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (homeComponent);
 
 /***/ }),
 
-/***/ "./client/components/placeHolder.js":
+/***/ "./client/components/PlaceHolder.js":
 /*!******************************************!*\
-  !*** ./client/components/placeHolder.js ***!
+  !*** ./client/components/PlaceHolder.js ***!
   \******************************************/
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
 const placeHolderComponent = () => {
-  return /*#__PURE__*/React.createElement("div", null, "This Div Is A PlaceHolder.");
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "This Div Is A PlaceHolder.");
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (placeHolderComponent);
@@ -134,22 +155,6 @@ __webpack_require__.r(__webpack_exports__);
 
 const history =  false ? 0 : (0,history__WEBPACK_IMPORTED_MODULE_0__.createBrowserHistory)();
 /* harmony default export */ __webpack_exports__["default"] = (history);
-
-/***/ }),
-
-/***/ "./public/aboutUs.js":
-/*!***************************!*\
-  !*** ./public/aboutUs.js ***!
-  \***************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "aboutUsNoP": function() { return /* binding */ aboutUsNoP; }
-/* harmony export */ });
-const aboutUs = "Planet Scottish Fold is a family breeding cattery\n with locations in New Jersey, North Carolina and\n Florida.\n We have been breeding Scottish Folds since 2016,\n with a focus on producing healthy and purebred\n kittens with an amazing personality.\n All kittens and their parents are raised in our\n homes in a good, loving environment.\n We are against captivity, closed cages, declawing and backyard breeding.\n With us, you'll get your new family member with\n it's vaccinations, deworming, contract, and life\n time of breeder support.";
-const aboutUsNoP = "Planet Scottish Fold is a family breeding cattery with locations in New Jersey, North Carolina and Florida. We have been breeding Scottish Folds since 2016, with a focus on producing healthy and purebred kittens with an amazing personality. All kittens and their parents are raised in our homes in a good, loving environment. We are against captivity, closed cages, declawing and backyard breeding. With us, you'll get your new family member with it's vaccinations, deworming, contract, and life time of breeder support.";
-/* harmony default export */ __webpack_exports__["default"] = (aboutUs);
 
 /***/ }),
 
@@ -35870,15 +35875,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_dom_client__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom/client */ "./node_modules/react-dom/client.js");
 /* harmony import */ var _history__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./history */ "./client/history.js");
-/* harmony import */ var _App_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./App.js */ "./client/App.js");
+/* harmony import */ var _components_App__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/App */ "./client/components/App.js");
 
 
  // import '../public/App.css';
 
+ // import FrontEndRoutes from './FrontEndRoutes';
 
 
 const root = react_dom_client__WEBPACK_IMPORTED_MODULE_1__.createRoot(document.getElementById('root'));
-root.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().StrictMode), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_App_js__WEBPACK_IMPORTED_MODULE_3__["default"], null)));
+root.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().StrictMode), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_App__WEBPACK_IMPORTED_MODULE_3__["default"], null)));
 }();
 /******/ })()
 ;
