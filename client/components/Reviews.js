@@ -8,8 +8,8 @@ const Reviews = () => {
   return (
     <div>
       {
-        defaultReviews.map(review => (
-          <SingleReview review={review}/>
+        defaultReviews.map((review, index) => (
+          <SingleReview review={review} key={index} />
         ))
       }
     </div>

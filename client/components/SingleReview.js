@@ -5,7 +5,7 @@ import React from 'react'
 const SingleReview = ({review}) => {
   return (
     <div>
-      <image src={review.image}/>
+      <img src={review.image}/>
       <article>{review.text}</article>
       <article>{review.reviewer}</article>
       <button>Visit Review Page</button>
