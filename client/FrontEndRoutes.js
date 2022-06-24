@@ -4,6 +4,7 @@ import PlaceHolder from "./components/PlaceHolder";
 import HomeComponent from './components/Home';
 import About from './components/About';
 import AvailableKittens from './components/AvailableKittens';
+import Reviews from './components/Reviews';
 
 
 const FrontEndRoutes = () => {
@@ -18,7 +19,7 @@ const FrontEndRoutes = () => {
         <Route exact path='/home' element={<HomeComponent />} />
         <Route exact path='/about' element={<About />} />
         <Route exact path='/availableKittens' element={<AvailableKittens />} />
-        <Route exact path='/reviews' element={<PlaceHolder />} />
+        <Route exact path='/reviews' element={<Reviews />} />
         <Route exact path='/waitingListForm' element={<PlaceHolder />} />
         <Route exact path='/contact' element={<PlaceHolder />} />
         <Route exact path='/instagram' element={<PlaceHolder />} />

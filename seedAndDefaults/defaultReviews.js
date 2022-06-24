@@ -8,10 +8,12 @@ const name1 = 'Tatiana Mykyta'
 const name2 = 'Jennifer Cole-Meehan'
 const name3 = 'Rovena Pjetergjoka'
 
-function CustomerReview(image, text, reviewer) {
-  this.image = image;
-  this.text = text;
-  this.reviewer = reviewer
+class CustomerReview {
+  constructor(image, text, reviewer) {
+    this.image = image;
+    this.text = text;
+    this.reviewer = reviewer
+  }
 }
 
 const defaultReviews = []
@@ -20,4 +22,6 @@ defaultReviews.push(new CustomerReview(image1, text1, name1))
 defaultReviews.push(new CustomerReview(image2, text2, name2))
 defaultReviews.push(new CustomerReview(image3, text3, name3))
 
-export default defaultReviews
+console.log(defaultReviews)
+
+module.exports = defaultReviews
