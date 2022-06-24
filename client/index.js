@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 // import '../public/App.css';
 import history from './history'
-// import FrontEndRoutes from './FrontEndRoutes';
 import App from './components/App'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

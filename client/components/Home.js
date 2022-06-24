@@ -1,5 +1,5 @@
 import React from 'react'
-import AboutUs from './AboutUs'
+import AboutUs from './textComponents/AboutUs'
 
 const homeComponent = () => {
 
