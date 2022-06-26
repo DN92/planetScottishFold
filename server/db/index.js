@@ -5,6 +5,6 @@ const db = require('./dbSetup')
 
 // If not required, this can be merged with ./dbSetup
 
-db.models = require("./Models")
+db.models = require("./models")
 
 module.exports = db

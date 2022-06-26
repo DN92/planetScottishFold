@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize')
-const db = require("../../db")
+const db = require("../dbSetup")
 
-const Father = db.define('father', {
+const Mother = db.define("mother", {
   ears: {
     type: Sequelize.ENUM('fold', 'straight')
   },
@@ -13,4 +13,4 @@ const Father = db.define('father', {
   },
 })
 
-module.exports = Father
+module.exports = Mother

@@ -10,8 +10,8 @@ router.get('/fullDB', async   (req, res, next) => {
     // THIS IS FOR TESTING. DELETE WHEN DONE !!!!!!!!!
     const fullDataBase = {}
     fullDataBase.Kittens = await Kitten.findAll()
-    fullDataBase.Mother = await Mother.findAll()
-    fullDataBase.Father = await Father.findAll()
+    fullDataBase.Mothers = await Mother.findAll()
+    fullDataBase.Fathers = await Father.findAll()
     res.send(fullDataBase)
   } catch (err) {
     next(err)
