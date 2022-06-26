@@ -1,7 +1,11 @@
 const Sequelize = require('sequelize')
 const db = require("../dbSetup")
+const {furColors, eyeColors} = require("../../../myConfig")
 
 const Kitten = db.define("kitten", {
+  name: {
+    type:Sequelize.STRING
+  },
   gender:{
     type: Sequelize.ENUM('boy', 'girl')
   },
@@ -9,10 +13,10 @@ const Kitten = db.define("kitten", {
     type: Sequelize.ENUM('fold', 'straight')
   },
   furColor: {
-    type: Sequelize.ENUM('blue', 'brown', 'tabby', 'black', 'white', 'gold', 'silver', 'colorpoint', 'chinchilla' )
+    type: Sequelize.ENUM(...furColors)
   },
   eyeColor: {
-    type: Sequelize.ENUM('green','blue', 'yellow','copper', 'odd')
+    type: Sequelize.ENUM(...eyeColors)
   },
 })
 

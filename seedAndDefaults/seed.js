@@ -1,9 +1,6 @@
 "use-strict"
 
-const {
-  db,
-  models
-} = require ('../server/db')
+const { db, models } = require ('../server/db')
 
 const { Kittens, Mothers, Fathers } = models
 
@@ -24,6 +21,7 @@ async function runSeed() {
     console.log("Running database seed function")
     await seed()
   } catch (err) {
+    console.log("Database seed failed")
     console.error(err)
     console.log(err.stack)
   } finally {
