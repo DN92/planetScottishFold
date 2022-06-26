@@ -5,8 +5,8 @@ import HomeComponent from './components/Home';
 import About from './components/About';
 import AvailableKittens from './components/AvailableKittens';
 import Reviews from './components/Reviews';
-import FormClientQuestionnaire from './components/FormClientQuestionnaire';
-import ClientQuestionnaire from './components/clientQuestionnaire';
+import ClientQuestionnaire from './components/ClientQuestionnaire';
+import ContactRequestForm from './components/ContactRequestForm';
 
 
 const FrontEndRoutes = () => {
@@ -23,7 +23,7 @@ const FrontEndRoutes = () => {
         <Route exact path='/availableKittens' element={<AvailableKittens />} />
         <Route exact path='/reviews' element={<Reviews />} />
         <Route exact path='/waitingListForm' element={<ClientQuestionnaire />} />
-        <Route exact path='/contact' element={<PlaceHolder />} />
+        <Route exact path='/contact' element={<ContactRequestForm />} />
         <Route exact path='/instagram' element={<PlaceHolder />} />
         <Route exact path='/facebook' element={<PlaceHolder />} /> */
         {/* <Route exact path='/' element={} /> */}

@@ -1,10 +1,10 @@
 const Sequelize = require('sequelize')
 const pkg = require('../../package.json')
 
-//  2 databases are associated with this app. psf and psf-test, the latter being a test server
+//  2 local databases are associated with this app. psf and psf-test, the latter being a test server
 const databaseName = pkg.name + (process.env.NODE_ENV === 'test' ? '-test' : '')
 
-let dbConfiguration = {}
+let config = {}
 
 if(process.env.DATABASE_URL) {
   config = {
@@ -25,7 +25,7 @@ if(process.env.DATABASE_URL) {
 
 const db = new Sequelize(
   process.env.DATABASE_URL ||
-  `postgres://localhost:5432/${databaseName}`, dbConfiguration
+  `postgres://localhost:5432/${databaseName}`, config
 )
 
 module.exports = db

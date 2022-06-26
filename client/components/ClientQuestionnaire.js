@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { resetForm } from '../../myUtilFuncs'
 
 const ClientQuestionnaire = () => {
 
@@ -21,11 +22,6 @@ const ClientQuestionnaire = () => {
 
   const [clientInfo, setClientInfo] = useState(defaultClientInfo)
 
-  //  util function used to reset from after submission,  in handleSubmit()
-  const resetForm = (elementId) => {
-    document.getElementById(elementId).reset()
-  }
-
   const handleChange = (event) => {
     event.persist();
     setClientInfo(prevClientInfo =>{
@@ -36,7 +32,7 @@ const ClientQuestionnaire = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     // console.log(clientInfo)
-    resetForm(event.nativeEvent.srcElement.id)
+    resetForm(event)
     setClientInfo(defaultClientInfo)
   }
 

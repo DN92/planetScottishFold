@@ -17,8 +17,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_About__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/About */ "./client/components/About.js");
 /* harmony import */ var _components_AvailableKittens__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/AvailableKittens */ "./client/components/AvailableKittens.js");
 /* harmony import */ var _components_Reviews__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/Reviews */ "./client/components/Reviews.js");
-Object(function webpackMissingModule() { var e = new Error("Cannot find module './components/FormClientQuestionnaire'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
-/* harmony import */ var _components_clientQuestionnaire__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/clientQuestionnaire */ "./client/components/clientQuestionnaire.js");
+/* harmony import */ var _components_ClientQuestionnaire__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/ClientQuestionnaire */ "./client/components/ClientQuestionnaire.js");
+/* harmony import */ var _components_ContactRequestForm__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/ContactRequestForm */ "./client/components/ContactRequestForm.js");
 
 
 
@@ -54,11 +54,11 @@ const FrontEndRoutes = () => {
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Route, {
     exact: true,
     path: "/waitingListForm",
-    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_clientQuestionnaire__WEBPACK_IMPORTED_MODULE_7__["default"], null)
+    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_ClientQuestionnaire__WEBPACK_IMPORTED_MODULE_6__["default"], null)
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Route, {
     exact: true,
     path: "/contact",
-    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_PlaceHolder__WEBPACK_IMPORTED_MODULE_1__["default"], null)
+    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_ContactRequestForm__WEBPACK_IMPORTED_MODULE_7__["default"], null)
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Route, {
     exact: true,
     path: "/instagram",
@@ -149,6 +149,255 @@ const AvailableKittens = () => {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (AvailableKittens);
+
+/***/ }),
+
+/***/ "./client/components/ClientQuestionnaire.js":
+/*!**************************************************!*\
+  !*** ./client/components/ClientQuestionnaire.js ***!
+  \**************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _myUtilFuncs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../myUtilFuncs */ "./myUtilFuncs.js");
+/* harmony import */ var _myUtilFuncs__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_myUtilFuncs__WEBPACK_IMPORTED_MODULE_1__);
+
+
+
+const ClientQuestionnaire = () => {
+  const defaultClientInfo = {
+    firstName: '',
+    lastName: '',
+    eMail: '',
+    aboutYou: '',
+    firstCat: false,
+    otherPets: '',
+    state: '',
+    fB: '',
+    //facebook
+    iG: '',
+    // instagram
+    gender: '',
+    ears: '',
+    color: '',
+    mif: '',
+    // most important feature(s)
+    budget: ''
+  };
+  const [clientInfo, setClientInfo] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(defaultClientInfo);
+
+  const handleChange = event => {
+    event.persist();
+    setClientInfo(prevClientInfo => {
+      return { ...prevClientInfo,
+        [event.target.name]: event.target.value
+      };
+    });
+  };
+
+  const handleSubmit = event => {
+    event.preventDefault(); // console.log(clientInfo)
+
+    (0,_myUtilFuncs__WEBPACK_IMPORTED_MODULE_1__.resetForm)(event);
+    setClientInfo(defaultClientInfo);
+  };
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("form", {
+    id: "clientQuestionnaire",
+    onChange: handleChange,
+    onSubmit: handleSubmit
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "About You"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    id: "addFirstName",
+    type: "text",
+    name: "firstName",
+    placeholder: "First Name",
+    required: true
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    id: "lastName",
+    type: "text",
+    name: "lastName",
+    placeholder: "Last Name",
+    required: true
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    id: "clientEmail",
+    type: "email",
+    name: "eMail",
+    placeholder: "E Mail",
+    required: true
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("textarea", {
+    name: "aboutYou",
+    id: "",
+    cols: "50",
+    rows: "5",
+    placeholder: "Please tell us a little about yourself.",
+    required: true
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+    htmlFor: "firstCat"
+  }, "Will this be your first cat?"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("select", {
+    name: "firstCat",
+    required: true
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+    value: false
+  }, "Will this be your first cat?"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+    value: false
+  }, "No"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+    value: true
+  }, "Yes")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    type: "text",
+    name: "otherPets",
+    placeholder: "If any, what other pets do you own?"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "Where are you from?"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    type: "text",
+    name: "city",
+    placeholder: "your city",
+    required: true
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    type: "text",
+    name: "state",
+    placeholder: "your state",
+    required: true
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "What are you looking for in a kitten?"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("select", {
+    name: "gender",
+    required: true
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+    value: ""
+  }, "Boy or Girl?"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+    value: "male"
+  }, "Male"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+    value: "female"
+  }, "Female")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("select", {
+    name: "ears",
+    required: true
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+    value: ""
+  }, "Fold or Straight"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+    value: "fold"
+  }, "Fold"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+    value: "straight"
+  }, "Straight"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+    value: "noPref"
+  }, "No Preference")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("select", {
+    name: "color"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+    value: ""
+  }, "Color"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+    value: "blue"
+  }, "Blue"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+    value: "red"
+  }, "Red"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+    value: "white"
+  }, "White"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+    value: "green"
+  }, "Green"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+    value: "noPref"
+  }, "No Preference")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    type: "text",
+    name: "mif",
+    placeholder: "What feature is most important to you?"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "Your Facebook and/or Instagram"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    type: "text",
+    name: "fB"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    type: "text",
+    name: "iG"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("select", {
+    name: "budget",
+    required: true
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+    value: "Budget"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+    value: "lessThan1500"
+  }, "Less than $1500"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+    value: "1500to2000"
+  }, "$1500 to $2000"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+    value: "2000to2500"
+  }, "$2000 to $2500"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+    value: "over2500"
+  }, "$2500 and over")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    type: "submit"
+  }));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (ClientQuestionnaire);
+
+/***/ }),
+
+/***/ "./client/components/ContactRequestForm.js":
+/*!*************************************************!*\
+  !*** ./client/components/ContactRequestForm.js ***!
+  \*************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _myUtilFuncs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../myUtilFuncs */ "./myUtilFuncs.js");
+/* harmony import */ var _myUtilFuncs__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_myUtilFuncs__WEBPACK_IMPORTED_MODULE_1__);
+
+
+
+const ContactRequestForm = () => {
+  const defaultContactRequest = {
+    name: '',
+    phone: '',
+    email: '',
+    message: ''
+  };
+  const [contactRequest, setContactRequest] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(defaultContactRequest);
+
+  const handleChange = event => {
+    event.persist(); // console.log("EVENT: ", event)
+
+    if (event.target.name === "phone") {
+      event.target.value = (0,_myUtilFuncs__WEBPACK_IMPORTED_MODULE_1__.convertToPhoneNumber)(event.target.value);
+    }
+
+    setContactRequest(prevContactRequest => {
+      return { ...prevContactRequest,
+        [event.target.name]: event.target.value
+      };
+    });
+  };
+
+  const handleSubmit = event => {
+    event.preventDefault();
+    console.log(contactRequest);
+    (0,_myUtilFuncs__WEBPACK_IMPORTED_MODULE_1__.resetForm)(event);
+    setContactRequest(defaultContactRequest);
+  };
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("form", {
+    id: "ContactRequest",
+    onChange: handleChange,
+    onSubmit: handleSubmit
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    type: "text",
+    name: "name",
+    placeholder: "Your Name",
+    required: true
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    type: "tel",
+    name: "phone",
+    placeholder: "Your phone number"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    type: "email",
+    name: "eMail",
+    placeholder: "Your Email"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    type: "textarea",
+    name: "message",
+    placeholder: "Type your message here..",
+    required: true
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    type: "submit"
+  }));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (ContactRequestForm);
 
 /***/ }),
 
@@ -325,180 +574,6 @@ const SingleReview = ({
 
 /***/ }),
 
-/***/ "./client/components/clientQuestionnaire.js":
-/*!**************************************************!*\
-  !*** ./client/components/clientQuestionnaire.js ***!
-  \**************************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-
-
-const ClientQuestionnaire = () => {
-  const defaultClientInfo = {
-    firstName: '',
-    lastName: '',
-    eMail: '',
-    aboutYou: '',
-    firstCat: false,
-    otherPets: '',
-    state: '',
-    fB: '',
-    //facebook
-    iG: '',
-    // instagram
-    gender: '',
-    ears: '',
-    color: '',
-    mif: '',
-    // most important feature(s)
-    budget: ''
-  };
-  const [clientInfo, setClientInfo] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(defaultClientInfo); //  util function used to reset from after submission,  in handleSubmit()
-
-  const resetForm = elementId => {
-    document.getElementById(elementId).reset();
-  };
-
-  const handleChange = event => {
-    event.persist();
-    setClientInfo(prevClientInfo => {
-      return { ...prevClientInfo,
-        [event.target.name]: event.target.value
-      };
-    });
-  };
-
-  const handleSubmit = event => {
-    event.preventDefault(); // console.log(clientInfo)
-
-    resetForm(event.nativeEvent.srcElement.id);
-    setClientInfo(defaultClientInfo);
-  };
-
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("form", {
-    id: "clientQuestionnaire",
-    onChange: handleChange,
-    onSubmit: handleSubmit
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "About You"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
-    id: "addFirstName",
-    type: "text",
-    name: "firstName",
-    placeholder: "First Name",
-    required: true
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
-    id: "lastName",
-    type: "text",
-    name: "lastName",
-    placeholder: "Last Name",
-    required: true
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
-    id: "clientEmail",
-    type: "email",
-    name: "eMail",
-    placeholder: "E Mail",
-    required: true
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("textarea", {
-    name: "aboutYou",
-    id: "",
-    cols: "50",
-    rows: "5",
-    placeholder: "Please tell us a little about yourself.",
-    required: true
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
-    htmlFor: "firstCat"
-  }, "Will this be your first cat?"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("select", {
-    name: "firstCat",
-    required: true
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
-    value: false
-  }, "Will this be your first cat?"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
-    value: false
-  }, "No"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
-    value: true
-  }, "Yes")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
-    type: "text",
-    name: "otherPets",
-    placeholder: "If any, what other pets do you own?"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "Where are you from?"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
-    type: "text",
-    name: "city",
-    placeholder: "your city",
-    required: true
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
-    type: "text",
-    name: "state",
-    placeholder: "your state",
-    required: true
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "What are you looking for in a kitten?"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("select", {
-    name: "gender",
-    required: true
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
-    value: ""
-  }, "Boy or Girl?"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
-    value: "male"
-  }, "Male"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
-    value: "female"
-  }, "Female")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("select", {
-    name: "ears",
-    required: true
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
-    value: ""
-  }, "Fold or Straight"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
-    value: "fold"
-  }, "Fold"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
-    value: "straight"
-  }, "Straight"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
-    value: "noPref"
-  }, "No Preference")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("select", {
-    name: "color"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
-    value: ""
-  }, "Color"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
-    value: "blue"
-  }, "Blue"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
-    value: "red"
-  }, "Red"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
-    value: "white"
-  }, "White"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
-    value: "green"
-  }, "Green"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
-    value: "noPref"
-  }, "No Preference")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
-    type: "text",
-    name: "mif",
-    placeholder: "What feature is most important to you?"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "Your Facebook and/or Instagram"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
-    type: "text",
-    name: "fB"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
-    type: "text",
-    name: "iG"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("select", {
-    name: "budget",
-    required: true
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
-    value: "Budget"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
-    value: "lessThan1500"
-  }, "Less than $1500"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
-    value: "1500to2000"
-  }, "$1500 to $2000"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
-    value: "2000to2500"
-  }, "$2000 to $2500"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
-    value: "over2500"
-  }, "$2500 and over")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
-    type: "submit"
-  }));
-};
-
-/* harmony default export */ __webpack_exports__["default"] = (ClientQuestionnaire);
-
-/***/ }),
-
 /***/ "./client/components/textComponents/AboutUs.js":
 /*!*****************************************************!*\
   !*** ./client/components/textComponents/AboutUs.js ***!
@@ -551,6 +626,55 @@ __webpack_require__.r(__webpack_exports__);
 
 const history =  false ? 0 : (0,history__WEBPACK_IMPORTED_MODULE_0__.createBrowserHistory)();
 /* harmony default export */ __webpack_exports__["default"] = (history);
+
+/***/ }),
+
+/***/ "./myUtilFuncs.js":
+/*!************************!*\
+  !*** ./myUtilFuncs.js ***!
+  \************************/
+/***/ (function(module) {
+
+const myUtilFuncs = {};
+
+myUtilFuncs.resetForm = event => {
+  try {
+    document.getElementById(event.nativeEvent.srcElement.id).reset();
+  } catch (err) {
+    console.err(err);
+    console.log(err.stack);
+  }
+};
+
+myUtilFuncs.convertToPhoneNumber = number => {
+  number = number.split('').filter(char => char !== "-" && char !== " ").join('');
+
+  if (number.length < 4) {
+    return number;
+  }
+
+  if (number.length < 7) {
+    return number.slice(0, 3) + ' - ' + number.slice(3);
+  }
+
+  return number.slice(0, 3) + ' - ' + number.slice(3, 6) + ' - ' + number.slice(6, 10); //  will discard any digits after the tenth
+};
+
+myUtilFuncs.objectKeysToLowerCase = object => {
+  try {
+    Object.keys(object).forEach(key => {
+      if (typeof object[key] === string) {
+        object[key] = object[key].toLowerCase();
+      }
+    });
+  } catch (err) {
+    console.error('Utility Function objectKeysToLowerCase failed');
+    console.error(err);
+    console.log(error.stack);
+  }
+};
+
+module.exports = myUtilFuncs;
 
 /***/ }),
 
