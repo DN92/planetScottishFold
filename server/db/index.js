@@ -1,19 +1,10 @@
 const db = require('./dbSetup')
 
-// model imports go here
-const Kitten = require('./KittenModel')
-const Mother = require('./MotherModel')
-const Father = require('./FatherModel')
 
-// associations here
+//  this file is for non setup, modifications and or imports related to the DB if needed.
 
+// If not required, this can be merged with ./dbSetup
 
-module.exports = {
-  db,
-  models: {
-    Kitten: Kitten,
-    Mother,
-    Father,
+db.models = require("./Models")
 
-  }
-}
+module.exports = db
