@@ -6,6 +6,9 @@ const Mother = db.define("mother", {
   name: {
     type: Sequelize.STRING
   },
+  serialNumber:{
+    type:Sequelize.STRING
+  },
   ears: {
     type: Sequelize.ENUM('fold', 'straight')
   },

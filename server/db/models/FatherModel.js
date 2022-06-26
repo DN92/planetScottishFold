@@ -7,6 +7,9 @@ const Father = db.define('father', {
   name: {
     type: Sequelize.STRING
   },
+  serialNumber:{
+    type:Sequelize.STRING
+  },
   ears: {
     type: Sequelize.ENUM('fold', 'straight')
   },

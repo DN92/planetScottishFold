@@ -1,10 +1,20 @@
 const Sequelize = require('sequelize')
 const db = require("../dbSetup")
-const {furColors, eyeColors} = require("../../../myConfig")
+const {furColors, eyeColors, defaultCatPictureSrc} = require("../../../myConfig")
 
 const Kitten = db.define("kitten", {
   name: {
     type:Sequelize.STRING
+  },
+  serialNumber:{
+    type:Sequelize.STRING
+  },
+  mainImageSrcValue: {
+    type:Sequelize.STRING,
+    defaultValue: defaultCatPictureSrc,
+    validate: {
+      notEmpty: true
+    }
   },
   gender:{
     type: Sequelize.ENUM('boy', 'girl')

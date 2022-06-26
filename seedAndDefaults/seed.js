@@ -1,8 +1,10 @@
 "use-strict"
 
 const { db, models } = require ('../server/db')
+const dummyKittens = require('./kittensDummy')
 
-const { Kittens, Mothers, Fathers } = models
+
+const { Kitten, Mother, Father } = models
 
 /**
  *  seed - this function clears the database, updates tables to
@@ -12,6 +14,9 @@ const { Kittens, Mothers, Fathers } = models
 async function seed() {
   await db.drop({})
   await db.sync({force: true})  //  clears the db and matches models to tables
+  await Promise.all(dummyKittens.map(kitten => {
+    return Kitten.create(kitten)
+  }))
 }
 
 // runSeed isolates error handling and exit trapping.

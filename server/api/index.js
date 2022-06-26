@@ -5,7 +5,16 @@ const { Kitten, Mother, Father } = db.models
 
 //  api/
 
-router.get('/fullDB', async   (req, res, next) => {
+router.get('/getImage', async (req, res, next) => {
+  try {
+    const image = '<image src="/catPictures/artemis.jpg">'
+    res.send(image)
+  } catch (err) {
+    next (err)
+  }
+})
+
+router.get('/fullDB', async (req, res, next) => {
   try {
     // THIS IS FOR TESTING. DELETE WHEN DONE !!!!!!!!!
     const fullDataBase = {}

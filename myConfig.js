@@ -18,6 +18,9 @@ module.exports = {
     'blue',
     'yellow',
     'copper',
-    'odd'
-  ]
+    'odd',
+    'brown'
+  ],
+  //  for public file serving
+  defaultCatPictureSrc: '/catPictures/grumpyCatCartoon.jpeg'
 }
