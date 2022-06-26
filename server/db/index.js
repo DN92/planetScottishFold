@@ -1,9 +1,19 @@
 const db = require('./dbSetup')
 
 // model imports go here
+const Kitten = require('./KittenModel')
+const Mother = require('./MotherModel')
+const Father = require('./FatherModel')
 
-  // require(./{modelname})
-  // require(./{modelname})
-  // require(./{modelname})
+// associations here
 
-module.exports = db
+
+module.exports = {
+  db,
+  models: {
+    Kitten: Kitten,
+    Mother,
+    Father,
+
+  }
+}
