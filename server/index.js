@@ -11,7 +11,7 @@ const path = require('path')
 const express = require('express')
 const morgan = require('morgan')
 const compression = require('compression')  // note to self = read docs about this
-const db = require('./db')
+const { db } = require('./db')
 const PORT = process.env.PORT || 8081
 const app = express()
 

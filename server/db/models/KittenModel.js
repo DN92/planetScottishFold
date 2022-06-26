@@ -8,11 +8,11 @@ const Kitten = db.define("kitten", {
   ears:{
     type: Sequelize.ENUM('fold', 'straight')
   },
-  color: {
-    type: Sequelize.ENUM('blue', 'brown', 'black', 'red', 'white', 'grey')
+  furColor: {
+    type: Sequelize.ENUM('blue', 'brown', 'tabby', 'black', 'white', 'gold', 'silver', 'colorpoint', 'chinchilla' )
   },
-  mif: {
-    type: Sequelize.STRING
+  eyeColor: {
+    type: Sequelize.ENUM('green','blue', 'yellow','copper', 'odd')
   },
 })
 

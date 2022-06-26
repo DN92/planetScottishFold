@@ -1,12 +1,13 @@
 {
   "name": "psf",
   "version": "0.1.0",
-  "main": "index.js",
   "scripts": {
     "build": "webpack --mode production",
     "build:dev": "npm run build -- --watch --mode=development",
+    "seed": "node seedAndDefaults/seed.js",
     "start": "node server",
     "start:dev": "npm run build:dev & npm run start-server",
+    "start:full": "npm run seed & npm run start:dev",
     "start:dev:logger": "LOGGING=true npm run start:dev",
     "start:windows": "set JWT=shh&&nodemon server",
     "start-server": "JWT=shh nodemon server -e html,js,scss --ignore public --ignore client",
