@@ -1,7 +1,28 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 
-const SingleKitten = () => {
 
+const SingleKitten = ({kitten}) => {
+
+  const {name, serialNumber, gender, ears, furColor, eyeColor, mainImageSrcValue} = kitten
+
+  const imgInline= {
+    width: "100%",
+    maxWidth: "300px",
+    maxHeight: "200px"
+  }
+
+  return (
+    <div>
+      <img src={mainImageSrcValue} alt="/catPictures/grumpyCatCartoon" style={imgInline} />
+      <p>Name: {name}</p>
+      <p>Serial: {serialNumber}</p>
+      <p>{gender}</p>
+      <p>{ears}</p>
+      <p>Eyes: {eyeColor}</p>
+      <p>Fur: {furColor}</p>
+      <hr />
+    </div>
+  )
 }
 
 export default SingleKitten
