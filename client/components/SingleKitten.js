@@ -5,7 +5,7 @@ const SingleKitten = ({kitten}) => {
 
   const {name, serialNumber, gender, ears, furColor, eyeColor, mainImageSrcValue} = kitten
 
-  const imgInline= {
+  const imgInLine= {
     width: "100%",
     maxWidth: "300px",
     maxHeight: "200px"
@@ -13,7 +13,7 @@ const SingleKitten = ({kitten}) => {
 
   return (
     <div>
-      <img src={mainImageSrcValue} alt="/catPictures/grumpyCatCartoon" style={imgInline} />
+      <img src={mainImageSrcValue} alt="/catPictures/grumpyCatCartoon" style={imgInLine} />
       <p>Name: {name}</p>
       <p>Serial: {serialNumber}</p>
       <p>{gender}</p>

@@ -2661,9 +2661,7 @@ const AvailableKittens = () => {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _myUtilFuncs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../myUtilFuncs */ "./myUtilFuncs.js");
-/* harmony import */ var _myUtilFuncs__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_myUtilFuncs__WEBPACK_IMPORTED_MODULE_1__);
-
+/* eslint-disable */
 
 
 const ClientQuestionnaire = () => {
@@ -2674,6 +2672,7 @@ const ClientQuestionnaire = () => {
     aboutYou: '',
     firstCat: false,
     otherPets: '',
+    city: '',
     state: '',
     fB: '',
     //facebook
@@ -2687,6 +2686,9 @@ const ClientQuestionnaire = () => {
     budget: ''
   };
   const [clientInfo, setClientInfo] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(defaultClientInfo);
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+    setClientInfo(JSON.parse(localStorage.getItem('clientInfo')) || defaultClientInfo);
+  }, []);
 
   const handleChange = event => {
     event.persist();
@@ -2697,33 +2699,42 @@ const ClientQuestionnaire = () => {
     });
   };
 
-  const handleSubmit = event => {
-    event.preventDefault(); // console.log(clientInfo)
+  const handleReset = () => {
+    localStorage.removeItem('clientInfo');
+    setClientInfo(defaultClientInfo);
+  };
 
-    (0,_myUtilFuncs__WEBPACK_IMPORTED_MODULE_1__.resetForm)(event);
+  const handleSubmit = event => {
+    event.preventDefault();
+    console.log(clientInfo);
+    localStorage.setItem('clientInfo', JSON.stringify(clientInfo));
     setClientInfo(defaultClientInfo);
   };
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("form", {
     id: "clientQuestionnaire",
     onChange: handleChange,
+    onReset: handleReset,
     onSubmit: handleSubmit
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "About You"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
     id: "addFirstName",
     type: "text",
     name: "firstName",
+    value: clientInfo.firstName,
     placeholder: "First Name",
     required: true
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
     id: "lastName",
     type: "text",
     name: "lastName",
+    value: clientInfo.lastName,
     placeholder: "Last Name",
     required: true
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
     id: "clientEmail",
     type: "email",
     name: "eMail",
+    value: clientInfo.eMail,
     placeholder: "E Mail",
     required: true
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("textarea", {
@@ -2731,12 +2742,14 @@ const ClientQuestionnaire = () => {
     id: "",
     cols: "50",
     rows: "5",
+    value: clientInfo.aboutYou,
     placeholder: "Please tell us a little about yourself.",
     required: true
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
     htmlFor: "firstCat"
   }, "Will this be your first cat?"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("select", {
     name: "firstCat",
+    value: clientInfo.firstCat,
     required: true
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
     value: false
@@ -2747,19 +2760,23 @@ const ClientQuestionnaire = () => {
   }, "Yes")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
     type: "text",
     name: "otherPets",
+    value: clientInfo.otherPets,
     placeholder: "If any, what other pets do you own?"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "Where are you from?"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
     type: "text",
     name: "city",
+    value: clientInfo.city,
     placeholder: "your city",
     required: true
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
     type: "text",
     name: "state",
+    value: clientInfo.state,
     placeholder: "your state",
     required: true
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "What are you looking for in a kitten?"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("select", {
     name: "gender",
+    value: clientInfo.gender,
     required: true
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
     value: ""
@@ -2769,6 +2786,7 @@ const ClientQuestionnaire = () => {
     value: "female"
   }, "Female")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("select", {
     name: "ears",
+    value: clientInfo.ears,
     required: true
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
     value: ""
@@ -2779,7 +2797,8 @@ const ClientQuestionnaire = () => {
   }, "Straight"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
     value: "noPref"
   }, "No Preference")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("select", {
-    name: "color"
+    name: "color",
+    value: clientInfo.color
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
     value: ""
   }, "Color"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
@@ -2795,19 +2814,23 @@ const ClientQuestionnaire = () => {
   }, "No Preference")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
     type: "text",
     name: "mif",
+    value: clientInfo.mif,
     placeholder: "What feature is most important to you?"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "Your Facebook and/or Instagram"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
     type: "text",
-    name: "fB"
+    name: "fB",
+    value: clientInfo.fB
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
     type: "text",
-    name: "iG"
+    name: "iG",
+    value: clientInfo.iG
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("select", {
-    name: "budget",
+    name: "",
+    value: clientInfo.budget,
     required: true
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
     value: "Budget"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+  }, "Budget"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
     value: "lessThan1500"
   }, "Less than $1500"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
     value: "1500to2000"
@@ -2816,6 +2839,8 @@ const ClientQuestionnaire = () => {
   }, "$2000 to $2500"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
     value: "over2500"
   }, "$2500 and over")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    type: "reset"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
     type: "submit"
   }));
 };
@@ -3073,7 +3098,7 @@ const SingleKitten = ({
     eyeColor,
     mainImageSrcValue
   } = kitten;
-  const imgInline = {
+  const imgInLine = {
     width: "100%",
     maxWidth: "300px",
     maxHeight: "200px"
@@ -3081,7 +3106,7 @@ const SingleKitten = ({
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
     src: mainImageSrcValue,
     alt: "/catPictures/grumpyCatCartoon",
-    style: imgInline
+    style: imgInLine
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Name: ", name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Serial: ", serialNumber), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, gender), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, ears), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Eyes: ", eyeColor), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Fur: ", furColor), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("hr", null));
 };
 
@@ -3179,6 +3204,7 @@ const myUtilFuncs = {};
 myUtilFuncs.resetForm = event => {
   try {
     document.getElementById(event.nativeEvent.srcElement.id).reset();
+    console.log(event.nativeEvent.srcElement.id, "  Should have been reset");
   } catch (err) {
     console.err(err);
     console.log(err.stack);

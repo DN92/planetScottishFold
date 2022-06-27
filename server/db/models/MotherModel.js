@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize')
 const db = require("../dbSetup")
-const { furColors, eyeColors } = require("../../../myConfig")
+const { furColors, eyeColors } = require("./myModelsConfig")
 
 const Mother = db.define("mother", {
   name: {
