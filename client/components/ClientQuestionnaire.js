@@ -46,8 +46,8 @@ const ClientQuestionnaire = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log(clientInfo)
-    setClientInfo(defaultClientInfo)
-    history.push('/confirmClientQuestionnaire')
+    // setClientInfo(defaultClientInfo)
+    history.push('confirmClientQuestionnaire')
   }
 
   return (
@@ -109,12 +109,13 @@ const ClientQuestionnaire = () => {
       <br />
       <input type="text" name='iG' value={clientInfo.iG} />
       <br />
-      <select name="" value={clientInfo.budget} required>
-        <option value="Budget">Budget</option>
+      <select name="budget" value={clientInfo.budget} required>
+        <option value="">Budget</option>
         <option value="lessThan1500">Less than $1500</option>
         <option value="1500to2000">$1500 to $2000</option>
         <option value="2000to2500">$2000 to $2500</option>
         <option value="over2500">$2500 and over</option>
+        <option value="any">Any</option>
       </select>
       {/* <input type="reset" /> */}
       <input type="reset" />

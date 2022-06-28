@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize')
 const db = require('../dbSetup')
-const userTypes = require('../../../secrets')
+const { userTypes } = require('../../../secrets')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 
@@ -15,16 +15,24 @@ const User = db.define("user", {
       notEmpty: true
     }
   },
-  email: {},
-  city: {},
-  state: {},
-  zipCode: {},
+  eMail: {
+    type: Sequelize.STRING,
+  },
+  city: {
+    type: Sequelize.STRING,
+  },
+  state: {
+    type: Sequelize.STRING,
+  },
+  zipCode: {
+    type: Sequelize.INTEGER,
+  },
 })
 
 /**
  * instanceMethods
  */
- User.prototype.correctPassword = function (candidatePwd) {
+ User.prototype.passwordConfirmed = function (candidatePwd) {
   //we need to compare the plain version to an encrypted version of the password
   return bcrypt.compare(candidatePwd, this.password);
 };
@@ -35,7 +43,7 @@ User.prototype.generateToken = function () {
 
 User.authenticate = async function ({ username, password }) {
   const user = await this.findOne({ where: { username } });
-  if (!user || !(await user.correctPassword(password))) {
+  if (!user || !(await user.passwordConfirmed(password))) {
     const error = Error("Incorrect username/password");
     error.status = 401;
     throw error;

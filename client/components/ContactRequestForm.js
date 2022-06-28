@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import {resetForm, convertToPhoneNumber} from '../../myUtilFuncs'
+import {resetForm, convertToPhoneNumber} from '../../myUtilFuncs.js'
 
 
 const ContactRequestForm = () => {

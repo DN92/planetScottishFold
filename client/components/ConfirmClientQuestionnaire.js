@@ -1,5 +1,6 @@
 import React from "react";
 import history from "../history";
+import { getUserIP } from '../../myUtilFuncs.js'
 
 //  this component is accessed through ClientQuestionnaire's onSubmit through the history library. ::  history.push('confirmClientQuestionnaire)
 
@@ -12,8 +13,9 @@ const ConfirmClientQuestionnaire = () => {
     history.back()
   }
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     preventDefault()
+    clientInfo.userIP = await getUserIP()
     console.log(clientInfo)
   }
 

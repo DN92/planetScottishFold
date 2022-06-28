@@ -1,6 +1,8 @@
+const axios = require('axios')
 
 const myUtilFuncs = {}
 
+//  for uncontrolled components only!!
 myUtilFuncs.resetForm = (event) => {
   try {
     document.getElementById(event.nativeEvent.srcElement.id).reset()
@@ -36,5 +38,13 @@ myUtilFuncs.objectKeysToLowerCase = (object) => {
     console.log(error.stack)
   }
 }
+
+myUtilFuncs.getUserIP = async () => {
+    const { data } = await axios.get('https://geolocation-db.com/json/')
+    console.log("IP getter reading: ", data.IPv4);
+    return data.IPv4
+}
+
+console.log(myUtilFuncs)
 
 module.exports = myUtilFuncs
