@@ -2,7 +2,7 @@
 
 const models = {}
 
-models.Father = require("./FatherModel")
+models.Stud = require("./StudModel")
 models.Mother = require("./MotherModel")
 models.Kitten = require("./KittenModel")
 models.User = require("./User")

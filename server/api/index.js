@@ -5,6 +5,7 @@ const { Kitten, Mother, Father } = db.models
 
 //  api/
 router.use('/kittens', require('./kittens'))
+router.use('/mothers', require('./mothers'))
 
 // router.get('/getImage', async (req, res, next) => {
 //   try {
@@ -15,18 +16,18 @@ router.use('/kittens', require('./kittens'))
 //   }
 // })
 
-// router.get('/fullDB', async (req, res, next) => {
-//   try {
-//     // THIS IS FOR TESTING. DELETE WHEN DONE !!!!!!!!!
-//     const fullDataBase = {}
-//     fullDataBase.Kittens = await Kitten.findAll()
-//     fullDataBase.Mothers = await Mother.findAll()
-//     fullDataBase.Fathers = await Father.findAll()
-//     res.send(fullDataBase)
-//   } catch (err) {
-//     next(err)
-//   }
-// })
+router.get('/fullDB', async (req, res, next) => {
+  try {
+    // THIS IS FOR TESTING. DELETE WHEN DONE !!!!!!!!!
+    const fullDataBase = {}
+    fullDataBase.Kittens = await Kitten.findAll()
+    fullDataBase.Mothers = await Mother.findAll()
+    fullDataBase.Fathers = await Father.findAll()
+    res.send(fullDataBase)
+  } catch (err) {
+    next(err)
+  }
+})
 
 // router.get('/justImages', async (req, res, next) => {
 //   try {

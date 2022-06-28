@@ -4,7 +4,6 @@ const myUtilFuncs = {}
 myUtilFuncs.resetForm = (event) => {
   try {
     document.getElementById(event.nativeEvent.srcElement.id).reset()
-    console.log(event.nativeEvent.srcElement.id, "  Should have been reset")
   } catch (err) {
     console.err(err)
     console.log(err.stack)
