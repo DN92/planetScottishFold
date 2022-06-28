@@ -1,6 +1,5 @@
-/* eslint-disable */
-
 import React, { useState, useEffect } from 'react'
+import history from '../history'
 
 const ClientQuestionnaire = () => {
 
@@ -13,13 +12,13 @@ const ClientQuestionnaire = () => {
     otherPets: '',
     city: '',
     state: '',
+    budget:'',
     fB: '',  //facebook
     iG: '',  // instagram
     gender:'',
     ears:'',
     color:'',
     mif:'',  // most important feature(s)
-    budget:'',
   }
 
   const [clientInfo, setClientInfo] = useState(defaultClientInfo)
@@ -33,6 +32,7 @@ const ClientQuestionnaire = () => {
 
   const handleChange = (event) => {
     event.persist();
+    localStorage.setItem('clientInfo', JSON.stringify(clientInfo))
     setClientInfo(prevClientInfo =>{
       return {...prevClientInfo, [event.target.name]: event.target.value}
     })
@@ -46,8 +46,8 @@ const ClientQuestionnaire = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log(clientInfo)
-    localStorage.setItem('clientInfo', JSON.stringify(clientInfo))
     setClientInfo(defaultClientInfo)
+    history.push('/confirmClientQuestionnaire')
   }
 
   return (
