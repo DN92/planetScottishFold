@@ -2,6 +2,7 @@ const Sequelize = require('sequelize')
 const db = require('../dbSetup')
 const userTypes = require('../../../secrets')
 const bcrypt = require('bcrypt')
+const jwt = require('jsonwebtoken')
 
 const User = db.define("user", {
   type: {
