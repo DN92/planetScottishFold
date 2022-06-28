@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize')
 const db = require('../dbSetup')
-const { eyeColors, furColors } = require('./myModelsConfig')
+const { eyeColors, furColors } = require('../../../myModelsConfig')
 
 const AnonVisitor = db.define('anonVisitor', {
   firstName: {

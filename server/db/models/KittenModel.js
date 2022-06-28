@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize')
 const db = require("../dbSetup")
-const {furColors, eyeColors, defaultCatPictureSrc} = require("./myModelsConfig")
+const {furColors, eyeColors, defaultCatPictureSrc} = require("../../../myModelsConfig")
 
 const Kitten = db.define("kitten", {
   name: {

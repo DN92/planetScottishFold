@@ -1,9 +1,8 @@
 const Sequelize = require('sequelize')
 const db = require("../dbSetup")
-const { furColors, eyeColors } = require("./myModelsConfig")
+const { furColors, eyeColors } = require("../../../myModelsConfig")
 
-
-const Father = db.define('father', {
+const Stud = db.define('stud', {
   name: {
     type: Sequelize.STRING
   },
@@ -24,4 +23,4 @@ const Father = db.define('father', {
   },
 })
 
-module.exports = Father
+module.exports = Stud
