@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize')
 const db = require('../dbSetup')
-const { eyeColor, furColor } = require('./myModelsConfig')
+const { eyeColors, furColors } = require('./myModelsConfig')
 
 const AnonVisitor = db.define('anonVisitor', {
   firstName: {
@@ -42,7 +42,7 @@ const AnonVisitor = db.define('anonVisitor', {
     type: Sequelize.ENUM('fold', 'straight')
   },
   color: {
-    type: Sequelize.ENUM(...eyeColor)
+    type: Sequelize.ENUM(...eyeColors)
   },
   mif: {
     type: Sequelize.STRING
