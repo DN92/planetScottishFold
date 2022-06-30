@@ -15,7 +15,10 @@ const { db } = require('./db')
 const PORT = process.env.PORT || 8081
 const app = express()
 
-if (process.env.NODE_ENV !== 'production') require('../secrets')
+if (process.env.NODE_ENV !== 'production') {
+  const secrets = require('../secrets')
+  process.env.JWT_SIG = secrets.JWT_SIG
+}
 
 const createApp = () => {
   // logging middleware

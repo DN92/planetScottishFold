@@ -4,6 +4,8 @@ const { userTypes } = require('../../../secrets')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 
+const {saltRounds} = require('../../../secrets')
+
 const User = db.define("user", {
   type: {
     type: Sequelize.ENUM(...userTypes)
@@ -38,7 +40,7 @@ const User = db.define("user", {
 };
 
 User.prototype.generateToken = function () {
-  return jwt.sign({ id: this.id }, process.env.JWT);
+  return jwt.sign({ id: this.id, type:this.type }, process.env.JWT_SIG);
 };
 
 User.authenticate = async function ({ username, password }) {
@@ -78,7 +80,7 @@ User.findByToken = async function (token) {
  const hashPassword = async (user) => {
   //in case the password has been changed, we want to encrypt it with bcrypt
   if (user.changed("password")) {
-    user.password = await bcrypt.hash(user.password, SALT_ROUNDS);
+    user.password = await bcrypt.hash(user.password, saltRounds);
   }
 };
 
