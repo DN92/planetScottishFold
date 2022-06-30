@@ -1,7 +1,7 @@
 const router = require('express').Router()
 const { AnonVisitor } = require("../db").models
 
-// api/anonVisitor
+// api/anonVisitors
 
 router.get('/', async (req, res, next) => {
   try {
@@ -36,7 +36,7 @@ router.put('/', async(req, res, next) => {
     next(err)
   }
 })
-anonVisitor
+
 router.delete('/', async(req, res, next) => {
   try {
     const anonVisitorToDelete = await AnonVisitor.findByPk(req.query.anonVisitorId)

@@ -17,16 +17,16 @@ const Kitten = db.define("kitten", {
     }
   },
   gender:{
-    type: Sequelize.ENUM('boy', 'girl')
+    type: Sequelize.ENUM('boy', 'girl', '')
   },
   ears:{
-    type: Sequelize.ENUM('fold', 'straight')
+    type: Sequelize.ENUM('fold', 'straight', '')
   },
   furColor: {
-    type: Sequelize.ENUM(...furColors)
+    type: Sequelize.ENUM(...furColors,  '')
   },
   eyeColor: {
-    type: Sequelize.ENUM(...eyeColors)
+    type: Sequelize.ENUM(...eyeColors,  '')
   },
 })
 

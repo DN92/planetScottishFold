@@ -28,6 +28,9 @@ const AnonVisitor = db.define('anonVisitor', {
   state: {
     type: Sequelize.STRING
   },
+  budget:{
+    type: Sequelize.ENUM('lessThan1500', '1500to2000','2000to2500','over2500', 'any', '')
+  },
   fB: {
     type: Sequelize.STRING
   },
@@ -36,20 +39,27 @@ const AnonVisitor = db.define('anonVisitor', {
   },
   // cat preferences
   gender: {
-    type: Sequelize.ENUM('boy', 'girl')
+    type: Sequelize.ENUM('boy', 'girl', '')
   },
   ears: {
-    type: Sequelize.ENUM('fold', 'straight')
+    type: Sequelize.ENUM('fold', 'straight', '')
   },
-  color: {
+  eyeColor: {
     type: Sequelize.ENUM(...eyeColors)
+  },
+  furColor: {
+    type: Sequelize.ENUM(...furColors)
   },
   mif: {
     type: Sequelize.STRING
   },
-  budget:{
-    type: Sequelize.ENUM('under1500', '1500-2000','2000-2500','over2500')
+  IPaddress: {
+    type: Sequelize.STRING
   },
+  hasBeenReviewedByAdmin: {
+    type: Sequelize.BOOLEAN,
+    defaultValue: false,
+  }
 })
 
 module.exports = AnonVisitor;

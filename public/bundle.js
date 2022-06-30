@@ -2589,7 +2589,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const App = () => {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.BrowserRouter, {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.unstable_HistoryRouter, {
     history: _history__WEBPACK_IMPORTED_MODULE_5__["default"]
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Header__WEBPACK_IMPORTED_MODULE_2__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_NavBar__WEBPACK_IMPORTED_MODULE_3__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_FrontEndRoutes__WEBPACK_IMPORTED_MODULE_1__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Footer__WEBPACK_IMPORTED_MODULE_4__["default"], null));
 };
@@ -2627,7 +2627,7 @@ const AvailableKittens = () => {
         } = await axios__WEBPACK_IMPORTED_MODULE_2___default().get('/api/kittens');
 
         if (!data) {
-          throw Error('Did not review expected data from fetchKittens');
+          throw Error('Did not receive expected data from fetchKittens');
         }
 
         setKittens(data);
@@ -2667,6 +2667,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _history__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../history */ "./client/history.js");
+/* harmony import */ var _myModelsConfig__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../myModelsConfig */ "./myModelsConfig.js");
+/* harmony import */ var _myModelsConfig__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_myModelsConfig__WEBPACK_IMPORTED_MODULE_2__);
+
 
 
 
@@ -2687,7 +2690,8 @@ const ClientQuestionnaire = () => {
     // instagram
     gender: '',
     ears: '',
-    color: '',
+    eyeColor: '',
+    furColor: '',
     mif: '' // most important feature(s)
 
   };
@@ -2698,12 +2702,12 @@ const ClientQuestionnaire = () => {
 
   const handleChange = event => {
     event.persist();
-    localStorage.setItem('clientInfo', JSON.stringify(clientInfo));
     setClientInfo(prevClientInfo => {
       return { ...prevClientInfo,
         [event.target.name]: event.target.value
       };
     });
+    localStorage.setItem('clientInfo', JSON.stringify(clientInfo));
   };
 
   const handleReset = () => {
@@ -2788,9 +2792,9 @@ const ClientQuestionnaire = () => {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
     value: ""
   }, "Boy or Girl?"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
-    value: "male"
+    value: "boy"
   }, "Male"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
-    value: "female"
+    value: "girl"
   }, "Female")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("select", {
     name: "ears",
     value: clientInfo.ears,
@@ -2804,19 +2808,24 @@ const ClientQuestionnaire = () => {
   }, "Straight"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
     value: "noPref"
   }, "No Preference")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("select", {
-    name: "color",
+    name: "eyeCcolor",
     value: clientInfo.color
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
     value: ""
-  }, "Color"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
-    value: "blue"
-  }, "Blue"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
-    value: "red"
-  }, "Red"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
-    value: "white"
-  }, "White"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
-    value: "green"
-  }, "Green"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+  }, "Eye Color"), _myModelsConfig__WEBPACK_IMPORTED_MODULE_2__.eyeColors.map((color, index) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+    key: index,
+    value: color
+  }, color)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+    value: "noPref"
+  }, "No Preference")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("select", {
+    name: "furColor",
+    value: clientInfo.furColor
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+    value: ""
+  }, "Fur Color"), _myModelsConfig__WEBPACK_IMPORTED_MODULE_2__.furColors.map((color, index) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+    key: index,
+    value: color
+  }, color)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
     value: "noPref"
   }, "No Preference")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
     type: "text",
@@ -2869,24 +2878,31 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _history__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../history */ "./client/history.js");
-/* harmony import */ var _myUtilFuncs_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../myUtilFuncs.js */ "./myUtilFuncs.js");
-/* harmony import */ var _myUtilFuncs_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_myUtilFuncs_js__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _myUtilFuncs_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../myUtilFuncs.js */ "./myUtilFuncs.js");
+/* harmony import */ var _myUtilFuncs_js__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_myUtilFuncs_js__WEBPACK_IMPORTED_MODULE_3__);
+
 
 
  //  this component is accessed through ClientQuestionnaire's onSubmit through the history library. ::  history.push('confirmClientQuestionnaire)
 // props are pushed through local storage since we are using storage anyway, to make sure client doesn't have to reenter the same information ad nauseam
 
 const ConfirmClientQuestionnaire = () => {
-  const clientInfo = JSON.stringify(localStorage.getItem('clientInfo'));
+  const clientInfo = JSON.parse(localStorage.getItem('clientInfo'));
 
   const handleGoBack = () => {
     _history__WEBPACK_IMPORTED_MODULE_1__["default"].back();
   };
 
-  const handleSubmit = async () => {
-    preventDefault();
-    clientInfo.userIP = await (0,_myUtilFuncs_js__WEBPACK_IMPORTED_MODULE_2__.getUserIP)();
-    console.log(clientInfo);
+  const handleSubmit = async event => {
+    event.preventDefault();
+    clientInfo.IPaddress = await (0,_myUtilFuncs_js__WEBPACK_IMPORTED_MODULE_3__.getUserIP)();
+    const {
+      data
+    } = await axios__WEBPACK_IMPORTED_MODULE_2___default().post('/api/anonVisitors', clientInfo);
+    if (data) localStorage.removeItem('clientInfo');
+    _history__WEBPACK_IMPORTED_MODULE_1__["default"].push('home');
   };
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, clientInfo && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "Please Review Your Answers Before Submitting"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h3", null, "Your Information"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("ul", {
@@ -3252,6 +3268,23 @@ const history =  false ? 0 : (0,history__WEBPACK_IMPORTED_MODULE_0__.createBrows
 
 /***/ }),
 
+/***/ "./myModelsConfig.js":
+/*!***************************!*\
+  !*** ./myModelsConfig.js ***!
+  \***************************/
+/***/ (function(module) {
+
+//  this file is a good place to put low / no security data that takes would take up space were it put in the middle of complicated files
+module.exports = {
+  //  furColors and eyeColors are used in the Cat Models Enum tables for their corresponding keys.
+  furColors: ['blue', 'brown', 'tabby', 'black', 'white', 'gold', 'silver', 'colorpoint', 'chinchilla'],
+  eyeColors: ['green', 'blue', 'yellow', 'copper', 'odd', 'brown'],
+  //  for public file serving
+  defaultCatPictureSrc: '/catPictures/grumpyCatCartoon.jpeg'
+};
+
+/***/ }),
+
 /***/ "./myUtilFuncs.js":
 /*!************************!*\
   !*** ./myUtilFuncs.js ***!
@@ -3341,7 +3374,6 @@ const defaultReviews = [];
 defaultReviews.push(new CustomerReview(image1, text1, name1));
 defaultReviews.push(new CustomerReview(image2, text2, name2));
 defaultReviews.push(new CustomerReview(image3, text3, name3));
-console.log(defaultReviews);
 module.exports = defaultReviews;
 
 /***/ }),

@@ -6,6 +6,9 @@ const { Kitten, Mother, Father } = db.models
 //  api/
 router.use('/kittens', require('./kittens'))
 router.use('/mothers', require('./mothers'))
+router.use('/studs', require('./studs'))
+router.use('/users', require('./users'))
+router.use('/anonVisitors', require('./anonVisitor'))
 
 // router.get('/getImage', async (req, res, next) => {
 //   try {

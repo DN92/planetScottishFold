@@ -13,7 +13,7 @@ const AvailableKittens = () => {
       try {
         const {data} = await axios.get('/api/kittens')
         if(!data) {
-          throw Error('Did not review expected data from fetchKittens')
+          throw Error('Did not receive expected data from fetchKittens')
         }
         setKittens(data)
         setFetchError(null)

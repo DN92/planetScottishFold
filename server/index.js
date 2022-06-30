@@ -23,10 +23,21 @@ const createApp = () => {
 
   // body parsers
   app.use(express.json())
-  // app.use(express.urlencoded({extended: true}))
+  app.use(express.urlencoded({extended: true}))
 
-  // // compression middleware
-  // app.use(compression())
+  // Values all set to lowerCase
+  app.use((req, res, next) => {
+    // console.log('logging request path: ', req.path)
+    Object.keys(req.body).forEach(key => {
+      if(typeof req.body[key] == 'string' && key !== 'password') {
+        req.body[key] = key.toLocaleLowerCase()
+      }
+    })
+    next()
+  })
+
+  // compression middleware
+  app.use(compression())
 
   // api routes
   app.use('/api', require('./api'))

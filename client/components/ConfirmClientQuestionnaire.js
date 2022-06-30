@@ -1,5 +1,6 @@
 import React from "react";
 import history from "../history";
+import axios from "axios"
 import { getUserIP } from '../../myUtilFuncs.js'
 
 //  this component is accessed through ClientQuestionnaire's onSubmit through the history library. ::  history.push('confirmClientQuestionnaire)
@@ -7,16 +8,18 @@ import { getUserIP } from '../../myUtilFuncs.js'
 // props are pushed through local storage since we are using storage anyway, to make sure client doesn't have to reenter the same information ad nauseam
 const ConfirmClientQuestionnaire = () => {
 
-  const clientInfo = JSON.stringify(localStorage.getItem('clientInfo'))
-
+  const clientInfo = JSON.parse(localStorage.getItem('clientInfo'))
   const handleGoBack = () => {
     history.back()
   }
 
-  const handleSubmit = async () => {
-    preventDefault()
-    clientInfo.userIP = await getUserIP()
-    console.log(clientInfo)
+  const handleSubmit = async (event) => {
+    event.preventDefault()
+    clientInfo.IPaddress = await getUserIP()
+    const {data} = await axios.post('/api/anonVisitors', clientInfo)
+    if (data)
+    localStorage.removeItem('clientInfo')
+    history.push('home')
   }
 
   return (

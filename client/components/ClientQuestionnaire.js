@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import history from '../history'
+import {furColors, eyeColors} from "../../myModelsConfig"
 
 const ClientQuestionnaire = () => {
 
@@ -17,7 +18,8 @@ const ClientQuestionnaire = () => {
     iG: '',  // instagram
     gender:'',
     ears:'',
-    color:'',
+    eyeColor:'',
+    furColor: '',
     mif:'',  // most important feature(s)
   }
 
@@ -32,10 +34,10 @@ const ClientQuestionnaire = () => {
 
   const handleChange = (event) => {
     event.persist();
-    localStorage.setItem('clientInfo', JSON.stringify(clientInfo))
     setClientInfo(prevClientInfo =>{
       return {...prevClientInfo, [event.target.name]: event.target.value}
     })
+    localStorage.setItem('clientInfo', JSON.stringify(clientInfo))
   }
 
   const handleReset = () => {
@@ -81,8 +83,8 @@ const ClientQuestionnaire = () => {
       <h2>What are you looking for in a kitten?</h2>
       <select name="gender" value={clientInfo.gender} required>
         <option value="">Boy or Girl?</option>
-        <option value="male">Male</option>
-        <option value="female">Female</option>
+        <option value="boy">Male</option>
+        <option value="girl">Female</option>
       </select>
       <br />
       <select name="ears" value={clientInfo.ears} required>
@@ -92,12 +94,19 @@ const ClientQuestionnaire = () => {
         <option value="noPref">No Preference</option>
       </select>
       <br />
-      <select name="color" value={clientInfo.color} >
-        <option value="">Color</option>
-        <option value="blue">Blue</option>
-        <option value="red">Red</option>
-        <option value="white">White</option>
-        <option value="green">Green</option>
+      <select name="eyeCcolor" value={clientInfo.color} >
+        <option value="">Eye Color</option>
+        {eyeColors.map((color, index) => (
+          <option key={index} value={color}>{color}</option>
+        ))}
+        <option value="noPref">No Preference</option>
+        {/* etc */}
+      </select>
+      <select name="furColor" value={clientInfo.furColor}>
+      <option value="">Fur Color</option>
+        {furColors.map((color, index) => (
+          <option key={index} value={color}>{color}</option>
+        ))}
         <option value="noPref">No Preference</option>
         {/* etc */}
       </select>

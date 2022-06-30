@@ -22,6 +22,4 @@ defaultReviews.push(new CustomerReview(image1, text1, name1))
 defaultReviews.push(new CustomerReview(image2, text2, name2))
 defaultReviews.push(new CustomerReview(image3, text3, name3))
 
-console.log(defaultReviews)
-
 module.exports = defaultReviews

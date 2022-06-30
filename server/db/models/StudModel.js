@@ -10,13 +10,13 @@ const Stud = db.define('stud', {
     type:Sequelize.STRING
   },
   ears: {
-    type: Sequelize.ENUM('fold', 'straight')
+    type: Sequelize.ENUM('fold', 'straight', '')
   },
   furColor: {
-    type: Sequelize.ENUM(...furColors)
+    type: Sequelize.ENUM(...furColors,  '')
   },
   eyeColor: {
-    type: Sequelize.ENUM(...eyeColors)
+    type: Sequelize.ENUM(...eyeColors,  '')
   },
   age: {
     type: Sequelize.INTEGER
