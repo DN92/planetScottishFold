@@ -3,7 +3,6 @@ const db = require('../dbSetup')
 const { userTypes } = require('../../../secrets')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
-
 const {saltRounds} = require('../../../secrets')
 
 const User = db.define("user", {
@@ -26,9 +25,9 @@ const User = db.define("user", {
   state: {
     type: Sequelize.STRING,
   },
-  zipCode: {
-    type: Sequelize.INTEGER,
-  },
+  IPaddress: {
+    type: Sequelize.STRING,
+  }
 })
 
 /**
