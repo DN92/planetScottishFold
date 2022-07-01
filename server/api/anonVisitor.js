@@ -13,6 +13,7 @@ router.get('/', async (req, res, next) => {
 })
 
 router.post('/', async (req, res, next) => {
+  console.log('REQUEST BODY FROM ANON POST ROUTE::  ', req.body)
   try{
     const newAnonVisitor= await AnonVisitor.create(req.body)
     if(!newAnonVisitor) {

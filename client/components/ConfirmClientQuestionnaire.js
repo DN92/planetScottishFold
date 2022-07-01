@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import history from "../history";
 import axios from "axios"
 import { getUserIP } from '../../myUtilFuncs.js'
@@ -8,17 +8,31 @@ import { getUserIP } from '../../myUtilFuncs.js'
 // props are pushed through local storage since we are using storage anyway, to make sure client doesn't have to reenter the same information ad nauseam
 const ConfirmClientQuestionnaire = () => {
 
-  const clientInfo = JSON.parse(localStorage.getItem('clientInfo'))
+  const clientInfoFromStorage = JSON.parse(localStorage.getItem('clientInfo'))
+  Object.keys(clientInfoFromStorage).forEach(key => {
+    // console.log('running conversion on ' , [key], ' ', clientInfoFromStorage[key])
+    if (clientInfoFromStorage[key] === 'true') {
+      clientInfoFromStorage[key] = true
+    }
+    if (clientInfoFromStorage[key] === 'false') {
+      clientInfoFromStorage[key] = false
+    }
+  })
   const handleGoBack = () => {
     history.back()
   }
 
+  const [clientInfo, setClientInfo] = useState(clientInfoFromStorage)
+
   const handleSubmit = async (event) => {
     event.preventDefault()
+    console.log("BUDGET: ", clientInfo.budget)
     clientInfo.IPaddress = await getUserIP()
+    console.log(clientInfo)
     const {data} = await axios.post('/api/anonVisitors', clientInfo)
     if (data)
     localStorage.removeItem('clientInfo')
+
     history.push('home')
   }
 

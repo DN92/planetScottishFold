@@ -2693,7 +2693,7 @@ const ClientQuestionnaire = () => {
     otherPets: '',
     city: '',
     state: '',
-    budget: '',
+    budget: 'any',
     fB: '',
     //facebook
     iG: '',
@@ -2717,6 +2717,7 @@ const ClientQuestionnaire = () => {
         [event.target.name]: event.target.value
       };
     });
+    console.log(clientInfo[event.target.name]);
     localStorage.setItem('clientInfo', JSON.stringify(clientInfo));
   };
 
@@ -2855,7 +2856,7 @@ const ClientQuestionnaire = () => {
     value: clientInfo.budget,
     required: true
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
-    value: ""
+    value: "any"
   }, "Budget"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
     value: "lessThan1500"
   }, "Less than $1500"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
@@ -2899,15 +2900,29 @@ __webpack_require__.r(__webpack_exports__);
 // props are pushed through local storage since we are using storage anyway, to make sure client doesn't have to reenter the same information ad nauseam
 
 const ConfirmClientQuestionnaire = () => {
-  const clientInfo = JSON.parse(localStorage.getItem('clientInfo'));
+  const clientInfoFromStorage = JSON.parse(localStorage.getItem('clientInfo'));
+  Object.keys(clientInfoFromStorage).forEach(key => {
+    // console.log('running conversion on ' , [key], ' ', clientInfoFromStorage[key])
+    if (clientInfoFromStorage[key] === 'true') {
+      clientInfoFromStorage[key] = true;
+    }
+
+    if (clientInfoFromStorage[key] === 'false') {
+      clientInfoFromStorage[key] = false;
+    }
+  });
 
   const handleGoBack = () => {
     _history__WEBPACK_IMPORTED_MODULE_1__["default"].back();
   };
 
+  const [clientInfo, setClientInfo] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(clientInfoFromStorage);
+
   const handleSubmit = async event => {
     event.preventDefault();
+    console.log("BUDGET: ", clientInfo.budget);
     clientInfo.IPaddress = await (0,_myUtilFuncs_js__WEBPACK_IMPORTED_MODULE_3__.getUserIP)();
+    console.log(clientInfo);
     const {
       data
     } = await axios__WEBPACK_IMPORTED_MODULE_2___default().post('/api/anonVisitors', clientInfo);

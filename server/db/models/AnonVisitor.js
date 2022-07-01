@@ -45,10 +45,10 @@ const AnonVisitor = db.define('anonVisitor', {
     type: Sequelize.ENUM('fold', 'straight', '')
   },
   eyeColor: {
-    type: Sequelize.ENUM(...eyeColors)
+    type: Sequelize.ENUM(...eyeColors, '')
   },
   furColor: {
-    type: Sequelize.ENUM(...furColors)
+    type: Sequelize.ENUM(...furColors, '')
   },
   mif: {
     type: Sequelize.STRING

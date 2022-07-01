@@ -13,7 +13,7 @@ const ClientQuestionnaire = () => {
     otherPets: '',
     city: '',
     state: '',
-    budget:'',
+    budget:'any',
     fB: '',  //facebook
     iG: '',  // instagram
     gender:'',
@@ -37,6 +37,7 @@ const ClientQuestionnaire = () => {
     setClientInfo(prevClientInfo =>{
       return {...prevClientInfo, [event.target.name]: event.target.value}
     })
+    console.log(clientInfo[event.target.name])
     localStorage.setItem('clientInfo', JSON.stringify(clientInfo))
   }
 
@@ -119,7 +120,7 @@ const ClientQuestionnaire = () => {
       <input type="text" name='iG' value={clientInfo.iG} />
       <br />
       <select name="budget" value={clientInfo.budget} required>
-        <option value="">Budget</option>
+        <option value="any">Budget</option>
         <option value="lessThan1500">Less than $1500</option>
         <option value="1500to2000">$1500 to $2000</option>
         <option value="2000to2500">$2000 to $2500</option>

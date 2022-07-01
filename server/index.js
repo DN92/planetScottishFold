@@ -29,20 +29,21 @@ if (process.env.NODE_ENV !== 'production') {
   app.use(express.urlencoded({extended: true}))
 
   // Shallow values all set to lowerCase
-  app.use((req, res, next) => {
-    // console.log('logging request path: ', req.path)
-    Object.keys(req.body).forEach(key => {
-      if(typeof req.body[key] == 'string' && key !== 'password') {
-        req.body[key] = key.toLocaleLowerCase()
-      }
-    })
-    next()
-  })
+  // app.use((req, res, next) => {
+  //   // console.log('logging request path: ', req.path)
+  //   Object.keys(req.body).forEach(key => {
+  //     if(typeof req.body[key] == 'string' && key !== 'password') {
+  //       req.body[key] = req.body[key].toLocaleLowerCase()
+  //     }
+  //   })
+  //   next()
+  // })
 
   // compression middleware
   app.use(compression())
 
   // api routes
+  app.use('/auth', require('./auth'))
   app.use('/api', require('./api'))
 
   app.get('/', (req, res)=> {

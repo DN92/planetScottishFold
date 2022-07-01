@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const { User } = require('./db').models
+const {models:{ User } } = require('../db')
 
 //  auth
 
@@ -23,6 +23,14 @@ router.post('signup', async (req, res, next) => {
     } else {
       next (err)
     }
+  }
+})
+
+router.get('/me', async (req, res, next) => {
+  try {
+    res.send(await User.findByToken(req.header.authorization))
+  } catch (err) {
+    next(err)
   }
 })
 
