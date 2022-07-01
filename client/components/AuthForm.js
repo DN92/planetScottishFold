@@ -33,7 +33,7 @@ const AuthForm = () => {
               type="text"
               value={loginInfo.userName}
               onChange={handleChange}
-            />
+            /> <br />
             <input
               id="password"
               name="password"

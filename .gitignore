@@ -12,7 +12,8 @@ secrets.js
 /coverage
 
 # production
-/build
+/public/bundle.js
+/public/bundle.js.map
 
 # misc
 .DS_Store
