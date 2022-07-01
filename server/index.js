@@ -20,7 +20,7 @@ if (process.env.NODE_ENV !== 'production') {
   process.env.JWT_SIG = secrets.JWT_SIG
 }
 
-const createApp = () => {
+
   // logging middleware
   app.use(morgan('dev'))
 
@@ -28,7 +28,7 @@ const createApp = () => {
   app.use(express.json())
   app.use(express.urlencoded({extended: true}))
 
-  // Values all set to lowerCase
+  // Shallow values all set to lowerCase
   app.use((req, res, next) => {
     // console.log('logging request path: ', req.path)
     Object.keys(req.body).forEach(key => {
@@ -70,37 +70,32 @@ const createApp = () => {
     res.sendFile(path.join(__dirname, '..', 'public/index.html'))
   })
 
-  // errorhandlers
+  // error handlers
   app.use((err, req, res, next) => {
     console.error(err)
     console.error(err.stack)
     res.status(err.status || 500).send(err.message || 'Endpoint Server Error')
   })
+
+const syncDb = async () => {
+  await db.sync()
 }
 
-const startListening = async () => {
+const startServer = () => {
+  syncDb()
   // start listening and creates a server object
-  const server = app.listen(PORT, () => {
+  return app.listen(PORT, () => {
     console.log(`App initialising. Now running on Port ${PORT}`)
   })
 }
 
-const syncDb = () => {
-  db.sync()
+function bootStartApp() {
+  console.log('create app')
+  if (require.main === module) {
+    return (startServer())
+  }
 }
 
-async function bootStartApp() {
-  await syncDb()
-  await createApp()
-  await startListening()
-}
+const server = bootStartApp()
 
-if (require.main === module) {
-  bootStartApp()
-  console.log(' boot start')
-} else {
-  createApp()
-  console.log( ' create app')
-}
-
- module.exports = app
+module.exports = server
