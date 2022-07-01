@@ -8,7 +8,7 @@ import Reviews from './components/Reviews';
 import ClientQuestionnaire from './components/ClientQuestionnaire';
 import ContactRequestForm from './components/ContactRequestForm';
 import ConfirmClientQuestionnaire from './components/ConfirmClientQuestionnaire';
-
+import AuthFrom from './components/AuthForm';
 
 const FrontEndRoutes = () => {
 
@@ -19,6 +19,7 @@ const FrontEndRoutes = () => {
   return (
     <Routes>
         <Route path='/' element={<HomeComponent />} />
+        <Route path='login' element={<AuthFrom />} />
         <Route exact path='/home' element={<HomeComponent />} />
         <Route exact path='/about' element={<About />} />
         <Route exact path='/availableKittens' element={<AvailableKittens />} />
