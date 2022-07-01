@@ -1,8 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { Routes, Route } from 'react-router-dom';
+const UserContext = React.createContext({
+  username: null,
+  type: 'guest'
+})
 // import '../public/App.css';
-import history from './history'
 import App from './components/App'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

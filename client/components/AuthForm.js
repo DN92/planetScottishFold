@@ -1,11 +1,12 @@
 import React, {useState} from 'react'
 import{ Link } from 'react-router-dom'
 import { getUserIP } from '../../myUtilFuncs'
+import axios from 'axios'
 
 const AuthForm = () => {
 
   const [loginInfo, setLoginInfo] = useState({
-    userName: '',
+    username: '',
     password: '',
     eMail: '',
     city: '',
@@ -22,6 +23,9 @@ const AuthForm = () => {
     event.preventDefault()
     console.log('submit')
     loginInfo.IPaddress = await getUserIP()
+    const {data} = await axios.post('/auth/login', loginInfo)
+    console.log('TOKEN:: ', data)
+    // localStorage.setItem
   }
 
   return (
@@ -30,12 +34,10 @@ const AuthForm = () => {
         <h2>Login</h2>
         <form onSubmit={handleSubmit} onChange={handleChange}>
           <input
-            name="userName"
-            placeholder={
-                "User Name"
-            }
+            name="username"
+            placeholder="User Name"
             type="text"
-            value={loginInfo.userName}
+            value={loginInfo.username}
             onChange={handleChange}
           /> <br />
           <input
@@ -45,7 +47,7 @@ const AuthForm = () => {
             value={loginInfo.password}
             onChange={handleChange}
           /> <br />
-          <input
+          {/* <input
             type="text"
             name="eMail"
             placeholder='E Mail'
@@ -65,7 +67,7 @@ const AuthForm = () => {
             placeholder='State'
             value={loginInfo.state}
             onChange={handleChange}
-          /> <br />
+          /> <br /> */}
           <button type='submit'>Submit </button>
         </form>
       </div>

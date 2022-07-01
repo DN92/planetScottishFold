@@ -9,12 +9,56 @@ const User = db.define("user", {
   type: {
     type: Sequelize.ENUM(...userTypes)
   },
+  username: {
+    type: Sequelize.STRING,
+  },
   password: {
     type: Sequelize.STRING,
     unique: true,
     validate: {
       notEmpty: true
     }
+  },
+  budget:{
+    type: Sequelize.ENUM('lessThan1500', '1500to2000','2000to2500','over2500', 'any', '')
+  },
+  firstName: {    type: Sequelize.STRING,
+  },
+  lastName: {
+    type: Sequelize.STRING,
+  },
+  aboutYou: {
+    type: Sequelize.STRING,
+  },
+  firstCat: {
+    type: Sequelize.STRING,
+  },
+  otherPets: {
+    type: Sequelize.STRING,
+  },
+  fB: {
+    type: Sequelize.STRING,
+  },
+  iG: {
+    type: Sequelize.STRING,
+  },
+  gender: {
+    type: Sequelize.STRING,
+  },
+  ears: {
+    type: Sequelize.STRING,
+  },
+  eyeColor: {
+    type: Sequelize.STRING,
+  },
+  furColor: {
+    type: Sequelize.STRING,
+  },
+  mif: {
+    type: Sequelize.STRING,
+  },
+  hasBeenReviewedByAdmin: {
+    type: Sequelize.STRING,
   },
   eMail: {
     type: Sequelize.STRING,
@@ -55,7 +99,7 @@ User.authenticate = async function ({ username, password }) {
 User.findByToken = async function (token) {
   try {
     if (token){
-      const { id } = await jwt.verify(token, process.env.JWT);
+      const { id } = await jwt.verify(token, process.env.JWT_SIG);
       const user = User.findByPk(id);
       if (!user) {
         throw "Bad, Bad, KittyToken";

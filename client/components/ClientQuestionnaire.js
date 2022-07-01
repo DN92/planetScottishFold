@@ -57,6 +57,8 @@ const ClientQuestionnaire = () => {
     <form id="clientQuestionnaire" onChange={handleChange} onReset={handleReset} onSubmit={handleSubmit}
     >
       <h2>About You</h2>
+      {/* client desired Username */}
+      <input type="text" name='username' value={clientInfo.username} placeholder="desired username" />
       {/* client first name */}
       <input id="addFirstName" type="text" name="firstName"  value={clientInfo.firstName} placeholder="First Name" required/>
       <br />
