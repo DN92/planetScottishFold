@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { BrowserRouter, unstable_HistoryRouter as HistoryRouter } from 'react-router-dom'
 import axios from 'axios'
 import FrontEndRoutes from '../FrontEndRoutes'
+import AdminRoutes from '../AdminRoutes'
 import Header from './Header'
 import NavBar from './NavBar'
 import Footer from './Footer'
@@ -24,6 +25,7 @@ const App = () => {
       <Header />
       <NavBar />
       <FrontEndRoutes />
+      <AdminRoutes />
       <Footer />
     </HistoryRouter>
   )

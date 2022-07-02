@@ -3,9 +3,10 @@
 const { db, models } = require ('../server/db')
 const dummyKittens = require('./kittensDummy')
 const dummyUsers = require('./userDummy')
+const dummyAnon = require('./anonDummy')
 
 
-const { Kitten, Mother, Father, User } = models
+const { Kitten, Mother, Father, User, AnonVisitor } = models
 
 /**
  *  seed - this function clears the database, updates tables to
@@ -20,6 +21,9 @@ async function seed() {
   }))
   await Promise.all(dummyUsers.map(user => {
     return User.create(user)
+  }))
+  await Promise.all(dummyAnon.map(anon => {
+    return AnonVisitor.create(anon)
   }))
 }
 

@@ -22,7 +22,8 @@ const User = db.define("user", {
   budget:{
     type: Sequelize.ENUM('lessThan1500', '1500to2000','2000to2500','over2500', 'any', '')
   },
-  firstName: {    type: Sequelize.STRING,
+  firstName: {
+    type: Sequelize.BOOLEAN,
   },
   lastName: {
     type: Sequelize.STRING,
@@ -57,9 +58,6 @@ const User = db.define("user", {
   mif: {
     type: Sequelize.STRING,
   },
-  hasBeenReviewedByAdmin: {
-    type: Sequelize.STRING,
-  },
   eMail: {
     type: Sequelize.STRING,
   },
@@ -71,7 +69,11 @@ const User = db.define("user", {
   },
   IPaddress: {
     type: Sequelize.STRING,
-  }
+  },
+  hasBeenReviewedByAdmin: {
+    type: Sequelize.BOOLEAN,
+    defaultValue: false
+  },
 })
 
 /**

@@ -5,6 +5,7 @@ import {furColors, eyeColors} from "../../myModelsConfig"
 const ClientQuestionnaire = () => {
 
   const defaultClientInfo = {
+    username: '',
     firstName: '',
     lastName: '',
     eMail: '',
@@ -58,7 +59,7 @@ const ClientQuestionnaire = () => {
     >
       <h2>About You</h2>
       {/* client desired Username */}
-      <input type="text" name='username' value={clientInfo.username} placeholder="desired username" />
+      <input type="text" name='username' value={clientInfo.username} placeholder="Desired username" /> <br />
       {/* client first name */}
       <input id="addFirstName" type="text" name="firstName"  value={clientInfo.firstName} placeholder="First Name" required/>
       <br />
@@ -97,7 +98,7 @@ const ClientQuestionnaire = () => {
         <option value="noPref">No Preference</option>
       </select>
       <br />
-      <select name="eyeCcolor" value={clientInfo.color} >
+      <select name="eyeColor" value={clientInfo.color} >
         <option value="">Eye Color</option>
         {eyeColors.map((color, index) => (
           <option key={index} value={color}>{color}</option>

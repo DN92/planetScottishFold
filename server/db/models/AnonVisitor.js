@@ -3,6 +3,9 @@ const db = require('../dbSetup')
 const { eyeColors, furColors } = require('../../../myModelsConfig')
 
 const AnonVisitor = db.define('anonVisitor', {
+  requestedUsername: {
+    type: Sequelize.STRING
+  },
   firstName: {
     type: Sequelize.STRING
   },

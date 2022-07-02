@@ -8,9 +8,6 @@ const AuthForm = () => {
   const [loginInfo, setLoginInfo] = useState({
     username: '',
     password: '',
-    eMail: '',
-    city: '',
-    state: '',
   })
 
   const handleChange = (event) => {
