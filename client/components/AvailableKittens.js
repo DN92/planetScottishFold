@@ -1,5 +1,6 @@
 import React, { useState, useEffect }from 'react'
 import SingleKitten from './SingleKitten'
+import LoadingFill from './LoadingFill'
 import axios from 'axios'
 
 const AvailableKittens = () => {
@@ -36,7 +37,7 @@ const AvailableKittens = () => {
 
   return (
     <>
-      {isLoading && <h2>LOADING</h2>}
+      {isLoading && <LoadingFill />}
       {!isLoading && kittens.map((kitten, index)=>(
          <SingleKitten key={index} kitten={kitten} />
       ))}

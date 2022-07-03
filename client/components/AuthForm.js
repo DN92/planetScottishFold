@@ -24,7 +24,7 @@ const AuthForm = () => {
     const [successStatus, message] = await handleLogin(meContext, loginInfo)
     console.log('successStatus?: ', successStatus )
     console.log('message:  ', message)
-    console.log(meContext)
+    // console.log(meContext)
     if(successStatus) {
       history.push('home')
     }

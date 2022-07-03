@@ -2579,18 +2579,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
-
 
 
 const MeContext = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.createContext)();
 const MeProvider = ({
   children
 }) => {
-  const [username, setUsername] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('bob');
+  const [username, setUsername] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('BoB!');
   const [type, setType] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('guest');
-  const [id, setId] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('userId');
+  const [id, setId] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(MeContext.Provider, {
     value: {
       username,
@@ -2628,6 +2625,30 @@ const About = () => {
 
 /***/ }),
 
+/***/ "./client/components/AdminBar.js":
+/*!***************************************!*\
+  !*** ./client/components/AdminBar.js ***!
+  \***************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/index.js");
+
+
+
+const AdminBar = () => {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("nav", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
+    to: "newUserRequests"
+  }, "New Requests"));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (AdminBar);
+
+/***/ }),
+
 /***/ "./client/components/App.js":
 /*!**********************************!*\
   !*** ./client/components/App.js ***!
@@ -2645,9 +2666,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _NavBar__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./NavBar */ "./client/components/NavBar.js");
 /* harmony import */ var _Footer__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Footer */ "./client/components/Footer.js");
 /* harmony import */ var _history__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../history */ "./client/history.js");
-/* harmony import */ var _MeContextPro__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../MeContextPro */ "./client/MeContextPro.js");
-/* harmony import */ var _secrets__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../secrets */ "./secrets.js");
-/* harmony import */ var _secrets__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_secrets__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var _AdminBar__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./AdminBar */ "./client/components/AdminBar.js");
+/* harmony import */ var _TopLineMenuBar__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./TopLineMenuBar */ "./client/components/TopLineMenuBar.js");
 
 
 
@@ -2660,12 +2680,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const App = () => {
-  const {
-    type
-  } = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_MeContextPro__WEBPACK_IMPORTED_MODULE_7__["default"]);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.unstable_HistoryRouter, {
     history: _history__WEBPACK_IMPORTED_MODULE_6__["default"]
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Header__WEBPACK_IMPORTED_MODULE_3__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_NavBar__WEBPACK_IMPORTED_MODULE_4__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_FrontEndRoutes__WEBPACK_IMPORTED_MODULE_1__["default"], null), (0,_secrets__WEBPACK_IMPORTED_MODULE_8__.isPrivileged)(type) && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_AdminRoutes__WEBPACK_IMPORTED_MODULE_2__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Footer__WEBPACK_IMPORTED_MODULE_5__["default"], null));
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_TopLineMenuBar__WEBPACK_IMPORTED_MODULE_8__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Header__WEBPACK_IMPORTED_MODULE_3__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_AdminBar__WEBPACK_IMPORTED_MODULE_7__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_NavBar__WEBPACK_IMPORTED_MODULE_4__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_FrontEndRoutes__WEBPACK_IMPORTED_MODULE_1__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_AdminRoutes__WEBPACK_IMPORTED_MODULE_2__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Footer__WEBPACK_IMPORTED_MODULE_5__["default"], null));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (App);
@@ -2714,8 +2731,7 @@ const AuthForm = () => {
     event.preventDefault();
     const [successStatus, message] = await (0,_customHandlers_handleLogin__WEBPACK_IMPORTED_MODULE_3__["default"])(meContext, loginInfo);
     console.log('successStatus?: ', successStatus);
-    console.log('message:  ', message);
-    console.log(meContext);
+    console.log('message:  ', message); // console.log(meContext)
 
     if (successStatus) {
       _history__WEBPACK_IMPORTED_MODULE_4__["default"].push('home');
@@ -2763,8 +2779,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _SingleKitten__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./SingleKitten */ "./client/components/SingleKitten.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _LoadingFill__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./LoadingFill */ "./client/components/LoadingFill.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_3__);
+
 
 
 
@@ -2778,7 +2796,7 @@ const AvailableKittens = () => {
       try {
         const {
           data
-        } = await axios__WEBPACK_IMPORTED_MODULE_2___default().get('/api/kittens');
+        } = await axios__WEBPACK_IMPORTED_MODULE_3___default().get('/api/kittens');
 
         if (!data) {
           throw Error('Did not receive expected data from fetchKittens');
@@ -2800,7 +2818,7 @@ const AvailableKittens = () => {
       await fetchKittens();
     }, 2000);
   }, []);
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, isLoading && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "LOADING"), !isLoading && kittens.map((kitten, index) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_SingleKitten__WEBPACK_IMPORTED_MODULE_1__["default"], {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, isLoading && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_LoadingFill__WEBPACK_IMPORTED_MODULE_2__["default"], null), !isLoading && kittens.map((kitten, index) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_SingleKitten__WEBPACK_IMPORTED_MODULE_1__["default"], {
     key: index,
     kitten: kitten
   })));
@@ -3278,11 +3296,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 
 const imgStyle = {
-  maxWidth: '100%',
+  maxWidth: '80%',
   height: 'auto',
-  width: 'auto'
-  /* ie8 */
-
+  width: 'auto',
+  top: '50%',
+  left: '50%',
+  marginLeft: '10%'
 };
 
 const LoadingFill = () => {
@@ -3447,6 +3466,40 @@ const SingleReview = ({
 
 /***/ }),
 
+/***/ "./client/components/TopLineMenuBar.js":
+/*!*********************************************!*\
+  !*** ./client/components/TopLineMenuBar.js ***!
+  \*********************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/index.js");
+/* harmony import */ var _MeContextPro__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../MeContextPro */ "./client/MeContextPro.js");
+
+
+
+
+const TopLineMenuBar = () => {
+  const meContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_MeContextPro__WEBPACK_IMPORTED_MODULE_1__["default"]); // console.log(meContext.username)
+  // console.log(meContext.id)
+  // console.log(!meContext.id)
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("nav", null, !meContext.id && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, "Welcome to Planet Scottish Fold!", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, "\xA0\xA0\xA0\xA0"), meContext.username ? meContext.username : ''), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, "\xA0\xA0\xA0\xA0"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
+    to: "login"
+  }, "Login"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, "\xA0\xA0\xA0\xA0"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
+    to: "signUp"
+  }, "Sign Up")), meContext.id && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, "Hello ", meContext.username, ". Welcome to Planet Scottish Fold!"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, "\xA0\xA0\xA0\xA0"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
+    to: "logout"
+  }, "Log Out")));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (TopLineMenuBar);
+
+/***/ }),
+
 /***/ "./client/components/admin/NewUserRequests.js":
 /*!****************************************************!*\
   !*** ./client/components/admin/NewUserRequests.js ***!
@@ -3596,11 +3649,8 @@ const OurStory = () => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
-
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 
 
 const handleLogin = async (meContext, loginInfo) => {
@@ -3610,7 +3660,7 @@ const handleLogin = async (meContext, loginInfo) => {
     try {
       const {
         data
-      } = await axios__WEBPACK_IMPORTED_MODULE_1___default().post('/auth/login', loginInfo);
+      } = await axios__WEBPACK_IMPORTED_MODULE_0___default().post('/auth/login', loginInfo);
 
       if (data) {
         const token = data.token;
@@ -3631,7 +3681,7 @@ const handleLogin = async (meContext, loginInfo) => {
     try {
       const {
         data
-      } = await axios__WEBPACK_IMPORTED_MODULE_1___default().get('/auth/me', {
+      } = await axios__WEBPACK_IMPORTED_MODULE_0___default().get('/auth/me', {
         headers: {
           authorization: token
         }
@@ -3783,25 +3833,6 @@ myUtilFuncs.getUserIP = async () => {
 
 console.log(myUtilFuncs);
 module.exports = myUtilFuncs;
-
-/***/ }),
-
-/***/ "./secrets.js":
-/*!********************!*\
-  !*** ./secrets.js ***!
-  \********************/
-/***/ (function(module) {
-
-const needToKnow = {};
-needToKnow.userTypes = ['anon', 'registered', 'ghost', 'admin', 'master'];
-needToKnow.JWT_SIG = 'myJWTsig';
-needToKnow.saltRounds = 6; // check user has privledges of ghost or higher
-
-needToKnow.isPrivileged = type => {
-  return needToKnow.userTypes.slice(2).includes(type);
-};
-
-module.exports = needToKnow;
 
 /***/ }),
 

@@ -1,4 +1,3 @@
-import React from 'react'
 import axios from 'axios'
 
 
@@ -73,8 +72,6 @@ const handleLogin = async ( meContext, loginInfo) => {
     //  Login attempt failed pre token
     return [false, message]
   }
-
-
 }
 
 export default handleLogin

@@ -1,11 +1,8 @@
 const obj = {
   username: 'charles',
-
-  look: () => {
-    console.log(obj.username)
-  }
 }
 
-
-
-obj.look()
+//   look: () => {
+//     console.log(obj.username)
+//   }
+// }

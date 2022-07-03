@@ -1,9 +1,12 @@
 import React from 'react'
 
 const imgStyle = {
-  maxWidth: '100%',
+  maxWidth: '80%',
   height: 'auto',
-  width: 'auto', /* ie8 */
+  width: 'auto',
+  top: '50%',
+  left: '50%',
+  marginLeft: '10%',
 }
 
 const LoadingFill = () => {

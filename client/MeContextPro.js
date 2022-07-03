@@ -1,13 +1,12 @@
 import React from 'react'
 import { createContext, useState} from 'react'
-import axios from 'axios'
 
 const MeContext = createContext()
 
 export const MeProvider = ({children}) => {
-  const [username, setUsername] = useState('bob')
+  const [username, setUsername] = useState('BoB!')
   const [type, setType] = useState('guest')
-  const [id, setId] = useState('userId')
+  const [id, setId] = useState(null)
 
 
   return (

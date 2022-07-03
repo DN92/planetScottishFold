@@ -6,19 +6,23 @@ import Header from './Header'
 import NavBar from './NavBar'
 import Footer from './Footer'
 import history from '../history'
-import MeContext from '../MeContextPro'
-import {isPrivileged} from '../../secrets'
+import AdminBar from './AdminBar'
+import TopLineMenuBar from './TopLineMenuBar'
 
 
 const App = () => {
-  const {type} = useContext(MeContext)
+
 
   return (
     <HistoryRouter history={history}>
+      <TopLineMenuBar />
       <Header />
+      {/* {isPrivileged(type) && <AdminBar />} */}
+      <AdminBar />
       <NavBar />
       <FrontEndRoutes />
-      {isPrivileged(type) && <AdminRoutes />}
+      <AdminRoutes />
+      {/* {isPrivileged(type) && <AdminRoutes />} */}
       <Footer />
     </HistoryRouter>
   )
