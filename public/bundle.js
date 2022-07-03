@@ -2639,15 +2639,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _FrontEndRoutes__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../FrontEndRoutes */ "./client/FrontEndRoutes.js");
-/* harmony import */ var _AdminRoutes__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../AdminRoutes */ "./client/AdminRoutes.js");
-/* harmony import */ var _Header__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Header */ "./client/components/Header.js");
-/* harmony import */ var _NavBar__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./NavBar */ "./client/components/NavBar.js");
-/* harmony import */ var _Footer__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Footer */ "./client/components/Footer.js");
-/* harmony import */ var _history__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../history */ "./client/history.js");
-/* harmony import */ var _MeContextPro__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../MeContextPro */ "./client/MeContextPro.js");
+/* harmony import */ var _FrontEndRoutes__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../FrontEndRoutes */ "./client/FrontEndRoutes.js");
+/* harmony import */ var _AdminRoutes__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../AdminRoutes */ "./client/AdminRoutes.js");
+/* harmony import */ var _Header__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Header */ "./client/components/Header.js");
+/* harmony import */ var _NavBar__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./NavBar */ "./client/components/NavBar.js");
+/* harmony import */ var _Footer__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Footer */ "./client/components/Footer.js");
+/* harmony import */ var _history__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../history */ "./client/history.js");
+/* harmony import */ var _MeContextPro__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../MeContextPro */ "./client/MeContextPro.js");
+/* harmony import */ var _secrets__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../secrets */ "./secrets.js");
+/* harmony import */ var _secrets__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_secrets__WEBPACK_IMPORTED_MODULE_8__);
 
 
 
@@ -2660,9 +2660,12 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const App = () => {
+  const {
+    type
+  } = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_MeContextPro__WEBPACK_IMPORTED_MODULE_7__["default"]);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.unstable_HistoryRouter, {
-    history: _history__WEBPACK_IMPORTED_MODULE_7__["default"]
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_MeContextPro__WEBPACK_IMPORTED_MODULE_8__.MeProvider, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Header__WEBPACK_IMPORTED_MODULE_4__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_NavBar__WEBPACK_IMPORTED_MODULE_5__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_FrontEndRoutes__WEBPACK_IMPORTED_MODULE_2__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_AdminRoutes__WEBPACK_IMPORTED_MODULE_3__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Footer__WEBPACK_IMPORTED_MODULE_6__["default"], null)));
+    history: _history__WEBPACK_IMPORTED_MODULE_6__["default"]
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Header__WEBPACK_IMPORTED_MODULE_3__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_NavBar__WEBPACK_IMPORTED_MODULE_4__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_FrontEndRoutes__WEBPACK_IMPORTED_MODULE_1__["default"], null), (0,_secrets__WEBPACK_IMPORTED_MODULE_8__.isPrivileged)(type) && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_AdminRoutes__WEBPACK_IMPORTED_MODULE_2__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Footer__WEBPACK_IMPORTED_MODULE_5__["default"], null));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (App);
@@ -2679,10 +2682,14 @@ const App = () => {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _MeContextPro__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../MeContextPro */ "./client/MeContextPro.js");
+/* harmony import */ var _customHandlers_handleLogin__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../customHandlers/handleLogin */ "./client/customHandlers/handleLogin.js");
+/* harmony import */ var _history__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../history */ "./client/history.js");
+
+
 
 
 
@@ -2705,24 +2712,14 @@ const AuthForm = () => {
 
   const handleSubmit = async event => {
     event.preventDefault();
-    localStorage.removeItem('psfToken');
-    console.log('submit');
-    const {
-      data
-    } = await axios__WEBPACK_IMPORTED_MODULE_1___default().post('/auth/login', loginInfo);
-    const token = data.token;
-    console.log('TOKEN:: ', token);
+    const [successStatus, message] = await (0,_customHandlers_handleLogin__WEBPACK_IMPORTED_MODULE_3__["default"])(meContext, loginInfo);
+    console.log('successStatus?: ', successStatus);
+    console.log('message:  ', message);
     console.log(meContext);
-    const data2 = await axios__WEBPACK_IMPORTED_MODULE_1___default().get('/auth/me', {
-      headers: {
-        authorization: token
-      }
-    });
-    console.log('me::', data2.data);
-    meContext.setUsername(data2.data.username);
-    meContext.setType(data2.data.type);
-    meContext.setId(data2.data.id);
-    console.log(meContext);
+
+    if (successStatus) {
+      _history__WEBPACK_IMPORTED_MODULE_4__["default"].push('home');
+    }
   };
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "Login"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("form", {
@@ -2745,10 +2742,11 @@ const AuthForm = () => {
   }, "Submit "))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("hr", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("a", {
     className: "underlineHover",
     href: "#"
-  }, "Forgot Password?")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("hr", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Don't have an account?"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+  }, "Forgot Password?")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("hr", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Don't have an account?"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Link, {
     to: "/signup"
   }, "Sign Up"))));
-};
+}; //  TODO change link sign up to reroute to client questionnaire
+
 
 /* harmony default export */ __webpack_exports__["default"] = (AuthForm);
 
@@ -3254,11 +3252,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _textComponents_AboutUs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./textComponents/AboutUs */ "./client/components/textComponents/AboutUs.js");
+/* harmony import */ var _MeContextPro__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../MeContextPro */ "./client/MeContextPro.js");
+
 
 
 
 const homeComponent = () => {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", null, "Welcome to Planet Scottish Fold!"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("article", null, "Family breeders of purebred Scottish Fold ", '&', " Straight Kittens")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_textComponents_AboutUs__WEBPACK_IMPORTED_MODULE_1__["default"], null));
+  const meContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_MeContextPro__WEBPACK_IMPORTED_MODULE_2__["default"]);
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", null, "Welcome to Planet Scottish Fold!"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "!!! ", meContext.username, " !!!"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "!!! ", meContext.type, " !!!"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "!!! ", meContext.id, " !!!"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("article", null, "Family breeders of purebred Scottish Fold ", '&', " Straight Kittens")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_textComponents_AboutUs__WEBPACK_IMPORTED_MODULE_1__["default"], null));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (homeComponent);
@@ -3587,6 +3588,105 @@ const OurStory = () => {
 
 /***/ }),
 
+/***/ "./client/customHandlers/handleLogin.js":
+/*!**********************************************!*\
+  !*** ./client/customHandlers/handleLogin.js ***!
+  \**********************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+
+
+
+const handleLogin = async (meContext, loginInfo) => {
+  const loginAndGetToken = async loginInfo => {
+    let success = true;
+
+    try {
+      const {
+        data
+      } = await axios__WEBPACK_IMPORTED_MODULE_1___default().post('/auth/login', loginInfo);
+
+      if (data) {
+        const token = data.token;
+        localStorage.setItem('psfToken', token);
+        return [success, token];
+      }
+
+      return [!success, ''];
+    } catch (err) {
+      console.log(err);
+      return [!success, 'error'];
+    }
+  };
+
+  const setMe = async token => {
+    let success = true;
+
+    try {
+      const {
+        data
+      } = await axios__WEBPACK_IMPORTED_MODULE_1___default().get('/auth/me', {
+        headers: {
+          authorization: token
+        }
+      });
+      console.log(data);
+
+      if (data) {
+        meContext.setUsername(data.username);
+        meContext.setType(data.type);
+        meContext.setId(data.id);
+        return success;
+      }
+    } catch (err) {
+      console.log(err);
+      return !success;
+    }
+  };
+
+  let token = null;
+  let message = '';
+  const [success, msg] = await loginAndGetToken(loginInfo);
+
+  if (success && msg) {
+    //  success and set token
+    token = msg;
+  } else if (success && !msg) {
+    //  fail with no error
+    message = 'Login unsuccessful';
+  } else {
+    //  fail with error
+    message = msg;
+  }
+
+  if (token) {
+    let good = await setMe(token);
+
+    if (good) {
+      //  user type and id set to MeContext / Login Successful
+      message = 'login successful';
+      return [true, message];
+    } else {
+      //  see message below. This should never happen
+      message = 'Login successful but set me by token failed';
+      return [false, message];
+    }
+  } else {
+    //  Login attempt failed pre token
+    return [false, message];
+  }
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (handleLogin);
+
+/***/ }),
+
 /***/ "./client/history.js":
 /*!***************************!*\
   !*** ./client/history.js ***!
@@ -3683,6 +3783,25 @@ myUtilFuncs.getUserIP = async () => {
 
 console.log(myUtilFuncs);
 module.exports = myUtilFuncs;
+
+/***/ }),
+
+/***/ "./secrets.js":
+/*!********************!*\
+  !*** ./secrets.js ***!
+  \********************/
+/***/ (function(module) {
+
+const needToKnow = {};
+needToKnow.userTypes = ['anon', 'registered', 'ghost', 'admin', 'master'];
+needToKnow.JWT_SIG = 'myJWTsig';
+needToKnow.saltRounds = 6; // check user has privledges of ghost or higher
+
+needToKnow.isPrivileged = type => {
+  return needToKnow.userTypes.slice(2).includes(type);
+};
+
+module.exports = needToKnow;
 
 /***/ }),
 
@@ -39450,9 +39569,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _components_App__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/App */ "./client/components/App.js");
+/* harmony import */ var _MeContextPro__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./MeContextPro */ "./client/MeContextPro.js");
 
 
  // import '../public/App.css';
+
 
  //  This is the User Object on the frontEnd. The getMe function sets the context from the login page.
 
@@ -39460,7 +39581,7 @@ const root = react_dom_client__WEBPACK_IMPORTED_MODULE_1__.createRoot(document.g
 root.render(
 /*#__PURE__*/
 // <React.StrictMode>
-react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_App__WEBPACK_IMPORTED_MODULE_3__["default"], null) // </React.StrictMode>
+react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_MeContextPro__WEBPACK_IMPORTED_MODULE_4__.MeProvider, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_App__WEBPACK_IMPORTED_MODULE_3__["default"], null)) // </React.StrictMode>
 );
 }();
 /******/ })()

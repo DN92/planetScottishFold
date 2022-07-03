@@ -42,6 +42,9 @@ if (process.env.NODE_ENV !== 'production') {
   // compression middleware
   app.use(compression())
 
+  // security middleware
+
+
   // api routes
   app.use('/auth', require('./auth'))
   app.use('/api', require('./api'))

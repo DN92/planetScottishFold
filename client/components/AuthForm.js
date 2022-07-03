@@ -1,7 +1,9 @@
-import React, {useState, createContext, useContext} from 'react'
+import React, {useState, useContext} from 'react'
 import{ Link } from 'react-router-dom'
 import axios from 'axios'
 import MeContext from '../MeContextPro'
+import handleLogin from '../customHandlers/handleLogin'
+import history from '../history'
 
 const AuthForm = () => {
 
@@ -19,23 +21,13 @@ const AuthForm = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault()
-    localStorage.removeItem('psfToken')
-    console.log('submit')
-    const {data} = await axios.post('/auth/login', loginInfo)
-    const token = data.token
-    console.log('TOKEN:: ', token)
+    const [successStatus, message] = await handleLogin(meContext, loginInfo)
+    console.log('successStatus?: ', successStatus )
+    console.log('message:  ', message)
     console.log(meContext)
-    const data2 = await axios.get('/auth/me', {
-      headers: {
-        authorization: token
-      }
-    })
-    console.log('me::', data2.data)
-
-    meContext.setUsername(data2.data.username)
-    meContext.setType(data2.data.type)
-    meContext.setId(data2.data.id)
-    console.log(meContext)
+    if(successStatus) {
+      history.push('home')
+    }
   }
 
   return (
@@ -68,11 +60,13 @@ const AuthForm = () => {
         </a>
       </div>
       <hr />
+
       <div>
         <p>Don't have an account?</p>
         <h2><Link to="/signup">Sign Up</Link></h2>
       </div>
     </div>
   )}
+  //  TODO change link sign up to reroute to client questionnaire
 
 export default AuthForm
