@@ -20,15 +20,15 @@ const FrontEndRoutes = () => {
     <Routes>
         <Route path='/' element={<HomeComponent />} />
         <Route path='login' element={<AuthFrom />} />
-        <Route exact path='/home' element={<HomeComponent />} />
-        <Route exact path='/about' element={<About />} />
-        <Route exact path='/availableKittens' element={<AvailableKittens />} />
-        <Route exact path='/reviews' element={<Reviews />} />
-        <Route exact path='/waitingListForm' element={<ClientQuestionnaire />} />
-        <Route path='/confirmClientQuestionnaire' element={<ConfirmClientQuestionnaire />} />
-        <Route exact path='/contact' element={<ContactRequestForm />} />
-        <Route exact path='/instagram' element={<PlaceHolder />} />
-        <Route exact path='/facebook' element={<PlaceHolder />} /> */
+        <Route path='home' element={<HomeComponent />} />
+        <Route path='about' element={<About />} />
+        <Route path='availableKittens' element={<AvailableKittens />} />
+        <Route path='reviews' element={<Reviews />} />
+        <Route path='waitingListForm' element={<ClientQuestionnaire />} />
+        <Route path='confirmClientQuestionnaire' element={<ConfirmClientQuestionnaire />} />
+        <Route path='contact' element={<ContactRequestForm />} />
+        <Route path='instagram' element={<PlaceHolder />} />
+        <Route path='facebook' element={<PlaceHolder />} /> */
         {/* <Route exact path='/' element={} /> */}
       </Routes>
   )

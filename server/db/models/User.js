@@ -85,7 +85,9 @@ const User = db.define("user", {
 };
 
 User.prototype.generateToken = function () {
-  return jwt.sign({ id: this.id, type:this.type }, process.env.JWT_SIG);
+  const token = jwt.sign({ id: this.id, type:this.type }, process.env.JWT_SIG);
+  console.log('TOKEN WAS GENERATED :: ', token)
+  return token
 };
 
 User.authenticate = async function ({ username, password }) {
@@ -99,10 +101,12 @@ User.authenticate = async function ({ username, password }) {
 };
 
 User.findByToken = async function (token) {
+  console.log('TOKEN FROM FINDBYTOKEN: ' , token)
   try {
     if (token){
       const { id } = await jwt.verify(token, process.env.JWT_SIG);
-      const user = User.findByPk(id);
+      const user = await User.findByPk(id);
+      // console.log('and the user is ::  ', user)
       if (!user) {
         throw "Bad, Bad, KittyToken";
       }
@@ -113,6 +117,7 @@ User.findByToken = async function (token) {
       token: token,
     }
   } catch (ex) {
+    console.log('EX ::: ', ex)
     const error = Error(" bad token");
     error.status = 401;
     throw error;

@@ -28,7 +28,7 @@ router.post('signup', async (req, res, next) => {
 
 router.get('/me', async (req, res, next) => {
   try {
-    const user = await User.findByToken(req.header.authorization)
+    const user = await User.findByToken(req.headers.authorization)
     // deconstruct and reconstruct user for security
     const { type, username, id } = user
     res.send({type, username, id})

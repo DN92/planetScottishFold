@@ -40,9 +40,16 @@ myUtilFuncs.objectKeysToLowerCase = (object) => {
 }
 
 myUtilFuncs.getUserIP = async () => {
+  try{
     const { data } = await axios.get('https://geolocation-db.com/json/')
     console.log("IP getter reading: ", data.IPv4);
     return data.IPv4
+  } catch (err) {
+    console.log('failed to get IP, no worries')
+    console.log(err)
+  } finally {
+    return
+  }
 }
 
 console.log(myUtilFuncs)

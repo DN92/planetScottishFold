@@ -7,26 +7,19 @@ import Header from './Header'
 import NavBar from './NavBar'
 import Footer from './Footer'
 import history from '../history'
+import {MeProvider} from '../MeContextPro'
 
 const App = () => {
 
-  const [token, setToken] = useState(null)
-  const [userType, setUserType] = useState('anonVisitor')
-
-  useEffect(()=>{
-    const token = JSON.parse(localStorage.getItem('token'))
-    if (token) {
-
-    }
-  },[])
-
   return (
     <HistoryRouter history={history}>
-      <Header />
-      <NavBar />
-      <FrontEndRoutes />
-      <AdminRoutes />
-      <Footer />
+      <MeProvider >
+        <Header />
+        <NavBar />
+        <FrontEndRoutes />
+        <AdminRoutes />
+        <Footer />
+      </MeProvider>
     </HistoryRouter>
   )
 }

@@ -2531,39 +2531,31 @@ const FrontEndRoutes = () => {
     path: "login",
     element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_AuthForm__WEBPACK_IMPORTED_MODULE_9__["default"], null)
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.Route, {
-    exact: true,
-    path: "/home",
+    path: "home",
     element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_Home__WEBPACK_IMPORTED_MODULE_2__["default"], null)
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.Route, {
-    exact: true,
-    path: "/about",
+    path: "about",
     element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_About__WEBPACK_IMPORTED_MODULE_3__["default"], null)
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.Route, {
-    exact: true,
-    path: "/availableKittens",
+    path: "availableKittens",
     element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_AvailableKittens__WEBPACK_IMPORTED_MODULE_4__["default"], null)
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.Route, {
-    exact: true,
-    path: "/reviews",
+    path: "reviews",
     element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_Reviews__WEBPACK_IMPORTED_MODULE_5__["default"], null)
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.Route, {
-    exact: true,
-    path: "/waitingListForm",
+    path: "waitingListForm",
     element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_ClientQuestionnaire__WEBPACK_IMPORTED_MODULE_6__["default"], null)
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.Route, {
-    path: "/confirmClientQuestionnaire",
+    path: "confirmClientQuestionnaire",
     element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_ConfirmClientQuestionnaire__WEBPACK_IMPORTED_MODULE_8__["default"], null)
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.Route, {
-    exact: true,
-    path: "/contact",
+    path: "contact",
     element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_ContactRequestForm__WEBPACK_IMPORTED_MODULE_7__["default"], null)
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.Route, {
-    exact: true,
-    path: "/instagram",
+    path: "instagram",
     element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_PlaceHolder__WEBPACK_IMPORTED_MODULE_1__["default"], null)
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.Route, {
-    exact: true,
-    path: "/facebook",
+    path: "facebook",
     element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_PlaceHolder__WEBPACK_IMPORTED_MODULE_1__["default"], null)
   }), " */");
 }; // The `withRouter` wrapper makes sure that updates are not blocked
@@ -2571,6 +2563,46 @@ const FrontEndRoutes = () => {
 
 
 /* harmony default export */ __webpack_exports__["default"] = (FrontEndRoutes);
+
+/***/ }),
+
+/***/ "./client/MeContextPro.js":
+/*!********************************!*\
+  !*** ./client/MeContextPro.js ***!
+  \********************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "MeProvider": function() { return /* binding */ MeProvider; }
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+
+
+
+const MeContext = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.createContext)();
+const MeProvider = ({
+  children
+}) => {
+  const [username, setUsername] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('bob');
+  const [type, setType] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('guest');
+  const [id, setId] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('userId');
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(MeContext.Provider, {
+    value: {
+      username,
+      setUsername,
+      type,
+      setType,
+      id,
+      setId
+    }
+  }, children);
+};
+/* harmony default export */ __webpack_exports__["default"] = (MeContext);
 
 /***/ }),
 
@@ -2606,7 +2638,7 @@ const About = () => {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _FrontEndRoutes__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../FrontEndRoutes */ "./client/FrontEndRoutes.js");
@@ -2615,6 +2647,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _NavBar__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./NavBar */ "./client/components/NavBar.js");
 /* harmony import */ var _Footer__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Footer */ "./client/components/Footer.js");
 /* harmony import */ var _history__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../history */ "./client/history.js");
+/* harmony import */ var _MeContextPro__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../MeContextPro */ "./client/MeContextPro.js");
+
 
 
 
@@ -2626,16 +2660,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const App = () => {
-  const [token, setToken] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null);
-  const [userType, setUserType] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('anonVisitor');
-  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
-    const token = JSON.parse(localStorage.getItem('token'));
-
-    if (token) {}
-  }, []);
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.unstable_HistoryRouter, {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.unstable_HistoryRouter, {
     history: _history__WEBPACK_IMPORTED_MODULE_7__["default"]
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Header__WEBPACK_IMPORTED_MODULE_4__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_NavBar__WEBPACK_IMPORTED_MODULE_5__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_FrontEndRoutes__WEBPACK_IMPORTED_MODULE_2__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_AdminRoutes__WEBPACK_IMPORTED_MODULE_3__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Footer__WEBPACK_IMPORTED_MODULE_6__["default"], null));
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_MeContextPro__WEBPACK_IMPORTED_MODULE_8__.MeProvider, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Header__WEBPACK_IMPORTED_MODULE_4__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_NavBar__WEBPACK_IMPORTED_MODULE_5__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_FrontEndRoutes__WEBPACK_IMPORTED_MODULE_2__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_AdminRoutes__WEBPACK_IMPORTED_MODULE_3__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Footer__WEBPACK_IMPORTED_MODULE_6__["default"], null)));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (App);
@@ -2653,16 +2680,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/index.js");
-/* harmony import */ var _myUtilFuncs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../myUtilFuncs */ "./myUtilFuncs.js");
-/* harmony import */ var _myUtilFuncs__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_myUtilFuncs__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _MeContextPro__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../MeContextPro */ "./client/MeContextPro.js");
 
 
 
 
 
 const AuthForm = () => {
+  const meContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_MeContextPro__WEBPACK_IMPORTED_MODULE_2__["default"]);
   const [loginInfo, setLoginInfo] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
     username: '',
     password: ''
@@ -2678,12 +2705,24 @@ const AuthForm = () => {
 
   const handleSubmit = async event => {
     event.preventDefault();
+    localStorage.removeItem('psfToken');
     console.log('submit');
-    loginInfo.IPaddress = await (0,_myUtilFuncs__WEBPACK_IMPORTED_MODULE_1__.getUserIP)();
     const {
       data
-    } = await axios__WEBPACK_IMPORTED_MODULE_2___default().post('/auth/login', loginInfo);
-    console.log('TOKEN:: ', data); // localStorage.setItem
+    } = await axios__WEBPACK_IMPORTED_MODULE_1___default().post('/auth/login', loginInfo);
+    const token = data.token;
+    console.log('TOKEN:: ', token);
+    console.log(meContext);
+    const data2 = await axios__WEBPACK_IMPORTED_MODULE_1___default().get('/auth/me', {
+      headers: {
+        authorization: token
+      }
+    });
+    console.log('me::', data2.data);
+    meContext.setUsername(data2.data.username);
+    meContext.setType(data2.data.type);
+    meContext.setId(data2.data.id);
+    console.log(meContext);
   };
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "Login"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("form", {
@@ -2825,7 +2864,6 @@ const ClientQuestionnaire = () => {
         [event.target.name]: event.target.value
       };
     });
-    console.log(clientInfo[event.target.name]);
     localStorage.setItem('clientInfo', JSON.stringify(clientInfo));
   };
 
@@ -3629,11 +3667,18 @@ myUtilFuncs.objectKeysToLowerCase = object => {
 };
 
 myUtilFuncs.getUserIP = async () => {
-  const {
-    data
-  } = await axios.get('https://geolocation-db.com/json/');
-  console.log("IP getter reading: ", data.IPv4);
-  return data.IPv4;
+  try {
+    const {
+      data
+    } = await axios.get('https://geolocation-db.com/json/');
+    console.log("IP getter reading: ", data.IPv4);
+    return data.IPv4;
+  } catch (err) {
+    console.log('failed to get IP, no worries');
+    console.log(err);
+  } finally {
+    return;
+  }
 };
 
 console.log(myUtilFuncs);
@@ -39402,20 +39447,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_dom_client__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom/client */ "./node_modules/react-dom/client.js");
-/* harmony import */ var _components_App__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/App */ "./client/components/App.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _components_App__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/App */ "./client/components/App.js");
 
 
-const UserContext = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createContext({
-  username: null,
-  type: 'guest'
-}); // import '../public/App.css';
+ // import '../public/App.css';
 
+ //  This is the User Object on the frontEnd. The getMe function sets the context from the login page.
 
 const root = react_dom_client__WEBPACK_IMPORTED_MODULE_1__.createRoot(document.getElementById('root'));
 root.render(
 /*#__PURE__*/
 // <React.StrictMode>
-react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_App__WEBPACK_IMPORTED_MODULE_2__["default"], null) // </React.StrictMode>
+react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_App__WEBPACK_IMPORTED_MODULE_3__["default"], null) // </React.StrictMode>
 );
 }();
 /******/ })()

@@ -38,7 +38,6 @@ const ClientQuestionnaire = () => {
     setClientInfo(prevClientInfo =>{
       return {...prevClientInfo, [event.target.name]: event.target.value}
     })
-    console.log(clientInfo[event.target.name])
     localStorage.setItem('clientInfo', JSON.stringify(clientInfo))
   }
 

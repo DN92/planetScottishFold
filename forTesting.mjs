@@ -1,5 +1,11 @@
-const obj = {}
+const obj = {
+  username: 'charles',
 
-obj.string = 'false'
+  look: () => {
+    console.log(obj.username)
+  }
+}
 
-console.log(obj.value)
+
+
+obj.look()

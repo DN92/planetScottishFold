@@ -1,10 +1,11 @@
-import React, {useState} from 'react'
+import React, {useState, createContext, useContext} from 'react'
 import{ Link } from 'react-router-dom'
-import { getUserIP } from '../../myUtilFuncs'
 import axios from 'axios'
+import MeContext from '../MeContextPro'
 
 const AuthForm = () => {
 
+  const meContext = useContext(MeContext)
   const [loginInfo, setLoginInfo] = useState({
     username: '',
     password: '',
@@ -18,11 +19,23 @@ const AuthForm = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault()
+    localStorage.removeItem('psfToken')
     console.log('submit')
-    loginInfo.IPaddress = await getUserIP()
     const {data} = await axios.post('/auth/login', loginInfo)
-    console.log('TOKEN:: ', data)
-    // localStorage.setItem
+    const token = data.token
+    console.log('TOKEN:: ', token)
+    console.log(meContext)
+    const data2 = await axios.get('/auth/me', {
+      headers: {
+        authorization: token
+      }
+    })
+    console.log('me::', data2.data)
+
+    meContext.setUsername(data2.data.username)
+    meContext.setType(data2.data.type)
+    meContext.setId(data2.data.id)
+    console.log(meContext)
   }
 
   return (
@@ -44,27 +57,6 @@ const AuthForm = () => {
             value={loginInfo.password}
             onChange={handleChange}
           /> <br />
-          {/* <input
-            type="text"
-            name="eMail"
-            placeholder='E Mail'
-            value={loginInfo.eMail}
-            onChange={handleChange}
-          /> <br />
-          <input
-            type="text"
-            name='city'
-            placeholder='City'
-            value={loginInfo.city}
-            onChange={handleChange}
-          /> <br />
-          <input
-            type="text"
-            name='state'
-            placeholder='State'
-            value={loginInfo.state}
-            onChange={handleChange}
-          /> <br /> */}
           <button type='submit'>Submit </button>
         </form>
       </div>
@@ -81,7 +73,6 @@ const AuthForm = () => {
         <h2><Link to="/signup">Sign Up</Link></h2>
       </div>
     </div>
-  );
-}
+  )}
 
 export default AuthForm
