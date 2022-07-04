@@ -2472,16 +2472,21 @@ module.exports = {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/index.js");
 /* harmony import */ var _components_admin_NewUserRequests__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/admin/NewUserRequests */ "./client/components/admin/NewUserRequests.js");
+/* harmony import */ var _components_admin_RequestReview__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/admin/RequestReview */ "./client/components/admin/RequestReview.js");
+
 
 
 
 
 const AdminRoutes = () => {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Routes, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Route, {
-    path: "/newUserRequests",
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Routes, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Route, {
+    path: "newUserRequests",
     element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_admin_NewUserRequests__WEBPACK_IMPORTED_MODULE_1__["default"], null)
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Route, {
+    path: "newUserRequests/:requestId",
+    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_admin_RequestReview__WEBPACK_IMPORTED_MODULE_2__["default"], null)
   }));
 };
 
@@ -3296,7 +3301,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 
 const imgStyle = {
-  maxWidth: '80%',
+  maxWidth: '38%',
   height: 'auto',
   width: 'auto',
   top: '50%',
@@ -3304,8 +3309,10 @@ const imgStyle = {
   marginLeft: '10%'
 };
 
-const LoadingFill = () => {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Loading"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
+const LoadingFill = ({
+  message
+}) => {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, message), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
     style: imgStyle,
     src: "/catPictures/catLoading.gif"
   }));
@@ -3500,6 +3507,34 @@ const TopLineMenuBar = () => {
 
 /***/ }),
 
+/***/ "./client/components/WrongPath.js":
+/*!****************************************!*\
+  !*** ./client/components/WrongPath.js ***!
+  \****************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+const WrongPath = ({
+  header
+}) => {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, header), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h3", null, "Perhaps you shouldn't be here from where you came from?"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
+    src: "/otherPictures/hackmanMeme.jpeg",
+    alt: "",
+    style: {
+      marginLeft: '5%'
+    }
+  }));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (WrongPath);
+
+/***/ }),
+
 /***/ "./client/components/admin/NewUserRequests.js":
 /*!****************************************************!*\
   !*** ./client/components/admin/NewUserRequests.js ***!
@@ -3515,6 +3550,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _LoadingFill__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../LoadingFill */ "./client/components/LoadingFill.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_4__);
+
 
 
 
@@ -3543,19 +3579,129 @@ const NewUserRequests = () => {
   }, []);
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
     setTimeout(() => {
-      setLoading(false);
-      setError('This is only a Test Meow');
+      setLoading(false); // setError('This is only a Test Meow')
     }, 2000);
   }, [setRequests]);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, error && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ErrorFill__WEBPACK_IMPORTED_MODULE_2__["default"], {
     msg: error
-  }), !error && loading && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_LoadingFill__WEBPACK_IMPORTED_MODULE_3__["default"], null), !error && !loading && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("table", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("thead", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "User Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "E Mail"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "First Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "Last Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "About You"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "First Cat?"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "Other Pets"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "City"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "State"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "FaceBook"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "InstaGram"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "Wants Gender"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "Wants Ears"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "Wants Eyes"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "Wants Fur "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "Most Important "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "Budget"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "IP"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("tbody", null, requests.map(request => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_UseReqTableRow__WEBPACK_IMPORTED_MODULE_1__["default"], {
+  }), !error && loading && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_LoadingFill__WEBPACK_IMPORTED_MODULE_3__["default"], null), !error && !loading && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("table", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("thead", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "User Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "E Mail"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "First Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "Last Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "About You"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "First Cat?"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "Other Pets"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "City"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "State"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "FaceBook"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "InstaGram"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "Wants Gender"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "Wants Ears"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "Wants Eyes"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "Wants Fur "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "Most Important "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "Budget"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("tbody", null, requests.map(request => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_UseReqTableRow__WEBPACK_IMPORTED_MODULE_1__["default"], {
     key: request.id,
+    id: request.id,
     request: request
   })))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (NewUserRequests);
+
+/***/ }),
+
+/***/ "./client/components/admin/RequestReview.js":
+/*!**************************************************!*\
+  !*** ./client/components/admin/RequestReview.js ***!
+  \**************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/index.js");
+/* harmony import */ var _history__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../history */ "./client/history.js");
+/* harmony import */ var _myUtilFuncs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../myUtilFuncs */ "./myUtilFuncs.js");
+/* harmony import */ var _myUtilFuncs__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_myUtilFuncs__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _WrongPath__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../WrongPath */ "./client/components/WrongPath.js");
+
+
+
+ // import LoadingFill from '../LoadingFill'
+
+
+
+
+const RequestReview = () => {
+  const arrayFromRequestKeys = ['requestedUsername', 'eMail', 'firstName', 'lastName', 'aboutYou', 'firstCat', 'otherPets', 'city', 'state', 'fB', 'iG', 'gender', 'ears', 'eyeColor', 'furColor', 'mif', 'budget', 'IPaddress'];
+  const {
+    requestId
+  } = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.useParams)();
+  const request = _history__WEBPACK_IMPORTED_MODULE_1__["default"].location.state ? _history__WEBPACK_IMPORTED_MODULE_1__["default"].location.state.request : false; //  we have to remove id so it doesn't interfere with db model creation
+
+  delete request['id'];
+  const [error, setError] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null);
+  const [endMessage, setEndMessage] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('empty message');
+  const [requestComplete, setRequestComplete] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false); //  this is a flag for useEffect to delete anon from db after user is made
+
+  const [cleanUpUserCreation, setCleanUpUserCreation] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false); // const [requestSuccess, setRequestSuccess] = useState('still working on it')
+
+  const wordsFromKeys = (0,_myUtilFuncs__WEBPACK_IMPORTED_MODULE_2__.getWordsFromArrayOfKeys)(arrayFromRequestKeys);
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+    const deleteAnon = async requestId => {
+      try {
+        await axios__WEBPACK_IMPORTED_MODULE_3___default()["delete"](`/api/anonVisitors?id=${requestId}`);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
+    if (cleanUpUserCreation) {
+      console.log('firing deletion from use effect');
+      deleteAnon(requestId);
+    }
+
+    setCleanUpUserCreation(false);
+  }, [cleanUpUserCreation]);
+
+  const handleApprove = async () => {
+    try {
+      console.log('requesting user creation with request: ', request);
+      const {
+        data
+      } = await axios__WEBPACK_IMPORTED_MODULE_3___default().post('/api/users', request);
+      console.log('approval response data: ', data);
+      setError(null);
+      setRequestComplete(true);
+      setEndMessage(`User with email: ${data.eMail} has been successfully added to database.`);
+      setCleanUpUserCreation(true);
+    } catch (err) {
+      setError(err.message);
+      setRequestComplete(true);
+      setEndMessage('Request rejection failed. Check error messages');
+    }
+  };
+
+  const handleDeny = async () => {
+    try {
+      await axios__WEBPACK_IMPORTED_MODULE_3___default()["delete"](`/api/anonVisitors?id=${requestId}`);
+      setError(null);
+      setRequestComplete(true);
+      setEndMessage('Application has been successfully rejected.');
+    } catch (err) {
+      console.log(err);
+      setError(err.message);
+      setRequestComplete(true);
+      setEndMessage('Request rejection failed. Check error messages');
+    }
+  };
+
+  console.log('checking is request complete:', requestComplete);
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, !request && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_WrongPath__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    header: "No Request Loaded"
+  }), !requestComplete && request && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "Awaiting Your Approval"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("table", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("thead", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, "Field"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, "Data"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("tbody", null, arrayFromRequestKeys.map((key, index) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("tr", {
+    key: key
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, wordsFromKeys[index]), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, key !== 'firstCat' ? request[key] : request[key].toString()))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    type: "button",
+    onClick: handleApprove
+  }, " APPROVE "), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    type: "button",
+    onClick: handleDeny
+  }, " DENY "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, error)), requestComplete && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h3", null, endMessage), error && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Error Message:: ", error), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Link, {
+    to: "/newUserRequests"
+  }, "Back To Requests")));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (RequestReview);
 
 /***/ }),
 
@@ -3569,6 +3715,8 @@ const NewUserRequests = () => {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _history__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../history */ "./client/history.js");
+
 
 
 const UseReqTableRow = props => {
@@ -3594,7 +3742,18 @@ const UseReqTableRow = props => {
     hasBeenReviewedByAdmin: true
   };
   const [user, setUser] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(props.request ? props.request : defaultUser);
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, user.requestedUsername), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, user.eMail), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, user.firstName), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, user.lastName), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, user.aboutYou), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, user.firstCat.toString()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, user.otherPets), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, user.city), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, user.state), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, user.fB), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, user.iG), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, user.gender), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, user.ears), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, user.eyeColor), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, user.furColor), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, user.mif), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, user.budget), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, user.IPaddress));
+
+  const handleSelectRequest = event => {
+    console.log(event.target.nodeName === 'TD');
+    console.log(props.id);
+    _history__WEBPACK_IMPORTED_MODULE_1__["default"].push(`newUserRequests/${props.id}`, {
+      request: props.request
+    });
+  };
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("tr", {
+    onClick: handleSelectRequest
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, user.requestedUsername), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, user.eMail), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, user.firstName), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, user.lastName), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, user.aboutYou), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, user.firstCat.toString()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, user.otherPets), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, user.city), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, user.state), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, user.fB), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, user.iG), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, user.gender), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, user.ears), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, user.eyeColor), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, user.furColor), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, user.mif), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, user.budget), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, user.IPaddress));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (UseReqTableRow);
@@ -3829,6 +3988,36 @@ myUtilFuncs.getUserIP = async () => {
   } finally {
     return;
   }
+};
+
+myUtilFuncs.getWordsFromArrayOfKeys = arrayOfWords => {
+  // this is the callback function for the map function we will run on the words array.
+  const convertObjKeyIntoWord = word => {
+    if (!word.length) {
+      return word;
+    }
+
+    const arrayOfLetters = word.split('');
+    arrayOfLetters[0] = arrayOfLetters[0].toUpperCase();
+    return arrayOfLetters.map((letter, index) => {
+      if (index == 0) {
+        return letter;
+      } // check if the letter is uppercase, the letter before it is not upperCase, and there is no space before the letter // then adds a space if all that is true. Should handle most but not all camelCase obj keys
+
+
+      if (letter == letter.toUpperCase() && word[index - 1] == word[index - 1].toUpperCase() && word[index - 1] != ' ') {
+        return ' ' + letter;
+      }
+
+      return letter;
+    }).join('');
+  };
+
+  if (!arrayOfWords.length) {
+    return arrayOfWords;
+  }
+
+  return arrayOfWords.map(word => convertObjKeyIntoWord(word));
 };
 
 console.log(myUtilFuncs);

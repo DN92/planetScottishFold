@@ -23,7 +23,7 @@ const User = db.define("user", {
     type: Sequelize.ENUM('lessThan1500', '1500to2000','2000to2500','over2500', 'any', '')
   },
   firstName: {
-    type: Sequelize.BOOLEAN,
+    type: Sequelize.STRING,
   },
   lastName: {
     type: Sequelize.STRING,
@@ -32,7 +32,7 @@ const User = db.define("user", {
     type: Sequelize.STRING,
   },
   firstCat: {
-    type: Sequelize.STRING,
+    type: Sequelize.BOOLEAN,
   },
   otherPets: {
     type: Sequelize.STRING,
@@ -134,6 +134,13 @@ User.findByToken = async function (token) {
   }
 };
 
+const removeId = async (user) => {
+  if (user.id) {
+    user.id = null
+  }
+}
+
+User.beforeCreate(removeId)
 User.beforeCreate(hashPassword);
 User.beforeUpdate(hashPassword);
 User.beforeBulkCreate((users) => Promise.all(users.map(hashPassword)));

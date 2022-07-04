@@ -3,12 +3,15 @@ import UseReqTableRow from './UseReqTableRow'
 import ErrorFill from '../ErrorFill'
 import LoadingFill from '../LoadingFill'
 import axios from 'axios'
+import { NavLink } from 'react-router-dom'
 
 const NewUserRequests = () => {
 
 const [requests, setRequests] = useState([])
 const [error, setError] = useState('')
 const [loading, setLoading] = useState(true)
+
+
 
 useEffect(()=>{
   console.log('reloading the page and error is: ', error)
@@ -26,7 +29,7 @@ useEffect(()=>{
 useEffect(()=>{
   setTimeout(()=>{
     setLoading(false)
-    setError('This is only a Test Meow')
+    // setError('This is only a Test Meow')
   },2000)
 }, [setRequests])
 
@@ -55,12 +58,11 @@ return (
             <th>Wants Fur </th>
             <th>Most Important </th>
             <th>Budget</th>
-            <th>IP</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody >
         {requests.map(request => (
-          <UseReqTableRow key={request.id} request={request} />
+          <UseReqTableRow key={request.id} id={request.id} request={request} />
         ))}
         </tbody>
       </table>

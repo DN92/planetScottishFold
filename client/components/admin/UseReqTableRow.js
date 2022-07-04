@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react'
+import history from '../../history'
 
 const UseReqTableRow = (props) => {
 
@@ -26,27 +27,38 @@ const UseReqTableRow = (props) => {
 
   const [user, setUser] = useState(props.request ? props.request : defaultUser)
 
+  const handleSelectRequest = (event) => {
+    console.log(event.target.nodeName === 'TD')
+    console.log(props.id)
+    history.push(`newUserRequests/${props.id}`, {
+      request: props.request
+    })
+  }
+
   return (
-    <tr>
-      <td>{user.requestedUsername}</td>
-      <td>{user.eMail}</td>
-      <td>{user.firstName}</td>
-      <td>{user.lastName}</td>
-      <td>{user.aboutYou}</td>
-      <td>{user.firstCat.toString()}</td>
-      <td>{user.otherPets}</td>
-      <td>{user.city}</td>
-      <td>{user.state}</td>
-      <td>{user.fB}</td>
-      <td>{user.iG}</td>
-      <td>{user.gender}</td>
-      <td>{user.ears}</td>
-      <td>{user.eyeColor}</td>
-      <td>{user.furColor}</td>
-      <td>{user.mif}</td>
-      <td>{user.budget}</td>
-      <td>{user.IPaddress}</td>
-    </tr>
+
+
+    <tr onClick={handleSelectRequest}>
+        <td>{user.requestedUsername}</td>
+        <td>{user.eMail}</td>
+        <td>{user.firstName}</td>
+        <td>{user.lastName}</td>
+        <td>{user.aboutYou}</td>
+        <td>{user.firstCat.toString()}</td>
+        <td>{user.otherPets}</td>
+        <td>{user.city}</td>
+        <td>{user.state}</td>
+        <td>{user.fB}</td>
+        <td>{user.iG}</td>
+        <td>{user.gender}</td>
+        <td>{user.ears}</td>
+        <td>{user.eyeColor}</td>
+        <td>{user.furColor}</td>
+        <td>{user.mif}</td>
+        <td>{user.budget}</td>
+        <td>{user.IPaddress}</td>
+      </tr>
+
   )
 }
 

@@ -1,7 +1,7 @@
 import React from 'react'
 
 const imgStyle = {
-  maxWidth: '80%',
+  maxWidth: '38%',
   height: 'auto',
   width: 'auto',
   top: '50%',
@@ -9,10 +9,10 @@ const imgStyle = {
   marginLeft: '10%',
 }
 
-const LoadingFill = () => {
+const LoadingFill = ({message}) => {
   return (
     <div >
-      <p>Loading</p>
+      <p>{message}</p>
       <img style={imgStyle} src="/catPictures/catLoading.gif" />
     </div>
   )

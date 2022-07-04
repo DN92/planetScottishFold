@@ -39,13 +39,15 @@ router.put('/', async(req, res, next) => {
 })
 
 router.delete('/', async(req, res, next) => {
+  console.log('GOT HERE!!!!!')
+  console.log(req.query)
   try {
-    const anonVisitorToDelete = await AnonVisitor.findByPk(req.query.anonVisitorId)
+    const anonVisitorToDelete = await AnonVisitor.findByPk(req.query.id)
     if(anonVisitorToDelete) {
       await anonVisitorToDelete.destroy()
-      res.send(202)
+      res.sendStatus(202)
     } else {
-      res.send(401)
+      res.sendStatus(401)
     }
   } catch (err) {
     next(err)

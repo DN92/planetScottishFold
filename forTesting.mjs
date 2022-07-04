@@ -1,8 +1,11 @@
+import utilFuncs from './myUtilFuncs.js'
+
 const obj = {
   username: 'charles',
 }
 
-//   look: () => {
-//     console.log(obj.username)
-//   }
-// }
+const test1 = ['testTestTest', 'copyThisState']
+
+const result1 = utilFuncs.getWordsFromArrayOfKeys(test1)
+
+console.log(result1)

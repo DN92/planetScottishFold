@@ -77,7 +77,25 @@ const anonVisitorsArray = [
     'blue',
     'gold',
     'the most important thing i look for in a cat is ears',
-  )
-]
+  ),
+  makeAnonVisitor(
+    'callMeAlice',
+    'anon2First',
+    'anon2Last',
+    '4221@gmail.com',
+    'i am an another anon visitor',
+    false,
+    'no',
+    'high point',
+    'north Carolina',
+    'lessThan1500',
+    'myFB',
+    'myIG',
+    'boy',
+    'fold',
+    'blue',
+    'gold',
+    'the most important thing i look for in a cat is ears',
+)]
 
 module.exports = anonVisitorsArray
