@@ -28,6 +28,16 @@ const Kitten = db.define("kitten", {
   eyeColor: {
     type: Sequelize.ENUM(...eyeColors,  '')
   },
+  mother: {
+    type:Sequelize.STRING
+  },
+  father: {
+    type:Sequelize.STRING
+  },
+  isAvailable: {
+    type: Sequelize.BOOLEAN,
+    defaultValue: true,
+  },
 })
 
 module.exports = Kitten

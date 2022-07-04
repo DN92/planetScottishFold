@@ -9,6 +9,8 @@ import ClientQuestionnaire from './components/ClientQuestionnaire';
 import ContactRequestForm from './components/ContactRequestForm';
 import ConfirmClientQuestionnaire from './components/ConfirmClientQuestionnaire';
 import AuthFrom from './components/AuthForm';
+import My404 from './components/My404'
+import KittenDetailedView from './components/KittenDetailedView'
 
 const FrontEndRoutes = () => {
 
@@ -23,12 +25,14 @@ const FrontEndRoutes = () => {
         <Route path='home' element={<HomeComponent />} />
         <Route path='about' element={<About />} />
         <Route path='availableKittens' element={<AvailableKittens />} />
+        <Route path='kittenDetailed' element={<KittenDetailedView />} />
         <Route path='reviews' element={<Reviews />} />
         <Route path='waitingListForm' element={<ClientQuestionnaire />} />
         <Route path='confirmClientQuestionnaire' element={<ConfirmClientQuestionnaire />} />
         <Route path='contact' element={<ContactRequestForm />} />
         <Route path='instagram' element={<PlaceHolder />} />
-        <Route path='facebook' element={<PlaceHolder />} /> */
+        <Route path='facebook' element={<PlaceHolder />} />
+        <Route path='404' element={<My404 />} />
         {/* <Route exact path='/' element={} /> */}
       </Routes>
   )

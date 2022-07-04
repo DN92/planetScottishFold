@@ -6,9 +6,7 @@ import MeContext from '../MeContextPro'
 const TopLineMenuBar = () => {
 
   const meContext = useContext(MeContext)
-  // console.log(meContext.username)
-  // console.log(meContext.id)
-  // console.log(!meContext.id)
+
   return (
     <nav>
       {!meContext.id &&
@@ -19,7 +17,7 @@ const TopLineMenuBar = () => {
           <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
           <Link to='login'>Login</Link>
           <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-          <Link to='signUp'>Sign Up</Link>
+          <Link to='/waitingListForm'>Apply</Link>
         </div>
       }
       {meContext.id &&

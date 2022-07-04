@@ -32,7 +32,6 @@ const RequestReview = () => {
   const {requestId} = useParams()
   const request = history.location.state ? history.location.state.request : false
   //  we have to remove id so it doesn't interfere with db model creation
-  delete request['id']
   const [error, setError] = useState(null)
   const [endMessage, setEndMessage] = useState('empty message')
   const [requestComplete, setRequestComplete] = useState(false)
@@ -47,26 +46,28 @@ const RequestReview = () => {
       try {
         await axios.delete(`/api/anonVisitors?id=${requestId}`)
       } catch (err) {
+        setError(err.message)
         console.log(err)
       }
     }
     if(cleanUpUserCreation) {
-      console.log('firing deletion from use effect')
       deleteAnon(requestId)
     }
     setCleanUpUserCreation(false)
+    setError(null)
   }, [cleanUpUserCreation])
+
+  // todo: take the newly created user's info and send email after that system is set up
 
   const handleApprove = async () => {
     try {
-      console.log('requesting user creation with request: ', request)
-      const {data} = await axios.post('/api/users', request)
-      console.log('approval response data: ', data)
+      const {data} = await axios.post('/api/users/anonToUser', request)
       setError(null)
       setRequestComplete(true)
       setEndMessage(`User with email: ${data.eMail} has been successfully added to database.`)
       setCleanUpUserCreation(true)
     } catch (err) {
+      console.log(err)
       setError(err.message)
       setRequestComplete(true)
       setEndMessage('Request rejection failed. Check error messages')
@@ -86,8 +87,6 @@ const RequestReview = () => {
       setEndMessage('Request rejection failed. Check error messages')
     }
   }
-
-  console.log('checking is request complete:', requestComplete)
 
   return(
     <>

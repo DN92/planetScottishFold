@@ -1,25 +1,26 @@
 import React, { useState, useEffect } from 'react'
-
+import { Link } from 'react-router-dom'
+import KittenDetailedView from './KittenDetailedView'
 
 const SingleKitten = ({kitten}) => {
 
-  const {name, serialNumber, gender, ears, furColor, eyeColor, mainImageSrcValue} = kitten
+  const {name, gender, ears, mainImageSrcValue} = kitten
 
   const imgInLine= {
     width: "100%",
-    maxWidth: "300px",
-    maxHeight: "200px"
+    maxWidth: "200px",
+    maxHeight: "200px",
+    marginLeft: "2%",
   }
 
   return (
     <div>
-      <img src={mainImageSrcValue} alt="/catPictures/grumpyCatCartoon" style={imgInLine} />
+      <Link to='/kittenDetailed' state={{kitten: kitten}}>
+        <img src={mainImageSrcValue} alt="/catPictures/grumpyCatCartoon" style={imgInLine} />
+      </Link>
       <p>Name: {name}</p>
-      <p>Serial: {serialNumber}</p>
       <p>{gender}</p>
       <p>{ears}</p>
-      <p>Eyes: {eyeColor}</p>
-      <p>Fur: {furColor}</p>
       <hr />
     </div>
   )

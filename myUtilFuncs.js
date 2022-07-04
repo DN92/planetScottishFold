@@ -81,6 +81,4 @@ myUtilFuncs.getWordsFromArrayOfKeys = (arrayOfWords) => {
   return arrayOfWords.map(word => (convertObjKeyIntoWord(word)))
 }
 
-console.log(myUtilFuncs)
-
 module.exports = myUtilFuncs

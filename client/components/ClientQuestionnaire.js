@@ -31,6 +31,9 @@ const ClientQuestionnaire = () => {
       JSON.parse(localStorage.getItem('clientInfo')) ||
       defaultClientInfo
       )
+    return () => {
+      localStorage.removeItem('clientInfo')
+    }
   },[])
 
   const handleChange = (event) => {
@@ -48,8 +51,7 @@ const ClientQuestionnaire = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(clientInfo)
-    // setClientInfo(defaultClientInfo)
+    localStorage.removeItem('clientInfo')
     history.push('confirmClientQuestionnaire')
   }
 

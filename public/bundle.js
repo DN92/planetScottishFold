@@ -2504,7 +2504,7 @@ const AdminRoutes = () => {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/index.js");
 /* harmony import */ var _components_PlaceHolder__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/PlaceHolder */ "./client/components/PlaceHolder.js");
 /* harmony import */ var _components_Home__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/Home */ "./client/components/Home.js");
 /* harmony import */ var _components_About__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/About */ "./client/components/About.js");
@@ -2514,6 +2514,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_ContactRequestForm__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/ContactRequestForm */ "./client/components/ContactRequestForm.js");
 /* harmony import */ var _components_ConfirmClientQuestionnaire__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/ConfirmClientQuestionnaire */ "./client/components/ConfirmClientQuestionnaire.js");
 /* harmony import */ var _components_AuthForm__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./components/AuthForm */ "./client/components/AuthForm.js");
+/* harmony import */ var _components_My404__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./components/My404 */ "./client/components/My404.js");
+/* harmony import */ var _components_KittenDetailedView__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./components/KittenDetailedView */ "./client/components/KittenDetailedView.js");
+
+
 
 
 
@@ -2529,40 +2533,46 @@ __webpack_require__.r(__webpack_exports__);
 const FrontEndRoutes = () => {
   //  later, there should be guest, user, adminViewer, and admin Route views
   const userType = 'guest';
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.Routes, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.Route, {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Routes, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Route, {
     path: "/",
     element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_Home__WEBPACK_IMPORTED_MODULE_2__["default"], null)
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.Route, {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Route, {
     path: "login",
     element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_AuthForm__WEBPACK_IMPORTED_MODULE_9__["default"], null)
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.Route, {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Route, {
     path: "home",
     element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_Home__WEBPACK_IMPORTED_MODULE_2__["default"], null)
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.Route, {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Route, {
     path: "about",
     element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_About__WEBPACK_IMPORTED_MODULE_3__["default"], null)
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.Route, {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Route, {
     path: "availableKittens",
     element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_AvailableKittens__WEBPACK_IMPORTED_MODULE_4__["default"], null)
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.Route, {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Route, {
+    path: "kittenDetailed",
+    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_KittenDetailedView__WEBPACK_IMPORTED_MODULE_11__["default"], null)
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Route, {
     path: "reviews",
     element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_Reviews__WEBPACK_IMPORTED_MODULE_5__["default"], null)
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.Route, {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Route, {
     path: "waitingListForm",
     element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_ClientQuestionnaire__WEBPACK_IMPORTED_MODULE_6__["default"], null)
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.Route, {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Route, {
     path: "confirmClientQuestionnaire",
     element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_ConfirmClientQuestionnaire__WEBPACK_IMPORTED_MODULE_8__["default"], null)
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.Route, {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Route, {
     path: "contact",
     element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_ContactRequestForm__WEBPACK_IMPORTED_MODULE_7__["default"], null)
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.Route, {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Route, {
     path: "instagram",
     element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_PlaceHolder__WEBPACK_IMPORTED_MODULE_1__["default"], null)
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.Route, {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Route, {
     path: "facebook",
     element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_PlaceHolder__WEBPACK_IMPORTED_MODULE_1__["default"], null)
-  }), " */");
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Route, {
+    path: "404",
+    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_My404__WEBPACK_IMPORTED_MODULE_10__["default"], null)
+  }));
 }; // The `withRouter` wrapper makes sure that updates are not blocked
 // when the url changes
 
@@ -2876,6 +2886,9 @@ const ClientQuestionnaire = () => {
   const [clientInfo, setClientInfo] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(defaultClientInfo);
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
     setClientInfo(JSON.parse(localStorage.getItem('clientInfo')) || defaultClientInfo);
+    return () => {
+      localStorage.removeItem('clientInfo');
+    };
   }, []);
 
   const handleChange = event => {
@@ -2895,8 +2908,7 @@ const ClientQuestionnaire = () => {
 
   const handleSubmit = event => {
     event.preventDefault();
-    console.log(clientInfo); // setClientInfo(defaultClientInfo)
-
+    localStorage.removeItem('clientInfo');
     _history__WEBPACK_IMPORTED_MODULE_1__["default"].push('confirmClientQuestionnaire');
   };
 
@@ -3289,6 +3301,32 @@ const homeComponent = () => {
 
 /***/ }),
 
+/***/ "./client/components/KittenDetailedView.js":
+/*!*************************************************!*\
+  !*** ./client/components/KittenDetailedView.js ***!
+  \*************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _history__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../history */ "./client/history.js");
+
+
+
+const KittenDetailedView = () => {
+  console.log(_history__WEBPACK_IMPORTED_MODULE_1__["default"].location.state.kitten);
+  const kitten = _history__WEBPACK_IMPORTED_MODULE_1__["default"].location.state.kitten ?? {
+    name: 'no data'
+  };
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "kitty: ", kitten.name);
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (KittenDetailedView);
+
+/***/ }),
+
 /***/ "./client/components/LoadingFill.js":
 /*!******************************************!*\
   !*** ./client/components/LoadingFill.js ***!
@@ -3319,6 +3357,33 @@ const LoadingFill = ({
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (LoadingFill);
+
+/***/ }),
+
+/***/ "./client/components/My404.js":
+/*!************************************!*\
+  !*** ./client/components/My404.js ***!
+  \************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/index.js");
+
+
+
+const My404 = props => {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "Oops! Something Went Wrong. Sorry about that!"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
+    src: "/catPictures/cat404.png",
+    alt: ""
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
+    to: "/home"
+  }, " Click Here To Go Back To Our Home Page"));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (My404);
 
 /***/ }),
 
@@ -3419,6 +3484,10 @@ const Reviews = () => {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/index.js");
+/* harmony import */ var _KittenDetailedView__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./KittenDetailedView */ "./client/components/KittenDetailedView.js");
+
+
 
 
 const SingleKitten = ({
@@ -3426,23 +3495,26 @@ const SingleKitten = ({
 }) => {
   const {
     name,
-    serialNumber,
     gender,
     ears,
-    furColor,
-    eyeColor,
     mainImageSrcValue
   } = kitten;
   const imgInLine = {
     width: "100%",
-    maxWidth: "300px",
-    maxHeight: "200px"
+    maxWidth: "200px",
+    maxHeight: "200px",
+    marginLeft: "2%"
   };
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
+    to: "/kittenDetailed",
+    state: {
+      kitten: kitten
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
     src: mainImageSrcValue,
     alt: "/catPictures/grumpyCatCartoon",
     style: imgInLine
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Name: ", name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Serial: ", serialNumber), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, gender), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, ears), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Eyes: ", eyeColor), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Fur: ", furColor), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("hr", null));
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Name: ", name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, gender), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, ears), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("hr", null));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (SingleKitten);
@@ -3459,6 +3531,9 @@ const SingleKitten = ({
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _My404__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./My404 */ "./client/components/My404.js");
+
+
  //  Each review has a image, text, and reviewer property
 
 const SingleReview = ({
@@ -3466,7 +3541,10 @@ const SingleReview = ({
 }) => {
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
     src: review.image
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("article", null, review.text), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("article", null, review.reviewer), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", null, "Visit Review Page"));
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("article", null, review.text), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("article", null, review.reviewer), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("a", {
+    target: "_blank",
+    href: review.srcPage
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", null, "Visit Review Page")));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (SingleReview);
@@ -3490,15 +3568,12 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const TopLineMenuBar = () => {
-  const meContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_MeContextPro__WEBPACK_IMPORTED_MODULE_1__["default"]); // console.log(meContext.username)
-  // console.log(meContext.id)
-  // console.log(!meContext.id)
-
+  const meContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_MeContextPro__WEBPACK_IMPORTED_MODULE_1__["default"]);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("nav", null, !meContext.id && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, "Welcome to Planet Scottish Fold!", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, "\xA0\xA0\xA0\xA0"), meContext.username ? meContext.username : ''), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, "\xA0\xA0\xA0\xA0"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
     to: "login"
   }, "Login"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, "\xA0\xA0\xA0\xA0"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
-    to: "signUp"
-  }, "Sign Up")), meContext.id && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, "Hello ", meContext.username, ". Welcome to Planet Scottish Fold!"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, "\xA0\xA0\xA0\xA0"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
+    to: "/waitingListForm"
+  }, "Apply")), meContext.id && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, "Hello ", meContext.username, ". Welcome to Planet Scottish Fold!"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, "\xA0\xA0\xA0\xA0"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
     to: "logout"
   }, "Log Out")));
 };
@@ -3628,7 +3703,6 @@ const RequestReview = () => {
   } = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.useParams)();
   const request = _history__WEBPACK_IMPORTED_MODULE_1__["default"].location.state ? _history__WEBPACK_IMPORTED_MODULE_1__["default"].location.state.request : false; //  we have to remove id so it doesn't interfere with db model creation
 
-  delete request['id'];
   const [error, setError] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null);
   const [endMessage, setEndMessage] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('empty message');
   const [requestComplete, setRequestComplete] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false); //  this is a flag for useEffect to delete anon from db after user is made
@@ -3641,30 +3715,30 @@ const RequestReview = () => {
       try {
         await axios__WEBPACK_IMPORTED_MODULE_3___default()["delete"](`/api/anonVisitors?id=${requestId}`);
       } catch (err) {
+        setError(err.message);
         console.log(err);
       }
     };
 
     if (cleanUpUserCreation) {
-      console.log('firing deletion from use effect');
       deleteAnon(requestId);
     }
 
     setCleanUpUserCreation(false);
-  }, [cleanUpUserCreation]);
+    setError(null);
+  }, [cleanUpUserCreation]); // todo: take the newly created user's info and send email after that system is set up
 
   const handleApprove = async () => {
     try {
-      console.log('requesting user creation with request: ', request);
       const {
         data
-      } = await axios__WEBPACK_IMPORTED_MODULE_3___default().post('/api/users', request);
-      console.log('approval response data: ', data);
+      } = await axios__WEBPACK_IMPORTED_MODULE_3___default().post('/api/users/anonToUser', request);
       setError(null);
       setRequestComplete(true);
       setEndMessage(`User with email: ${data.eMail} has been successfully added to database.`);
       setCleanUpUserCreation(true);
     } catch (err) {
+      console.log(err);
       setError(err.message);
       setRequestComplete(true);
       setEndMessage('Request rejection failed. Check error messages');
@@ -3685,7 +3759,6 @@ const RequestReview = () => {
     }
   };
 
-  console.log('checking is request complete:', requestComplete);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, !request && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_WrongPath__WEBPACK_IMPORTED_MODULE_4__["default"], {
     header: "No Request Loaded"
   }), !requestComplete && request && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "Awaiting Your Approval"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("table", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("thead", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, "Field"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, "Data"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("tbody", null, arrayFromRequestKeys.map((key, index) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("tr", {
@@ -3923,7 +3996,7 @@ module.exports = {
   furColors: ['blue', 'brown', 'tabby', 'black', 'white', 'gold', 'silver', 'colorpoint', 'chinchilla'],
   eyeColors: ['green', 'blue', 'yellow', 'copper', 'odd', 'brown'],
   //  for public file serving
-  defaultCatPictureSrc: '/catPictures/grumpyCatCartoon.jpeg'
+  defaultCatPictureSrc: '/catPictures/cat404.jpeg'
 };
 
 /***/ }),
@@ -4020,7 +4093,6 @@ myUtilFuncs.getWordsFromArrayOfKeys = arrayOfWords => {
   return arrayOfWords.map(word => convertObjKeyIntoWord(word));
 };
 
-console.log(myUtilFuncs);
 module.exports = myUtilFuncs;
 
 /***/ }),
@@ -4031,9 +4103,9 @@ module.exports = myUtilFuncs;
   \*******************************************/
 /***/ (function(module) {
 
-const image1 = 'https://static.wixstatic.com/media/963b22_84caaed0d4aa45618a283770302002a2~mv2.jpg/v1/fill/w_559,h_324,fp_0.48_0.33,q_80,usm_0.66_1.00_0.01,enc_auto/963b22_84caaed0d4aa45618a283770302002a2~mv2.jpg';
-const image2 = 'https://static.wixstatic.com/media/963b22_72f348e541824cfba8aa46f36886d647~mv2.jpg/v1/fill/w_522,h_304,fp_0.50_0.50,lg_1,q_80,enc_auto/963b22_72f348e541824cfba8aa46f36886d647~mv2.jpg';
-const image3 = 'https://static.wixstatic.com/media/963b22_5ba70756564d4d7596e86a6e76a9f5a2~mv2.jpg/v1/fill/w_557,h_324,fp_0.50_0.50,q_80,usm_0.66_1.00_0.01,enc_auto/963b22_5ba70756564d4d7596e86a6e76a9f5a2~mv2.jpg';
+const image1 = '/catPictures/catReview1.webp';
+const image2 = '/catPictures/catReview2.webp';
+const image3 = '/catPictures/catReview3.webp';
 const text1 = "Thank you guys for our adorable baby Casper! Kids and kitten are getting very well together. Our family couldn’t be more happier.";
 const text2 = "We just got our kitten over a week ago. We could not happier with this little peanut. She’s so sweet, funny, playful and affectionate. Highly recommend!";
 const text3 = "Couldn't have asked for a more knowledgeable and caring breeder!! She made herself available to me whenever I had any questions and the process was so seamless, no to mention that she has the best Scottish folds I've ever seen. We are so in love with our new kitten. Very thankful to have found this breeder because I'm a first time cat owner and didn't know where to start but it turned out to be the best decision I've made.";
@@ -4042,10 +4114,11 @@ const name2 = 'Jennifer Cole-Meehan';
 const name3 = 'Rovena Pjetergjoka';
 
 class CustomerReview {
-  constructor(image, text, reviewer) {
+  constructor(image, text, reviewer, srcPage) {
     this.image = image;
     this.text = text;
     this.reviewer = reviewer;
+    this.srcPage = srcPage || '/404';
   }
 
 }

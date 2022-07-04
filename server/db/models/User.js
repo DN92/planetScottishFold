@@ -134,13 +134,6 @@ User.findByToken = async function (token) {
   }
 };
 
-const removeId = async (user) => {
-  if (user.id) {
-    user.id = null
-  }
-}
-
-User.beforeCreate(removeId)
 User.beforeCreate(hashPassword);
 User.beforeUpdate(hashPassword);
 User.beforeBulkCreate((users) => Promise.all(users.map(hashPassword)));

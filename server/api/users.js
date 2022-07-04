@@ -1,5 +1,6 @@
 const router = require('express').Router()
 const { User } = require('../db').models
+const pwGenerator = require('generate-password')
 
 //  api/users
 
@@ -15,6 +16,29 @@ router.get('/', async (req, res, next) => {
 router.post('/', async (req, res, next) => {
   try{
     const newUser = await User.create(req.body)
+    if(!newUser) {
+      throw new Error('newUser creation failed')
+    }
+    res.send(newUser)
+  } catch (err) {
+    next(err)
+  }
+})
+router.post('/anonToUser', async (req, res, next) => {
+  try{
+    const request = req.body
+    //  we have to remove id so it doesn't interfere with db model creation
+    delete request['id']
+    //  and perform some other preparatory operations
+    request.username = request.requestedUsername
+    delete request['requestedUsername']
+    request.type = 'registered'
+    request.password = pwGenerator.generate({
+      numbers: true,
+      exclude: ' -_',
+      strict: true,
+    })
+    const newUser = await User.create(request)
     if(!newUser) {
       throw new Error('newUser creation failed')
     }
