@@ -22,5 +22,5 @@ module.exports = {
     'brown'
   ],
   //  for public file serving
-  defaultCatPictureSrc: '/catPictures/cat404.jpeg'
+  defaultCatPictureSrc: '/catPictures/cat404.png'
 }

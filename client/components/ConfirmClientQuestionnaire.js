@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import history from "../history";
 import axios from "axios"
 import { getUserIP } from '../../myUtilFuncs.js'
@@ -10,12 +10,13 @@ const ConfirmClientQuestionnaire = () => {
 
   const clientInfoFromStorage = JSON.parse(localStorage.getItem('clientInfo'))
   Object.keys(clientInfoFromStorage).forEach(key => {
-    // console.log('running conversion on ' , [key], ' ', clientInfoFromStorage[key])
-    if (clientInfoFromStorage[key] === 'true') {
-      clientInfoFromStorage[key] = true
-    }
-    if (clientInfoFromStorage[key] === 'false') {
-      clientInfoFromStorage[key] = false
+
+      if (clientInfoFromStorage[key] === 'true') {
+        clientInfoFromStorage[key] = true
+      }
+      if (clientInfoFromStorage[key] === 'false') {
+        clientInfoFromStorage[key] = false
+
     }
   })
   const handleGoBack = () => {
@@ -24,16 +25,20 @@ const ConfirmClientQuestionnaire = () => {
 
   const [clientInfo, setClientInfo] = useState(clientInfoFromStorage)
 
+  useEffect(() => {
+  return () => {
+    localStorage.removeItem('clientInfo')
+  }
+  },[])
+
   const handleSubmit = async (event) => {
     event.preventDefault()
-    console.log("BUDGET: ", clientInfo.budget)
     clientInfo.IPaddress = await getUserIP()
     console.log(clientInfo)
     const {data} = await axios.post('/api/anonVisitors', clientInfo)
     if (data)
     localStorage.removeItem('clientInfo')
-
-    history.push('home')
+    history.push('QConfirmation')
   }
 
   return (

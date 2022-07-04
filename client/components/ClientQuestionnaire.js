@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import history from '../history'
 import {furColors, eyeColors} from "../../myModelsConfig"
+import handleFormChange from '../customHandlers/handleFormChange'
 
 const ClientQuestionnaire = () => {
 
@@ -31,17 +32,16 @@ const ClientQuestionnaire = () => {
       JSON.parse(localStorage.getItem('clientInfo')) ||
       defaultClientInfo
       )
-    return () => {
-      localStorage.removeItem('clientInfo')
-    }
   },[])
 
   const handleChange = (event) => {
     event.persist();
-    setClientInfo(prevClientInfo =>{
-      return {...prevClientInfo, [event.target.name]: event.target.value}
-    })
-    localStorage.setItem('clientInfo', JSON.stringify(clientInfo))
+    handleFormChange(event, setClientInfo)
+
+    // setClientInfo(prevClientInfo =>{
+    //   return {...prevClientInfo, [event.target.name]: event.target.value}
+    // })
+    // localStorage.setItem('clientInfo', JSON.stringify(clientInfo))
   }
 
   const handleReset = () => {
@@ -51,7 +51,6 @@ const ClientQuestionnaire = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    localStorage.removeItem('clientInfo')
     history.push('confirmClientQuestionnaire')
   }
 
@@ -88,8 +87,8 @@ const ClientQuestionnaire = () => {
       <h2>What are you looking for in a kitten?</h2>
       <select name="gender" value={clientInfo.gender} required>
         <option value="">Boy or Girl?</option>
-        <option value="boy">Male</option>
-        <option value="girl">Female</option>
+        <option value="boy">Boy</option>
+        <option value="girl">Girl</option>
       </select>
       <br />
       <select name="ears" value={clientInfo.ears} required>
@@ -108,12 +107,11 @@ const ClientQuestionnaire = () => {
         {/* etc */}
       </select>
       <select name="furColor" value={clientInfo.furColor}>
-      <option value="">Fur Color</option>
+        <option value="">Fur Color</option>
         {furColors.map((color, index) => (
           <option key={index} value={color}>{color}</option>
         ))}
         <option value="noPref">No Preference</option>
-        {/* etc */}
       </select>
       <br />
       <input type="text" name="mif" value={clientInfo.mif} placeholder='What feature is most important to you?' />

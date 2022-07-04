@@ -4,6 +4,7 @@ import axios from 'axios'
 import MeContext from '../MeContextPro'
 import handleLogin from '../customHandlers/handleLogin'
 import history from '../history'
+import handleControlledValueFieldToState from '../customHandlers/handleFormChange'
 
 const AuthForm = () => {
 
@@ -14,9 +15,7 @@ const AuthForm = () => {
   })
 
   const handleChange = (event) => {
-    setLoginInfo(prevClientInfo => {
-      return {...prevClientInfo, [event.target.name] : event.target.value}
-    })
+    handleControlledValueFieldToState(event, setLoginInfo)
   }
 
   const handleSubmit = async (event) => {

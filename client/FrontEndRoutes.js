@@ -12,12 +12,11 @@ import AuthFrom from './components/AuthForm';
 import My404 from './components/My404'
 import KittenDetailedView from './components/KittenDetailedView'
 
+import QuestionnaireConfirmation from './components/QuestionnaireConfirmation'
+
 const FrontEndRoutes = () => {
 
   //  later, there should be guest, user, adminViewer, and admin Route views
-
-  const userType = 'guest'
-
   return (
     <Routes>
         <Route path='/' element={<HomeComponent />} />
@@ -33,11 +32,10 @@ const FrontEndRoutes = () => {
         <Route path='instagram' element={<PlaceHolder />} />
         <Route path='facebook' element={<PlaceHolder />} />
         <Route path='404' element={<My404 />} />
+        <Route path='QConfirmation' element={<QuestionnaireConfirmation />} />
         {/* <Route exact path='/' element={} /> */}
       </Routes>
   )
 }
 
-// The `withRouter` wrapper makes sure that updates are not blocked
-// when the url changes
 export default FrontEndRoutes
