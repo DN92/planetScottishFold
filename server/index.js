@@ -28,17 +28,6 @@ if (process.env.NODE_ENV !== 'production') {
   app.use(express.json())
   app.use(express.urlencoded({extended: true}))
 
-  // Shallow values all set to lowerCase
-  // app.use((req, res, next) => {
-  //   // console.log('logging request path: ', req.path)
-  //   Object.keys(req.body).forEach(key => {
-  //     if(typeof req.body[key] == 'string' && key !== 'password') {
-  //       req.body[key] = req.body[key].toLocaleLowerCase()
-  //     }
-  //   })
-  //   next()
-  // })
-
   // compression middleware
   app.use(compression())
 
@@ -61,7 +50,6 @@ if (process.env.NODE_ENV !== 'production') {
   app.use((req, res, next) => {
     if (path.extname(req.path).length) {
       const err = new Error('File Could not be located- custom error')
-      // console.log('request :: ', req)
       err.status = 404
       next(err)
     } else {

@@ -34,7 +34,6 @@ const ConfirmClientQuestionnaire = () => {
   const handleSubmit = async (event) => {
     event.preventDefault()
     clientInfo.IPaddress = await getUserIP()
-    console.log(clientInfo)
     const {data} = await axios.post('/api/anonVisitors', clientInfo)
     if (data)
     localStorage.removeItem('clientInfo')

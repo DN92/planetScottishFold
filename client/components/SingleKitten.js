@@ -1,12 +1,15 @@
-import React, { useState, useEffect } from 'react'
+import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
-import KittenDetailedView from './KittenDetailedView'
+import MeContext from '../MeContextPro'
+import { isPrivileged } from '../../secrets'
 
+//  props from AvailableKitten || AdminAllView
+const SingleKitten = (props) => {
 
-//  props from AvailableKitten
-const SingleKitten = ({kitten}) => {
+  const {type} = useContext(MeContext)
+  const {kitten} = props
 
-  const {name, gender, ears, mainImageSrcValue} = kitten
+  const {name, gender, ears, mainImageSrcValue, eyeColor,father, mother, isAvailable, serial, furColor, id} = kitten
 
   const image = mainImageSrcValue ? mainImageSrcValue : "/catPictures/catError3.gif"
 
@@ -21,13 +24,24 @@ const SingleKitten = ({kitten}) => {
 
   return (
     <div>
-      <Link to='/kittenDetailed' state={{kitten: kitten}}>
-        {/* <img src={mainImageSrcValue} alt="/catPictures/catError3.gif" style={imgInLine} /> */}
-        <img src={image} alt="image failed to load  " style={imgInLine} />
+      <Link
+        to={isPrivileged(type) ? 'editKitten/' : '/kittenDetailed'}
+        state={{kitten: kitten}}>
+        <img src={image} alt="image failed to load  "   style={imgInLine} />
       </Link>
       <p>Name: {name}</p>
       <p>{gender}</p>
       <p>{ears}</p>
+      {isPrivileged(type) &&
+        <>
+          <p>Mother: {mother}</p>
+          <p>Father: {father}</p>
+          <p>Status: {isAvailable}</p>
+          <p>Fur Color: {furColor}</p>
+          <p>Eye Color: {eyeColor}</p>
+          {/* <p>{}</p>  */}
+        </>
+      }
       <hr />
     </div>
   )

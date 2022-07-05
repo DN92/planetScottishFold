@@ -11,4 +11,7 @@ const obj = {
 
 // console.log(result1)
 
-console.log(!!obj.log.extra.three)
+const none = null
+console.log(none)
+console.log(!none)
+console.log(!!none)

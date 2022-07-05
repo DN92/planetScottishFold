@@ -14,7 +14,6 @@ const [loading, setLoading] = useState(true)
 
 
 useEffect(()=>{
-  console.log('reloading the page and error is: ', error)
   const fetchRequests = async () => {
     try{
       const {data} = await axios.get('/api/anonVisitors')

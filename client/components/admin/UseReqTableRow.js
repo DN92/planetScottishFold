@@ -28,8 +28,6 @@ const UseReqTableRow = (props) => {
   const [user, setUser] = useState(props.request ? props.request : defaultUser)
 
   const handleSelectRequest = (event) => {
-    console.log(event.target.nodeName === 'TD')
-    console.log(props.id)
     history.push(`newUserRequests/${props.id}`, {
       request: props.request
     })

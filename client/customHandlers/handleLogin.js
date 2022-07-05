@@ -28,11 +28,12 @@ const handleLogin = async ( meContext, loginInfo) => {
           authorization: token
         }
       })
-      console.log(data)
       if(data) {
+        console.log('from inside handle submit ', data)
         meContext.setUsername(data.username)
         meContext.setType(data.type)
         meContext.setId(data.id)
+        console.log(meContext)
         return success
       }
     } catch (err) {

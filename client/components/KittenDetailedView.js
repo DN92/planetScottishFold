@@ -1,26 +1,29 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useContext} from 'react'
 import history from '../history'
 import ErrorFill from './ErrorFill'
 import { Link } from 'react-router-dom'
 import My404 from './My404'
+import MeContext from '../MeContextPro'
+import { isPrivileged } from '../../secrets'
 
 //  /kittenDetailed
 const KittenDetailedView = () => {
+  const {type} =useContext(MeContext)
+
   let kitten = null
   let error = null
-  let fromCreate = false
 
   if(history.location.state) {
     kitten = history.location.state.kitten
     error = history.location.state.error
-    fromCreate = history.location.state.fromCreate
   }
-  // const kitten = history.location.state ?? {name: 'no data'}
-  // const [error, setError] = useState(history.location.state.error || null)
 
-  console.log(kitten)
-
-  console.log('this one', history.location)
+  const imgInLine= {
+    width: "100%",
+    maxWidth: "200px",
+    maxHeight: "200px",
+    marginLeft: "2%",
+  }
 
   return (
     <>
@@ -28,6 +31,7 @@ const KittenDetailedView = () => {
 
       {!error && kitten &&
         <div>
+          <img src={kitten.mainImageSrcValue} alt="Picture of Kitten" style={imgInLine}/>
           <p> kitty: {kitten.name}</p>
           <p> kitty: {kitten.serialNumber}</p>
           <p> kitty: {kitten.gender}</p>
@@ -38,12 +42,12 @@ const KittenDetailedView = () => {
           <p> kitty: {kitten.father}</p>
         </div>
       }
-      {fromCreate &&
+      {isPrivileged(type) &&
         <Link to='/createKitten'>
           <button>Upload Another Kitten</button>
         </Link>
       }
-      {!error && !fromCreate && !kitten &&
+      {!error && !kitten &&
         <My404 />
       }
     </>

@@ -1,13 +1,10 @@
-import React, { useState, useEffect, useContext }from 'react'
-import SingleKitten from './SingleKitten'
-import LoadingFill from './LoadingFill'
+import React, { useState, useEffect }from 'react'
+import SingleKitten from '../SingleKitten'
+import LoadingFill from '../LoadingFill'
 import axios from 'axios'
-import MeContext from '../MeContextPro'
-import { isPrivileged } from '../../secrets'
 
-//  /available Kittens
-const AvailableKittens = () => {
-  const {type} = useContext(MeContext)
+//  /adminAllView
+const AdminAllView = () => {
 
   const [kittens, setKittens] = useState([])
   const [isLoading, setIsLoading] = useState(true)
@@ -23,10 +20,10 @@ const AvailableKittens = () => {
         setKittens(data)
         setFetchError(null)
       } catch (err) {
-        setFetchError(err.message)
-        console.log(fetchError)
+          setFetchError(err.message)
+          console.log(fetchError)
       } finally {
-        setIsLoading(false)
+          setIsLoading(false)
       }
     }
 
@@ -36,15 +33,16 @@ const AvailableKittens = () => {
 
   }, [])
 
+
+
   return (
     <>
       {isLoading && <LoadingFill />}
       {!isLoading && kittens.map((kitten, index)=>(
-         <SingleKitten key={index} kitten={kitten} />
+         <SingleKitten key={index} kitten={kitten} forAdmin={true} />
       ))}
     </>
-
   )
 }
 
-export default AvailableKittens
+export default AdminAllView

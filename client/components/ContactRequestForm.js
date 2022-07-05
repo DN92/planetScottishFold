@@ -15,7 +15,6 @@ const ContactRequestForm = () => {
 
   const handleChange = (event) => {
     event.persist()
-    // console.log("EVENT: ", event)
     if (event.target.name === "phone") {
       event.target.value = convertToPhoneNumber(event.target.value)
     }
@@ -26,7 +25,6 @@ const ContactRequestForm = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault()
-    console.log(contactRequest)
     resetForm(event)
     setContactRequest(defaultContactRequest)
   }

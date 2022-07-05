@@ -85,6 +85,4 @@ const kittensArray = [
   ),
 ]
 
-// console.log(kittensArray)
-
 module.exports = kittensArray
