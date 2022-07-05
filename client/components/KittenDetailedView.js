@@ -2,28 +2,31 @@ import React, {useState, useEffect} from 'react'
 import history from '../history'
 import ErrorFill from './ErrorFill'
 import { Link } from 'react-router-dom'
+import My404 from './My404'
 
 //  /kittenDetailed
 const KittenDetailedView = () => {
-  console.log(history.location.state.kitten)
+  let kitten = null
+  let error = null
+  let fromCreate = false
 
-  const kitten = history.location.state.kitten ?? {name: 'no data'}
-  const [error, setError] = useState(history.location.state.error || null)
+  if(history.location.state) {
+    kitten = history.location.state.kitten
+    error = history.location.state.error
+    fromCreate = history.location.state.fromCreate
+  }
+  // const kitten = history.location.state ?? {name: 'no data'}
+  // const [error, setError] = useState(history.location.state.error || null)
 
+  console.log(kitten)
 
-  console.log(history.location.state)
-
-  useEffect(() => {
-    return () => {
-      setError(null)
-    }
-  },[])
+  console.log('this one', history.location)
 
   return (
     <>
       {error && <ErrorFill msg={error} />}
 
-      {!error &&
+      {!error && kitten &&
         <div>
           <p> kitty: {kitten.name}</p>
           <p> kitty: {kitten.serialNumber}</p>
@@ -35,10 +38,13 @@ const KittenDetailedView = () => {
           <p> kitty: {kitten.father}</p>
         </div>
       }
-      {history.location.state.fromCreate &&
-      <Link to='/createKitten'>
-        <button>Upload Another Kitten</button>
-      </Link>
+      {fromCreate &&
+        <Link to='/createKitten'>
+          <button>Upload Another Kitten</button>
+        </Link>
+      }
+      {!error && !fromCreate && !kitten &&
+        <My404 />
       }
     </>
   )
