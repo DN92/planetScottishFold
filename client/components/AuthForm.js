@@ -12,19 +12,34 @@ const AuthForm = () => {
     username: '',
     password: '',
   })
+  const [rememberMe, setRememberMe] = useState(false)
+
+  const handleRememberMe = () => {
+    setRememberMe(prevState => {
+      return !prevState
+    })
+  }
 
   const handleChange = (event) => {
     handleControlledValueFieldToState(event, setLoginInfo)
   }
+
   const handleSubmit = async (event) => {
     event.preventDefault()
     const [successStatus, message] = await handleLogin(meContext, loginInfo)
-    // if(successStatus) {
-    //     history.push('/home')
-    // }
+    if(rememberMe) {
+      localStorage.setItem('autoLogin', 'true')
+    } else {
+      localStorage.removeItem('autoLogin')
+    }
+    if(successStatus) {
+      history.push('/home')
+    }
   }
 
   const handleLoginFromStorage = () => {
+    console.log('here')
+    console.log(JSON.parse(localStorage.getItem('psfMe')))
     const {username, type, id} = JSON.parse(localStorage.getItem('psfMe'))
     meContext.setUsername(username)
     meContext.setType(type)
@@ -32,12 +47,20 @@ const AuthForm = () => {
   }
 
   useEffect(() => {
-    console.log('boom')
-    console.log(meContext)
-    const user = {username: meContext.username, type: meContext.type, id: meContext.id}
-    localStorage.setItem('psfMe', JSON.stringify(user))
-    // history.push('/home')
-  }, [meContext])
+    // console.log('localstore: ', localStorage)
+    console.log('here')
+    // console.log(JSON.parse(!!localStorage.getItem('autoLogin')))
+    if(
+      localStorage.hasOwnProperty('autoLogin')
+      && localStorage.hasOwnProperty('psfMe')
+      && (JSON.parse(localStorage.getItem('psfMe')).username)) {
+        console.log('boom')
+        console.log(meContext)
+        const user = {username: meContext.username, type: meContext.type, id: meContext.id}
+        localStorage.setItem('psfMe', JSON.stringify(user))
+        history.push('/home')
+    }
+  }, [])
 
   useEffect(()=>{
     console.log('loaded in')
@@ -65,6 +88,8 @@ const AuthForm = () => {
             value={loginInfo.password}
             onChange={handleChange}
           /> <br />
+          <input onChange={handleRememberMe} type="checkbox" name="rememberMe" checked={rememberMe}/>
+          <label htmlFor="rememberMe">Remember Me</label> <br />
           <button type='submit'>Submit </button>
         </form>
       </div>

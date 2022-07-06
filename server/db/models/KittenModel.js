@@ -29,10 +29,13 @@ const Kitten = db.define("kitten", {
     type: Sequelize.ENUM(...eyeColors,  '')
   },
   mother: {
-    type:Sequelize.STRING
+    type:Sequelize.STRING,
+    defaultValue: ''
   },
   father: {
-    type:Sequelize.STRING
+    type:Sequelize.STRING,
+    defaultValue: ''
+
   },
   isAvailable: {
     type: Sequelize.BOOLEAN,

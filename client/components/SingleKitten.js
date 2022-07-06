@@ -13,8 +13,6 @@ const SingleKitten = (props) => {
 
   const image = mainImageSrcValue ? mainImageSrcValue : "/catPictures/catError3.gif"
 
-  console.log( 'image', image)
-
   const imgInLine= {
     width: "100%",
     maxWidth: "200px",
@@ -25,21 +23,22 @@ const SingleKitten = (props) => {
   return (
     <div>
       <Link
-        to={isPrivileged(type) ? 'editKitten/' : '/kittenDetailed'}
+        to={isPrivileged(type) ? '/editKitten' : '/kittenDetailed'}
         state={{kitten: kitten}}>
-        <img src={image} alt="image failed to load  "   style={imgInLine} />
-      </Link>
-      <p>Name: {name}</p>
-      <p>{gender}</p>
-      <p>{ears}</p>
+        <img src={image} alt="kitten picture " style={imgInLine} />
+      </Link> <br />
+      <span>Name: {name}</span> <br />
+      <span>{gender}</span> <br />
+      <span>{ears}</span> <br />
+      <span>{isAvailable}</span> <br />
       {isPrivileged(type) &&
         <>
-          <p>Mother: {mother}</p>
-          <p>Father: {father}</p>
-          <p>Status: {isAvailable}</p>
-          <p>Fur Color: {furColor}</p>
-          <p>Eye Color: {eyeColor}</p>
-          {/* <p>{}</p>  */}
+          <span>Mother: {mother}</span> <br />
+          <span>Father: {father}</span> <br />
+          <span>Status: {isAvailable}</span> <br />
+          <span>Fur Color: {furColor}</span> <br />
+          <span>Eye Color: {eyeColor}</span> <br />
+          {/* <span>{}</span>  */}
         </>
       }
       <hr />

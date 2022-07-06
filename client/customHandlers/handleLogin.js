@@ -1,4 +1,4 @@
-import axios from 'axios'
+  import axios from 'axios'
 
 
 const handleLogin = async ( meContext, loginInfo) => {
@@ -19,7 +19,6 @@ const handleLogin = async ( meContext, loginInfo) => {
     }
   }
 
-
   const setMe = async (token) => {
     let success = true
     try {
@@ -29,11 +28,14 @@ const handleLogin = async ( meContext, loginInfo) => {
         }
       })
       if(data) {
-        console.log('from inside handle submit ', data)
         meContext.setUsername(data.username)
         meContext.setType(data.type)
         meContext.setId(data.id)
-        console.log(meContext)
+        localStorage.setItem('psfMe', JSON.stringify({
+          username: data.username,
+          type: data.type,
+          id: data.id
+        }))
         return success
       }
     } catch (err) {

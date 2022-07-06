@@ -4,10 +4,15 @@ import { createContext, useState} from 'react'
 const MeContext = createContext()
 
 export const MeProvider = ({children}) => {
-  const [username, setUsername] = useState('BoB!')
-  const [type, setType] = useState('guest')
-  const [id, setId] = useState(null)
 
+  let psfMe = null
+  if (localStorage.hasOwnProperty('autoLogin') && localStorage.hasOwnProperty('psfMe')) {
+    psfMe = JSON.parse(localStorage.getItem('psfMe'))
+  }
+
+  const [username, setUsername] = useState(psfMe ? psfMe.username : null)
+  const [type, setType] = useState(psfMe ? psfMe.type : null)
+  const [id, setId] = useState(psfMe ? psfMe.id : null)
 
   return (
     <MeContext.Provider value={{

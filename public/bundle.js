@@ -2622,9 +2622,15 @@ const MeContext = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.createConte
 const MeProvider = ({
   children
 }) => {
-  const [username, setUsername] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('BoB!');
-  const [type, setType] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('guest');
-  const [id, setId] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null);
+  let psfMe = null;
+
+  if (localStorage.hasOwnProperty('autoLogin') && localStorage.hasOwnProperty('psfMe')) {
+    psfMe = JSON.parse(localStorage.getItem('psfMe'));
+  }
+
+  const [username, setUsername] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(psfMe ? psfMe.username : null);
+  const [type, setType] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(psfMe ? psfMe.type : null);
+  const [id, setId] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(psfMe ? psfMe.id : null);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(MeContext.Provider, {
     value: {
       username,
@@ -2700,7 +2706,7 @@ const AdminBar = () => {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/index.js");
 /* harmony import */ var _FrontEndRoutes__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../FrontEndRoutes */ "./client/FrontEndRoutes.js");
 /* harmony import */ var _AdminRoutes__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../AdminRoutes */ "./client/AdminRoutes.js");
 /* harmony import */ var _Header__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Header */ "./client/components/Header.js");
@@ -2709,6 +2715,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _history__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../history */ "./client/history.js");
 /* harmony import */ var _AdminBar__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./AdminBar */ "./client/components/AdminBar.js");
 /* harmony import */ var _TopLineMenuBar__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./TopLineMenuBar */ "./client/components/TopLineMenuBar.js");
+/* harmony import */ var _MeContextPro__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../MeContextPro */ "./client/MeContextPro.js");
+
 
 
 
@@ -2721,7 +2729,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const App = () => {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.unstable_HistoryRouter, {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.unstable_HistoryRouter, {
     history: _history__WEBPACK_IMPORTED_MODULE_6__["default"]
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_TopLineMenuBar__WEBPACK_IMPORTED_MODULE_8__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Header__WEBPACK_IMPORTED_MODULE_3__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_AdminBar__WEBPACK_IMPORTED_MODULE_7__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_NavBar__WEBPACK_IMPORTED_MODULE_4__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_FrontEndRoutes__WEBPACK_IMPORTED_MODULE_1__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_AdminRoutes__WEBPACK_IMPORTED_MODULE_2__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Footer__WEBPACK_IMPORTED_MODULE_5__["default"], null));
 };
@@ -2758,6 +2766,13 @@ const AuthForm = () => {
     username: '',
     password: ''
   });
+  const [rememberMe, setRememberMe] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
+
+  const handleRememberMe = () => {
+    setRememberMe(prevState => {
+      return !prevState;
+    });
+  };
 
   const handleChange = event => {
     (0,_customHandlers_handleFormChange__WEBPACK_IMPORTED_MODULE_4__["default"])(event, setLoginInfo);
@@ -2765,12 +2780,22 @@ const AuthForm = () => {
 
   const handleSubmit = async event => {
     event.preventDefault();
-    const [successStatus, message] = await (0,_customHandlers_handleLogin__WEBPACK_IMPORTED_MODULE_2__["default"])(meContext, loginInfo); // if(successStatus) {
-    //     history.push('/home')
-    // }
+    const [successStatus, message] = await (0,_customHandlers_handleLogin__WEBPACK_IMPORTED_MODULE_2__["default"])(meContext, loginInfo);
+
+    if (rememberMe) {
+      localStorage.setItem('autoLogin', 'true');
+    } else {
+      localStorage.removeItem('autoLogin');
+    }
+
+    if (successStatus) {
+      _history__WEBPACK_IMPORTED_MODULE_3__["default"].push('/home');
+    }
   };
 
   const handleLoginFromStorage = () => {
+    console.log('here');
+    console.log(JSON.parse(localStorage.getItem('psfMe')));
     const {
       username,
       type,
@@ -2782,15 +2807,21 @@ const AuthForm = () => {
   };
 
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
-    console.log('boom');
-    console.log(meContext);
-    const user = {
-      username: meContext.username,
-      type: meContext.type,
-      id: meContext.id
-    };
-    localStorage.setItem('psfMe', JSON.stringify(user)); // history.push('/home')
-  }, [meContext]);
+    // console.log('localstore: ', localStorage)
+    console.log('here'); // console.log(JSON.parse(!!localStorage.getItem('autoLogin')))
+
+    if (localStorage.hasOwnProperty('autoLogin') && localStorage.hasOwnProperty('psfMe') && JSON.parse(localStorage.getItem('psfMe')).username) {
+      console.log('boom');
+      console.log(meContext);
+      const user = {
+        username: meContext.username,
+        type: meContext.type,
+        id: meContext.id
+      };
+      localStorage.setItem('psfMe', JSON.stringify(user));
+      _history__WEBPACK_IMPORTED_MODULE_3__["default"].push('/home');
+    }
+  }, []);
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
     console.log('loaded in');
 
@@ -2813,7 +2844,14 @@ const AuthForm = () => {
     type: "password",
     value: loginInfo.password,
     onChange: handleChange
-  }), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+  }), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    onChange: handleRememberMe,
+    type: "checkbox",
+    name: "rememberMe",
+    checked: rememberMe
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+    htmlFor: "rememberMe"
+  }, "Remember Me"), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
     type: "submit"
   }, "Submit "))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("hr", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("a", {
     className: "underlineHover",
@@ -2938,15 +2976,14 @@ const ClientQuestionnaire = () => {
   };
   const [clientInfo, setClientInfo] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(defaultClientInfo);
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
-    setClientInfo(JSON.parse(localStorage.getItem('clientInfo')) || defaultClientInfo);
+    setClientInfo(JSON.parse(localStorage.getItem('clientInfo')) ? JSON.parse(localStorage.getItem('clientInfo')) : defaultClientInfo);
   }, []);
 
   const handleChange = event => {
-    event.persist();
-    (0,_customHandlers_handleFormChange__WEBPACK_IMPORTED_MODULE_3__["default"])(event, setClientInfo); // setClientInfo(prevClientInfo =>{
-    //   return {...prevClientInfo, [event.target.name]: event.target.value}
-    // })
-    // localStorage.setItem('clientInfo', JSON.stringify(clientInfo))
+    event.preventDefault();
+    event.stopPropagation(); // console.log(event)
+
+    (0,_customHandlers_handleFormChange__WEBPACK_IMPORTED_MODULE_3__["default"])(event, setClientInfo);
   };
 
   const handleReset = () => {
@@ -2954,9 +2991,15 @@ const ClientQuestionnaire = () => {
     setClientInfo(defaultClientInfo);
   };
 
+  const handleKeyPress = e => {
+    console.log(e.code); // if(e.code ==='Enter') console.log('enter hit')
+
+    e.code === 'Enter' && e.preventDefault();
+  };
+
   const handleSubmit = event => {
     event.preventDefault();
-    _history__WEBPACK_IMPORTED_MODULE_1__["default"].push('confirmClientQuestionnaire');
+    _history__WEBPACK_IMPORTED_MODULE_1__["default"].push('/confirmClientQuestionnaire');
   };
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("form", {
@@ -2965,6 +3008,7 @@ const ClientQuestionnaire = () => {
     onReset: handleReset,
     onSubmit: handleSubmit
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "About You"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    onKeyPress: handleKeyPress,
     type: "text",
     name: "username",
     value: clientInfo.username,
@@ -3101,6 +3145,7 @@ const ClientQuestionnaire = () => {
   }, "Any")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
     type: "reset"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    onClick: handleSubmit,
     type: "submit"
   }));
 };
@@ -3132,15 +3177,18 @@ __webpack_require__.r(__webpack_exports__);
 
 const ConfirmClientQuestionnaire = () => {
   const clientInfoFromStorage = JSON.parse(localStorage.getItem('clientInfo'));
-  Object.keys(clientInfoFromStorage).forEach(key => {
-    if (clientInfoFromStorage[key] === 'true') {
-      clientInfoFromStorage[key] = true;
-    }
 
-    if (clientInfoFromStorage[key] === 'false') {
-      clientInfoFromStorage[key] = false;
-    }
-  });
+  if (clientInfoFromStorage) {
+    Object.keys(clientInfoFromStorage).forEach(key => {
+      if (clientInfoFromStorage[key] === 'true') {
+        clientInfoFromStorage[key] = true;
+      }
+
+      if (clientInfoFromStorage[key] === 'false') {
+        clientInfoFromStorage[key] = false;
+      }
+    });
+  }
 
   const handleGoBack = () => {
     _history__WEBPACK_IMPORTED_MODULE_1__["default"].back();
@@ -3382,10 +3430,13 @@ const KittenDetailedView = () => {
   } = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_MeContextPro__WEBPACK_IMPORTED_MODULE_4__["default"]);
   let kitten = null;
   let error = null;
+  let fromEdit = false;
+  console.log('from Kitten Detailed history ', _history__WEBPACK_IMPORTED_MODULE_1__["default"].location.state);
 
   if (_history__WEBPACK_IMPORTED_MODULE_1__["default"].location.state) {
     kitten = _history__WEBPACK_IMPORTED_MODULE_1__["default"].location.state.kitten;
     error = _history__WEBPACK_IMPORTED_MODULE_1__["default"].location.state.error;
+    fromEdit = _history__WEBPACK_IMPORTED_MODULE_1__["default"].location.state.fromEdit;
   }
 
   const imgInLine = {
@@ -3400,9 +3451,11 @@ const KittenDetailedView = () => {
     src: kitten.mainImageSrcValue,
     alt: "Picture of Kitten",
     style: imgInLine
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, " kitty: ", kitten.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, " kitty: ", kitten.serialNumber), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, " kitty: ", kitten.gender), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, " kitty: ", kitten.ears), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, " kitty: ", kitten.furColor), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, " kitty: ", kitten.eyeColor), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, " kitty: ", kitten.mother), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, " kitty: ", kitten.father)), (0,_secrets__WEBPACK_IMPORTED_MODULE_5__.isPrivileged)(type) && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Link, {
+  }), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, " kitty: ", kitten.name), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, " kitty: ", kitten.serialNumber), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, " kitty: ", kitten.gender), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, " kitty: ", kitten.ears), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, " kitty: ", kitten.furColor), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, " kitty: ", kitten.eyeColor), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, " kitty: ", kitten.mother), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, " kitty: ", kitten.father), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, " kitty: ", kitten.isAvailable), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null)), (0,_secrets__WEBPACK_IMPORTED_MODULE_5__.isPrivileged)(type) && !fromEdit && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Link, {
     to: "/createKitten"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", null, "Upload Another Kitten")), !error && !kitten && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_My404__WEBPACK_IMPORTED_MODULE_3__["default"], null));
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", null, "Upload Another Kitten")), (0,_secrets__WEBPACK_IMPORTED_MODULE_5__.isPrivileged)(type) && fromEdit && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Link, {
+    to: "/availableKittens"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", null, "Back to All Kittens")), !error && !kitten && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_My404__WEBPACK_IMPORTED_MODULE_3__["default"], null));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (KittenDetailedView);
@@ -3459,21 +3512,31 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const Logout = () => {
-  localStorage.removeItem('psfMe');
   const {
     setUsername,
     setType,
     setId
   } = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_MeContextPro__WEBPACK_IMPORTED_MODULE_1__["default"]);
-  setUsername(null);
-  setType('guest');
-  setId(null);
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "You have been Successfully logged out"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
+  const {
+    username,
+    type,
+    id
+  } = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_MeContextPro__WEBPACK_IMPORTED_MODULE_1__["default"]);
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+    localStorage.clear();
+    setUsername(null);
+    setType(null);
+    setId(null);
+  }, []);
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+    console.log('useEffect2');
+  }, []);
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "You have been Successfully logged out"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "username: ", username, " type ", type, " id ", id), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
     src: "/catPictures/outsideCat.jpeg",
     alt: "Image of cat outside"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
     to: "/login"
-  }, "Log In"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
+  }, "Log In"), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
     to: "/home"
   }, " Back To Homepage"));
 };
@@ -3668,7 +3731,6 @@ const SingleKitten = props => {
     id
   } = kitten;
   const image = mainImageSrcValue ? mainImageSrcValue : "/catPictures/catError3.gif";
-  console.log('image', image);
   const imgInLine = {
     width: "100%",
     maxWidth: "200px",
@@ -3676,15 +3738,15 @@ const SingleKitten = props => {
     marginLeft: "2%"
   };
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
-    to: (0,_secrets__WEBPACK_IMPORTED_MODULE_2__.isPrivileged)(type) ? 'editKitten/' : '/kittenDetailed',
+    to: (0,_secrets__WEBPACK_IMPORTED_MODULE_2__.isPrivileged)(type) ? '/editKitten' : '/kittenDetailed',
     state: {
       kitten: kitten
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
     src: image,
-    alt: "image failed to load  ",
+    alt: "kitten picture ",
     style: imgInLine
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Name: ", name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, gender), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, ears), (0,_secrets__WEBPACK_IMPORTED_MODULE_2__.isPrivileged)(type) && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Mother: ", mother), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Father: ", father), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Status: ", isAvailable), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Fur Color: ", furColor), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Eye Color: ", eyeColor)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("hr", null));
+  })), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, "Name: ", name), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, gender), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, ears), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, isAvailable), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), (0,_secrets__WEBPACK_IMPORTED_MODULE_2__.isPrivileged)(type) && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, "Mother: ", mother), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, "Father: ", father), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, "Status: ", isAvailable), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, "Fur Color: ", furColor), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, "Eye Color: ", eyeColor), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("hr", null));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (SingleKitten);
@@ -3996,6 +4058,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _secrets__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../secrets */ "./secrets.js");
 /* harmony import */ var _secrets__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_secrets__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _ErrorFill__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../ErrorFill */ "./client/components/ErrorFill.js");
+/* harmony import */ var _history__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../history */ "./client/history.js");
+/* harmony import */ var _myModelsConfig__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../myModelsConfig */ "./myModelsConfig.js");
+/* harmony import */ var _myModelsConfig__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_myModelsConfig__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _customHandlers_handleFormChange__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../customHandlers/handleFormChange */ "./client/customHandlers/handleFormChange.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_7__);
+
+
+
+
 
 
 
@@ -4008,20 +4080,62 @@ const EditKitten = () => {
   let kittenFromHistory = null;
   let errorFromHistory = null;
 
-  if (history.location.state) {
-    kittenFromHistory = history.location.state.kitten;
-    errorFromHistory = history.location.state.error;
+  if (_history__WEBPACK_IMPORTED_MODULE_4__["default"].location.state) {
+    kittenFromHistory = _history__WEBPACK_IMPORTED_MODULE_4__["default"].location.state.kitten;
+    errorFromHistory = _history__WEBPACK_IMPORTED_MODULE_4__["default"].location.state.error;
   }
 
-  const [kittenToEdit, setKittenToEdit] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(kittenFromState);
+  const [initialState, setInitialState] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(kittenFromHistory ? { ...kittenFromHistory
+  } : null);
+  const [kittenToEdit, setKittenToEdit] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(kittenFromHistory);
   const [error, setError] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(errorFromHistory);
-  console.log('got here');
+  const imgInLine = {
+    width: "100%",
+    maxWidth: "200px",
+    maxHeight: "200px",
+    marginLeft: "2%"
+  };
+
+  const handleChange = event => {
+    // console.log(event.key)
+    if (!kittenToEdit) return;
+    (0,_customHandlers_handleFormChange__WEBPACK_IMPORTED_MODULE_6__["default"])(event, setKittenToEdit);
+  };
+
+  const handleReset = () => {
+    setKittenToEdit(initialState);
+  };
+
+  const handleSubmit = async event => {
+    event.preventDefault();
+
+    try {
+      console.log('kitten before api call: ', kittenToEdit);
+      const {
+        data
+      } = await axios__WEBPACK_IMPORTED_MODULE_7___default().put('/api/kittens', kittenToEdit);
+      console.log(data);
+      setInitialState(data);
+      _history__WEBPACK_IMPORTED_MODULE_4__["default"].push('/kittenDetailed', {
+        kitten: kittenToEdit,
+        fromEdit: true
+      });
+    } catch (err) {
+      console.log(err);
+      setError(err.message);
+    }
+  };
+
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, error && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ErrorFill__WEBPACK_IMPORTED_MODULE_3__["default"], {
     msg: error
   }), !error && !(0,_secrets__WEBPACK_IMPORTED_MODULE_2__.isPrivileged)(type) && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "You don't have the privileges to view this page"), !error && !kittenToEdit && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ErrorFill__WEBPACK_IMPORTED_MODULE_3__["default"], {
     msg: "No Kitten Loaded. Report this issue to System Admin"
-  }), !error && (0,_secrets__WEBPACK_IMPORTED_MODULE_2__.isPrivileged)(type) && kittenToEdit && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("form", {
-    onSubmit: handleSubmit
+  }), !error && (0,_secrets__WEBPACK_IMPORTED_MODULE_2__.isPrivileged)(type) && kittenToEdit && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
+    src: kittenToEdit.mainImageSrcValue,
+    alt: "kitten to edit",
+    style: imgInLine
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("form", {
+    onSubmit: e => handleSubmit(e)
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "EDIT SELECTED KITTEN"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
     type: "text",
     name: "name",
@@ -4062,7 +4176,7 @@ const EditKitten = () => {
     onChange: handleChange
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
     value: ""
-  }, "Fur Color"), furColors.map((color, index) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+  }, "Fur Color"), _myModelsConfig__WEBPACK_IMPORTED_MODULE_5__.furColors.map((color, index) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
     key: index,
     value: color
   }, color)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
@@ -4073,7 +4187,7 @@ const EditKitten = () => {
     onChange: handleChange
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
     value: ""
-  }, "Eye Color"), eyeColors.map((color, index) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+  }, "Eye Color"), _myModelsConfig__WEBPACK_IMPORTED_MODULE_5__.eyeColors.map((color, index) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
     key: index,
     value: color
   }, color))), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
@@ -4088,9 +4202,22 @@ const EditKitten = () => {
     placeholder: "Stud",
     value: kittenToEdit.father,
     onChange: handleChange
-  }), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+  }), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("select", {
+    name: "isAvailable",
+    value: kittenToEdit.isAvailable,
+    onChange: handleChange
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+    value: "isAvailable"
+  }, "isAvailable"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+    value: "reserved"
+  }, "Reserved"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+    value: "sold"
+  }, "Sold")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    onClick: handleReset,
+    type: "button"
+  }, "Reset Changes"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
     type: "submit"
-  }, "Create")));
+  }, "Submit Changes"))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (EditKitten);
@@ -4364,8 +4491,8 @@ const OurStory = () => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-const handleControlledValueFieldToState = (event, setter) => {
-  setter(prevClientInfo => {
+const handleControlledValueFieldToState = (event, setterFunc) => {
+  setterFunc(prevClientInfo => {
     return { ...prevClientInfo,
       [event.target.name]: event.target.value
     };
@@ -4423,11 +4550,14 @@ const handleLogin = async (meContext, loginInfo) => {
       });
 
       if (data) {
-        console.log('from inside handle submit ', data);
         meContext.setUsername(data.username);
         meContext.setType(data.type);
         meContext.setId(data.id);
-        console.log(meContext);
+        localStorage.setItem('psfMe', JSON.stringify({
+          username: data.username,
+          type: data.type,
+          id: data.id
+        }));
         return success;
       }
     } catch (err) {

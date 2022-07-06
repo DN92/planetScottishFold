@@ -9,16 +9,18 @@ import { getUserIP } from '../../myUtilFuncs.js'
 const ConfirmClientQuestionnaire = () => {
 
   const clientInfoFromStorage = JSON.parse(localStorage.getItem('clientInfo'))
-  Object.keys(clientInfoFromStorage).forEach(key => {
+  if(clientInfoFromStorage) {
+    Object.keys(clientInfoFromStorage).forEach(key => {
 
-      if (clientInfoFromStorage[key] === 'true') {
-        clientInfoFromStorage[key] = true
+        if (clientInfoFromStorage[key] === 'true') {
+          clientInfoFromStorage[key] = true
+        }
+        if (clientInfoFromStorage[key] === 'false') {
+          clientInfoFromStorage[key] = false
+
       }
-      if (clientInfoFromStorage[key] === 'false') {
-        clientInfoFromStorage[key] = false
-
-    }
-  })
+    })
+  }
   const handleGoBack = () => {
     history.back()
   }

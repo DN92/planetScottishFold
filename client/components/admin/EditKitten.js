@@ -2,6 +2,10 @@ import React, {useState, useContext} from 'react'
 import MeContext from '../../MeContextPro'
 import { isPrivileged } from '../../../secrets'
 import ErrorFill from '../ErrorFill'
+import history from '../../history'
+import { furColors, eyeColors} from '../../../myModelsConfig'
+import handleControlledValueFieldToState from '../../customHandlers/handleFormChange'
+import axios from 'axios'
 
 const EditKitten = () => {
   const {type} =useContext(MeContext)
@@ -14,10 +18,39 @@ const EditKitten = () => {
     errorFromHistory = history.location.state.error
   }
 
-  const [kittenToEdit, setKittenToEdit] = useState(kittenFromState)
+  const [initialState, setInitialState] = useState(kittenFromHistory ? {... kittenFromHistory} : null)
+  const [kittenToEdit, setKittenToEdit] = useState(kittenFromHistory)
   const [error, setError] = useState(errorFromHistory)
+  const imgInLine= {
+    width: "100%",
+    maxWidth: "200px",
+    maxHeight: "200px",
+    marginLeft: "2%",
+  }
 
-  console.log('got here')
+  const handleChange = (event) => {
+    // console.log(event.key)
+    if(!kittenToEdit) return
+    handleControlledValueFieldToState(event, setKittenToEdit)
+  }
+
+  const handleReset = () => {
+    setKittenToEdit(initialState)
+  }
+
+  const handleSubmit = async (event) => {
+    event.preventDefault()
+    try {
+      console.log('kitten before api call: ' , kittenToEdit)
+      const {data} = await axios.put('/api/kittens', kittenToEdit)
+      console.log(data)
+      setInitialState(data)
+      history.push('/kittenDetailed', {kitten: kittenToEdit, fromEdit: true})
+    } catch (err) {
+      console.log(err)
+      setError(err.message)
+    }
+  }
 
   return (
     <>
@@ -32,7 +65,9 @@ const EditKitten = () => {
       }
 
       {!error && isPrivileged(type) && kittenToEdit &&
-        <form onSubmit={handleSubmit}>
+      <div>
+        <img src={kittenToEdit.mainImageSrcValue} alt="kitten to edit" style={imgInLine} />
+        <form onSubmit={(e) => handleSubmit(e)}>
           <h2>EDIT SELECTED KITTEN</h2>
           <input
             type="text"
@@ -72,9 +107,16 @@ const EditKitten = () => {
           </select> <br />
           <input type="text" name='mother' placeholder='Dam' value={kittenToEdit.mother} onChange={handleChange} /> <br />
           <input type="text" name='father' placeholder='Stud' value={kittenToEdit.father} onChange={handleChange} /> <br />
-          <button type='submit'>Create</button>
+          <select name="isAvailable" value={kittenToEdit.isAvailable} onChange={handleChange}>
+            <option value="isAvailable">isAvailable</option>
+            <option value="reserved">Reserved</option>
+            <option value="sold">Sold</option>
+          </select><br />
+          <button onClick={handleReset} type='button'>Reset Changes</button>
+          <button type='submit'>Submit Changes</button>
 
         </form>
+      </div>
       }
     </>
   )

@@ -26,7 +26,7 @@ router.post('/', async (req, res, next) => {
 
 router.put('/', async(req, res, next) => {
   try {
-    const kitten = await Kitten.findByPk(req.query.id)
+    const kitten = await Kitten.findByPk(req.body.id)
     const update = await kitten.update(req.body)
     if(!update) {
       throw new Error('kitten update failed')

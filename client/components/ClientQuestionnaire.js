@@ -29,19 +29,17 @@ const ClientQuestionnaire = () => {
 
   useEffect(()=>{
     setClientInfo(
-      JSON.parse(localStorage.getItem('clientInfo')) ||
-      defaultClientInfo
+      JSON.parse(localStorage.getItem('clientInfo'))
+      ? JSON.parse(localStorage.getItem('clientInfo'))
+      : defaultClientInfo
       )
   },[])
 
   const handleChange = (event) => {
-    event.persist();
+    event.preventDefault()
+    event.stopPropagation()
+    // console.log(event)
     handleFormChange(event, setClientInfo)
-
-    // setClientInfo(prevClientInfo =>{
-    //   return {...prevClientInfo, [event.target.name]: event.target.value}
-    // })
-    // localStorage.setItem('clientInfo', JSON.stringify(clientInfo))
   }
 
   const handleReset = () => {
@@ -49,9 +47,15 @@ const ClientQuestionnaire = () => {
     setClientInfo(defaultClientInfo)
   }
 
+  const handleKeyPress = (e) => {
+    console.log(e.code)
+    // if(e.code ==='Enter') console.log('enter hit')
+    e.code === 'Enter' && e.preventDefault();
+  }
+
   const handleSubmit = (event) => {
     event.preventDefault();
-    history.push('confirmClientQuestionnaire')
+    history.push('/confirmClientQuestionnaire')
   }
 
   return (
@@ -59,7 +63,7 @@ const ClientQuestionnaire = () => {
     >
       <h2>About You</h2>
       {/* client desired Username */}
-      <input type="text" name='username' value={clientInfo.username} placeholder="Desired username" /> <br />
+      <input onKeyPress={handleKeyPress} type="text" name='username' value={clientInfo.username} placeholder="Desired username" /> <br />
       {/* client first name */}
       <input id="addFirstName" type="text" name="firstName"  value={clientInfo.firstName} placeholder="First Name" required/>
       <br />
@@ -131,7 +135,7 @@ const ClientQuestionnaire = () => {
       </select>
       {/* <input type="reset" /> */}
       <input type="reset" />
-      <input type="submit" />
+      <input onClick={handleSubmit} type="submit" />
     </form>
   )
 }

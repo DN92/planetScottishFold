@@ -12,6 +12,8 @@ const obj = {
 // console.log(result1)
 
 const none = null
-console.log(none)
-console.log(!none)
-console.log(!!none)
+console.log(obj.noKey)
+
+
+// const myTextbox = document.getElementById('my-textbox');
+// myTextbox.addEventListener('keypress', checkName, false);

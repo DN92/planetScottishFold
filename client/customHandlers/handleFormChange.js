@@ -1,5 +1,5 @@
-const handleControlledValueFieldToState = (event, setter) => {
-  setter(prevClientInfo => {
+const handleControlledValueFieldToState = (event, setterFunc) => {
+  setterFunc(prevClientInfo => {
     return {...prevClientInfo, [event.target.name] : event.target.value}
   })
 }
