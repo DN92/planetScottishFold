@@ -11,7 +11,10 @@ const AdminBar = () => {
       <Link to='createKitten'>Add A Kitten</Link>
       &nbsp;&nbsp;
       <Link to='availableKittens'>View/Edit Kittens</Link>
-      {/* <Link> </Link>  */}
+      &nbsp;&nbsp;
+      <Link to='createMother'>Add A Mother </Link>
+      &nbsp;&nbsp;
+      <Link to='editMother'>Edit A Mother </Link>
 
     </nav>
   )

@@ -11,6 +11,8 @@ const NavBar = () => {
       &nbsp;&nbsp;
       <Link to="availableKittens">Available Kittens</Link>
       &nbsp;&nbsp;
+      <Link to="viewMothers">View Our Dams</Link>
+      &nbsp;&nbsp;
       <Link to="reviews">REVIEWS</Link>
       &nbsp;&nbsp;
       <Link to="waitingListForm">Waiting List Form</Link>
@@ -20,6 +22,8 @@ const NavBar = () => {
       <Link to="instagram">IG</Link>
       &nbsp;&nbsp;
       <Link to="facebook">FB</Link>
+      &nbsp;&nbsp;
+
     </nav>
   )
 }

@@ -5,6 +5,8 @@ import RequestReview from './components/admin/RequestReview'
 import CreateKitten from './components/admin/CreateKitten'
 import AdminAllView from './components/admin/AdminAllView'
 import EditKitten from './components/admin/EditKitten'
+import CreateMother from './components/admin/CreateMother'
+// import EditMother from './components/admin/'
 
 
 const AdminRoutes = () => {
@@ -13,9 +15,11 @@ const AdminRoutes = () => {
     <Routes>
       <Route path='newUserRequests' element={<NewUserRequests />} />
       <Route path='newUserRequests/:requestId' element={<RequestReview />}></Route>
-      <Route path='createKitten' element={<CreateKitten />} />
       <Route path='adminAllView' element={<AdminAllView />} />
+      <Route path='createKitten' element={<CreateKitten />} />
       <Route path='editKitten' element={<EditKitten />} />
+      <Route path='createMother' element={<CreateMother />} />
+      {/* <Route path='editMother' element={<EditMother />} /> */}
     </Routes>
   )
 }

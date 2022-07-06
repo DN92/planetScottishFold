@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useContext} from 'react'
+import React, {useContext} from 'react'
 import history from '../history'
 import ErrorFill from './ErrorFill'
 import { Link } from 'react-router-dom'
@@ -36,15 +36,14 @@ const KittenDetailedView = () => {
       {!error && kitten &&
         <div>
           <img src={kitten.mainImageSrcValue} alt="Picture of Kitten" style={imgInLine}/> <br />
-          <span> kitty: {kitten.name}</span> <br />
-          <span> kitty: {kitten.serialNumber}</span> <br />
-          <span> kitty: {kitten.gender}</span> <br />
-          <span> kitty: {kitten.ears}</span> <br />
-          <span> kitty: {kitten.furColor}</span> <br />
-          <span> kitty: {kitten.eyeColor}</span> <br />
-          <span> kitty: {kitten.mother}</span> <br />
-          <span> kitty: {kitten.father}</span> <br />
-          <span> kitty: {kitten.isAvailable}</span> <br />
+          <span> Name: {kitten.name}</span> <br />
+          <span> Gender: {kitten.gender}</span> <br />
+          <span> Ears: {kitten.ears}</span> <br />
+          <span> Fur color: {kitten.furColor}</span> <br />
+          <span> Eye color: {kitten.eyeColor}</span> <br />
+          <span> Dam: {kitten.mother}</span> <br />
+          <span> Sire: {kitten.father}</span> <br />
+          <span> Status: {kitten.isAvailable}</span> <br />
 
         </div>
       }

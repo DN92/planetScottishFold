@@ -2,13 +2,7 @@ const { models } = require("../server/db")
 const { Kitten } = models
 
 const makeKitten = (
-    name,
-    serialNumber,
-    gender,
-    ears,
-    furColor,
-    eyeColor,
-    mainImageSrcValue,
+    name, serialNumber, gender, ears, furColor, eyeColor, mainImageSrcValue,
   ) => ({
     name,
     serialNumber,
@@ -32,8 +26,8 @@ const kittensArray = [
   makeKitten(
   "ktnLcyC02",
   "ktnLcyC02",
-  "boy",
-  "fold",
+  "girl",
+  "straight",
   "brown",
   "brown",
   "/catPictures/ktnLcyC02.jpg"
@@ -50,8 +44,8 @@ const kittensArray = [
   makeKitten(
   "ktnLcyC04",
   "ktnLcyC04",
-  "boy",
-  "fold",
+  "girl",
+  "straight",
   "brown",
   "brown",
   "/catPictures/ktnLcyC04.jpg"
@@ -59,7 +53,7 @@ const kittensArray = [
   makeKitten(
   "ktnLcyC05",
   "ktnLcyC05",
-  "boy",
+  "girl",
   "fold",
   "brown",
   "brown",
@@ -78,7 +72,7 @@ const kittensArray = [
   "ktnLcyC07",
   "ktnLcyC07",
   "boy",
-  "fold",
+  "straight",
   "brown",
   "brown",
   "/catPictures/ktnLcyC07.jpg"

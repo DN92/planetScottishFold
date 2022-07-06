@@ -3,6 +3,7 @@ import SingleKitten from './SingleKitten'
 import LoadingFill from './LoadingFill'
 import axios from 'axios'
 import KittenFilter from './KittensFilter'
+import {getObjMatches} from '../../myUtilFuncs'
 
 //  /available Kittens
 const AvailableKittens = () => {
@@ -20,7 +21,7 @@ const AvailableKittens = () => {
     furColor: 'any',
     availableOnly: false,
   })
-  const filterOptions = ['eyeColor', 'furColor', 'ears', 'gender', 'isAvailable']
+  // const filterOptions = ['eyeColor', 'furColor', 'ears', 'gender', 'isAvailable']
 
   const handleShowSearch = () => {
     setShowSearch(prev => {
@@ -28,18 +29,17 @@ const AvailableKittens = () => {
     })
   }
 
-  const handleFilterBySearch = (event) => {
-    console.log('?????????')
-      const newOrder = []
-      const copies = [...kittens]
-      filterOptions.forEach(filter => {
-        if(filState[filter] !== 'any') {
-          copies.forEach(copy => {
-            ///////////////////////////////////////////////////////////////////
-          })
-        }
-
+  const handleFilterBySearch = () => {
+      const weightedArr = kittens.map(kitten => {
+        return [kitten, getObjMatches(kitten, filterState)]
       })
+      weightedArr.sort((a, b) => {
+        return b[1] - a[1]
+      })
+      weightedArr.map(kitten => kitten[0])
+      // console.log(weightedArr)
+      setKittens(weightedArr.map(kitten => kitten[0]))
+      // console.log(kittens)
   }
 
   useEffect(() => {
@@ -67,8 +67,6 @@ const AvailableKittens = () => {
 
   return (
     <>
-
-
       {isLoading && <LoadingFill />}
       {!isLoading &&
         <>
@@ -77,8 +75,8 @@ const AvailableKittens = () => {
 
           {showSearch && <KittenFilter searcher={handleFilterBySearch} filterState={filterState} setter={setFilterState} />}
 
-          {kittens.map((kitten, index) => (
-            <SingleKitten key={index} kitten={kitten} />
+          {kittens.map((kitten) => (
+            <SingleKitten key={kitten.id} kitten={kitten} />
           ))}
         </>
       }

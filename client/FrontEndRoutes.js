@@ -12,7 +12,7 @@ import AuthFrom from './components/AuthForm';
 import My404 from './components/My404'
 import KittenDetailedView from './components/KittenDetailedView'
 import Logout from './components/Logout'
-
+import ViewMothers from './components/ViewMothers'
 import QuestionnaireConfirmation from './components/QuestionnaireConfirmation'
 
 const FrontEndRoutes = () => {
@@ -33,6 +33,8 @@ const FrontEndRoutes = () => {
         <Route path='instagram' element={<PlaceHolder />} />
         <Route path='facebook' element={<PlaceHolder />} />
         <Route path='404' element={<My404 />} />
+        <Route path='QConfirmation' element={<QuestionnaireConfirmation />} />
+        <Route path='viewMothers' element={<ViewMothers />} />
         <Route path='QConfirmation' element={<QuestionnaireConfirmation />} />
         <Route path='logout' element={<Logout />} />
         {/* <Route exact path='/' element={} /> */}

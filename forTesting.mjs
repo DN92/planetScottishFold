@@ -1,19 +1,32 @@
 import utilFuncs from './myUtilFuncs.js'
 
-const obj = {
+const obj1 = {
   username: 'charles',
+  type: 'dad',
+  id: 3,
+
+}
+
+const obj2 = {
+  username: 'charles',
+  type: 'dad',
+  id: 2,
   log:{}
 }
 
-// const test1 = ['testTestTest', 'copyThisState']
+const keyVals1 = Object.entries(obj1).map(key => (JSON.stringify(key)))
+const keyVals2 = Object.entries(obj2).map(key => (JSON.stringify(key)))
 
-// const result1 = utilFuncs.getWordsFromArrayOfKeys(test1)
+console.log(keyVals1)
+console.log(keyVals2)
 
-// console.log(result1)
+let counter = 0
 
-const none = null
-console.log(obj.noKey)
+keyVals1.forEach(key => {
+  if(keyVals2.includes(key)) {
+    counter++
+  }
+})
 
+console.log(counter)
 
-// const myTextbox = document.getElementById('my-textbox');
-// myTextbox.addEventListener('keypress', checkName, false);

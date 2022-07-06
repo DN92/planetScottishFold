@@ -80,4 +80,17 @@ myUtilFuncs.getWordsFromArrayOfKeys = (arrayOfWords) => {
   return arrayOfWords.map(word => (convertObjKeyIntoWord(word)))
 }
 
+//  compares 2 objects, and return the number of key value pairs that match
+myUtilFuncs.getObjMatches = (obj1, obj2) => {
+  let counter = 0
+  const obj1ToS = Object.entries(obj1).map(key => (JSON.stringify(key)))
+  const obj2ToS = Object.entries(obj2).map(key => (JSON.stringify(key)))
+  obj1ToS.forEach(key => {
+    if(obj2ToS.includes(key)) {
+      counter++
+    }
+  })
+  return counter
+}
+
 module.exports = myUtilFuncs

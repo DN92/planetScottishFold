@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import { Link } from 'react-router-dom'
-import handleFormChange from '../../customHandlers/handleFormChange'
+import handleControlledValueFieldToState from '../../customHandlers/handleFormChange'
 import {furColors, eyeColors} from "../../../myModelsConfig"
 import axios from 'axios'
 import history from '../../history'
@@ -25,7 +25,7 @@ const CreateKitten = () => {
 
 
   const handleChange = (event) => {
-    handleFormChange(event, setKittenToCreate)
+    handleControlledValueFieldToState(event, setKittenToCreate)
   }
 
   // const handleImage = (event) => {
@@ -49,7 +49,6 @@ const CreateKitten = () => {
         setError(err.message)
         console.log(err)
       }
-
     }
 
   return (

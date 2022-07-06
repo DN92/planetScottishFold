@@ -1,7 +1,9 @@
 /* import all css files here, in reverse order of dominion */
 
 
+@import "./ImageBlanket.css";
 @import "./App.css";
+
 
 body {
   margin: 0;
