@@ -2880,10 +2880,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _LoadingFill__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./LoadingFill */ "./client/components/LoadingFill.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _MeContextPro__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../MeContextPro */ "./client/MeContextPro.js");
-/* harmony import */ var _secrets__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../secrets */ "./secrets.js");
-/* harmony import */ var _secrets__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_secrets__WEBPACK_IMPORTED_MODULE_5__);
-
+/* harmony import */ var _KittensFilter__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./KittensFilter */ "./client/components/KittensFilter.js");
 
 
 
@@ -2891,12 +2888,37 @@ __webpack_require__.r(__webpack_exports__);
  //  /available Kittens
 
 const AvailableKittens = () => {
-  const {
-    type
-  } = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_MeContextPro__WEBPACK_IMPORTED_MODULE_4__["default"]);
   const [kittens, setKittens] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]);
   const [isLoading, setIsLoading] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(true);
   const [fetchError, setFetchError] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null);
+  const [showSearch, setShowSearch] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
+  const [filterState, setFilterState] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
+    gender: 'any',
+    ears: 'any',
+    eyeColor: 'any',
+    furColor: 'any',
+    availableOnly: false
+  });
+  const filterOptions = ['eyeColor', 'furColor', 'ears', 'gender', 'isAvailable'];
+
+  const handleShowSearch = () => {
+    setShowSearch(prev => {
+      return !prev;
+    });
+  };
+
+  const handleFilterBySearch = event => {
+    console.log('?????????');
+    const newOrder = [];
+    const copies = [...kittens];
+    filterOptions.forEach(filter => {
+      if (filState[filter] !== 'any') {
+        copies.forEach(copy => {///////////////////////////////////////////////////////////////////
+        });
+      }
+    });
+  };
+
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
     const fetchKittens = async () => {
       try {
@@ -2918,14 +2940,24 @@ const AvailableKittens = () => {
       }
     };
 
-    setTimeout(async () => {
-      await fetchKittens();
-    }, 2000);
+    fetchKittens(); // setTimeout(async() => {
+    // }, (2000));
   }, []);
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, isLoading && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_LoadingFill__WEBPACK_IMPORTED_MODULE_2__["default"], null), !isLoading && kittens.map((kitten, index) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_SingleKitten__WEBPACK_IMPORTED_MODULE_1__["default"], {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, isLoading && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_LoadingFill__WEBPACK_IMPORTED_MODULE_2__["default"], null), !isLoading && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    type: "checkbox",
+    name: "showSearch",
+    onChange: handleShowSearch,
+    checked: showSearch
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+    htmlFor: "Advanced Search"
+  }, "Advanced Search"), showSearch && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_KittensFilter__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    searcher: handleFilterBySearch,
+    filterState: filterState,
+    setter: setFilterState
+  }), kittens.map((kitten, index) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_SingleKitten__WEBPACK_IMPORTED_MODULE_1__["default"], {
     key: index,
     kitten: kitten
-  })));
+  }))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (AvailableKittens);
@@ -3459,6 +3491,107 @@ const KittenDetailedView = () => {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (KittenDetailedView);
+
+/***/ }),
+
+/***/ "./client/components/KittensFilter.js":
+/*!********************************************!*\
+  !*** ./client/components/KittensFilter.js ***!
+  \********************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _customHandlers_handleFormChange__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../customHandlers/handleFormChange */ "./client/customHandlers/handleFormChange.js");
+/* harmony import */ var _myModelsConfig__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../myModelsConfig */ "./myModelsConfig.js");
+/* harmony import */ var _myModelsConfig__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_myModelsConfig__WEBPACK_IMPORTED_MODULE_2__);
+
+
+
+
+const KittenFilter = props => {
+  const {
+    gender,
+    ears,
+    furColor,
+    eyeColor,
+    availableOnly
+  } = props.filterState; // const handleFilterBySearch = props.searcher
+
+  const handleChange = event => {
+    (0,_customHandlers_handleFormChange__WEBPACK_IMPORTED_MODULE_1__["default"])(event, props.setter);
+    console.log(event.target.value);
+  };
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("form", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h4", null, "Advanced Search"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+    htmlFor: "gender"
+  }, "gender"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("select", {
+    name: "gender",
+    value: gender,
+    onChange: handleChange
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+    value: "any"
+  }, "No Pref"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+    value: "boy"
+  }, "Boy"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+    value: "girl"
+  }, "Girl")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+    htmlFor: "ears"
+  }, "Ears: Fold or Straight"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("select", {
+    name: "ears",
+    value: ears,
+    onChange: handleChange
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+    value: "any"
+  }, "No Pref"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+    value: "fold"
+  }, "Fold"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+    value: "straight"
+  }, "Straight")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+    htmlFor: "fuColor"
+  }, "Fur Color"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("select", {
+    name: "furColor",
+    value: furColor,
+    onChange: handleChange
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+    value: "any"
+  }, "No Pref"), _myModelsConfig__WEBPACK_IMPORTED_MODULE_2__.furColors.map((color, index) => {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+      key: index,
+      value: color
+    }, color);
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+    htmlFor: "eyeColor"
+  }, "Eye Color"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("select", {
+    name: "eyeColor",
+    value: eyeColor,
+    onChange: handleChange
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+    value: "any"
+  }, "No Pref"), _myModelsConfig__WEBPACK_IMPORTED_MODULE_2__.eyeColors.map((color, index) => {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+      key: index,
+      value: color
+    }, color);
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+    htmlFor: "availableOnly"
+  }, "Availability"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("select", {
+    name: "availableOnly",
+    value: availableOnly,
+    onChange: handleChange
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+    value: false
+  }, "Show All"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+    value: true
+  }, "Available Only")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    type: "button",
+    onClick: props.searcher
+  }, "Search"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("hr", null));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (KittenFilter);
 
 /***/ }),
 
