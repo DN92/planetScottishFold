@@ -4,6 +4,8 @@ const { db, models } = require ('../server/db')
 const dummyKittens = require('./kittensDummy')
 const dummyUsers = require('./userDummy')
 const dummyAnon = require('./anonDummy')
+const dummyStuds = require('./studsDummy')
+const dummyDams = require('./damsDummy')
 
 
 const { Kitten, Mother, Father, User, AnonVisitor } = models
@@ -24,6 +26,12 @@ async function seed() {
   }))
   await Promise.all(dummyAnon.map(anon => {
     return AnonVisitor.create(anon)
+  }))
+  await Promise.all(dummyStuds.map(stud => {
+    return AnonVisitor.create(stud)
+  }))
+  await Promise.all(dummyDams.map(dam => {
+    return AnonVisitor.create(dam)
   }))
 }
 

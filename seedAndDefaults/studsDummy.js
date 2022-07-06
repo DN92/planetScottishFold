@@ -1,7 +1,6 @@
 const { models } = require("../server/db")
-const { Stud } = models
 
-const makeMother = (
+const makeStud = (
   name, serialNumber, ears, furColor, eyeColor, age, dob, image
 ) => ({
   name,
@@ -15,10 +14,9 @@ const makeMother = (
 })
 
 const studsArray = [
-  makeMother(),
-  makeMother(),
-  makeMother(),
-
+  makeStud(),
+  makeStud(),
+  makeStud(),
 ]
 
 module.exports = studsArray

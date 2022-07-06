@@ -21,6 +21,8 @@ const CreateKitten = () => {
   }
 
   const [kittenToCreate, setKittenToCreate] = useState(defaultState)
+  const [dams, setDams] = useState([])
+  const [studs, setStuds] = useState([])
   const [error, setError] = useState(null)
 
 
@@ -34,22 +36,42 @@ const CreateKitten = () => {
     //   return
     // }
 
-    const handleSubmit = async (event) => {
-      try {
-        event.preventDefault()
-        console.log(kittenToCreate)
-        const {data: kitten} = await axios.post('/api/kittens', kittenToCreate)
-        // const kitten = data
-        console.log('kitten: ', kitten)
-        history.push('/kittenDetailed', {kitten: kitten, error: error, fromCreate: true})
+  const handleSubmit = async (event) => {
+    try {
+      event.preventDefault()
+      console.log(kittenToCreate)
+      const {data: kitten} = await axios.post('/api/kittens', kittenToCreate)
+      // const kitten = data
+      console.log('kitten: ', kitten)
+      history.push('/kittenDetailed', {kitten: kitten, error: error, fromCreate: true})
 
-        setError(null)
+      setError(null)
+
+    } catch (err) {
+      setError(err.message)
+      console.log(err)
+    }
+  }
+
+  useEffect(() => {
+    const fetchDamsAndStuds = async () => {
+      try {
+        const mothers = await axios.get('/api/mothers')
+        const fathers = await axios.get('/api/studs')
+        dams = (mothers.data).map(mother => (mother.name))
+        studs = (fathers.data).map(father => (father.name))
+        return [dams, studs]
 
       } catch (err) {
-        setError(err.message)
         console.log(err)
+        setError(err)
       }
     }
+
+    const {dams, studs} = fetchDamsAndStuds
+    setDams(dams)
+    setStuds(studs)
+  }, [])
 
   return (
     <div>
@@ -80,6 +102,18 @@ const CreateKitten = () => {
         <option value="">Eye Color</option>
           {eyeColors.map((color, index) => (
             <option key={index} value={color}>{color}</option>
+            ))}
+        </select> <br />
+        <select name="mother" value={kittenToCreate.mother} onChange={handleChange}>
+        <option value="">Select Dam</option>
+          {dams.map((name, index) => (
+            <option key={index} value={name}>{name}</option>
+            ))}
+        </select> <br />
+        <select name="father" value={kittenToCreate.father} onChange={handleChange}>
+        <option value="">Select Stud</option>
+          {dams.map((name, index) => (
+            <option key={index} value={name}>{name}</option>
             ))}
         </select> <br />
         <input type="text" name='mother' placeholder='Dam' value={kittenToCreate.mother} onChange={handleChange} /> <br />
