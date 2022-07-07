@@ -7,17 +7,21 @@ import { isPrivileged } from '../../secrets'
 
 const MotherSingleView = (props) => {
 
-  const {type} = useContext(MeContext)
-  const {mother} = props
+  if(!props.parent) {
+    props.parent = 'mother'
+  }
 
-  const {name, serialNumber, ears, furColor, eyeColor, dob, status, mainImageSrcValue} = mother
+  const {type} = useContext(MeContext)
+  const {cat} = props || {}
+
+  const {name, serialNumber, ears, furColor, eyeColor, dob, status, mainImageSrcValue} = cat
 
   return (
     <div>
       <Link
-        to={isPrivileged(type) ? '/editMother' : '/MotherDetailedView'}
-        state={{mother: mother}} >
-        <img src={mainImageSrcValue} alt="mother picture " className="image" />
+        to={isPrivileged(type) ? `/edit${props.parent}` : `/${props.parent}DetailedView`}
+        state={{cat: cat, parent: props.parent}} >
+        <img src={mainImageSrcValue} alt={`${props.parent}'s picture `} className="image" />
       </Link> <br />
       <span>{name}</span> <br />
       <span>{ears}</span> <br />

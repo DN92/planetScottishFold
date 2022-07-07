@@ -1,26 +1,30 @@
-import React, {useState, useEffect, useContext} from 'react'
+import React, {useState, useContext} from 'react'
 import MeContext from '../../MeContextPro'
 import { isPrivileged } from '../../../secrets'
 import ErrorFill from '../ErrorFill'
 import history from '../../history'
-import { furColors, eyeColors} from '../../../myModelsConfig'
+import { eyeColors } from '../../../myModelsConfig'
 import handleControlledValueFieldToState from '../../customHandlers/handleFormChange'
 import axios from 'axios'
 
 const EditMother = () => {
 
+  const MOTHERorFATHER = history.location.state
+  ? history.location.state.parent
+  : 'mother'
+
   const {type} =useContext(MeContext)
 
-  let motherFromHistory = null
+  let catFromHistory = null
   let errorFromHistory = ''
 
   if(history.location.state) {
-    motherFromHistory = history.location.state.mother
+    catFromHistory = history.location.state.cat
     errorFromHistory = history.location.state.error
   }
 
-  const [initialState, setInitialState] = useState(motherFromHistory ? {... motherFromHistory} : null)
-  const [motherToEdit, setMotherToEdit] = useState(motherFromHistory)
+  const [initialState, setInitialState] = useState(catFromHistory ? {... catFromHistory} : null)
+  const [catToEdit, setCatToEdit] = useState(catFromHistory)
   const [error, setError] = useState(errorFromHistory )
   const imgInLine= {
     width: "100%",
@@ -31,11 +35,11 @@ const EditMother = () => {
 
   const handleChange = (event) => {
     // if(!motherToEdit) return
-    handleControlledValueFieldToState(event, setMotherToEdit)
+    handleControlledValueFieldToState(event, setCatToEdit)
   }
 
   const handleReset = () => {
-    setMotherToEdit(initialState)
+    setCatToEdit(initialState)
   }
 
   const handleKeyPress = (event) => {
@@ -45,11 +49,11 @@ const EditMother = () => {
   const handleSubmit = async (event) => {
     event.preventDefault()
     try {
-      console.log('mother before api call: ' , motherToEdit)
-      const {data} = await axios.put('/api/mothers', motherToEdit)
+      console.log('cat before api call: ' , catToEdit)
+      const {data} = await axios.put(`/api/${MOTHERorFATHER}s`, catToEdit)
       console.log(data)
       setInitialState(data)
-      history.push('/motherDetailed', {mother: motherToEdit, fromEdit: true})
+      history.push(`/${MOTHERorFATHER}Detailed`, {cat: catToEdit, fromEdit: true, parent: MOTHERorFATHER})
     } catch (err) {
       console.log(err)
       setError(err.message)
@@ -64,39 +68,34 @@ const EditMother = () => {
         <h2>You don't have the privileges to view this page</h2>
       }
 
-      {!error && !motherToEdit &&
-        <ErrorFill msg="No Dam Loaded. Report this issue to System Admin" />
+      {!error && !catToEdit &&
+        <ErrorFill msg={`No ${MOTHERorFATHER} Loaded. Report this issue to System Admin`} />
       }
 
-      {!error && isPrivileged(type) && motherToEdit &&
+      {!error && isPrivileged(type) && catToEdit &&
       <div>
-        <img src={motherToEdit.mainImageSrcValue} alt="mother to edit" style={imgInLine} />
+        <img src={catToEdit.mainImageSrcValue} alt="cat to edit" style={imgInLine} />
         <form onKeyDown={handleKeyPress} onSubmit={handleSubmit}>
-          <h2>EDIT SELECTED DAM</h2>
+          <h2>EDIT SELECTED {`${MOTHERorFATHER}`}</h2>
           <input
             type="text"
             name='name'
             placeholder='Name'
-            value={motherToEdit.name}
+            value={catToEdit.name}
             onChange={handleChange} /> <br />
           <input
             type="text"
             name='serialNumber'
             placeholder='serial number'
-            value={motherToEdit.serialNumber}
+            value={catToEdit.serialNumber}
             onChange={handleChange} /> <br />
           <input
             type="text"
             name='dob'
             placeholder='Date of Birth'
-            value={motherToEdit.dob}
+            value={catToEdit.dob}
             onChange={handleChange} /> <br />
-          <select name="gender" value={motherToEdit.gender} onChange={handleChange}>
-            <option value="">Boy or Girl?</option>
-            <option value="boy">Boy</option>
-            <option value="girl">Girl</option>
-          </select> <br />
-          <select name="ears" value={motherToEdit.ears} onChange={handleChange}>
+          <select name="ears" value={catToEdit.ears} onChange={handleChange}>
             <option value="">Fold or Straight</option>
             <option value="fold">Fold</option>
             <option value="straight">Straight</option>
@@ -106,9 +105,9 @@ const EditMother = () => {
             type="text"
             name='furColor'
             placeholder='Fur Color'
-            value={motherToEdit.furColor}
+            value={catToEdit.furColor}
             onChange={handleChange} /> <br />
-          <select name="eyeColor" value={motherToEdit.eyeColor} onChange={handleChange}>
+          <select name="eyeColor" value={catToEdit.eyeColor} onChange={handleChange}>
           <option value="">Eye Color</option>
             {eyeColors.map((color, index) => (
               <option key={index} value={color}>{color}</option>

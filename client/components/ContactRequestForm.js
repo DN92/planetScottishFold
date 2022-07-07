@@ -14,7 +14,6 @@ const ContactRequestForm = () => {
   const [contactRequest, setContactRequest] = useState(defaultContactRequest)
 
   const handleChange = (event) => {
-    event.persist()
     if (event.target.name === "phone") {
       event.target.value = convertToPhoneNumber(event.target.value)
     }

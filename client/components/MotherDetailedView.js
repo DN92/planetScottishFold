@@ -6,21 +6,17 @@ import My404 from './My404'
 import MeContext from '../MeContextPro'
 import { isPrivileged } from '../../secrets'
 
-//  /kittenDetailed
-const MotherDetailedView = () => {
+//  /motherDetailed
+  const MotherDetailedView = () => {
   const {type} =useContext(MeContext)
 
-  let mother = null
-  let error = null
-  let fromEdit =false
+  const MOTHERorFATHER = history.location.state
+  ? history.location.state.parent
+  : 'mother'
 
-  console.log('from Mother Detailed history ',history.location.state)
-
-  if(history.location.state) {
-    mother = history.location.state.mother
-    error = history.location.state.error
-    fromEdit = history.location.state.fromEdit
-  }
+  const cat = history.location.state? history.location.state.cat : null
+  const error = history.location.state? history.location.state.error : null
+  const fromEdit = history.location.state? history.location.state.fromEdit : null
 
   const imgInLine= {
     width: "100%",
@@ -33,32 +29,32 @@ const MotherDetailedView = () => {
     <>
       {error && <ErrorFill msg={error} />}
 
-      {!error && mother &&
+      {!error && cat &&
         <div>
           <div>
-            <img src={mother.mainImageSrcValue} alt="Picture of Dam" style={imgInLine}/> <br />
-            <span> name: {mother.name}</span> <br />
-            <span> serial number: {mother.serialNumber}</span> <br />
-            <span> ears: {mother.ears}</span> <br />
-            <span> furColor: {mother.furColor}</span> <br />
-            <span> eyeColor: {mother.eyeColor}</span> <br />
-            <span> Date Of Birth: {mother.dob}</span> <br />
+            <img src={cat.mainImageSrcValue} alt={`Picture of ${MOTHERorFATHER}`} style={imgInLine}/> <br />
+            <span> name: {cat.name}</span> <br />
+            <span> serial number: {cat.serialNumber}</span> <br />
+            <span> ears: {cat.ears}</span> <br />
+            <span> furColor: {cat.furColor}</span> <br />
+            <span> eyeColor: {cat.eyeColor}</span> <br />
+            <span> Date Of Birth: {cat.dob}</span> <br />
 
           </div>
           {isPrivileged(type) && !fromEdit &&
-            <Link to='/createMother'>
-            <button>Upload Another Mother</button>
+            <Link to={`/create${MOTHERorFATHER}`} state={{parent: MOTHERorFATHER}}>
+            <button>Upload Another {`${MOTHERorFATHER}`}</button>
             </Link>
           }
           {isPrivileged(type) && fromEdit &&
-            <Link to='/viewMothers'>
-            <button>Back to Dams</button>
+            <Link to={`/view${MOTHERorFATHER}s`} state={{parent: MOTHERorFATHER}}>
+            <button>Back to {`${MOTHERorFATHER}`}</button>
             </Link>
           }
         </div>
       }
 
-      {!error && !mother &&
+      {!error && !cat &&
         <My404 />
       }
     </>

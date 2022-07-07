@@ -19,7 +19,9 @@ const AdminRoutes = () => {
       <Route path='createKitten' element={<CreateKitten />} />
       <Route path='editKitten' element={<EditKitten />} />
       <Route path='createMother' element={<CreateMother />} />
+      <Route path='createFather' element={<CreateMother />} />
       <Route path='editMother' element={<EditMother />} />
+      <Route path='editFather' element={<EditMother />} />
     </Routes>
   )
 }

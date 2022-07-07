@@ -15,7 +15,6 @@ import Logout from './components/Logout'
 import ViewMothers from './components/ViewMothers'
 import MotherDetailedView from './components/MotherDetailedView';
 import QuestionnaireConfirmation from './components/QuestionnaireConfirmation'
-import ViewMotherCopy from './components/ViewMothersCopy'
 
 const FrontEndRoutes = () => {
 
@@ -37,13 +36,10 @@ const FrontEndRoutes = () => {
         <Route path='/404' element={<My404 />} />
         <Route path='/QConfirmation' element={<QuestionnaireConfirmation />} />
         <Route path='viewMothers' element={<ViewMothers />} />
+        <Route path='viewFathers' element={<ViewMothers />} />
         <Route path='motherDetailed' element={<MotherDetailedView />} />
-
-        <Route path='QConfirmation' element={<QuestionnaireConfirmation />} />
+        <Route path='fatherDetailed' element={<MotherDetailedView />} />
         <Route path='logout' element={<Logout />} />
-
-
-        <Route path='testing' element={<ViewMotherCopy />} />
 
       </Routes>
   )

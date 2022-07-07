@@ -11,7 +11,9 @@ const NavBar = () => {
       &nbsp;&nbsp;
       <Link to="/availableKittens">Available Kittens</Link>
       &nbsp;&nbsp;
-      <Link to="/viewMothers">View Our Dams</Link>
+      <Link to="/viewMothers" state={{parent: 'mother'}}>View Our Dams</Link>
+      &nbsp;&nbsp;
+      <Link to="/viewFathers" state={{parent: 'father'}}>View Our Sires</Link>
       &nbsp;&nbsp;
       <Link to="/reviews">REVIEWS</Link>
       &nbsp;&nbsp;
@@ -22,10 +24,6 @@ const NavBar = () => {
       <Link to="/instagram">IG</Link>
       &nbsp;&nbsp;
       <Link to="/facebook">FB</Link>
-      &nbsp;&nbsp;
-
-
-      <Link to="/testing" state={'mothers'}>TESTING ROUTE</Link>
       &nbsp;&nbsp;
     </nav>
   )

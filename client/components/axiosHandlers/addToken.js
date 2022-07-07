@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const tokenizedRequest = async (type, path, body, setError) => {
+export const tokenizedRequest = async (type, path, body, setError) => {
   const token = window.localStorage.getItem("psfToken");
   const header = {
     headers: {
@@ -12,20 +12,20 @@ const tokenizedRequest = async (type, path, body, setError) => {
     throw new Error('No Token To attach to request')
   }
   try {
-    if (request === "get") {
-      const { data } = await axios.get(url, header);
+    if (type === "get") {
+      const { data } = await axios.get(path, header);
       return data;
     }
-    if (request === "post") {
-      const { data } = await axios.post(url, body, header);
+    if (type === "post") {
+      const { data } = await axios.post(path, body, header);
       return data;
     }
-    if (request === "delete") {
-      const res = await axios.delete(url, header);
+    if (type === "delete") {
+      const res = await axios.delete(path, header);
       return res;
     }
-    if (request === "put") {
-      const { data } = await axios.put(url, body, header);
+    if (type === "put") {
+      const { data } = await axios.put(path, body, header);
       return data;
     }
   } catch (err) {
@@ -36,3 +36,17 @@ const tokenizedRequest = async (type, path, body, setError) => {
     return null
   }
 }
+
+export const putTokenOnHeader = () => {
+  const token = window.localStorage.getItem("psfToken");
+  if(token) {
+    return {
+      headers: {
+      authorization: token,
+      },
+    }
+  } else {
+    return {}
+  }
+}
+

@@ -1,6 +1,5 @@
 import React, {createContext} from 'react';
 import ReactDOM from 'react-dom/client';
-import axios from 'axios'
 // import '../public/App.css';
 import App from './components/App'
 import {MeProvider} from './MeContextPro'

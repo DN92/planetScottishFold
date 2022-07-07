@@ -12,9 +12,14 @@ const AdminBar = () => {
       &nbsp;&nbsp;
       <Link to='availableKittens'>View/Edit Kittens</Link>
       &nbsp;&nbsp;
-      <Link to='createMother'>Add A Mother </Link>
+      <Link to='createMother' state={{parent:'mother'}}>Add A Dam </Link>
       &nbsp;&nbsp;
-      <Link to='viewMothers'>View/Edit A Mother </Link>
+      <Link to='createFather' state={{parent:'father'}}>Add A Sire </Link>
+      &nbsp;&nbsp;
+      <Link to='viewMothers' state={{parent:'mother'}}>View/Edit A Dam </Link>
+      &nbsp;&nbsp;
+      <Link to='viewFathers' state={{parent:'father'}}>View/Edit A Sire </Link>
+      &nbsp;&nbsp;
 
     </nav>
   )
