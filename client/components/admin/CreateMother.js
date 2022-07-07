@@ -46,8 +46,6 @@ const CreateMother = () => {
     }
   }
 
-
-
   return (
     <form onKeyDown={handleKeyPress} onSubmit={handleSubmit}>
       <h2>Mother Creation Form</h2>

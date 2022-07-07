@@ -15,6 +15,7 @@ import Logout from './components/Logout'
 import ViewMothers from './components/ViewMothers'
 import MotherDetailedView from './components/MotherDetailedView';
 import QuestionnaireConfirmation from './components/QuestionnaireConfirmation'
+import ViewMotherCopy from './components/ViewMothersCopy'
 
 const FrontEndRoutes = () => {
 
@@ -40,7 +41,10 @@ const FrontEndRoutes = () => {
 
         <Route path='QConfirmation' element={<QuestionnaireConfirmation />} />
         <Route path='logout' element={<Logout />} />
-        {/* <Route exact path='/' element={} /> */}
+
+
+        <Route path='testing' element={<ViewMotherCopy />} />
+
       </Routes>
   )
 }
