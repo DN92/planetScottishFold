@@ -16,8 +16,8 @@ const makeAnonVisitor = (
   iG,
   gender,
   ears,
-  eyeColor,
   furColor,
+  eyeColor,
   mif,
 ) => ({
   requestedUsername,
@@ -55,8 +55,8 @@ const anonVisitorsArray = [
     'myIG',
     'boy',
     'fold',
-    'blue',
-    'gold',
+    'Blue',
+    'Yellow',
     'the most important thing i look for in a cat is ears',
   ),
   makeAnonVisitor(
@@ -74,8 +74,8 @@ const anonVisitorsArray = [
     'myIG',
     'boy',
     'fold',
-    'blue',
-    'gold',
+    'White',
+    'Green',
     'the most important thing i look for in a cat is ears',
   ),
   makeAnonVisitor(
@@ -93,8 +93,8 @@ const anonVisitorsArray = [
     'myIG',
     'boy',
     'fold',
-    'blue',
-    'gold',
+    'Blue',
+    'Copper',
     'the most important thing i look for in a cat is ears',
 )]
 

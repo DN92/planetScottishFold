@@ -1,12 +1,16 @@
-import React from 'react'
+import React, {useState} from 'react'
+import axios from 'axios'
 import defaultCatPictureSrc from '../../../myModelsConfig'
 import handleControlledValueFieldToState from '../../customHandlers/handleFormChange'
+import {eyeColors} from "../../../myModelsConfig"
+import history from "../../history"
 
 const CreateMother = () => {
 
   const defaultState = {
     name:'',
     serialNumber: '',
+    dob: '',
     ears: '',
     furColor: '',
     eyeColor: '',
@@ -18,17 +22,15 @@ const CreateMother = () => {
   const [error, setError] = useState(null)
 
   const handleChange = (event) => {
-    handleControlledValueFieldToState(event, setKittenToCreate)
+    handleControlledValueFieldToState(event, setMotherToCreate)
   }
 
   const handleSubmit = async (event) => {
     try {
       event.preventDefault()
-      console.log(motherToCreate)
       const {data: mother} = await axios.post('/api/mothers', motherToCreate)
-      console.log('mother: ', mother)
       ///
-      history.push('/motherDetailed', {kitten: kitten, error: error,
+      history.push('/motherDetailed', {mother: mother, error: error,
       fromCreate: true})
       ///
 
@@ -49,20 +51,14 @@ const CreateMother = () => {
       <input type="text" name='serialNumber' placeholder='serial number' value={motherToCreate.serialNumber} onChange={handleChange} /> <br />
       <input type="text" name='dob' placeholder='Date of Birth' value={motherToCreate.dob} onChange={handleChange} /> <br />
       <select name="ears" value={motherToCreate.ears} onChange={handleChange}>
-      <option value="">Fold or Straight</option>
+        <option value="">Fold or Straight</option>
         <option value="fold">Fold</option>
         <option value="straight">Straight</option>
         <option value="noPref">No Preference</option>
       </select> <br />
-      <select name="furColor" value={motherToCreate.furColor} onChange={handleChange}>
-      <option value="">Fur Color</option>
-        {furColors.map((color, index) => (
-          <option key={index} value={color}>{color}</option>
-        ))}
-        <option value="noPref">No Preference</option>
-      </select> <br />
+      <input type="text" name='furColor' placeholder='Fur Color' value={motherToCreate.furColor} onChange={handleChange} /> <br />
       <select name="eyeColor" value={motherToCreate.eyeColor} onChange={handleChange}>
-      <option value="">Eye Color</option>
+        <option value="">Eye Color</option>
         {eyeColors.map((color, index) => (
           <option key={index} value={color}>{color}</option>
           ))}

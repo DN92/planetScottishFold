@@ -28,11 +28,11 @@ const userArray = [
   ),
   makeUser(
     'admin',
-    'Natasha',
-    '123',
-    '3gmail.com',
-    'high point',
-    'north carolina',
+    'Klin13',
+    'nb0phRDH',
+    'Nataliya.Klin@gmail.com',
+    '',
+    '',
   ),
   makeUser(
     'master',

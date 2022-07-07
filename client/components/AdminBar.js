@@ -14,7 +14,7 @@ const AdminBar = () => {
       &nbsp;&nbsp;
       <Link to='createMother'>Add A Mother </Link>
       &nbsp;&nbsp;
-      <Link to='editMother'>Edit A Mother </Link>
+      <Link to='viewMothers'>View/Edit A Mother </Link>
 
     </nav>
   )

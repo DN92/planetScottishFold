@@ -14,8 +14,6 @@ const KittenDetailedView = () => {
   let error = null
   let fromEdit =false
 
-  console.log('from Kitten Detailed history ',history.location.state)
-
   if(history.location.state) {
     kitten = history.location.state.kitten
     error = history.location.state.error
@@ -54,8 +52,8 @@ const KittenDetailedView = () => {
       }
       {isPrivileged(type) && fromEdit &&
         <Link to='/availableKittens'>
-        <button>Back to All Kittens</button>
-      </Link>
+          <button>Back to All Kittens</button>
+        </Link>
       }
 
       {!error && !kitten &&

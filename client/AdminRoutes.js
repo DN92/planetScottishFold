@@ -2,11 +2,11 @@ import React from 'react'
 import {Routes, Route } from 'react-router-dom'
 import NewUserRequests from './components/admin/NewUserRequests'
 import RequestReview from './components/admin/RequestReview'
-import CreateKitten from './components/admin/CreateKitten'
 import AdminAllView from './components/admin/AdminAllView'
+import CreateKitten from './components/admin/CreateKitten'
 import EditKitten from './components/admin/EditKitten'
 import CreateMother from './components/admin/CreateMother'
-// import EditMother from './components/admin/'
+import EditMother from './components/admin/EditMother'
 
 
 const AdminRoutes = () => {
@@ -19,7 +19,7 @@ const AdminRoutes = () => {
       <Route path='createKitten' element={<CreateKitten />} />
       <Route path='editKitten' element={<EditKitten />} />
       <Route path='createMother' element={<CreateMother />} />
-      {/* <Route path='editMother' element={<EditMother />} /> */}
+      <Route path='editMother' element={<EditMother />} />
     </Routes>
   )
 }

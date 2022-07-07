@@ -26,7 +26,7 @@ router.post('/', async (req, res, next) => {
 
 router.put('/', async(req, res, next) => {
   try {
-    const mother = await Mother.findByPk(req.query.id)
+    const mother = await Mother.findByPk(req.body.id)
     const update = await mother.update(req.body)
     if(!update) {
       throw new Error('mother update failed')

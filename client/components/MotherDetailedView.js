@@ -17,7 +17,7 @@ const MotherDetailedView = () => {
   console.log('from Mother Detailed history ',history.location.state)
 
   if(history.location.state) {
-    mother = history.location.state.kitten
+    mother = history.location.state.mother
     error = history.location.state.error
     fromEdit = history.location.state.fromEdit
   }
@@ -47,7 +47,7 @@ const MotherDetailedView = () => {
           </div>
           {isPrivileged(type) && !fromEdit &&
             <Link to='/createMother'>
-            <button>Upload Another Kitten</button>
+            <button>Upload Another Mother</button>
             </Link>
           }
           {isPrivileged(type) && fromEdit &&
@@ -58,7 +58,7 @@ const MotherDetailedView = () => {
         </div>
       }
 
-      {!error && !kitten &&
+      {!error && !mother &&
         <My404 />
       }
     </>

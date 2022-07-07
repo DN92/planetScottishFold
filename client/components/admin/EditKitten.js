@@ -1,4 +1,4 @@
-import React, {useState, useContext} from 'react'
+import React, {useState, useEffect, useContext} from 'react'
 import MeContext from '../../MeContextPro'
 import { isPrivileged } from '../../../secrets'
 import ErrorFill from '../ErrorFill'
@@ -8,10 +8,11 @@ import handleControlledValueFieldToState from '../../customHandlers/handleFormCh
 import axios from 'axios'
 
 const EditKitten = () => {
+  console.log('gotHere?')
   const {type} =useContext(MeContext)
 
   let kittenFromHistory = null
-  let errorFromHistory = null
+  let errorFromHistory = ''
 
   if(history.location.state) {
     kittenFromHistory = history.location.state.kitten
@@ -20,7 +21,9 @@ const EditKitten = () => {
 
   const [initialState, setInitialState] = useState(kittenFromHistory ? {... kittenFromHistory} : null)
   const [kittenToEdit, setKittenToEdit] = useState(kittenFromHistory)
-  const [error, setError] = useState(errorFromHistory)
+  const [dams, setDams] = useState([])
+  const [studs, setStuds] = useState([])
+  const [error, setError] = useState(errorFromHistory )
   const imgInLine= {
     width: "100%",
     maxWidth: "200px",
@@ -51,6 +54,28 @@ const EditKitten = () => {
       setError(err.message)
     }
   }
+
+  useEffect(() => {
+
+    const fetchDamsAndStuds = async () => {
+      try {
+        let mothers = await axios.get('/api/mothers')
+        let fathers = await axios.get('/api/studs')
+        mothers = mothers.data.map(mother => (mother.name))
+        fathers = fathers.data.map(father => (father.name))
+        setError('')
+        setDams(mothers)
+        setStuds(fathers)
+      } catch (err) {
+        console.log(err)
+        setError(err.message)
+      }
+    }
+
+    fetchDamsAndStuds()
+  }, [])
+
+  console.log('dams: ', dams)
 
   return (
     <>
@@ -87,13 +112,13 @@ const EditKitten = () => {
             <option value="girl">Girl</option>
           </select> <br />
           <select name="ears" value={kittenToEdit.ears} onChange={handleChange}>
-          <option value="">Fold or Straight</option>
+            <option value="">Fold or Straight</option>
             <option value="fold">Fold</option>
             <option value="straight">Straight</option>
             <option value="noPref">No Preference</option>
           </select> <br />
           <select name="furColor" value={kittenToEdit.furColor} onChange={handleChange}>
-          <option value="">Fur Color</option>
+            <option value="">Fur Color</option>
             {furColors.map((color, index) => (
               <option key={index} value={color}>{color}</option>
             ))}
@@ -105,8 +130,18 @@ const EditKitten = () => {
               <option key={index} value={color}>{color}</option>
               ))}
           </select> <br />
-          <input type="text" name='mother' placeholder='Dam' value={kittenToEdit.mother} onChange={handleChange} /> <br />
-          <input type="text" name='father' placeholder='Stud' value={kittenToEdit.father} onChange={handleChange} /> <br />
+          <select name="mother" value={kittenToEdit.mother} onChange={handleChange}>
+            <option value="">Select Dam</option>
+              {dams.map((name, index) => (
+                <option key={index} value={name}>{name}</option>
+              ))}
+          </select> <br />
+          <select name="father" value={kittenToEdit.father} onChange={handleChange}>
+            <option value="">Select Stud</option>
+              {studs.map((name, index) => (
+                <option key={index} value={name}>{name}</option>
+              ))}
+        </select> <br />
           <select name="isAvailable" value={kittenToEdit.isAvailable} onChange={handleChange}>
             <option value="isAvailable">isAvailable</option>
             <option value="reserved">Reserved</option>

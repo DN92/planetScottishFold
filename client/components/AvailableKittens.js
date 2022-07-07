@@ -50,7 +50,7 @@ const AvailableKittens = () => {
           throw Error('Did not receive expected data from fetchKittens')
         }
         setKittens(data)
-        setFetchError(null)
+        setFetchError('')
       } catch (err) {
         setFetchError(err.message)
         console.log(fetchError)

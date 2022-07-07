@@ -8,15 +8,27 @@ const makeStud = (
   ears,
   furColor,
   eyeColor,
-  age,
   dob,
   image
 })
 
 const studsArray = [
-  makeStud(),
-  makeStud(),
-  makeStud(),
+  makeStud(
+    'Artemis',
+    'Arty',
+    'fold',
+    'Gold Chinchilla',
+    'Green',
+    'July 18th, 2018',
+  ),
+  makeStud(
+    'Cupid',
+    'Cupe',
+    'fold',
+    'Chocolate Shaded Silver Chinchilla Point',
+    'Blue',
+    'November 18th, 2021',
+  ),
 ]
 
 module.exports = studsArray

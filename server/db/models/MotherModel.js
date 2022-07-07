@@ -12,8 +12,11 @@ const Mother = db.define("mother", {
   ears: {
     type: Sequelize.ENUM('fold', 'straight', '')
   },
+  // furColor: {
+  //   type: Sequelize.ENUM(...furColors, '', 'Silver Chinchilla', 'Black Marble', 'Blue Gold Chinchilla', 'Black Van')
+  // },
   furColor: {
-    type: Sequelize.ENUM(...furColors, '')
+    type:Sequelize.STRING
   },
   eyeColor: {
     type: Sequelize.ENUM(...eyeColors, '')

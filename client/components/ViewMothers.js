@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext }from 'react'
-import SingleKitten from './SingleKitten'
+import MotherSingleView from './MotherSingleView'
 import LoadingFill from './LoadingFill'
 import axios from 'axios'
 
@@ -10,7 +10,7 @@ const ViewMothers = () => {
   const [fetchError, setFetchError] = useState(null)
 
   useEffect(() => {
-    const fetchKittens = async () => {
+    const fetchMothers = async () => {
       try {
         const {data} = await axios.get('/api/mothers')
         if(!data) {
@@ -26,7 +26,7 @@ const ViewMothers = () => {
       }
     }
 
-    fetchKittens()
+    fetchMothers()
     // setTimeout(async() => {
     // }, (2000));
 
@@ -39,7 +39,7 @@ const ViewMothers = () => {
       {!isLoading &&
         <>
           {mothers.map((mother) => (
-            <SingleKitten key={mother.id} mother={mother} />
+            <MotherSingleView key={mother.id} mother={mother} />
           ))}
         </>
       }

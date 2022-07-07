@@ -4,6 +4,7 @@ import handleControlledValueFieldToState from '../../customHandlers/handleFormCh
 import {furColors, eyeColors} from "../../../myModelsConfig"
 import axios from 'axios'
 import history from '../../history'
+import useFetchParents from '../../customHooks/fetchDamsAndStuds'
 
 
 //  /createKitten
@@ -53,24 +54,26 @@ const CreateKitten = () => {
     }
   }
 
+  // useFetchParents()
+
   useEffect(() => {
+
     const fetchDamsAndStuds = async () => {
       try {
-        const mothers = await axios.get('/api/mothers')
-        const fathers = await axios.get('/api/studs')
-        dams = (mothers.data).map(mother => (mother.name))
-        studs = (fathers.data).map(father => (father.name))
-        return [dams, studs]
-
+        let mothers = await axios.get('/api/mothers')
+        let fathers = await axios.get('/api/studs')
+        mothers = mothers.data.map(mother => (mother.name))
+        fathers = fathers.data.map(father => (father.name))
+        setError('')
+        setDams(mothers)
+        setStuds(fathers)
       } catch (err) {
         console.log(err)
-        setError(err)
+        setError(err.message)
       }
     }
 
-    const {dams, studs} = fetchDamsAndStuds
-    setDams(dams)
-    setStuds(studs)
+    fetchDamsAndStuds()
   }, [])
 
   return (
@@ -86,13 +89,13 @@ const CreateKitten = () => {
           <option value="girl">Girl</option>
         </select> <br />
         <select name="ears" value={kittenToCreate.ears} onChange={handleChange}>
-        <option value="">Fold or Straight</option>
+          <option value="">Fold or Straight</option>
           <option value="fold">Fold</option>
           <option value="straight">Straight</option>
           <option value="noPref">No Preference</option>
         </select> <br />
         <select name="furColor" value={kittenToCreate.furColor} onChange={handleChange}>
-        <option value="">Fur Color</option>
+          <option value="">Fur Color</option>
           {furColors.map((color, index) => (
             <option key={index} value={color}>{color}</option>
           ))}
@@ -102,22 +105,20 @@ const CreateKitten = () => {
         <option value="">Eye Color</option>
           {eyeColors.map((color, index) => (
             <option key={index} value={color}>{color}</option>
-            ))}
+          ))}
         </select> <br />
         <select name="mother" value={kittenToCreate.mother} onChange={handleChange}>
-        <option value="">Select Dam</option>
-          {dams.map((name, index) => (
-            <option key={index} value={name}>{name}</option>
+          <option value="">Select Dam</option>
+            {dams.map((name, index) => (
+              <option key={index} value={name}>{name}</option>
             ))}
         </select> <br />
         <select name="father" value={kittenToCreate.father} onChange={handleChange}>
-        <option value="">Select Stud</option>
-          {dams.map((name, index) => (
-            <option key={index} value={name}>{name}</option>
+          <option value="">Select Stud</option>
+            {studs.map((name, index) => (
+              <option key={index} value={name}>{name}</option>
             ))}
         </select> <br />
-        <input type="text" name='mother' placeholder='Dam' value={kittenToCreate.mother} onChange={handleChange} /> <br />
-        <input type="text" name='father' placeholder='Stud' value={kittenToCreate.father} onChange={handleChange} /> <br />
         <button type='submit'>Create</button>
 
       </form>

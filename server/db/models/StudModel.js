@@ -12,8 +12,11 @@ const Stud = db.define('stud', {
   ears: {
     type: Sequelize.ENUM('fold', 'straight', '')
   },
+  // furColor: {
+  //   type: Sequelize.ENUM(...furColors,  '')
+  // },
   furColor: {
-    type: Sequelize.ENUM(...furColors,  '')
+    type:Sequelize.STRING
   },
   eyeColor: {
     type: Sequelize.ENUM(...eyeColors,  '')

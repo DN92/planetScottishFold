@@ -12,22 +12,20 @@ const MotherSingleView = (props) => {
 
   const {name, serialNumber, ears, furColor, eyeColor, dob, status, mainImageSrcValue} = mother
 
-
   return (
     <div>
       <Link
         to={isPrivileged(type) ? '/editMother' : '/MotherDetailedView'}
-        state={{mother: mother}}>
+        state={{mother: mother}} >
         <img src={mainImageSrcValue} alt="mother picture " className="image" />
       </Link> <br />
-      <span>Name: {name}</span> <br />
+      <span>{name}</span> <br />
       <span>{ears}</span> <br />
       <span>Eye Color: {eyeColor}</span> <br />
       <span>Fur Color: {furColor}</span> <br />
       {isPrivileged(type) &&
         <>
           <span>Date of Birth: {dob}</span> <br />
-          <span>Status: {status}</span> <br />
         </>
       }
       <hr />

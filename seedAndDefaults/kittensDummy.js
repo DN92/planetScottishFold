@@ -19,8 +19,8 @@ const kittensArray = [
   "ktnLcyC01",
   "boy",
   "fold",
-  "brown",
-  "brown",
+  "Silver",
+  "Green",
   "/catPictures/ktnLcyC01.jpg"
   ),
   makeKitten(
@@ -28,8 +28,8 @@ const kittensArray = [
   "ktnLcyC02",
   "girl",
   "straight",
-  "brown",
-  "brown",
+  "Colorpoint",
+  "Yellow",
   "/catPictures/ktnLcyC02.jpg"
   ),
   makeKitten(
@@ -37,8 +37,8 @@ const kittensArray = [
   "ktnLcyC03",
   "boy",
   "fold",
-  "brown",
-  "brown",
+  "Blue",
+  "Odd",
   "/catPictures/ktnLcyC03.jpg"
   ),
   makeKitten(
@@ -46,35 +46,35 @@ const kittensArray = [
   "ktnLcyC04",
   "girl",
   "straight",
-  "brown",
-  "brown",
+  "White",
+  "Green",
   "/catPictures/ktnLcyC04.jpg"
   ),
   makeKitten(
   "ktnLcyC05",
   "ktnLcyC05",
-  "girl",
+  "boy",
   "fold",
-  "brown",
-  "brown",
+  "Gold",
+  "Odd",
   "/catPictures/ktnLcyC05.jpg"
   ),
   makeKitten(
   "ktnLcyC06",
   "ktnLcyC06",
   "boy",
-  "fold",
-  "brown",
-  "brown",
+  "straight",
+  "Brown",
+  "Yellow",
   "/catPictures/ktnLcyC06.jpg"
   ),
   makeKitten(
   "ktnLcyC07",
   "ktnLcyC07",
-  "boy",
-  "straight",
-  "brown",
-  "brown",
+  "girl",
+  "fold",
+  "Black",
+  "Blue",
   "/catPictures/ktnLcyC07.jpg"
   ),
 ]
