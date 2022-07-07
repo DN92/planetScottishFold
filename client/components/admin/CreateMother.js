@@ -49,7 +49,7 @@ const CreateMother = () => {
 
 
   return (
-    <form onKeyDown={handleKeyDown} onSubmit={handleSubmit}>
+    <form onKeyDown={handleKeyPress} onSubmit={handleSubmit}>
       <h2>Mother Creation Form</h2>
       <input type="text" name='name' placeholder='Name' value={motherToCreate.name} onChange={handleChange} /> <br />
       <input type="text" name='serialNumber' placeholder='serial number' value={motherToCreate.serialNumber} onChange={handleChange} /> <br />

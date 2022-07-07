@@ -37,8 +37,6 @@ const ClientQuestionnaire = () => {
 
   const handleChange = (event) => {
     event.preventDefault()
-    event.stopPropagation()
-    // console.log(event)
     handleFormChange(event, setClientInfo)
   }
 

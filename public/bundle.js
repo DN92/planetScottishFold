@@ -3042,8 +3042,6 @@ const ClientQuestionnaire = () => {
 
   const handleChange = event => {
     event.preventDefault();
-    event.stopPropagation(); // console.log(event)
-
     (0,_customHandlers_handleFormChange__WEBPACK_IMPORTED_MODULE_3__["default"])(event, setClientInfo);
   };
 
@@ -4481,7 +4479,7 @@ const CreateMother = () => {
   };
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("form", {
-    onKeyDown: handleKeyDown,
+    onKeyDown: handleKeyPress,
     onSubmit: handleSubmit
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "Mother Creation Form"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
     type: "text",
