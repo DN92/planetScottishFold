@@ -32,13 +32,16 @@ const EditKitten = () => {
   }
 
   const handleChange = (event) => {
-    // console.log(event.key)
     if(!kittenToEdit) return
     handleControlledValueFieldToState(event, setKittenToEdit)
   }
 
   const handleReset = () => {
     setKittenToEdit(initialState)
+  }
+
+  const handleKeyPress = (event) => {
+    event.code === 'Enter' && event.target.localName !== 'textarea' && event.preventDefault();
   }
 
   const handleSubmit = async (event) => {
@@ -92,7 +95,7 @@ const EditKitten = () => {
       {!error && isPrivileged(type) && kittenToEdit &&
       <div>
         <img src={kittenToEdit.mainImageSrcValue} alt="kitten to edit" style={imgInLine} />
-        <form onSubmit={(e) => handleSubmit(e)}>
+        <form onKeyDown={handleKeyPress} onSubmit={handleSubmit}>
           <h2>EDIT SELECTED KITTEN</h2>
           <input
             type="text"

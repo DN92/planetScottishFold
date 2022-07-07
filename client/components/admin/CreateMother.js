@@ -25,6 +25,10 @@ const CreateMother = () => {
     handleControlledValueFieldToState(event, setMotherToCreate)
   }
 
+  const handleKeyPress = (event) => {
+    event.code === 'Enter' && event.target.localName !== 'textarea' && event.preventDefault();
+  }
+
   const handleSubmit = async (event) => {
     try {
       event.preventDefault()
@@ -45,7 +49,7 @@ const CreateMother = () => {
 
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onKeyDown={handleKeyDown} onSubmit={handleSubmit}>
       <h2>Mother Creation Form</h2>
       <input type="text" name='name' placeholder='Name' value={motherToCreate.name} onChange={handleChange} /> <br />
       <input type="text" name='serialNumber' placeholder='serial number' value={motherToCreate.serialNumber} onChange={handleChange} /> <br />

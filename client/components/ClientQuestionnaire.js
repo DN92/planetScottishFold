@@ -47,10 +47,8 @@ const ClientQuestionnaire = () => {
     setClientInfo(defaultClientInfo)
   }
 
-  const handleKeyPress = (e) => {
-    console.log(e.code)
-    // if(e.code ==='Enter') console.log('enter hit')
-    e.code === 'Enter' && e.preventDefault();
+  const handleKeyPress = (event) => {
+    event.code === 'Enter' && event.target.localName !== 'textarea' && event.preventDefault();
   }
 
   const handleSubmit = (event) => {
@@ -59,13 +57,13 @@ const ClientQuestionnaire = () => {
   }
 
   return (
-    <form id="clientQuestionnaire" onChange={handleChange} onReset={handleReset} onSubmit={handleSubmit}
+    <form id="clientQuestionnaire" onSubmit={handleSubmit} onKeyDown={handleKeyPress} onChange={handleChange} onReset={handleReset}
     >
       <h2>About You</h2>
       {/* client desired Username */}
-      <input onKeyPress={handleKeyPress} type="text" name='username' value={clientInfo.username} placeholder="Desired username" /> <br />
+      <input type="text" name='username' value={clientInfo.username} placeholder="Desired username" /> <br />
       {/* client first name */}
-      <input id="addFirstName" type="text" name="firstName"  value={clientInfo.firstName} placeholder="First Name" required/>
+      <input  id="addFirstName" type="text" name="firstName"  value={clientInfo.firstName} placeholder="First Name" required/>
       <br />
       {/* client last name */}
       <input id="lastName" type="text" name="lastName" value={clientInfo.lastName} placeholder="Last Name" required/>
@@ -135,7 +133,7 @@ const ClientQuestionnaire = () => {
       </select>
       {/* <input type="reset" /> */}
       <input type="reset" />
-      <input onClick={handleSubmit} type="submit" />
+      <input type="submit" />
     </form>
   )
 }

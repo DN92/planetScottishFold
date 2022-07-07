@@ -23,6 +23,10 @@ const ContactRequestForm = () => {
     })
   }
 
+  const handleKeyPress = (event) => {
+    event.code === 'Enter' && event.target.localName !== 'textarea' && event.preventDefault();
+  }
+
   const handleSubmit = (event) => {
     event.preventDefault()
     resetForm(event)
@@ -30,7 +34,7 @@ const ContactRequestForm = () => {
   }
 
   return (
-    <form id="ContactRequest" onChange={handleChange} onSubmit={handleSubmit}>
+    <form id="ContactRequest" onKeyDown={handleKeyPress} onChange={handleChange} onSubmit={handleSubmit}>
       <input type="text" name="name" placeholder='Your Name' required/><br />
       <input type="tel" name="phone" placeholder='Your phone number' /><br />
       <input type="email" name="eMail" placeholder='Your Email'/><br />

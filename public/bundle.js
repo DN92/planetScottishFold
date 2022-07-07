@@ -3052,10 +3052,8 @@ const ClientQuestionnaire = () => {
     setClientInfo(defaultClientInfo);
   };
 
-  const handleKeyPress = e => {
-    console.log(e.code); // if(e.code ==='Enter') console.log('enter hit')
-
-    e.code === 'Enter' && e.preventDefault();
+  const handleKeyPress = event => {
+    event.code === 'Enter' && event.target.localName !== 'textarea' && event.preventDefault();
   };
 
   const handleSubmit = event => {
@@ -3065,11 +3063,11 @@ const ClientQuestionnaire = () => {
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("form", {
     id: "clientQuestionnaire",
+    onSubmit: handleSubmit,
+    onKeyDown: handleKeyPress,
     onChange: handleChange,
-    onReset: handleReset,
-    onSubmit: handleSubmit
+    onReset: handleReset
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "About You"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
-    onKeyPress: handleKeyPress,
     type: "text",
     name: "username",
     value: clientInfo.username,
@@ -3206,7 +3204,6 @@ const ClientQuestionnaire = () => {
   }, "Any")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
     type: "reset"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
-    onClick: handleSubmit,
     type: "submit"
   }));
 };
@@ -3329,6 +3326,10 @@ const ContactRequestForm = () => {
     });
   };
 
+  const handleKeyPress = event => {
+    event.code === 'Enter' && event.target.localName !== 'textarea' && event.preventDefault();
+  };
+
   const handleSubmit = event => {
     event.preventDefault();
     (0,_myUtilFuncs_js__WEBPACK_IMPORTED_MODULE_1__.resetForm)(event);
@@ -3337,6 +3338,7 @@ const ContactRequestForm = () => {
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("form", {
     id: "ContactRequest",
+    onKeyDown: handleKeyPress,
     onChange: handleChange,
     onSubmit: handleSubmit
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
@@ -4279,6 +4281,10 @@ const CreateKitten = () => {
 
   const handleChange = event => {
     (0,_customHandlers_handleFormChange__WEBPACK_IMPORTED_MODULE_1__["default"])(event, setKittenToCreate);
+  };
+
+  const handleKeyPress = event => {
+    event.code === 'Enter' && event.target.localName !== 'textarea' && event.preventDefault();
   }; // const handleImage = (event) => {
   //   console.log(event)
   //   return
@@ -4326,6 +4332,7 @@ const CreateKitten = () => {
     fetchDamsAndStuds();
   }, []);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("form", {
+    onKeyDown: handleKeyPress,
     onSubmit: handleSubmit
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "Kitten Creation Form"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
     type: "text",
@@ -4449,6 +4456,10 @@ const CreateMother = () => {
     (0,_customHandlers_handleFormChange__WEBPACK_IMPORTED_MODULE_3__["default"])(event, setMotherToCreate);
   };
 
+  const handleKeyPress = event => {
+    event.code === 'Enter' && event.target.localName !== 'textarea' && event.preventDefault();
+  };
+
   const handleSubmit = async event => {
     try {
       event.preventDefault();
@@ -4470,6 +4481,7 @@ const CreateMother = () => {
   };
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("form", {
+    onKeyDown: handleKeyDown,
     onSubmit: handleSubmit
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "Mother Creation Form"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
     type: "text",
@@ -4581,13 +4593,16 @@ const EditKitten = () => {
   };
 
   const handleChange = event => {
-    // console.log(event.key)
     if (!kittenToEdit) return;
     (0,_customHandlers_handleFormChange__WEBPACK_IMPORTED_MODULE_6__["default"])(event, setKittenToEdit);
   };
 
   const handleReset = () => {
     setKittenToEdit(initialState);
+  };
+
+  const handleKeyPress = event => {
+    event.code === 'Enter' && event.target.localName !== 'textarea' && event.preventDefault();
   };
 
   const handleSubmit = async event => {
@@ -4638,7 +4653,8 @@ const EditKitten = () => {
     alt: "kitten to edit",
     style: imgInLine
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("form", {
-    onSubmit: e => handleSubmit(e)
+    onKeyDown: handleKeyPress,
+    onSubmit: handleSubmit
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "EDIT SELECTED KITTEN"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
     type: "text",
     name: "name",
@@ -4794,6 +4810,10 @@ const EditMother = () => {
     setMotherToEdit(initialState);
   };
 
+  const handleKeyPress = event => {
+    event.code === 'Enter' && event.target.localName !== 'textarea' && event.preventDefault();
+  };
+
   const handleSubmit = async event => {
     event.preventDefault();
 
@@ -4823,7 +4843,8 @@ const EditMother = () => {
     alt: "mother to edit",
     style: imgInLine
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("form", {
-    onSubmit: e => handleSubmit(e)
+    onKeyDown: handleKeyPress,
+    onSubmit: handleSubmit
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "EDIT SELECTED DAM"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
     type: "text",
     name: "name",

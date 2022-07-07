@@ -31,6 +31,10 @@ const CreateKitten = () => {
     handleControlledValueFieldToState(event, setKittenToCreate)
   }
 
+  const handleKeyPress = (event) => {
+    event.code === 'Enter' && event.target.localName !== 'textarea' && event.preventDefault();
+  }
+
   // const handleImage = (event) => {
     //   console.log(event)
 
@@ -79,7 +83,7 @@ const CreateKitten = () => {
   return (
     <div>
       {/* <input type="file" name='mainImageSrcValue' placeholder='Main Picture' value={''} onChange={handleImage} /> <br /> */}
-      <form onSubmit={handleSubmit}>
+      <form onKeyDown={handleKeyPress} onSubmit={handleSubmit}>
         <h2>Kitten Creation Form</h2>
         <input type="text" name='name' placeholder='Name' value={kittenToCreate.name} onChange={handleChange} /> <br />
         <input type="text" name='serialNumber' placeholder='serial number' value={kittenToCreate.serialNumber} onChange={handleChange} /> <br />

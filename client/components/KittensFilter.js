@@ -13,7 +13,7 @@ const KittenFilter = (props) => {
   }
 
   return (
-    <form>
+    <form >
       <h4>Advanced Search</h4>
       <label htmlFor="gender">gender</label>
       <select name="gender" value={gender} onChange={handleChange} >

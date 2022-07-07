@@ -38,6 +38,10 @@ const EditMother = () => {
     setMotherToEdit(initialState)
   }
 
+  const handleKeyPress = (event) => {
+    event.code === 'Enter' && event.target.localName !== 'textarea' && event.preventDefault();
+  }
+
   const handleSubmit = async (event) => {
     event.preventDefault()
     try {
@@ -67,7 +71,7 @@ const EditMother = () => {
       {!error && isPrivileged(type) && motherToEdit &&
       <div>
         <img src={motherToEdit.mainImageSrcValue} alt="mother to edit" style={imgInLine} />
-        <form onSubmit={(e) => handleSubmit(e)}>
+        <form onKeyDown={handleKeyPress} onSubmit={handleSubmit}>
           <h2>EDIT SELECTED DAM</h2>
           <input
             type="text"
