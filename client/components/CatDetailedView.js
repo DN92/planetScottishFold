@@ -1,22 +1,37 @@
-import React, {useContext} from 'react'
+import React, {useState, useEffect, useContext} from 'react'
 import history from '../history'
 import ErrorFill from './ErrorFill'
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import My404 from './My404'
 import MeContext from '../MeContextPro'
 import { isPrivileged } from '../../secrets'
+import { useFetch } from '../customHooks/useFetch'
 
-//  /motherDetailed
-const MotherDetailedView = () => {
+//  /catDetailed
+const CatDetailedView = () => {
   const {type} =useContext(MeContext)
 
-  const MOTHERorFATHER = history.location.state
-  ? history.location.state.parent
-  : 'mother'
+  const {MOTHERorFATHER, id} = useParams()
 
-  const cat = history.location.state? history.location.state.cat : null
-  const error = history.location.state? history.location.state.error : null
   const fromEdit = history.location.state? history.location.state.fromEdit : null
+  const [cat, setCat] = useState(history.location.state
+    ? history.location.state.cat
+    : null
+  )
+  const [error, setError] = (history.location.state
+    ? history.location.state.error
+    : ''
+  )
+
+  //  if we don't have a Mommy or Daddy from history, fetch one by id.
+  //  no params and no history should result in a local 404
+  useEffect(() => {
+    !cat && id && useFetch(
+      [setCat, setError],
+      'get',
+      `/api/${MOTHERorFATHER}s?id=${id}`)
+  }, [])
+
 
   const imgInLine= {
     width: "100%",
@@ -26,7 +41,7 @@ const MotherDetailedView = () => {
   }
 
   return (
-    <>
+    <div key={id.toString() + MOTHERorFATHER}>
       {error && <ErrorFill msg={error} />}
 
       {!error && cat &&
@@ -42,25 +57,25 @@ const MotherDetailedView = () => {
 
           </div>
           {isPrivileged(type) && !fromEdit &&
-            <Link to={`/create${MOTHERorFATHER}`} state={{parent: MOTHERorFATHER}}>
+            <Link to={`/createCat/${MOTHERorFATHER}`} >
             <button>Upload Another {`${MOTHERorFATHER}`}</button>
             </Link>
           }
           {isPrivileged(type) && fromEdit &&
-            <Link to={`/view${MOTHERorFATHER}s`} state={{parent: MOTHERorFATHER}}>
+            <Link to={`/viewCats/${MOTHERorFATHER}s`} >
             <button>Back to {`${MOTHERorFATHER}`}</button>
             </Link>
           }
         </div>
       }
 
-      {!error && !cat &&
+      {!error && !cat && !id &&
         <>
           <My404 />
         </>
       }
-    </>
+    </ div>
   )
 }
 
-export default MotherDetailedView
+export default CatDetailedView

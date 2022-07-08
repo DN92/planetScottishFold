@@ -51,7 +51,7 @@ const EditKitten = () => {
       const {data} = await axios.put('/api/kittens', kittenToEdit)
       console.log(data)
       setInitialState(data)
-      history.push('/kittenDetailed', {kitten: kittenToEdit, fromEdit: true})
+      history.push(`/kittenDetailed/${data.id}`, {kitten: kittenToEdit, fromEdit: true})
     } catch (err) {
       console.log(err)
       setError(err.message)

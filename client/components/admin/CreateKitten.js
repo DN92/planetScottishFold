@@ -1,5 +1,4 @@
 import React, {useState, useEffect} from 'react'
-import { Link } from 'react-router-dom'
 import handleControlledValueFieldToState from '../../customHandlers/handleFormChange'
 import {furColors, eyeColors} from "../../../myModelsConfig"
 import history from '../../history'
@@ -45,13 +44,9 @@ const CreateKitten = () => {
     try {
       event.preventDefault()
       console.log(kittenToCreate)
-      const {data: kitten} = await axios.post('/api/kittens', kittenToCreate)
-      // const kitten = data
-      console.log('kitten: ', kitten)
-      history.push('/kittenDetailed', {kitten: kitten, error: error, fromCreate: true})
-
+      const {data} = await axios.post('/api/kittens', kittenToCreate)
+      history.push(`/kittenDetailed/${data.id}`, {kitten: data, error: error, fromCreate: true})
       setError(null)
-
     } catch (err) {
       setError(err.message)
       console.log(err)

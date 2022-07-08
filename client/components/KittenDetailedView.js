@@ -10,9 +10,7 @@ import { useFetch } from '../customHooks/useFetch'
 //  /kittenDetailed
 const KittenDetailedView = () => {
   const {type} =useContext(MeContext)
-  const params = useParams()
-
-  console.log(params)
+  const {id} = useParams()
 
   const fromEdit = history.location.state ? history.location.state.fromEdit : null
   const [kitten, setKitten] = useState(history.location.state
@@ -23,8 +21,10 @@ const KittenDetailedView = () => {
     //  if we don't have a kitten from history, fetch one by id.
     //  no params and no history should result in a local 404
   useEffect(() => {
-    //  this is apparently the new style of IF statements i'm finding in documentation. Trying it out here.
-    !kitten && params.id && useFetch([setKitten, setError], 'get', `/api/kittens?id=${params.id}`)
+    !kitten && id && useFetch(
+      [setKitten, setError],
+      'get',
+      `/api/kittens?id=${id}`)
   }, [])
 
   const imgInLine= {
@@ -35,7 +35,7 @@ const KittenDetailedView = () => {
   }
 
   return (
-    <>
+    <div key={id}>
       {error && <ErrorFill msg={error} />}
 
       {!error && kitten &&
@@ -66,7 +66,7 @@ const KittenDetailedView = () => {
       {!error && !kitten &&
         <My404 />
       }
-    </>
+    </div >
   )
 }
 

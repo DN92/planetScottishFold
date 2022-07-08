@@ -5,8 +5,9 @@ const { Stud } = require('../db').models
 
 router.get('/', async (req, res, next) => {
   try {
-    const studs = await Stud.findAll()
-    res.send(studs) // array
+    req.query.id
+    ? res.send(await Stud.findByPk(req.query.id))
+    : res.send(await Stud.findAll())
   } catch (err) {
     next(err)
   }

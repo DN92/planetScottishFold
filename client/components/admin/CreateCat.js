@@ -6,11 +6,9 @@ import { useParams } from 'react-router-dom'
 import handleControlledValueFieldToState from '../../customHandlers/handleFormChange'
 import axios from 'axios'
 
-const CreateMother = () => {
+const CreateCat = () => {
 
-  const MOTHERorFATHER = history.location.state
-  ? history.location.state.parent
-  : 'mother'
+  const {MOTHERorFATHER} = useParams()
 
   const defaultState = {
     name:'',
@@ -37,7 +35,7 @@ const CreateMother = () => {
       event.preventDefault()
       const {data} = await axios.post(`/api/${MOTHERorFATHER}s`, catToCreate)
       setError('')
-      history.push(`/${MOTHERorFATHER}Detailed`, {cat: data, parent: MOTHERorFATHER, error: error, fromCreate: true})
+      history.push(`catDetailed/${MOTHERorFATHER}/${data.id}`, {cat: data, error: error, fromCreate: true})
       ///
 
       setError(null)
@@ -72,4 +70,4 @@ const CreateMother = () => {
   )
 }
 
-export default CreateMother
+export default CreateCat

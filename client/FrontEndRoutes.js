@@ -13,7 +13,7 @@ import My404 from './components/My404'
 import KittenDetailedView from './components/KittenDetailedView'
 import Logout from './components/Logout'
 import ViewCats from './components/ViewCats'
-import MotherDetailedView from './components/MotherDetailedView';
+import CatDetailedView from './components/CatDetailedView';
 import QuestionnaireConfirmation from './components/QuestionnaireConfirmation'
 
 const FrontEndRoutes = () => {
@@ -27,6 +27,9 @@ const FrontEndRoutes = () => {
       <Route path='/about' element={<About />} />
       <Route path='/availableKittens' element={<AvailableKittens />} />
       <Route path='/kittenDetailed/:id' element={<KittenDetailedView />} />
+      <Route path='viewCats/:MOTHERorFATHER' element={<ViewCats />} >
+      </Route>
+      <Route path='catDetailed/:MOTHERorFATHER/:id' element={<CatDetailedView />} />
       <Route path='/reviews' element={<Reviews />} />
       <Route path='/waitingListForm' element={<ClientQuestionnaire />} />
       <Route path='/confirmClientQuestionnaire' element={<ConfirmClientQuestionnaire />} />
@@ -35,12 +38,13 @@ const FrontEndRoutes = () => {
       <Route path='/facebook' element={<PlaceHolder />} />
       <Route path='/404' element={<My404 />} />
       <Route path='/QConfirmation' element={<QuestionnaireConfirmation />} />
-      <Route path='viewCats/:MOTHERorFATHER' element={<ViewCats />} >
-      </Route>
-      <Route path='viewCats' element={<Navigate to='mother'/>}></Route>
-      <Route path='motherDetailed' element={<MotherDetailedView />} />
-      <Route path='fatherDetailed' element={<MotherDetailedView />} />
+      <Route path='fatherDetailed' element={<CatDetailedView />} />
       <Route path='logout' element={<Logout />} />
+
+{/* Redirects */}
+      <Route path='viewCats' element={<Navigate to='mother'/>}></Route>
+      <Route path='catDetailed' element={<Navigate to='mother' />} />
+      <Route path='catDetailed/mother' element={<Navigate to='1' />} />
 
     </Routes>
   )

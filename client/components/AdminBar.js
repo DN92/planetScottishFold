@@ -10,11 +10,11 @@ const AdminBar = () => {
       &nbsp;&nbsp;
       <Link to='createKitten'>Add A Kitten</Link>
       &nbsp;&nbsp;
-      <Link to='availableKittens'>View/Edit Kittens</Link>
+      <Link to='availableKittens' >View/Edit Kittens</Link>
       &nbsp;&nbsp;
-      <Link to='createMother' state={{parent:'mother'}}>Add A Dam </Link>
+      <Link to='createCat/mother' >Add A Dam </Link>
       &nbsp;&nbsp;
-      <Link to='createFather' state={{parent:'father'}}>Add A Sire </Link>
+      <Link to='createCat/father' >Add A Sire </Link>
       &nbsp;&nbsp;
       <Link to='viewCats/mother' >View/Edit A Dam </Link>
       &nbsp;&nbsp;

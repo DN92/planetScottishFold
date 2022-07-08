@@ -3,7 +3,6 @@ import UseReqTableRow from './UseReqTableRow'
 import ErrorFill from '../ErrorFill'
 import LoadingFill from '../LoadingFill'
 import axios from 'axios'
-import { NavLink } from 'react-router-dom'
 
 const NewUserRequests = () => {
 

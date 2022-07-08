@@ -5,7 +5,7 @@ import { isPrivileged } from '../../secrets'
 
 //  props from AvailableMother || AdminMothersView
 
-const MotherSingleView = (props) => {
+const CatSingleView = (props) => {
 
   if(!props.parent) {
     props.parent = 'mother'
@@ -14,14 +14,14 @@ const MotherSingleView = (props) => {
   const {type} = useContext(MeContext)
   const {cat} = props || {}
 
-  const {name, serialNumber, ears, furColor, eyeColor, dob, status, mainImageSrcValue} = cat
+  const {name, serialNumber, ears, furColor, eyeColor, dob, mainImageSrcValue} = cat
 
   return (
     <div>
       <Link
-        to={isPrivileged(type) ? `/edit${props.parent}` : `/${props.parent}DetailedView`}
-        state={{cat: cat, parent: props.parent}} >
-        <img src={mainImageSrcValue} alt={`${props.parent}'s picture `} className="image" />
+        to={isPrivileged(type) ? `/editCat/${props.parent}/${cat.id}` : `/catDetailedView/${props.parent}/${cat.id}`}
+        state={{cat: cat}} >
+        <img src={mainImageSrcValue} alt={`${props.parent.name}'s picture `} className="image" />
       </Link> <br />
       <span>{name}</span> <br />
       <span>{ears}</span> <br />
@@ -37,4 +37,4 @@ const MotherSingleView = (props) => {
   )
 }
 
-export default MotherSingleView
+export default CatSingleView

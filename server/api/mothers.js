@@ -5,8 +5,9 @@ const { Mother } = require('../db').models
 
 router.get('/', async (req, res, next) => {
   try {
-    const mothers = await Mother.findAll()
-    res.send(mothers)
+    req.query.id
+    ? res.send(await Mother.findByPk(req.query.id))
+    : res.send(await Mother.findAll())
   } catch (err) {
     next(err)
   }

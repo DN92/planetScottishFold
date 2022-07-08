@@ -7,7 +7,7 @@ import { eyeColors } from '../../../myModelsConfig'
 import handleControlledValueFieldToState from '../../customHandlers/handleFormChange'
 import axios from 'axios'
 
-const EditMother = () => {
+const EditCat = () => {
 
   const MOTHERorFATHER = history.location.state
   ? history.location.state.parent
@@ -53,7 +53,7 @@ const EditMother = () => {
       const {data} = await axios.put(`/api/${MOTHERorFATHER}s`, catToEdit)
       console.log(data)
       setInitialState(data)
-      history.push(`/${MOTHERorFATHER}Detailed`, {cat: catToEdit, fromEdit: true, parent: MOTHERorFATHER})
+      history.push(`/catDetailed/${MOTHERorFATHER}/${data.id}`, {cat: catToEdit, fromEdit: true})
     } catch (err) {
       console.log(err)
       setError(err.message)
@@ -123,4 +123,4 @@ const EditMother = () => {
   )
 }
 
-export default EditMother
+export default EditCat
