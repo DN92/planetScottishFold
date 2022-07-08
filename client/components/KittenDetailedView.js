@@ -1,24 +1,31 @@
-import React, {useContext} from 'react'
+import React, {useState, useEffect, useContext} from 'react'
 import history from '../history'
 import ErrorFill from './ErrorFill'
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import My404 from './My404'
 import MeContext from '../MeContextPro'
 import { isPrivileged } from '../../secrets'
+import { useFetch } from '../customHooks/useFetch'
 
 //  /kittenDetailed
 const KittenDetailedView = () => {
   const {type} =useContext(MeContext)
+  const params = useParams()
 
-  let kitten = null
-  let error = null
-  let fromEdit =false
+  console.log(params)
 
-  if(history.location.state) {
-    kitten = history.location.state.kitten
-    error = history.location.state.error
-    fromEdit = history.location.state.fromEdit
-  }
+  const fromEdit = history.location.state ? history.location.state.fromEdit : null
+  const [kitten, setKitten] = useState(history.location.state
+    ? history.location.state.kitten : null)
+  const [error, setError] = useState(history.location.state
+    ? history.location.state.error : '')
+
+    //  if we don't have a kitten from history, fetch one by id.
+    //  no params and no history should result in a local 404
+  useEffect(() => {
+    //  this is apparently the new style of IF statements i'm finding in documentation. Trying it out here.
+    !kitten && params.id && useFetch([setKitten, setError], 'get', `/api/kittens?id=${params.id}`)
+  }, [])
 
   const imgInLine= {
     width: "100%",

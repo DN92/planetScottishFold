@@ -2,9 +2,9 @@ import React, {useState, useEffect} from 'react'
 import { Link } from 'react-router-dom'
 import handleControlledValueFieldToState from '../../customHandlers/handleFormChange'
 import {furColors, eyeColors} from "../../../myModelsConfig"
-import axios from 'axios'
 import history from '../../history'
 import useFetchParents from '../../customHooks/fetchDamsAndStuds'
+import axios from 'axios'
 
 
 //  /createKitten

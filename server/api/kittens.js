@@ -5,8 +5,12 @@ const { Kitten } = require("../db").models
 
 router.get('/', async (req, res, next) => {
   try {
-    const kittens = await Kitten.findAll()
-    res.send(kittens) // array
+    console.log(req.query)
+    if(req.query.id) {
+      res.send(await Kitten.findByPk(req.query.id))
+    } else {
+     res.send(await Kitten.findAll())
+    }
   } catch (err) {
     next(err)
   }

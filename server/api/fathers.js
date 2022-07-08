@@ -1,7 +1,7 @@
 const router = require('express').Router()
 const { Stud } = require('../db').models
 
-// api/studs
+// api/fathers
 
 router.get('/', async (req, res, next) => {
   try {

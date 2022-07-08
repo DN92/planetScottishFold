@@ -16,9 +16,9 @@ const AdminBar = () => {
       &nbsp;&nbsp;
       <Link to='createFather' state={{parent:'father'}}>Add A Sire </Link>
       &nbsp;&nbsp;
-      <Link to='viewMothers' state={{parent:'mother'}}>View/Edit A Dam </Link>
+      <Link to='viewCats/mother' >View/Edit A Dam </Link>
       &nbsp;&nbsp;
-      <Link to='viewFathers' state={{parent:'father'}}>View/Edit A Sire </Link>
+      <Link to='viewCats/father' >View/Edit A Sire </Link>
       &nbsp;&nbsp;
 
     </nav>

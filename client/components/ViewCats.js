@@ -1,20 +1,22 @@
-import React, { useState, useEffect, useContext }from 'react'
+import React, { useState, useEffect }from 'react'
 import MotherSingleView from './MotherSingleView'
 import LoadingFill from './LoadingFill'
 import ErrorFill from './ErrorFill'
 import axios from 'axios'
 import history from '../history'
+import { useParams } from 'react-router-dom'
 
-const ViewMothers = () => {
-  const MOTHERorFATHER = history.location.state
-    ? history.location.state.parent
-    : 'mother'
+const ViewCats = () => {
+  const {MOTHERorFATHER} = useParams()
 
   const [cats, setCats] = useState([])
   const [isLoading, setIsLoading] = useState(true)
   const [fetchError, setFetchError] = useState(null)
 
+
+
   useEffect(() => {
+
     const fetchCats = async () => {
       try {
         const {data} = await axios.get(`/api/${MOTHERorFATHER}s`)
@@ -31,15 +33,22 @@ const ViewMothers = () => {
       }
     }
 
-    fetchCats()
-    // setTimeout(async() => {
-    // }, (2000));
 
-  }, [])
+    //  if(rerenderFlag) {
+    //   setFlag(false)
+
+      console.log('fire')
+        fetchCats()
+      // setTimeout(async() => {
+      // }, (2000));
+    // }
+
+  }, [MOTHERorFATHER] )
+
 
 
   return (
-    <>
+    <div >
       {isLoading && <LoadingFill />}
       {fetchError && <ErrorFill />}
       {!isLoading && !fetchError &&
@@ -50,8 +59,8 @@ const ViewMothers = () => {
           ))}
         </>
       }
-    </>
+    </ div>
   )
 }
 
-export default ViewMothers
+export default ViewCats

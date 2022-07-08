@@ -1,9 +1,10 @@
 import React, {useState} from 'react'
-import axios from 'axios'
 import defaultCatPictureSrc from '../../../myModelsConfig'
-import handleControlledValueFieldToState from '../../customHandlers/handleFormChange'
 import {eyeColors} from "../../../myModelsConfig"
 import history from "../../history"
+import { useParams } from 'react-router-dom'
+import handleControlledValueFieldToState from '../../customHandlers/handleFormChange'
+import axios from 'axios'
 
 const CreateMother = () => {
 
@@ -18,12 +19,10 @@ const CreateMother = () => {
     ears: '',
     furColor: '',
     eyeColor: '',
-    age: null,
-    image: defaultCatPictureSrc,
   }
 
   const [catToCreate, setCatToCreate] = useState(defaultState)
-  const [error, setError] = useState(null)
+  const [error, setError] = useState('')
 
   const handleChange = (event) => {
     handleControlledValueFieldToState(event, setCatToCreate)
@@ -37,9 +36,8 @@ const CreateMother = () => {
     try {
       event.preventDefault()
       const {data} = await axios.post(`/api/${MOTHERorFATHER}s`, catToCreate)
-      ///
-      history.push(`/${MOTHERorFATHER}Detailed`, {parent: MOTHERorFATHER, error: error,
-      fromCreate: true})
+      setError('')
+      history.push(`/${MOTHERorFATHER}Detailed`, {cat: data, parent: MOTHERorFATHER, error: error, fromCreate: true})
       ///
 
       setError(null)

@@ -7,7 +7,7 @@ import MeContext from '../MeContextPro'
 import { isPrivileged } from '../../secrets'
 
 //  /motherDetailed
-  const MotherDetailedView = () => {
+const MotherDetailedView = () => {
   const {type} =useContext(MeContext)
 
   const MOTHERorFATHER = history.location.state
@@ -55,7 +55,9 @@ import { isPrivileged } from '../../secrets'
       }
 
       {!error && !cat &&
-        <My404 />
+        <>
+          <My404 />
+        </>
       }
     </>
   )

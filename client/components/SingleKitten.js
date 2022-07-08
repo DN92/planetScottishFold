@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import MeContext from '../MeContextPro'
 import { isPrivileged } from '../../secrets'
 
+
 //  props from AvailableKitten || AdminAllView
 const SingleKitten = (props) => {
 
@@ -23,9 +24,9 @@ const SingleKitten = (props) => {
   return (
     <div>
       <Link
-        to={isPrivileged(type) ? '/editKitten' : '/kittenDetailed'}
+        to={isPrivileged(type) ? '/editKitten' : `/kittenDetailed/${id}`}
         state={{kitten: kitten}}>
-        <img src={image} alt="kitten picture " style={imgInLine} />
+        <img src={image} alt="kitten picture " kitten={kitten} style={imgInLine} />
       </Link> <br />
       <span>Name: {name}</span> <br />
       <span>{gender}</span> <br />

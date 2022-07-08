@@ -6,7 +6,7 @@ const { Kitten, Mother, Father } = db.models
 //  api/
 router.use('/kittens', require('./kittens'))
 router.use('/mothers', require('./mothers'))
-router.use('/studs', require('./studs'))
+router.use('/fathers', require('./fathers'))
 router.use('/users', require('./users'))
 router.use('/anonVisitors', require('./anonVisitor'))
 router.use('/forTesting', require('./forTesting'))  //  delete later
