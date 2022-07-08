@@ -5,7 +5,7 @@ import { Link, useParams } from 'react-router-dom'
 import My404 from './My404'
 import MeContext from '../MeContextPro'
 import { isPrivileged } from '../../secrets'
-import { useFetch } from '../customHooks/useFetch'
+import { fetchEffect } from './axiosHandlers/fetchEffect'
 
 //  /catDetailed
 const CatDetailedView = () => {
@@ -26,7 +26,7 @@ const CatDetailedView = () => {
   //  if we don't have a Mommy or Daddy from history, fetch one by id.
   //  no params and no history should result in a local 404
   useEffect(() => {
-    !cat && id && useFetch(
+    !cat && id && fetchEffect(
       [setCat, setError],
       'get',
       `/api/${MOTHERorFATHER}s?id=${id}`)

@@ -5,6 +5,13 @@ const { Mother } = require('../db').models
 
 router.get('/', async (req, res, next) => {
   try {
+    if(req.query.onlyNames) {
+      const mothers = await Mother.findAll({
+        attributes: ['name']
+      })
+      res.send(mothers.map(mother => mother.name))
+      return
+    }
     req.query.id
     ? res.send(await Mother.findByPk(req.query.id))
     : res.send(await Mother.findAll())

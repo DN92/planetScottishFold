@@ -6,24 +6,24 @@ import history from '../../history'
 import { furColors, eyeColors} from '../../../myModelsConfig'
 import handleControlledValueFieldToState from '../../customHandlers/handleFormChange'
 import axios from 'axios'
+import { fetchEffect } from '../axiosHandlers/fetchEffect'
+import { useParams } from 'react-router-dom'
 
 const EditKitten = () => {
-  console.log('gotHere?')
-  const {type} =useContext(MeContext)
+  const {type} = useContext(MeContext)
+  const {id} = useParams()
 
-  let kittenFromHistory = null
-  let errorFromHistory = ''
-
-  if(history.location.state) {
-    kittenFromHistory = history.location.state.kitten
-    errorFromHistory = history.location.state.error
-  }
-
-  const [initialState, setInitialState] = useState(kittenFromHistory ? {... kittenFromHistory} : null)
-  const [kittenToEdit, setKittenToEdit] = useState(kittenFromHistory)
+  const [kittenToEdit, setKittenToEdit] = useState(history.location.state
+    ? history.location.state.kitten
+    : null
+  )
+  const [error, setError] = useState(history.location.state
+    ? history.location.state.error
+    : ''
+  )
   const [dams, setDams] = useState([])
   const [studs, setStuds] = useState([])
-  const [error, setError] = useState(errorFromHistory )
+
   const imgInLine= {
     width: "100%",
     maxWidth: "200px",
@@ -47,10 +47,8 @@ const EditKitten = () => {
   const handleSubmit = async (event) => {
     event.preventDefault()
     try {
-      console.log('kitten before api call: ' , kittenToEdit)
       const {data} = await axios.put('/api/kittens', kittenToEdit)
-      console.log(data)
-      setInitialState(data)
+      setKittenToEdit(data)
       history.push(`/kittenDetailed/${data.id}`, {kitten: kittenToEdit, fromEdit: true})
     } catch (err) {
       console.log(err)
@@ -59,26 +57,24 @@ const EditKitten = () => {
   }
 
   useEffect(() => {
+    !kittenToEdit && id && fetchEffect(
+      [setKittenToEdit, setError],
+      'put',
+      `/api/kittens`,
+      kittenToEdit
+    )
 
-    const fetchDamsAndStuds = async () => {
-      try {
-        let mothers = await axios.get('/api/mothers')
-        let fathers = await axios.get('/api/studs')
-        mothers = mothers.data.map(mother => (mother.name))
-        fathers = fathers.data.map(father => (father.name))
-        setError('')
-        setDams(mothers)
-        setStuds(fathers)
-      } catch (err) {
-        console.log(err)
-        setError(err.message)
-      }
-    }
-
-    fetchDamsAndStuds()
-  }, [])
-
-  console.log('dams: ', dams)
+    !dams.length && fetchEffect(
+      [setDams, setError],
+      'get',
+      `/api/mothers?onlyNames=true`
+    )
+    !studs.length && fetchEffect(
+      [setStuds, setError],
+      'get',
+      `api/fathers?onlyNames=true`
+    )
+  },[])
 
   return (
     <>
@@ -93,71 +89,74 @@ const EditKitten = () => {
       }
 
       {!error && isPrivileged(type) && kittenToEdit &&
-      <div>
-        <img src={kittenToEdit.mainImageSrcValue} alt="kitten to edit" style={imgInLine} />
-        <form onKeyDown={handleKeyPress} onSubmit={handleSubmit}>
-          <h2>EDIT SELECTED KITTEN</h2>
-          <input
-            type="text"
-            name='name'
-            placeholder='Name'
-            value={kittenToEdit.name}
-            onChange={handleChange} /> <br />
-          <input
-            type="text"
-            name='serialNumber'
-            placeholder='serial number'
-            value={kittenToEdit.serialNumber}
-            onChange={handleChange} /> <br />
-          <select name="gender" value={kittenToEdit.gender} onChange={handleChange}>
-            <option value="">Boy or Girl?</option>
-            <option value="boy">Boy</option>
-            <option value="girl">Girl</option>
-          </select> <br />
-          <select name="ears" value={kittenToEdit.ears} onChange={handleChange}>
-            <option value="">Fold or Straight</option>
-            <option value="fold">Fold</option>
-            <option value="straight">Straight</option>
-            <option value="noPref">No Preference</option>
-          </select> <br />
-          <select name="furColor" value={kittenToEdit.furColor} onChange={handleChange}>
-            <option value="">Fur Color</option>
-            {furColors.map((color, index) => (
-              <option key={index} value={color}>{color}</option>
-            ))}
-            <option value="noPref">No Preference</option>
-          </select> <br />
-          <select name="eyeColor" value={kittenToEdit.eyeColor} onChange={handleChange}>
-          <option value="">Eye Color</option>
-            {eyeColors.map((color, index) => (
-              <option key={index} value={color}>{color}</option>
+        <div>
+          <img src={kittenToEdit.mainImageSrcValue} alt="kitten to edit" style={imgInLine} />
+          <form onKeyDown={handleKeyPress} onSubmit={handleSubmit}>
+            <h2>EDIT SELECTED KITTEN</h2>
+            <input
+              type="text"
+              name='name'
+              placeholder='Name'
+              value={kittenToEdit.name}
+              onChange={handleChange} /> <br />
+            <input
+              type="text"
+              name='serialNumber'
+              placeholder='serial number'
+              value={kittenToEdit.serialNumber}
+              onChange={handleChange} /> <br />
+            <select name="gender" value={kittenToEdit.gender} onChange={handleChange}>
+              <option value="">Boy or Girl?</option>
+              <option value="boy">Boy</option>
+              <option value="girl">Girl</option>
+            </select> <br />
+            <select name="ears" value={kittenToEdit.ears} onChange={handleChange}>
+              <option value="">Fold or Straight</option>
+              <option value="fold">Fold</option>
+              <option value="straight">Straight</option>
+              <option value="noPref">No Preference</option>
+            </select> <br />
+            <select name="furColor" value={kittenToEdit.furColor} onChange={handleChange}>
+              <option value="">Fur Color</option>
+              {furColors.map((color, index) => (
+                <option key={index} value={color}>{color}</option>
               ))}
-          </select> <br />
-          <select name="mother" value={kittenToEdit.mother} onChange={handleChange}>
-            <option value="">Select Dam</option>
-              {dams.map((name, index) => (
-                <option key={index} value={name}>{name}</option>
-              ))}
-          </select> <br />
-          <select name="father" value={kittenToEdit.father} onChange={handleChange}>
-            <option value="">Select Stud</option>
-              {studs.map((name, index) => (
-                <option key={index} value={name}>{name}</option>
-              ))}
-        </select> <br />
-          <select name="isAvailable" value={kittenToEdit.isAvailable} onChange={handleChange}>
-            <option value="isAvailable">isAvailable</option>
-            <option value="reserved">Reserved</option>
-            <option value="sold">Sold</option>
-          </select><br />
-          <button onClick={handleReset} type='button'>Reset Changes</button>
-          <button type='submit'>Submit Changes</button>
-
-        </form>
-      </div>
+              <option value="noPref">No Preference</option>
+            </select> <br />
+            <select name="eyeColor" value={kittenToEdit.eyeColor} onChange={handleChange}>
+            <option value="">Eye Color</option>
+              {eyeColors.map((color, index) => (
+                <option key={index} value={color}>{color}</option>
+                ))}
+            </select> <br />
+            <select name="mother" value={kittenToEdit.mother} onChange={handleChange}>
+              <option value="">Select Dam</option>
+                {dams.map((name, index) => (
+                  <option key={index} value={name}>{name}</option>
+                ))}
+            </select> <br />
+            <select name="father" value={kittenToEdit.father} onChange={handleChange}>
+              <option value="">Select Stud</option>
+                {studs.map((name, index) => (
+                  <option key={index} value={name}>{name}</option>
+                ))}
+            </select> <br />
+              <select name="isAvailable" value={kittenToEdit.isAvailable} onChange={handleChange}>
+                <option value="isAvailable">isAvailable</option>
+                <option value="reserved">Reserved</option>
+                <option value="sold">Sold</option>
+              </select><br />
+              <button onClick={handleReset} type='button'>Reset Changes</button>
+              <button type='submit'>Submit Changes</button>
+          </form>
+        </div>
       }
     </>
   )
+
+  // return (
+  //   <div></div>
+  // )
 }
 
 export default EditKitten

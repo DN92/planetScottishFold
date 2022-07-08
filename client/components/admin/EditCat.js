@@ -5,6 +5,7 @@ import ErrorFill from '../ErrorFill'
 import history from '../../history'
 import { eyeColors } from '../../../myModelsConfig'
 import handleControlledValueFieldToState from '../../customHandlers/handleFormChange'
+import { useParams } from 'react-router-dom'
 import axios from 'axios'
 
 const EditCat = () => {

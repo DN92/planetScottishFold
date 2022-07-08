@@ -3040,7 +3040,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _MeContextPro__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../MeContextPro */ "./client/MeContextPro.js");
 /* harmony import */ var _secrets__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../secrets */ "./secrets.js");
 /* harmony import */ var _secrets__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_secrets__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _customHooks_useFetch__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../customHooks/useFetch */ "./client/customHooks/useFetch.js");
+/* harmony import */ var _axiosHandlers_fetchEffect__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./axiosHandlers/fetchEffect */ "./client/components/axiosHandlers/fetchEffect.js");
 
 
 
@@ -3064,7 +3064,7 @@ const CatDetailedView = () => {
   //  no params and no history should result in a local 404
 
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
-    !cat && id && (0,_customHooks_useFetch__WEBPACK_IMPORTED_MODULE_6__.useFetch)([setCat, setError], 'get', `/api/${MOTHERorFATHER}s?id=${id}`);
+    !cat && id && (0,_axiosHandlers_fetchEffect__WEBPACK_IMPORTED_MODULE_6__.fetchEffect)([setCat, setError], 'get', `/api/${MOTHERorFATHER}s?id=${id}`);
   }, []);
   const imgInLine = {
     width: "100%",
@@ -3081,15 +3081,9 @@ const CatDetailedView = () => {
     alt: `Picture of ${MOTHERorFATHER}`,
     style: imgInLine
   }), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, " name: ", cat.name), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, " serial number: ", cat.serialNumber), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, " ears: ", cat.ears), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, " furColor: ", cat.furColor), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, " eyeColor: ", cat.eyeColor), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, " Date Of Birth: ", cat.dob), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null)), (0,_secrets__WEBPACK_IMPORTED_MODULE_5__.isPrivileged)(type) && !fromEdit && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Link, {
-    to: `/createCat/${MOTHERorFATHER}`,
-    state: {
-      parent: MOTHERorFATHER
-    }
+    to: `/createCat/${MOTHERorFATHER}`
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", null, "Upload Another ", `${MOTHERorFATHER}`)), (0,_secrets__WEBPACK_IMPORTED_MODULE_5__.isPrivileged)(type) && fromEdit && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Link, {
-    to: `/view${MOTHERorFATHER}s`,
-    state: {
-      parent: MOTHERorFATHER
-    }
+    to: `/viewCats/${MOTHERorFATHER}s`
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", null, "Back to ", `${MOTHERorFATHER}`))), !error && !cat && !id && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_My404__WEBPACK_IMPORTED_MODULE_3__["default"], null)));
 };
 
@@ -3137,14 +3131,13 @@ const CatSingleView = props => {
     mainImageSrcValue
   } = cat;
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
-    to: (0,_secrets__WEBPACK_IMPORTED_MODULE_2__.isPrivileged)(type) ? `/edit/${props.parent}` : `/catDetailedView/${props.parent}`,
+    to: (0,_secrets__WEBPACK_IMPORTED_MODULE_2__.isPrivileged)(type) ? `/editCat/${props.parent}/${cat.id}` : `/catDetailedView/${props.parent}/${cat.id}`,
     state: {
-      cat: cat,
-      parent: props.parent
+      cat: cat
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
     src: mainImageSrcValue,
-    alt: `${props.parent}'s picture `,
+    alt: `${props.parent.name}'s picture `,
     className: "image"
   })), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, name), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, ears), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, "Eye Color: ", eyeColor), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, "Fur Color: ", furColor), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), (0,_secrets__WEBPACK_IMPORTED_MODULE_2__.isPrivileged)(type) && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, "Date of Birth: ", dob), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("hr", null));
 };
@@ -3543,7 +3536,7 @@ const imgStyle = {
 const ErrorFill = ({
   msg
 }) => {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Something went wrong just meow!"), msg && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, msg), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Something went wrong just meow!"), msg && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, msg), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
     style: imgStyle,
     src: "/catPictures/catError3.gif"
   }));
@@ -3636,7 +3629,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _MeContextPro__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../MeContextPro */ "./client/MeContextPro.js");
 /* harmony import */ var _secrets__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../secrets */ "./secrets.js");
 /* harmony import */ var _secrets__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_secrets__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _customHooks_useFetch__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../customHooks/useFetch */ "./client/customHooks/useFetch.js");
+/* harmony import */ var _axiosHandlers_fetchEffect__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./axiosHandlers/fetchEffect */ "./client/components/axiosHandlers/fetchEffect.js");
 
 
 
@@ -3659,7 +3652,7 @@ const KittenDetailedView = () => {
   //  no params and no history should result in a local 404
 
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
-    !kitten && id && (0,_customHooks_useFetch__WEBPACK_IMPORTED_MODULE_6__.useFetch)([setKitten, setError], 'get', `/api/kittens?id=${id}`);
+    !kitten && id && (0,_axiosHandlers_fetchEffect__WEBPACK_IMPORTED_MODULE_6__.fetchEffect)([setKitten, setError], 'get', `/api/kittens?id=${id}`);
   }, []);
   const imgInLine = {
     width: "100%",
@@ -4354,7 +4347,7 @@ const CreateCat = () => {
         data
       } = await axios__WEBPACK_IMPORTED_MODULE_4___default().post(`/api/${MOTHERorFATHER}s`, catToCreate);
       setError('');
-      _history__WEBPACK_IMPORTED_MODULE_2__["default"].push(`/${MOTHERorFATHER}Detailed`, {
+      _history__WEBPACK_IMPORTED_MODULE_2__["default"].push(`catDetailed/${MOTHERorFATHER}/${data.id}`, {
         cat: data,
         error: error,
         fromCreate: true
@@ -4446,7 +4439,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
  //  /createKitten
 
 const CreateKitten = () => {
@@ -4482,12 +4474,10 @@ const CreateKitten = () => {
       event.preventDefault();
       console.log(kittenToCreate);
       const {
-        data: kitten
-      } = await axios__WEBPACK_IMPORTED_MODULE_5___default().post('/api/kittens', kittenToCreate); // const kitten = data
-
-      console.log('kitten: ', kitten);
-      _history__WEBPACK_IMPORTED_MODULE_3__["default"].push('/kittenDetailed', {
-        kitten: kitten,
+        data
+      } = await axios__WEBPACK_IMPORTED_MODULE_5___default().post('/api/kittens', kittenToCreate);
+      _history__WEBPACK_IMPORTED_MODULE_3__["default"].push(`/kittenDetailed/${data.id}`, {
+        kitten: data,
         error: error,
         fromCreate: true
       });
@@ -4630,7 +4620,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-const EditMother = () => {
+
+const EditCat = () => {
   const MOTHERorFATHER = _history__WEBPACK_IMPORTED_MODULE_4__["default"].location.state ? _history__WEBPACK_IMPORTED_MODULE_4__["default"].location.state.parent : 'mother';
   const {
     type
@@ -4677,10 +4668,9 @@ const EditMother = () => {
       } = await axios__WEBPACK_IMPORTED_MODULE_7___default().put(`/api/${MOTHERorFATHER}s`, catToEdit);
       console.log(data);
       setInitialState(data);
-      _history__WEBPACK_IMPORTED_MODULE_4__["default"].push(`/${MOTHERorFATHER}Detailed`, {
+      _history__WEBPACK_IMPORTED_MODULE_4__["default"].push(`/catDetailed/${MOTHERorFATHER}/${data.id}`, {
         cat: catToEdit,
-        fromEdit: true,
-        parent: MOTHERorFATHER
+        fromEdit: true
       });
     } catch (err) {
       console.log(err);
@@ -4752,7 +4742,7 @@ const EditMother = () => {
   }, "Submit Changes"))));
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (EditMother);
+/* harmony default export */ __webpack_exports__["default"] = (EditCat);
 
 /***/ }),
 
@@ -4776,6 +4766,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _customHandlers_handleFormChange__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../customHandlers/handleFormChange */ "./client/customHandlers/handleFormChange.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var _axiosHandlers_fetchEffect__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../axiosHandlers/fetchEffect */ "./client/components/axiosHandlers/fetchEffect.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/index.js");
+
+
 
 
 
@@ -4786,24 +4780,16 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const EditKitten = () => {
-  console.log('gotHere?');
   const {
     type
   } = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_MeContextPro__WEBPACK_IMPORTED_MODULE_1__["default"]);
-  let kittenFromHistory = null;
-  let errorFromHistory = '';
-
-  if (_history__WEBPACK_IMPORTED_MODULE_4__["default"].location.state) {
-    kittenFromHistory = _history__WEBPACK_IMPORTED_MODULE_4__["default"].location.state.kitten;
-    errorFromHistory = _history__WEBPACK_IMPORTED_MODULE_4__["default"].location.state.error;
-  }
-
-  const [initialState, setInitialState] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(kittenFromHistory ? { ...kittenFromHistory
-  } : null);
-  const [kittenToEdit, setKittenToEdit] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(kittenFromHistory);
+  const {
+    id
+  } = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_9__.useParams)();
+  const [kittenToEdit, setKittenToEdit] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(_history__WEBPACK_IMPORTED_MODULE_4__["default"].location.state ? _history__WEBPACK_IMPORTED_MODULE_4__["default"].location.state.kitten : null);
+  const [error, setError] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(_history__WEBPACK_IMPORTED_MODULE_4__["default"].location.state ? _history__WEBPACK_IMPORTED_MODULE_4__["default"].location.state.error : '');
   const [dams, setDams] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]);
   const [studs, setStuds] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]);
-  const [error, setError] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(errorFromHistory);
   const imgInLine = {
     width: "100%",
     maxWidth: "200px",
@@ -4828,13 +4814,11 @@ const EditKitten = () => {
     event.preventDefault();
 
     try {
-      console.log('kitten before api call: ', kittenToEdit);
       const {
         data
       } = await axios__WEBPACK_IMPORTED_MODULE_7___default().put('/api/kittens', kittenToEdit);
-      console.log(data);
-      setInitialState(data);
-      _history__WEBPACK_IMPORTED_MODULE_4__["default"].push('/kittenDetailed', {
+      setKittenToEdit(data);
+      _history__WEBPACK_IMPORTED_MODULE_4__["default"].push(`/kittenDetailed/${data.id}`, {
         kitten: kittenToEdit,
         fromEdit: true
       });
@@ -4845,24 +4829,10 @@ const EditKitten = () => {
   };
 
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
-    const fetchDamsAndStuds = async () => {
-      try {
-        let mothers = await axios__WEBPACK_IMPORTED_MODULE_7___default().get('/api/mothers');
-        let fathers = await axios__WEBPACK_IMPORTED_MODULE_7___default().get('/api/studs');
-        mothers = mothers.data.map(mother => mother.name);
-        fathers = fathers.data.map(father => father.name);
-        setError('');
-        setDams(mothers);
-        setStuds(fathers);
-      } catch (err) {
-        console.log(err);
-        setError(err.message);
-      }
-    };
-
-    fetchDamsAndStuds();
+    !kittenToEdit && id && (0,_axiosHandlers_fetchEffect__WEBPACK_IMPORTED_MODULE_8__.fetchEffect)([setKittenToEdit, setError], 'put', `/api/kittens`, kittenToEdit);
+    !dams.length && (0,_axiosHandlers_fetchEffect__WEBPACK_IMPORTED_MODULE_8__.fetchEffect)([setDams, setError], 'get', `/api/mothers?onlyNames=true`);
+    !studs.length && (0,_axiosHandlers_fetchEffect__WEBPACK_IMPORTED_MODULE_8__.fetchEffect)([setStuds, setError], 'get', `api/fathers?onlyNames=true`);
   }, []);
-  console.log('dams: ', dams);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, error && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ErrorFill__WEBPACK_IMPORTED_MODULE_3__["default"], {
     msg: error
   }), !error && !(0,_secrets__WEBPACK_IMPORTED_MODULE_2__.isPrivileged)(type) && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "You don't have the privileges to view this page"), !error && !kittenToEdit && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ErrorFill__WEBPACK_IMPORTED_MODULE_3__["default"], {
@@ -4961,7 +4931,9 @@ const EditKitten = () => {
     type: "button"
   }, "Reset Changes"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
     type: "submit"
-  }, "Submit Changes"))));
+  }, "Submit Changes")))); // return (
+  //   <div></div>
+  // )
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (EditKitten);
@@ -4983,7 +4955,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _LoadingFill__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../LoadingFill */ "./client/components/LoadingFill.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_4__);
-
 
 
 
@@ -5266,6 +5237,62 @@ const putTokenOnHeader = () => {
 
 /***/ }),
 
+/***/ "./client/components/axiosHandlers/fetchEffect.js":
+/*!********************************************************!*\
+  !*** ./client/components/axiosHandlers/fetchEffect.js ***!
+  \********************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "fetchEffect": function() { return /* binding */ fetchEffect; }
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _addToken__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./addToken */ "./client/components/axiosHandlers/addToken.js");
+
+
+
+const validRequestMethods = ['get', 'post', 'put', 'delete']; // setterFunc Array should include either just the state setter or the
+//  state setter followed by the error setter.
+//  method is the RESTFUL method
+//  path is the url, body is request body
+
+const fetchEffect = async (setterFuncArray, method, path, body) => {
+  //  check for valid method type
+  if (!validRequestMethods.includes(method)) {
+    throw new Error('invalid request method. Request not sent');
+  } //  if a token exits, put it on the headers.authorization
+
+
+  try {
+    const {
+      data
+    } = !['post', 'put'].includes(method) //  gets and deletes
+    ? await (axios__WEBPACK_IMPORTED_MODULE_1___default())[method](path, (0,_addToken__WEBPACK_IMPORTED_MODULE_2__.putTokenOnHeader)()) //  posts and puts
+    : await (axios__WEBPACK_IMPORTED_MODULE_1___default())[method](path, body, (0,_addToken__WEBPACK_IMPORTED_MODULE_2__.putTokenOnHeader)()); // set state upon promise resolving
+
+    if (setterFuncArray.length) {
+      setterFuncArray[0](data); //  clear error if errorSetter was provided
+    }
+
+    if (setterFuncArray.length > 1) {
+      setterFuncArray[1]('');
+    }
+  } catch (err) {
+    console.log(err);
+
+    if (setterFuncArray.length > 1) {
+      setterFuncArray[1](err.message);
+    }
+  }
+};
+
+/***/ }),
+
 /***/ "./client/components/textComponents/AboutUs.js":
 /*!*****************************************************!*\
   !*** ./client/components/textComponents/AboutUs.js ***!
@@ -5467,54 +5494,6 @@ const useFetchParents = () => {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (useFetchParents);
-
-/***/ }),
-
-/***/ "./client/customHooks/useFetch.js":
-/*!****************************************!*\
-  !*** ./client/customHooks/useFetch.js ***!
-  \****************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "useFetch": function() { return /* binding */ useFetch; }
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _components_axiosHandlers_addToken__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/axiosHandlers/addToken */ "./client/components/axiosHandlers/addToken.js");
-
-
-
-const validRequestMethods = ['get', 'post', 'put', 'delete']; // setterFunc Array should include either just the state setter or the
-//  state setter followed by the error setter.
-//  method is the RESTFUL method
-//  path is the url, body is request body
-
-const useFetch = async (setterFuncArray, method, path, body) => {
-  if (!validRequestMethods.includes(method)) {
-    throw new Error('invalid request method. Request not sent');
-  }
-
-  try {
-    const {
-      data
-    } = !['post', 'put'].includes(method) ? await (axios__WEBPACK_IMPORTED_MODULE_1___default())[method](path, (0,_components_axiosHandlers_addToken__WEBPACK_IMPORTED_MODULE_2__.putTokenOnHeader)()) : await (axios__WEBPACK_IMPORTED_MODULE_1___default())[method](path, body, (0,_components_axiosHandlers_addToken__WEBPACK_IMPORTED_MODULE_2__.putTokenOnHeader)());
-
-    if (setterFuncArray.length) {
-      setterFuncArray[0](data);
-    }
-  } catch (err) {
-    console.log(err);
-
-    if (setterFuncArray.length > 1) {
-      setterFuncArray[1](err.message);
-    }
-  }
-};
 
 /***/ }),
 

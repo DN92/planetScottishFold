@@ -5,6 +5,13 @@ const { Stud } = require('../db').models
 
 router.get('/', async (req, res, next) => {
   try {
+    if(req.query.onlyNames) {
+      const studs = await Stud.findAll({
+        attributes: ['name']
+      })
+      res.send(studs.map(stud => stud.name))
+      return
+    }
     req.query.id
     ? res.send(await Stud.findByPk(req.query.id))
     : res.send(await Stud.findAll())

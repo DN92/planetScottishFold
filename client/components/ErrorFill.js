@@ -9,7 +9,7 @@ const ErrorFill = ({msg}) => {
   return (
     <div >
       <p>Something went wrong just meow!</p>
-      {msg && <p>{msg}</p> }
+      {msg && <h2>{msg}</h2> }
       <img style={imgStyle} src="/catPictures/catError3.gif"  />
     </div>
   )

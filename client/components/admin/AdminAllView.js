@@ -33,8 +33,6 @@ const AdminAllView = () => {
 
   }, [])
 
-
-
   return (
     <>
       {isLoading && <LoadingFill />}
