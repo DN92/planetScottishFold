@@ -7,6 +7,7 @@ import CreateKitten from './components/admin/CreateKitten'
 import EditKitten from './components/admin/EditKitten'
 import CreateCat from './components/admin/CreateCat'
 import EditCat from './components/admin/EditCat'
+import DirectMessages from './components/admin/DirectMessages'
 
 
 const AdminRoutes = () => {
@@ -20,6 +21,7 @@ const AdminRoutes = () => {
       <Route path='/editKitten' element={<EditKitten />} />
       <Route path='/createCat/:MOTHERorFATHER' element={<CreateCat />} />
       <Route path='/editCat/:MOTHERorFATHER/:id' element={<EditCat />} />
+      <Route path='/directMessages' element={<DirectMessages />} />
 
       {/* Redirects */}
       <Route path='/createCat' element={<Navigate to='mother'/>}></Route>

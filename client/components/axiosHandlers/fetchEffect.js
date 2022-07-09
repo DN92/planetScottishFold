@@ -1,4 +1,3 @@
-import React from 'react'
 import axios from 'axios'
 import {putTokenOnHeader} from './addToken'
 
@@ -16,11 +15,11 @@ export const fetchEffect = async (setterFuncArray, method, path, body,) => {
   }
   //  if a token exits, put it on the headers.authorization
   try {
-    const {data} = !['post', 'put'].includes(method)
+    const {data} = !['post', 'put'].includes(method) ?
     //  gets and deletes
-      ? await axios[method](path, putTokenOnHeader())
+    await axios[method](path, putTokenOnHeader()) :
     //  posts and puts
-      : await axios[method](path, body, putTokenOnHeader())
+    await axios[method](path, body, putTokenOnHeader())
     // set state upon promise resolving
       if (setterFuncArray.length && method != 'delete') {
         setterFuncArray[0](data)

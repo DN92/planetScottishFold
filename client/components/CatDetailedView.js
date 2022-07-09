@@ -29,7 +29,8 @@ const CatDetailedView = () => {
     !cat && id && fetchEffect(
       [setCat, setError],
       'get',
-      `/api/${MOTHERorFATHER}s?id=${id}`)
+      `/api/${MOTHERorFATHER}s?id=${id}`
+    )
   }, [])
 
 

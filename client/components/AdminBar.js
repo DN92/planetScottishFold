@@ -20,6 +20,8 @@ const AdminBar = () => {
       &nbsp;&nbsp;
       <Link to='viewCats/father' >View/Edit A Sire </Link>
       &nbsp;&nbsp;
+      <Link to='directMessages' >Direct Messages </Link>
+      &nbsp;&nbsp;
 
     </nav>
   )

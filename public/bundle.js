@@ -2472,7 +2472,7 @@ module.exports = {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/index.js");
 /* harmony import */ var _components_admin_NewUserRequests__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/admin/NewUserRequests */ "./client/components/admin/NewUserRequests.js");
 /* harmony import */ var _components_admin_RequestReview__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/admin/RequestReview */ "./client/components/admin/RequestReview.js");
 /* harmony import */ var _components_admin_AdminAllView__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/admin/AdminAllView */ "./client/components/admin/AdminAllView.js");
@@ -2480,6 +2480,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_admin_EditKitten__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/admin/EditKitten */ "./client/components/admin/EditKitten.js");
 /* harmony import */ var _components_admin_CreateCat__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/admin/CreateCat */ "./client/components/admin/CreateCat.js");
 /* harmony import */ var _components_admin_EditCat__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/admin/EditCat */ "./client/components/admin/EditCat.js");
+/* harmony import */ var _components_admin_DirectMessages__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/admin/DirectMessages */ "./client/components/admin/DirectMessages.js");
+
 
 
 
@@ -2491,35 +2493,38 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const AdminRoutes = () => {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Routes, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Route, {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Routes, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Route, {
     path: "/newUserRequests",
     element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_admin_NewUserRequests__WEBPACK_IMPORTED_MODULE_1__["default"], null)
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Route, {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Route, {
     path: "/newUserRequests/:requestId",
     element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_admin_RequestReview__WEBPACK_IMPORTED_MODULE_2__["default"], null)
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Route, {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Route, {
     path: "/adminAllView",
     element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_admin_AdminAllView__WEBPACK_IMPORTED_MODULE_3__["default"], null)
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Route, {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Route, {
     path: "/createKitten",
     element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_admin_CreateKitten__WEBPACK_IMPORTED_MODULE_4__["default"], null)
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Route, {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Route, {
     path: "/editKitten",
     element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_admin_EditKitten__WEBPACK_IMPORTED_MODULE_5__["default"], null)
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Route, {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Route, {
     path: "/createCat/:MOTHERorFATHER",
     element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_admin_CreateCat__WEBPACK_IMPORTED_MODULE_6__["default"], null)
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Route, {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Route, {
     path: "/editCat/:MOTHERorFATHER/:id",
     element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_admin_EditCat__WEBPACK_IMPORTED_MODULE_7__["default"], null)
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Route, {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Route, {
+    path: "/directMessages",
+    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_admin_DirectMessages__WEBPACK_IMPORTED_MODULE_8__["default"], null)
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Route, {
     path: "/createCat",
-    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Navigate, {
+    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Navigate, {
       to: "mother"
     })
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Route, {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Route, {
     path: "/editCat",
-    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Navigate, {
+    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Navigate, {
       to: "mother"
     })
   }));
@@ -2745,7 +2750,9 @@ const AdminBar = () => {
     to: "viewCats/mother"
   }, "View/Edit A Dam "), "\xA0\xA0", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
     to: "viewCats/father"
-  }, "View/Edit A Sire "), "\xA0\xA0");
+  }, "View/Edit A Sire "), "\xA0\xA0", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
+    to: "directMessages"
+  }, "Direct Messages "), "\xA0\xA0");
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (AdminBar);
@@ -4598,6 +4605,55 @@ const CreateKitten = () => {
 
 /***/ }),
 
+/***/ "./client/components/admin/DirectMessages.js":
+/*!***************************************************!*\
+  !*** ./client/components/admin/DirectMessages.js ***!
+  \***************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _axiosHandlers_fetchEffect__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../axiosHandlers/fetchEffect */ "./client/components/axiosHandlers/fetchEffect.js");
+/* harmony import */ var _ErrorFill__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../ErrorFill */ "./client/components/ErrorFill.js");
+
+
+
+
+const DirectMessages = () => {
+  const counterRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(0);
+  const [viewDetailed, setViewDetailed] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
+  const [messages, setMessages] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]);
+  const [error, setError] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('');
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+    if (!messages.length && counterRef.current === 0) {
+      counterRef.current++;
+      (0,_axiosHandlers_fetchEffect__WEBPACK_IMPORTED_MODULE_1__.fetchEffect)([setMessages, setError], 'get', `/api/contactRequests`);
+    }
+  }, []);
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, error && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ErrorFill__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    msg: error
+  }), !error && !messages.length && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "No New Messages"), !error && !!messages.length && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+    htmlFor: "viewDetailed"
+  }, "See More Details"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    onChange: () => setViewDetailed(prev => !prev),
+    type: "checkbox",
+    name: "viewDetailed",
+    checked: viewDetailed
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("table", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("thead", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("tr", null, viewDetailed && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "Phone")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "From Email"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "Message"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("tbody", null, messages.map(message => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("tr", {
+    key: message.id
+  }, viewDetailed && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, message.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, message.phone)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, message.eMail), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, message.message), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    type: "checkbox"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    type: "checkbox"
+  }))))))));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (DirectMessages);
+
+/***/ }),
+
 /***/ "./client/components/admin/EditCat.js":
 /*!********************************************!*\
   !*** ./client/components/admin/EditCat.js ***!
@@ -5261,12 +5317,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "fetchEffect": function() { return /* binding */ fetchEffect; }
 /* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _addToken__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./addToken */ "./client/components/axiosHandlers/addToken.js");
-
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _addToken__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./addToken */ "./client/components/axiosHandlers/addToken.js");
 
 
 const validRequestMethods = ['get', 'post', 'put', 'delete']; // setterFunc Array should include either just the state setter or the
@@ -5284,9 +5337,9 @@ const fetchEffect = async (setterFuncArray, method, path, body) => {
   try {
     const {
       data
-    } = !['post', 'put'].includes(method) //  gets and deletes
-    ? await (axios__WEBPACK_IMPORTED_MODULE_1___default())[method](path, (0,_addToken__WEBPACK_IMPORTED_MODULE_2__.putTokenOnHeader)()) //  posts and puts
-    : await (axios__WEBPACK_IMPORTED_MODULE_1___default())[method](path, body, (0,_addToken__WEBPACK_IMPORTED_MODULE_2__.putTokenOnHeader)()); // set state upon promise resolving
+    } = !['post', 'put'].includes(method) ? //  gets and deletes
+    await (axios__WEBPACK_IMPORTED_MODULE_0___default())[method](path, (0,_addToken__WEBPACK_IMPORTED_MODULE_1__.putTokenOnHeader)()) : //  posts and puts
+    await (axios__WEBPACK_IMPORTED_MODULE_0___default())[method](path, body, (0,_addToken__WEBPACK_IMPORTED_MODULE_1__.putTokenOnHeader)()); // set state upon promise resolving
 
     if (setterFuncArray.length && method != 'delete') {
       setterFuncArray[0](data); //  clear error if errorSetter was provided
