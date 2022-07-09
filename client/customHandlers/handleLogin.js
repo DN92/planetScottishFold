@@ -15,7 +15,7 @@ const handleLogin = async ( meContext, loginInfo) => {
       return[!success, '']
     } catch (err) {
       console.log(err)
-      return [!success, 'error']
+      return [!success, err.message]
     }
   }
 

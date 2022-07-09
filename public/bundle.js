@@ -2510,7 +2510,7 @@ const AdminRoutes = () => {
     path: "/createCat/:MOTHERorFATHER",
     element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_admin_CreateCat__WEBPACK_IMPORTED_MODULE_6__["default"], null)
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Route, {
-    path: "/editCat/: MOTHERorFATHER",
+    path: "/editCat/:MOTHERorFATHER/:id",
     element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_admin_EditCat__WEBPACK_IMPORTED_MODULE_7__["default"], null)
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Route, {
     path: "/createCat",
@@ -2819,10 +2819,12 @@ __webpack_require__.r(__webpack_exports__);
 const AuthForm = () => {
   const meContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_MeContextPro__WEBPACK_IMPORTED_MODULE_1__["default"]);
   const [loginInfo, setLoginInfo] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
-    username: '',
+    eMail: '',
     password: ''
   });
   const [rememberMe, setRememberMe] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
+  const [error, setError] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('');
+  const [attemptsCounter, setAttemptsCounter] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(1);
 
   const handleRememberMe = () => {
     setRememberMe(prevState => {
@@ -2836,9 +2838,9 @@ const AuthForm = () => {
 
   const handleSubmit = async event => {
     event.preventDefault();
-    const [successStatus, message] = await (0,_customHandlers_handleLogin__WEBPACK_IMPORTED_MODULE_2__["default"])(meContext, loginInfo);
+    const [successStatus, message] = await (0,_customHandlers_handleLogin__WEBPACK_IMPORTED_MODULE_2__["default"])(meContext, loginInfo); //  successful
 
-    if (rememberMe) {
+    if (rememberMe && successStatus) {
       localStorage.setItem('autoLogin', 'true');
     } else {
       localStorage.removeItem('autoLogin');
@@ -2846,29 +2848,16 @@ const AuthForm = () => {
 
     if (successStatus) {
       _history__WEBPACK_IMPORTED_MODULE_3__["default"].push('/home');
-    }
-  };
+      return;
+    } //  else fail case
 
-  const handleLoginFromStorage = () => {
-    console.log('here');
-    console.log(JSON.parse(localStorage.getItem('psfMe')));
-    const {
-      username,
-      type,
-      id
-    } = JSON.parse(localStorage.getItem('psfMe'));
-    meContext.setUsername(username);
-    meContext.setType(type);
-    meContext.setId(id);
+
+    setError(message);
+    setAttemptsCounter(prev => prev + 1);
   };
 
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
-    // console.log('localstore: ', localStorage)
-    console.log('here'); // console.log(JSON.parse(!!localStorage.getItem('autoLogin')))
-
     if (localStorage.hasOwnProperty('autoLogin') && localStorage.hasOwnProperty('psfMe') && JSON.parse(localStorage.getItem('psfMe')).username) {
-      console.log('boom');
-      console.log(meContext);
       const user = {
         username: meContext.username,
         type: meContext.type,
@@ -2878,21 +2867,14 @@ const AuthForm = () => {
       _history__WEBPACK_IMPORTED_MODULE_3__["default"].push('/home');
     }
   }, []);
-  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
-    console.log('loaded in');
-
-    if (localStorage.getItem('psfMe')) {
-      handleLoginFromStorage();
-    }
-  }, []);
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "Login"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("form", {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "Login"), !error && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h6", null, "login page"), error && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h6", null, "Email or Password is incorrect. Try Again"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("form", {
     onSubmit: handleSubmit,
     onChange: handleChange
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
-    name: "username",
-    placeholder: "User Name",
-    type: "text",
-    value: loginInfo.username,
+    name: "eMail",
+    placeholder: "E Mail",
+    type: "email",
+    value: loginInfo.eMail,
     onChange: handleChange
   }), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
     name: "password",
@@ -3246,7 +3228,6 @@ const ClientQuestionnaire = () => {
     required: true
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("textarea", {
     name: "aboutYou",
-    id: "",
     cols: "50",
     rows: "5",
     value: clientInfo.aboutYou,
@@ -3451,6 +3432,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _myUtilFuncs_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../myUtilFuncs.js */ "./myUtilFuncs.js");
 /* harmony import */ var _myUtilFuncs_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_myUtilFuncs_js__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _customHandlers_handleFormChange__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../customHandlers/handleFormChange */ "./client/customHandlers/handleFormChange.js");
+/* harmony import */ var _axiosHandlers_fetchEffect_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./axiosHandlers/fetchEffect.js */ "./client/components/axiosHandlers/fetchEffect.js");
+/* harmony import */ var _history__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../history */ "./client/history.js");
+/* harmony import */ var _ErrorFill__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./ErrorFill */ "./client/components/ErrorFill.js");
+
+
+
+
 
 
 
@@ -3458,38 +3447,47 @@ const ContactRequestForm = () => {
   const defaultContactRequest = {
     name: '',
     phone: '',
-    email: '',
+    eMail: '',
     message: ''
   };
   const [contactRequest, setContactRequest] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(defaultContactRequest);
+  const [newReq, setNewReq] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({});
+  const [error, setError] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('');
+  const [endFlag, setEndFlag] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
 
   const handleChange = event => {
-    if (event.target.name === "phone") {
-      event.target.value = (0,_myUtilFuncs_js__WEBPACK_IMPORTED_MODULE_1__.convertToPhoneNumber)(event.target.value);
-    }
-
-    setContactRequest(prevContactRequest => {
-      return { ...prevContactRequest,
-        [event.target.name]: event.target.value
-      };
-    });
+    (0,_customHandlers_handleFormChange__WEBPACK_IMPORTED_MODULE_2__["default"])(event, setContactRequest);
   };
 
   const handleKeyPress = event => {
     event.code === 'Enter' && event.target.localName !== 'textarea' && event.preventDefault();
   };
 
-  const handleSubmit = event => {
+  const handleSubmit1 = event => {
     event.preventDefault();
-    (0,_myUtilFuncs_js__WEBPACK_IMPORTED_MODULE_1__.resetForm)(event);
-    setContactRequest(defaultContactRequest);
+    setNewReq(contactRequest);
   };
 
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("form", {
+  const handleRedo = event => {
+    setNewReq({});
+  };
+
+  const handleSubmit2 = event => {
+    event.preventDefault();
+    (0,_axiosHandlers_fetchEffect_js__WEBPACK_IMPORTED_MODULE_3__.fetchEffect)([setNewReq, setError], 'post', `api/contactRequests`, contactRequest);
+    setEndFlag(prev => !prev);
+  };
+
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+    endFlag && !error && _history__WEBPACK_IMPORTED_MODULE_4__["default"].push('/home');
+  }, [endFlag]);
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, error && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ErrorFill__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    msg: error
+  }), !Object.keys(newReq).length && !error && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "Contact Form"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h4", null, "Use this form to send us a direct message without having to log in"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("form", {
     id: "ContactRequest",
     onKeyDown: handleKeyPress,
     onChange: handleChange,
-    onSubmit: handleSubmit
+    onSubmit: handleSubmit1
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
     type: "text",
     name: "name",
@@ -3502,15 +3500,24 @@ const ContactRequestForm = () => {
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
     type: "email",
     name: "eMail",
-    placeholder: "Your Email"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    placeholder: "Your Email",
+    required: true
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("textarea", {
     type: "textarea",
     name: "message",
+    cols: "50",
+    rows: "5",
     placeholder: "Type your message here..",
     required: true
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
     type: "submit"
-  }));
+  }))), Object.keys(newReq).length && !error && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "Review Your Message"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, "From: ", newReq.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, "Email: ", newReq.eMail), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, "Telephone: ", newReq.phone), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, "Your Message:"), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, newReq.message), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    type: "button",
+    onClick: handleRedo
+  }, "Edit Information"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    type: "button",
+    onClick: handleSubmit2
+  }, "Continue")));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (ContactRequestForm);
@@ -4609,8 +4616,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _myModelsConfig__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../myModelsConfig */ "./myModelsConfig.js");
 /* harmony import */ var _myModelsConfig__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_myModelsConfig__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var _customHandlers_handleFormChange__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../customHandlers/handleFormChange */ "./client/customHandlers/handleFormChange.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var _axiosHandlers_fetchEffect__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../axiosHandlers/fetchEffect */ "./client/components/axiosHandlers/fetchEffect.js");
+
 
 
 
@@ -4622,22 +4632,17 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const EditCat = () => {
-  const MOTHERorFATHER = _history__WEBPACK_IMPORTED_MODULE_4__["default"].location.state ? _history__WEBPACK_IMPORTED_MODULE_4__["default"].location.state.parent : 'mother';
   const {
     type
   } = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_MeContextPro__WEBPACK_IMPORTED_MODULE_1__["default"]);
-  let catFromHistory = null;
-  let errorFromHistory = '';
-
-  if (_history__WEBPACK_IMPORTED_MODULE_4__["default"].location.state) {
-    catFromHistory = _history__WEBPACK_IMPORTED_MODULE_4__["default"].location.state.cat;
-    errorFromHistory = _history__WEBPACK_IMPORTED_MODULE_4__["default"].location.state.error;
-  }
-
-  const [initialState, setInitialState] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(catFromHistory ? { ...catFromHistory
-  } : null);
-  const [catToEdit, setCatToEdit] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(catFromHistory);
-  const [error, setError] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(errorFromHistory);
+  const {
+    MOTHERorFATHER,
+    id
+  } = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_9__.useParams)();
+  const [catToEdit, setCatToEdit] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(_history__WEBPACK_IMPORTED_MODULE_4__["default"].location.state ? _history__WEBPACK_IMPORTED_MODULE_4__["default"].location.state.cat : null);
+  const [catLoaded, setCatLoaded] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
+  const [initialState, setInitialState] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(catToEdit ? catToEdit : {});
+  const [error, setError] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(_history__WEBPACK_IMPORTED_MODULE_4__["default"].location.state ? _history__WEBPACK_IMPORTED_MODULE_4__["default"].location.state.error : '');
   const imgInLine = {
     width: "100%",
     maxWidth: "200px",
@@ -4646,7 +4651,6 @@ const EditCat = () => {
   };
 
   const handleChange = event => {
-    // if(!motherToEdit) return
     (0,_customHandlers_handleFormChange__WEBPACK_IMPORTED_MODULE_6__["default"])(event, setCatToEdit);
   };
 
@@ -4660,13 +4664,13 @@ const EditCat = () => {
 
   const handleSubmit = async event => {
     event.preventDefault();
+    !Object.key(initialState).length && setInitialState(catToEdit);
 
     try {
       console.log('cat before api call: ', catToEdit);
       const {
         data
       } = await axios__WEBPACK_IMPORTED_MODULE_7___default().put(`/api/${MOTHERorFATHER}s`, catToEdit);
-      console.log(data);
       setInitialState(data);
       _history__WEBPACK_IMPORTED_MODULE_4__["default"].push(`/catDetailed/${MOTHERorFATHER}/${data.id}`, {
         cat: catToEdit,
@@ -4678,6 +4682,15 @@ const EditCat = () => {
     }
   };
 
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+    !catToEdit && id && (0,_axiosHandlers_fetchEffect__WEBPACK_IMPORTED_MODULE_8__.fetchEffect)([setCatToEdit, setError], 'get', `/api/${MOTHERorFATHER}s?id=${id}`);
+    setCatLoaded(true);
+  }, []);
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+    !catToEdit && setCatLoaded(false);
+    !catLoaded && catToEdit && setInitialState(catToEdit);
+  }, [catLoaded]);
+  console.log(catToEdit);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, error && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ErrorFill__WEBPACK_IMPORTED_MODULE_3__["default"], {
     msg: error
   }), !error && !(0,_secrets__WEBPACK_IMPORTED_MODULE_2__.isPrivileged)(type) && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "You don't have the privileges to view this page"), !error && !catToEdit && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ErrorFill__WEBPACK_IMPORTED_MODULE_3__["default"], {
@@ -5275,7 +5288,7 @@ const fetchEffect = async (setterFuncArray, method, path, body) => {
     ? await (axios__WEBPACK_IMPORTED_MODULE_1___default())[method](path, (0,_addToken__WEBPACK_IMPORTED_MODULE_2__.putTokenOnHeader)()) //  posts and puts
     : await (axios__WEBPACK_IMPORTED_MODULE_1___default())[method](path, body, (0,_addToken__WEBPACK_IMPORTED_MODULE_2__.putTokenOnHeader)()); // set state upon promise resolving
 
-    if (setterFuncArray.length) {
+    if (setterFuncArray.length && method != 'delete') {
       setterFuncArray[0](data); //  clear error if errorSetter was provided
     }
 
@@ -5383,7 +5396,7 @@ const handleLogin = async (meContext, loginInfo) => {
       return [!success, ''];
     } catch (err) {
       console.log(err);
-      return [!success, 'error'];
+      return [!success, err.message];
     }
   };
 

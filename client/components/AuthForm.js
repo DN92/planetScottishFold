@@ -9,10 +9,12 @@ const AuthForm = () => {
 
   const meContext = useContext(MeContext)
   const [loginInfo, setLoginInfo] = useState({
-    username: '',
+    eMail: '',
     password: '',
   })
   const [rememberMe, setRememberMe] = useState(false)
+  const [error, setError] = useState('')
+  const [attemptsCounter, setAttemptsCounter] = useState(1)
 
   const handleRememberMe = () => {
     setRememberMe(prevState => {
@@ -27,58 +29,44 @@ const AuthForm = () => {
   const handleSubmit = async (event) => {
     event.preventDefault()
     const [successStatus, message] = await handleLogin(meContext, loginInfo)
-    if(rememberMe) {
+    //  successful
+    if(rememberMe && successStatus) {
       localStorage.setItem('autoLogin', 'true')
     } else {
       localStorage.removeItem('autoLogin')
     }
     if(successStatus) {
       history.push('/home')
+      return
     }
-  }
-
-  const handleLoginFromStorage = () => {
-    console.log('here')
-    console.log(JSON.parse(localStorage.getItem('psfMe')))
-    const {username, type, id} = JSON.parse(localStorage.getItem('psfMe'))
-    meContext.setUsername(username)
-    meContext.setType(type)
-    meContext.setId(id)
+    //  else fail case
+    setError(message)
+    setAttemptsCounter(prev => prev + 1)
   }
 
   useEffect(() => {
-    // console.log('localstore: ', localStorage)
-    console.log('here')
-    // console.log(JSON.parse(!!localStorage.getItem('autoLogin')))
     if(
       localStorage.hasOwnProperty('autoLogin')
       && localStorage.hasOwnProperty('psfMe')
       && (JSON.parse(localStorage.getItem('psfMe')).username)) {
-        console.log('boom')
-        console.log(meContext)
         const user = {username: meContext.username, type: meContext.type, id: meContext.id}
         localStorage.setItem('psfMe', JSON.stringify(user))
         history.push('/home')
     }
   }, [])
 
-  useEffect(()=>{
-    console.log('loaded in')
-    if(localStorage.getItem('psfMe')) {
-      handleLoginFromStorage()
-    }
-  },[])
-
   return (
     <div >
       <div >
         <h2>Login</h2>
+        {!error && <h6>login page</h6>}
+        {error && <h6>Email or Password is incorrect. Try Again</h6>}
         <form onSubmit={handleSubmit} onChange={handleChange}>
           <input
-            name="username"
-            placeholder="User Name"
-            type="text"
-            value={loginInfo.username}
+            name="eMail"
+            placeholder="E Mail"
+            type="email"
+            value={loginInfo.eMail}
             onChange={handleChange}
           /> <br />
           <input

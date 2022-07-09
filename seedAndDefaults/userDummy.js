@@ -38,7 +38,7 @@ const userArray = [
     'master',
     'God',
     '123',
-    '4gmail.com',
+    '4@gmail.com',
     'odessa',
     'ukraine',
   )

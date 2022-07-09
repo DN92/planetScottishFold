@@ -90,8 +90,8 @@ User.prototype.generateToken = function () {
   return token
 };
 
-User.authenticate = async function ({ username, password }) {
-  const user = await this.findOne({ where: { username } });
+User.authenticate = async function ({ eMail, password }) {
+  const user = await this.findOne({ where: { eMail: eMail } });
   if (!user || !(await user.passwordConfirmed(password))) {
     const error = Error("Incorrect username/password");
     error.status = 401;

@@ -9,6 +9,7 @@ router.use('/mothers', require('./mothers'))
 router.use('/fathers', require('./fathers'))
 router.use('/users', require('./users'))
 router.use('/anonVisitors', require('./anonVisitor'))
+router.use('/contactRequests', require('./contactRequest'))
 router.use('/forTesting', require('./forTesting'))  //  delete later
 
 // router.get('/getImage', async (req, res, next) => {

@@ -1,4 +1,4 @@
-import React, {useState, useContext} from 'react'
+import React, {useState, useEffect, useContext} from 'react'
 import MeContext from '../../MeContextPro'
 import { isPrivileged } from '../../../secrets'
 import ErrorFill from '../ErrorFill'
@@ -7,26 +7,26 @@ import { eyeColors } from '../../../myModelsConfig'
 import handleControlledValueFieldToState from '../../customHandlers/handleFormChange'
 import { useParams } from 'react-router-dom'
 import axios from 'axios'
+import { fetchEffect } from '../axiosHandlers/fetchEffect'
 
 const EditCat = () => {
+  const {type} = useContext(MeContext)
+  const {MOTHERorFATHER, id} = useParams()
 
-  const MOTHERorFATHER = history.location.state
-  ? history.location.state.parent
-  : 'mother'
+  const [catToEdit, setCatToEdit] = useState(history.location.state
+    ? history.location.state.cat
+    : null
+  )
+  const [catLoaded, setCatLoaded] = useState(false)
+  const [initialState, setInitialState] = useState(catToEdit
+    ? catToEdit
+    : {}
+  )
+  const [error, setError] = useState(history.location.state
+    ? history.location.state.error
+    : ''
+  )
 
-  const {type} =useContext(MeContext)
-
-  let catFromHistory = null
-  let errorFromHistory = ''
-
-  if(history.location.state) {
-    catFromHistory = history.location.state.cat
-    errorFromHistory = history.location.state.error
-  }
-
-  const [initialState, setInitialState] = useState(catFromHistory ? {... catFromHistory} : null)
-  const [catToEdit, setCatToEdit] = useState(catFromHistory)
-  const [error, setError] = useState(errorFromHistory )
   const imgInLine= {
     width: "100%",
     maxWidth: "200px",
@@ -35,7 +35,6 @@ const EditCat = () => {
   }
 
   const handleChange = (event) => {
-    // if(!motherToEdit) return
     handleControlledValueFieldToState(event, setCatToEdit)
   }
 
@@ -49,10 +48,10 @@ const EditCat = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault()
+    !Object.key(initialState).length && setInitialState(catToEdit)
     try {
       console.log('cat before api call: ' , catToEdit)
       const {data} = await axios.put(`/api/${MOTHERorFATHER}s`, catToEdit)
-      console.log(data)
       setInitialState(data)
       history.push(`/catDetailed/${MOTHERorFATHER}/${data.id}`, {cat: catToEdit, fromEdit: true})
     } catch (err) {
@@ -60,6 +59,22 @@ const EditCat = () => {
       setError(err.message)
     }
   }
+
+  useEffect(() => {
+    !catToEdit && id && fetchEffect(
+      [setCatToEdit, setError],
+      'get',
+      `/api/${MOTHERorFATHER}s?id=${id}`
+    )
+    setCatLoaded(true)
+  }, [])
+
+  useEffect(()=>{
+    !catToEdit && setCatLoaded(false)
+    !catLoaded && catToEdit && setInitialState(catToEdit)
+  },[catLoaded])
+
+  console.log(catToEdit)
 
   return (
     <>

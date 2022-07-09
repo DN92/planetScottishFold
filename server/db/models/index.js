@@ -7,5 +7,6 @@ models.Mother = require("./MotherModel")
 models.Kitten = require("./KittenModel")
 models.User = require("./User")
 models.AnonVisitor = require("./AnonVisitor")
+models.ContactRequest = require('./ContactRequest')
 
 module.exports = models

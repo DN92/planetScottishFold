@@ -4,28 +4,30 @@ const { furColors, eyeColors, defaultCatPictureSrc } = require("../../../myModel
 
 const Mother = db.define("mother", {
   name: {
-    type: Sequelize.STRING
+    type: Sequelize.STRING,
+    defaultValue:'',
   },
   serialNumber:{
-    type:Sequelize.STRING
+    type:Sequelize.STRING,
+    defaultValue:'',
   },
   ears: {
     type: Sequelize.ENUM('fold', 'straight', '')
   },
-  // furColor: {
-  //   type: Sequelize.ENUM(...furColors, '', 'Silver Chinchilla', 'Black Marble', 'Blue Gold Chinchilla', 'Black Van')
-  // },
   furColor: {
-    type:Sequelize.STRING
+    type:Sequelize.STRING,
+    defaultValue:'',
   },
   eyeColor: {
     type: Sequelize.ENUM(...eyeColors, '')
   },
   age: {
-    type: Sequelize.INTEGER
+    type: Sequelize.INTEGER,
+    defaultValue:0,
   },
   dob: {
-    type:Sequelize.STRING
+    type:Sequelize.STRING,
+    defaultValue:'',
   },
   status: {
     type: Sequelize.ENUM('active', 'retired', ''),

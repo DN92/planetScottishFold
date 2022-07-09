@@ -22,7 +22,7 @@ export const fetchEffect = async (setterFuncArray, method, path, body,) => {
     //  posts and puts
       : await axios[method](path, body, putTokenOnHeader())
     // set state upon promise resolving
-      if (setterFuncArray.length) {
+      if (setterFuncArray.length && method != 'delete') {
         setterFuncArray[0](data)
     //  clear error if errorSetter was provided
       }

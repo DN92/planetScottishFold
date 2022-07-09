@@ -1,5 +1,9 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import {resetForm, convertToPhoneNumber} from '../../myUtilFuncs.js'
+import handleControlledValueFieldToState from '../customHandlers/handleFormChange'
+import { fetchEffect } from './axiosHandlers/fetchEffect.js'
+import history from '../history'
+import ErrorFill from './ErrorFill'
 
 
 const ContactRequestForm = () => {
@@ -7,39 +11,77 @@ const ContactRequestForm = () => {
   const defaultContactRequest = {
     name: '',
     phone: '',
-    email: '',
+    eMail: '',
     message: '',
   }
 
   const [contactRequest, setContactRequest] = useState(defaultContactRequest)
+  const [newReq, setNewReq] = useState({})
+  const [error, setError] = useState('')
+  const [endFlag, setEndFlag] = useState(false)
 
   const handleChange = (event) => {
-    if (event.target.name === "phone") {
-      event.target.value = convertToPhoneNumber(event.target.value)
-    }
-    setContactRequest(prevContactRequest => {
-      return {...prevContactRequest, [event.target.name]: event.target.value}
-    })
+    handleControlledValueFieldToState(event, setContactRequest)
   }
 
   const handleKeyPress = (event) => {
     event.code === 'Enter' && event.target.localName !== 'textarea' && event.preventDefault();
   }
 
-  const handleSubmit = (event) => {
+  const handleSubmit1 = (event) => {
     event.preventDefault()
-    resetForm(event)
-    setContactRequest(defaultContactRequest)
+    setNewReq(contactRequest)
   }
 
+  const handleRedo = (event) => {
+    setNewReq({})
+  }
+
+  const handleSubmit2 = (event) => {
+    event.preventDefault()
+    fetchEffect(
+      [setNewReq, setError],
+      'post',
+      `api/contactRequests`,
+      contactRequest,
+    )
+    setEndFlag(prev => !prev)
+  }
+
+  useEffect(() => {
+    endFlag && !error && history.push('/home')
+  },[endFlag])
+
   return (
-    <form id="ContactRequest" onKeyDown={handleKeyPress} onChange={handleChange} onSubmit={handleSubmit}>
-      <input type="text" name="name" placeholder='Your Name' required/><br />
-      <input type="tel" name="phone" placeholder='Your phone number' /><br />
-      <input type="email" name="eMail" placeholder='Your Email'/><br />
-      <input type="textarea" name="message" placeholder='Type your message here..' required /><br />
-      <input type="submit" />
-    </form>
+    <>
+      {error && <ErrorFill msg={error}/>}
+      {!Object.keys(newReq).length && !error &&
+        <>
+          <h2>Contact Form</h2>
+          <h4>Use this form to send us a direct message without having to log in</h4>
+          <form id="ContactRequest" onKeyDown={handleKeyPress} onChange={handleChange} onSubmit={handleSubmit1}>
+            <input type="text" name="name" placeholder='Your Name' required/><br />
+            <input type="tel" name="phone" placeholder='Your phone number' /><br />
+            <input type="email" name="eMail" placeholder='Your Email' required/><br />
+            <textarea type="textarea" name="message" cols="50" rows="5" placeholder='Type your message here..' required /><br />
+            <input type="submit" />
+          </form>
+        </>
+      }
+      {Object.keys(newReq).length && !error &&
+        <>
+          <h2>Review Your Message</h2><br />
+          <span>From: {newReq.name}</span><br />
+          <span>Email: {newReq.eMail}</span><br />
+          <span>Telephone: {newReq.phone}</span><br />
+          <span>Your Message:</span> <br />
+          <p>{newReq.message}</p>
+          <button type='button' onClick={handleRedo}>Edit Information</button>
+          <button type='button' onClick={handleSubmit2}>Continue</button>
+        </>
+      }
+
+    </>
   )
 }
 

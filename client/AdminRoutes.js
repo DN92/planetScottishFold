@@ -19,7 +19,7 @@ const AdminRoutes = () => {
       <Route path='/createKitten' element={<CreateKitten />} />
       <Route path='/editKitten' element={<EditKitten />} />
       <Route path='/createCat/:MOTHERorFATHER' element={<CreateCat />} />
-      <Route path='/editCat/: MOTHERorFATHER' element={<EditCat />} />
+      <Route path='/editCat/:MOTHERorFATHER/:id' element={<EditCat />} />
 
       {/* Redirects */}
       <Route path='/createCat' element={<Navigate to='mother'/>}></Route>

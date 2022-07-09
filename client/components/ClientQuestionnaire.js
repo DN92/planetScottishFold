@@ -70,7 +70,7 @@ const ClientQuestionnaire = () => {
       <input id="clientEmail" type="email" name="eMail" value={clientInfo.eMail} placeholder="E Mail" required/>
       <br />
       {/* client About you */}
-      <textarea name="aboutYou" id="" cols="50" rows="5" value={clientInfo.aboutYou} placeholder='Please tell us a little about yourself.' required></textarea>
+      <textarea name="aboutYou" cols="50" rows="5" value={clientInfo.aboutYou} placeholder='Please tell us a little about yourself.' required></textarea>
       <br />
       <label htmlFor="firstCat">Will this be your first cat?</label>
       <br />
