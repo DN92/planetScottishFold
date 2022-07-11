@@ -44,5 +44,32 @@ router.put('/', async(req, res, next) => {
   }
 })
 
+router.put('/bulk', async (req, res, next) => {
+  try {
+    const markReadArr = Object.keys(req.body.markRead)
+      .filter(key => req.body.markRead[key] == true)
+    const markDeleteArr = Object.keys(req.body.markDelete)
+      .filter(key => req.body.markDelete[key] == true)
+    console.log(markDeleteArr, 'delArray')
+    await ContactRequest.update(
+      { wasRead: true },
+      { where: {
+          id: markReadArr,
+        },
+      }
+    );
+    await ContactRequest.update(
+      { hidden : true },
+      { where: {
+          id: markDeleteArr,
+        },
+      }
+    );
+    res.send(await ContactRequest.findAll())
+  } catch (err) {
+    next(err)
+  }
+})
+
 
 module.exports = router

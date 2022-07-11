@@ -30,5 +30,5 @@ keyVals1.forEach(key => {
 
 const array = ['zero', 'one']
 
-console.log(array[2])
+console.log(Object.keys(obj4))
 

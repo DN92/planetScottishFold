@@ -3860,9 +3860,6 @@ const Logout = () => {
     setType(null);
     setId(null);
   }, []);
-  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
-    console.log('useEffect2');
-  }, []);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "You have been Successfully logged out"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "username: ", username, " type ", type, " id ", id), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
     src: "/catPictures/outsideCat.jpeg",
     alt: "Image of cat outside"
@@ -4623,31 +4620,98 @@ __webpack_require__.r(__webpack_exports__);
 
 const DirectMessages = () => {
   const counterRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(0);
+  const subClicks = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(0);
+  const [allMessages, setAllMessages] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]);
+  const [visibleMessages, setVisibleMessages] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]);
   const [viewDetailed, setViewDetailed] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
-  const [messages, setMessages] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]);
+  const [viewRead, setViewRead] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
+  const [confirmText, setConfirmText] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''); // for submitting changes
+
   const [error, setError] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('');
+  const [msgsMemo, setMsgsMemo] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
+    markRead: {},
+    markDelete: {}
+  });
+
+  const handleCheckBox = event => {
+    const {
+      name,
+      checked
+    } = event.target;
+    const msgId = event.target.getAttribute('msgid');
+    setMsgsMemo(prev => ({ ...prev,
+      // deal with the nested objs
+      [name]: { // name of the key / nestedObj we are targeting
+        ...prev[name],
+        // spread the nested obj
+        [msgId]: checked // overwrite the nested value (boolean)
+
+      }
+    }));
+  };
+
+  const handleUndo = event => {
+    subClicks.current = 0;
+    setConfirmText('');
+  };
+
+  const handleSubmit1 = event => {
+    event.preventDefault();
+    subClicks.current === 0 ? setConfirmText('Changes Cannot Be Done. Do you wish to Continue?') : (0,_axiosHandlers_fetchEffect__WEBPACK_IMPORTED_MODULE_1__.fetchEffect)([setAllMessages, setError], 'put', `/api/contactRequests/bulk`, msgsMemo);
+    subClicks.current++;
+  };
+
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
-    if (!messages.length && counterRef.current === 0) {
-      counterRef.current++;
-      (0,_axiosHandlers_fetchEffect__WEBPACK_IMPORTED_MODULE_1__.fetchEffect)([setMessages, setError], 'get', `/api/contactRequests`);
+    if (!allMessages.length && counterRef.current === 0) {
+      (0,_axiosHandlers_fetchEffect__WEBPACK_IMPORTED_MODULE_1__.fetchEffect)([setAllMessages, setError], 'get', `/api/contactRequests`);
     }
+
+    counterRef.current++;
   }, []);
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+    counterRef.current < 3 && setAllMessages(allMessages.sort((a, b) => {
+      return (b.wasRead ? 0 : 1) - (a.wasRead ? 0 : 1);
+    }));
+  }, [allMessages]);
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+    setVisibleMessages(allMessages.filter(msg => viewRead ? true : !msg.wasRead));
+    counterRef.current++;
+  }, [allMessages, viewRead]);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, error && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ErrorFill__WEBPACK_IMPORTED_MODULE_2__["default"], {
     msg: error
-  }), !error && !messages.length && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "No New Messages"), !error && !!messages.length && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+  }), !error && !visibleMessages.length && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "No New Messages"), !error && !!visibleMessages.length && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
     htmlFor: "viewDetailed"
   }, "See More Details"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
     onChange: () => setViewDetailed(prev => !prev),
     type: "checkbox",
     name: "viewDetailed",
     checked: viewDetailed
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("table", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("thead", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("tr", null, viewDetailed && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "Phone")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "From Email"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "Message"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("tbody", null, messages.map(message => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("tr", {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+    htmlFor: "viewRead"
+  }, "View Old Messages"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    onChange: () => setViewRead(prev => !prev),
+    type: "checkbox",
+    name: "viewRead",
+    checked: viewRead
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("table", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("thead", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "Mark as Read"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "Status"), viewDetailed && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "Phone")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "From Email"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "Message"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "Delete"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("tbody", null, visibleMessages.map(message => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("tr", {
     key: message.id
-  }, viewDetailed && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, message.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, message.phone)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, message.eMail), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, message.message), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
-    type: "checkbox"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
-    type: "checkbox"
-  }))))))));
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    type: "checkbox",
+    name: "markRead",
+    msgid: `${message.id}`,
+    onChange: handleCheckBox
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, message.wasRead ? 'old' : 'new'), viewDetailed && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, message.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, message.phone)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, message.eMail), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, message.message), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    type: "checkbox",
+    name: "markDelete",
+    msgid: `${message.id}`,
+    onChange: handleCheckBox
+  })))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    type: "button",
+    onClick: handleSubmit1
+  }, "Submit"), subClicks.current === 1 && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    type: "button",
+    onClick: handleUndo
+  }, "Undo Submit"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, confirmText)));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (DirectMessages);

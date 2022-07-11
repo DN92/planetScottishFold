@@ -14,10 +14,6 @@ const Logout = () => {
     setId(null)
   },[])
 
-  useEffect(()=> {
-    console.log('useEffect2')
-  },[])
-
   return (
     <div>
       <h2>You have been Successfully logged out</h2>
