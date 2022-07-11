@@ -3,9 +3,7 @@ import axios from 'axios'
 export const tokenizedRequest = async (type, path, body, setError) => {
   const token = window.localStorage.getItem("psfToken");
   const header = {
-    headers: {
       authorization: token,
-    },
   }
 
   if(!token) {
@@ -42,7 +40,7 @@ export const putTokenOnHeader = () => {
   if(token) {
     return {
       headers: {
-      authorization: token,
+        authorization: token,
       },
     }
   } else {

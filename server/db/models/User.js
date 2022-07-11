@@ -4,6 +4,7 @@ const { userTypes } = require('../../../secrets')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 const {saltRounds} = require('../../../secrets')
+const {budgetRanges} = require('../../../myModelsConfig')
 
 const User = db.define("user", {
   type: {
@@ -20,7 +21,7 @@ const User = db.define("user", {
     }
   },
   budget:{
-    type: Sequelize.ENUM('lessThan1500', '1500to2000','2000to2500','over2500', 'any', '')
+    type: Sequelize.ENUM(budgetRanges)
   },
   firstName: {
     type: Sequelize.STRING,
@@ -105,7 +106,6 @@ User.findByToken = async function (token) {
     if (token){
       const { id } = jwt.verify(token, process.env.JWT_SIG);
       const user = await User.findByPk(id);
-      // console.log('and the user is ::  ', user)
       if (!user) {
         throw "Bad, Bad, KittyToken";
       }

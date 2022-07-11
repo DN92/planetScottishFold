@@ -1,10 +1,12 @@
 const router = require('express').Router()
 const { AnonVisitor } = require("../db").models
+const passAuth = require('../expressMiddleware/checkValidAuthLevel')
 
 // api/anonVisitors
 
 router.get('/', async (req, res, next) => {
   try {
+    passAuth(3, req)
     const anonVisitor= await AnonVisitor.findAll()
     res.send(anonVisitor) // array
   } catch (err) {
@@ -25,6 +27,7 @@ router.post('/', async (req, res, next) => {
 })
 
 router.put('/', async(req, res, next) => {
+  passAuth(4, req)
   try {
     const anonVisitor = await AnonVisitor.findByPk(req.query.id)
     const update = await anonVisitor.update(req.body)
@@ -38,7 +41,7 @@ router.put('/', async(req, res, next) => {
 })
 
 router.delete('/', async(req, res, next) => {
-  console.log(req.query)
+  passAuth(5, req)
   try {
     const anonVisitorToDelete = await AnonVisitor.findByPk(req.query.id)
     if(anonVisitorToDelete) {

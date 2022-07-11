@@ -1,5 +1,6 @@
 const router = require('express').Router()
 const { Kitten } = require("../db").models
+const passAuth = require('../expressMiddleware/checkValidAuthLevel')
 
 // api/kittens
 
@@ -15,6 +16,7 @@ router.get('/', async (req, res, next) => {
 
 router.post('/', async (req, res, next) => {
   try{
+    passAuth(4, req)
     const newKitty = await Kitten.create(req.body)
     if(!newKitty) {
       throw new Error('newKitty creation failed')
@@ -27,6 +29,7 @@ router.post('/', async (req, res, next) => {
 
 router.put('/', async(req, res, next) => {
   try {
+    passAuth(4, req)
     const kitten = await Kitten.findByPk(req.body.id)
     const update = await kitten.update(req.body)
     if(!update) {
@@ -40,6 +43,7 @@ router.put('/', async(req, res, next) => {
 
 router.delete('/', async(req, res, next) => {
   try {
+    passAuth(5, req)
     const kittenToDelete = await Kitten.findByPk(req.query.kittenId)
     if(kittenToDelete) {
       await kittenToDelete.destroy()

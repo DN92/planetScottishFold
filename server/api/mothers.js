@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const { Mother } = require('../db').models
+const passAuth = require('../expressMiddleware/checkValidAuthLevel')
 
 //  api/mothers
 
@@ -22,6 +23,7 @@ router.get('/', async (req, res, next) => {
 
 router.post('/', async (req, res, next) => {
   try{
+    passAuth(4, req)
     const newMother = await Mother.create(req.body)
     if(!newMother) {
       throw new Error('newMother creation failed')
@@ -34,6 +36,7 @@ router.post('/', async (req, res, next) => {
 
 router.put('/', async(req, res, next) => {
   try {
+    passAuth(4, req)
     const mother = req.query.id
       ? await Mother.findByPk(req.query.id)
       : await Mother.findByPk(req.body.id)
@@ -49,6 +52,7 @@ router.put('/', async(req, res, next) => {
 
 router.delete('/', async(req, res, next) => {
   try {
+    passAuth(5, req)
     const motherToDelete = await Mother.findByPk(req.query.motherId)
     if(motherToDelete) {
       await motherToDelete.destroy()

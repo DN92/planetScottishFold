@@ -42,7 +42,6 @@ const CatDetailedView = () => {
   }
 
 
-  console.log('got here')
   return (
     <div key={id.toString() + MOTHERorFATHER}>
       {error && <ErrorFill msg={error} />}

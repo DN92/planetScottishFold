@@ -43,7 +43,6 @@ const CreateKitten = () => {
   const handleSubmit = async (event) => {
     try {
       event.preventDefault()
-      console.log(kittenToCreate)
       const {data} = await axios.post('/api/kittens', kittenToCreate)
       history.push(`/kittenDetailed/${data.id}`, {kitten: data, error: error, fromCreate: true})
       setError(null)

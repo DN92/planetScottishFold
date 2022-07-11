@@ -16,9 +16,6 @@ const CatSingleView = (props) => {
 
   const {name, ears, furColor, eyeColor, dob, mainImageSrcValue} = cat
 
-  console.log(props.parent)
-  console.log(cat.id)
-
   return (
     <div>
       <Link

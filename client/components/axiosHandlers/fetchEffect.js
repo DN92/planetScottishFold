@@ -15,19 +15,20 @@ export const fetchEffect = async (setterFuncArray, method, path, body,) => {
   }
   //  if a token exits, put it on the headers.authorization
   try {
+    const token = localStorage.getItem('psfToken')
     const {data} = !['post', 'put'].includes(method) ?
     //  gets and deletes
-    await axios[method](path, putTokenOnHeader()) :
-    //  posts and puts
-    await axios[method](path, body, putTokenOnHeader())
-    // set state upon promise resolving
-      if (setterFuncArray.length && method != 'delete') {
-        setterFuncArray[0](data)
-    //  clear error if errorSetter was provided
-      }
-      if(setterFuncArray.length > 1) {
-        setterFuncArray[1]('')
-      }
+      await axios[method](path, putTokenOnHeader()) :
+      //  posts and puts
+      await axios[method](path, body, putTokenOnHeader())
+      // set state upon promise resolving
+    if (setterFuncArray.length && method != 'delete') {
+      setterFuncArray[0](data)
+  //  clear error if errorSetter was provided
+    }
+    if(setterFuncArray.length > 1) {
+      setterFuncArray[1]('')
+    }
   } catch(err) {
     console.log(err)
     if(setterFuncArray.length > 1) {

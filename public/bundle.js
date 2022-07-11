@@ -2958,9 +2958,8 @@ const AvailableKittens = () => {
     weightedArr.sort((a, b) => {
       return b[1] - a[1];
     });
-    weightedArr.map(kitten => kitten[0]); // console.log(weightedArr)
-
-    setKittens(weightedArr.map(kitten => kitten[0])); // console.log(kittens)
+    weightedArr.map(kitten => kitten[0]);
+    setKittens(weightedArr.map(kitten => kitten[0]));
   };
 
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
@@ -3057,7 +3056,6 @@ const CatDetailedView = () => {
     maxHeight: "200px",
     marginLeft: "2%"
   };
-  console.log('got here');
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     key: id.toString() + MOTHERorFATHER
   }, error && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ErrorFill__WEBPACK_IMPORTED_MODULE_2__["default"], {
@@ -3115,8 +3113,6 @@ const CatSingleView = props => {
     dob,
     mainImageSrcValue
   } = cat;
-  console.log(props.parent);
-  console.log(cat.id);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
     to: (0,_secrets__WEBPACK_IMPORTED_MODULE_2__.isPrivileged)(type) ? `/editCat/${props.parent}/${cat.id}` : `/catDetailedView/${props.parent}/${cat.id}`,
     state: {
@@ -3719,7 +3715,6 @@ const KittenFilter = props => {
 
   const handleChange = event => {
     (0,_customHandlers_handleFormChange__WEBPACK_IMPORTED_MODULE_1__["default"])(event, props.setter);
-    console.log(event.target.value);
   };
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("form", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h4", null, "Advanced Search"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
@@ -4481,7 +4476,6 @@ const CreateKitten = () => {
   const handleSubmit = async event => {
     try {
       event.preventDefault();
-      console.log(kittenToCreate);
       const {
         data
       } = await axios__WEBPACK_IMPORTED_MODULE_5___default().post('/api/kittens', kittenToCreate);
@@ -4785,7 +4779,6 @@ const EditCat = () => {
     !Object.key(initialState).length && setInitialState(catToEdit);
 
     try {
-      console.log('cat before api call: ', catToEdit);
       const {
         data
       } = await axios__WEBPACK_IMPORTED_MODULE_7___default().put(`/api/${MOTHERorFATHER}s`, catToEdit);
@@ -4808,7 +4801,6 @@ const EditCat = () => {
     !catToEdit && setCatLoaded(false);
     !catLoaded && catToEdit && setInitialState(catToEdit);
   }, [catLoaded]);
-  console.log(catToEdit);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, error && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ErrorFill__WEBPACK_IMPORTED_MODULE_3__["default"], {
     msg: error
   }), !error && !(0,_secrets__WEBPACK_IMPORTED_MODULE_2__.isPrivileged)(type) && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "You don't have the privileges to view this page"), !error && !catToEdit && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ErrorFill__WEBPACK_IMPORTED_MODULE_3__["default"], {
@@ -5307,9 +5299,7 @@ __webpack_require__.r(__webpack_exports__);
 const tokenizedRequest = async (type, path, body, setError) => {
   const token = window.localStorage.getItem("psfToken");
   const header = {
-    headers: {
-      authorization: token
-    }
+    authorization: token
   };
 
   if (!token) {
@@ -5397,6 +5387,7 @@ const fetchEffect = async (setterFuncArray, method, path, body) => {
 
 
   try {
+    const token = localStorage.getItem('psfToken');
     const {
       data
     } = !['post', 'put'].includes(method) ? //  gets and deletes
@@ -5779,6 +5770,11 @@ needToKnow.saltRounds = 6; // check user has privledges of ghost or higher
 
 needToKnow.isPrivileged = type => {
   return needToKnow.userTypes.slice(2).includes(type);
+}; //  only use this in backend
+
+
+needToKnow.getAuthGrade = type => {
+  return needToKnow.userTypes.indexOf(type);
 };
 
 module.exports = needToKnow;

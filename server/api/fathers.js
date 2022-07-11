@@ -1,5 +1,6 @@
 const router = require('express').Router()
 const { Stud } = require('../db').models
+const passAuth = require('../expressMiddleware/checkValidAuthLevel')
 
 // api/fathers
 
@@ -21,6 +22,7 @@ router.get('/', async (req, res, next) => {
 })
 
 router.post('/', async (req, res, next) => {
+  passAuth(4, req)
   try{
     const newStud = await Stud.create(req.body)
     if(!newStud) {
@@ -34,6 +36,7 @@ router.post('/', async (req, res, next) => {
 
 router.put('/', async(req, res, next) => {
   try {
+    passAuth(4, req)
     const stud = await Stud.findByPk(req.query.id)
     const update = await stud.update(req.body)
     if(!update) {
@@ -46,6 +49,7 @@ router.put('/', async(req, res, next) => {
 })
 
 router.delete('/', async(req, res, next) => {
+  passAuth(5, req)
   try {
     const studToDelete = await Stud.findByPk(req.query.studId)
     if(studToDelete) {

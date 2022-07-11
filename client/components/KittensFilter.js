@@ -9,7 +9,6 @@ const KittenFilter = (props) => {
 
   const handleChange = (event) => {
     handleControlledValueFieldToState(event, props.setter)
-    console.log(event.target.value)
   }
 
   return (

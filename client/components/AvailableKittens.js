@@ -37,9 +37,7 @@ const AvailableKittens = () => {
         return b[1] - a[1]
       })
       weightedArr.map(kitten => kitten[0])
-      // console.log(weightedArr)
       setKittens(weightedArr.map(kitten => kitten[0]))
-      // console.log(kittens)
   }
 
   useEffect(() => {

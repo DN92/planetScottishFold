@@ -15,11 +15,11 @@ const { db } = require('./db')
 const PORT = process.env.PORT || 8081
 const app = express()
 
+
 if (process.env.NODE_ENV !== 'production') {
   const secrets = require('../secrets')
   process.env.JWT_SIG = secrets.JWT_SIG
 }
-
 
   // logging middleware
   app.use(morgan('dev'))
@@ -27,11 +27,11 @@ if (process.env.NODE_ENV !== 'production') {
   // body parsers
   app.use(express.json())
   app.use(express.urlencoded({extended: true}))
+  // security middleware
+
 
   // compression middleware
   app.use(compression())
-
-  // security middleware
 
 
   // api routes

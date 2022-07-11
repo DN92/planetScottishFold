@@ -5,6 +5,7 @@ const pwGenerator = require('generate-password')
 //  api/users
 
 router.get('/', async (req, res, next) => {
+  passAuth(3, req)
   try {
     const users = await User.findAll()
     res.send(users) // array
@@ -13,17 +14,18 @@ router.get('/', async (req, res, next) => {
   }
 })
 
-router.post('/', async (req, res, next) => {
-  try{
-    const newUser = await User.create(req.body)
-    if(!newUser) {
-      throw new Error('newUser creation failed')
-    }
-    res.send(newUser)
-  } catch (err) {
-    next(err)
-  }
-})
+// router.post('/', async (req, res, next) => {
+//   try{
+//     const newUser = await User.create(req.body)
+//     if(!newUser) {
+//       throw new Error('newUser creation failed')
+//     }
+//     res.send(newUser)
+//   } catch (err) {
+//     next(err)
+//   }
+// })
+
 router.post('/anonToUser', async (req, res, next) => {
   try{
     const request = req.body
@@ -31,7 +33,6 @@ router.post('/anonToUser', async (req, res, next) => {
     delete request['id']
     //  and perform some other preparatory operations
     request.username = request.requestedUsername
-    delete request['requestedUsername']
     request.type = 'registered'
     request.password = pwGenerator.generate({
       numbers: true,
@@ -50,6 +51,9 @@ router.post('/anonToUser', async (req, res, next) => {
 
 router.put('/', async(req, res, next) => {
   try {
+    passAuth(3, req)
+    //  this probably belongs in hooks. security measure
+    delete req.body.type
     const user = await User.findByPk(req.query.id)
     const update = await user.update(req.body)
     if(!update) {
@@ -63,6 +67,7 @@ router.put('/', async(req, res, next) => {
 
 router.delete('/', async(req, res, next) => {
   try {
+    passAuth(5, req)
     const userToDelete = await User.findByPk(req.query.userId)
     if(userToDelete) {
       await userToDelete.destroy()

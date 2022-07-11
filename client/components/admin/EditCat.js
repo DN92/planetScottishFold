@@ -50,7 +50,6 @@ const EditCat = () => {
     event.preventDefault()
     !Object.key(initialState).length && setInitialState(catToEdit)
     try {
-      console.log('cat before api call: ' , catToEdit)
       const {data} = await axios.put(`/api/${MOTHERorFATHER}s`, catToEdit)
       setInitialState(data)
       history.push(`/catDetailed/${MOTHERorFATHER}/${data.id}`, {cat: catToEdit, fromEdit: true})
@@ -73,8 +72,6 @@ const EditCat = () => {
     !catToEdit && setCatLoaded(false)
     !catLoaded && catToEdit && setInitialState(catToEdit)
   },[catLoaded])
-
-  console.log(catToEdit)
 
   return (
     <>
