@@ -1,20 +1,20 @@
-const checkBoxHandler  = (event, setterFunc) => {
-  console.log(event)
+const checkBoxHandler  = (event, setterFunc, attName) => {
 
-  // check status of checkbox and update nested obj State.
-  // name is the nested Obj, msg, is the message id
+//  this dynamic function handles setState for nested Obj state - checkBoxes
+//  attName (string) is the name of the custom tag with the id of the model that needs to be updated
 
-    setterFunc(prev => (
-      {...prev, [event.target.name]: {
-        ...prev[event.target.name],
-        [event.target.msg]: event.target.checked
+
+    setterFunc(prev => {
+      const {name, checked} = event.target
+      const IdToUpdate = event.target.getAttribute(attName)
+
+      return {...prev,
+        [name]: {
+          ...prev[name],
+          [IdToUpdate]: checked
       }}
-    ))
+    })
 
-
-  // event.target.checked ?
-  //   setterFunc(prev => ({...prev, [event.target.name]: true })) :
-  //   setterFunc(prev => ({...prev, [event.target.name]: false }))
 }
 
 export default checkBoxHandler

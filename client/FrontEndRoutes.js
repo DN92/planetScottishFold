@@ -29,7 +29,7 @@ const FrontEndRoutes = () => {
       <Route path='/kittenDetailed/:id' element={<KittenDetailedView />} />
       <Route path='viewCats/:MOTHERorFATHER' element={<ViewCats />} >
       </Route>
-      <Route path='catDetailed/:MOTHERorFATHER/:id' element={<CatDetailedView />} />
+      <Route path='catDetailedView/:MOTHERorFATHER/:id' element={<CatDetailedView />} />
       <Route path='/reviews' element={<Reviews />} />
       <Route path='/waitingListForm' element={<ClientQuestionnaire />} />
       <Route path='/confirmClientQuestionnaire' element={<ConfirmClientQuestionnaire />} />
@@ -38,13 +38,12 @@ const FrontEndRoutes = () => {
       <Route path='/facebook' element={<PlaceHolder />} />
       <Route path='/404' element={<My404 />} />
       <Route path='/QConfirmation' element={<QuestionnaireConfirmation />} />
-      <Route path='fatherDetailed' element={<CatDetailedView />} />
-      <Route path='logout' element={<Logout />} />
+      <Route path='/logout' element={<Logout />} />
 
 {/* Redirects */}
-      <Route path='viewCats' element={<Navigate to='mother'/>}></Route>
-      <Route path='catDetailed' element={<Navigate to='mother' />} />
-      <Route path='catDetailed/mother' element={<Navigate to='1' />} />
+      <Route path='/viewCats' element={<Navigate to='mother'/>}></Route>
+      <Route path='/catDetailed' element={<Navigate to='mother' />} />
+      <Route path='/catDetailed/mother' element={<Navigate to='1' />} />
 
     </Routes>
   )

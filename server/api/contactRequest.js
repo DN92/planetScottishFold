@@ -51,20 +51,22 @@ router.put('/bulk', async (req, res, next) => {
     const markDeleteArr = Object.keys(req.body.markDelete)
       .filter(key => req.body.markDelete[key] == true)
     console.log(markDeleteArr, 'delArray')
-    await ContactRequest.update(
-      { wasRead: true },
-      { where: {
-          id: markReadArr,
-        },
-      }
-    );
-    await ContactRequest.update(
-      { hidden : true },
-      { where: {
-          id: markDeleteArr,
-        },
-      }
-    );
+    await Promise.all([
+      ContactRequest.update(
+        { wasRead: true },
+        { where: {
+            id: markReadArr,
+          },
+        }
+      ),
+      ContactRequest.update(
+        { hidden : true },
+        { where: {
+            id: markDeleteArr,
+          },
+        }
+      )
+    ])
     res.send(await ContactRequest.findAll())
   } catch (err) {
     next(err)

@@ -13,12 +13,12 @@ const CatDetailedView = () => {
 
   const {MOTHERorFATHER, id} = useParams()
 
-  const fromEdit = history.location.state? history.location.state.fromEdit : null
-  const [cat, setCat] = useState(history.location.state
-    ? history.location.state.cat
-    : null
+  const [cat, setCat] = useState(history.location.state ?
+    history.location.state.cat :
+    null
   )
-  const [error, setError] = (history.location.state
+
+  const [error, setError] = useState(history.location.state
     ? history.location.state.error
     : ''
   )
@@ -41,6 +41,8 @@ const CatDetailedView = () => {
     marginLeft: "2%",
   }
 
+
+  console.log('got here')
   return (
     <div key={id.toString() + MOTHERorFATHER}>
       {error && <ErrorFill msg={error} />}
@@ -50,21 +52,20 @@ const CatDetailedView = () => {
           <div>
             <img src={cat.mainImageSrcValue} alt={`Picture of ${MOTHERorFATHER}`} style={imgInLine}/> <br />
             <span> name: {cat.name}</span> <br />
-            <span> serial number: {cat.serialNumber}</span> <br />
             <span> ears: {cat.ears}</span> <br />
             <span> furColor: {cat.furColor}</span> <br />
             <span> eyeColor: {cat.eyeColor}</span> <br />
             <span> Date Of Birth: {cat.dob}</span> <br />
 
           </div>
-          {isPrivileged(type) && !fromEdit &&
+          {isPrivileged(type) &&
             <Link to={`/createCat/${MOTHERorFATHER}`} >
-            <button>Upload Another {`${MOTHERorFATHER}`}</button>
+              <button>Upload Another {`${MOTHERorFATHER}`}</button>
             </Link>
           }
-          {isPrivileged(type) && fromEdit &&
+          {isPrivileged(type) &&
             <Link to={`/viewCats/${MOTHERorFATHER}s`} >
-            <button>Back to {`${MOTHERorFATHER}`}</button>
+              <button>Back to {`${MOTHERorFATHER}`}</button>
             </Link>
           }
         </div>
