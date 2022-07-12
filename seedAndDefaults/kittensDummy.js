@@ -2,7 +2,7 @@ const { models } = require("../server/db")
 const { Kitten } = models
 
 const makeKitten = (
-    name, serialNumber, gender, ears, furColor, eyeColor, description, mainImageSrcValue,
+    name, serialNumber, gender, ears, furColor, eyeColor, description, mainImageSrcValue, price,
   ) => ({
     name,
     serialNumber,
@@ -12,6 +12,8 @@ const makeKitten = (
     eyeColor,
     description,
     mainImageSrcValue,
+    price,
+    regNum,
   })
 
 const kittensArray = [
@@ -23,7 +25,8 @@ const kittensArray = [
   "Silver",
   "Green",
   'This is where the description goes.This is where the description goes.This is where the description goes.This is where the description goes.This is where the description goes.This is where the description goes.This is where the description goes.This is where the description goes.This is where the description goes.This is where the description goes.This is where the description goes.',
-  "/catPictures/ktnLcyC01.jpg"
+  "/catPictures/ktnLcyC01.jpg",
+  2800,
   ),
   makeKitten(
   "ktnLcyC02",
@@ -33,7 +36,8 @@ const kittensArray = [
   "Colorpoint",
   "Yellow",
   'This is where the description goes.This is where the description goes.This is where the description goes.This is where the description goes.This is where the description goes.This is where the description goes.This is where the description goes.This is where the description goes.This is where the description goes.This is where the description goes.This is where the description goes.',
-  "/catPictures/ktnLcyC02.jpg"
+  "/catPictures/ktnLcyC02.jpg",
+  2800,
   ),
   makeKitten(
   "ktnLcyC03",
@@ -42,7 +46,9 @@ const kittensArray = [
   "fold",
   "Blue",
   "Odd",
-  "/catPictures/ktnLcyC03.jpg"
+  "/catPictures/ktnLcyC03.jpg",
+  'description',
+  2800,
   ),
   makeKitten(
   "ktnLcyC04",
@@ -52,7 +58,8 @@ const kittensArray = [
   "White",
   "Green",
   'This is where the description goes.This is where the description goes.This is where the description goes.This is where the description goes.This is where the description goes.This is where the description goes.This is where the description goes.This is where the description goes.This is where the description goes.This is where the description goes.This is where the description goes.',
-  "/catPictures/ktnLcyC04.jpg"
+  "/catPictures/ktnLcyC04.jpg",
+  2800,
   ),
   makeKitten(
   "ktnLcyC05",
@@ -62,7 +69,8 @@ const kittensArray = [
   "Gold",
   "Odd",
   'This is where the description goes.This is where the description goes.This is where the description goes.This is where the description goes.This is where the description goes.This is where the description goes.This is where the description goes.This is where the description goes.This is where the description goes.This is where the description goes.This is where the description goes.',
-  "/catPictures/ktnLcyC05.jpg"
+  "/catPictures/ktnLcyC05.jpg",
+  2800,
   ),
   makeKitten(
   "ktnLcyC06",
@@ -72,7 +80,8 @@ const kittensArray = [
   "Brown",
   "Yellow",
   'This is where the description goes.This is where the description goes.This is where the description goes.This is where the description goes.This is where the description goes.This is where the description goes.This is where the description goes.This is where the description goes.This is where the description goes.This is where the description goes.This is where the description goes.',
-  "/catPictures/ktnLcyC06.jpg"
+  "/catPictures/ktnLcyC06.jpg",
+  2800,
   ),
   makeKitten(
   "ktnLcyC07",
@@ -82,7 +91,8 @@ const kittensArray = [
   "Black",
   "Blue",
   'This is where the description goes.This is where the description goes.This is where the description goes.This is where the description goes.This is where the description goes.This is where the description goes.This is where the description goes.This is where the description goes.This is where the description goes.This is where the description goes.This is where the description goes.',
-  "/catPictures/ktnLcyC07.jpg"
+  "/catPictures/ktnLcyC07.jpg",
+  2800,
   ),
 ]
 

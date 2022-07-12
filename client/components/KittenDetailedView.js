@@ -42,6 +42,7 @@ const KittenDetailedView = () => {
         <div>
           <img src={kitten.mainImageSrcValue} alt="Picture of Kitten" style={imgInLine}/> <br />
           <span> Name: {kitten.name}</span> <br />
+          <span> Registration Number: {kitten.regNum}</span> <br />
           <span> Gender: {kitten.gender}</span> <br />
           <span> Ears: {kitten.ears}</span> <br />
           <span> Fur color: {kitten.furColor}</span> <br />
@@ -49,7 +50,8 @@ const KittenDetailedView = () => {
           <span> Dam: {kitten.mother}</span> <br />
           <span> Sire: {kitten.father}</span> <br />
           <span> Status: {kitten.isAvailable}</span> <br />
-          <span> Status: {kitten.description}</span> <br />
+          <span> Description: {kitten.description}</span> <br />
+          <span> Price: ${kitten.price}</span> <br />
 
         </div>
       }

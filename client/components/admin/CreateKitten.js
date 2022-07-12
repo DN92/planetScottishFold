@@ -19,6 +19,9 @@ const CreateKitten = () => {
     mother: '',
     father:'',
     description: '',
+    price: 0,
+    regNum: '',
+
   }
 
   const [kittenToCreate, setKittenToCreate] = useState(defaultState)
@@ -81,7 +84,6 @@ const CreateKitten = () => {
       <form onKeyDown={handleKeyPress} onSubmit={handleSubmit}>
         <h2>Kitten Creation Form</h2>
         <input type="text" name='name' placeholder='Name' value={kittenToCreate.name} onChange={handleChange} /> <br />
-        <input type="text" name='serialNumber' placeholder='serial number' value={kittenToCreate.serialNumber} onChange={handleChange} /> <br />
         <select name="gender" value={kittenToCreate.gender} onChange={handleChange}>
           <option value="">Boy or Girl?</option>
           <option value="boy">Boy</option>
@@ -91,14 +93,12 @@ const CreateKitten = () => {
           <option value="">Fold or Straight</option>
           <option value="fold">Fold</option>
           <option value="straight">Straight</option>
-          <option value="noPref">No Preference</option>
         </select> <br />
         <select name="furColor" value={kittenToCreate.furColor} onChange={handleChange}>
           <option value="">Fur Color</option>
           {furColors.map((color, index) => (
             <option key={index} value={color}>{color}</option>
           ))}
-          <option value="noPref">No Preference</option>
         </select> <br />
         <select name="eyeColor" value={kittenToCreate.eyeColor} onChange={handleChange}>
         <option value="">Eye Color</option>
@@ -118,6 +118,18 @@ const CreateKitten = () => {
               <option key={index} value={name}>{name}</option>
             ))}
         </select> <br />
+        <input
+              type="number"
+              name='price'
+              placeholder='price'
+              value={kittenToCreate.price}
+              onChange={handleChange} /> <br />
+        <input
+              type="text"
+              name='regNum'
+              placeholder='Registration Number'
+              value={kittenToCreate.regNum}
+              onChange={handleChange} /> <br />
         <textarea name="description" cols="50" rows="15" placeholder='description'></textarea>
         <button type='submit'>Create</button>
 

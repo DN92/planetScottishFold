@@ -44,7 +44,15 @@ const Kitten = db.define("kitten", {
   description: {
     type: Sequelize.TEXT,
     defaultValue: ''
-  }
+  },
+  price: {
+    type: Sequelize.INTEGER,
+    defaultValue: 2500
+  },
+  regNum: {
+    type: Sequelize.STRING,
+    defaultValue: '5432'
+  },
 })
 
 module.exports = Kitten

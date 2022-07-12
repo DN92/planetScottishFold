@@ -99,12 +99,6 @@ const EditKitten = () => {
               placeholder='Name'
               value={kittenToEdit.name}
               onChange={handleChange} /> <br />
-            <input
-              type="text"
-              name='serialNumber'
-              placeholder='serial number'
-              value={kittenToEdit.serialNumber}
-              onChange={handleChange} /> <br />
             <select name="gender" value={kittenToEdit.gender} onChange={handleChange}>
               <option value="">Boy or Girl?</option>
               <option value="boy">Boy</option>
@@ -141,14 +135,26 @@ const EditKitten = () => {
                   <option key={index} value={name}>{name}</option>
                 ))}
             </select> <br />
-              <select name="isAvailable" value={kittenToEdit.isAvailable} onChange={handleChange}>
-                <option value="isAvailable">isAvailable</option>
-                <option value="reserved">Reserved</option>
-                <option value="sold">Sold</option>
-              </select><br />
-              <textarea name="description" cols="50" rows="15" placeholder='description'></textarea>
-              <button onClick={handleReset} type='button'>Reset Changes</button>
-              <button type='submit'>Submit Changes</button>
+            <input
+              type="number"
+              name='price'
+              placeholder='price'
+              value={kittenToEdit.price}
+              onChange={handleChange} /> <br />
+            <select name="isAvailable" value={kittenToEdit.isAvailable} onChange={handleChange}>
+              <option value="isAvailable">isAvailable</option>
+              <option value="reserved">Reserved</option>
+              <option value="sold">Sold</option>
+            </select><br />
+            <input
+              type="text"
+              name='regNum'
+              placeholder='Registration Number'
+              value={kittenToEdit.regNum}
+              onChange={handleChange} /> <br />
+            <textarea name="description" cols="50" rows="15" placeholder='description'></textarea>
+            <button onClick={handleReset} type='button'>Reset Changes</button>
+            <button type='submit'>Submit Changes</button>
           </form>
         </div>
       }
