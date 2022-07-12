@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import history from '../history'
-import {furColors, eyeColors} from "../../myModelsConfig"
+import {furColors, eyeColors, mifOptions, budgetRanges} from "../../myModelsConfig"
 import handleFormChange from '../customHandlers/handleFormChange'
 
 const ClientQuestionnaire = () => {
 
   const defaultClientInfo = {
-    username: '',
     firstName: '',
     lastName: '',
     eMail: '',
@@ -58,8 +57,6 @@ const ClientQuestionnaire = () => {
     <form id="clientQuestionnaire" onSubmit={handleSubmit} onKeyDown={handleKeyPress} onChange={handleChange} onReset={handleReset}
     >
       <h2>About You</h2>
-      {/* client desired Username */}
-      <input type="text" name='username' value={clientInfo.username} placeholder="Desired username" /> <br />
       {/* client first name */}
       <input  id="addFirstName" type="text" name="firstName"  value={clientInfo.firstName} placeholder="First Name" required/>
       <br />
@@ -103,7 +100,6 @@ const ClientQuestionnaire = () => {
         {eyeColors.map((color, index) => (
           <option key={index} value={color}>{color}</option>
         ))}
-        <option value="noPref">No Preference</option>
         {/* etc */}
       </select>
       <select name="furColor" value={clientInfo.furColor}>
@@ -111,9 +107,14 @@ const ClientQuestionnaire = () => {
         {furColors.map((color, index) => (
           <option key={index} value={color}>{color}</option>
         ))}
-        <option value="noPref">No Preference</option>
       </select>
       <br />
+      <select name="mif" value={clientInfo.mif}>
+      <option value="">Most Important Feature</option>
+        {mifOptions.map((feature, index) => (
+          <option key={index} value={feature}>{feature}</option>
+        ))}
+      </select>
       <input type="text" name="mif" value={clientInfo.mif} placeholder='What feature is most important to you?' />
       <br />
       <h2>Your Facebook and/or Instagram</h2>
@@ -122,12 +123,9 @@ const ClientQuestionnaire = () => {
       <input type="text" name='iG' value={clientInfo.iG} />
       <br />
       <select name="budget" value={clientInfo.budget} required>
-        <option value="any">Budget</option>
-        <option value="lessThan1500">Less than $1500</option>
-        <option value="1500to2000">$1500 to $2000</option>
-        <option value="2000to2500">$2000 to $2500</option>
-        <option value="over2500">$2500 and over</option>
-        <option value="any">Any</option>
+        {budgetRanges.map((range, index) => (
+          <option key={index} value={range}>{range}</option>
+        ))}
       </select>
       {/* <input type="reset" /> */}
       <input type="reset" />

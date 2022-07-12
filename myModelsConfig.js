@@ -10,6 +10,7 @@ module.exports = {
     'Blue',
     'Brown',
     'Black',
+    'No Pref'
   ],
   eyeColors: [
     'Green',
@@ -17,6 +18,7 @@ module.exports = {
     'Yellow',
     'Copper',
     'Odd',
+    'No Pref'
   ],
   //  for public file serving
   defaultCatPictureSrc: '/catPictures/cat404.png',
@@ -28,6 +30,17 @@ module.exports = {
     '$3000-$3500',
     '$3500-$4000',
     '$4000+',
+    '',
+  ],
+
+  // most important feature (of product - cat)
+  mifOptions: [
+    'Health',
+    'Appearance',
+    'Show Quality',
+    'Personality',
+    'Price',
+    'No Pref',
     '',
   ]
 }

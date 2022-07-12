@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize')
 const db = require('../dbSetup')
-const { eyeColors, furColors, budgetRanges } = require('../../../myModelsConfig')
+const { eyeColors, furColors, budgetRanges, mifOptions } = require('../../../myModelsConfig')
 
 const AnonVisitor = db.define('anonVisitor', {
   requestedUsername: {
@@ -54,7 +54,7 @@ const AnonVisitor = db.define('anonVisitor', {
     type: Sequelize.ENUM(...furColors, '')
   },
   mif: {
-    type: Sequelize.STRING
+    type: Sequelize.ENUM(mifOptions)
   },
   IPaddress: {
     type: Sequelize.STRING
