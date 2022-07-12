@@ -56,8 +56,8 @@ const anonVisitorsArray = [
     'boy',
     'fold',
     budgetRanges[Math.floor(Math.random() * budgetRanges.length)],
-    eyeColors[Math.floor(Math.random() * eyeColors.length)],
     furColors[Math.floor(Math.random() * furColors.length)],
+    eyeColors[Math.floor(Math.random() * eyeColors.length)],
     mifOptions[Math.floor(Math.random() * mifOptions.length)],
   ),
   makeAnonVisitor(
@@ -75,8 +75,8 @@ const anonVisitorsArray = [
     'boy',
     'fold',
     budgetRanges[Math.floor(Math.random() * budgetRanges.length)],
-    eyeColors[Math.floor(Math.random() * eyeColors.length)],
     furColors[Math.floor(Math.random() * furColors.length)],
+    eyeColors[Math.floor(Math.random() * eyeColors.length)],
     mifOptions[Math.floor(Math.random() * mifOptions.length)],
   ),
   makeAnonVisitor(
@@ -94,8 +94,8 @@ const anonVisitorsArray = [
     'boy',
     'fold',
     budgetRanges[Math.floor(Math.random() * budgetRanges.length)],
-    eyeColors[Math.floor(Math.random() * eyeColors.length)],
     furColors[Math.floor(Math.random() * furColors.length)],
+    eyeColors[Math.floor(Math.random() * eyeColors.length)],
     mifOptions[Math.floor(Math.random() * mifOptions.length)],
 )]
 

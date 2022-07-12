@@ -6,19 +6,18 @@ const dummyUsers = require('./userDummy')
 const dummyAnon = require('./anonDummy')
 const dummyStuds = require('./studsDummy')
 const dummyDams = require('./damsDummy')
-const contactReqs = require('./contactReqDummy')
+const contactRequests = require('./contactReqDummy')
 
 
 const { Kitten, Mother, Stud, User, AnonVisitor, ContactRequest } = models
-
+const modelsArray = [ Kitten, Mother, Stud, User, AnonVisitor, ContactRequest ]
 /**
  *  seed - this function clears the database, updates tables to
  *    match our models, and populates the database
  */
 
 async function seed() {
-  const allModels = Obj.keys(models)
-  await Promise.all(allModels.map(model => (model.drop())))
+  await Promise.all(modelsArray.map(model => (model.drop({}))))
   await db.sync({force: true})  //  clears the db and matches models to tables
 
   await Promise.all([
@@ -37,7 +36,7 @@ async function seed() {
     Promise.all(dummyDams.map(dam => {
       return Mother.create(dam)
     })),
-    Promise.all(contactReqs.map(req => {
+    Promise.all(contactRequests.map(req => {
       return ContactRequest.create(req)
     })),
   ])
