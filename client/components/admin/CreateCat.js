@@ -17,6 +17,7 @@ const CreateCat = () => {
     ears: '',
     furColor: '',
     eyeColor: '',
+    description: '',
   }
 
   const [catToCreate, setCatToCreate] = useState(defaultState)
@@ -65,6 +66,7 @@ const CreateCat = () => {
           <option key={index} value={color}>{color}</option>
           ))}
       </select> <br />
+      <textarea name="description" cols="50" rows="15" placeholder='description'></textarea>
       <button type='submit'>Create</button>
     </form>
   )

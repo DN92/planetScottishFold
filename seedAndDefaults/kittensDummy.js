@@ -2,7 +2,7 @@ const { models } = require("../server/db")
 const { Kitten } = models
 
 const makeKitten = (
-    name, serialNumber, gender, ears, furColor, eyeColor, mainImageSrcValue,
+    name, serialNumber, gender, ears, furColor, eyeColor, description, mainImageSrcValue,
   ) => ({
     name,
     serialNumber,
@@ -10,6 +10,7 @@ const makeKitten = (
     ears,
     furColor,
     eyeColor,
+    description,
     mainImageSrcValue,
   })
 
@@ -21,6 +22,7 @@ const kittensArray = [
   "fold",
   "Silver",
   "Green",
+  'This is where the description goes.This is where the description goes.This is where the description goes.This is where the description goes.This is where the description goes.This is where the description goes.This is where the description goes.This is where the description goes.This is where the description goes.This is where the description goes.This is where the description goes.',
   "/catPictures/ktnLcyC01.jpg"
   ),
   makeKitten(
@@ -30,6 +32,7 @@ const kittensArray = [
   "straight",
   "Colorpoint",
   "Yellow",
+  'This is where the description goes.This is where the description goes.This is where the description goes.This is where the description goes.This is where the description goes.This is where the description goes.This is where the description goes.This is where the description goes.This is where the description goes.This is where the description goes.This is where the description goes.',
   "/catPictures/ktnLcyC02.jpg"
   ),
   makeKitten(
@@ -48,6 +51,7 @@ const kittensArray = [
   "straight",
   "White",
   "Green",
+  'This is where the description goes.This is where the description goes.This is where the description goes.This is where the description goes.This is where the description goes.This is where the description goes.This is where the description goes.This is where the description goes.This is where the description goes.This is where the description goes.This is where the description goes.',
   "/catPictures/ktnLcyC04.jpg"
   ),
   makeKitten(
@@ -57,6 +61,7 @@ const kittensArray = [
   "fold",
   "Gold",
   "Odd",
+  'This is where the description goes.This is where the description goes.This is where the description goes.This is where the description goes.This is where the description goes.This is where the description goes.This is where the description goes.This is where the description goes.This is where the description goes.This is where the description goes.This is where the description goes.',
   "/catPictures/ktnLcyC05.jpg"
   ),
   makeKitten(
@@ -66,6 +71,7 @@ const kittensArray = [
   "straight",
   "Brown",
   "Yellow",
+  'This is where the description goes.This is where the description goes.This is where the description goes.This is where the description goes.This is where the description goes.This is where the description goes.This is where the description goes.This is where the description goes.This is where the description goes.This is where the description goes.This is where the description goes.',
   "/catPictures/ktnLcyC06.jpg"
   ),
   makeKitten(
@@ -75,6 +81,7 @@ const kittensArray = [
   "fold",
   "Black",
   "Blue",
+  'This is where the description goes.This is where the description goes.This is where the description goes.This is where the description goes.This is where the description goes.This is where the description goes.This is where the description goes.This is where the description goes.This is where the description goes.This is where the description goes.This is where the description goes.',
   "/catPictures/ktnLcyC07.jpg"
   ),
 ]

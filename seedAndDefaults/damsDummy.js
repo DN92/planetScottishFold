@@ -1,7 +1,8 @@
 const { models } = require("../server/db")
+const { eyeColors } = require('../myModelsConfig')
 
 const makeMother = (
-  name, serialNumber, ears, furColor, eyeColor, dob, image
+  name, serialNumber, ears, furColor, eyeColor, dob, description, image
 ) => ({
   name,
   serialNumber,
@@ -9,7 +10,8 @@ const makeMother = (
   furColor,
   eyeColor,
   dob,
-  image
+  description,
+  image,
 })
 
 const mothersArray = [
@@ -18,7 +20,8 @@ const mothersArray = [
     'Dami',
     'straight',
     'White',
-    'Yellow',
+    eyeColors[Math.floor(Math.random() * eyeColors.length)],
+    // 'This is where the description goes.This is where the description goes.This is where the description goes.This is where the description goes.This is where the description goes.This is where the description goes.This is where the description goes.This is where the description goes.This is where the description goes.This is where the description goes.This is where the description goes.',
     'December, 2019'
   ),
   makeMother(
@@ -26,7 +29,8 @@ const mothersArray = [
     'Feli',
     'straight',
     'Silver Chinchilla',
-    'Green',
+    eyeColors[Math.floor(Math.random() * eyeColors.length)],
+    // 'This is where the description goes.This is where the description goes.This is where the description goes.This is where the description goes.This is where the description goes.This is where the description goes.This is where the description goes.This is where the description goes.This is where the description goes.This is where the description goes.This is where the description goes.',
     'August 1st, 2019'
   ),
   makeMother(
@@ -34,7 +38,8 @@ const mothersArray = [
     'BumB',
     'fold',
     'Black Marble',
-    'Yellow',
+    eyeColors[Math.floor(Math.random() * eyeColors.length)],
+    // 'This is where the description goes.This is where the description goes.This is where the description goes.This is where the description goes.This is where the description goes.This is where the description goes.This is where the description goes.This is where the description goes.This is where the description goes.This is where the description goes.This is where the description goes.',
     'April 4th, 2017',
   ),
   makeMother(
@@ -42,7 +47,8 @@ const mothersArray = [
     'Iris',
     'straight',
     'Blue Gold Chinchilla',
-    'Green',
+    eyeColors[Math.floor(Math.random() * eyeColors.length)],
+    // 'This is where the description goes.This is where the description goes.This is where the description goes.This is where the description goes.This is where the description goes.This is where the description goes.This is where the description goes.This is where the description goes.This is where the description goes.This is where the description goes.This is where the description goes.',
     'August 4th, 2020',
   ),
   makeMother(
@@ -50,7 +56,8 @@ const mothersArray = [
     'Lucy',
     'straight',
     'Black Van',
-    'Yellow',
+    eyeColors[Math.floor(Math.random() * eyeColors.length)],
+    // 'This is where the description goes.This is where the description goes.This is where the description goes.This is where the description goes.This is where the description goes.This is where the description goes.This is where the description goes.This is where the description goes.This is where the description goes.This is where the description goes.This is where the description goes.',
     'August 23rd, 2020',
   ),
 ]

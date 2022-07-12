@@ -4,7 +4,7 @@ import { furColors, eyeColors } from '../../myModelsConfig'
 
 const KittenFilter = (props) => {
 
-  const {gender, ears, furColor, eyeColor, availableOnly} = props.filterState
+  const {gender, ears, furColor, eyeColor, isAvailable} = props.filterState
   // const handleFilterBySearch = props.searcher
 
   const handleChange = (event) => {
@@ -40,8 +40,8 @@ const KittenFilter = (props) => {
           return <option key={index} value={color}>{color}</option>
         }) }
       </select>
-      <label htmlFor="availableOnly">Availability</label>
-      <select name="availableOnly" value={availableOnly} onChange={handleChange}>
+      <label htmlFor="isAvailable">Availability</label>
+      <select name="isAvailable" value={isAvailable} onChange={handleChange}>
         <option value={false}>Show All</option>
         <option value={true}>Available Only</option>
       </select>

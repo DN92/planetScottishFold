@@ -49,6 +49,7 @@ const KittenDetailedView = () => {
           <span> Dam: {kitten.mother}</span> <br />
           <span> Sire: {kitten.father}</span> <br />
           <span> Status: {kitten.isAvailable}</span> <br />
+          <span> Status: {kitten.description}</span> <br />
 
         </div>
       }

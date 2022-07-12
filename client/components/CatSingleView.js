@@ -32,6 +32,12 @@ const CatSingleView = (props) => {
           <span>Date of Birth: {dob}</span> <br />
         </>
       }
+      <Link
+        to={isPrivileged(type) ? `/editCat/${props.parent}/${cat.id}` : `/catDetailedView/${props.parent}/${cat.id}`}
+        state={{cat: cat}}
+        >
+        <button>View More</button>
+      </Link> <br />
       <hr />
     </div>
   )

@@ -126,6 +126,7 @@ const EditCat = () => {
               <option key={index} value={color}>{color}</option>
               ))}
           </select> <br />
+          <textarea name="description" cols="50" rows="15" value={catToEdit.description} placeholder='description'></textarea>
           <button onClick={handleReset} type='button'>Reset Changes</button>
           <button type='submit'>Submit Changes</button>
 

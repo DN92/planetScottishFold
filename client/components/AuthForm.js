@@ -14,7 +14,6 @@ const AuthForm = () => {
   })
   const [rememberMe, setRememberMe] = useState(false)
   const [error, setError] = useState('')
-  const [attemptsCounter, setAttemptsCounter] = useState(1)
 
   const handleRememberMe = () => {
     setRememberMe(prevState => {

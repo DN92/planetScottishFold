@@ -42,6 +42,12 @@ const SingleKitten = (props) => {
           {/* <span>{}</span>  */}
         </>
       }
+       <Link
+        to={isPrivileged(type) ? '/editKitten' : `/kittenDetailed/${id}`}
+        state={{kitten: kitten}}
+        >
+        <button>View More</button>
+      </Link> <br />
       <hr />
     </div>
   )

@@ -146,6 +146,7 @@ const EditKitten = () => {
                 <option value="reserved">Reserved</option>
                 <option value="sold">Sold</option>
               </select><br />
+              <textarea name="description" cols="50" rows="15" placeholder='description'></textarea>
               <button onClick={handleReset} type='button'>Reset Changes</button>
               <button type='submit'>Submit Changes</button>
           </form>

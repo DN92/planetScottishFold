@@ -2,6 +2,8 @@ const router = require('express').Router()
 const { AnonVisitor } = require("../db").models
 const passAuth = require('../expressMiddleware/checkValidAuthLevel')
 
+// DO I EVEN NEED THIS MODEL?
+
 // api/anonVisitors
 
 router.get('/', async (req, res, next) => {
@@ -40,8 +42,9 @@ router.put('/', async(req, res, next) => {
   }
 })
 
+//  DO I EVEN NEED THIS MODEL?
+
 router.delete('/', async(req, res, next) => {
-  passAuth(5, req)
   try {
     const anonVisitorToDelete = await AnonVisitor.findByPk(req.query.id)
     if(anonVisitorToDelete) {

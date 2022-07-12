@@ -50,11 +50,12 @@ const CatDetailedView = () => {
         <div>
           <div>
             <img src={cat.mainImageSrcValue} alt={`Picture of ${MOTHERorFATHER}`} style={imgInLine}/> <br />
-            <span> name: {cat.name}</span> <br />
-            <span> ears: {cat.ears}</span> <br />
-            <span> furColor: {cat.furColor}</span> <br />
-            <span> eyeColor: {cat.eyeColor}</span> <br />
+            <span> Name: {cat.name}</span> <br />
+            <span> Ears: {cat.ears}</span> <br />
+            <span> FurColor: {cat.furColor}</span> <br />
+            <span> EyeColor: {cat.eyeColor}</span> <br />
             <span> Date Of Birth: {cat.dob}</span> <br />
+            <span> Description: {cat.description}</span> <br />
 
           </div>
           {isPrivileged(type) &&

@@ -19,9 +19,8 @@ const AvailableKittens = () => {
     ears: 'any',
     eyeColor: 'any',
     furColor: 'any',
-    availableOnly: false,
+    isAvailable: false,
   })
-  // const filterOptions = ['eyeColor', 'furColor', 'ears', 'gender', 'isAvailable']
 
   const handleShowSearch = () => {
     setShowSearch(prev => {
@@ -68,7 +67,10 @@ const AvailableKittens = () => {
       {isLoading && <LoadingFill />}
       {!isLoading &&
         <>
-          <input type="checkbox" name='showSearch' onChange={handleShowSearch} checked={showSearch} />
+          <input type="checkbox"
+            name='showSearch'
+            onChange={handleShowSearch}
+            checked={showSearch} />
           <label htmlFor="Advanced Search">Advanced Search</label>
 
           {showSearch && <KittenFilter searcher={handleFilterBySearch} filterState={filterState} setter={setFilterState} />}

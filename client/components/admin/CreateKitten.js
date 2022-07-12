@@ -18,6 +18,7 @@ const CreateKitten = () => {
     eyeColor: '',
     mother: '',
     father:'',
+    description: '',
   }
 
   const [kittenToCreate, setKittenToCreate] = useState(defaultState)
@@ -117,6 +118,7 @@ const CreateKitten = () => {
               <option key={index} value={name}>{name}</option>
             ))}
         </select> <br />
+        <textarea name="description" cols="50" rows="15" placeholder='description'></textarea>
         <button type='submit'>Create</button>
 
       </form>
