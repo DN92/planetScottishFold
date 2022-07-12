@@ -10,7 +10,8 @@ module.exports = {
     'Blue',
     'Brown',
     'Black',
-    'No Pref'
+    'No Pref',
+    '',
   ],
   eyeColors: [
     'Green',
@@ -18,7 +19,8 @@ module.exports = {
     'Yellow',
     'Copper',
     'Odd',
-    'No Pref'
+    'No Pref',
+    '',
   ],
   //  for public file serving
   defaultCatPictureSrc: '/catPictures/cat404.png',
@@ -41,6 +43,11 @@ module.exports = {
     'Personality',
     'Price',
     'No Pref',
+    '',
+  ],
+  statusOptions: [
+    'active',
+    'retired',
     '',
   ]
 }

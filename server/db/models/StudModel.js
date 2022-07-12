@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize')
 const db = require("../dbSetup")
-const { furColors, eyeColors, defaultCatPictureSrc } = require("../../../myModelsConfig")
+const { eyeColors, defaultCatPictureSrc, statusOptions } = require("../../../myModelsConfig")
 
 const Stud = db.define('stud', {
   name: {
@@ -19,7 +19,7 @@ const Stud = db.define('stud', {
     defaultValue:'',
   },
   eyeColor: {
-    type: Sequelize.ENUM(...eyeColors,  '')
+    type: Sequelize.ENUM(...eyeColors)
   },
   age: {
     type: Sequelize.INTEGER,
@@ -30,16 +30,17 @@ const Stud = db.define('stud', {
     defaultValue:'',
   },
   status: {
-    type: Sequelize.ENUM('active', 'retired', ''),
+    type: Sequelize.ENUM(statusOptions),
     defaultValue: 'active'
   },
   mainImageSrcValue: {
     type:Sequelize.STRING,
     defaultValue: defaultCatPictureSrc,
-    validate: {
-      notEmpty: true
-    }
   },
+  description: {
+    type: Sequelize.TEXT,
+    defaultValue: ''
+  }
 })
 
 module.exports = Stud

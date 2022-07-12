@@ -23,10 +23,10 @@ const Kitten = db.define("kitten", {
     type: Sequelize.ENUM('fold', 'straight', '')
   },
   furColor: {
-    type: Sequelize.ENUM(...furColors,  '')
+    type: Sequelize.ENUM(...furColors)
   },
   eyeColor: {
-    type: Sequelize.ENUM(...eyeColors,  '')
+    type: Sequelize.ENUM(...eyeColors)
   },
   mother: {
     type:Sequelize.STRING,
@@ -41,6 +41,10 @@ const Kitten = db.define("kitten", {
     type: Sequelize.BOOLEAN,
     defaultValue: true,
   },
+  description: {
+    type: Sequelize.TEXT,
+    defaultValue: ''
+  }
 })
 
 module.exports = Kitten

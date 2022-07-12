@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize')
 const db = require("../dbSetup")
-const { furColors, eyeColors, defaultCatPictureSrc } = require("../../../myModelsConfig")
+const { statusOptions, eyeColors, defaultCatPictureSrc } = require("../../../myModelsConfig")
 
 const Mother = db.define("mother", {
   name: {
@@ -19,7 +19,7 @@ const Mother = db.define("mother", {
     defaultValue:'',
   },
   eyeColor: {
-    type: Sequelize.ENUM(...eyeColors, '')
+    type: Sequelize.ENUM(...eyeColors)
   },
   age: {
     type: Sequelize.INTEGER,
@@ -30,7 +30,7 @@ const Mother = db.define("mother", {
     defaultValue:'',
   },
   status: {
-    type: Sequelize.ENUM('active', 'retired', ''),
+    type: Sequelize.ENUM(...statusOptions),
     defaultValue: 'active'
   },
   mainImageSrcValue: {
@@ -40,6 +40,10 @@ const Mother = db.define("mother", {
       notEmpty: true
     }
   },
+  description: {
+    type: Sequelize.TEXT,
+    defaultValue: ''
+  }
 })
 
 module.exports = Mother

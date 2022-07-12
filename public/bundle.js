@@ -3150,7 +3150,6 @@ __webpack_require__.r(__webpack_exports__);
 
 const ClientQuestionnaire = () => {
   const defaultClientInfo = {
-    username: '',
     firstName: '',
     lastName: '',
     eMail: '',
@@ -3202,11 +3201,6 @@ const ClientQuestionnaire = () => {
     onChange: handleChange,
     onReset: handleReset
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "About You"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
-    type: "text",
-    name: "username",
-    value: clientInfo.username,
-    placeholder: "Desired username"
-  }), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
     id: "addFirstName",
     type: "text",
     name: "firstName",
@@ -3293,9 +3287,7 @@ const ClientQuestionnaire = () => {
   }, "Eye Color"), _myModelsConfig__WEBPACK_IMPORTED_MODULE_2__.eyeColors.map((color, index) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
     key: index,
     value: color
-  }, color)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
-    value: "noPref"
-  }, "No Preference")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("select", {
+  }, color))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("select", {
     name: "furColor",
     value: clientInfo.furColor
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
@@ -3303,9 +3295,15 @@ const ClientQuestionnaire = () => {
   }, "Fur Color"), _myModelsConfig__WEBPACK_IMPORTED_MODULE_2__.furColors.map((color, index) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
     key: index,
     value: color
-  }, color)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
-    value: "noPref"
-  }, "No Preference")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+  }, color))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("select", {
+    name: "mif",
+    value: clientInfo.mif
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+    value: ""
+  }, "Most Important Feature"), _myModelsConfig__WEBPACK_IMPORTED_MODULE_2__.mifOptions.map((feature, index) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+    key: index,
+    value: feature
+  }, feature))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
     type: "text",
     name: "mif",
     value: clientInfo.mif,
@@ -3322,19 +3320,10 @@ const ClientQuestionnaire = () => {
     name: "budget",
     value: clientInfo.budget,
     required: true
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
-    value: "any"
-  }, "Budget"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
-    value: "lessThan1500"
-  }, "Less than $1500"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
-    value: "1500to2000"
-  }, "$1500 to $2000"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
-    value: "2000to2500"
-  }, "$2000 to $2500"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
-    value: "over2500"
-  }, "$2500 and over"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
-    value: "any"
-  }, "Any")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+  }, _myModelsConfig__WEBPACK_IMPORTED_MODULE_2__.budgetRanges.map((range, index) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+    key: index,
+    value: range
+  }, range))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
     type: "reset"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
     type: "submit"
@@ -5640,11 +5629,14 @@ const history =  false ? 0 : (0,history__WEBPACK_IMPORTED_MODULE_0__.createBrows
 //  this file is a good place to put low / no security data that takes would take up space were it put in the middle of complicated files
 module.exports = {
   //  furColors and eyeColors are used in the Cat Models Enum tables for their corresponding keys.
-  furColors: ['White', 'Silver', 'Gold', 'Colorpoint', 'Blue', 'Brown', 'Black'],
-  eyeColors: ['Green', 'Blue', 'Yellow', 'Copper', 'Odd'],
+  furColors: ['White', 'Silver', 'Gold', 'Colorpoint', 'Blue', 'Brown', 'Black', 'No Pref', ''],
+  eyeColors: ['Green', 'Blue', 'Yellow', 'Copper', 'Odd', 'No Pref', ''],
   //  for public file serving
   defaultCatPictureSrc: '/catPictures/cat404.png',
-  budgetRanges: ['$1500-$2000', '$2000-$2500', '$2500-$3000', '$3000-$3500', '$3500-$4000', '$4000+', '']
+  budgetRanges: ['$1500-$2000', '$2000-$2500', '$2500-$3000', '$3000-$3500', '$3500-$4000', '$4000+', ''],
+  // most important feature (of product - cat)
+  mifOptions: ['Health', 'Appearance', 'Show Quality', 'Personality', 'Price', 'No Pref', ''],
+  statusOptions: ['active', 'retired', '']
 };
 
 /***/ }),

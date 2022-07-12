@@ -32,7 +32,7 @@ const AnonVisitor = db.define('anonVisitor', {
     type: Sequelize.STRING
   },
   budget:{
-    type: Sequelize.ENUM(budgetRanges)
+    type: Sequelize.ENUM(...budgetRanges)
   },
   fB: {
     type: Sequelize.STRING
@@ -48,13 +48,13 @@ const AnonVisitor = db.define('anonVisitor', {
     type: Sequelize.ENUM('fold', 'straight', '')
   },
   eyeColor: {
-    type: Sequelize.ENUM(...eyeColors, '')
+    type: Sequelize.ENUM(...eyeColors)
   },
   furColor: {
-    type: Sequelize.ENUM(...furColors, '')
+    type: Sequelize.ENUM(...furColors)
   },
   mif: {
-    type: Sequelize.ENUM(mifOptions)
+    type: Sequelize.ENUM(...mifOptions)
   },
   IPaddress: {
     type: Sequelize.STRING

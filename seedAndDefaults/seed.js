@@ -17,26 +17,30 @@ const { Kitten, Mother, Stud, User, AnonVisitor, ContactRequest } = models
  */
 
 async function seed() {
-  await db.drop({})
+  const allModels = Obj.keys(models)
+  await Promise.all(allModels.map(model => (model.drop())))
   await db.sync({force: true})  //  clears the db and matches models to tables
-  await Promise.all(dummyKittens.map(kitten => {
-    return Kitten.create(kitten)
-  }))
-  await Promise.all(dummyUsers.map(user => {
-    return User.create(user)
-  }))
-  await Promise.all(dummyAnon.map(anon => {
-    return AnonVisitor.create(anon)
-  }))
-  await Promise.all(dummyStuds.map(stud => {
-    return Stud.create(stud)
-  }))
-  await Promise.all(dummyDams.map(dam => {
-    return Mother.create(dam)
-  }))
-  await Promise.all(contactReqs.map(req => {
-    return ContactRequest.create(req)
-  }))
+
+  await Promise.all([
+    Promise.all(dummyKittens.map(kitten => {
+      return Kitten.create(kitten)
+    })),
+    Promise.all(dummyUsers.map(user => {
+      return User.create(user)
+    })),
+    Promise.all(dummyAnon.map(anon => {
+      return AnonVisitor.create(anon)
+    })),
+    Promise.all(dummyStuds.map(stud => {
+      return Stud.create(stud)
+    })),
+    Promise.all(dummyDams.map(dam => {
+      return Mother.create(dam)
+    })),
+    Promise.all(contactReqs.map(req => {
+      return ContactRequest.create(req)
+    })),
+  ])
 }
 
 // runSeed isolates error handling and exit trapping.
