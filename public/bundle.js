@@ -2472,7 +2472,7 @@ module.exports = {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/index.js");
 /* harmony import */ var _components_admin_NewUserRequests__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/admin/NewUserRequests */ "./client/components/admin/NewUserRequests.js");
 /* harmony import */ var _components_admin_RequestReview__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/admin/RequestReview */ "./client/components/admin/RequestReview.js");
 /* harmony import */ var _components_admin_AdminAllView__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/admin/AdminAllView */ "./client/components/admin/AdminAllView.js");
@@ -2481,6 +2481,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_admin_CreateCat__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/admin/CreateCat */ "./client/components/admin/CreateCat.js");
 /* harmony import */ var _components_admin_EditCat__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/admin/EditCat */ "./client/components/admin/EditCat.js");
 /* harmony import */ var _components_admin_DirectMessages__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/admin/DirectMessages */ "./client/components/admin/DirectMessages.js");
+/* harmony import */ var _components_admin_ViewUsers__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./components/admin/ViewUsers */ "./client/components/admin/ViewUsers.js");
+/* harmony import */ var _components_admin_UserLongView__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./components/admin/UserLongView */ "./client/components/admin/UserLongView.js");
+
+
 
 
 
@@ -2493,38 +2497,44 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const AdminRoutes = () => {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Routes, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Route, {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_11__.Routes, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_11__.Route, {
     path: "/newUserRequests",
     element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_admin_NewUserRequests__WEBPACK_IMPORTED_MODULE_1__["default"], null)
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Route, {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_11__.Route, {
     path: "/newUserRequests/:requestId",
     element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_admin_RequestReview__WEBPACK_IMPORTED_MODULE_2__["default"], null)
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Route, {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_11__.Route, {
+    path: "/viewUsers",
+    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_admin_ViewUsers__WEBPACK_IMPORTED_MODULE_9__["default"], null)
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_11__.Route, {
+    path: "/viewUsers/:id",
+    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_admin_UserLongView__WEBPACK_IMPORTED_MODULE_10__["default"], null)
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_11__.Route, {
     path: "/adminAllView",
     element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_admin_AdminAllView__WEBPACK_IMPORTED_MODULE_3__["default"], null)
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Route, {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_11__.Route, {
     path: "/createKitten",
     element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_admin_CreateKitten__WEBPACK_IMPORTED_MODULE_4__["default"], null)
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Route, {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_11__.Route, {
     path: "/editKitten",
     element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_admin_EditKitten__WEBPACK_IMPORTED_MODULE_5__["default"], null)
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Route, {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_11__.Route, {
     path: "/createCat/:MOTHERorFATHER",
     element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_admin_CreateCat__WEBPACK_IMPORTED_MODULE_6__["default"], null)
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Route, {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_11__.Route, {
     path: "/editCat/:MOTHERorFATHER/:id",
     element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_admin_EditCat__WEBPACK_IMPORTED_MODULE_7__["default"], null)
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Route, {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_11__.Route, {
     path: "/directMessages",
     element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_admin_DirectMessages__WEBPACK_IMPORTED_MODULE_8__["default"], null)
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Route, {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_11__.Route, {
     path: "/createCat",
-    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Navigate, {
+    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_11__.Navigate, {
       to: "mother"
     })
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Route, {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_11__.Route, {
     path: "/editCat",
-    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Navigate, {
+    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_11__.Navigate, {
       to: "mother"
     })
   }));
@@ -2738,6 +2748,8 @@ const AdminBar = () => {
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("nav", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
     to: "newUserRequests"
   }, "Applications"), "\xA0\xA0", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
+    to: "viewUsers"
+  }, "All Members"), "\xA0\xA0", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
     to: "createKitten"
   }, "Add A Kitten"), "\xA0\xA0", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
     to: "availableKittens"
@@ -3640,9 +3652,9 @@ const KittenDetailedView = () => {
   const {
     id
   } = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_7__.useParams)();
-  const fromEdit = _history__WEBPACK_IMPORTED_MODULE_1__["default"].location.state ? _history__WEBPACK_IMPORTED_MODULE_1__["default"].location.state.fromEdit : null;
+  const fromEdit = _history__WEBPACK_IMPORTED_MODULE_1__["default"].location.state?.fromEdit;
   const [kitten, setKitten] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(_history__WEBPACK_IMPORTED_MODULE_1__["default"].location.state ? _history__WEBPACK_IMPORTED_MODULE_1__["default"].location.state.kitten : null);
-  const [error, setError] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(_history__WEBPACK_IMPORTED_MODULE_1__["default"].location.state ? _history__WEBPACK_IMPORTED_MODULE_1__["default"].location.state.error : ''); //  if we don't have a kitten from history, fetch one by id.
+  const [error, setError] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''); //  if we don't have a KITTEN from history, fetch one by id.
   //  no params and no history should result in a local 404
 
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
@@ -3756,39 +3768,6 @@ const KittenFilter = props => {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (KittenFilter);
-
-/***/ }),
-
-/***/ "./client/components/LoadingFill.js":
-/*!******************************************!*\
-  !*** ./client/components/LoadingFill.js ***!
-  \******************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-
-const imgStyle = {
-  maxWidth: '38%',
-  height: 'auto',
-  width: 'auto',
-  top: '50%',
-  left: '50%',
-  marginLeft: '10%'
-};
-
-const LoadingFill = ({
-  message
-}) => {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, message), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
-    style: imgStyle,
-    src: "/catPictures/catLoading.gif"
-  }));
-};
-
-/* harmony default export */ __webpack_exports__["default"] = (LoadingFill);
 
 /***/ }),
 
@@ -4129,11 +4108,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _CatSingleView__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CatSingleView */ "./client/components/CatSingleView.js");
-/* harmony import */ var _LoadingFill__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./LoadingFill */ "./client/components/LoadingFill.js");
-/* harmony import */ var _ErrorFill__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./ErrorFill */ "./client/components/ErrorFill.js");
-/* harmony import */ var _axiosHandlers_fetchEffect__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./axiosHandlers/fetchEffect */ "./client/components/axiosHandlers/fetchEffect.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/index.js");
-
+/* harmony import */ var _ErrorFill__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ErrorFill */ "./client/components/ErrorFill.js");
+/* harmony import */ var _axiosHandlers_fetchEffect__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./axiosHandlers/fetchEffect */ "./client/components/axiosHandlers/fetchEffect.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/index.js");
 
 
 
@@ -4143,13 +4120,13 @@ __webpack_require__.r(__webpack_exports__);
 const ViewCats = () => {
   const {
     MOTHERorFATHER
-  } = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.useParams)();
+  } = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.useParams)();
   const [cats, setCats] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]);
   const [fetchError, setFetchError] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null);
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
-    (0,_axiosHandlers_fetchEffect__WEBPACK_IMPORTED_MODULE_4__.fetchEffect)([setCats, setFetchError], 'get', `/api/${MOTHERorFATHER}s`);
+    (0,_axiosHandlers_fetchEffect__WEBPACK_IMPORTED_MODULE_3__.fetchEffect)([setCats, setFetchError], 'get', `/api/${MOTHERorFATHER}s`);
   }, [MOTHERorFATHER]);
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, fetchError && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ErrorFill__WEBPACK_IMPORTED_MODULE_3__["default"], null), !fetchError && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "Our ", MOTHERorFATHER == 'mother' ? 'Dams' : 'Sires'), cats.map(cat => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_CatSingleView__WEBPACK_IMPORTED_MODULE_1__["default"], {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, fetchError && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ErrorFill__WEBPACK_IMPORTED_MODULE_2__["default"], null), !fetchError && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "Our ", MOTHERorFATHER == 'mother' ? 'Dams' : 'Sires'), cats.map(cat => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_CatSingleView__WEBPACK_IMPORTED_MODULE_1__["default"], {
     key: cat.id,
     cat: cat,
     parent: MOTHERorFATHER
@@ -5144,6 +5121,91 @@ const UseReqTableRow = props => {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (UseReqTableRow);
+
+/***/ }),
+
+/***/ "./client/components/admin/UserLongView.js":
+/*!*************************************************!*\
+  !*** ./client/components/admin/UserLongView.js ***!
+  \*************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _history__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../history */ "./client/history.js");
+/* harmony import */ var _ErrorFill__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../ErrorFill */ "./client/components/ErrorFill.js");
+/* harmony import */ var _axiosHandlers_fetchEffect__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../axiosHandlers/fetchEffect */ "./client/components/axiosHandlers/fetchEffect.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/index.js");
+
+
+
+
+
+
+const UserLongView = () => {
+  const {
+    id
+  } = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.useParams)();
+  const [user, setUser] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(_history__WEBPACK_IMPORTED_MODULE_1__["default"].location.state?.user ?? {});
+  const [error, setError] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''); //  if we don't have a USER from history, fetch one by id.
+  //  no params and no history should result in a local 404
+
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+    !user && id && (0,_axiosHandlers_fetchEffect__WEBPACK_IMPORTED_MODULE_3__.fetchEffect)([setUser, setError], 'get', `/api/users?id=${id}`);
+  }, []);
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    key: id
+  }, error && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ErrorFill__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    msg: error
+  }), !error && user && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h3", null, user.type, " User"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, "Email: ", user.eMail), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, "Name: ", user.lastName + ', ' + user.firstName), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, "Budget: ", user.budget), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, "Location: ", user.city + user.state), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, "FaceBook: ", user.fB), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, "InstaGram: ", user.iG), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, "First Cat?: ", user.firstCat?.toString() ?? ""), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, "Other Pets: ", user.otherPets), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, "About Me: ", user.aboutYou), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), user.IPaddress && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, user.IPaddress), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("hr", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h4", null, "Looking For"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, "Gender: ", user.gender), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, "Ears: ", user.ears), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, "Fur: ", user.furColor), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, "Eyes: ", user.eyeColor), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, "Most Important Feature: ", user.mif), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null)), !error && !user && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(My404, null));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (UserLongView);
+
+/***/ }),
+
+/***/ "./client/components/admin/ViewUsers.js":
+/*!**********************************************!*\
+  !*** ./client/components/admin/ViewUsers.js ***!
+  \**********************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _ErrorFill__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../ErrorFill */ "./client/components/ErrorFill.js");
+/* harmony import */ var _axiosHandlers_fetchEffect__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../axiosHandlers/fetchEffect */ "./client/components/axiosHandlers/fetchEffect.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/index.js");
+
+
+
+
+
+const ViewUsers = () => {
+  const [users, setUsers] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]);
+  const [error, setError] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null);
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+    !users.length && (0,_axiosHandlers_fetchEffect__WEBPACK_IMPORTED_MODULE_2__.fetchEffect)([setUsers, setError], 'get', `/api/users`);
+  }, []);
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+    users.length && console.log(users);
+  }, [users]);
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, error && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ErrorFill__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    msg: error
+  }), !error && !users.length && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h3", null, "No Members"), !error && users.length && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "Members"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("table", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("thead", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "Email"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "User Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "budget"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "City and State"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "FaceBook"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "InstaGram"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("tbody", null, users.map(user => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("tr", {
+    key: user.id
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, user.eMail), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, user.lastName + ', ', user.firstName, " "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, user.budget), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, user.city + ' ', user.state), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, user.fB), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, user.iG), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+    to: `/viewUsers/id=${user.id}`,
+    state: {
+      user: user
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", null, "See More Details")))))))));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (ViewUsers);
 
 /***/ }),
 

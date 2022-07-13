@@ -12,13 +12,14 @@ const KittenDetailedView = () => {
   const {type} =useContext(MeContext)
   const {id} = useParams()
 
-  const fromEdit = history.location.state ? history.location.state.fromEdit : null
-  const [kitten, setKitten] = useState(history.location.state
-    ? history.location.state.kitten : null)
-  const [error, setError] = useState(history.location.state
-    ? history.location.state.error : '')
+  const fromEdit = history.location.state?.fromEdit
+  const [kitten, setKitten] = useState(history.location.state ?
+    history.location.state.kitten :
+    null
+  )
+  const [error, setError] = useState('')
 
-    //  if we don't have a kitten from history, fetch one by id.
+    //  if we don't have a KITTEN from history, fetch one by id.
     //  no params and no history should result in a local 404
   useEffect(() => {
     !kitten && id && fetchEffect(

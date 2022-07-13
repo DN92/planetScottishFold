@@ -8,6 +8,8 @@ const AdminBar = () => {
     <nav>
       <Link to='newUserRequests'>Applications</Link>
       &nbsp;&nbsp;
+      <Link to='viewUsers'>All Members</Link>
+      &nbsp;&nbsp;
       <Link to='createKitten'>Add A Kitten</Link>
       &nbsp;&nbsp;
       <Link to='availableKittens' >View/Edit Kittens</Link>

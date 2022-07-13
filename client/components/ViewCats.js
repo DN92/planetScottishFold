@@ -1,6 +1,5 @@
 import React, { useState, useEffect }from 'react'
 import CatSingleView from './CatSingleView'
-import LoadingFill from './LoadingFill'
 import ErrorFill from './ErrorFill'
 import { fetchEffect } from './axiosHandlers/fetchEffect'
 import { useParams } from 'react-router-dom'

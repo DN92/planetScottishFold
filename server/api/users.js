@@ -1,30 +1,22 @@
 const router = require('express').Router()
 const { User } = require('../db').models
+const passAuth = require('../expressMiddleware/checkValidAuthLevel')
 const pwGenerator = require('generate-password')
+const { Op } = require('sequelize')
 
 //  api/users
 
 router.get('/', async (req, res, next) => {
-  passAuth(3, req, res)
+  // passAuth(3, req, res)
   try {
-    const users = await User.findAll()
+    const users = await User.findAll({
+      attributes: {exclude: ['password', 'updatedAt', 'createdAt']}
+    })
     res.send(users) // array
   } catch (err) {
     next(err)
   }
 })
-
-// router.post('/', async (req, res, next) => {
-//   try{
-//     const newUser = await User.create(req.body)
-//     if(!newUser) {
-//       throw new Error('newUser creation failed')
-//     }
-//     res.send(newUser)
-//   } catch (err) {
-//     next(err)
-//   }
-// })
 
 router.post('/anonToUser', async (req, res, next) => {
   try{

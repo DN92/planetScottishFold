@@ -19,14 +19,14 @@ const User = db.define("user", {
       notEmpty: true
     }
   },
-  budget:{
-    type: Sequelize.ENUM(budgetRanges)
-  },
   firstName: {
     type: Sequelize.STRING,
   },
   lastName: {
     type: Sequelize.STRING,
+  },
+  budget:{
+    type: Sequelize.ENUM(budgetRanges)
   },
   aboutYou: {
     type: Sequelize.STRING,
@@ -35,6 +35,18 @@ const User = db.define("user", {
     type: Sequelize.BOOLEAN,
   },
   otherPets: {
+    type: Sequelize.STRING,
+  },
+  eMail: {
+    type: Sequelize.STRING,
+  },
+  city: {
+    type: Sequelize.STRING,
+  },
+  state: {
+    type: Sequelize.STRING,
+  },
+  IPaddress: {
     type: Sequelize.STRING,
   },
   fB: {
@@ -56,18 +68,6 @@ const User = db.define("user", {
     type: Sequelize.STRING,
   },
   mif: {
-    type: Sequelize.STRING,
-  },
-  eMail: {
-    type: Sequelize.STRING,
-  },
-  city: {
-    type: Sequelize.STRING,
-  },
-  state: {
-    type: Sequelize.STRING,
-  },
-  IPaddress: {
     type: Sequelize.STRING,
   },
   hasBeenReviewedByAdmin: {
