@@ -25,21 +25,24 @@ const SingleKitten = (props) => {
     <div>
       <Link
         to={isPrivileged(type) ? '/editKitten' : `/kittenDetailed/${id}`}
-        state={{kitten: kitten}}>
-        <img src={image} alt="kitten picture " kitten={kitten} style={imgInLine} />
+        state={{kitten: kitten}}
+      >
+        <img src={image} alt="kitten picture "
+        kitten={kitten}
+        style={imgInLine}
+        />
       </Link> <br />
-      <span>Name: {name}</span> <br />
+      <span>{name}</span> <br />
       <span>{gender}</span> <br />
       <span>{ears}</span> <br />
-      <span>{isAvailable}</span> <br />
+      <span>Fur Color: {furColor}</span> <br />
+      <span>Eye Color: {eyeColor}</span> <br />
       {isPrivileged(type) &&
         <>
           <span>Mother: {mother}</span> <br />
           <span>Father: {father}</span> <br />
           <span>Status: {isAvailable}</span> <br />
-          <span>Fur Color: {furColor}</span> <br />
-          <span>Eye Color: {eyeColor}</span> <br />
-          {/* <span>{}</span>  */}
+          <span>Available?: {isAvailable ? 'Available' : 'Reserved'}</span> <br />
         </>
       }
        <Link

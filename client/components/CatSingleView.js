@@ -24,9 +24,6 @@ const CatSingleView = (props) => {
         <img src={mainImageSrcValue} alt={`${props.parent.name}'s picture `} className="image" />
       </Link> <br />
         <span>{name}</span> <br />
-        <span>{ears}</span> <br />
-        <span>Eye Color: {eyeColor}</span> <br />
-        <span>Fur Color: {furColor}</span> <br />
       {isPrivileged(type) &&
         <>
           <span>Date of Birth: {dob}</span> <br />

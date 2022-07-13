@@ -53,6 +53,12 @@ const CatDetailedView = () => {
           <div>
             <img src={cat.mainImageSrcValue} alt={`Picture of ${MOTHERorFATHER}`} style={imgInLine}/> <br />
             <span> Name: {cat.name}</span> <br />
+            {cat.regNum &&
+              <>
+                <span> Registration Number: {cat.regNum}</span>
+                <br />
+              </>
+            }
             <span> Ears: {cat.ears}</span> <br />
             <span> FurColor: {cat.furColor}</span> <br />
             <span> EyeColor: {cat.eyeColor}</span> <br />

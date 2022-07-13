@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext }from 'react'
 import SingleKitten from './SingleKitten'
-import LoadingFill from './LoadingFill'
+import ErrorFill from './ErrorFill'
 import { fetchEffect } from './axiosHandlers/fetchEffect'
 import KittenFilter from './KittensFilter'
 import {getObjMatches} from '../../myUtilFuncs'
@@ -56,7 +56,8 @@ const AvailableKittens = () => {
 
   return (
     <>
-      {
+      {fetchError && <ErrorFill msg={fetchError} />}
+      {!fetchError &&
         <div>
           <input type="checkbox"
             name='showSearch'

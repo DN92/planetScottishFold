@@ -38,7 +38,11 @@ const Stud = db.define('stud', {
   description: {
     type: Sequelize.TEXT,
     defaultValue: ''
-  }
+  },
+  regNum: {
+    type: Sequelize.STRING,
+    defaultValue: '5432'
+  },
 })
 
 module.exports = Stud

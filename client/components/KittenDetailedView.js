@@ -49,7 +49,7 @@ const KittenDetailedView = () => {
           <span> Eye color: {kitten.eyeColor}</span> <br />
           <span> Dam: {kitten.mother}</span> <br />
           <span> Sire: {kitten.father}</span> <br />
-          <span> Status: {kitten.isAvailable}</span> <br />
+          <span> Status: {kitten.isAvailable ? 'Available' : 'Reserved'}</span> <br />
           <span> Description: {kitten.description}</span> <br />
           <span> Price: ${kitten.price}</span> <br />
 
