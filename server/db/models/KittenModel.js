@@ -50,6 +50,10 @@ const Kitten = db.define("kitten", {
     type: Sequelize.STRING,
     defaultValue: '5432'
   },
+  breed: {
+    type: Sequelize.STRING,
+    defaultValue: '',
+  },
 })
 
 module.exports = Kitten

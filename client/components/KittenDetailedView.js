@@ -41,7 +41,8 @@ const KittenDetailedView = () => {
       {!error && kitten &&
         <div>
           <img src={kitten.mainImageSrcValue} alt="Picture of Kitten" style={imgInLine}/> <br />
-          <span> Name: {kitten.name}</span> <br />
+          <span> {kitten.name}</span> <br />
+          <span> {kitten.breed}</span> <br />
           <span> Registration Number: {kitten.regNum}</span> <br />
           <span> Gender: {kitten.gender}</span> <br />
           <span> Ears: {kitten.ears}</span> <br />

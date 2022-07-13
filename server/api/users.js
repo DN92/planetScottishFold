@@ -5,7 +5,7 @@ const pwGenerator = require('generate-password')
 //  api/users
 
 router.get('/', async (req, res, next) => {
-  passAuth(3, req)
+  passAuth(3, req, res)
   try {
     const users = await User.findAll()
     res.send(users) // array
@@ -51,7 +51,7 @@ router.post('/anonToUser', async (req, res, next) => {
 
 router.put('/', async(req, res, next) => {
   try {
-    passAuth(3, req)
+    passAuth(3, req, res)
     //  this probably belongs in hooks. security measure
     delete req.body.type
     const user = await User.findByPk(req.query.id)
@@ -67,7 +67,7 @@ router.put('/', async(req, res, next) => {
 
 router.delete('/', async(req, res, next) => {
   try {
-    passAuth(5, req)
+    passAuth(5, req, res)
     const userToDelete = await User.findByPk(req.query.userId)
     if(userToDelete) {
       await userToDelete.destroy()

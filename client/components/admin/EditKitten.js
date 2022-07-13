@@ -102,30 +102,45 @@ const EditKitten = () => {
               name='name'
               placeholder='Name'
               value={kittenToEdit.name}
-              onChange={handleChange} /> <br />
+              onChange={handleChange}
+            /> <br />
+            <input
+              type="text"
+              name='breed'
+              placeholder='Cat Breed'
+              value={kittenToEdit.breed}
+              onChange={handleChange}
+            /> <br />
+             <input
+              type="text"
+              name='regNum'
+              placeholder='Registration Number'
+              value={kittenToEdit.regNum}
+              onChange={handleChange}
+            /> <br />
             <select name="gender" value={kittenToEdit.gender} onChange={handleChange}>
-              <option value="">Boy or Girl?</option>
-              <option value="boy">Boy</option>
-              <option value="girl">Girl</option>
+              <option value={genderOptions[0]}>Boy or Girl</option>
+                {genderOptions.map((ear, index) => (
+                  <option key={index} value={ear}>{ear}</option>
+                ))}
             </select> <br />
             <select name="ears" value={kittenToEdit.ears} onChange={handleChange}>
-              <option value="">Fold or Straight</option>
-              <option value="fold">Fold</option>
-              <option value="straight">Straight</option>
-              <option value="noPref">No Preference</option>
+              <option value={earOptions[0]}>Fold or Straight</option>
+                {earOptions.map((ear, index) => (
+                  <option key={index} value={ear}>{ear}</option>
+                ))}
             </select> <br />
             <select name="furColor" value={kittenToEdit.furColor} onChange={handleChange}>
               <option value="">Fur Color</option>
               {furColors.map((color, index) => (
                 <option key={index} value={color}>{color}</option>
               ))}
-              <option value="noPref">No Preference</option>
             </select> <br />
             <select name="eyeColor" value={kittenToEdit.eyeColor} onChange={handleChange}>
-            <option value="">Eye Color</option>
-              {eyeColors.map((color, index) => (
-                <option key={index} value={color}>{color}</option>
-                ))}
+              <option value="">Eye Color</option>
+                {eyeColors.map((color, index) => (
+                  <option key={index} value={color}>{color}</option>
+                  ))}
             </select> <br />
             <select name="mother" value={kittenToEdit.mother} onChange={handleChange}>
               <option value="">Select Dam</option>
@@ -150,12 +165,7 @@ const EditKitten = () => {
               <option value="reserved">Reserved</option>
               <option value="sold">Sold</option>
             </select><br />
-            <input
-              type="text"
-              name='regNum'
-              placeholder='Registration Number'
-              value={kittenToEdit.regNum}
-              onChange={handleChange} /> <br />
+
             <textarea name="description" cols="50" rows="15" placeholder='description'></textarea>
             <button onClick={handleReset} type='button'>Reset Changes</button>
             <button type='submit'>Submit Changes</button>

@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize')
 const db = require("../dbSetup")
-const { statusOptions, eyeColors, earOptions, defaultCatPictureSrc } = require("../../../myModelsConfig")
+const { statusOptions, eyeColors, earOptions } = require("../../../myModelsConfig")
 
 const Mother = db.define("mother", {
   name: {
@@ -33,10 +33,7 @@ const Mother = db.define("mother", {
   },
   mainImageSrcValue: {
     type:Sequelize.STRING,
-    defaultValue: defaultCatPictureSrc,
-    validate: {
-      notEmpty: true
-    }
+    defaultValue: '/otherPictures/photoComingSoon.png'
   },
   description: {
     type: Sequelize.TEXT,
@@ -45,6 +42,10 @@ const Mother = db.define("mother", {
   regNum: {
     type: Sequelize.STRING,
     defaultValue: '5432'
+  },
+  breed: {
+    type: Sequelize.STRING,
+    defaultValue: '',
   },
 })
 

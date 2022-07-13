@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import handleControlledValueFieldToState from '../../customHandlers/handleFormChange'
-import {furColors, eyeColors, earOptions} from "../../../myModelsConfig"
+import {furColors, eyeColors, earOptions, genderOptions} from "../../../myModelsConfig"
 import history from '../../history'
 import { fetchEffect } from '../axiosHandlers/fetchEffect'
 import ErrorFill from '../ErrorFill'
@@ -11,15 +11,16 @@ const CreateKitten = () => {
 
   const defaultState = {
     name:'',
-    gender: '',
-    ears: '',
-    furColor: '',
-    eyeColor: '',
+    breed: '',
+    regNum: '',
+    gender: genderOptions[0],
+    ears: earOptions[0],
+    furColor: furColors[0],
+    eyeColor: eyeColors[0],
     mother: '',
     father:'',
     description: '',
     price: 0,
-    regNum: '',
 
   }
 
@@ -78,16 +79,37 @@ const CreateKitten = () => {
       {!error &&
         <form onKeyDown={handleKeyPress} onSubmit={handleSubmit}>
           <h2>Kitten Creation Form</h2>
-          <input type="text" name='name' placeholder='Name' value={kittenToCreate.name} onChange={handleChange} /> <br />
+          <input type="text"
+            name='name'
+            placeholder='Name'
+            value={kittenToCreate.name}
+            onChange={handleChange}
+          /> <br />
+          <input
+            type="text"
+            name='breed'
+            placeholder='Cat Breed'
+            value={kittenToCreate.breed}
+            onChange={handleChange}
+          /> <br />
+          <input
+            type="text"
+            name='regNum'
+            placeholder='Registration Number'
+            value={kittenToCreate.regNum}
+            onChange={handleChange}
+          /> <br />
           <select name="gender" value={kittenToCreate.gender} onChange={handleChange}>
-            <option value="">Boy or Girl?</option>
-            <option value="boy">Boy</option>
-            <option value="girl">Girl</option>
+            <option value={genderOptions[0]}>Boy or Girl</option>
+              {genderOptions.map((ear, index) => (
+                <option key={index} value={ear}>{ear}</option>
+              ))}
           </select> <br />
           <select name="ears" value={kittenToCreate.ears} onChange={handleChange}>
-            <option value="">Fold or Straight</option>
-            <option value="fold">Fold</option>
-            <option value="straight">Straight</option>
+            <option value={earOptions[0]}>Fold or Straight</option>
+            {earOptions.map((ear, index) => (
+              <option key={index} value={ear}>{ear}</option>
+            ))}
           </select> <br />
           <select name="furColor" value={kittenToCreate.furColor} onChange={handleChange}>
             <option value="">Fur Color</option>
@@ -114,17 +136,12 @@ const CreateKitten = () => {
               ))}
           </select> <br />
           <input
-                type="number"
-                name='price'
-                placeholder='price'
-                value={kittenToCreate.price}
-                onChange={handleChange} /> <br />
-          <input
-                type="text"
-                name='regNum'
-                placeholder='Registration Number'
-                value={kittenToCreate.regNum}
-                onChange={handleChange} /> <br />
+            type="number"
+            name='price'
+            placeholder='price'
+            value={kittenToCreate.price}
+            onChange={handleChange}
+          /> <br />
           <textarea name="description" cols="50" rows="15" placeholder='description'></textarea>
           <button type='submit'>Create</button>
         </form>

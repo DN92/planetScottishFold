@@ -16,7 +16,7 @@ const Stud = db.define('stud', {
     defaultValue:'',
   },
   eyeColor: {
-    type: Sequelize.ENUM(...eyeColors),
+    type: Sequelize.ENUM(eyeColors),
     defaultValue: eyeColors[0]
   },
   age: {
@@ -33,7 +33,7 @@ const Stud = db.define('stud', {
   },
   mainImageSrcValue: {
     type:Sequelize.STRING,
-    defaultValue: defaultCatPictureSrc,
+    defaultValue: '/otherPictures/photoComingSoon.png'
   },
   description: {
     type: Sequelize.TEXT,
@@ -42,6 +42,10 @@ const Stud = db.define('stud', {
   regNum: {
     type: Sequelize.STRING,
     defaultValue: '5432'
+  },
+  breed: {
+    type: Sequelize.STRING,
+    defaultValue: '',
   },
 })
 

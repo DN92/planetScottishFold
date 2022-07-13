@@ -14,7 +14,7 @@ const CatSingleView = (props) => {
   const {type} = useContext(MeContext)
   const {cat} = props || {}
 
-  const {name, ears, furColor, eyeColor, dob, mainImageSrcValue} = cat
+  const {name, breed, ears, furColor, eyeColor, dob, mainImageSrcValue, id} = cat
 
   return (
     <div>
@@ -24,15 +24,19 @@ const CatSingleView = (props) => {
         <img src={mainImageSrcValue} alt={`${props.parent.name}'s picture `} className="image" />
       </Link> <br />
         <span>{name}</span> <br />
+        <span>{breed}</span> <br />
       {isPrivileged(type) &&
         <>
           <span>Date of Birth: {dob}</span> <br />
+          <span>Ears: {ears}</span> <br />
+          <span>Fur Color: {furColor}</span> <br />
+          <span>Eye Color: {eyeColor}</span> <br />
         </>
       }
       <Link
-        to={isPrivileged(type) ? `/editCat/${props.parent}/${cat.id}` : `/catDetailedView/${props.parent}/${cat.id}`}
+        to={isPrivileged(type) ? `/editCat/${props.parent}/${id}` : `/catDetailedView/${props.parent}/${id}`}
         state={{cat: cat}}
-        >
+      >
         <button>View More</button>
       </Link> <br />
       <hr />

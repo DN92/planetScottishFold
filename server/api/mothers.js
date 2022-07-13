@@ -23,7 +23,7 @@ router.get('/', async (req, res, next) => {
 
 router.post('/', async (req, res, next) => {
   try{
-    passAuth(4, req)
+    passAuth(4, req, res)
     const newMother = await Mother.create(req.body)
     if(!newMother) {
       throw new Error('newMother creation failed')

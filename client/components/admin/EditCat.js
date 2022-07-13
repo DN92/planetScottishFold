@@ -95,32 +95,49 @@ const EditCat = () => {
             name='name'
             placeholder='Name'
             value={catToEdit.name}
-            onChange={handleChange} /> <br />
+            onChange={handleChange}
+          /> <br />
+           <input
+            type="text"
+            name='breed'
+            placeholder='Cat Breed'
+            value={catToEdit.breed}
+            onChange={handleChange}
+          /> <br />
+           <input
+            type="text"
+            name='regNum'
+            placeholder='Registration Number'
+            value={catToCreate.regNum}
+            onChange={handleChange}
+          /> <br />
           <input
             type="text"
             name='dob'
             placeholder='Date of Birth'
             value={catToEdit.dob}
-            onChange={handleChange} /> <br />
+            onChange={handleChange}
+          /> <br />
           <select name="ears" value={catToEdit.ears} onChange={handleChange}>
-            <option value="">Fold or Straight</option>
-            <option value="fold">Fold</option>
-            <option value="straight">Straight</option>
-            <option value="noPref">No Preference</option>
+            <option value={earOptions[0]}>Fold or Straight</option>
+            {earOptions.map((ear, index) => (
+              <option key={index} value={ear}>{ear}</option>
+            ))}
           </select> <br />
           <input
             type="text"
             name='furColor'
             placeholder='Fur Color'
             value={catToEdit.furColor}
-            onChange={handleChange} /> <br />
+            onChange={handleChange}
+          /> <br />
           <select name="eyeColor" value={catToEdit.eyeColor} onChange={handleChange}>
-          <option value="">Eye Color</option>
-            {eyeColors.map((color, index) => (
-              <option key={index} value={color}>{color}</option>
-              ))}
+            <option value="">Eye Color</option>
+              {eyeColors.map((color, index) => (
+                <option key={index} value={color}>{color}</option>
+                ))}
           </select> <br />
-          <textarea name="description" cols="50" rows="15" value={catToEdit.description} onChange={handleChange} placeholder='description'></textarea>
+          <textarea name="description" cols="50" rows="8" value={catToEdit.description} onChange={handleChange} placeholder='description'></textarea>
           <button onClick={handleReset} type='button'>Reset Changes</button>
           <button type='submit'>Submit Changes</button>
 

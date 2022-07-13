@@ -10,7 +10,7 @@ const SingleKitten = (props) => {
   const {type} = useContext(MeContext)
   const {kitten} = props
 
-  const {name, gender, ears, mainImageSrcValue, eyeColor,father, mother, isAvailable, serial, furColor, id} = kitten
+  const {name, gender, ears, mainImageSrcValue, eyeColor,father, mother, isAvailable, breed, furColor, id} = kitten
 
   const image = mainImageSrcValue ? mainImageSrcValue : "/catPictures/catError3.gif"
 
@@ -33,6 +33,7 @@ const SingleKitten = (props) => {
         />
       </Link> <br />
       <span>{name}</span> <br />
+      <span>{breed}</span> <br />
       <span>{gender}</span> <br />
       <span>{ears}</span> <br />
       <span>Fur Color: {furColor}</span> <br />

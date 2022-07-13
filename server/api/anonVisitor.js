@@ -8,7 +8,7 @@ const passAuth = require('../expressMiddleware/checkValidAuthLevel')
 
 router.get('/', async (req, res, next) => {
   try {
-    passAuth(3, req)
+    passAuth(3, req, res)
     const anonVisitor= await AnonVisitor.findAll()
     res.send(anonVisitor) // array
   } catch (err) {
