@@ -2934,7 +2934,6 @@ __webpack_require__.r(__webpack_exports__);
 
 const AvailableKittens = () => {
   const [kittens, setKittens] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]);
-  const [isLoading, setIsLoading] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(true);
   const [fetchError, setFetchError] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null);
   const [showSearch, setShowSearch] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
   const [filterState, setFilterState] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
@@ -2946,10 +2945,10 @@ const AvailableKittens = () => {
   });
 
   const handleShowSearch = () => {
-    setShowSearch(prev => {
-      return !prev;
-    });
-  };
+    setShowSearch(prev => !prev);
+  }; //  the filter will reorganize the available kittens array by weighted value,
+  //    it will not lessen the number of viable kittens.
+
 
   const handleFilterBySearch = () => {
     const weightedArr = kittens.map(kitten => {
@@ -2965,7 +2964,7 @@ const AvailableKittens = () => {
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
     (0,_axiosHandlers_fetchEffect__WEBPACK_IMPORTED_MODULE_3__.fetchEffect)([setKittens, setFetchError], 'get', `/api/kittens`);
   }, []);
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, isLoading && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_LoadingFill__WEBPACK_IMPORTED_MODULE_2__["default"], null), !isLoading && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
     type: "checkbox",
     name: "showSearch",
     onChange: handleShowSearch,
@@ -3023,6 +3022,7 @@ const CatDetailedView = () => {
     id
   } = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_7__.useParams)();
   const [cat, setCat] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(_history__WEBPACK_IMPORTED_MODULE_1__["default"].location.state ? _history__WEBPACK_IMPORTED_MODULE_1__["default"].location.state.cat : null);
+  console.log('cat', cat);
   const [error, setError] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(_history__WEBPACK_IMPORTED_MODULE_1__["default"].location.state ? _history__WEBPACK_IMPORTED_MODULE_1__["default"].location.state.error : ''); //  if we don't have a Mommy or Daddy from history, fetch one by id.
   //  no params and no history should result in a local 404
 
@@ -3046,8 +3046,8 @@ const CatDetailedView = () => {
   }), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, " Name: ", cat.name), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, " Ears: ", cat.ears), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, " FurColor: ", cat.furColor), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, " EyeColor: ", cat.eyeColor), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, " Date Of Birth: ", cat.dob), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, " Description: ", cat.description), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null)), (0,_secrets__WEBPACK_IMPORTED_MODULE_5__.isPrivileged)(type) && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Link, {
     to: `/createCat/${MOTHERorFATHER}`
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", null, "Upload Another ", `${MOTHERorFATHER}`)), (0,_secrets__WEBPACK_IMPORTED_MODULE_5__.isPrivileged)(type) && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Link, {
-    to: `/viewCats/${MOTHERorFATHER}s`
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", null, "Back to ", `${MOTHERorFATHER}`))), !error && !cat && !id && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_My404__WEBPACK_IMPORTED_MODULE_3__["default"], null)));
+    to: `/viewCats/${MOTHERorFATHER}`
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", null, "Back to ", `${MOTHERorFATHER}s`))), !error && !cat && !id && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_My404__WEBPACK_IMPORTED_MODULE_3__["default"], null)));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (CatDetailedView);
@@ -4135,7 +4135,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _CatSingleView__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CatSingleView */ "./client/components/CatSingleView.js");
 /* harmony import */ var _LoadingFill__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./LoadingFill */ "./client/components/LoadingFill.js");
 /* harmony import */ var _ErrorFill__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./ErrorFill */ "./client/components/ErrorFill.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/index.js");
+/* harmony import */ var _axiosHandlers_fetchEffect__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./axiosHandlers/fetchEffect */ "./client/components/axiosHandlers/fetchEffect.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/index.js");
+
 
 
 
@@ -4145,14 +4147,13 @@ __webpack_require__.r(__webpack_exports__);
 const ViewCats = () => {
   const {
     MOTHERorFATHER
-  } = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.useParams)();
+  } = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.useParams)();
   const [cats, setCats] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]);
-  const [isLoading, setIsLoading] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(true);
   const [fetchError, setFetchError] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null);
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
-    fetchEffect([setCats, setFetchError], 'get', `/api/${MOTHERorFATHER}s`);
+    (0,_axiosHandlers_fetchEffect__WEBPACK_IMPORTED_MODULE_4__.fetchEffect)([setCats, setFetchError], 'get', `/api/${MOTHERorFATHER}s`);
   }, [MOTHERorFATHER]);
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, isLoading && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_LoadingFill__WEBPACK_IMPORTED_MODULE_2__["default"], null), fetchError && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ErrorFill__WEBPACK_IMPORTED_MODULE_3__["default"], null), !isLoading && !fetchError && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "Our ", MOTHERorFATHER == 'mother' ? 'Dams' : 'Sires'), cats.map(cat => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_CatSingleView__WEBPACK_IMPORTED_MODULE_1__["default"], {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, fetchError && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ErrorFill__WEBPACK_IMPORTED_MODULE_3__["default"], null), !fetchError && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "Our ", MOTHERorFATHER == 'mother' ? 'Dams' : 'Sires'), cats.map(cat => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_CatSingleView__WEBPACK_IMPORTED_MODULE_1__["default"], {
     key: cat.id,
     cat: cat,
     parent: MOTHERorFATHER
@@ -4277,8 +4278,8 @@ const CreateCat = () => {
     (0,_axiosHandlers_fetchEffect__WEBPACK_IMPORTED_MODULE_4__.fetchEffect)([setPosted, setError], 'post', `/api/${MOTHERorFATHER}s`, catToCreate);
   };
 
-  useEffect(() => {
-    _history__WEBPACK_IMPORTED_MODULE_2__["default"].push(`catDetailed/${MOTHERorFATHER}/${posted.id}`, {
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+    posted && _history__WEBPACK_IMPORTED_MODULE_2__["default"].push(`/catDetailedView/${MOTHERorFATHER}/${posted.id}`, {
       cat: posted,
       error: error,
       fromCreate: true
@@ -4662,7 +4663,8 @@ const EditCat = () => {
   const [catToEdit, setCatToEdit] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(_history__WEBPACK_IMPORTED_MODULE_4__["default"].location.state ? _history__WEBPACK_IMPORTED_MODULE_4__["default"].location.state.cat : null);
   const [catLoaded, setCatLoaded] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
   const [initialState, setInitialState] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(catToEdit ? catToEdit : {});
-  const [error, setError] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(_history__WEBPACK_IMPORTED_MODULE_4__["default"].location.state ? _history__WEBPACK_IMPORTED_MODULE_4__["default"].location.state.error : '');
+  const [posted, setPosted] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null);
+  const [error, setError] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('');
   const imgInLine = {
     width: "100%",
     maxWidth: "200px",
@@ -4685,13 +4687,16 @@ const EditCat = () => {
   const handleSubmit = async event => {
     event.preventDefault();
     !Object.keys(initialState).length && setInitialState(catToEdit);
-    (0,_axiosHandlers_fetchEffect__WEBPACK_IMPORTED_MODULE_7__.fetchEffect)([setInitialState, setError], 'put', `/api/${MOTHERorFATHER}s`, catToEdit);
+    (0,_axiosHandlers_fetchEffect__WEBPACK_IMPORTED_MODULE_7__.fetchEffect)([setPosted, setError], 'put', `/api/${MOTHERorFATHER}s`, catToEdit);
   };
 
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
     !catToEdit && id && (0,_axiosHandlers_fetchEffect__WEBPACK_IMPORTED_MODULE_7__.fetchEffect)([setCatToEdit, setError], 'get', `/api/${MOTHERorFATHER}s?id=${id}`);
     setCatLoaded(true);
   }, []);
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+    posted && _history__WEBPACK_IMPORTED_MODULE_4__["default"].push(`/viewCats/${MOTHERorFATHER}`);
+  }, [posted]);
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
     !catToEdit && setCatLoaded(false);
     !catLoaded && catToEdit && setInitialState(catToEdit);
@@ -4981,9 +4986,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _UseReqTableRow__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./UseReqTableRow */ "./client/components/admin/UseReqTableRow.js");
 /* harmony import */ var _ErrorFill__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../ErrorFill */ "./client/components/ErrorFill.js");
-/* harmony import */ var _LoadingFill__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../LoadingFill */ "./client/components/LoadingFill.js");
-/* harmony import */ var _axiosHandlers_fetchEffect__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../axiosHandlers/fetchEffect */ "./client/components/axiosHandlers/fetchEffect.js");
-
+/* harmony import */ var _axiosHandlers_fetchEffect__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../axiosHandlers/fetchEffect */ "./client/components/axiosHandlers/fetchEffect.js");
 
 
 
@@ -4993,11 +4996,11 @@ const NewUserRequests = () => {
   const [requests, setRequests] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]);
   const [error, setError] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('');
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
-    (0,_axiosHandlers_fetchEffect__WEBPACK_IMPORTED_MODULE_4__.fetchEffect)([setRequests, setError], 'get', `/api/anonVisitors`);
+    (0,_axiosHandlers_fetchEffect__WEBPACK_IMPORTED_MODULE_3__.fetchEffect)([setRequests, setError], 'get', `/api/anonVisitors`);
   }, []);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, error && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ErrorFill__WEBPACK_IMPORTED_MODULE_2__["default"], {
     msg: error
-  }), !error && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("table", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("thead", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "User Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "E Mail"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "First Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "Last Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "About You"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "First Cat?"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "Other Pets"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "City"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "State"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "FaceBook"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "InstaGram"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "Wants Gender"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "Wants Ears"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "Wants Eyes"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "Wants Fur "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "Most Important "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "Budget"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("tbody", null, requests.map(request => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_UseReqTableRow__WEBPACK_IMPORTED_MODULE_1__["default"], {
+  }), !error && !requests.length && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h3", null, "No New Requests"), !error && requests.length && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("table", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("thead", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "User Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "E Mail"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "First Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "Last Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "About You"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "First Cat?"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "Other Pets"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "City"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "State"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "FaceBook"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "InstaGram"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "Wants Gender"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "Wants Ears"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "Wants Eyes"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "Wants Fur "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "Most Important "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "Budget"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("tbody", null, requests.map(request => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_UseReqTableRow__WEBPACK_IMPORTED_MODULE_1__["default"], {
     key: request.id,
     id: request.id,
     request: request
@@ -5019,6 +5022,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/index.js");
 /* harmony import */ var _history__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../history */ "./client/history.js");
 /* harmony import */ var _myUtilFuncs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../myUtilFuncs */ "./myUtilFuncs.js");
 /* harmony import */ var _myUtilFuncs__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_myUtilFuncs__WEBPACK_IMPORTED_MODULE_2__);
@@ -5040,7 +5044,8 @@ const RequestReview = () => {
   } = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.useParams)();
   const [error, setError] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null);
   const [endMessage, setEndMessage] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('empty message');
-  const [posted, setPosted] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null); // todo: take the newly created user's info and send email after that system is set up
+  const [posted, setPosted] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null);
+  const [deleted, setDeleted] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false); // todo: take the newly created user's info and send email after that system is set up
 
   const handleApprove = async () => {
     (0,_axiosHandlers_fetchEffect__WEBPACK_IMPORTED_MODULE_3__.fetchEffect)([setPosted, setError], 'post', '/api/users/anonToUser', request);
@@ -5048,14 +5053,15 @@ const RequestReview = () => {
   };
 
   const handleDeny = async () => {
-    (0,_axiosHandlers_fetchEffect__WEBPACK_IMPORTED_MODULE_3__.fetchEffect)([_, setEndMessage], 'delete', `/api/anonVisitors?id=${requestId}`);
+    (0,_axiosHandlers_fetchEffect__WEBPACK_IMPORTED_MODULE_3__.fetchEffect)([, setError], 'delete', `/api/anonVisitors?id=${requestId}`);
+    setDeleted(true);
     setPosted(true);
     setEndMessage('Application has been successfully rejected.');
   };
 
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
-    if (posted) {
-      (0,_axiosHandlers_fetchEffect__WEBPACK_IMPORTED_MODULE_3__.fetchEffect)([_, setError], 'delete', `/api/anonVisitors?id=${requestId}`);
+    if (posted && !deleted) {
+      (0,_axiosHandlers_fetchEffect__WEBPACK_IMPORTED_MODULE_3__.fetchEffect)([, setError], 'delete', `/api/anonVisitors?id=${requestId}`);
     }
   }, [posted]);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, !request && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_WrongPath__WEBPACK_IMPORTED_MODULE_4__["default"], {
@@ -5068,7 +5074,7 @@ const RequestReview = () => {
   }, " APPROVE "), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
     type: "button",
     onClick: handleDeny
-  }, " DENY "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, error)), posted && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h3", null, endMessage), error && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Error Message:: ", error), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(Link, {
+  }, " DENY "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, error)), posted && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h3", null, !error && endMessage), error && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Error Message:: ", error), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Link, {
     to: "/newUserRequests"
   }, "Back To Requests")));
 };

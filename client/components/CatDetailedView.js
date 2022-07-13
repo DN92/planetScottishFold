@@ -18,6 +18,8 @@ const CatDetailedView = () => {
     null
   )
 
+  console.log('cat', cat)
+
   const [error, setError] = useState(history.location.state
     ? history.location.state.error
     : ''
@@ -64,8 +66,8 @@ const CatDetailedView = () => {
             </Link>
           }
           {isPrivileged(type) &&
-            <Link to={`/viewCats/${MOTHERorFATHER}s`} >
-              <button>Back to {`${MOTHERorFATHER}`}</button>
+            <Link to={`/viewCats/${MOTHERorFATHER}`} >
+              <button>Back to {`${MOTHERorFATHER}s`}</button>
             </Link>
           }
         </div>

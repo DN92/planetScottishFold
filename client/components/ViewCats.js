@@ -2,6 +2,7 @@ import React, { useState, useEffect }from 'react'
 import CatSingleView from './CatSingleView'
 import LoadingFill from './LoadingFill'
 import ErrorFill from './ErrorFill'
+import { fetchEffect } from './axiosHandlers/fetchEffect'
 import { useParams } from 'react-router-dom'
 
 const ViewCats = () => {
@@ -9,7 +10,6 @@ const ViewCats = () => {
   const {MOTHERorFATHER} = useParams()
 
   const [cats, setCats] = useState([])
-  const [isLoading, setIsLoading] = useState(true)
   const [fetchError, setFetchError] = useState(null)
 
 
@@ -23,9 +23,8 @@ const ViewCats = () => {
 
   return (
     <div >
-      {isLoading && <LoadingFill />}
       {fetchError && <ErrorFill />}
-      {!isLoading && !fetchError &&
+      {!fetchError &&
         <>
         <h2>Our {MOTHERorFATHER == 'mother' ? 'Dams' : 'Sires'}</h2>
           {cats.map((cat) => (

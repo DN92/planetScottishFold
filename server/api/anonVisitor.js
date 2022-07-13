@@ -29,7 +29,7 @@ router.post('/', async (req, res, next) => {
 })
 
 router.put('/', async(req, res, next) => {
-  passAuth(4, req)
+  passAuth(4, req, res)
   try {
     const anonVisitor = await AnonVisitor.findByPk(req.query.id)
     const update = await anonVisitor.update(req.body)
@@ -45,10 +45,12 @@ router.put('/', async(req, res, next) => {
 //  DO I EVEN NEED THIS MODEL?
 
 router.delete('/', async(req, res, next) => {
+  passAuth(4, req, res)
   try {
     const anonVisitorToDelete = await AnonVisitor.findByPk(req.query.id)
     if(anonVisitorToDelete) {
       await anonVisitorToDelete.destroy()
+      console.log('got TO THIS POINT IN THE DELETE ROUTE')
       res.sendStatus(202)
     } else {
       res.sendStatus(401)

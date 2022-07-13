@@ -9,7 +9,6 @@ import {getObjMatches} from '../../myUtilFuncs'
 const AvailableKittens = () => {
 
   const [kittens, setKittens] = useState([])
-  const [isLoading, setIsLoading] = useState(true)
   const [fetchError, setFetchError] = useState(null)
 
   const [showSearch, setShowSearch] = useState(false)
@@ -23,11 +22,11 @@ const AvailableKittens = () => {
   })
 
   const handleShowSearch = () => {
-    setShowSearch(prev => {
-      return !prev
-    })
+    setShowSearch(prev => !prev)
   }
 
+  //  the filter will reorganize the available kittens array by weighted value,
+  //    it will not lessen the number of viable kittens.
   const handleFilterBySearch = () => {
       const weightedArr = kittens.map(kitten => {
         return [kitten, getObjMatches(kitten, filterState)]
@@ -49,9 +48,8 @@ const AvailableKittens = () => {
 
   return (
     <>
-      {isLoading && <LoadingFill />}
-      {!isLoading &&
-        <>
+      {
+        <div>
           <input type="checkbox"
             name='showSearch'
             onChange={handleShowSearch}
@@ -63,7 +61,7 @@ const AvailableKittens = () => {
           {kittens.map((kitten) => (
             <SingleKitten key={kitten.id} kitten={kitten} />
           ))}
-        </>
+        </div>
       }
     </>
     )

@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import {useParams} from 'react-router-dom'
+import {useParams, Link} from 'react-router-dom'
 import history from '../../history'
 import {getWordsFromArrayOfKeys} from '../../../myUtilFuncs'
 import { fetchEffect } from '../axiosHandlers/fetchEffect'
@@ -34,6 +34,7 @@ const RequestReview = () => {
   const [error, setError] = useState(null)
   const [endMessage, setEndMessage] = useState('empty message')
   const [posted, setPosted] = useState(null)
+  const [deleted, setDeleted] = useState(false)
 
 
   // todo: take the newly created user's info and send email after that system is set up
@@ -50,18 +51,19 @@ const RequestReview = () => {
 
   const handleDeny = async () => {
     fetchEffect(
-      [_,setEndMessage],
+      [,setError],
       'delete',
       `/api/anonVisitors?id=${requestId}`
     )
+    setDeleted(true)
     setPosted(true)
     setEndMessage('Application has been successfully rejected.')
   }
 
   useEffect(() => {
-    if(posted) {
+    if(posted && !deleted) {
       fetchEffect(
-        [_,setError],
+        [,setError],
         'delete',
         `/api/anonVisitors?id=${requestId}`
       )
@@ -104,7 +106,7 @@ const RequestReview = () => {
       }
       {posted &&
         <>
-          <h3>{endMessage}</h3>
+          <h3>{! error && endMessage}</h3>
           {error && <p>Error Message:: {error}</p>}
           <Link to='/newUserRequests'>Back To Requests</Link>
         </>}

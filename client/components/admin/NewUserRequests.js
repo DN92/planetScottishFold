@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import UseReqTableRow from './UseReqTableRow'
 import ErrorFill from '../ErrorFill'
-import LoadingFill from '../LoadingFill'
 import { fetchEffect } from '../axiosHandlers/fetchEffect'
 
 const NewUserRequests = () => {
@@ -22,7 +21,8 @@ useEffect(()=>{
 return (
   <>
     {error && <ErrorFill msg={error} />}
-    {!error &&
+    {! error && !requests.length && <h3>No New Requests</h3>}
+    {!error && requests.length &&
       <table>
         <thead>
           <tr>

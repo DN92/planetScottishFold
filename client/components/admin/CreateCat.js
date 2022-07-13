@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import {eyeColors} from "../../../myModelsConfig"
 import history from "../../history"
 import { useParams } from 'react-router-dom'
@@ -42,7 +42,7 @@ const CreateCat = () => {
   }
 
   useEffect(() => {
-    history.push(`catDetailed/${MOTHERorFATHER}/${posted.id}`, {cat: posted, error: error, fromCreate: true})
+    posted && history.push(`/catDetailedView/${MOTHERorFATHER}/${posted.id}`, {cat: posted, error: error, fromCreate: true})
   }, [posted])
 
   return (

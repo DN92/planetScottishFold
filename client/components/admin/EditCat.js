@@ -17,14 +17,12 @@ const EditCat = () => {
     : null
   )
   const [catLoaded, setCatLoaded] = useState(false)
-  const [initialState, setInitialState] = useState(catToEdit
-    ? catToEdit
-    : {}
+  const [initialState, setInitialState] = useState(catToEdit ?
+    catToEdit :
+    {}
   )
-  const [error, setError] = useState(history.location.state
-    ? history.location.state.error
-    : ''
-  )
+  const [posted, setPosted] = useState(null)
+  const [error, setError] = useState('')
 
   const imgInLine= {
     width: "100%",
@@ -50,7 +48,7 @@ const EditCat = () => {
     !Object.keys(initialState).length && setInitialState(catToEdit)
 
     fetchEffect(
-      [setInitialState, setError],
+      [setPosted, setError],
       'put',
       `/api/${MOTHERorFATHER}s`,
       catToEdit
@@ -65,6 +63,10 @@ const EditCat = () => {
     )
     setCatLoaded(true)
   }, [])
+
+  useEffect(() => {
+    posted && history.push(`/viewCats/${MOTHERorFATHER}`)
+  }, [posted])
 
   useEffect(()=>{
     !catToEdit && setCatLoaded(false)
