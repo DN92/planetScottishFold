@@ -2,8 +2,6 @@ import React, { useState, useEffect }from 'react'
 import CatSingleView from './CatSingleView'
 import LoadingFill from './LoadingFill'
 import ErrorFill from './ErrorFill'
-import axios from 'axios'
-import history from '../history'
 import { useParams } from 'react-router-dom'
 
 const ViewCats = () => {
@@ -16,30 +14,12 @@ const ViewCats = () => {
 
 
   useEffect(() => {
-
-    const fetchCats = async () => {
-      try {
-        const {data} = await axios.get(`/api/${MOTHERorFATHER}s`)
-        if(!data) {
-          throw Error('Did not receive expected data from fetch')
-        }
-        setCats(data)
-        setFetchError(null)
-      } catch (err) {
-        setFetchError(err.message)
-        console.log(fetchError)
-      } finally {
-        setIsLoading(false)
-      }
-    }
-        fetchCats()
-      // setTimeout(async() => {
-      // }, (2000));
-    // }
-
+    fetchEffect(
+      [setCats, setFetchError],
+      'get',
+      `/api/${MOTHERorFATHER}s`,
+    )
   }, [MOTHERorFATHER] )
-
-
 
   return (
     <div >

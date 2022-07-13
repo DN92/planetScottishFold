@@ -6,7 +6,6 @@ import history from '../../history'
 import { eyeColors } from '../../../myModelsConfig'
 import handleControlledValueFieldToState from '../../customHandlers/handleFormChange'
 import { useParams } from 'react-router-dom'
-import axios from 'axios'
 import { fetchEffect } from '../axiosHandlers/fetchEffect'
 
 const EditCat = () => {
@@ -48,15 +47,14 @@ const EditCat = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault()
-    !Object.key(initialState).length && setInitialState(catToEdit)
-    try {
-      const {data} = await axios.put(`/api/${MOTHERorFATHER}s`, catToEdit)
-      setInitialState(data)
-      history.push(`/catDetailed/${MOTHERorFATHER}/${data.id}`, {cat: catToEdit, fromEdit: true})
-    } catch (err) {
-      console.log(err)
-      setError(err.message)
-    }
+    !Object.keys(initialState).length && setInitialState(catToEdit)
+
+    fetchEffect(
+      [setInitialState, setError],
+      'put',
+      `/api/${MOTHERorFATHER}s`,
+      catToEdit
+      )
   }
 
   useEffect(() => {
@@ -126,7 +124,7 @@ const EditCat = () => {
               <option key={index} value={color}>{color}</option>
               ))}
           </select> <br />
-          <textarea name="description" cols="50" rows="15" value={catToEdit.description} placeholder='description'></textarea>
+          <textarea name="description" cols="50" rows="15" value={catToEdit.description} onChange={handleChange} placeholder='description'></textarea>
           <button onClick={handleReset} type='button'>Reset Changes</button>
           <button type='submit'>Submit Changes</button>
 

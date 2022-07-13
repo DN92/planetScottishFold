@@ -2,7 +2,7 @@ const { models } = require("../server/db")
 const { Kitten } = models
 
 const makeKitten = (
-    name, serialNumber, gender, ears, furColor, eyeColor, description, mainImageSrcValue, price,
+    name, serialNumber, gender, ears, furColor, eyeColor, description, mainImageSrcValue, price, regNum
   ) => ({
     name,
     serialNumber,

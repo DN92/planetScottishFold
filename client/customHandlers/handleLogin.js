@@ -1,5 +1,7 @@
-  import axios from 'axios'
+import axios from 'axios'
 
+//  meContext arg a context provider for the current user
+// it tells the app who the user is, what type they are, and what to show them
 
 const handleLogin = async ( meContext, loginInfo) => {
 

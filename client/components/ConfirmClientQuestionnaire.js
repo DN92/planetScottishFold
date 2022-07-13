@@ -1,12 +1,15 @@
 import React, {useState, useEffect} from "react";
 import history from "../history";
-import axios from "axios"
+import { fetchEffect } from "./axiosHandlers/fetchEffect";
 import { getUserIP } from '../../myUtilFuncs.js'
 
 //  this component is accessed through ClientQuestionnaire's onSubmit through the history library. ::  history.push('confirmClientQuestionnaire)
 
 // props are pushed through local storage since we are using storage anyway, to make sure client doesn't have to reenter the same information ad nauseam
 const ConfirmClientQuestionnaire = () => {
+
+  const [infoPosted, setInfoPosted] = useState(false)
+  const [error, setError] = useState('')
 
   const clientInfoFromStorage = JSON.parse(localStorage.getItem('clientInfo'))
   if(clientInfoFromStorage) {
@@ -28,7 +31,7 @@ const ConfirmClientQuestionnaire = () => {
   const [clientInfo, setClientInfo] = useState(clientInfoFromStorage)
 
   useEffect(() => {
-  return () => {
+    return () => {
     localStorage.removeItem('clientInfo')
   }
   },[])
@@ -36,11 +39,21 @@ const ConfirmClientQuestionnaire = () => {
   const handleSubmit = async (event) => {
     event.preventDefault()
     clientInfo.IPaddress = await getUserIP()
-    const {data} = await axios.post('/api/anonVisitors', clientInfo)
-    if (data)
-    localStorage.removeItem('clientInfo')
-    history.push('QConfirmation')
+
+    fetchEffect(
+      [setInfoPosted,setError],
+      'put',
+      `/api/anonVisitors`,
+      clientInfo
+    )
   }
+
+  useEffect(()=>{
+    if(infoPosted) {
+      localStorage.removeItem('clientInfo')
+      history.push('QConfirmation')
+    }
+  },[infoPosted])
 
   return (
     <>

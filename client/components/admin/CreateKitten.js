@@ -2,8 +2,7 @@ import React, {useState, useEffect} from 'react'
 import handleControlledValueFieldToState from '../../customHandlers/handleFormChange'
 import {furColors, eyeColors} from "../../../myModelsConfig"
 import history from '../../history'
-import useFetchParents from '../../customHooks/fetchDamsAndStuds'
-import axios from 'axios'
+import { fetchEffect } from '../axiosHandlers/fetchEffect'
 
 
 //  /createKitten
@@ -27,6 +26,7 @@ const CreateKitten = () => {
   const [kittenToCreate, setKittenToCreate] = useState(defaultState)
   const [dams, setDams] = useState([])
   const [studs, setStuds] = useState([])
+  const [posted, setPosted] = useState(null)
   const [error, setError] = useState(null)
 
 
@@ -45,37 +45,30 @@ const CreateKitten = () => {
     // }
 
   const handleSubmit = async (event) => {
-    try {
-      event.preventDefault()
-      const {data} = await axios.post('/api/kittens', kittenToCreate)
-      history.push(`/kittenDetailed/${data.id}`, {kitten: data, error: error, fromCreate: true})
-      setError(null)
-    } catch (err) {
-      setError(err.message)
-      console.log(err)
-    }
+    event.preventDefault()
+    fetchEffect(
+      [setPosted, setError],
+      'post',
+      `/api/kittens`,
+      kittenToCreate
+    )
   }
 
-  // useFetchParents()
+  useEffect(() => {
+    history.push(`/kittenDetailed/${posted.id}`, {kitten: posted, fromCreate: true})
+  }, [posted])
 
   useEffect(() => {
-
-    const fetchDamsAndStuds = async () => {
-      try {
-        let mothers = await axios.get('/api/mothers')
-        let fathers = await axios.get('/api/studs')
-        mothers = mothers.data.map(mother => (mother.name))
-        fathers = fathers.data.map(father => (father.name))
-        setError('')
-        setDams(mothers)
-        setStuds(fathers)
-      } catch (err) {
-        console.log(err)
-        setError(err.message)
-      }
-    }
-
-    fetchDamsAndStuds()
+      fetchEffect(
+        [setDams, setError],
+        'get',
+        `api/mothers`
+      )
+      fetchEffect(
+        [setStuds, setError],
+        'get',
+        `api/mothers`
+      )
   }, [])
 
   return (

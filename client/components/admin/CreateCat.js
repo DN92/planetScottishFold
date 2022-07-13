@@ -1,10 +1,9 @@
 import React, {useState} from 'react'
-import defaultCatPictureSrc from '../../../myModelsConfig'
 import {eyeColors} from "../../../myModelsConfig"
 import history from "../../history"
 import { useParams } from 'react-router-dom'
 import handleControlledValueFieldToState from '../../customHandlers/handleFormChange'
-import axios from 'axios'
+import { fetchEffect } from '../axiosHandlers/fetchEffect'
 
 const CreateCat = () => {
 
@@ -21,6 +20,7 @@ const CreateCat = () => {
   }
 
   const [catToCreate, setCatToCreate] = useState(defaultState)
+  const [posted, setPosted] = useState(null)
   const [error, setError] = useState('')
 
   const handleChange = (event) => {
@@ -32,20 +32,18 @@ const CreateCat = () => {
   }
 
   const handleSubmit = async (event) => {
-    try {
       event.preventDefault()
-      const {data} = await axios.post(`/api/${MOTHERorFATHER}s`, catToCreate)
-      setError('')
-      history.push(`catDetailed/${MOTHERorFATHER}/${data.id}`, {cat: data, error: error, fromCreate: true})
-      ///
-
-      setError(null)
-
-    } catch (err) {
-      setError(err.message)
-      console.log(err)
-    }
+      fetchEffect(
+        [setPosted, setError],
+        'post',
+        `/api/${MOTHERorFATHER}s`,
+        catToCreate
+      )
   }
+
+  useEffect(() => {
+    history.push(`catDetailed/${MOTHERorFATHER}/${posted.id}`, {cat: posted, error: error, fromCreate: true})
+  }, [posted])
 
   return (
     <form onKeyDown={handleKeyPress} onSubmit={handleSubmit}>

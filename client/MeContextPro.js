@@ -1,6 +1,9 @@
 import React from 'react'
 import { createContext, useState} from 'react'
 
+//  meContext Provider: A context provider for the current user
+// it tells the app who the user is, what type they are, and what to show them
+
 const MeContext = createContext()
 
 export const MeProvider = ({children}) => {

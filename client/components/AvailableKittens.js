@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext }from 'react'
 import SingleKitten from './SingleKitten'
 import LoadingFill from './LoadingFill'
-import axios from 'axios'
+import { fetchEffect } from './axiosHandlers/fetchEffect'
 import KittenFilter from './KittensFilter'
 import {getObjMatches} from '../../myUtilFuncs'
 
@@ -40,26 +40,11 @@ const AvailableKittens = () => {
   }
 
   useEffect(() => {
-    const fetchKittens = async () => {
-      try {
-        const {data} = await axios.get('/api/kittens')
-        if(!data) {
-          throw Error('Did not receive expected data from fetchKittens')
-        }
-        setKittens(data)
-        setFetchError('')
-      } catch (err) {
-        setFetchError(err.message)
-        console.log(fetchError)
-      } finally {
-        setIsLoading(false)
-      }
-    }
-
-    fetchKittens()
-    // setTimeout(async() => {
-    // }, (2000));
-
+    fetchEffect(
+    [setKittens, setFetchError],
+    'get',
+    `/api/kittens`,
+    )
   }, [])
 
   return (

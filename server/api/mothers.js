@@ -36,7 +36,7 @@ router.post('/', async (req, res, next) => {
 
 router.put('/', async(req, res, next) => {
   try {
-    passAuth(4, req)
+    passAuth(4, req, res)
     const mother = req.query.id
       ? await Mother.findByPk(req.query.id)
       : await Mother.findByPk(req.body.id)

@@ -3,6 +3,8 @@ const { User } = require('../db').models
 const { getAuthGrade } = require('../../secrets')
 
 const setAuthorizations = async (req, res, next) => {
+  console.log('token', req.headers)
+
   //  confirm req is clean and untampered.
   try {
     if(req.body.authLevel ) {
@@ -10,14 +12,15 @@ const setAuthorizations = async (req, res, next) => {
     }
     //  make extra sure
     delete req.body.authLevel
-
     const verifiedUser = await User.findByToken(req.headers.authorization)
-    if(verifiedUser) {
+    if(!verifiedUser.fail) {
+      console.log(verifiedUser, 'user')
       req.body.authLevel = getAuthGrade(verifiedUser.type)
     } else {
       req.body.authLevel = 0
     }
   } catch (err) {
+    res.status(401)
     next(err)
   }
 

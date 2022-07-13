@@ -5,7 +5,6 @@ import ErrorFill from '../ErrorFill'
 import history from '../../history'
 import { furColors, eyeColors} from '../../../myModelsConfig'
 import handleControlledValueFieldToState from '../../customHandlers/handleFormChange'
-import axios from 'axios'
 import { fetchEffect } from '../axiosHandlers/fetchEffect'
 import { useParams } from 'react-router-dom'
 
@@ -23,6 +22,7 @@ const EditKitten = () => {
   )
   const [dams, setDams] = useState([])
   const [studs, setStuds] = useState([])
+  const [posted, setPosted] = useState(null)
 
   const imgInLine= {
     width: "100%",
@@ -46,15 +46,19 @@ const EditKitten = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault()
-    try {
-      const {data} = await axios.put('/api/kittens', kittenToEdit)
-      setKittenToEdit(data)
-      history.push(`/kittenDetailed/${data.id}`, {kitten: kittenToEdit, fromEdit: true})
-    } catch (err) {
-      console.log(err)
-      setError(err.message)
-    }
+    fetchEffect(
+      [setPosted, setError],
+      'put',
+      `api/kittens`,
+      kittenToEdit
+    )
   }
+
+  useEffect(() => {
+    if(posted) {
+      history.push(`/kittenDetailed/${posted.id}`, {kitten: posted, fromEdit: true})
+    }
+  }, [posted])
 
   useEffect(() => {
     !kittenToEdit && id && fetchEffect(

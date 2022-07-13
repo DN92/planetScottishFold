@@ -1,9 +1,8 @@
 import React, {useState, useEffect} from 'react'
-import {useParams, Link} from 'react-router-dom'
+import {useParams} from 'react-router-dom'
 import history from '../../history'
 import {getWordsFromArrayOfKeys} from '../../../myUtilFuncs'
-// import LoadingFill from '../LoadingFill'
-import axios from 'axios'
+import { fetchEffect } from '../axiosHandlers/fetchEffect'
 import WrongPath from '../WrongPath'
 
 const RequestReview = () => {
@@ -28,72 +27,53 @@ const RequestReview = () => {
     'budget',
     'IPaddress',
   ]
+  const wordsFromKeys = getWordsFromArrayOfKeys(arrayFromRequestKeys)
+  const request = history.location.state ? history.location.state.request : false
 
   const {requestId} = useParams()
-  const request = history.location.state ? history.location.state.request : false
-  //  we have to remove id so it doesn't interfere with db model creation
   const [error, setError] = useState(null)
   const [endMessage, setEndMessage] = useState('empty message')
-  const [requestComplete, setRequestComplete] = useState(false)
-  //  this is a flag for useEffect to delete anon from db after user is made
-  const [cleanUpUserCreation, setCleanUpUserCreation] = useState(false)
-  // const [requestSuccess, setRequestSuccess] = useState('still working on it')
+  const [posted, setPosted] = useState(null)
 
-  const wordsFromKeys = getWordsFromArrayOfKeys(arrayFromRequestKeys)
-
-  useEffect(() => {
-    const deleteAnon = async (requestId) => {
-      try {
-        await axios.delete(`/api/anonVisitors?id=${requestId}`)
-      } catch (err) {
-        setError(err.message)
-        console.log(err)
-      }
-    }
-    if(cleanUpUserCreation) {
-      deleteAnon(requestId)
-    }
-    setCleanUpUserCreation(false)
-    setError(null)
-  }, [cleanUpUserCreation])
 
   // todo: take the newly created user's info and send email after that system is set up
 
   const handleApprove = async () => {
-    try {
-      const {data} = await axios.post('/api/users/anonToUser', request)
-      setError(null)
-      setRequestComplete(true)
-      setEndMessage(`User with email: ${data.eMail} has been successfully added to database.`)
-      setCleanUpUserCreation(true)
-    } catch (err) {
-      console.log(err)
-      setError(err.message)
-      setRequestComplete(true)
-      setEndMessage('Request rejection failed. Check error messages')
-    }
+    fetchEffect(
+      [setPosted, setError],
+      'post',
+      '/api/users/anonToUser',
+      request
+    )
+    setEndMessage('Application Approved')
   }
 
   const handleDeny = async () => {
-    try {
-      await axios.delete(`/api/anonVisitors?id=${requestId}`)
-      setError(null)
-      setRequestComplete(true)
-      setEndMessage('Application has been successfully rejected.')
-    } catch (err) {
-      console.log(err)
-      setError(err.message)
-      setRequestComplete(true)
-      setEndMessage('Request rejection failed. Check error messages')
-    }
+    fetchEffect(
+      [_,setEndMessage],
+      'delete',
+      `/api/anonVisitors?id=${requestId}`
+    )
+    setPosted(true)
+    setEndMessage('Application has been successfully rejected.')
   }
+
+  useEffect(() => {
+    if(posted) {
+      fetchEffect(
+        [_,setError],
+        'delete',
+        `/api/anonVisitors?id=${requestId}`
+      )
+    }
+  }, [posted])
 
   return(
     <>
       {!request &&
         <WrongPath header="No Request Loaded" />
       }
-      {!requestComplete && request &&
+      {!posted && request &&
         <>
           <h2>Awaiting Your Approval</h2>
           <table>
@@ -122,7 +102,7 @@ const RequestReview = () => {
           <p>{error}</p>
         </>
       }
-      {requestComplete &&
+      {posted &&
         <>
           <h3>{endMessage}</h3>
           {error && <p>Error Message:: {error}</p>}

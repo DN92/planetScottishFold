@@ -2,40 +2,27 @@ import React, {useState, useEffect} from 'react'
 import UseReqTableRow from './UseReqTableRow'
 import ErrorFill from '../ErrorFill'
 import LoadingFill from '../LoadingFill'
-import axios from 'axios'
+import { fetchEffect } from '../axiosHandlers/fetchEffect'
 
 const NewUserRequests = () => {
 
 const [requests, setRequests] = useState([])
 const [error, setError] = useState('')
-const [loading, setLoading] = useState(true)
 
 
 
 useEffect(()=>{
-  const fetchRequests = async () => {
-    try{
-      const {data} = await axios.get('/api/anonVisitors')
-      setRequests(data)
-    } catch (err) {
-      setError(err.message)
-    }
-  }
-  fetchRequests()
+  fetchEffect(
+    [setRequests, setError],
+    'get',
+    `/api/anonVisitors`
+  )
 }, [])
-
-useEffect(()=>{
-  setTimeout(()=>{
-    setLoading(false)
-    // setError('This is only a Test Meow')
-  },2000)
-}, [setRequests])
 
 return (
   <>
     {error && <ErrorFill msg={error} />}
-    {!error && loading && <LoadingFill />}
-    {!error && !loading &&
+    {!error &&
       <table>
         <thead>
           <tr>
