@@ -14,11 +14,11 @@ const AvailableKittens = () => {
   const [showSearch, setShowSearch] = useState(false)
 
   const [filterState, setFilterState] = useState({
-    gender: 'any',
-    ears: 'any',
-    eyeColor: 'any',
-    furColor: 'any',
-    isAvailable: false,
+    gender: 'No Pref',
+    ears: 'No Pref',
+    eyeColor: 'No Pref',
+    furColor: 'No Pref',
+    isAvailable: true,
   })
 
   const handleShowSearch = () => {
@@ -28,8 +28,16 @@ const AvailableKittens = () => {
   //  the filter will reorganize the available kittens array by weighted value,
   //    it will not lessen the number of viable kittens.
   const handleFilterBySearch = () => {
+      const keysToDestroy = Object.entries(filterState)
+        .filter(entry => (entry[1] === 'No Pref'))
+        .map(entry => (entry[0]))
+      const filterer = {...filterState}
+      keysToDestroy.forEach(key => {
+        delete filterer[key]
+      })
+      console.log(filterer)
       const weightedArr = kittens.map(kitten => {
-        return [kitten, getObjMatches(kitten, filterState)]
+        return [kitten, getObjMatches(kitten, filterer)]
       })
       weightedArr.sort((a, b) => {
         return b[1] - a[1]

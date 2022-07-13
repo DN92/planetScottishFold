@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import {eyeColors} from "../../../myModelsConfig"
+import {eyeColors, earOptions} from "../../../myModelsConfig"
 import history from "../../history"
 import { useParams } from 'react-router-dom'
 import handleControlledValueFieldToState from '../../customHandlers/handleFormChange'
@@ -11,7 +11,6 @@ const CreateCat = () => {
 
   const defaultState = {
     name:'',
-    serialNumber: '',
     dob: '',
     ears: '',
     furColor: '',
@@ -49,13 +48,12 @@ const CreateCat = () => {
     <form onKeyDown={handleKeyPress} onSubmit={handleSubmit}>
       <h2>{`${MOTHERorFATHER}`} Creation Form</h2>
       <input type="text" name='name' placeholder='Name' value={catToCreate.name} onChange={handleChange} /> <br />
-      <input type="text" name='serialNumber' placeholder='serial number' value={catToCreate.serialNumber} onChange={handleChange} /> <br />
       <input type="text" name='dob' placeholder='Date of Birth' value={catToCreate.dob} onChange={handleChange} /> <br />
       <select name="ears" value={catToCreate.ears} onChange={handleChange}>
-        <option value="">Fold or Straight</option>
-        <option value="fold">Fold</option>
-        <option value="straight">Straight</option>
-        <option value="noPref">No Preference</option>
+        <option value={earOptions[0]}>Fold or Straight</option>
+        {earOptions.map((ear, index) => (
+          <option key={index} value={ear}>{ear}</option>
+        ))}
       </select> <br />
       <input type="text" name='furColor' placeholder='Fur Color' value={catToCreate.furColor} onChange={handleChange} /> <br />
       <select name="eyeColor" value={catToCreate.eyeColor} onChange={handleChange}>

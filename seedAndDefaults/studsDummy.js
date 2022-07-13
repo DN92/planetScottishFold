@@ -1,10 +1,9 @@
 const { eyeColors } = require('../myModelsConfig')
 
 const makeStud = (
-  name, serialNumber, ears, furColor, eyeColor, dob, description, image
+  name, ears, furColor, eyeColor, dob, description, image
 ) => ({
   name,
-  serialNumber,
   ears,
   furColor,
   eyeColor,
@@ -16,8 +15,7 @@ const makeStud = (
 const studsArray = [
   makeStud(
     'Artemis',
-    'Arty',
-    'fold',
+    'Fold',
     'Gold Chinchilla',
     eyeColors[Math.floor(Math.random() * eyeColors.length)],
     'July 18th, 2018',
@@ -25,8 +23,7 @@ const studsArray = [
   ),
   makeStud(
     'Cupid',
-    'Cupe',
-    'fold',
+    'Fold',
     'Chocolate Shaded Silver Chinchilla Point',
     eyeColors[Math.floor(Math.random() * eyeColors.length)],
     'November 18th, 2021',

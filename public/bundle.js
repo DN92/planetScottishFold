@@ -2937,11 +2937,11 @@ const AvailableKittens = () => {
   const [fetchError, setFetchError] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null);
   const [showSearch, setShowSearch] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
   const [filterState, setFilterState] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
-    gender: 'any',
-    ears: 'any',
-    eyeColor: 'any',
-    furColor: 'any',
-    isAvailable: false
+    gender: 'No Pref',
+    ears: 'No Pref',
+    eyeColor: 'No Pref',
+    furColor: 'No Pref',
+    isAvailable: true
   });
 
   const handleShowSearch = () => {
@@ -2951,8 +2951,15 @@ const AvailableKittens = () => {
 
 
   const handleFilterBySearch = () => {
+    const keysToDestroy = Object.entries(filterState).filter(entry => entry[1] === 'No Pref').map(entry => entry[0]);
+    const filterer = { ...filterState
+    };
+    keysToDestroy.forEach(key => {
+      delete filterer[key];
+    });
+    console.log(filterer);
     const weightedArr = kittens.map(kitten => {
-      return [kitten, (0,_myUtilFuncs__WEBPACK_IMPORTED_MODULE_5__.getObjMatches)(kitten, filterState)];
+      return [kitten, (0,_myUtilFuncs__WEBPACK_IMPORTED_MODULE_5__.getObjMatches)(kitten, filterer)];
     });
     weightedArr.sort((a, b) => {
       return b[1] - a[1];
@@ -3191,30 +3198,30 @@ const ClientQuestionnaire = () => {
     value: clientInfo.firstName,
     placeholder: "First Name",
     required: true
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+  }), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
     id: "lastName",
     type: "text",
     name: "lastName",
     value: clientInfo.lastName,
     placeholder: "Last Name",
     required: true
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+  }), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
     id: "clientEmail",
     type: "email",
     name: "eMail",
     value: clientInfo.eMail,
     placeholder: "E Mail",
     required: true
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("textarea", {
+  }), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("textarea", {
     name: "aboutYou",
     cols: "50",
     rows: "5",
     value: clientInfo.aboutYou,
     placeholder: "Please tell us a little about yourself.",
     required: true
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+  }), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
     htmlFor: "firstCat"
-  }, "Will this be your first cat?"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("select", {
+  }, "Will this be your first cat?"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("select", {
     name: "firstCat",
     value: clientInfo.firstCat,
     required: true
@@ -3246,28 +3253,24 @@ const ClientQuestionnaire = () => {
     value: clientInfo.gender,
     required: true
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
-    value: ""
-  }, "Boy or Girl?"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
-    value: "boy"
-  }, "Boy"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
-    value: "girl"
-  }, "Girl")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("select", {
+    value: _myModelsConfig__WEBPACK_IMPORTED_MODULE_2__.genderOptions[0]
+  }, "Boy or Girl?"), _myModelsConfig__WEBPACK_IMPORTED_MODULE_2__.genderOptions.map((gen, index) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+    key: index,
+    value: gen
+  }, gen))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("select", {
     name: "ears",
     value: clientInfo.ears,
     required: true
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
-    value: ""
-  }, "Fold or Straight"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
-    value: "fold"
-  }, "Fold"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
-    value: "straight"
-  }, "Straight"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
-    value: "noPref"
-  }, "No Preference")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("select", {
+    value: _myModelsConfig__WEBPACK_IMPORTED_MODULE_2__.earOptions[0]
+  }, "Fold or Straight"), _myModelsConfig__WEBPACK_IMPORTED_MODULE_2__.earOptions.map((ear, index) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+    key: index,
+    value: ear
+  }, ear))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("select", {
     name: "eyeColor",
     value: clientInfo.color
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
-    value: ""
+    value: _myModelsConfig__WEBPACK_IMPORTED_MODULE_2__.eyeColors[0]
   }, "Eye Color"), _myModelsConfig__WEBPACK_IMPORTED_MODULE_2__.eyeColors.map((color, index) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
     key: index,
     value: color
@@ -3275,7 +3278,7 @@ const ClientQuestionnaire = () => {
     name: "furColor",
     value: clientInfo.furColor
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
-    value: ""
+    value: _myModelsConfig__WEBPACK_IMPORTED_MODULE_2__.furColors[0]
   }, "Fur Color"), _myModelsConfig__WEBPACK_IMPORTED_MODULE_2__.furColors.map((color, index) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
     key: index,
     value: color
@@ -3283,7 +3286,7 @@ const ClientQuestionnaire = () => {
     name: "mif",
     value: clientInfo.mif
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
-    value: ""
+    value: _myModelsConfig__WEBPACK_IMPORTED_MODULE_2__.mifOptions[0]
   }, "Most Important Feature"), _myModelsConfig__WEBPACK_IMPORTED_MODULE_2__.mifOptions.map((feature, index) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
     key: index,
     value: feature
@@ -3304,7 +3307,9 @@ const ClientQuestionnaire = () => {
     name: "budget",
     value: clientInfo.budget,
     required: true
-  }, _myModelsConfig__WEBPACK_IMPORTED_MODULE_2__.budgetRanges.map((range, index) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+    value: _myModelsConfig__WEBPACK_IMPORTED_MODULE_2__.budgetRanges[0]
+  }, "Budget"), _myModelsConfig__WEBPACK_IMPORTED_MODULE_2__.budgetRanges.map((range, index) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
     key: index,
     value: range
   }, range))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
@@ -3695,65 +3700,51 @@ const KittenFilter = props => {
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("form", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h4", null, "Advanced Search"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
     htmlFor: "gender"
-  }, "gender"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("select", {
+  }, "Gender"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("select", {
     name: "gender",
     value: gender,
     onChange: handleChange
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
-    value: "any"
-  }, "No Pref"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
-    value: "boy"
-  }, "Boy"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
-    value: "girl"
-  }, "Girl")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+    value: _myModelsConfig__WEBPACK_IMPORTED_MODULE_2__.genderOptions[0]
+  }, "Boy or Girl"), _myModelsConfig__WEBPACK_IMPORTED_MODULE_2__.genderOptions.map((gen, index) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+    key: index,
+    value: gen
+  }, gen))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
     htmlFor: "ears"
   }, "Ears: Fold or Straight"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("select", {
     name: "ears",
     value: ears,
     onChange: handleChange
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
-    value: "any"
-  }, "No Pref"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
-    value: "fold"
-  }, "Fold"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
-    value: "straight"
-  }, "Straight")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+    value: _myModelsConfig__WEBPACK_IMPORTED_MODULE_2__.earOptions[0]
+  }, "Fold Or Straight"), _myModelsConfig__WEBPACK_IMPORTED_MODULE_2__.earOptions.map((ear, index) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+    key: index,
+    value: ear
+  }, ear))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
     htmlFor: "fuColor"
   }, "Fur Color"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("select", {
     name: "furColor",
     value: furColor,
     onChange: handleChange
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
-    value: "any"
-  }, "No Pref"), _myModelsConfig__WEBPACK_IMPORTED_MODULE_2__.furColors.map((color, index) => {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
-      key: index,
-      value: color
-    }, color);
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+    value: _myModelsConfig__WEBPACK_IMPORTED_MODULE_2__.furColors[0]
+  }, "Fur Color"), _myModelsConfig__WEBPACK_IMPORTED_MODULE_2__.furColors.map((color, index) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+    key: index,
+    value: color
+  }, color))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
     htmlFor: "eyeColor"
   }, "Eye Color"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("select", {
     name: "eyeColor",
     value: eyeColor,
     onChange: handleChange
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
-    value: "any"
-  }, "No Pref"), _myModelsConfig__WEBPACK_IMPORTED_MODULE_2__.eyeColors.map((color, index) => {
+    value: _myModelsConfig__WEBPACK_IMPORTED_MODULE_2__.eyeColors[0]
+  }, "Eye Color"), _myModelsConfig__WEBPACK_IMPORTED_MODULE_2__.eyeColors.map((color, index) => {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
       key: index,
       value: color
     }, color);
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
-    htmlFor: "isAvailable"
-  }, "Availability"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("select", {
-    name: "isAvailable",
-    value: isAvailable,
-    onChange: handleChange
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
-    value: false
-  }, "Show All"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
-    value: true
-  }, "Available Only")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
     type: "button",
     onClick: props.searcher
   }, "Search"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("hr", null));
@@ -4254,7 +4245,6 @@ const CreateCat = () => {
   } = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.useParams)();
   const defaultState = {
     name: '',
-    serialNumber: '',
     dob: '',
     ears: '',
     furColor: '',
@@ -4296,12 +4286,6 @@ const CreateCat = () => {
     onChange: handleChange
   }), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
     type: "text",
-    name: "serialNumber",
-    placeholder: "serial number",
-    value: catToCreate.serialNumber,
-    onChange: handleChange
-  }), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
-    type: "text",
     name: "dob",
     placeholder: "Date of Birth",
     value: catToCreate.dob,
@@ -4311,14 +4295,11 @@ const CreateCat = () => {
     value: catToCreate.ears,
     onChange: handleChange
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
-    value: ""
-  }, "Fold or Straight"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
-    value: "fold"
-  }, "Fold"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
-    value: "straight"
-  }, "Straight"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
-    value: "noPref"
-  }, "No Preference")), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    value: _myModelsConfig__WEBPACK_IMPORTED_MODULE_1__.earOptions[0]
+  }, "Fold or Straight"), _myModelsConfig__WEBPACK_IMPORTED_MODULE_1__.earOptions.map((ear, index) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+    key: index,
+    value: ear
+  }, ear))), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
     type: "text",
     name: "furColor",
     placeholder: "Fur Color",
@@ -4371,7 +4352,6 @@ __webpack_require__.r(__webpack_exports__);
 const CreateKitten = () => {
   const defaultState = {
     name: '',
-    serialNumber: '',
     gender: '',
     ears: '',
     furColor: '',
@@ -4717,12 +4697,6 @@ const EditCat = () => {
     name: "name",
     placeholder: "Name",
     value: catToEdit.name,
-    onChange: handleChange
-  }), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
-    type: "text",
-    name: "serialNumber",
-    placeholder: "serial number",
-    value: catToEdit.serialNumber,
     onChange: handleChange
   }), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
     type: "text",
@@ -5403,14 +5377,17 @@ const history =  false ? 0 : (0,history__WEBPACK_IMPORTED_MODULE_0__.createBrows
 //  this file is a good place to put low / no security data that takes would take up space were it put in the middle of complicated files
 module.exports = {
   //  furColors and eyeColors are used in the Cat Models Enum tables for their corresponding keys.
-  furColors: ['White', 'Silver', 'Gold', 'Colorpoint', 'Blue', 'Brown', 'Black', 'No Pref', ''],
-  eyeColors: ['Green', 'Blue', 'Yellow', 'Copper', 'Odd', 'No Pref', ''],
+  furColors: ['No Pref', 'White', 'Silver', 'Gold', 'Colorpoint', 'Blue', 'Brown', 'Black'],
+  eyeColors: ['No Pref', 'Green', 'Blue', 'Yellow', 'Copper', 'Odd'],
   //  for public file serving
   defaultCatPictureSrc: '/catPictures/cat404.png',
-  budgetRanges: ['$1500-$2000', '$2000-$2500', '$2500-$3000', '$3000-$3500', '$3500-$4000', '$4000+', ''],
+  budgetRanges: ['$4000+', '$3500-$4000', '$3000-$3500', '$2500-$3000', '$2000-$2500', '$1500-$2000'],
   // most important feature (of product - cat)
-  mifOptions: ['Health', 'Appearance', 'Show Quality', 'Personality', 'Price', 'No Pref', ''],
-  statusOptions: ['active', 'retired', '']
+  mifOptions: ['No Pref', 'Health', 'Appearance', 'Show Quality', 'Personality', 'Price'],
+  statusOptions: ['Active', // default is active, not ''
+  'Retired', 'Reserved', 'Available'],
+  earOptions: ['No Pref', 'Fold', 'Straight'],
+  genderOptions: ['No Pref', 'Boy', 'Girl']
 };
 
 /***/ }),

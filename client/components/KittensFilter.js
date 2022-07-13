@@ -1,6 +1,6 @@
 import React from 'react'
 import handleControlledValueFieldToState from '../customHandlers/handleFormChange'
-import { furColors, eyeColors } from '../../myModelsConfig'
+import { furColors, eyeColors, earOptions, genderOptions } from '../../myModelsConfig'
 
 const KittenFilter = (props) => {
 
@@ -14,36 +14,33 @@ const KittenFilter = (props) => {
   return (
     <form >
       <h4>Advanced Search</h4>
-      <label htmlFor="gender">gender</label>
+      <label htmlFor="gender">Gender</label>
       <select name="gender" value={gender} onChange={handleChange} >
-        <option value="any">No Pref</option>
-        <option value="boy">Boy</option>
-        <option value="girl">Girl</option>
+        <option value={genderOptions[0]}>Boy or Girl</option>
+        {genderOptions.map((gen, index) => (
+          <option key={index} value={gen}>{gen}</option>
+        ))}
       </select>
       <label htmlFor="ears">Ears: Fold or Straight</label>
       <select name="ears" value={ears} onChange={handleChange}>
-        <option value="any">No Pref</option>
-        <option value="fold">Fold</option>
-        <option value="straight">Straight</option>
+        <option value={earOptions[0]}>Fold Or Straight</option>
+        {earOptions.map((ear, index) => (
+          <option key={index} value={ear}>{ear}</option>
+        ))}
       </select>
       <label htmlFor="fuColor">Fur Color</label>
       <select name="furColor" value={furColor} onChange={handleChange}>
-        <option value="any">No Pref</option>
-        {furColors.map((color, index)=> {
-          return <option key={index} value={color}>{color}</option>
-        }) }
+        <option value={furColors[0]}>Fur Color</option>
+        {furColors.map((color, index)=> (
+          <option key={index} value={color}>{color}</option>
+        ))}
       </select>
       <label htmlFor="eyeColor">Eye Color</label>
       <select name="eyeColor" value={eyeColor} onChange={handleChange}>
-        <option value="any">No Pref</option>
+        <option value={eyeColors[0]}>Eye Color</option>
         {eyeColors.map((color, index) => {
           return <option key={index} value={color}>{color}</option>
         }) }
-      </select>
-      <label htmlFor="isAvailable">Availability</label>
-      <select name="isAvailable" value={isAvailable} onChange={handleChange}>
-        <option value={false}>Show All</option>
-        <option value={true}>Available Only</option>
       </select>
       <button type='button' onClick={props.searcher}>Search</button>
       <hr />

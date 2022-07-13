@@ -3,7 +3,7 @@ import MeContext from '../../MeContextPro'
 import { isPrivileged } from '../../../secrets'
 import ErrorFill from '../ErrorFill'
 import history from '../../history'
-import { eyeColors } from '../../../myModelsConfig'
+import { eyeColors, earOptions } from '../../../myModelsConfig'
 import handleControlledValueFieldToState from '../../customHandlers/handleFormChange'
 import { useParams } from 'react-router-dom'
 import { fetchEffect } from '../axiosHandlers/fetchEffect'
@@ -95,12 +95,6 @@ const EditCat = () => {
             name='name'
             placeholder='Name'
             value={catToEdit.name}
-            onChange={handleChange} /> <br />
-          <input
-            type="text"
-            name='serialNumber'
-            placeholder='serial number'
-            value={catToEdit.serialNumber}
             onChange={handleChange} /> <br />
           <input
             type="text"

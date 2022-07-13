@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import handleControlledValueFieldToState from '../../customHandlers/handleFormChange'
-import {furColors, eyeColors} from "../../../myModelsConfig"
+import {furColors, eyeColors, earOptions} from "../../../myModelsConfig"
 import history from '../../history'
 import { fetchEffect } from '../axiosHandlers/fetchEffect'
 
@@ -10,7 +10,6 @@ const CreateKitten = () => {
 
   const defaultState = {
     name:'',
-    serialNumber: '',
     gender: '',
     ears: '',
     furColor: '',

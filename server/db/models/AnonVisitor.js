@@ -1,16 +1,18 @@
 const Sequelize = require('sequelize')
 const db = require('../dbSetup')
-const { eyeColors, furColors, budgetRanges, mifOptions } = require('../../../myModelsConfig')
+const { eyeColors, furColors, budgetRanges, mifOptions, genderOptions, earOptions } = require('../../../myModelsConfig')
 
 const AnonVisitor = db.define('anonVisitor', {
   requestedUsername: {
     type: Sequelize.STRING
   },
   firstName: {
-    type: Sequelize.STRING
+    type: Sequelize.STRING,
+    defaultValue: ''
   },
   lastName: {
-    type: Sequelize.STRING
+    type: Sequelize.STRING,
+    defaultValue: ''
   },
   eMail: {
     type:Sequelize.STRING,
@@ -18,18 +20,22 @@ const AnonVisitor = db.define('anonVisitor', {
   },
   aboutYou: {
     type: Sequelize.STRING,
+    defaultValue: ''
   },
   firstCat: {
     type: Sequelize.BOOLEAN
   },
   otherPets: {
-    type: Sequelize.STRING
+    type: Sequelize.STRING,
+    defaultValue: ''
   },
   city: {
-    type: Sequelize.STRING
+    type: Sequelize.STRING,
+    defaultValue: ''
   },
   state: {
-    type: Sequelize.STRING
+    type: Sequelize.STRING,
+    defaultValue: ''
   },
   budget:{
     type: Sequelize.ENUM(...budgetRanges)
@@ -42,19 +48,24 @@ const AnonVisitor = db.define('anonVisitor', {
   },
   // cat preferences
   gender: {
-    type: Sequelize.ENUM('boy', 'girl', '')
+    type: Sequelize.ENUM(genderOptions),
+    defaultValue: genderOptions[0],
   },
   ears: {
-    type: Sequelize.ENUM('fold', 'straight', '')
+    type: Sequelize.ENUM(earOptions),
+    defaultValue: earOptions[0],
   },
   eyeColor: {
-    type: Sequelize.ENUM(...eyeColors)
+    type: Sequelize.ENUM(eyeColors),
+    defaultValue: eyeColors[0],
   },
   furColor: {
-    type: Sequelize.ENUM(...furColors)
+    type: Sequelize.ENUM(furColors),
+    defaultValue: furColors[0],
   },
   mif: {
-    type: Sequelize.ENUM(...mifOptions)
+    type: Sequelize.ENUM(mifOptions),
+    defaultValue: mifOptions[0],
   },
   IPaddress: {
     type: Sequelize.STRING

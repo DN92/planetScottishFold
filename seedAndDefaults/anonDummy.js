@@ -1,6 +1,6 @@
 const { models } = require('../server/db')
 const { anonVisitor } = models
-const {budgetRanges, mifOptions, eyeColors, furColors} = require('../myModelsConfig')
+const {budgetRanges, mifOptions, eyeColors, furColors, earOptions, genderOptions} = require('../myModelsConfig')
 
 const makeAnonVisitor = (
   requestedUsername,
@@ -53,8 +53,8 @@ const anonVisitorsArray = [
     'new york',
     'myFB',
     'myIG',
-    'boy',
-    'fold',
+    genderOptions[Math.floor(Math.random() * genderOptions.length)],
+    earOptions[Math.floor(Math.random() * earOptions.length)],
     budgetRanges[Math.floor(Math.random() * budgetRanges.length)],
     furColors[Math.floor(Math.random() * furColors.length)],
     eyeColors[Math.floor(Math.random() * eyeColors.length)],
@@ -72,8 +72,8 @@ const anonVisitorsArray = [
     'north Carolina',
     'myFB',
     'myIG',
-    'boy',
-    'fold',
+    genderOptions[Math.floor(Math.random() * genderOptions.length)],
+    earOptions[Math.floor(Math.random() * earOptions.length)],
     budgetRanges[Math.floor(Math.random() * budgetRanges.length)],
     furColors[Math.floor(Math.random() * furColors.length)],
     eyeColors[Math.floor(Math.random() * eyeColors.length)],
@@ -91,8 +91,8 @@ const anonVisitorsArray = [
     'north Carolina',
     'myFB',
     'myIG',
-    'boy',
-    'fold',
+    genderOptions[Math.floor(Math.random() * genderOptions.length)],
+    earOptions[Math.floor(Math.random() * earOptions.length)],
     budgetRanges[Math.floor(Math.random() * budgetRanges.length)],
     furColors[Math.floor(Math.random() * furColors.length)],
     eyeColors[Math.floor(Math.random() * eyeColors.length)],
