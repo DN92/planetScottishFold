@@ -2822,7 +2822,7 @@ const App = () => {
     history: _history__WEBPACK_IMPORTED_MODULE_6__["default"]
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_TopLineMenuBar__WEBPACK_IMPORTED_MODULE_8__["default"], {
     setViewNav: setViewNav
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Header__WEBPACK_IMPORTED_MODULE_3__["default"], null), (0,_secrets__WEBPACK_IMPORTED_MODULE_9__.isPrivileged)(type) ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_AdminBar__WEBPACK_IMPORTED_MODULE_7__["default"], null) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_NavBar__WEBPACK_IMPORTED_MODULE_4__["default"], null), (0,_secrets__WEBPACK_IMPORTED_MODULE_9__.isPrivileged)(type) && viewNav && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_NavBar__WEBPACK_IMPORTED_MODULE_4__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_FrontEndRoutes__WEBPACK_IMPORTED_MODULE_1__["default"], null), (0,_secrets__WEBPACK_IMPORTED_MODULE_9__.isPrivileged)(type) && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_AdminRoutes__WEBPACK_IMPORTED_MODULE_2__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Footer__WEBPACK_IMPORTED_MODULE_5__["default"], null));
+  }), (0,_secrets__WEBPACK_IMPORTED_MODULE_9__.isPrivileged)(type) ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_AdminBar__WEBPACK_IMPORTED_MODULE_7__["default"], null) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_NavBar__WEBPACK_IMPORTED_MODULE_4__["default"], null), (0,_secrets__WEBPACK_IMPORTED_MODULE_9__.isPrivileged)(type) && viewNav && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_NavBar__WEBPACK_IMPORTED_MODULE_4__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Header__WEBPACK_IMPORTED_MODULE_3__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_FrontEndRoutes__WEBPACK_IMPORTED_MODULE_1__["default"], null), (0,_secrets__WEBPACK_IMPORTED_MODULE_9__.isPrivileged)(type) && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_AdminRoutes__WEBPACK_IMPORTED_MODULE_2__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Footer__WEBPACK_IMPORTED_MODULE_5__["default"], null));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (App);
@@ -3640,7 +3640,7 @@ const Header = () => {
     className: "header"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", {
     className: "header__h1"
-  }, "Planet Scottish Fold"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Previously Known as Scottish Fold NY & NJ "));
+  }, "FLOOFYLICIOUS KITTENS"));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Header);
@@ -4156,14 +4156,22 @@ const TopLineMenuBar = ({
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("nav", {
     className: "topMenu"
-  }, !meContext.id && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, (0,_secrets__WEBPACK_IMPORTED_MODULE_2__.isPrivileged)(type) && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+  }, !meContext.id && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
+    className: "topMenu__msg"
+  }, "Welcome to Planet Scottish Fold!", meContext.username ? meContext.username : ''), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+    to: "/waitingListForm"
+  }, "Apply"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+    to: "login"
+  }, "Login")), meContext.id && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
+    className: "topMenu__navButton"
+  }, (0,_secrets__WEBPACK_IMPORTED_MODULE_2__.isPrivileged)(type) && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    className: "buttonAsLink",
     type: "button",
     onClick: handleNavView
-  }, "View User Navigation")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, "Welcome to Planet Scottish Fold!", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, "\xA0\xA0\xA0\xA0"), meContext.username ? meContext.username : ''), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, "\xA0\xA0\xA0\xA0"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
-    to: "login"
-  }, "Login"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, "\xA0\xA0\xA0\xA0"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
-    to: "/waitingListForm"
-  }, "Apply")), meContext.id && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, "Hello ", meContext.username, ". Welcome to Planet Scottish Fold!"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, "\xA0\xA0\xA0\xA0"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+  }, "View User Navigation"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
+    className: "topMenu__msg"
+  }, "Hello ", meContext.username, ". Welcome to Planet Scottish Fold!"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+    className: "topMenu__loginout",
     to: "logout"
   }, "Log Out")));
 };

@@ -17,25 +17,25 @@ const TopLineMenuBar = ({setViewNav}) => {
     <nav className='topMenu'>
       {!meContext.id &&
         <div>
-          {isPrivileged(type) &&
-            <>
-              <button type='button' onClick={handleNavView}>View User Navigation</button>
-            </>
-          }
-          <span>Welcome to Planet Scottish Fold!
-            <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+          <span className='topMenu__msg'>Welcome to Planet Scottish Fold!
             {meContext.username ? meContext.username : ''}</span>
-          <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+          <Link  to='/waitingListForm'>Apply</Link>
           <Link to='login'>Login</Link>
-          <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-          <Link to='/waitingListForm'>Apply</Link>
         </div>
       }
       {meContext.id &&
         <div>
-          <span>Hello {meContext.username}. Welcome to Planet Scottish Fold!</span>
-          <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-          <Link to='logout'>Log Out</Link>
+          <span className='topMenu__navButton'>
+          {isPrivileged(type) &&
+            <>
+              <button className='buttonAsLink' type='button' onClick={handleNavView}>View User Navigation</button>
+            </>
+          }
+          </span>
+
+          <span className='topMenu__msg'>Hello {meContext.username}. Welcome to Planet Scottish Fold!</span>
+
+          <Link className='topMenu__loginout' to='logout'>Log Out</Link>
         </div>
       }
     </nav>

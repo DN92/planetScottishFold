@@ -25,7 +25,7 @@ input, button, textarea {
 :root {
   /*Font*/
   --FF: 'Comfortaa', cursive;
-  --FF2: 'Cinzel', serif;
+  --FF2: 'Cinzel', cursive;
   --FS: clamp(1rem, 1.5vh, 1.5rem);
 
   /* COLORS */
@@ -40,7 +40,7 @@ input, button, textarea {
 
   --LINK-COLOR: #000;
   --LINK-HOVER: hsla(0, 0%, 0%, 0.6);
-  --LINK-ACTIVE: #93E1D8;
+  --LINK-ACTIVE: #FFA69E;
   --HEADER-BGCOLOR: #000;
   --HEADER-COLOR: #FFF;
   --NAV-BGCOLOR: #FFF
@@ -79,6 +79,7 @@ html {
   font-family: var(--FF) ;
   background-color: var(--PRI30);
   background-image: var(--BGIMAGE);
+  font-weight: 300;
 }
 
 body {
@@ -94,13 +95,14 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: --FF2;
+  font-family: var(--FF2);
   letter-spacing: 0.01em;
+  font-weight: 200;
 }
 
 h2, h3, h4, h5, h6 {
   margin-bottom: 1em;
-  color: var(--PRI60);
+  color: var(--PRI10);
 }
 
 p, span {
@@ -120,12 +122,37 @@ a:active {
 }
 
 .topMenu {
+  display: flex;
+  align-content: center;
+  justify-content: flex-end;
   background-color: var(--PRI10);
   position: sticky;
   top: 0;
   z-index: 2;
   text-align: center;
 }
+.topMenu__msg{
+  background-color: blue;
+  margin-right: 120px;
+}
+
+.topMenu a{
+  background-color: pink;
+  /* margin: 0px, 20px, 0px, 20px; */
+  margin-right: 35px;
+}
+
+.topMenu__navButton {
+  margin-right: 40px;
+}
+
+.topMenu__loginout {
+  /* float: right; */
+}
+
+/* .topMenu__msg {
+  transform: translateX(100px);
+} */
 
 .header {
   /* background-color: #000; */
@@ -134,8 +161,23 @@ a:active {
 
 .header__h1 {
   text-align: center;
-  background-color: var(--HEADER-BGCOLOR);
-  color: var(--HEADER-COLOR);
+  /* background-color: var(--HEADER-BGCOLOR); */
+  color: var(--HEADER-BGCOLOR);
   padding: var(--PADDING-TB);
   padding: var(--PADDING-TB);
+}
+
+.buttonAsLink {
+  background: none!important;
+  border: none;
+  padding: 0!important;
+  color: var(--LINK-COLOR);
+  text-decoration: underline;
+  cursor: pointer;
+}
+.buttonAsLink:hover {
+  color: var(--LINK-HOVER);
+}
+.buttonAsLink:active {
+  color: var(--LINK-ACTIVE);
 }

@@ -21,9 +21,9 @@ const App = () => {
   return (
     <HistoryRouter history={history}>
       <TopLineMenuBar setViewNav={setViewNav}/>
-      <Header />
       {isPrivileged(type) ? <AdminBar /> :  <NavBar />}
       {isPrivileged(type) && viewNav && <NavBar />}
+      <Header />
       <FrontEndRoutes />
       {isPrivileged(type) && <AdminRoutes />}
       <Footer />
