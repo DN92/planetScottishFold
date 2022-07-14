@@ -8,6 +8,7 @@ const About = () => {
 
     <div>
       <h2>Our Story</h2>
+      <img src="catPictures/ourStory1.webp" alt="" />
       <OurStory />
     </div>
   )

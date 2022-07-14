@@ -50,7 +50,6 @@ router.delete('/', async(req, res, next) => {
     const anonVisitorToDelete = await AnonVisitor.findByPk(req.query.id)
     if(anonVisitorToDelete) {
       await anonVisitorToDelete.destroy()
-      console.log('got TO THIS POINT IN THE DELETE ROUTE')
       res.sendStatus(202)
     } else {
       res.sendStatus(401)

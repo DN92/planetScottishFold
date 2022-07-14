@@ -1,0 +1,141 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500&family=Comfortaa&display=swap');
+
+
+/* || RESET */
+
+::after,
+::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+input, button, textarea {
+  font:inherit
+}
+
+/* // VARIABLES */
+
+:root {
+  /*Font*/
+  --FF: 'Comfortaa', cursive;
+  --FF2: 'Cinzel', serif;
+  --FS: clamp(1rem, 1.5vh, 1.5rem);
+
+  /* COLORS */
+  --PRI60: #FFA69E;
+  --PRI30: #DDFFF7;
+  --PRI10: #93E1D8;
+
+  --BGIMAGE: linear-gradient(to bottom, #FFF, var(--PRI60));
+  --BODY-BGCOLOR: #FFF;
+  --FONT-COLOR: #000;
+  --HIGHLIGHT-COLOR: var(--PRI30);
+
+  --LINK-COLOR: #000;
+  --LINK-HOVER: hsla(0, 0%, 0%, 0.6);
+  --LINK-ACTIVE: #93E1D8;
+  --HEADER-BGCOLOR: #000;
+  --HEADER-COLOR: #FFF;
+  --NAV-BGCOLOR: #FFF
+
+  /* BORDERS */
+  --BORDER-COLOR: #333;
+  --BORDERS: 2px solid var(--BORDER-COLOR);
+
+  /* STANDARD PADDING */
+  --PADDING-TB: 0.25em;
+  --PADDING-SIDE: 2.5%;
+
+  /* STANDARD MARGIN */
+  --MARGIN: clamp(1em, 2.5vh, 1.5em) 0;
+
+}
+
+
+
+.offscreen {
+  position: absolute;
+  left: -10000px;
+}
+
+.nowrap {
+  white-space: nowrap;
+}
+
+.center {
+  text-align: center;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: var(--FS);
+  font-family: var(--FF) ;
+  background-color: var(--PRI30);
+  background-image: var(--BGIMAGE);
+}
+
+body {
+  background-color: #FFF ;
+  /* background-color: var(--PRI60); */
+  color: var(--FONT-COLOR);
+  min-height: 100vh;
+  max-width: 800px;
+  margin: 0 auto;
+  border-left: var(--BORDERS);
+  border-right: var(--BORDERS);
+  box-shadow: 0 0 15px var(--BORDER-COLOR);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: --FF2;
+  letter-spacing: 0.01em;
+}
+
+h2, h3, h4, h5, h6 {
+  margin-bottom: 1em;
+  color: var(--PRI60);
+}
+
+p, span {
+  line-height: 1.4;
+}
+
+a:any-link {
+  color: var(--LINK-COLOR);
+}
+
+a:hover, a:focus-visible {
+  color: var(--LINK-HOVER);
+}
+
+a:active {
+  color: var(--LINK-ACTIVE);
+}
+
+.topMenu {
+  background-color: var(--PRI10);
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  text-align: center;
+}
+
+.header {
+  /* background-color: #000; */
+  text-align: center;
+}
+
+.header__h1 {
+  text-align: center;
+  background-color: var(--HEADER-BGCOLOR);
+  color: var(--HEADER-COLOR);
+  padding: var(--PADDING-TB);
+  padding: var(--PADDING-TB);
+}

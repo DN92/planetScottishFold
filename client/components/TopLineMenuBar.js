@@ -14,9 +14,14 @@ const TopLineMenuBar = ({setViewNav}) => {
   }
 
   return (
-    <nav>
+    <nav className='topMenu'>
       {!meContext.id &&
         <div>
+          {isPrivileged(type) &&
+            <>
+              <button type='button' onClick={handleNavView}>View User Navigation</button>
+            </>
+          }
           <span>Welcome to Planet Scottish Fold!
             <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
             {meContext.username ? meContext.username : ''}</span>
@@ -30,11 +35,6 @@ const TopLineMenuBar = ({setViewNav}) => {
         <div>
           <span>Hello {meContext.username}. Welcome to Planet Scottish Fold!</span>
           <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-          {isPrivileged(type) &&
-            <>
-              <button type='button' onClick={handleNavView}>View User Navigation</button>
-            </>
-          }
           <Link to='logout'>Log Out</Link>
         </div>
       }
