@@ -2,10 +2,12 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 
-const AdminBar = () => {
+const AdminBar = ({setViewNav}) => {
 
   return (
     <nav>
+      <Link to='/home'>Home</Link>
+      &nbsp;&nbsp;
       <Link to='newUserRequests'>Applications</Link>
       &nbsp;&nbsp;
       <Link to='viewUsers'>All Members</Link>
@@ -24,7 +26,6 @@ const AdminBar = () => {
       &nbsp;&nbsp;
       <Link to='directMessages' >Direct Messages </Link>
       &nbsp;&nbsp;
-
     </nav>
   )
 }

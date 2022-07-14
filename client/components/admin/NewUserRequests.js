@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react'
 import UseReqTableRow from './UseReqTableRow'
 import ErrorFill from '../ErrorFill'
 import { fetchEffect } from '../axiosHandlers/fetchEffect'
+import { Link } from 'react-router-dom'
 
 const NewUserRequests = () => {
 
@@ -52,6 +53,9 @@ return (
         </tbody>
       </table>
     }
+    <Link to='/home'>
+          <button>Back to Home</button>
+        </Link>
   </>
 )}
 

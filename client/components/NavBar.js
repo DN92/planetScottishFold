@@ -21,10 +21,15 @@ const NavBar = () => {
       &nbsp;&nbsp;
       <Link to="/contact">CONTACT</Link>
       &nbsp;&nbsp;
-      <Link to="/instagram">IG</Link>
-      &nbsp;&nbsp;
-      <Link to="/facebook">FB</Link>
-      &nbsp;&nbsp;
+      {/* below routes under construction */}
+      { false &&
+        <>
+          <Link to="/instagram">IG</Link>
+          &nbsp;&nbsp;
+          <Link to="/facebook">FB</Link>
+          &nbsp;&nbsp;
+        </>
+      }
     </nav>
   )
 }

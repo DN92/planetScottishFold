@@ -43,10 +43,10 @@ const SingleKitten = (props) => {
           <span>Mother: {mother}</span> <br />
           <span>Father: {father}</span> <br />
           <span>Status: {isAvailable}</span> <br />
-          <span>Available?: {isAvailable ? 'Available' : 'Reserved'}</span> <br />
+          <span>Availability: {isAvailable ? 'Available' : 'Reserved'}</span> <br />
         </>
       }
-       <Link
+      <Link
         to={isPrivileged(type) ? '/editKitten' : `/kittenDetailed/${id}`}
         state={{kitten: kitten}}
         >

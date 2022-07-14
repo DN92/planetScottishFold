@@ -20,7 +20,7 @@ const CreateKitten = () => {
     mother: '',
     father:'',
     description: '',
-    price: 0,
+    price: '',
 
   }
 
@@ -112,13 +112,13 @@ const CreateKitten = () => {
             ))}
           </select> <br />
           <select name="furColor" value={kittenToCreate.furColor} onChange={handleChange}>
-            <option value="">Fur Color</option>
+            <option value={furColors[0]}>Fur Color</option>
             {furColors.map((color, index) => (
               <option key={index} value={color}>{color}</option>
             ))}
           </select> <br />
           <select name="eyeColor" value={kittenToCreate.eyeColor} onChange={handleChange}>
-          <option value="">Eye Color</option>
+          <option value={eyeColors[0]}>Eye Color</option>
             {eyeColors.map((color, index) => (
               <option key={index} value={color}>{color}</option>
             ))}
@@ -142,7 +142,7 @@ const CreateKitten = () => {
             value={kittenToCreate.price}
             onChange={handleChange}
           /> <br />
-          <textarea name="description" cols="50" rows="15" placeholder='description'></textarea>
+          <textarea name="description" cols="50" rows="8" placeholder='description'></textarea>
           <button type='submit'>Create</button>
         </form>
      }

@@ -11,8 +11,10 @@ const setAuthorizations = async (req, res, next) => {
     }
     //  make extra sure
     delete req.body.authLevel
+
     const verifiedUser = await User.findByToken(req.headers.authorization)
     if(!verifiedUser.fail) {
+      console.log(verifiedUser, 'USER TYPE IS')
       req.body.authLevel = getAuthGrade(verifiedUser.type)
     } else {
       req.body.authLevel = 0

@@ -16,10 +16,6 @@ const ViewUsers = () => {
     )
   }, [] )
 
-  useEffect(() => {
-    users.length && console.log(users)
-  }, [users])
-
   return (
     <div>
       {error && <ErrorFill msg={error} />}
@@ -56,6 +52,9 @@ const ViewUsers = () => {
               ))}
             </tbody>
           </table>
+          <Link to='/home'>
+            <button>Back to Home</button>
+          </Link>
         </>
       }
     </div>

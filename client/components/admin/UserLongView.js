@@ -24,6 +24,7 @@ const UserLongView = () => {
     <div key={id}>
       {error && <ErrorFill msg={error} />}
       {!error && user &&
+      <>
         <div>
           <h3>{user.type} User</h3>
           <span>Email: {user.eMail}</span> <br />
@@ -45,6 +46,13 @@ const UserLongView = () => {
           <span>Eyes: {user.eyeColor}</span> <br />
           <span>Most Important Feature: {user.mif}</span> <br />
         </div>
+        <Link to={'/viewUsers'}>
+          <button>Back To Members</button>
+        </Link>
+        <Link to='/home'>
+          <button>Back to Home</button>
+        </Link>
+      </>
       }
       {!error && !user &&
         <My404 />
