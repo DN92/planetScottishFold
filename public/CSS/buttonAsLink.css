@@ -1,0 +1,15 @@
+
+.buttonAsLink {
+  background: none!important;
+  border: none;
+  padding: 0!important;
+  color: var(--SECVI);
+  text-decoration: underline;
+  cursor: pointer;
+}
+.buttonAsLink:hover {
+  color: var(--SECDV);
+}
+.buttonAsLink:active {
+  color: var(--LINK-ACTIVE);
+}

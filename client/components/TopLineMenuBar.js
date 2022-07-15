@@ -15,28 +15,31 @@ const TopLineMenuBar = ({setViewNav}) => {
 
   return (
     <nav className='topMenu'>
-      {!meContext.id &&
+    {!meContext.id &&
+      <div>
+        <div className="forFlexBoxOnly"/>
+        <span className='topMenu__msg'>Welcome to Planet Scottish Fold!
+          {meContext.username ? meContext.username : ''}</span>
         <div>
-          <span className='topMenu__msg'>Welcome to Planet Scottish Fold!
-            {meContext.username ? meContext.username : ''}</span>
           <Link  to='/waitingListForm'>Apply</Link>
           <Link to='login'>Login</Link>
         </div>
-      }
-      {meContext.id &&
-        <div>
-          <span className='topMenu__navButton'>
-          {isPrivileged(type) &&
-            <>
-              <button className='buttonAsLink' type='button' onClick={handleNavView}>View User Navigation</button>
-            </>
-          }
-          </span>
+      </div>
+    }
+    {meContext.id &&
+      <div>
+        <span className='topMenu__navButton'>
+        {isPrivileged(type) &&
+          <>
+            <button className='buttonAsLink' type='button' onClick={handleNavView}>View User Navigation</button>
+          </>
+        }
+        </span>
 
-          <span className='topMenu__msg'>Hello {meContext.username}. Welcome to Planet Scottish Fold!</span>
+        <span className='topMenu__msg'>Hello {meContext.username}. Welcome to Planet Scottish Fold!</span>
 
-          <Link className='topMenu__loginout' to='logout'>Log Out</Link>
-        </div>
+        <Link className='topMenu__loginout' to='logout'>Log Out</Link>
+      </div>
       }
     </nav>
   )

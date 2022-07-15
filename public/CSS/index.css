@@ -1,12 +1,6 @@
 /* import all css files here, in reverse order of dominion */
 @import "./style.css";
-
 @import "./ImageBlanket.css";
-@import "./App.css";
-
-
-
-/* code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-} */
+@import "./topMenu.css";
+@import "./buttonAsLink.css";
+@import "./navbar.css";
