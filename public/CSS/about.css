@@ -1,0 +1,33 @@
+.aboutUs {
+  align-items: center;
+  width: 100%;
+}
+
+.aboutUs__card1 {
+  padding: 1rem 0rem;
+  background-color: var(--PRI60);
+  align-content: center;
+  align-items: center;
+  display: flex;
+  justify-content: space-evenly;
+
+
+}
+
+.aboutUs__card1__img {
+  height: auto;
+  width: 400px;
+  object-fit: contain;
+}
+
+.aboutUs__text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem
+}
+
+.aboutUs__text p {
+  text-align: center;
+  text-align: justify;
+}

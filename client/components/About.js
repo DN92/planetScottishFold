@@ -6,10 +6,14 @@ const About = () => {
 
   return (
 
-    <div>
-      <h2>Our Story</h2>
-      <img src="catPictures/ourStory1.webp" alt="" />
-      <OurStory />
+    <div className='aboutUs'>
+      <div className='aboutUs__card1'>
+        <img className='aboutUs__card1__img' src="catPictures/ourStory1.webp" alt="" />
+      </div>
+      <div className='aboutUs__text'>
+        <h2>Our Story</h2>
+        <OurStory />
+      </div>
     </div>
   )
 }

@@ -1,11 +1,11 @@
 .footer {
   position: absolute;
   bottom: 0px;
-  padding: 2px;
+  padding: 5px 0px;
   z-index: 2;
   margin: 0px;
   width: 100%;
-  background-color: var(--PRI30);
+  background-color: var(--PRI10);
   text-align: center;
   font-size: 0.7rem;
   color: var(--SECVI);
