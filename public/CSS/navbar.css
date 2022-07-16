@@ -1,10 +1,9 @@
 .navBar {
-  width: 99.9%;
+  width: 100%;
   height: 48px;
   display: flex;
   justify-content: center;
   background-color: var(--PRI30);
-  font-size:13px;
   align-items: center;
   align-items: stretch;
   border-bottom:20px solid var(--PRI10);
@@ -14,11 +13,19 @@
   margin: 0px -1px;
 }
 
+
 .navBar a{
   flex-grow: 1;
   text-decoration: none;
   padding-top: 20px;
   padding-left: 1vh;
+  font-size: 10px;
+  text-align: center;
+  width: 12.5%;
+  letter-spacing: 0rem;
+}
+.navBar a:first-child{
+  /* margin-left: 1px; */
 }
 
 .navBar a:hover {

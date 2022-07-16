@@ -3616,7 +3616,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const Footer = () => {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("article", null, "\xA92022 by Planet Scottish Fold");
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
+    className: "footer"
+  }, "\xA92022 by Planet Scottish Fold");
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Footer);
@@ -3656,20 +3658,30 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _textComponents_AboutUs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./textComponents/AboutUs */ "./client/components/textComponents/AboutUs.js");
-/* harmony import */ var _MeContextPro__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../MeContextPro */ "./client/MeContextPro.js");
+/* harmony import */ var _textComponents_Our_Process__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./textComponents/Our Process */ "./client/components/textComponents/Our Process.js");
+/* harmony import */ var _MeContextPro__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../MeContextPro */ "./client/MeContextPro.js");
+
 
 
 
 
 const homeComponent = () => {
-  const meContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_MeContextPro__WEBPACK_IMPORTED_MODULE_2__["default"]);
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
+  const meContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_MeContextPro__WEBPACK_IMPORTED_MODULE_3__["default"]);
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "home"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "home__card1"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
+    className: "home__card1__img",
     src: "/catPictures/catHome1.webp",
     alt: "cute cat image1"
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_textComponents_AboutUs__WEBPACK_IMPORTED_MODULE_1__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_textComponents_AboutUs__WEBPACK_IMPORTED_MODULE_1__["default"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "home__card2"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
+    className: "home__card2__img",
     src: "/catPictures/catHome2.webp",
     alt: "cute cat image2"
-  }));
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_textComponents_Our_Process__WEBPACK_IMPORTED_MODULE_2__["default"], null)));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (homeComponent);
@@ -3933,15 +3945,15 @@ const NavBar = () => {
     to: "/about"
   }, "ABOUT"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
     to: "/availableKittens"
-  }, "Available Kittens"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
+  }, "OUR KITTENS"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
     to: "/viewCats/mother"
-  }, "View Our Dams"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
+  }, "OUR DAMS"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
     to: "/viewCats/father"
-  }, "View Our Sires"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
+  }, "OUR STUDS"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
     to: "/reviews"
   }, "REVIEWS"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
     to: "/waitingListForm"
-  }, "Waiting List Form"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
+  }, "WAITING LIST"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
     to: "/contact"
   }, "CONTACT"),  false && /*#__PURE__*/0);
 };
@@ -4158,9 +4170,9 @@ const TopLineMenuBar = ({
     className: "topMenu"
   }, !meContext.id && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "forFlexBoxOnly"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
-    className: "topMenu__msg"
-  }, "Welcome to Planet Scottish Fold!", meContext.username ? meContext.username : ''), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", {
+    id: "h1"
+  }, "Welcome to Planet Scottish Fold", meContext.username ? meContext.username : ''), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
     to: "/waitingListForm"
   }, "Apply"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
     to: "login"
@@ -5394,13 +5406,41 @@ const fetchEffect = async (setterFuncArray, method, path, body) => {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _customHooks_useFitText__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../customHooks/useFitText */ "./client/customHooks/useFitText.js");
+
 
 
 const AboutUs = () => {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "About Us"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Planet Scottish Fold is a family breeding cattery", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), " with locations in New Jersey, North Carolina and", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), " Florida.", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), " We have been breeding Scottish Folds since 2016,", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), " with a focus on producing healthy and purebred", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), " kittens with an amazing personality.", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), " All kittens and their parents are raised in our", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), " homes in a good, loving environment.", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), " We are against captivity, closed cages, declawing", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), " and backyard breeding.", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), " With us, you'll get your new family member with", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), " it's vaccinations, deworming, contract, and life", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), " time of breeder support."));
+  // const {fontSize, ref} = useFitText();
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "home__aboutUs"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h4", null, "About Us"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Planet Scottish Fold is a family breeding cattery with locations in New Jersey, North Carolina and Florida. We have been breeding Scottish Folds since 2016, with a focus on producing healthy and purebred kittens with an amazing personality. All kittens and their parents are raised in our homes in a good, loving environment. We are against captivity, closed cages, declawing and backyard breeding. With us, you'll get your new family member with it's vaccinations, deworming, contract, and life time of breeder support."));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (AboutUs);
+
+/***/ }),
+
+/***/ "./client/components/textComponents/Our Process.js":
+/*!*********************************************************!*\
+  !*** ./client/components/textComponents/Our Process.js ***!
+  \*********************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+const OurProcess = () => {
+  const placeHolder = 'placeHolder placeHolder placeHolder placeHolder placeHolder placeHolder placeHolder ';
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "home__ourProcess"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h4", null, "Our Process"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, placeHolder));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (OurProcess);
 
 /***/ }),
 
@@ -5542,6 +5582,85 @@ const handleLogin = async (meContext, loginInfo) => {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (handleLogin);
+
+/***/ }),
+
+/***/ "./client/customHooks/useFitText.js":
+/*!******************************************!*\
+  !*** ./client/customHooks/useFitText.js ***!
+  \******************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "useFitText": function() { return /* binding */ useFitText; }
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+const useFitText = () => {
+  const MIN_FONT_SIZE = 20;
+  const MAX_FONT_SIZE = 100;
+  const RESOLUTION = 5;
+  const ref = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
+  const [state, setState] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
+    fontSize: MAX_FONT_SIZE,
+    fontSizePrev: MIN_FONT_SIZE,
+    fontSizeMax: MAX_FONT_SIZE,
+    fontSizeMin: MIN_FONT_SIZE
+  });
+  const {
+    fontSize,
+    fontSizeMax,
+    fontSizeMin,
+    fontSizePrev
+  } = state;
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+    const isDone = Math.abs(fontSize - fontSizePrev) <= RESOLUTION;
+    const isOverflow = !!ref.current && (ref.current.scrollHeight > ref.current.offsetHeight || ref.current.scrollWidth > ref.current.offsetWidth);
+    const isAsc = fontSize > fontSizePrev; // return if the font size has been adjusted "enough" (change within RESOLUTION)
+    // reduce font size by one increment if it's overflowing
+
+    if (isDone) {
+      if (isOverflow) {
+        const fontSizeNew = fontSizePrev < fontSize ? fontSizePrev : fontSize - (fontSizePrev - fontSize);
+        setState({
+          fontSize: fontSizeNew,
+          fontSizeMax,
+          fontSizeMin,
+          fontSizePrev
+        });
+      }
+
+      return;
+    } // binary search to adjust font size
+
+
+    let delta;
+    let newMax = fontSizeMax;
+    let newMin = fontSizeMin;
+
+    if (isOverflow) {
+      delta = isAsc ? fontSizePrev - fontSize : fontSizeMin - fontSize;
+      newMax = Math.min(fontSizeMax, fontSize);
+    } else {
+      delta = isAsc ? fontSizeMax - fontSize : fontSizePrev - fontSize;
+      newMin = Math.max(fontSizeMin, fontSize);
+    }
+
+    setState({
+      fontSize: fontSize + delta / 2,
+      fontSizeMax: newMax,
+      fontSizeMin: newMin,
+      fontSizePrev: fontSize
+    });
+  }, [fontSize, fontSizeMax, fontSizeMin, fontSizePrev, ref]);
+  return {
+    fontSize: `${fontSize}%`,
+    ref
+  };
+};
 
 /***/ }),
 

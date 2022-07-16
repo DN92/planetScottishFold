@@ -26,7 +26,7 @@ input, button, textarea {
   /*Font*/
   --FF: 'Comfortaa', cursive;
   --FF2: 'Cinzel', cursive;
-  --FS: clamp(1rem, 2.2vh, 1.5rem);
+  --FS: clamp(1rem, 1.8vh, 1.5rem);
 
   /* COLORS */
   --PRI60: #FFA69E;
@@ -97,6 +97,7 @@ body {
   border-right: var(--BORDERS);
   box-shadow: 0 0 15px var(--BORDER-COLOR);
   display: flex;
+  position: relative;
 }
 
 #root {
@@ -119,15 +120,26 @@ body {
   align-items: center;
 }
 
+
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--FF2);
   letter-spacing: 0.01em;
   font-weight: 200;
+  color: var(--SECVI);
+  margin: 0px;
+}
+#h1 {
+  transform: translateY(-8px);
+  font-weight: 559;
+  font-size: 24px;
 }
 
 h2, h3, h4, h5, h6 {
-  margin-bottom: 1em;
-  color: var(--PRI10);
+  color: var(--SECVI);
+}
+
+h4 {
+  font-size: 22px;
 }
 
 p, span {
@@ -136,6 +148,8 @@ p, span {
 
 a:any-link {
   color: var(--SECDV);
+  font-weight: 800;
+  letter-spacing: 0.02rem;
 }
 
 a:hover, a:focus-visible {

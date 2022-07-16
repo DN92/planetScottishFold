@@ -1,0 +1,31 @@
+.home * {
+  padding: 0.8rem;
+  margin: 0px;
+}
+
+.home {
+width: 95%;
+align-content: center;
+color: var(--PRI30);
+font-size: 14px;
+text-align: justify;
+}
+
+
+.home__card1, .home__card2  {
+  width: 95%;
+  background-color: var(--PRI60);
+  height: 430px;
+  overflow: auto;
+}
+
+.home__card1__img, .home__card2__img {
+  object-fit: contain;
+  width: auto;
+  height: 400px;
+  float: left;
+}
+
+.home__card2__img {
+  float: right}
+

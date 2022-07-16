@@ -2,20 +2,20 @@
 .header {
   /* background-color: #000; */
   text-align: center;
+  max-width: 770px;
 }
 
 .header  h2{
+  max-width: 1260px;
+
   text-align: center;
-  font-size: 2.8vw;
+  font-size: clamp(1.4vw, 4vw, 36px);
   color: var(--SECDV);
-  padding: var(--PADDING-TB);
-  padding: var(--PADDING-TB);
-  margin-bottom: 0px;
+  margin: 0px;
 }
 
 .header  h3{
+  max-width: 1260px;
   margin-top: 0px;
-  font-size: var(--FS);
-  font-size: 2.2vw;
-  white-space: nowrap;
+  font-size: clamp(1vw, 2.6vw, 22px);
 }

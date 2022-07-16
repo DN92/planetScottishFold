@@ -2,9 +2,9 @@ import React from 'react'
 
 const Footer = () => {
   return (
-    <article>
+    <p className='footer'>
       &copy;2022 by Planet Scottish Fold
-    </article>
+    </p>
   )
 }
 

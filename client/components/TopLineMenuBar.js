@@ -18,8 +18,8 @@ const TopLineMenuBar = ({setViewNav}) => {
     {!meContext.id &&
       <div>
         <div className="forFlexBoxOnly"/>
-        <span className='topMenu__msg'>Welcome to Planet Scottish Fold!
-          {meContext.username ? meContext.username : ''}</span>
+        <h1 id='h1'>Welcome to Planet Scottish Fold
+          {meContext.username ? meContext.username : ''}</h1>
         <div>
           <Link  to='/waitingListForm'>Apply</Link>
           <Link to='login'>Login</Link>
