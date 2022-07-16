@@ -4,8 +4,8 @@ const Header = () => {
 
   return (
     <div className='header'>
-      {/* <h1 className='header__h1'>PLANET SCOTTISH FOLD</h1> */}
-      <h1 className='header__h1'>FLOOFYLICIOUS KITTENS</h1>
+      <h2>WELCOME TO PLANET SCOTTISH FOLD</h2>
+      <h3>Family breeders of purebred Scottish Fold {'&'} Straight Kittens</h3>
     </div>
   )
 }

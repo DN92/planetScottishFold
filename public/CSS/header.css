@@ -1,0 +1,21 @@
+
+.header {
+  /* background-color: #000; */
+  text-align: center;
+}
+
+.header  h2{
+  text-align: center;
+  font-size: 2.8vw;
+  color: var(--SECDV);
+  padding: var(--PADDING-TB);
+  padding: var(--PADDING-TB);
+  margin-bottom: 0px;
+}
+
+.header  h3{
+  margin-top: 0px;
+  font-size: var(--FS);
+  font-size: 2.2vw;
+  white-space: nowrap;
+}

@@ -3638,9 +3638,7 @@ __webpack_require__.r(__webpack_exports__);
 const Header = () => {
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "header"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", {
-    className: "header__h1"
-  }, "FLOOFYLICIOUS KITTENS"));
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "WELCOME TO PLANET SCOTTISH FOLD"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h3", null, "Family breeders of purebred Scottish Fold ", '&', " Straight Kittens"));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Header);
@@ -3665,7 +3663,7 @@ __webpack_require__.r(__webpack_exports__);
 
 const homeComponent = () => {
   const meContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_MeContextPro__WEBPACK_IMPORTED_MODULE_2__["default"]);
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "Welcome to Planet Scottish Fold!"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "!!! ", meContext.username, " !!!"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "!!! ", meContext.type, " !!!"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "!!! ", meContext.id, " !!!"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("article", null, "Family breeders of purebred Scottish Fold ", '&', " Straight Kittens"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
     src: "/catPictures/catHome1.webp",
     alt: "cute cat image1"
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_textComponents_AboutUs__WEBPACK_IMPORTED_MODULE_1__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {

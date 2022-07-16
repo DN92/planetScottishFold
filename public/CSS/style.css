@@ -26,14 +26,16 @@ input, button, textarea {
   /*Font*/
   --FF: 'Comfortaa', cursive;
   --FF2: 'Cinzel', cursive;
-  --FS: clamp(1rem, vh, 1.5rem);
+  --FS: clamp(1rem, 2.2vh, 1.5rem);
 
   /* COLORS */
   --PRI60: #FFA69E;
   --PRI30: #DDFFF7;
   --PRI10: #93E1D8;
-  --SECVI: #9B26B6;
-  --SECDV: #7600A9;
+  --SECVI: #000080;
+  --SECDV: #02075d;
+  /* --SECVI: #9B26B6; */
+  /* --SECDV: #7600A9; */
 
   --BGIMAGE: linear-gradient(to bottom, var(--PRI60), #FFF);
   --BODY-BGCOLOR: #FFF;
@@ -42,7 +44,7 @@ input, button, textarea {
 
   --LINK-COLOR: #000;
   --LINK-HOVER: hsla(0, 0%, 0%, 0.6);
-  --LINK-ACTIVE: #FFA69E;
+  --LINK-ACTIVE: #0000;
   --HEADER-BGCOLOR: #000;
   --HEADER-COLOR: #FFF;
   --NAV-BGCOLOR: #FFF
@@ -133,7 +135,7 @@ p, span {
 }
 
 a:any-link {
-  color: var(--SECVI);
+  color: var(--SECDV);
 }
 
 a:hover, a:focus-visible {
@@ -142,19 +144,5 @@ a:hover, a:focus-visible {
 }
 
 a:active {
-  color: var(--LINK-ACTIVE);
+  color: #FFF;
 }
-
-.header {
-  /* background-color: #000; */
-  text-align: center;
-}
-
-.header__h1 {
-  text-align: center;
-  /* background-color: var(--HEADER-BGCOLOR); */
-  color: var(--HEADER-BGCOLOR);
-  padding: var(--PADDING-TB);
-  padding: var(--PADDING-TB);
-}
-
