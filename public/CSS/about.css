@@ -10,8 +10,6 @@
   align-items: center;
   display: flex;
   justify-content: space-evenly;
-
-
 }
 
 .aboutUs__card1__img {
@@ -28,6 +26,5 @@
 }
 
 .aboutUs__text p {
-  text-align: center;
   text-align: justify;
 }

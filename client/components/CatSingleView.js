@@ -39,7 +39,6 @@ const CatSingleView = (props) => {
       >
         <button>View More</button>
       </Link> <br />
-      <hr />
     </div>
   )
 }

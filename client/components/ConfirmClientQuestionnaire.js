@@ -81,7 +81,6 @@ const ConfirmClientQuestionnaire = () => {
           <li>Color: </li>
           <li>Most Important Feature: </li>
         </ul>
-        <hr />
         <ul className="clientInfoAnswers">
           <li>{clientInfo.firstName}</li>
           <li>{clientInfo.lastName}</li>

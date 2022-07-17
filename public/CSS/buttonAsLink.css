@@ -6,6 +6,9 @@
   color: var(--SECVI);
   text-decoration: underline;
   cursor: pointer;
+  font-weight: 800;
+  letter-spacing: 0.02rem;
+  text-decoration: none;
 }
 .buttonAsLink:hover {
   color: var(--SECDV);

@@ -1,11 +1,20 @@
 /* import all css files here, in reverse order of dominion */
+
+/* main file with resets, variables and html and body */
 @import "./style.css";
+
+/* non React - component specific  */
+@import "./buttonStyle1.css";
 @import "./ImageBlanket.css";
+
+/* component targeted styles */
 @import "./topMenu.css";
 @import "./buttonAsLink.css";
 @import "./navbar.css";
 @import "./header.css";
 @import "./home.css";
 @import "./about.css";
+@import "./availableKittens.css";
+@import "./singleKitten.css";
 
 @import "./footer.css";

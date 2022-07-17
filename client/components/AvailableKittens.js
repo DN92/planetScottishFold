@@ -55,24 +55,29 @@ const AvailableKittens = () => {
   }, [])
 
   return (
-    <>
+    <div className='kittens'>
       {fetchError && <ErrorFill msg={fetchError} />}
       {!fetchError &&
-        <div>
-          <input type="checkbox"
-            name='showSearch'
-            onChange={handleShowSearch}
-            checked={showSearch} />
-          <label htmlFor="Advanced Search">Advanced Search</label>
-
-          {showSearch && <KittenFilter searcher={handleFilterBySearch} filterState={filterState} setter={setFilterState} />}
-
-          {kittens.map((kitten) => (
-            <SingleKitten key={kitten.id} kitten={kitten} />
-          ))}
+      <>
+        <input id='advSearchKittens' className='advSearch'
+          type="checkbox"
+          name='showSearch'
+          onChange={handleShowSearch}
+          checked={showSearch} />
+        <label htmlFor="Advanced Search">Advanced Search</label>
+        {/* <div className='kittens__gutters'> */}
+          {/* <div className='gutter' /> */}
+          <div className='availableKittens'>
+            {showSearch && <KittenFilter searcher={handleFilterBySearch} filterState={filterState} setter={setFilterState} />}
+            {kittens.map((kitten) => (
+              <SingleKitten key={kitten.id} kitten={kitten} />
+            ))}
+          {/* </div> */}
+          {/* <div className='gutter' /> */}
         </div>
+      </>
       }
-    </>
+    </div>
     )
 }
 

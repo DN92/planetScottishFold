@@ -10,6 +10,11 @@
   box-sizing: border-box;
 }
 
+p {
+  margin: 0px;
+  padding: 0px;
+}
+
 img {
   display: block;
   max-width: 100%;
@@ -147,6 +152,7 @@ p, span {
 }
 
 a:any-link {
+  text-decoration: none;
   color: var(--SECDV);
   font-weight: 800;
   letter-spacing: 0.02rem;

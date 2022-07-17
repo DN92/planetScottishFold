@@ -38,7 +38,6 @@ const UserLongView = () => {
           <span>About Me: {user.aboutYou}</span> <br />
           <br />
           {user.IPaddress && <span>{user.IPaddress}</span> }
-          <hr />
           <h4>Looking For</h4>
           <span>Gender: {user.gender}</span> <br />
           <span>Ears: {user.ears}</span> <br />

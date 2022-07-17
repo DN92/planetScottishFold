@@ -80,14 +80,11 @@ const AuthForm = () => {
           <button type='submit'>Submit </button>
         </form>
       </div>
-      <hr />
-
       <div >
         <a className="underlineHover" href="#">
           Forgot Password?
         </a>
       </div>
-      <hr />
 
       <div>
         <p>Don't have an account?</p>

@@ -22,37 +22,40 @@ const SingleKitten = (props) => {
   }
 
   return (
-    <div>
-      <Link
-        to={isPrivileged(type) ? '/editKitten' : `/kittenDetailed/${id}`}
-        state={{kitten: kitten}}
-      >
-        <img src={image} alt="kitten picture "
-        kitten={kitten}
-        style={imgInLine}
-        />
-      </Link> <br />
-      <span>{name}</span> <br />
-      <span>{breed}</span> <br />
-      <span>{gender}</span> <br />
-      <span>{ears}</span> <br />
-      <span>Fur Color: {furColor}</span> <br />
-      <span>Eye Color: {eyeColor}</span> <br />
-      {isPrivileged(type) &&
-        <>
-          <span>Mother: {mother}</span> <br />
-          <span>Father: {father}</span> <br />
-          <span>Status: {isAvailable}</span> <br />
-          <span>Availability: {isAvailable ? 'Available' : 'Reserved'}</span> <br />
-        </>
-      }
+    <div className='singleKitten'>
+      <div className='singleKitten__card'>
+        <Link
+          to={isPrivileged(type) ? '/editKitten' : `/kittenDetailed/${id}`}
+          state={{kitten: kitten}}
+        >
+          <img className='singleKitten__card__img' src={image} alt="kitten picture "
+          kitten={kitten}
+          style={imgInLine}
+          />
+        </Link>
+      </div>
+      <div className='singleKittenInfo'>
+        <p>{name}</p>
+        {breed && <p>{breed}</p> }
+        <p>{gender}</p>
+        <p>{ears}</p>
+        <p>Fur Color: {furColor}</p>
+        <p>Eye Color: {eyeColor}</p>
+        {isPrivileged(type) &&
+          <>
+            <p>Mother: {mother}</p>
+            <p>Father: {father}</p>
+            <p>Status: {isAvailable}</p>
+            <p>Availability: {isAvailable ? 'Available' : 'Reserved'}</p>
+          </>
+        }
+      </div>
       <Link
         to={isPrivileged(type) ? '/editKitten' : `/kittenDetailed/${id}`}
         state={{kitten: kitten}}
         >
-        <button>View More</button>
-      </Link> <br />
-      <hr />
+        <button className='btnS1'>View More</button>
+      </Link>
     </div>
   )
 }

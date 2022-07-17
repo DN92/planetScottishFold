@@ -43,7 +43,6 @@ const KittenFilter = (props) => {
         }) }
       </select>
       <button type='button' onClick={props.searcher}>Search</button>
-      <hr />
     </form>
 
   )
