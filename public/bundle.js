@@ -2824,12 +2824,15 @@ const App = () => {
     type
   } = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_MeContextPro__WEBPACK_IMPORTED_MODULE_10__["default"]); //  as an admin, this flag lets you view or hide the regular navbar
 
-  const [viewNav, setViewNav] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
+  const [viewNav, setViewNav] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false); //  .mainContentContainer is for styling purposes only
+
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_11__.unstable_HistoryRouter, {
     history: _history__WEBPACK_IMPORTED_MODULE_6__["default"]
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_TopLineMenuBar__WEBPACK_IMPORTED_MODULE_8__["default"], {
     setViewNav: setViewNav
-  }), (0,_secrets__WEBPACK_IMPORTED_MODULE_9__.isPrivileged)(type) ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_AdminBar__WEBPACK_IMPORTED_MODULE_7__["default"], null) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_NavBar__WEBPACK_IMPORTED_MODULE_4__["default"], null), (0,_secrets__WEBPACK_IMPORTED_MODULE_9__.isPrivileged)(type) && viewNav && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_NavBar__WEBPACK_IMPORTED_MODULE_4__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Header__WEBPACK_IMPORTED_MODULE_3__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_FrontEndRoutes__WEBPACK_IMPORTED_MODULE_1__["default"], null), (0,_secrets__WEBPACK_IMPORTED_MODULE_9__.isPrivileged)(type) && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_AdminRoutes__WEBPACK_IMPORTED_MODULE_2__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Footer__WEBPACK_IMPORTED_MODULE_5__["default"], null));
+  }), (0,_secrets__WEBPACK_IMPORTED_MODULE_9__.isPrivileged)(type) ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_AdminBar__WEBPACK_IMPORTED_MODULE_7__["default"], null) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_NavBar__WEBPACK_IMPORTED_MODULE_4__["default"], null), (0,_secrets__WEBPACK_IMPORTED_MODULE_9__.isPrivileged)(type) && viewNav && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_NavBar__WEBPACK_IMPORTED_MODULE_4__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "mainContentContainer"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_FrontEndRoutes__WEBPACK_IMPORTED_MODULE_1__["default"], null), (0,_secrets__WEBPACK_IMPORTED_MODULE_9__.isPrivileged)(type) && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_AdminRoutes__WEBPACK_IMPORTED_MODULE_2__["default"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Footer__WEBPACK_IMPORTED_MODULE_5__["default"], null));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (App);

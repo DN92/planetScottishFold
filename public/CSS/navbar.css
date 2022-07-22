@@ -1,6 +1,6 @@
 .navBar {
   width: 100%;
-  height: 48px;
+  height: 52px;
   display: flex;
   justify-content: center;
   background-color: var(--PRI30);

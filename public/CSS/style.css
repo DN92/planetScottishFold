@@ -94,6 +94,7 @@ input, button, textarea {
 }
 
 html {
+  overflow-y: scroll;
   scroll-behavior: smooth;
   background-color: var(--PRI30);
   background-image: var(--BGIMAGE);
@@ -103,7 +104,7 @@ html {
 body {
   font-size: var(--FS);
   font-family: var(--FF) ;
-  background-color: #FFF ;
+  background-color: var(--PRI60) ;
   -webkit-font-smoothing: antialiased;
   -mox-osx-font-smoothing: grayscale;
   /* background-color: var(--PRI60); */

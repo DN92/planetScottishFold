@@ -18,14 +18,18 @@ const App = () => {
   //  as an admin, this flag lets you view or hide the regular navbar
   const [viewNav, setViewNav] = useState(false)
 
+  //  .mainContentContainer is for styling purposes only
+
   return (
     <HistoryRouter history={history}>
       <TopLineMenuBar setViewNav={setViewNav}/>
       {isPrivileged(type) ? <AdminBar /> :  <NavBar />}
       {isPrivileged(type) && viewNav && <NavBar />}
-      <Header />
-      <FrontEndRoutes />
-      {isPrivileged(type) && <AdminRoutes />}
+      {/* <Header /> */}
+      <div className='mainContentContainer'>
+        <FrontEndRoutes />
+        {isPrivileged(type) && <AdminRoutes />}
+      </div>
       <Footer />
     </HistoryRouter>
   )

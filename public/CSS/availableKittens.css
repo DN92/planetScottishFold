@@ -1,6 +1,5 @@
 .kittens {
   width: 100%;
-  height: 100%;
   display: flex;
   flex-direction: column;
   padding-bottom: 40px;
@@ -16,7 +15,6 @@
 }
 
 .availableKittens {
-  /* background-color: green; */
   width: 100%;
   display: flex;
   align-content: flex-start;
