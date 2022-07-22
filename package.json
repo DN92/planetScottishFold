@@ -4,6 +4,7 @@
   "scripts": {
     "build": "webpack --mode production",
     "build:dev": "npm run build -- --watch --mode=development",
+    "ngrok": "node ngrok.js",
     "seed": "node seedAndDefaults/seed.js",
     "start": "node server",
     "start:dev": "npm run build:dev & npm run start-server",

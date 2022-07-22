@@ -15,6 +15,19 @@ p {
   padding: 0px;
 }
 
+textarea {
+  max-width: 302px;
+}
+
+label {
+  font-size: .6rem;
+  display: block;
+}
+
+select {
+  min-width: 120px;
+}
+
 img {
   display: block;
   max-width: 100%;

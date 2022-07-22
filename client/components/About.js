@@ -6,11 +6,11 @@ const About = () => {
 
   return (
 
-    <div className='aboutUs'>
+    <div className='home__aboutUs'>
       <div className='aboutUs__card1'>
         <img className='aboutUs__card1__img' src="catPictures/ourStory1.webp" alt="" />
       </div>
-      <div className='aboutUs__text'>
+      <div className='home__aboutUs__text'>
         <h2>Our Story</h2>
         <OurStory />
       </div>

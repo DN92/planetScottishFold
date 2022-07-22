@@ -53,39 +53,41 @@ const ContactRequestForm = () => {
   },[endFlag])
 
   return (
-    <>
+    <div className='contact'>
       {error && <ErrorFill msg={error}/>}
       {!Object.keys(newReq).length && !error &&
         <>
-          <h2>Contact Form</h2>
-          <h4>Use this form to send us a direct message without having to log in</h4>
-          <p>Please feel free to contact via Facebook or Instagram page for a faster response.</p>
-          <p>Address:</p>
-          <p>We breed in our homes,so we do not share our addresses unless reservation deposit is placed.</p>
-          <p>Note:</p>
-          <p>If you reached out via IG or FB, you don't need to fill this form out.</p>
-          <form id="ContactRequest" onKeyDown={handleKeyPress} onChange={handleChange} onSubmit={handleSubmit1}>
-            <input type="text" name="name" placeholder='Your Name' required/><br />
-            <input type="tel" name="phone" placeholder='Your phone number' /><br />
-            <input type="email" name="eMail" placeholder='Your Email' required/><br />
-            <textarea type="textarea" name="message" cols="50" rows="5" placeholder='Type your message here..' required /><br />
-            <input type="submit" />
-          </form>
+          <div className='contact__msg'>
+            <h2>Contact Us</h2>
+            <p>Use this form to send us a direct message without having to log in</p>
+            <p>Address:</p>
+            <p>We breed in our homes,so we do not share our addresses unless reservation deposit is placed.</p>
+
+          </div>
+          <div className='contact__form'>
+            <form id="ContactRequest" onKeyDown={handleKeyPress} onChange={handleChange} onSubmit={handleSubmit1}>
+              <input type="text" name="name" placeholder='Your Name' required/><br />
+              <input type="tel" name="phone" placeholder='Your phone number' /><br />
+              <input type="email" name="eMail" placeholder='Your Email' required/><br />
+              <textarea type="textarea" name="message" cols="40" rows="5" placeholder='Type your message here..' required /><br />
+              <input type="submit" />
+            </form>
+          </div>
         </>
       }
       {!!Object.keys(newReq).length && !error &&
         <>
           <h2>Review Your Message</h2><br />
-          <span>From: {newReq.name}</span><br />
-          <span>Email: {newReq.eMail}</span><br />
-          <span>Telephone: {newReq.phone}</span><br />
-          <span>Your Message:</span> <br />
+          <p>From: {newReq.name}</p><br />
+          <p>Email: {newReq.eMail}</p><br />
+          <p>Telephone: {newReq.phone}</p><br />
+          <p>Your Message:</p> <br />
           <p>{newReq.message}</p>
           <button type='button' onClick={handleRedo}>Edit Information</button>
           <button type='button' onClick={handleSubmit2}>Continue</button>
         </>
       }
-    </>
+    </div>
   )
 }
 

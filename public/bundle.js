@@ -2724,7 +2724,7 @@ __webpack_require__.r(__webpack_exports__);
 
 const About = () => {
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "aboutUs"
+    className: "home__aboutUs"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "aboutUs__card1"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
@@ -2732,7 +2732,7 @@ const About = () => {
     src: "catPictures/ourStory1.webp",
     alt: ""
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "aboutUs__text"
+    className: "home__aboutUs__text"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "Our Story"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_textComponents_OurStory__WEBPACK_IMPORTED_MODULE_1__["default"], null)));
 };
 
@@ -2908,29 +2908,40 @@ const AuthForm = () => {
       _history__WEBPACK_IMPORTED_MODULE_3__["default"].push('/home');
     }
   }, []);
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "Login"), !error && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h6", null, "login page"), error && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h6", null, "Email or Password is incorrect. Try Again"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("form", {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "login"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "Login"), !error && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h6", null, "Enter Your Login Information"), error && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h6", null, "Email or Password is incorrect. Try Again"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("form", {
     onSubmit: handleSubmit,
     onChange: handleChange
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+    htmlFor: "eMailLogin"
+  }, "Email"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    id: "eMailLogin",
     name: "eMail",
     placeholder: "E Mail",
     type: "email",
     value: loginInfo.eMail,
     onChange: handleChange
-  }), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+    htmlFor: "passwordLogin"
+  }, "Password"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    id: "passwordLogin",
     name: "password",
     placeholder: "password",
     type: "password",
     value: loginInfo.password,
     onChange: handleChange
-  }), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    id: "rememberMe",
+    className: "remMe",
     onChange: handleRememberMe,
     type: "checkbox",
     name: "rememberMe",
     checked: rememberMe
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+    className: "remMe",
     htmlFor: "rememberMe"
-  }, "Remember Me"), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+  }, "Remember Me")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
     type: "submit"
   }, "Submit "))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("a", {
     className: "underlineHover",
@@ -3146,21 +3157,31 @@ const CatSingleView = props => {
     mainImageSrcValue,
     id
   } = cat;
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "singleKitten"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "singleKitten__card"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
     to: (0,_secrets__WEBPACK_IMPORTED_MODULE_2__.isPrivileged)(type) ? `/editCat/${props.parent}/${cat.id}` : `/catDetailedView/${props.parent}/${cat.id}`,
     state: {
       cat: cat
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
+    className: "singleKitten__card__img",
     src: mainImageSrcValue,
-    alt: `${props.parent.name}'s picture `,
-    className: "image"
-  })), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, name), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, breed), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), (0,_secrets__WEBPACK_IMPORTED_MODULE_2__.isPrivileged)(type) && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, "Date of Birth: ", dob), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, "Ears: ", ears), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, "Fur Color: ", furColor), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, "Eye Color: ", eyeColor), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+    alt: `${props.parent.name}'s picture `
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "singleKittenInfo"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, breed), (0,_secrets__WEBPACK_IMPORTED_MODULE_2__.isPrivileged)(type) && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Date of Birth: ", dob), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Ears: ", ears), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Fur Color: ", furColor), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Eye Color: ", eyeColor))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "singleKitten__button"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
     to: (0,_secrets__WEBPACK_IMPORTED_MODULE_2__.isPrivileged)(type) ? `/editCat/${props.parent}/${id}` : `/catDetailedView/${props.parent}/${id}`,
     state: {
       cat: cat
     }
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", null, "View More")), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null));
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    className: "btnS1"
+  }, "View More"))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (CatSingleView);
@@ -3192,7 +3213,7 @@ const ClientQuestionnaire = () => {
     lastName: '',
     eMail: '',
     aboutYou: '',
-    firstCat: false,
+    firstCat: '',
     otherPets: '',
     city: '',
     state: '',
@@ -3232,11 +3253,12 @@ const ClientQuestionnaire = () => {
     _history__WEBPACK_IMPORTED_MODULE_1__["default"].push('/confirmClientQuestionnaire');
   };
 
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("form", {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "waitingList"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("form", {
     id: "clientQuestionnaire",
     onSubmit: handleSubmit,
     onKeyDown: handleKeyPress,
-    onChange: handleChange,
     onReset: handleReset
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "About You"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
     htmlFor: "clientFormFName"
@@ -3246,8 +3268,9 @@ const ClientQuestionnaire = () => {
     name: "firstName",
     value: clientInfo.firstName,
     placeholder: "First Name",
+    onChange: handleChange,
     required: true
-  }), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
     htmlFor: "clientFormTName"
   }, "Last Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
     id: "clientFormTName",
@@ -3255,8 +3278,9 @@ const ClientQuestionnaire = () => {
     name: "lastName",
     value: clientInfo.lastName,
     placeholder: "Last Name",
+    onChange: handleChange,
     required: true
-  }), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
     htmlFor: "clientFormEmail"
   }, "EMail"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
     id: "clientFormEmail",
@@ -3264,38 +3288,44 @@ const ClientQuestionnaire = () => {
     name: "eMail",
     value: clientInfo.eMail,
     placeholder: "E Mail",
+    onChange: handleChange,
     required: true
-  }), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
     htmlFor: "clientFormAboutYou"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("textarea", {
+  }, "Tell us a little about yourself"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("textarea", {
     id: "clientFormAboutYou",
     name: "aboutYou",
-    cols: "50",
+    cols: "40",
     rows: "5",
     value: clientInfo.aboutYou,
     placeholder: "Please tell us a little about yourself.",
+    onChange: handleChange,
     required: true
-  }), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
     htmlFor: "clientFormFirstCat"
   }, "Will this be your first cat?"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("select", {
     id: "clientFormFirstCat",
     name: "firstCat",
     value: clientInfo.firstCat,
+    onChange: handleChange,
+    placeholder: "test",
     required: true
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
-    value: false
-  }, "Will this be your first cat?"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+    value: ''
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
     value: false
   }, "No"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
     value: true
-  }, "Yes")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+  }, "Yes")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
     htmlFor: "clientFormOtherPets"
   }, "Please list out all other pets you own here"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
     id: "clientFormOtherPets",
     type: "text",
     name: "otherPets",
     value: clientInfo.otherPets,
-    placeholder: "If any, what other pets do you own?"
+    placeholder: "If any, what other pets do you own?",
+    onChange: handleChange,
+    required: true
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "Where are you from?"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
     htmlFor: "clientFormCity"
   }, "City"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
@@ -3304,6 +3334,7 @@ const ClientQuestionnaire = () => {
     name: "city",
     value: clientInfo.city,
     placeholder: "your city",
+    onChange: handleChange,
     required: true
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
     htmlFor: "clientFormState"
@@ -3313,16 +3344,18 @@ const ClientQuestionnaire = () => {
     name: "state",
     value: clientInfo.state,
     placeholder: "your state",
+    onChange: handleChange,
     required: true
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "What are you looking for in a kitten?"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
     htmlFor: "clientForm"
   }, "Budget"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("select", {
-    name: "clientFormBudget",
+    name: "budget",
     value: clientInfo.budget,
+    onChange: handleChange,
     required: true
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
-    value: _myModelsConfig__WEBPACK_IMPORTED_MODULE_2__.budgetRanges[0]
-  }, "Budget"), _myModelsConfig__WEBPACK_IMPORTED_MODULE_2__.budgetRanges.map((range, index) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+    value: ''
+  }), _myModelsConfig__WEBPACK_IMPORTED_MODULE_2__.budgetRanges.map((range, index) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
     key: index,
     value: range
   }, range))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
@@ -3331,54 +3364,62 @@ const ClientQuestionnaire = () => {
     id: "clientFormGender",
     name: "gender",
     value: clientInfo.gender,
+    onChange: handleChange,
     required: true
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
-    value: _myModelsConfig__WEBPACK_IMPORTED_MODULE_2__.genderOptions[0]
-  }, "Boy or Girl?"), _myModelsConfig__WEBPACK_IMPORTED_MODULE_2__.genderOptions.map((gen, index) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+    value: ''
+  }), _myModelsConfig__WEBPACK_IMPORTED_MODULE_2__.genderOptions.map((gen, index) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
     key: index,
     value: gen
-  }, gen))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+  }, gen))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
     htmlFor: "clientFormEars"
   }, "Fold or Straight"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("select", {
     id: "clientFormEars",
     name: "ears",
     value: clientInfo.ears,
+    onChange: handleChange,
     required: true
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
-    value: _myModelsConfig__WEBPACK_IMPORTED_MODULE_2__.earOptions[0]
-  }, "Fold or Straight"), _myModelsConfig__WEBPACK_IMPORTED_MODULE_2__.earOptions.map((ear, index) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+    value: ''
+  }), _myModelsConfig__WEBPACK_IMPORTED_MODULE_2__.earOptions.map((ear, index) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
     key: index,
     value: ear
-  }, ear))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+  }, ear))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
     htmlFor: "clientFormEyeColor"
   }, "Eye Color"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("select", {
     id: "clientFormEyeColor",
     name: "eyeColor",
-    value: clientInfo.color
+    value: clientInfo.color,
+    onChange: handleChange,
+    required: true
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
-    value: _myModelsConfig__WEBPACK_IMPORTED_MODULE_2__.eyeColors[0]
-  }, "Eye Color"), _myModelsConfig__WEBPACK_IMPORTED_MODULE_2__.eyeColors.map((color, index) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+    value: ''
+  }), _myModelsConfig__WEBPACK_IMPORTED_MODULE_2__.eyeColors.map((color, index) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
     key: index,
     value: color
   }, color))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
     htmlFor: "clientFormFurColor"
   }, "Fur Color"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("select", {
     name: "furColor",
-    value: clientInfo.furColor
+    value: clientInfo.furColor,
+    onChange: handleChange,
+    required: true
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
-    value: _myModelsConfig__WEBPACK_IMPORTED_MODULE_2__.furColors[0]
-  }, "Fur Color"), _myModelsConfig__WEBPACK_IMPORTED_MODULE_2__.furColors.map((color, index) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+    value: ''
+  }), _myModelsConfig__WEBPACK_IMPORTED_MODULE_2__.furColors.map((color, index) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
     key: index,
     value: color
-  }, color))), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+  }, color))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
     htmlFor: "clientFormMif"
   }, "What Is Most Important"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("select", {
     id: "clientFormMif",
     name: "mif",
-    value: clientInfo.mif
+    value: clientInfo.mif,
+    onChange: handleChange,
+    required: true
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
-    value: _myModelsConfig__WEBPACK_IMPORTED_MODULE_2__.mifOptions[0]
-  }, "Most Important Feature"), _myModelsConfig__WEBPACK_IMPORTED_MODULE_2__.mifOptions.map((feature, index) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+    value: ''
+  }), _myModelsConfig__WEBPACK_IMPORTED_MODULE_2__.mifOptions.map((feature, index) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
     key: index,
     value: feature
   }, feature))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "Your Facebook and/or Instagram"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
@@ -3386,18 +3427,22 @@ const ClientQuestionnaire = () => {
   }, "Your Facebook"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
     type: "text",
     name: "fB",
-    value: clientInfo.fB
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+    value: clientInfo.fB,
+    onChange: handleChange
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
     htmlFor: "clientFormIG"
   }, "Your Instagram"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
     type: "text",
     name: "iG",
-    value: clientInfo.iG
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    value: clientInfo.iG,
+    onChange: handleChange
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "waitingList__buttons"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
     type: "reset"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
     type: "submit"
-  }));
+  }))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (ClientQuestionnaire);
@@ -3544,9 +3589,15 @@ const ContactRequestForm = () => {
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
     endFlag && !error && _history__WEBPACK_IMPORTED_MODULE_4__["default"].push('/home');
   }, [endFlag]);
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, error && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ErrorFill__WEBPACK_IMPORTED_MODULE_5__["default"], {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "contact"
+  }, error && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ErrorFill__WEBPACK_IMPORTED_MODULE_5__["default"], {
     msg: error
-  }), !Object.keys(newReq).length && !error && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "Contact Form"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h4", null, "Use this form to send us a direct message without having to log in"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Please feel free to contact via Facebook or Instagram page for a faster response."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Address:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "We breed in our homes,so we do not share our addresses unless reservation deposit is placed."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Note:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "If you reached out via IG or FB, you don't need to fill this form out."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("form", {
+  }), !Object.keys(newReq).length && !error && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "contact__msg"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "Contact Us"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Use this form to send us a direct message without having to log in"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Address:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "We breed in our homes,so we do not share our addresses unless reservation deposit is placed.")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "contact__form"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("form", {
     id: "ContactRequest",
     onKeyDown: handleKeyPress,
     onChange: handleChange,
@@ -3568,13 +3619,13 @@ const ContactRequestForm = () => {
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("textarea", {
     type: "textarea",
     name: "message",
-    cols: "50",
+    cols: "40",
     rows: "5",
     placeholder: "Type your message here..",
     required: true
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
     type: "submit"
-  }))), !!Object.keys(newReq).length && !error && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "Review Your Message"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, "From: ", newReq.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, "Email: ", newReq.eMail), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, "Telephone: ", newReq.phone), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, "Your Message:"), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, newReq.message), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+  })))), !!Object.keys(newReq).length && !error && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "Review Your Message"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "From: ", newReq.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Email: ", newReq.eMail), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Telephone: ", newReq.phone), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Your Message:"), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, newReq.message), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
     type: "button",
     onClick: handleRedo
   }, "Edit Information"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
@@ -3690,11 +3741,11 @@ const homeComponent = () => {
     alt: "cute cat image1"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_textComponents_AboutUs__WEBPACK_IMPORTED_MODULE_1__["default"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "home__card2"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_textComponents_Our_Process__WEBPACK_IMPORTED_MODULE_2__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
     className: "home__card2__img",
     src: "/catPictures/catHome2.webp",
     alt: "cute cat image2"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_textComponents_Our_Process__WEBPACK_IMPORTED_MODULE_2__["default"], null)));
+  })));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (homeComponent);
@@ -4039,11 +4090,14 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const Reviews = () => {
-  //  defaultReviews is an array of Objects. Each object has a image, text, and reviewer property
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, _seedAndDefaults_defaultReviews__WEBPACK_IMPORTED_MODULE_2___default().map((review, index) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_SingleReview__WEBPACK_IMPORTED_MODULE_1__["default"], {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "kittens"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: " availableKittens"
+  }, _seedAndDefaults_defaultReviews__WEBPACK_IMPORTED_MODULE_2___default().map((review, index) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_SingleReview__WEBPACK_IMPORTED_MODULE_1__["default"], {
     review: review,
     key: index
-  })));
+  }))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Reviews);
@@ -4100,27 +4154,24 @@ const SingleKitten = props => {
     className: "singleKitten"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "singleKitten__card"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
-    to: (0,_secrets__WEBPACK_IMPORTED_MODULE_2__.isPrivileged)(type) ? '/editKitten' : `/kittenDetailed/${id}`,
-    state: {
-      kitten: kitten
-    }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
     className: "singleKitten__card__img",
     src: image,
     alt: "kitten picture ",
     kitten: kitten,
     style: imgInLine
-  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "singleKittenInfo"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, name), breed && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, breed), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, gender), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, ears), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Fur Color: ", furColor), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Eye Color: ", eyeColor), (0,_secrets__WEBPACK_IMPORTED_MODULE_2__.isPrivileged)(type) && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Mother: ", mother), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Father: ", father), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Status: ", isAvailable), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Availability: ", isAvailable ? 'Available' : 'Reserved'))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, name), breed && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, breed), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, gender), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, ears), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Fur Color: ", furColor), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Eye Color: ", eyeColor), (0,_secrets__WEBPACK_IMPORTED_MODULE_2__.isPrivileged)(type) && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Mother: ", mother), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Father: ", father), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Status: ", isAvailable), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Availability: ", isAvailable ? 'Available' : 'Reserved'))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "singleKitten__button"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
     to: (0,_secrets__WEBPACK_IMPORTED_MODULE_2__.isPrivileged)(type) ? '/editKitten' : `/kittenDetailed/${id}`,
     state: {
       kitten: kitten
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
     className: "btnS1"
-  }, "View More")));
+  }, "View More"))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (SingleKitten);
@@ -4145,12 +4196,18 @@ __webpack_require__.r(__webpack_exports__);
 const SingleReview = ({
   review
 }) => {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "singleKitten"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "singleKitten__card"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
+    className: "singleKitten__card__img",
     src: review.image
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("article", null, review.text), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("article", null, review.reviewer), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("a", {
-    target: "_blank",
-    href: review.srcPage
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", null, "Visit Review Page")));
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "singleKittenInfo"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, review.text), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, review.reviewer)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "singleKitten__button"
+  }));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (SingleReview);
@@ -4245,11 +4302,15 @@ const ViewCats = () => {
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
     (0,_axiosHandlers_fetchEffect__WEBPACK_IMPORTED_MODULE_3__.fetchEffect)([setCats, setFetchError], 'get', `/api/${MOTHERorFATHER}s`);
   }, [MOTHERorFATHER]);
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, fetchError && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ErrorFill__WEBPACK_IMPORTED_MODULE_2__["default"], null), !fetchError && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "Our ", MOTHERorFATHER == 'mother' ? 'Dams' : 'Sires'), cats.map(cat => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_CatSingleView__WEBPACK_IMPORTED_MODULE_1__["default"], {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "kittens"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "Our ", MOTHERorFATHER == 'mother' ? 'Dams' : 'Sires'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "availableKittens"
+  }, fetchError && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ErrorFill__WEBPACK_IMPORTED_MODULE_2__["default"], null), !fetchError && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, cats.map(cat => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_CatSingleView__WEBPACK_IMPORTED_MODULE_1__["default"], {
     key: cat.id,
     cat: cat,
     parent: MOTHERorFATHER
-  }))));
+  })))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (ViewCats);

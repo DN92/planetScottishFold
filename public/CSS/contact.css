@@ -1,0 +1,23 @@
+.contact {
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  padding-top: 110px;
+}
+
+.contact input {
+  min-width: 300px;
+}
+
+.contact__msg {
+  flex-basis: 50%;
+  min-width: 200;
+  max-width: 400px;
+}
+
+.contact__form {
+  flex-basis: 50%;
+  overflow: hidden;
+  min-width: 200;
+  max-width: 400px;
+}

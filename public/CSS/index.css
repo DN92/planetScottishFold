@@ -16,5 +16,8 @@
 @import "./about.css";
 @import "./availableKittens.css";
 @import "./singleKitten.css";
+@import "./waitingList.css";
+@import "./contact.css";
+@import "./login.css";
 
 @import "./footer.css";

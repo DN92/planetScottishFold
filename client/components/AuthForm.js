@@ -55,28 +55,32 @@ const AuthForm = () => {
   }, [])
 
   return (
-    <div >
+    <div className='login'>
       <div >
         <h2>Login</h2>
-        {!error && <h6>login page</h6>}
+        {!error && <h6>Enter Your Login Information</h6>}
         {error && <h6>Email or Password is incorrect. Try Again</h6>}
         <form onSubmit={handleSubmit} onChange={handleChange}>
-          <input
+          <label htmlFor="eMailLogin">Email</label>
+          <input id='eMailLogin'
             name="eMail"
             placeholder="E Mail"
             type="email"
             value={loginInfo.eMail}
             onChange={handleChange}
-          /> <br />
-          <input
+          />
+          <label htmlFor="passwordLogin">Password</label>
+          <input id='passwordLogin'
             name="password"
             placeholder="password"
             type="password"
             value={loginInfo.password}
             onChange={handleChange}
-          /> <br />
-          <input onChange={handleRememberMe} type="checkbox" name="rememberMe" checked={rememberMe}/>
-          <label htmlFor="rememberMe">Remember Me</label> <br />
+          />
+          <div>
+            <input id='rememberMe' className='remMe' onChange={handleRememberMe} type="checkbox" name="rememberMe" checked={rememberMe}/>
+            <label className='remMe' htmlFor="rememberMe">Remember Me</label>
+          </div>
           <button type='submit'>Submit </button>
         </form>
       </div>

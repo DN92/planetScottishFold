@@ -1,0 +1,15 @@
+.waitingList {
+  height: 100%;
+  padding-bottom: 40px;
+}
+
+.waitingList input {
+  min-width: 300px;
+}
+
+.waitingList__buttons {
+  width: 100%;
+  margin: 10px;
+  display: flex;
+  justify-content: space-between;
+}

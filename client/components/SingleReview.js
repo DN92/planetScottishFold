@@ -6,13 +6,16 @@ import My404 from './My404'
 
 const SingleReview = ({review}) => {
   return (
-    <div>
-      <img src={review.image}/>
-      <article>{review.text}</article>
-      <article>{review.reviewer}</article>
-      <a target="_blank" href={review.srcPage}>
-        <button>Visit Review Page</button>
-      </a>
+    <div className='singleKitten'>
+      <div className='singleKitten__card'>
+        <img className='singleKitten__card__img' src={review.image}/>
+      </div>
+      <div className='singleKittenInfo'>
+        <p>{review.text}</p>
+        <p>{review.reviewer}</p>
+      </div>
+      <div className='singleKitten__button'>
+      </div>
     </div>
   )
 }

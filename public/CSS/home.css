@@ -1,31 +1,41 @@
 .home * {
-  padding: 0.8rem;
+  width: 100%;
   margin: 0px;
 }
 
 .home {
-width: 100%;
-align-content: center;
-color: var(--PRI30);
-font-size: 14px;
-text-align: justify;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  padding-bottom: 40px;
+  width: 100%;
+  color: var(--PRI30);
+  font-size: 14px;
+  text-align: justify;
 }
 
-
 .home__card1, .home__card2  {
-  width: 95%;
+  width: 100%;
   background-color: var(--PRI60);
   height: 430px;
-  overflow: auto;
+  display: flex;
+  justify-content: space-between;
+
 }
 
 .home__card1__img, .home__card2__img {
   object-fit: contain;
-  width: auto;
-  height: 400px;
+  width: 300px;
+  height: auto;
   float: left;
 }
 
 .home__card2__img {
-  float: right}
+  float: right
+}
+
+.home__aboutUs {
+  padding-right: 0;
+}
+
 

@@ -21,17 +21,19 @@ const ViewCats = () => {
   }, [MOTHERorFATHER] )
 
   return (
-    <div >
-      {fetchError && <ErrorFill />}
-      {!fetchError &&
-        <>
-        <h2>Our {MOTHERorFATHER == 'mother' ? 'Dams' : 'Sires'}</h2>
-          {cats.map((cat) => (
-            <CatSingleView key={cat.id} cat={cat} parent={MOTHERorFATHER} />
-          ))}
-        </>
-      }
-    </ div>
+    <div className='kittens'>
+      <h2>Our {MOTHERorFATHER == 'mother' ? 'Dams' : 'Sires'}</h2>
+      <div className='availableKittens' >
+        {fetchError && <ErrorFill />}
+        {!fetchError &&
+          <>
+            {cats.map((cat) => (
+              <CatSingleView key={cat.id} cat={cat} parent={MOTHERorFATHER} />
+            ))}
+          </>
+        }
+      </ div>
+    </div>
   )
 }
 

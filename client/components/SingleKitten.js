@@ -24,15 +24,10 @@ const SingleKitten = (props) => {
   return (
     <div className='singleKitten'>
       <div className='singleKitten__card'>
-        <Link
-          to={isPrivileged(type) ? '/editKitten' : `/kittenDetailed/${id}`}
-          state={{kitten: kitten}}
-        >
-          <img className='singleKitten__card__img' src={image} alt="kitten picture "
-          kitten={kitten}
-          style={imgInLine}
-          />
-        </Link>
+        <img className='singleKitten__card__img' src={image} alt="kitten picture "
+        kitten={kitten}
+        style={imgInLine}
+        />
       </div>
       <div className='singleKittenInfo'>
         <p>{name}</p>
@@ -50,12 +45,14 @@ const SingleKitten = (props) => {
           </>
         }
       </div>
-      <Link
+      <div className='singleKitten__button'>
+        <Link
         to={isPrivileged(type) ? '/editKitten' : `/kittenDetailed/${id}`}
         state={{kitten: kitten}}
         >
-        <button className='btnS1'>View More</button>
-      </Link>
+          <button className='btnS1'>View More</button>
+        </Link>
+      </div>
     </div>
   )
 }
