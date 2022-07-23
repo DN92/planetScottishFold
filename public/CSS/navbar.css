@@ -3,10 +3,10 @@
   height: 52px;
   display: flex;
   justify-content: center;
-  background-color: var(--PRI30);
+  background-color: var(--clr-200);
   align-items: center;
   align-items: stretch;
-  border-bottom:20px solid var(--PRI10);
+  border-bottom:20px solid var(--clr-300);
   position: sticky;
   top: 48px;
   z-index: 3;
@@ -19,7 +19,7 @@
   text-decoration: none;
   padding-top: 20px;
   padding-left: 1vh;
-  font-size: 10px;
+  font-size: var(--fs-300);
   text-align: center;
   width: 12.5%;
   letter-spacing: 0rem;
@@ -29,5 +29,5 @@
 }
 
 .navBar a:hover {
-  background-color: var(--PRI10)
+  background-color: var(--clr-300)
 }

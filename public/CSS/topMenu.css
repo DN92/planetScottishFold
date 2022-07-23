@@ -2,7 +2,7 @@
 .topMenu {
   width: 100%;
   align-items: center;
-  background-color: var(--PRI10);
+  background-color: var(--clr-300);
   position: sticky;
   top: 0;
   z-index: 2;

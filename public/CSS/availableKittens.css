@@ -9,11 +9,6 @@
   display: flex;
 }
 
-.gutter {
-  flex-basis: 2%;
-  background-color: var(--PRI10);
-}
-
 .availableKittens {
   width: 100%;
   display: flex;

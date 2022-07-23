@@ -1,7 +1,7 @@
 .singleKitten {
   flex-basis: 28%;
   border: solid black 1px;
-  background-color: var(--PRI60);
+  background-color: var(--clr-500);
   border-radius: 1.5rem;
   display: flex;
   flex-direction: column;
@@ -13,9 +13,9 @@
 }
 
 .singleKitten:hover {
-  background-color: var(--PRI30);
+  background-color: var(--clr-300);
   transform: translate(0, -10px);
-  box-shadow: 2px -5px 5px 1px var(--PRI10);
+  box-shadow: 2px -5px 5px 1px var(--clr-300);
   border: solid darkviolet 2px;
 }
 

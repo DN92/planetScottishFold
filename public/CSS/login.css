@@ -1,10 +1,10 @@
 .login {
-  height: 100%;
   width: 80%;
-  padding: 40px;
+  padding: 4rem;
+  font-size: var(--fs-600);
 }
 
 .remMe {
   display: inline;
-  font-size: 20px;
+  font-size: var(--fs-600);
 }

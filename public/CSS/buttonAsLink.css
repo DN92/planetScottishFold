@@ -3,7 +3,7 @@
   background: none!important;
   border: none;
   padding: 0!important;
-  color: var(--SECVI);
+  color: var(--clr-900);
   text-decoration: underline;
   cursor: pointer;
   font-weight: 800;
@@ -11,8 +11,8 @@
   text-decoration: none;
 }
 .buttonAsLink:hover {
-  color: var(--SECDV);
+  color: var(--clr-900);
 }
 .buttonAsLink:active {
-  color: var(--LINK-ACTIVE);
+  color: var(--clr-100);
 }

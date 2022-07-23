@@ -3,7 +3,7 @@
   box-sizing: border-box;
   overflow: hidden;
   color: black;
-  background-color: var(--PRI30);
+  background-color: var(--clr-400);
   border-radius: 10px;
   box-shadow: 0 0 0 0 rgba(143, 64, 248, 0.5), 0 0 0 0 rgba(39, 200, 255, 0.5);
   transition: transform 0.3s ease, box-shadow 0.3s ease;

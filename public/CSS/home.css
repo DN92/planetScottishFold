@@ -1,6 +1,5 @@
 .home * {
   width: 100%;
-  margin: 0px;
 }
 
 .home {
@@ -9,14 +8,14 @@
   align-content: center;
   padding-bottom: 40px;
   width: 100%;
-  color: var(--PRI30);
-  font-size: 14px;
+  color: var(--clr-200);
+  font-size: var(--fs-300);
   text-align: justify;
 }
 
 .home__card1, .home__card2  {
   width: 100%;
-  background-color: var(--PRI60);
+  background-color: var(--clr-500);
   height: 430px;
   display: flex;
   justify-content: space-between;
