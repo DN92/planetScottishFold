@@ -2,17 +2,25 @@
 
 
 /* || RESET */
-
-::after,
-::before {
+* {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+  font: inherit;
 }
 
-p {
-  margin: 0px;
-  padding: 0px;
+ul[role="list"],
+ol[role="list"] {
+  list-style: none;
+}
+
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+html,
+body {
+  /* height: 100%; */
+  /* this preset was added later but broke the css of the navbar: todo: investigate */
 }
 
 textarea {
@@ -28,14 +36,27 @@ select {
   min-width: 120px;
 }
 
-img {
+img,
+picture,
+svg {
   display: block;
   max-width: 100%;
   height: auto;
 }
 
-input, button, textarea {
-  font:inherit
+@media (prefers-reduced-motion) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+}
+
+*::after,
+*::before {
+  box-sizing: border-box;
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  animation-duration: 0.01ms !important;
+  scroll-behavior: auto !important;
 }
 
 /* // VARIABLES */
@@ -47,6 +68,7 @@ input, button, textarea {
   --FS: clamp(1rem, 1.8vh, 1.5rem);
 
   /* COLORS */
+
   --PRI60: #FFA69E;
   --PRI30: #DDFFF7;
   --PRI10: #93E1D8;
@@ -55,21 +77,15 @@ input, button, textarea {
   /* --SECVI: #9B26B6; */
   /* --SECDV: #7600A9; */
 
-  --BGIMAGE: linear-gradient(to bottom, var(--PRI60), #FFF);
-  --BODY-BGCOLOR: #FFF;
-  --FONT-COLOR: #000;
-  --HIGHLIGHT-COLOR: var(--PRI30);
+  /* base */
+  --clr-500: hsl(184,57%,23%);
+  --clr-400: #FFA69E;
 
-  --LINK-COLOR: #000;
-  --LINK-HOVER: hsla(0, 0%, 0%, 0.6);
-  --LINK-ACTIVE: #0000;
-  --HEADER-BGCOLOR: #000;
-  --HEADER-COLOR: #FFF;
-  --NAV-BGCOLOR: #FFF
+  /* light */
+  --clr-100: hsl(6,94%,92%);
 
-  /* BORDERS */
-  --BORDER-COLOR: #333;
-  --BORDERS: 2px solid var(--BORDER-COLOR);
+  /* dark */
+  --clr-900: #000080;
 
   /* STANDARD PADDING */
   --PADDING-TB: 0.25em;
@@ -80,24 +96,11 @@ input, button, textarea {
 
 }
 
-.offscreen {
-  position: absolute;
-  left: -10000px;
-}
-
-.nowrap {
-  white-space: nowrap;
-}
-
-.center {
-  text-align: center;
-}
-
 html {
   overflow-y: scroll;
   scroll-behavior: smooth;
   background-color: var(--PRI30);
-  background-image: var(--BGIMAGE);
+  background-image: linear-gradient(to bottom, var(--PRI60), #FFF);
   font-weight: 300;
 }
 
@@ -144,17 +147,13 @@ h1, h2, h3, h4, h5, h6 {
   font-family: var(--FF2);
   letter-spacing: 0.01em;
   font-weight: 200;
-  color: var(--SECVI);
+  color: var(--clr-500);
   margin: 0px;
 }
 #h1 {
   transform: translateY(-8px);
   font-weight: 559;
   font-size: 24px;
-}
-
-h2, h3, h4, h5, h6 {
-  color: var(--SECVI);
 }
 
 h4 {
@@ -167,16 +166,15 @@ p, span {
 
 a:any-link {
   text-decoration: none;
-  color: var(--SECDV);
+  color: var(--clr-900);
   font-weight: 800;
   letter-spacing: 0.02rem;
 }
 
 a:hover, a:focus-visible {
-  /* color: var(--LINK-HOVER); */
-  color: var(--SECDV);
+  color: var(--clr-300);
 }
 
 a:active {
-  color: #FFF;
+  color: var(--clr-100);
 }
