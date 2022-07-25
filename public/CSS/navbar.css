@@ -3,31 +3,27 @@
   height: 52px;
   display: flex;
   justify-content: center;
-  background-color: var(--clr-200);
+  background-color: var(--clr-700);
   align-items: center;
   border-bottom:20px solid var(--clr-300);
-  position: -webkit-sticky;
-  position: sticky;
-  top: 71px;
-  z-index: 3;
-  margin: 0px -1px;
 }
 
 
 .navBar a{
   flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   text-decoration: none;
-  padding-top: 20px;
   padding-left: 1vh;
-  font-size: var(--fs-300);
+  /* font-size: var(--fs-300); */
   text-align: center;
   width: 12.5%;
   letter-spacing: 0rem;
-}
-.navBar a:first-child{
-  /* margin-left: 1px; */
+  width: 100%;
+  height: 100%;
 }
 
 .navBar a:hover {
-  background-color: var(--clr-300)
+  background-color: var(--clr-100)
 }

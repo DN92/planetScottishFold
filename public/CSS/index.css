@@ -8,6 +8,7 @@
 @import "./ImageBlanket.css";
 
 /* component targeted styles */
+@import "./header.css";
 @import "./topMenu.css";
 @import "./buttonAsLink.css";
 @import "./navbar.css";
@@ -16,6 +17,7 @@
 @import "./about.css";
 @import "./availableKittens.css";
 @import "./singleKitten.css";
+@import "./reviews.css";
 @import "./waitingList.css";
 @import "./contact.css";
 @import "./login.css";

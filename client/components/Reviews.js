@@ -7,7 +7,8 @@ const Reviews = () => {
 
   return (
     <div className='kittens'>
-      <div className=' availableKittens'>
+      <h2>Reviews</h2>
+      <div className=' reviews'>
         {
           defaultReviews.map((review, index) => (
             <SingleReview review={review} key={index} />

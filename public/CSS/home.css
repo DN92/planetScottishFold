@@ -1,40 +1,28 @@
 .home * {
-  width: 100%;
+  /* width: 100%; */
 }
 
 .home {
-  display: flex;
+  /* display: flex;
   flex-direction: column;
   align-content: center;
   padding-bottom: 40px;
   width: 100%;
   color: var(--clr-200);
   font-size: var(--fs-300);
-  text-align: justify;
+  text-align: justify; */
 }
 
 .home__card1, .home__card2  {
-  width: 100%;
-  background-color: var(--clr-500);
-  height: 430px;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+
 
 }
 
 .home__card1__img, .home__card2__img {
-  object-fit: contain;
-  width: 300px;
-  height: auto;
-  float: left;
+  /* width: 100%; */
+  /* height: auto; */
+  /* max-width: calc(var(--maxWidthBody) / 2); */
 }
-
-.home__card2__img {
-  float: right
-}
-
-.home__aboutUs {
-  padding-right: 0;
-}
-
 

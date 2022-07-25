@@ -57,7 +57,7 @@ const ClientQuestionnaire = () => {
     <div className='waitingList'>
       <form id="clientQuestionnaire" onSubmit={handleSubmit} onKeyDown={handleKeyPress} onReset={handleReset}
       >
-        <h2>About You</h2>
+        <h3>About You</h3>
         <label htmlFor="clientFormFName">First Name</label>
         <input  id="clientFormFName"
           type="text"
@@ -118,7 +118,7 @@ const ClientQuestionnaire = () => {
           required
         />
 
-        <h2>Where are you from?</h2>
+        <h3>Where are you from?</h3>
         <label htmlFor="clientFormCity">City</label>
         <input id="clientFormCity"
           type="text"
@@ -137,7 +137,7 @@ const ClientQuestionnaire = () => {
           onChange={handleChange}
           required
         />
-        <h2>What are you looking for in a kitten?</h2>
+        <h3>What are you looking for in a kitten?</h3>
         <label htmlFor="clientForm">Budget</label>
         <select name="budget" value={clientInfo.budget} onChange={handleChange} required>
           <option value={''}></option>
@@ -182,7 +182,7 @@ const ClientQuestionnaire = () => {
           ))}
         </select>
 
-        <h2>Your Facebook and/or Instagram</h2>
+        <h3>Your Facebook and/or Instagram</h3>
         <label htmlFor="clientFormFb">Your Facebook</label>
         <input type="text" name='fB' value={clientInfo.fB} onChange={handleChange} />
 

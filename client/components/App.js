@@ -2,7 +2,6 @@ import React, {useState, useContext} from 'react'
 import { unstable_HistoryRouter as HistoryRouter } from 'react-router-dom'
 import FrontEndRoutes from '../FrontEndRoutes'
 import AdminRoutes from '../AdminRoutes'
-import Header from './Header'
 import NavBar from './NavBar'
 import Footer from './Footer'
 import history from '../history'
@@ -22,10 +21,11 @@ const App = () => {
 
   return (
     <HistoryRouter history={history}>
-      <TopLineMenuBar setViewNav={setViewNav}/>
-      {isPrivileged(type) ? <AdminBar /> :  <NavBar />}
-      {isPrivileged(type) && viewNav && <NavBar />}
-      {/* <Header /> */}
+      <div className='header'>
+        <TopLineMenuBar setViewNav={setViewNav}/>
+        {isPrivileged(type) ? <AdminBar /> :  <NavBar />}
+        {isPrivileged(type) && viewNav && <NavBar />}
+      </div>
       <div className='mainContentContainer'>
         <FrontEndRoutes />
         {isPrivileged(type) && <AdminRoutes />}

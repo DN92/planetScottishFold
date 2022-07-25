@@ -1,0 +1,6 @@
+.reviews {
+  background-color: yellow;
+  display: flex;
+  flex-direction: column;
+  gap: 4em;
+}

@@ -2,10 +2,6 @@
   width: 100%;
   align-items: center;
   background-color: var(--clr-300);
-  position: -webkit-sticky;
-  position: sticky;
-  top: 0;
-  z-index: 2;
   text-align: center;
   height: 80px;
   display: flex;

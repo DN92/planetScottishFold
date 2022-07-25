@@ -18,7 +18,7 @@ const TopLineMenuBar = ({setViewNav}) => {
     {!meContext.id &&
       <div>
         <div className="forFlexBoxOnly"/>
-        <h1 id='h1'>Welcome to Planet Scottish Fold
+        <h1 id='h1'>Planet Scottish Fold
           {meContext.username ? meContext.username : ''}</h1>
         <div>
           <Link  to='/waitingListForm'>Apply</Link>

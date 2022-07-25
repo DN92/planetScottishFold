@@ -1,5 +1,6 @@
 .mainContentContainer {
   height: 100%;
   width: 96.5%;
-  background-color: yellow
+  margin-top: var(--headerSize);
+  margin-bottom: 50px;
 }
