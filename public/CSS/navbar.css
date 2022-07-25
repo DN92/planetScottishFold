@@ -1,29 +1,60 @@
+
+  /* hide */
 .navBar {
-  width: 100%;
-  height: 52px;
-  display: flex;
-  justify-content: center;
-  background-color: var(--clr-700);
-  align-items: center;
-  border-bottom:20px solid var(--clr-300);
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
+@media (min-width: 50em) {
+  /* un-hide */
+  .navBar {
+    position:static;
+    width: auto;
+    height: auto;
+    padding: 0;
+    margin: 0;
+    overflow: auto;
+    clip: auto;
+    white-space: normal;
+    border: none;
+  }
 
-.navBar a{
-  border: 2px solid var(--clr-100);
-  flex-grow: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-decoration: none;
-  text-align: center;
-  width: 12.5%;
-  letter-spacing: 0rem;
-  width: 100%;
-  height: 100%;
-  font-size: var(--fs-300);
+  .navBar {
+    width: 100%;
+    height: 52px;
+    display: flex;
+    justify-content: center;
+    background-color: var(--clr-700);
+    align-items: center;
+    border-bottom:20px solid var(--clr-300);
+    overflow: hidden;
+  }
+
+
+  .navBar a{
+    border: 2px solid var(--clr-100);
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    text-align: center;
+    width: 12.5%;
+    letter-spacing: 0rem;
+    width: 100%;
+    height: 100%;
+    font-size: var(--fs-300);
+  }
+
+  .navBar a:hover {
+    background-color: var(--clr-100)
+  }
 }
 
-.navBar a:hover {
-  background-color: var(--clr-100)
-}

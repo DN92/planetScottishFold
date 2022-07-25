@@ -1,7 +1,13 @@
+.topNav {
+  display: flex;
+  background-color: var(--clr-300);
+  width: 100%;
+
+}
+
 .topMenu {
   width: 100%;
   align-items: center;
-  background-color: var(--clr-300);
   text-align: center;
   height: 96px;
   display: flex;
@@ -28,6 +34,18 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.icon-hamburger-wrapper {
+  flex-basis: 12.5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.menuIcon {
+  min-width: 48px;
+  min-height: 48px;
 }
 
 @media (min-width: 50em) {

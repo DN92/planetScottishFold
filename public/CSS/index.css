@@ -2,6 +2,7 @@
 
 /* main file with resets, variables and html and body */
 @import "./style.css";
+@import "./htmlBody.css";
 
 /* non React - component specific  */
 @import "./buttonStyle1.css";
