@@ -16,7 +16,7 @@
   background-color: var(--clr-300);
   transform: translate(0, -10px);
   box-shadow: 2px -5px 5px 1px var(--clr-300);
-  border: solid darkviolet 2px;
+  border: 2px solid var(--clr-100);
 }
 
 .singleKitten div > p {

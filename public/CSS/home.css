@@ -21,8 +21,8 @@
 }
 
 .home__card1__img, .home__card2__img {
-  /* width: 100%; */
-  /* height: auto; */
+  width: auto;
+  height: auto;
   /* max-width: calc(var(--maxWidthBody) / 2); */
 }
 

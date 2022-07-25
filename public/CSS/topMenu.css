@@ -3,21 +3,36 @@
   align-items: center;
   background-color: var(--clr-300);
   text-align: center;
-  height: 80px;
+  height: 96px;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 10px;
+}
+
+.topMenu div,
+.topMenu h1{
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.topMenu__links {
+  width: 100%;
   display: flex;
 }
 
-.topMenu div{
+.topMenu__links a {
+  height: 100%;
   flex-grow: 1;
   display: flex;
-  justify-content: space-around;
-
+  justify-content: center;
+  align-items: center;
 }
 
-.topMenu div div {
-  flex-grow: 1;
-  display: flex;
-  justify-content: space-evenly;
-
+@media (min-width: 50em) {
+  .topMenu__links {
+    width: 80%;
+  }
 }
 

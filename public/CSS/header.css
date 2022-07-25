@@ -2,7 +2,7 @@
   position: fixed;
   top: 0;
   z-index: 3;
-  height: 152px;
+  height: var(--headerSize);
   width: 100%;
 }
 

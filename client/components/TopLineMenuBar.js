@@ -14,20 +14,21 @@ const TopLineMenuBar = ({setViewNav}) => {
   }
 
   return (
-    <nav className='topMenu'>
+    <>
     {!meContext.id &&
-      <div>
-        <div className="forFlexBoxOnly"/>
-        <h1 id='h1'>Planet Scottish Fold
-          {meContext.username ? meContext.username : ''}</h1>
+      <nav className='topMenu'>
+        {/* <div className="forFlexBoxOnly"/> */}
         <div>
+          <h1 id='h1'>Planet Scottish Fold{meContext.username ? meContext.username : ''}</h1>
+        </div>
+        <div className='topMenu__links'>
           <Link  to='/waitingListForm'>Apply</Link>
           <Link to='login'>Login</Link>
         </div>
-      </div>
+      </nav>
     }
     {meContext.id &&
-      <div>
+      <nav>
         <span className='topMenu__navButton'>
         {isPrivileged(type) &&
           <>
@@ -39,9 +40,9 @@ const TopLineMenuBar = ({setViewNav}) => {
         <span className='topMenu__msg'>Hello {meContext.username}. Welcome to Planet Scottish Fold!</span>
 
         <Link className='topMenu__loginout' to='logout'>Log Out</Link>
-      </div>
+      </nav>
       }
-    </nav>
+    </>
   )
 }
 

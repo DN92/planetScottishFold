@@ -6,7 +6,7 @@ const OurProcess = () => {
 
    return (
     <div className='home__ourProcess'>
-     <h4>Our Process</h4>
+     <h3>Our Process</h3>
      <p >
       {placeHolder}
       </p>
