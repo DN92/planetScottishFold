@@ -5,10 +5,10 @@
   justify-content: center;
   background-color: var(--clr-200);
   align-items: center;
-  align-items: stretch;
   border-bottom:20px solid var(--clr-300);
+  position: -webkit-sticky;
   position: sticky;
-  top: 48px;
+  top: 71px;
   z-index: 3;
   margin: 0px -1px;
 }

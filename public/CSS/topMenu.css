@@ -1,15 +1,14 @@
-
 .topMenu {
   width: 100%;
   align-items: center;
   background-color: var(--clr-300);
+  position: -webkit-sticky;
   position: sticky;
   top: 0;
   z-index: 2;
   text-align: center;
-  font-size: var(--FS);
-  height: 35px;
-  padding-top: 18px;
+  height: 80px;
+  display: flex;
 }
 
 .topMenu div{
