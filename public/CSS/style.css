@@ -30,6 +30,7 @@ textarea {
 label {
   font-size: var(--fs-400);
   display: block;
+  margin: 0.15rem;
 }
 
 select {
@@ -38,6 +39,7 @@ select {
 
 p, span {
   line-height: 1.6;
+  display: block;
 }
 
 img,
@@ -181,6 +183,10 @@ h2{
 
 h3{
   font-size: var(--fs-800);
+}
+
+h4{
+  font-size: var(--fs-650);
 }
 
 /* links */

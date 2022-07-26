@@ -36,11 +36,18 @@
   align-items: center;
 }
 
+.topMenu__links a:hover {
+  color: var(--clr-black);
+  transform: translate(0, -0.15rem);
+  font-weight: 900;
+}
+
 .icon-hamburger-wrapper {
   flex-basis: 12.5%;
   display: flex;
   justify-content: center;
   align-items: center;
+  transform: translate(-7px, 10px);
 }
 
 .menuIcon {
@@ -51,6 +58,14 @@
 @media (min-width: 50em) {
   .topMenu__links {
     width: 80%;
+  }
+
+  .topNav {
+    display: block;
+  }
+
+  .icon-hamburger-wrapper {
+    display: none;
   }
 }
 

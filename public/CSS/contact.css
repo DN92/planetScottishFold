@@ -1,12 +1,17 @@
-.contact {
-  height: 100%;
+.contact-pre {
   display: flex;
   flex-wrap: wrap;
-  padding-top: 110px;
+  width: 100%;
+  align-items: baseline;
+  padding-top: 5rem;
 }
 
-.contact input {
+.contact-pre input {
   min-width: 300px;
+}
+
+.contact-post {
+  font-size: var(--fs-600)
 }
 
 .contact__msg {

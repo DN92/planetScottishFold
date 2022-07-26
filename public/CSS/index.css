@@ -6,6 +6,8 @@
 
 /* non React - component specific  */
 @import "./buttonStyle1.css";
+@import "./buttonStyle2.css";
+@import "./buttonsWrapper.css";
 @import "./ImageBlanket.css";
 
 /* component targeted styles */

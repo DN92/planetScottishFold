@@ -1,9 +1,4 @@
-
-.waitingList input {
-  min-width: 300px;
-}
-
-.waitingList__buttons {
+.buttonsWrapper {
   width: 100%;
   display: flex;
   flex-wrap: wrap;

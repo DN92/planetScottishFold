@@ -17,8 +17,8 @@ const ContactRequestForm = () => {
 
   const [contactRequest, setContactRequest] = useState(defaultContactRequest)
   const [newReq, setNewReq] = useState({})
+  const [done, setDone] = useState(false)
   const [error, setError] = useState('')
-  const [endFlag, setEndFlag] = useState(false)
 
   const handleChange = (event) => {
     handleControlledValueFieldToState(event, setContactRequest)
@@ -28,13 +28,13 @@ const ContactRequestForm = () => {
     event.code === 'Enter' && event.target.localName !== 'textarea' && event.preventDefault();
   }
 
+  const handleRedoForm = (event) => {
+    setNewReq({})
+  }
+
   const handleSubmit1 = (event) => {
     event.preventDefault()
     setNewReq(contactRequest)
-  }
-
-  const handleRedo = (event) => {
-    setNewReq({})
   }
 
   const handleSubmit2 = (event) => {
@@ -45,49 +45,57 @@ const ContactRequestForm = () => {
       `api/contactRequests`,
       contactRequest,
     )
-    setEndFlag(prev => !prev)
+    setDone(true)
   }
 
-  useEffect(() => {
-    endFlag && !error && history.push('/home')
-  },[endFlag])
-
   return (
-    <div className='contact'>
-      {error && <ErrorFill msg={error}/>}
-      {!Object.keys(newReq).length && !error &&
+    <>
+      {!done && !error &&
         <>
-          <div className='contact__msg'>
-            <h2>Contact Us</h2>
-            <p>Use this form to send us a direct message without having to log in</p>
-            <p>Address:</p>
-            <p>We breed in our homes,so we do not share our addresses unless reservation deposit is placed.</p>
-
-          </div>
-          <div className='contact__form'>
-            <form id="ContactRequest" onKeyDown={handleKeyPress} onChange={handleChange} onSubmit={handleSubmit1}>
-              <input type="text" name="name" placeholder='Your Name' required/><br />
-              <input type="tel" name="phone" placeholder='Your phone number' /><br />
-              <input type="email" name="eMail" placeholder='Your Email' required/><br />
-              <textarea type="textarea" name="message" cols="40" rows="5" placeholder='Type your message here..' required /><br />
-              <input type="submit" />
-            </form>
+          <h2>{Object.keys(newReq).length ? "Review Your Message" : "Contact Form"}</h2>
+          <div className='contact-pre'>
+            {error && <ErrorFill msg={error}/>}
+            {!Object.keys(newReq).length &&
+              <>
+                <div className='contact__msg'>
+                  <p>Use this form to send us a direct message without having to log in</p>
+                  <p>Address:</p>
+                  <p>We breed in our homes,so we do not share our addresses unless reservation deposit is placed.</p>
+                </div>
+                <div className='contact__form'>
+                  <form id="ContactRequest" onKeyDown={handleKeyPress} onChange={handleChange} onSubmit={handleSubmit1}>
+                    <input type="text" name="name" placeholder='Your Name' required/><br />
+                    <input type="tel" name="phone" placeholder='Your phone number' /><br />
+                    <input type="email" name="eMail" placeholder='Your Email' required/><br />
+                    <textarea type="textarea" name="message" cols="40" rows="5" placeholder='Type your message here..' required /><br />
+                    <input className='buttonStyle2' type="submit" />
+                  </form>
+                </div>
+              </>
+            }
+            {!!Object.keys(newReq).length &&
+              <div className='contact-post'>
+                <p>From: {newReq.name}</p>
+                <p>Email: {newReq.eMail}</p>
+                <p>Telephone: {newReq.phone}</p>
+                <p>Your Message: {newReq.message}</p>
+                <div className='buttonsWrapper'>
+                  <button className='buttonStyle2' type='button' onClick={handleRedoForm}>Edit Information</button>
+                  <button className='buttonStyle2' type='button' onClick={handleSubmit2}>Continue</button>
+                </div>
+              </div>
+            }
           </div>
         </>
-      }
-      {!!Object.keys(newReq).length && !error &&
-        <>
-          <h2>Review Your Message</h2><br />
-          <p>From: {newReq.name}</p><br />
-          <p>Email: {newReq.eMail}</p><br />
-          <p>Telephone: {newReq.phone}</p><br />
-          <p>Your Message:</p> <br />
-          <p>{newReq.message}</p>
-          <button type='button' onClick={handleRedo}>Edit Information</button>
-          <button type='button' onClick={handleSubmit2}>Continue</button>
-        </>
-      }
-    </div>
+    }
+    {/* success message */}
+    {done &&
+      <>
+        <p className='contact-post'>Your message has been submitted. We will review it as soon possible. Thanks!</p>
+        <img src="/otherPictures/catTyping.jpg" alt="cat typing on a keyboard, comical" />
+      </>
+    }
+    </>
   )
 }
 

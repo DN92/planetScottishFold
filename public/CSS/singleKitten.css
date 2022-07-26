@@ -14,8 +14,8 @@
 
 .singleKitten:hover {
   background-color: var(--clr-300);
-  transform: translate(0, -10px);
-  box-shadow: 2px -5px 5px 1px var(--clr-300);
+  transform: translate(0, -0.57rem);
+  /* box-shadow: 2px -5px 5px 1px var(--clr-300); */
   border: 2px solid var(--clr-100);
 }
 

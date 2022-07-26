@@ -3263,7 +3263,7 @@ const ClientQuestionnaire = () => {
     onSubmit: handleSubmit,
     onKeyDown: handleKeyPress,
     onReset: handleReset
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h3", null, "About You"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h4", null, "About You"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
     htmlFor: "clientFormFName"
   }, "First Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
     id: "clientFormFName",
@@ -3329,7 +3329,7 @@ const ClientQuestionnaire = () => {
     placeholder: "If any, what other pets do you own?",
     onChange: handleChange,
     required: true
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h3", null, "Where are you from?"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h4", null, "Where are you from?"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
     htmlFor: "clientFormCity"
   }, "City"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
     id: "clientFormCity",
@@ -3349,7 +3349,7 @@ const ClientQuestionnaire = () => {
     placeholder: "your state",
     onChange: handleChange,
     required: true
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h3", null, "What are you looking for in a kitten?"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h4", null, "What are you looking "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h4", null, "for in a kitten?"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
     htmlFor: "clientForm"
   }, "Budget"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("select", {
     name: "budget",
@@ -3425,7 +3425,7 @@ const ClientQuestionnaire = () => {
   }), _myModelsConfig__WEBPACK_IMPORTED_MODULE_2__.mifOptions.map((feature, index) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
     key: index,
     value: feature
-  }, feature))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h3", null, "Your Facebook and/or Instagram"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+  }, feature))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h4", null, "Your Social Media"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
     htmlFor: "clientFormFb"
   }, "Your Facebook"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
     type: "text",
@@ -3440,11 +3440,13 @@ const ClientQuestionnaire = () => {
     value: clientInfo.iG,
     onChange: handleChange
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "waitingList__buttons"
+    className: "buttonsWrapper"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
-    type: "reset"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    className: "buttonStyle2",
     type: "submit"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    className: "buttonStyle2",
+    type: "reset"
   }))));
 };
 
@@ -3563,8 +3565,8 @@ const ContactRequestForm = () => {
   };
   const [contactRequest, setContactRequest] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(defaultContactRequest);
   const [newReq, setNewReq] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({});
+  const [done, setDone] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
   const [error, setError] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('');
-  const [endFlag, setEndFlag] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
 
   const handleChange = event => {
     (0,_customHandlers_handleFormChange__WEBPACK_IMPORTED_MODULE_2__["default"])(event, setContactRequest);
@@ -3574,31 +3576,28 @@ const ContactRequestForm = () => {
     event.code === 'Enter' && event.target.localName !== 'textarea' && event.preventDefault();
   };
 
+  const handleRedoForm = event => {
+    setNewReq({});
+  };
+
   const handleSubmit1 = event => {
     event.preventDefault();
     setNewReq(contactRequest);
   };
 
-  const handleRedo = event => {
-    setNewReq({});
-  };
-
   const handleSubmit2 = event => {
     event.preventDefault();
     (0,_axiosHandlers_fetchEffect_js__WEBPACK_IMPORTED_MODULE_3__.fetchEffect)([setNewReq, setError], 'post', `api/contactRequests`, contactRequest);
-    setEndFlag(prev => !prev);
+    setDone(true);
   };
 
-  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
-    endFlag && !error && _history__WEBPACK_IMPORTED_MODULE_4__["default"].push('/home');
-  }, [endFlag]);
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "contact"
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, !done && !error && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, Object.keys(newReq).length ? "Review Your Message" : "Contact Form"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "contact-pre"
   }, error && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ErrorFill__WEBPACK_IMPORTED_MODULE_5__["default"], {
     msg: error
-  }), !Object.keys(newReq).length && !error && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+  }), !Object.keys(newReq).length && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "contact__msg"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "Contact Us"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Use this form to send us a direct message without having to log in"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Address:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "We breed in our homes,so we do not share our addresses unless reservation deposit is placed.")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Use this form to send us a direct message without having to log in"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Address:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "We breed in our homes,so we do not share our addresses unless reservation deposit is placed.")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "contact__form"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("form", {
     id: "ContactRequest",
@@ -3627,14 +3626,26 @@ const ContactRequestForm = () => {
     placeholder: "Type your message here..",
     required: true
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    className: "buttonStyle2",
     type: "submit"
-  })))), !!Object.keys(newReq).length && !error && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "Review Your Message"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "From: ", newReq.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Email: ", newReq.eMail), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Telephone: ", newReq.phone), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Your Message:"), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, newReq.message), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+  })))), !!Object.keys(newReq).length && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "contact-post"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "From: ", newReq.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Email: ", newReq.eMail), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Telephone: ", newReq.phone), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Your Message: ", newReq.message), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "buttonsWrapper"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    className: "buttonStyle2",
     type: "button",
-    onClick: handleRedo
+    onClick: handleRedoForm
   }, "Edit Information"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    className: "buttonStyle2",
     type: "button",
     onClick: handleSubmit2
-  }, "Continue")));
+  }, "Continue"))))), done && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
+    className: "contact-post"
+  }, "Your message has been submitted. We will review it as soon possible. Thanks!"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
+    src: "/otherPictures/catTyping.jpg",
+    alt: "cat typing on a keyboard, comical"
+  })));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (ContactRequestForm);

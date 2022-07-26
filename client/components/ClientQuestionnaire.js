@@ -28,9 +28,9 @@ const ClientQuestionnaire = () => {
 
   useEffect(()=>{
     setClientInfo(
-      JSON.parse(localStorage.getItem('clientInfo'))
-      ? JSON.parse(localStorage.getItem('clientInfo'))
-      : defaultClientInfo
+      JSON.parse(localStorage.getItem('clientInfo')) ?
+        JSON.parse(localStorage.getItem('clientInfo')) :
+        defaultClientInfo
       )
   },[])
 
@@ -57,7 +57,7 @@ const ClientQuestionnaire = () => {
     <div className='waitingList'>
       <form id="clientQuestionnaire" onSubmit={handleSubmit} onKeyDown={handleKeyPress} onReset={handleReset}
       >
-        <h3>About You</h3>
+        <h4>About You</h4>
         <label htmlFor="clientFormFName">First Name</label>
         <input  id="clientFormFName"
           type="text"
@@ -118,7 +118,7 @@ const ClientQuestionnaire = () => {
           required
         />
 
-        <h3>Where are you from?</h3>
+        <h4>Where are you from?</h4>
         <label htmlFor="clientFormCity">City</label>
         <input id="clientFormCity"
           type="text"
@@ -137,7 +137,8 @@ const ClientQuestionnaire = () => {
           onChange={handleChange}
           required
         />
-        <h3>What are you looking for in a kitten?</h3>
+        <h4>What are you looking </h4>
+        <h4>for in a kitten?</h4>
         <label htmlFor="clientForm">Budget</label>
         <select name="budget" value={clientInfo.budget} onChange={handleChange} required>
           <option value={''}></option>
@@ -182,15 +183,15 @@ const ClientQuestionnaire = () => {
           ))}
         </select>
 
-        <h3>Your Facebook and/or Instagram</h3>
+        <h4>Your Social Media</h4>
         <label htmlFor="clientFormFb">Your Facebook</label>
         <input type="text" name='fB' value={clientInfo.fB} onChange={handleChange} />
 
         <label htmlFor="clientFormIG">Your Instagram</label>
         <input type="text" name='iG' value={clientInfo.iG} onChange={handleChange} />
-        <div className='waitingList__buttons'>
-          <input type="reset" />
-          <input type="submit" />
+        <div className='buttonsWrapper'>
+          <input className='buttonStyle2' type="submit" />
+          <input className='buttonStyle2' type="reset" />
 
         </div>
       </form>
