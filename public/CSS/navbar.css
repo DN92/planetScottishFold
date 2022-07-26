@@ -39,7 +39,7 @@
 
 
   .navBar a{
-    border: 2px solid var(--clr-100);
+    border: 1px solid var(--clr-100);
     flex-grow: 1;
     display: flex;
     justify-content: center;

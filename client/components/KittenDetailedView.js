@@ -41,19 +41,19 @@ const KittenDetailedView = () => {
 
       {!error && kitten &&
         <div>
-          <img src={kitten.mainImageSrcValue} alt="Picture of Kitten" style={imgInLine}/> <br />
-          <span> {kitten.name}</span> <br />
-          <span> {kitten.breed}</span> <br />
-          <span> Registration Number: {kitten.regNum}</span> <br />
-          <span> Gender: {kitten.gender}</span> <br />
-          <span> Ears: {kitten.ears}</span> <br />
-          <span> Fur color: {kitten.furColor}</span> <br />
-          <span> Eye color: {kitten.eyeColor}</span> <br />
-          <span> Dam: {kitten.mother}</span> <br />
-          <span> Sire: {kitten.father}</span> <br />
-          <span> Status: {kitten.isAvailable ? 'Available' : 'Reserved'}</span> <br />
-          <span> Description: {kitten.description}</span> <br />
-          <span> Price: ${kitten.price}</span> <br />
+          <img src={kitten.mainImageSrcValue} alt="Picture of Kitten" style={imgInLine}/>
+          <p> {kitten.name}</p>
+          <p> {kitten.breed}</p>
+          <p> Registration Number: {kitten.regNum}</p>
+          <p> Gender: {kitten.gender}</p>
+          <p> Ears: {kitten.ears}</p>
+          <p> Fur color: {kitten.furColor}</p>
+          <p> Eye color: {kitten.eyeColor}</p>
+          <p> Dam: {kitten.mother}</p>
+          <p> Sire: {kitten.father}</p>
+          <p> Status: {kitten.isAvailable ? 'Available' : 'Reserved'}</p>
+          <p> Description: {kitten.description}</p>
+          <p> Price: ${kitten.price}</p>
 
         </div>
       }
