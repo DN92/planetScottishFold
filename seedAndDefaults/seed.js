@@ -8,6 +8,10 @@ const dummyStuds = require('./studsDummy')
 const dummyDams = require('./damsDummy')
 const contactRequests = require('./contactReqDummy')
 
+const studsActual = require('./studsActual')
+const damsActual = require('./damsActual')
+const kittensActual = require('./kittensActual')
+
 
 const { Kitten, Mother, Stud, User, AnonVisitor, ContactRequest } = models
 const modelsArray = [ Kitten, Mother, Stud, User, AnonVisitor, ContactRequest ]
@@ -21,7 +25,7 @@ async function seed() {
   await db.sync({force: true})  //  clears the db and matches models to tables
 
   await Promise.all([
-    Promise.all(dummyKittens.map(kitten => {
+    Promise.all(kittensActual.map(kitten => {
       return Kitten.create(kitten)
     })),
     Promise.all(dummyUsers.map(user => {
@@ -30,10 +34,10 @@ async function seed() {
     Promise.all(dummyAnon.map(anon => {
       return AnonVisitor.create(anon)
     })),
-    Promise.all(dummyStuds.map(stud => {
+    Promise.all(studsActual.map(stud => {
       return Stud.create(stud)
     })),
-    Promise.all(dummyDams.map(dam => {
+    Promise.all(damsActual.map(dam => {
       return Mother.create(dam)
     })),
     Promise.all(contactRequests.map(req => {

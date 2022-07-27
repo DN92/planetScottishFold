@@ -49,7 +49,7 @@ if (process.env.NODE_ENV !== 'production') {
 
   app.use((req, res, next) => {
     if (path.extname(req.path).length) {
-      const err = new Error('File Could not be located- custom error')
+      const err = new Error(`File Could not be located: ${req.path}`)
       err.status = 404
       next(err)
     } else {

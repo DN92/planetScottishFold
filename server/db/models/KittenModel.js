@@ -34,7 +34,6 @@ const Kitten = db.define("kitten", {
     type: Sequelize.ENUM(statusOptionsKitten),
     defaultValue: statusOptionsKitten[0],
   },
-
   isAvailable: {
     type: Sequelize.BOOLEAN,
     defaultValue: true,
@@ -45,7 +44,11 @@ const Kitten = db.define("kitten", {
   },
   price: {
     type: Sequelize.INTEGER,
-    defaultValue: 2500
+    defaultValue: 2000,
+  },
+  location: {
+    type:Sequelize.STRING,
+    defaultValue: ''
   },
   regNum: {
     type: Sequelize.STRING,

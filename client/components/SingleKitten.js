@@ -10,7 +10,22 @@ const SingleKitten = (props) => {
   const {type} = useContext(MeContext)
   const {kitten} = props
 
-  const {name, gender, ears, mainImageSrcValue, eyeColor,father, mother, isAvailable, breed, furColor, id} = kitten
+  const {
+    name,
+    breed,
+    gender,
+    ears,
+    furColor,
+    eyeColor,
+    mother,
+    father,
+    price,
+    location,
+    description,
+    status,
+    mainImageSrcValue,
+    id
+  } = kitten
 
   const image = mainImageSrcValue ? mainImageSrcValue : "/catPictures/catError3.gif"
 
@@ -30,12 +45,11 @@ const SingleKitten = (props) => {
         />
       </div>
       <div className='singleKittenInfo'>
-        <p>{name}</p>
-        {breed && <p>{breed}</p> }
-        <p>{gender}</p>
-        <p>{ears}</p>
-        <p>Fur Color: {furColor}</p>
-        <p>Eye Color: {eyeColor}</p>
+        <p>Hi I'm {name}</p>
+        <p>I am a {breed} {gender}</p>
+        <p>My color is </p>
+        <p>{furColor}</p>
+        <p>I have {eyeColor} eyes</p>
         {isPrivileged(type) &&
           <>
             <p>Mother: {mother}</p>

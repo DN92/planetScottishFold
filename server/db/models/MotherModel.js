@@ -31,13 +31,13 @@ const Mother = db.define("mother", {
     type: Sequelize.TEXT,
     defaultValue: ''
   },
-  regNum: {
-    type: Sequelize.STRING,
-    defaultValue: '5432'
-  },
   breed: {
     type: Sequelize.STRING,
     defaultValue: '',
+  },
+  regNum: {
+    type: Sequelize.STRING,
+    defaultValue: '5432'
   },
   mainImageSrcValue: {
     type:Sequelize.STRING,

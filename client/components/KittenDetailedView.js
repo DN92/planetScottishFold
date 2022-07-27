@@ -28,32 +28,27 @@ const KittenDetailedView = () => {
       `/api/kittens?id=${id}`)
   }, [])
 
-  const imgInLine= {
-    width: "100%",
-    maxWidth: "200px",
-    maxHeight: "200px",
-    marginLeft: "2%",
-  }
-
   return (
     <div key={id}>
       {error && <ErrorFill msg={error} />}
 
       {!error && kitten &&
         <div>
-          <img src={kitten.mainImageSrcValue} alt="Picture of Kitten" style={imgInLine}/>
+          <img src={kitten.mainImageSrcValue} alt="Picture of Kitten" />
+          <p> Status: {kitten.isAvailable ? 'Available' : 'Reserved'}</p>
+          <p> Location: {kitten.location}</p>
+          <p> Price: ${kitten.price}</p>
+          <br />
           <p> {kitten.name}</p>
           <p> {kitten.breed}</p>
-          <p> Registration Number: {kitten.regNum}</p>
           <p> Gender: {kitten.gender}</p>
           <p> Ears: {kitten.ears}</p>
           <p> Fur color: {kitten.furColor}</p>
           <p> Eye color: {kitten.eyeColor}</p>
           <p> Dam: {kitten.mother}</p>
           <p> Sire: {kitten.father}</p>
-          <p> Status: {kitten.isAvailable ? 'Available' : 'Reserved'}</p>
+          <p> Registration Number: {kitten.regNum}</p>
           <p> Description: {kitten.description}</p>
-          <p> Price: ${kitten.price}</p>
 
         </div>
       }

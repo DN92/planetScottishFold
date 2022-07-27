@@ -2,6 +2,21 @@
 
 module.exports = {
   //  furColors and eyeColors are used in the Cat Models Enum tables for their corresponding keys.
+  //  FOR CLIENT Q FORM v2
+  furColorsOnQuestionnaire: [
+    'White',
+    'Silver Chinchilla',
+    'Gold Chinchilla',
+    'Blue Gold Chinchilla',
+    'Colorpoint',
+    'Blue - Ticket/Tabby',
+    'Lilac',
+    'Tortoiseshell/Tricolor/Calico',
+    'Bicolor/Any Color with White',
+    'Chocolate/Black/Cinnamon',
+
+  ],
+  // end last comment
   furColors: [
     'No Preference',
     'White',
@@ -11,6 +26,14 @@ module.exports = {
     'Blue',
     'Brown',
     'Black',
+    'Silver Chinchilla Point',
+    'Silver Shaded Chinchilla',
+    'Black Marble Tabby',
+    'Blue Bicolor Tabby',
+    'Brown Ticked Bicolor',
+    'Blue Ticked Bicolor',
+    'Black Tabby',
+    'Blue Colorpoint',
   ],
   eyeColors: [
     'No Preference',
@@ -18,6 +41,7 @@ module.exports = {
     'Blue',
     'Yellow',
     'Copper',
+    'Unknown',
     'Odd',
   ],
   //  for public file serving

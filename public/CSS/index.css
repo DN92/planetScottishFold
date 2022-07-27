@@ -4,11 +4,10 @@
 @import "./style.css";
 @import "./htmlBody.css";
 
-/* non React - component specific  */
+/* not component specific  */
 @import "./buttonStyle1.css";
 @import "./buttonStyle2.css";
 @import "./buttonsWrapper.css";
-@import "./ImageBlanket.css";
 
 /* component targeted styles */
 @import "./header.css";
@@ -19,6 +18,7 @@
 @import "./home.css";
 @import "./about.css";
 @import "./availableKittens.css";
+@import "./advSearch.css";
 @import "./singleKitten.css";
 @import "./reviews.css";
 @import "./waitingList.css";
