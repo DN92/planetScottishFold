@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize')
 const db = require("../dbSetup")
-const { eyeColors, defaultCatPictureSrc, statusOptions, earOptions } = require("../../../myModelsConfig")
+const { eyeColors, defaultCatPictureSrc, statusOptionsParents, earOptions } = require("../../../myModelsConfig")
 
 const Stud = db.define('stud', {
   name: {
@@ -19,33 +19,29 @@ const Stud = db.define('stud', {
     type: Sequelize.ENUM(eyeColors),
     defaultValue: eyeColors[0]
   },
-  age: {
-    type: Sequelize.INTEGER,
-    defaultValue:0,
-  },
   dob: {
     type:Sequelize.STRING,
     defaultValue:'',
   },
   status: {
-    type: Sequelize.ENUM(statusOptions),
-    defaultValue: statusOptions[0]
-  },
-  mainImageSrcValue: {
-    type:Sequelize.STRING,
-    defaultValue: '/otherPictures/photoComingSoon.png'
+    type: Sequelize.ENUM(statusOptionsParents),
+    defaultValue: statusOptionsParents[0]
   },
   description: {
     type: Sequelize.TEXT,
     defaultValue: ''
   },
+  breed: {
+    type: Sequelize.STRING,
+    defaultValue: '',
+  },
   regNum: {
     type: Sequelize.STRING,
     defaultValue: '5432'
   },
-  breed: {
-    type: Sequelize.STRING,
-    defaultValue: '',
+  mainImageSrcValue: {
+    type:Sequelize.STRING,
+    defaultValue: '/otherPictures/photoComingSoon.png'
   },
 })
 

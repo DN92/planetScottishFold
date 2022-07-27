@@ -3,7 +3,7 @@
 module.exports = {
   //  furColors and eyeColors are used in the Cat Models Enum tables for their corresponding keys.
   furColors: [
-    'No Pref',
+    'No Preference',
     'White',
     'Silver',
     'Gold',
@@ -13,7 +13,7 @@ module.exports = {
     'Black',
   ],
   eyeColors: [
-    'No Pref',
+    'No Preference',
     'Green',
     'Blue',
     'Yellow',
@@ -34,26 +34,31 @@ module.exports = {
 
   // most important feature (of product - cat)
   mifOptions: [
-    'No Pref',
+    'No Preference',
     'Health',
     'Appearance',
     'Show Quality',
     'Personality',
     'Price',
   ],
-  statusOptions: [
+  statusOptionsKitten: [
+    'Available',
+    'Reserved',
+    'Sold',
+  ],
+  statusOptionsParents: [
     'Active',  // default is active, not ''
     'Retired',
     'Reserved',
     'Available',
   ],
   earOptions: [
-    'No Pref',
+    'No Preference',
     'Fold',
     'Straight',
   ],
   genderOptions: [
-    'No Pref',
+    'No Preference',
     'Boy',
     'Girl',
   ]
