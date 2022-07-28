@@ -22,6 +22,7 @@
 .singleKitten div > p {
   text-align: left;
   flex-grow: 1;
+  text-align: center;
 }
 
 .singleKitten__card {
