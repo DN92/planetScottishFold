@@ -1,6 +1,6 @@
 /* import all css files here, in reverse order of dominion */
 
-/* main file with resets, variables and html and body */
+/* main files with resets, variables and html and body */
 @import "./style.css";
 @import "./htmlBody.css";
 

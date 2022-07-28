@@ -29,13 +29,12 @@ const AvailableKittens = () => {
   //    it will not lessen the number of viable kittens.
   const handleFilterBySearch = () => {
       const keysToDestroy = Object.entries(filterState)
-        .filter(entry => (entry[1] === 'No Pref'))
+        .filter(entry => (entry[1] === 'No Preference'))
         .map(entry => (entry[0]))
       const filterer = {...filterState}
       keysToDestroy.forEach(key => {
         delete filterer[key]
       })
-      console.log(filterer)
       const weightedArr = kittens.map(kitten => {
         return [kitten, getObjMatches(kitten, filterer)]
       })

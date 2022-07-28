@@ -22,7 +22,7 @@ const ViewCats = () => {
 
   return (
     <div className='kittens'>
-      <h2>Our {MOTHERorFATHER == 'mother' ? 'Dams' : 'Sires'}</h2>
+      <h2>Our {MOTHERorFATHER === 'mother' ? 'Dams' : 'Sires'}</h2>
       <div className='availableKittens' >
         {fetchError && <ErrorFill />}
         {!fetchError &&

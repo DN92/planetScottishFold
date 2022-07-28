@@ -3002,13 +3002,12 @@ const AvailableKittens = () => {
 
 
   const handleFilterBySearch = () => {
-    const keysToDestroy = Object.entries(filterState).filter(entry => entry[1] === 'No Pref').map(entry => entry[0]);
+    const keysToDestroy = Object.entries(filterState).filter(entry => entry[1] === 'No Preference').map(entry => entry[0]);
     const filterer = { ...filterState
     };
     keysToDestroy.forEach(key => {
       delete filterer[key];
     });
-    console.log(filterer);
     const weightedArr = kittens.map(kitten => {
       return [kitten, (0,_myUtilFuncs__WEBPACK_IMPORTED_MODULE_5__.getObjMatches)(kitten, filterer)];
     });
@@ -3088,7 +3087,6 @@ const CatDetailedView = () => {
     id
   } = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_7__.useParams)();
   const [cat, setCat] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(_history__WEBPACK_IMPORTED_MODULE_1__["default"].location.state ? _history__WEBPACK_IMPORTED_MODULE_1__["default"].location.state.cat : null);
-  console.log('cat', cat);
   const [error, setError] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(_history__WEBPACK_IMPORTED_MODULE_1__["default"].location.state ? _history__WEBPACK_IMPORTED_MODULE_1__["default"].location.state.error : ''); //  if we don't have a Mommy or Daddy from history, fetch one by id.
   //  no params and no history should result in a local 404
 
@@ -3547,9 +3545,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _myUtilFuncs_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_myUtilFuncs_js__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _customHandlers_handleFormChange__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../customHandlers/handleFormChange */ "./client/customHandlers/handleFormChange.js");
 /* harmony import */ var _axiosHandlers_fetchEffect_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./axiosHandlers/fetchEffect.js */ "./client/components/axiosHandlers/fetchEffect.js");
-/* harmony import */ var _history__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../history */ "./client/history.js");
-/* harmony import */ var _ErrorFill__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./ErrorFill */ "./client/components/ErrorFill.js");
-
+/* harmony import */ var _ErrorFill__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./ErrorFill */ "./client/components/ErrorFill.js");
 
 
 
@@ -3593,7 +3589,7 @@ const ContactRequestForm = () => {
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, !done && !error && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, Object.keys(newReq).length ? "Review Your Message" : "Contact Form"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "contact-pre"
-  }, error && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ErrorFill__WEBPACK_IMPORTED_MODULE_5__["default"], {
+  }, error && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ErrorFill__WEBPACK_IMPORTED_MODULE_4__["default"], {
     msg: error
   }), !Object.keys(newReq).length && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "contact__msg"
@@ -3663,17 +3659,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 
-const imgStyle = {
-  width: '480px',
-  height: 'auto'
-};
 
 const ErrorFill = ({
   msg
 }) => {
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Something went wrong just meow!"), msg && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, msg), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
-    style: imgStyle,
-    src: "/catPictures/catError3.gif"
+    src: "/catPictures/catError3.gif",
+    alt: "cat error image"
   }));
 };
 
@@ -3715,14 +3707,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _textComponents_AboutUs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./textComponents/AboutUs */ "./client/components/textComponents/AboutUs.js");
 /* harmony import */ var _textComponents_Our_Process__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./textComponents/Our Process */ "./client/components/textComponents/Our Process.js");
-/* harmony import */ var _MeContextPro__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../MeContextPro */ "./client/MeContextPro.js");
-
 
 
 
 
 const homeComponent = () => {
-  const meContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_MeContextPro__WEBPACK_IMPORTED_MODULE_3__["default"]);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "home"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
@@ -3829,7 +3818,7 @@ const KittenFilter = props => {
     furColor,
     eyeColor,
     isAvailable
-  } = props.filterState; // const handleFilterBySearch = props.searcher
+  } = props.filterState;
 
   const handleChange = event => {
     (0,_customHandlers_handleFormChange__WEBPACK_IMPORTED_MODULE_1__["default"])(event, props.setter);
@@ -4294,7 +4283,7 @@ const ViewCats = () => {
   }, [MOTHERorFATHER]);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "kittens"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "Our ", MOTHERorFATHER == 'mother' ? 'Dams' : 'Sires'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "Our ", MOTHERorFATHER === 'mother' ? 'Dams' : 'Sires'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "availableKittens"
   }, fetchError && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ErrorFill__WEBPACK_IMPORTED_MODULE_2__["default"], null), !fetchError && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, cats.map(cat => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_CatSingleView__WEBPACK_IMPORTED_MODULE_1__["default"], {
     key: cat.id,
@@ -4555,15 +4544,15 @@ const CreateKitten = () => {
   };
 
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+    (0,_axiosHandlers_fetchEffect__WEBPACK_IMPORTED_MODULE_4__.fetchEffect)([setDams, setError], 'get', `api/mothers`);
+    (0,_axiosHandlers_fetchEffect__WEBPACK_IMPORTED_MODULE_4__.fetchEffect)([setStuds, setError], 'get', `api/fathers`);
+  }, []);
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
     posted && _history__WEBPACK_IMPORTED_MODULE_3__["default"].push(`/kittenDetailed/${posted.id}`, {
       kitten: posted,
       fromCreate: true
     });
   }, [posted]);
-  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
-    (0,_axiosHandlers_fetchEffect__WEBPACK_IMPORTED_MODULE_4__.fetchEffect)([setDams, setError], 'get', `api/mothers`);
-    (0,_axiosHandlers_fetchEffect__WEBPACK_IMPORTED_MODULE_4__.fetchEffect)([setStuds, setError], 'get', `api/fathers`);
-  }, []);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, error && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ErrorFill__WEBPACK_IMPORTED_MODULE_5__["default"], {
     msg: error
   }), !error && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("form", {
@@ -41683,13 +41672,9 @@ __webpack_require__.r(__webpack_exports__);
  //  This is the User Object on the frontEnd. The getMe function sets the context from the login page.
 
 const root = react_dom_client__WEBPACK_IMPORTED_MODULE_1__.createRoot(document.getElementById('root'));
-root.render(
-/*#__PURE__*/
-// <React.StrictMode>
-react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_MeContextPro__WEBPACK_IMPORTED_MODULE_3__.MeProvider, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_App__WEBPACK_IMPORTED_MODULE_2__["default"], {
+root.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().StrictMode), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_MeContextPro__WEBPACK_IMPORTED_MODULE_3__.MeProvider, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_App__WEBPACK_IMPORTED_MODULE_2__["default"], {
   className: "App"
-})) // </React.StrictMode>
-);
+}))));
 }();
 /******/ })()
 ;

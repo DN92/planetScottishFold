@@ -19,7 +19,6 @@ const TopLineMenuBar = ({setViewNav}) => {
         {!meContext.id &&
           <>
             <div className='topMenu'>
-              {/* <div className="forFlexBoxOnly"/> */}
               <div>
                 <h1 id='h1'>Planet Scottish Fold{meContext.username ? meContext.username : ''}</h1>
               </div>

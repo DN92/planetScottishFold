@@ -8,9 +8,9 @@ import {MeProvider} from './MeContextPro'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  // <React.StrictMode>
+  <React.StrictMode>
     <MeProvider>
       <App className="App" />
     </MeProvider>
-  // </React.StrictMode>
+  </React.StrictMode>
 );

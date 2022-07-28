@@ -77,17 +77,17 @@ const startServer = () => {
   syncDb()
   // start listening and creates a server object
   return app.listen(PORT, () => {
-    console.log(`App initialising. Now running on Port ${PORT}`)
+    console.log(`App initializing. Now running on Port ${PORT}`)
   })
 }
 
-function bootStartApp() {
-  console.log('create app')
-  if (require.main === module) {
-    return (startServer())
-  }
-}
+// function bootStartApp() {
+//   console.log('create app')
+//   if (require.main === module) {
+//     return (startServer())
+//   }
+// }
 
-const server = bootStartApp()
+// const server = bootStartApp()
 
-module.exports = server
+// module.exports = server

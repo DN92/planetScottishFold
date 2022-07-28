@@ -56,21 +56,21 @@ const CreateKitten = () => {
   }
 
   useEffect(() => {
-    posted && history.push(`/kittenDetailed/${posted.id}`, {kitten: posted, fromCreate: true})
-  }, [posted])
-
-  useEffect(() => {
-      fetchEffect(
-        [setDams, setError],
-        'get',
-        `api/mothers`
-      )
-      fetchEffect(
-        [setStuds, setError],
-        'get',
-        `api/fathers`
+    fetchEffect(
+      [setDams, setError],
+      'get',
+      `api/mothers`
+    )
+    fetchEffect(
+      [setStuds, setError],
+      'get',
+      `api/fathers`
       )
   }, [])
+
+  useEffect(() => {
+    posted && history.push(`/kittenDetailed/${posted.id}`, {kitten: posted, fromCreate: true})
+  }, [posted])
 
   return (
     <>

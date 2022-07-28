@@ -71,8 +71,8 @@ myUtilFuncs.getWordsFromArrayOfKeys = (arrayOfWords) => {
       return letter
 
     })
-      .join('')
-  }
+    .join('')
+    }
 
   if(!arrayOfWords.length) {
     return arrayOfWords

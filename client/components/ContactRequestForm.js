@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from 'react'
-import {resetForm, convertToPhoneNumber} from '../../myUtilFuncs.js'
+import React, { useState} from 'react'
+import {convertToPhoneNumber} from '../../myUtilFuncs.js'
 import handleControlledValueFieldToState from '../customHandlers/handleFormChange'
 import { fetchEffect } from './axiosHandlers/fetchEffect.js'
-import history from '../history'
 import ErrorFill from './ErrorFill'
 
 
@@ -87,14 +86,14 @@ const ContactRequestForm = () => {
             }
           </div>
         </>
-    }
-    {/* success message */}
-    {done &&
-      <>
-        <p className='contact-post'>Your message has been submitted. We will review it as soon possible. Thanks!</p>
-        <img src="/otherPictures/catTyping.jpg" alt="cat typing on a keyboard, comical" />
-      </>
-    }
+      }
+      {/* success message */}
+      {done &&
+        <>
+          <p className='contact-post'>Your message has been submitted. We will review it as soon possible. Thanks!</p>
+          <img src="/otherPictures/catTyping.jpg" alt="cat typing on a keyboard, comical" />
+        </>
+      }
     </>
   )
 }

@@ -1,12 +1,10 @@
-import React, {useContext} from 'react'
+import React from 'react'
 import AboutUs from './textComponents/AboutUs'
 import OurProcess from './textComponents/Our Process'
-import MeContext from '../MeContextPro'
+
 
 
 const homeComponent = () => {
-
-  const meContext = useContext(MeContext)
 
   return (
     <div className='home'>

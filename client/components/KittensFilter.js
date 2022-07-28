@@ -5,7 +5,6 @@ import { furColors, eyeColors, earOptions, genderOptions } from '../../myModelsC
 const KittenFilter = (props) => {
 
   const {gender, ears, furColor, eyeColor, isAvailable} = props.filterState
-  // const handleFilterBySearch = props.searcher
 
   const handleChange = (event) => {
     handleControlledValueFieldToState(event, props.setter)

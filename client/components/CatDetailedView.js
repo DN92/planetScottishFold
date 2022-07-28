@@ -18,8 +18,6 @@ const CatDetailedView = () => {
     null
   )
 
-  console.log('cat', cat)
-
   const [error, setError] = useState(history.location.state
     ? history.location.state.error
     : ''

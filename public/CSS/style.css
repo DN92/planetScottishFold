@@ -86,8 +86,8 @@ svg {
   --clr-black: #000;
 
   /*Font Families*/
-  --FF1: 'Comfortaa', cursive;
-  --FF2: 'Cinzel', cursive;
+  --FF1: 'Comfortaa', Arial, Sans-Serif;
+  --FF2: 'Cinzel', Arial, Sans-Serif;
   --FF3: Arial, Sans-Serif;
 
   /* Font Weights */
