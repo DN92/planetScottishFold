@@ -33,15 +33,6 @@ const CatDetailedView = () => {
     )
   }, [])
 
-
-  const imgInLine= {
-    width: "100%",
-    maxWidth: "200px",
-    maxHeight: "200px",
-    marginLeft: "2%",
-  }
-
-
   return (
     <div key={id.toString() + MOTHERorFATHER}>
       {error && <ErrorFill msg={error} />}
@@ -49,7 +40,7 @@ const CatDetailedView = () => {
       {!error && cat &&
         <div>
           <div>
-            <img src={cat.mainImageSrcValue} alt={`Picture of ${MOTHERorFATHER}`} style={imgInLine}/> <br />
+            <img src={cat.mainImageSrcValue} alt={`Picture of ${MOTHERorFATHER}`}/> <br />
             <span>{cat.name}</span> <br />
             <span>{cat.breed}</span> <br />
             {cat.regNum &&

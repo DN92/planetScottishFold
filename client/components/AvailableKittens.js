@@ -9,10 +9,10 @@ import {getObjMatches} from '../../myUtilFuncs'
 const AvailableKittens = () => {
 
   const [kittens, setKittens] = useState([])
-  const [fetchError, setFetchError] = useState(null)
-
+  const [error, setError] = useState(null)
   const [showSearch, setShowSearch] = useState(false)
-
+  /* filterState is the culmination of user search preferences and the setter is passed
+    down to KittensFilter.js */
   const [filterState, setFilterState] = useState({
     gender: 'No Pref',
     ears: 'No Pref',
@@ -25,38 +25,37 @@ const AvailableKittens = () => {
     setShowSearch(prev => !prev)
   }
 
-  //  the filter will reorganize the available kittens array by weighted value,
-  //    it will not lessen the number of viable kittens.
+  //  the filter(SORTER) will reorganize the items(kittens) array by weighted value,
+  //    it will not lessen the number of visible kittens. This is a sorter.
   const handleFilterBySearch = () => {
-      const keysToDestroy = Object.entries(filterState)
-        .filter(entry => (entry[1] === 'No Preference'))
-        .map(entry => (entry[0]))
-      const filterer = {...filterState}
-      keysToDestroy.forEach(key => {
-        delete filterer[key]
-      })
-      const weightedArr = kittens.map(kitten => {
-        return [kitten, getObjMatches(kitten, filterer)]
-      })
-      weightedArr.sort((a, b) => {
-        return b[1] - a[1]
-      })
-      weightedArr.map(kitten => kitten[0])
-      setKittens(weightedArr.map(kitten => kitten[0]))
+    //  delete keys with values of 'No Preference' or empty strings and return keys
+    const keysToDestroy = Object.entries(filterState)
+      .filter(entry => (entry[1] === 'No Preference' || entry[1] === ''))
+      .map(entry => (entry[0]))
+    // Take the current filterState and mutate it without altering state by making a copy.
+    const filterer = {...filterState}
+    keysToDestroy.forEach(key => {
+      delete filterer[key]
+    })
+    // set state to resulting sorting array
+    const weightedArr = kittens.map(kitten => ([kitten, getObjMatches(kitten, filterer)]))
+      .sort((a, b) => ( b[1] - a[1]))
+    setKittens(weightedArr.map(kitten => kitten[0]))
+    // items should now be sorted by user preferences. All user options are weighted equally. (1x)
   }
 
   useEffect(() => {
     fetchEffect(
-    [setKittens, setFetchError],
-    'get',
-    `/api/kittens`,
+      [setKittens, setError],
+      'get',
+      `/api/kittens`,
     )
   }, [])
 
   return (
     <div className='kittens'>
-      {fetchError && <ErrorFill msg={fetchError} />}
-      {!fetchError &&
+      {error && <ErrorFill msg={error} />}
+      {!error &&
       <>
         <input id='advSearchKittens' className='advSearch'
           type="checkbox"

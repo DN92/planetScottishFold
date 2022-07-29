@@ -15,7 +15,7 @@ const ContactRequestForm = () => {
   }
 
   const [contactRequest, setContactRequest] = useState(defaultContactRequest)
-  const [newReq, setNewReq] = useState({})
+  const [newReq, setNewReq] = useState(null)  // object
   const [done, setDone] = useState(false)
   const [error, setError] = useState('')
 
@@ -28,7 +28,7 @@ const ContactRequestForm = () => {
   }
 
   const handleRedoForm = (event) => {
-    setNewReq({})
+    setNewReq(null)
   }
 
   const handleSubmit1 = (event) => {
@@ -51,10 +51,10 @@ const ContactRequestForm = () => {
     <>
       {!done && !error &&
         <>
-          <h2>{Object.keys(newReq).length ? "Review Your Message" : "Contact Form"}</h2>
+          <h2>{newReq ? "Review Your Message" : "Contact Form"}</h2>
           <div className='contact-pre'>
             {error && <ErrorFill msg={error}/>}
-            {!Object.keys(newReq).length &&
+            {!newReq && !error &&
               <>
                 <div className='contact__msg'>
                   <p>Use this form to send us a direct message without having to log in</p>
@@ -72,7 +72,7 @@ const ContactRequestForm = () => {
                 </div>
               </>
             }
-            {!!Object.keys(newReq).length &&
+            {newReq && !error &&
               <div className='contact-post'>
                 <p>From: {newReq.name}</p>
                 <p>Email: {newReq.eMail}</p>
