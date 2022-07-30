@@ -9,6 +9,10 @@
 @import "./buttonStyle2.css";
 @import "./buttonsWrapper.css";
 
+/* mobile nav */
+@import "./navMobile.css";
+@import "./hamburger.css";
+
 /* component targeted styles */
 @import "./header.css";
 @import "./topMenu.css";

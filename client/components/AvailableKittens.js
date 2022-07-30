@@ -28,11 +28,11 @@ const AvailableKittens = () => {
   //  the filter(SORTER) will reorganize the items(kittens) array by weighted value,
   //    it will not lessen the number of visible kittens. This is a sorter.
   const handleFilterBySearch = () => {
-    //  delete keys with values of 'No Preference' or empty strings and return keys
+    //  delete keys with values of 'No Preference' or empty strings
     const keysToDestroy = Object.entries(filterState)
       .filter(entry => (entry[1] === 'No Preference' || entry[1] === ''))
       .map(entry => (entry[0]))
-    // Take the current filterState and mutate it without altering state by making a copy.
+    // Mutate filterState by making a copy.
     const filterer = {...filterState}
     keysToDestroy.forEach(key => {
       delete filterer[key]
@@ -41,7 +41,7 @@ const AvailableKittens = () => {
     const weightedArr = kittens.map(kitten => ([kitten, getObjMatches(kitten, filterer)]))
       .sort((a, b) => ( b[1] - a[1]))
     setKittens(weightedArr.map(kitten => kitten[0]))
-    // items should now be sorted by user preferences. All user options are weighted equally. (1x)
+    // items should now be sorted by user preferences. All user options are currently weighted equally. (1x)
   }
 
   useEffect(() => {
@@ -56,23 +56,23 @@ const AvailableKittens = () => {
     <div className='kittens'>
       {error && <ErrorFill msg={error} />}
       {!error &&
-      <>
-        <input id='advSearchKittens' className='advSearch'
-          type="checkbox"
-          name='showSearch'
-          onChange={handleShowSearch}
-          checked={showSearch} />
-        <label htmlFor="Advanced Search">Advanced Search</label>
-        <div className='availableKittens'>
-          {showSearch && <KittenFilter searcher={handleFilterBySearch} filterState={filterState} setter={setFilterState} />}
-          {kittens.map((kitten) => (
-            <SingleKitten key={kitten.id} kitten={kitten} />
-          ))}
-        </div>
-      </>
+        <>
+          <div className='adv-search-wrapper'>
+            <button id='adv-search-checkbox' className='adv-search-button buttonStyle2'
+              type="button"
+              onClick={handleShowSearch}
+            >{showSearch ? 'Hide' : 'Show'} Advanced Search</button>
+          </div>
+          <div className='availableKittens'>
+            {showSearch && <KittenFilter searcher={handleFilterBySearch} filterState={filterState} setter={setFilterState} />}
+            {kittens.map((kitten) => (
+              <SingleKitten key={kitten.id} kitten={kitten} />
+            ))}
+          </div>
+        </>
       }
     </div>
-    )
+  )
 }
 
 

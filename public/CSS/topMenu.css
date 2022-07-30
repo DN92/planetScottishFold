@@ -2,7 +2,6 @@
   display: flex;
   background-color: var(--clr-300);
   width: 100%;
-
 }
 
 .topMenu {
@@ -40,19 +39,6 @@
   color: var(--clr-black);
   transform: translate(0, -0.15rem);
   font-weight: 900;
-}
-
-.icon-hamburger-wrapper {
-  flex-basis: 12.5%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transform: translate(-7px, 10px);
-}
-
-.menuIcon {
-  min-width: 48px;
-  min-height: 48px;
 }
 
 @media (min-width: 50em) {

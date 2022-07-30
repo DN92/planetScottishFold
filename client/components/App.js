@@ -9,28 +9,32 @@ import AdminBar from './AdminBar'
 import TopLineMenuBar from './TopLineMenuBar'
 import { isPrivileged } from '../../secrets'
 import MeContext from '../MeContextPro'
-
+import NavMobile from './NavMobile'
 
 const App = () => {
 
   const {type} = useContext(MeContext)
   //  as an admin, this flag lets you view or hide the regular navbar
   const [viewNav, setViewNav] = useState(false)
-
-  //  .mainContentContainer is for styling purposes only
+  const [showMobileNav, setShowMobileNav] = useState(false);
 
   return (
     <HistoryRouter history={history}>
       <div className='header'>
-        <TopLineMenuBar setViewNav={setViewNav}/>
+        <TopLineMenuBar setViewNav={setViewNav} setShowMobileNav={setShowMobileNav}/>
         {isPrivileged(type) ? <AdminBar /> :  <NavBar />}
         {isPrivileged(type) && viewNav && <NavBar />}
       </div>
       <div className='mainContentContainer'>
-        <FrontEndRoutes />
-        {isPrivileged(type) && <AdminRoutes />}
+        {showMobileNav && <NavMobile setShowMobileNav={setShowMobileNav} />}
+        {!showMobileNav &&
+          <>
+            <FrontEndRoutes />
+            {isPrivileged(type) && <AdminRoutes />}
+            <Footer />
+          </>
+        }
       </div>
-      <Footer />
     </HistoryRouter>
   )
 }

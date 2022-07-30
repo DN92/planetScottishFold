@@ -58,7 +58,7 @@ const ClientQuestionnaire = () => {
       <form id="clientQuestionnaire" onSubmit={handleSubmit} onKeyDown={handleKeyPress} onReset={handleReset}
       >
         <h4>About You</h4>
-        <label htmlFor="clientFormFName">First Name</label>
+        <label htmlFor="clientFormFName" className='required'>First Name</label>
         <input  id="clientFormFName"
           type="text"
           name="firstName"
@@ -67,7 +67,7 @@ const ClientQuestionnaire = () => {
           onChange={handleChange}
           required
         />
-        <label htmlFor="clientFormTName">Last Name</label>
+        <label htmlFor="clientFormTName" className='required'>Last Name</label>
         <input id="clientFormTName"
           type="text"
           name="lastName"
@@ -76,7 +76,7 @@ const ClientQuestionnaire = () => {
           onChange={handleChange}
           required
         />
-        <label htmlFor="clientFormEmail">EMail</label>
+        <label htmlFor="clientFormEmail" className='required'>EMail</label>
         <input id="clientFormEmail"
           type="email"
           name="eMail"
@@ -85,7 +85,7 @@ const ClientQuestionnaire = () => {
           onChange={handleChange}
           required
         />
-        <label htmlFor="clientFormAboutYou">Tell us a little about yourself</label>
+        <label htmlFor="clientFormAboutYou" className='required'>Tell us a little about yourself</label>
         <textarea id='clientFormAboutYou'
           name="aboutYou"
           cols="40"
@@ -95,7 +95,7 @@ const ClientQuestionnaire = () => {
           onChange={handleChange}
           required
         />
-        <label htmlFor="clientFormFirstCat">Will this be your first cat?</label>
+        <label htmlFor="clientFormFirstCat" className='required'>Will this be your first cat?</label>
         <select id='clientFormFirstCat'
           name="firstCat"
           value={clientInfo.firstCat}
@@ -108,18 +108,18 @@ const ClientQuestionnaire = () => {
             <option value={true}>Yes</option>
         </select>
 
-        <label htmlFor="clientFormOtherPets">Please list out all other pets you own here</label>
+        <label htmlFor="clientFormOtherPets" className='required'>Please list out all other pets you own here</label>
         <input id="clientFormOtherPets"
           type="text"
           name="otherPets"
           value={clientInfo.otherPets}
-          placeholder='If any, what other pets do you own?'
+          placeholder='Other pets do you own'
           onChange={handleChange}
           required
         />
 
         <h4>Where are you from?</h4>
-        <label htmlFor="clientFormCity">City</label>
+        <label htmlFor="clientFormCity" className='required'>City</label>
         <input id="clientFormCity"
           type="text"
           name="city"
@@ -128,7 +128,7 @@ const ClientQuestionnaire = () => {
           onChange={handleChange}
           required
         />
-        <label htmlFor="clientFormState">State</label>
+        <label htmlFor="clientFormState" className='required'>State</label>
         <input id='clientFormState'
           type="text"
           name="state"
@@ -139,28 +139,28 @@ const ClientQuestionnaire = () => {
         />
         <h4>What are you looking </h4>
         <h4>for in a kitten?</h4>
-        <label htmlFor="clientForm">Budget</label>
+        <label htmlFor="clientForm" className='required'>Budget</label>
         <select name="budget" value={clientInfo.budget} onChange={handleChange} required>
           <option value={''}></option>
           {budgetRanges.map((range, index) => (
             <option key={index} value={range}>{range}</option>
           ))}
         </select>
-        <label htmlFor="clientFormGender">Boy or Girl?</label>
+        <label htmlFor="clientFormGender" className='required'>Boy or Girl?</label>
         <select id='clientFormGender' name="gender" value={clientInfo.gender} onChange={handleChange} required>
           <option value={''}></option>
           {genderOptions.map((gen, index) => (
             <option key={index} value={gen}>{gen}</option>
           ))}
         </select>
-        <label htmlFor="clientFormEars">Fold or Straight</label>
+        <label htmlFor="clientFormEars" className='required'>Fold or Straight</label>
         <select id='clientFormEars' name="ears" value={clientInfo.ears} onChange={handleChange} required>
           <option value={''}></option>
           {earOptions.map((ear, index) => (
             <option key={index} value={ear}>{ear}</option>
           ))}
         </select>
-        <label htmlFor="clientFormEyeColor">Eye Color</label>
+        <label htmlFor="clientFormEyeColor" className='required'>Eye Color</label>
         <select id="clientFormEyeColor" name="eyeColor" value={clientInfo.color} onChange={handleChange} required>
          <option value={''}></option>
           {eyeColors.map((color, index) => (
@@ -168,14 +168,14 @@ const ClientQuestionnaire = () => {
           ))}
 
         </select>
-        <label htmlFor="clientFormFurColor">Fur Color</label>
+        <label htmlFor="clientFormFurColor" className='required'>Fur Color</label>
         <select name="furColor" value={clientInfo.furColor} onChange={handleChange} required>
           <option value={''}></option>
           {furColors.map((color, index) => (
             <option key={index} value={color}>{color}</option>
           ))}
         </select>
-        <label htmlFor="clientFormMif">What Is Most Important</label>
+        <label htmlFor="clientFormMif" className='required'>What Is Most Important</label>
         <select id='clientFormMif' name="mif" value={clientInfo.mif} onChange={handleChange} required>
           <option value={''}></option>
           {mifOptions.map((feature, index) => (

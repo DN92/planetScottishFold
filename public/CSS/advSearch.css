@@ -1,7 +1,21 @@
-.advSearch {
+.adv-search-wrapper {
+  padding-left:3rem
+}
+
+.adv-search-checkbox {
   margin:1.5rem;
   margin-right: 0;
+  width: 2rem;
+  height: 2rem;
 }
 .advSearch__search {
   margin-top: 2rem
+}
+
+.kittens label {
+  display: inline;
+}
+
+.adv-search-checkbox {
+  margin-right: 1rem;
 }

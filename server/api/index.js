@@ -1,6 +1,5 @@
 const router = require('express').Router()
 const db = require('../db')
-const { Kitten, Mother, Father } = db.models
 const setAuthorizations = require('../expressMiddleware/setAuthLevel')
 
 //  jwt custom verifier middleware

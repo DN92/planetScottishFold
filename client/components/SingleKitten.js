@@ -29,19 +29,11 @@ const SingleKitten = (props) => {
 
   const image = mainImageSrcValue ? mainImageSrcValue : "/catPictures/catError3.gif"
 
-  const imgInLine= {
-    width: "100%",
-    maxWidth: "200px",
-    maxHeight: "200px",
-    marginLeft: "2%",
-  }
-
   return (
     <div className='singleKitten'>
       <div className='singleKitten__card'>
         <img className='singleKitten__card__img' src={image} alt="kitten picture "
         kitten={kitten}
-        style={imgInLine}
         />
       </div>
       <div className='singleKittenInfo'>

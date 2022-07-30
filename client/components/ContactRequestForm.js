@@ -27,7 +27,7 @@ const ContactRequestForm = () => {
     event.code === 'Enter' && event.target.localName !== 'textarea' && event.preventDefault();
   }
 
-  const handleRedoForm = (event) => {
+  const handleRedoForm = () => {
     setNewReq(null)
   }
 
@@ -58,15 +58,19 @@ const ContactRequestForm = () => {
               <>
                 <div className='contact__msg'>
                   <p>Use this form to send us a direct message without having to log in</p>
-                  <p>Address:</p>
-                  <p>We breed in our homes,so we do not share our addresses unless reservation deposit is placed.</p>
+                  <br />
+                  <p>Our Address: We breed in our homes,so we do not share our addresses unless reservation deposit is placed.</p>
                 </div>
-                <div className='contact__form'>
-                  <form id="ContactRequest" onKeyDown={handleKeyPress} onChange={handleChange} onSubmit={handleSubmit1}>
-                    <input type="text" name="name" placeholder='Your Name' required/><br />
-                    <input type="tel" name="phone" placeholder='Your phone number' /><br />
-                    <input type="email" name="eMail" placeholder='Your Email' required/><br />
-                    <textarea type="textarea" name="message" cols="40" rows="5" placeholder='Type your message here..' required /><br />
+                <div className='contact__formContainer'>
+                  <form id="ContactRequest" className='contact__form' onKeyDown={handleKeyPress} onChange={handleChange} onSubmit={handleSubmit1}>
+                    <label className='required' htmlFor='yourName'>Full Name</label>
+                    <input id='contact__yourName' type="text" name="name" placeholder='Name' required/>
+                    <label htmlFor="contact__phone">Phone Number</label>
+                    <input id='contact__phone' type="tel" name="phone" placeholder='Phone number' />
+                    <label htmlFor="contact__eMail" className='required'>Email</label>
+                    <input id='contact__eMail' type="email" name="eMail" placeholder='Email' required/>
+                    <label htmlFor="contact__aboutYou" className='required'>Message</label>
+                    <textarea id='contact__aboutYou' className='contact__textarea' type="textarea" name="message" cols="40" rows="5" placeholder='Type your message here..' required />
                     <input className='buttonStyle2' type="submit" />
                   </form>
                 </div>

@@ -81,13 +81,13 @@ const startServer = () => {
   })
 }
 
-// function bootStartApp() {
-//   console.log('create app')
-//   if (require.main === module) {
-//     return (startServer())
-//   }
-// }
+function bootStartApp() {
+  console.log('create app')
+  if (require.main === module) {
+    return (startServer())
+  }
+}
 
-// const server = bootStartApp()
+const server = bootStartApp()
 
-// module.exports = server
+module.exports = server

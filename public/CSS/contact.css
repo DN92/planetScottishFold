@@ -22,7 +22,7 @@
   max-width: 400px;
 }
 
-.contact__form {
+.contact__formContainer {
   flex-basis: 50%;
   overflow: hidden;
   min-width: 200;
@@ -32,5 +32,8 @@
 @media (min-width: 50em) {
   .contact-pre {
     flex-direction: row;
+  }
+  .contact__textarea {
+    min-width: 302px;
   }
 }

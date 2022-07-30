@@ -4,7 +4,7 @@ import { furColors, eyeColors, earOptions, genderOptions } from '../../myModelsC
 
 const KittenFilter = (props) => {
 
-  const {gender, ears, furColor, eyeColor, isAvailable} = props.filterState
+  const {gender, ears, eyeColor} = props.filterState
 
   const handleChange = (event) => {
     handleControlledValueFieldToState(event, props.setter)
@@ -16,23 +16,20 @@ const KittenFilter = (props) => {
         <h4>Advanced Search</h4>
         <label htmlFor="gender">Gender</label>
         <select name="gender" value={gender} onChange={handleChange} >
-          <option value={genderOptions[0]}>Boy or Girl</option>
           {genderOptions.map((gen, index) => (
-            <option key={index} value={gen}>{gen}</option>
+            <option key={index} value={gen}>{index === 0 ? `Boy or Girl` : gen }</option>
           ))}
         </select>
         <label htmlFor="ears">Ears: Fold or Straight</label>
         <select name="ears" value={ears} onChange={handleChange}>
-          <option value={earOptions[0]}>Fold Or Straight</option>
           {earOptions.map((ear, index) => (
-            <option key={index} value={ear}>{ear}</option>
+            <option key={index} value={ear}>{index === 0 ? `Fold or Straight` : ear }</option>
           ))}
         </select>
         <label htmlFor="eyeColor">Eye Color</label>
         <select name="eyeColor" value={eyeColor} onChange={handleChange}>
-          <option value={eyeColors[0]}>Eye Color</option>
           {eyeColors.map((color, index) => {
-            return <option key={index} value={color}>{color}</option>
+            return <option key={index} value={color}>{index === 0 ? `Eye Color` : color}</option>
           }) }
         </select>
         <div className='advSearch__search'>

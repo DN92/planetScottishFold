@@ -32,7 +32,7 @@ const damsArray = [
     status: 'Active',
     dob: 'August 1st, 2019',
     description: '',
-    mainImageSrcValue: '/otherPictures/photoComingSoon.png',
+    mainImageSrcValue: '/catPictures/damFelisiya.jpg',
   },
   {
     name: 'BumbleBee',

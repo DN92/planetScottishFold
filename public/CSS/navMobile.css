@@ -1,0 +1,27 @@
+.navMobileWrapper {
+  height: 100%;
+  width: 100%;
+  padding-bottom: 4rem;
+  background-color: (--clr-700);
+  background-image: url('/otherPictures/pinkMountains.jpg');
+  background-repeat: no-repeat;
+  background-size: 800px 1200px;
+  overflow: hidden;
+}
+
+.navMobile {
+  height:100%;
+  padding: 1rem 3rem;
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
+  overflow: hidden;
+}
+
+.navMobile a {
+  flex-grow:1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  font-size: var(--fs-650);
+}

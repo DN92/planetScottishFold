@@ -1,6 +1,5 @@
-
 .waitingList input {
-  min-width: 300px;
+  min-width: 200px;
 }
 
 .waitingList__buttons {
@@ -11,4 +10,10 @@
   gap: 1rem;
   padding: 1.5rem;
   padding-left: .5rem;
+}
+
+@media (min-width: 50em) {
+  .waitingList {
+    padding-left: 4rem;
+  }
 }

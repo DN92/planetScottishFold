@@ -24,7 +24,7 @@ body {
 }
 
 textarea {
-  max-width: 302px;
+  max-width: 200px;
 }
 
 label {
@@ -164,6 +164,11 @@ svg {
   border: none;
 }
 
+.required::after{
+  content: " *";
+  color: red;
+}
+
 /* headers */
 
 
@@ -189,9 +194,12 @@ h4{
   font-size: var(--fs-650);
 }
 
+/* h6 will be for errors */
+h6{
+  color:red;
+}
+
 /* links */
-
-
 a:any-link {
   text-decoration: none;
   color: var(--clr-800);
