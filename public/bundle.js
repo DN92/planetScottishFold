@@ -2956,7 +2956,7 @@ const AuthForm = () => {
     className: "required"
   }, "Password"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Link, {
     id: "link-forgotPass",
-    to: "home"
+    to: "/home"
   }, "Forgot Password?")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
     id: "passwordLogin",
     name: "password",
@@ -3882,9 +3882,7 @@ const KittenFilter = props => {
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("form", {
     className: "advSearch"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h4", null, "Advanced Search"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
-    htmlFor: "gender"
-  }, "Gender"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("select", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h4", null, "Advanced Search"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("select", {
     name: "gender",
     value: gender,
     onChange: handleChange
@@ -3892,8 +3890,8 @@ const KittenFilter = props => {
     key: index,
     value: gen
   }, index === 0 ? `Boy or Girl` : gen))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
-    htmlFor: "ears"
-  }, "Ears: Fold or Straight"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("select", {
+    htmlFor: "gender"
+  }, "Gender"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("select", {
     name: "ears",
     value: ears,
     onChange: handleChange
@@ -3901,8 +3899,8 @@ const KittenFilter = props => {
     key: index,
     value: ear
   }, index === 0 ? `Fold or Straight` : ear))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
-    htmlFor: "eyeColor"
-  }, "Eye Color"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("select", {
+    htmlFor: "ears"
+  }, "Ears: Fold or Straight"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("select", {
     name: "eyeColor",
     value: eyeColor,
     onChange: handleChange
@@ -3911,7 +3909,9 @@ const KittenFilter = props => {
       key: index,
       value: color
     }, index === 0 ? `Eye Color` : color);
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+    htmlFor: "eyeColor"
+  }, "Eye Color"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "advSearch__search"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
     className: "buttonStyle2",
@@ -4330,6 +4330,15 @@ const TopLineMenuBar = ({
     setShowMobileNav(prev => !prev);
   };
 
+  const closeMobileNav = () => {
+    const hamburgerMenu = document.querySelector('#nav__toggle');
+    const hamburgerMenuWrapper = document.querySelector('#hamburger-wrapper');
+    hamburgerMenu.className = 'nav__toggle';
+    hamburgerMenuWrapper = 'hamburger-wrapper';
+    setShowMobileNav(false);
+    console.log(document.querySelector('#nav__toggle')?.className);
+  };
+
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("nav", {
     className: "topNav"
   }, !meContext.id && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
@@ -4339,10 +4348,10 @@ const TopLineMenuBar = ({
   }, "Planet Scottish Fold", meContext.username ? meContext.username : '')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "topMenu__links"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
-    onClick: () => setShowMobileNav(false),
+    onClick: closeMobileNav,
     to: "/waitingListForm"
   }, "Apply"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
-    onClick: () => setShowMobileNav(false),
+    onClick: closeMobileNav,
     to: "login"
   }, "Login"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     id: "hamburger-wrapper",

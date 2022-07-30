@@ -35,11 +35,13 @@ label {
 
 input {
   border-radius: .33rem;
-  border-color: var(--clr-800);
+  border-color: var(--clr-700);
+  min-height: 1.2rem;
 }
 
 select {
   min-width: 120px;
+  margin: .125rem
 }
 
 p, span {

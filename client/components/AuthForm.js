@@ -80,7 +80,7 @@ const AuthForm = () => {
               <div className='login__container__div'>
                 <div className='input-labels-wrapper'>
                   <label htmlFor="passwordLogin" className='required'>Password</label>
-                  <Link id='link-forgotPass' to='home'>
+                  <Link id='link-forgotPass' to='/home'>
                     Forgot Password?
                   </Link>
                 </div>

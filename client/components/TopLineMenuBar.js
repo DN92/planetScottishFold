@@ -23,8 +23,16 @@ const TopLineMenuBar = ({setViewNav, setShowMobileNav}) => {
     hamburgerMenuWrapper?.className === 'hamburger-wrapper' ?
       hamburgerMenuWrapper.className = 'hamburger-wrapper nav-open' :
       hamburgerMenuWrapper.className = 'hamburger-wrapper'
-
     setShowMobileNav(prev => !prev)
+  }
+
+  const closeMobileNav = () => {
+    const hamburgerMenu = document.querySelector('#nav__toggle')
+    const hamburgerMenuWrapper = document.querySelector('#hamburger-wrapper')
+    hamburgerMenu.className = 'nav__toggle'
+    hamburgerMenuWrapper = 'hamburger-wrapper'
+    setShowMobileNav(false)
+    console.log(document.querySelector('#nav__toggle')?.className )
   }
 
   return (
@@ -36,8 +44,8 @@ const TopLineMenuBar = ({setViewNav, setShowMobileNav}) => {
               <h1 id='h1'>Planet Scottish Fold{meContext.username ? meContext.username : ''}</h1>
             </div>
             <div className='topMenu__links'>
-              <Link onClick={()=>setShowMobileNav(false)} to='/waitingListForm'>Apply</Link>
-              <Link onClick={()=>setShowMobileNav(false)} to='login'>Login</Link>
+              <Link onClick={closeMobileNav} to='/waitingListForm'>Apply</Link>
+              <Link onClick={closeMobileNav} to='login'>Login</Link>
             </div>
           </div>
           <div id='hamburger-wrapper' className='hamburger-wrapper' onClick={handleMobileNav}>
