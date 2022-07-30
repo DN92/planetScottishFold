@@ -62,9 +62,7 @@ const TopLineMenuBar = ({setViewNav, setShowMobileNav}) => {
               </>
             }
             </div>
-
             <div className='topMenu__msg'>Hello {meContext.username}. Welcome to Planet Scottish Fold!</div>
-
             <Link className='topMenu__loginout' to='logout'>Log Out</Link>
         </>
         }

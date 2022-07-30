@@ -57,9 +57,9 @@ const ContactRequestForm = () => {
             {!newReq && !error &&
               <>
                 <div className='contact__msg'>
-                  <p>Use this form to send us a direct message without having to log in</p>
+                  <p>Use this form to send us a direct message without having to log in.</p>
                   <br />
-                  <p>Our Address: We breed in our homes,so we do not share our addresses unless reservation deposit is placed.</p>
+                  <p>Our Address: We breed in our homes, so we do not share our addresses unless reservation deposit is placed.</p>
                 </div>
                 <div className='contact__formContainer'>
                   <form id="ContactRequest" className='contact__form' onKeyDown={handleKeyPress} onChange={handleChange} onSubmit={handleSubmit1}>

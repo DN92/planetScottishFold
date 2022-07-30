@@ -3634,7 +3634,7 @@ const ContactRequestForm = () => {
     msg: error
   }), !newReq && !error && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "contact__msg"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Use this form to send us a direct message without having to log in"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Our Address: We breed in our homes,so we do not share our addresses unless reservation deposit is placed.")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Use this form to send us a direct message without having to log in."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Our Address: We breed in our homes, so we do not share our addresses unless reservation deposit is placed.")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "contact__formContainer"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("form", {
     id: "ContactRequest",
@@ -3764,8 +3764,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _textComponents_AboutUs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./textComponents/AboutUs */ "./client/components/textComponents/AboutUs.js");
-/* harmony import */ var _textComponents_Our_Process__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./textComponents/Our Process */ "./client/components/textComponents/Our Process.js");
-
 
 
 
@@ -3784,7 +3782,7 @@ const homeComponent = () => {
     className: "home__card2__img",
     src: "/catPictures/catHome2.webp",
     alt: "cute cat image2"
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_textComponents_Our_Process__WEBPACK_IMPORTED_MODULE_2__["default"], null));
+  })));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (homeComponent);
@@ -4332,11 +4330,10 @@ const TopLineMenuBar = ({
 
   const closeMobileNav = () => {
     const hamburgerMenu = document.querySelector('#nav__toggle');
+    if (hamburgerMenu) hamburgerMenu.className = 'nav__toggle';
     const hamburgerMenuWrapper = document.querySelector('#hamburger-wrapper');
-    hamburgerMenu.className = 'nav__toggle';
-    hamburgerMenuWrapper = 'hamburger-wrapper';
+    if (hamburgerMenuWrapper) hamburgerMenuWrapper = 'hamburger-wrapper';
     setShowMobileNav(false);
-    console.log(document.querySelector('#nav__toggle')?.className);
   };
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("nav", {
@@ -5596,41 +5593,52 @@ const fetchEffect = async (setterFuncArray, method, path, body) => {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _customHooks_useFitText__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../customHooks/useFitText */ "./client/customHooks/useFitText.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/index.js");
 
 
 
 const AboutUs = () => {
   // const {fontSize, ref} = useFitText();
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "home__aboutUs"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h3", null, "About Us"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Planet Scottish Fold is a family breeding cattery with locations in New Jersey, North Carolina and Florida. We have been breeding Scottish Folds since 2016, with a focus on producing healthy and purebred kittens with an amazing personality. All kittens and their parents are raised in our homes in a good, loving environment. We are against captivity, closed cages, declawing and backyard breeding. With us, you'll get your new family member with it's vaccinations, deworming, contract, and life time of breeder support."));
+    className: "home__about-us"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "home__link-wrapper"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
+    to: "/availableKittens"
+  }, "View Available Kittens")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "home__link-wrapper"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
+    to: "/viewCats/mother"
+  }, "See Our Queens / Dams")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "home__link-wrapper"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
+    to: "/viewCats/father"
+  }, "See Our Kings / Sires")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "home__link-wrapper"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
+    to: "/waitingListForm"
+  }, "Apply to start the adoption process")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h5", null, "About Our Scottish Fold Cattery"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("article", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Scottish Fold Cattery: Planet Scottish fold is a small cattery located in High Point, North Carolina USA. We breed Scottish fold and Scottish straight kittens with the intent to improve the breed."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "We also have sister catteries that are located in Bergenfield, New Jersey and Pompano Beach, Florida."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "We mainly specialize in chinchilla colors, such as gold, blue gold, silver and pointed chinchillas. But also have non chinchilla kittens, such as solid white, blue tabby, blue and chocolate colorpoints, bicolor and tortoiseshell kittens."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h5", null, "About the breed"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Scottish folds are known to be suuupperr affectionate and get along with other pets and small children. This breed does not fit the standard cat stereotype! They don\u2019t want to be left alone in their lair, instead, they\u2019ll want to sit on your lap, lie under your arm or on your pillow as close to your face as possible. If you get them a sibling you\u2019ll enjoy watching them jump around and groom each other, but they wont forget about you! You\u2019ll simply get double affection and love."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "So if you\u2019re looking for a mellow and loyal best furrend then this breed is for you!"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
+    to: "/availableKittens"
+  }, "Scottish Fold Kittens for Sale"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h5", null, "Our Kittens"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Our kittens well-being is very important, thus choosing the right owners for our babies is another priority! If you\u2019re ready for your perfect baby, please fill out the ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
+    to: "/waitingListForm"
+  }, "adoption form."), " You\u2019ll be notified via email wether you\u2019re approved or not."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "What you\u2019re getting from Planet Scottish fold:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("ul", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "1 year health guarantee (covers hereditary defects and offers a replacement kitten)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "age appropriate vaccinations and deworming "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "spay/neuter once kitten is at least 5lbs (only NC kittens)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "microchip"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "well socialized kitten raised at home in warm and loving environment with other pets and children"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "weaned off and litter box trained kitten"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "weekly updates with photos and/or videos"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "lifetime breeder support"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "30 days FREE pet insurance "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "FaceTime is available before or after the reservation. ")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h5", null, "Delivery options:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
+    className: "underlined"
+  }, "Air delivery:"), " Delivery within USA is available. Delivery price depends on the destination and airlines schedule. We will deliver to your closest international airport where you\u2019d pick up your kitten from our trusted flight nanny."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Please note, we do not and will not deliver via cargo. If choosing air delivery, only in cabin delivery will be provided. Your kitten will be accompanied with a flight nanny throughout the whole trip and will receive the best care possible! You will be notified throughout the day about your kittens travel."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
+    className: "underlined"
+  }, "Car delivery:"), " Car delivery is also available. Cost to deliver by car is 90 cents per mile (charged for one way). Destination limit is 600 mi from our location in High Point, North Carolina 27265."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Please note, kitten well being is very important, thus we put a limit of miles to deliver by car. Time to deliver might vary a lot depending on traffic changes and number of stops needed to make to eat, rest and provide care for the kitten, such as changing pee pads, cleaning the kennel and/or kitten, making sure it\u2019s hydrated and socialized with to avoid having stress during the drive."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "If you\u2019d like us to meet you half way, same fee of 90 cents per mile will be applied and charged for one way."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h5", null, "Pick up options:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
+    className: "underlined"
+  }, "Flying Over:"), " you can fly over to one of our airports (GSO, RDU, or CLT) and we will meet you there with your kitten. Expect to pay $80-$125 to the airline for the kitten\u2019s one way ticket. Each airline has its own policy, please review it before confirming. We do not provide booking in this case. Will help you the best we can, but no booking/purchasing tickets will be provided from our end."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
+    className: "underlined"
+  }, "Amtrack:"), " you can travel by AMTRACK to our station in High Point, NC, and we will meet you at the station with your kitten.", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "IMPORTANT Amtrack policy: cats up to 20 pounds (combined weight of pet and carrier) are welcome on trips up to seven hours on most routes (some restrictions apply).")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "We do not provide booking in this case. Will help you the best we can, but no booking/purchasing tickets will be provided from our end."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
+    className: "underlined"
+  }, "Meeting half way:"), "  if you\u2019d like us to meet you half way, same fee of 90 cents per mile will be applied and charged for one way."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
+    className: "underlined"
+  }, "Driving Over:"), " most of our kitten owners come to pickup from our home locations. Our address is shared to reserved applicants only."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "If driving far, please plan accordingly and consider having multiple stops to rest and take care of the kitten. It\u2019s good to have 2 people so that the passenger can take the kitten out of the kennel during the drive if it starts being stressed out."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
+    to: "/waitingListFrom"
+  }, "Apply for your kitten baby here"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "After your application is reviewed and you are approved, you will be able to reserve any currently available kitten or be placed for the expected litters.")));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (AboutUs);
-
-/***/ }),
-
-/***/ "./client/components/textComponents/Our Process.js":
-/*!*********************************************************!*\
-  !*** ./client/components/textComponents/Our Process.js ***!
-  \*********************************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-
-
-const OurProcess = () => {
-  const placeHolder = 'placeHolder placeHolder placeHolder placeHolder placeHolder placeHolder placeHolder ';
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "home__ourProcess"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h3", null, "Our Process"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, placeHolder));
-};
-
-/* harmony default export */ __webpack_exports__["default"] = (OurProcess);
 
 /***/ }),
 
@@ -5772,85 +5780,6 @@ const handleLogin = async (meContext, loginInfo) => {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (handleLogin);
-
-/***/ }),
-
-/***/ "./client/customHooks/useFitText.js":
-/*!******************************************!*\
-  !*** ./client/customHooks/useFitText.js ***!
-  \******************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "useFitText": function() { return /* binding */ useFitText; }
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-
-const useFitText = () => {
-  const MIN_FONT_SIZE = 20;
-  const MAX_FONT_SIZE = 100;
-  const RESOLUTION = 5;
-  const ref = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
-  const [state, setState] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
-    fontSize: MAX_FONT_SIZE,
-    fontSizePrev: MIN_FONT_SIZE,
-    fontSizeMax: MAX_FONT_SIZE,
-    fontSizeMin: MIN_FONT_SIZE
-  });
-  const {
-    fontSize,
-    fontSizeMax,
-    fontSizeMin,
-    fontSizePrev
-  } = state;
-  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
-    const isDone = Math.abs(fontSize - fontSizePrev) <= RESOLUTION;
-    const isOverflow = !!ref.current && (ref.current.scrollHeight > ref.current.offsetHeight || ref.current.scrollWidth > ref.current.offsetWidth);
-    const isAsc = fontSize > fontSizePrev; // return if the font size has been adjusted "enough" (change within RESOLUTION)
-    // reduce font size by one increment if it's overflowing
-
-    if (isDone) {
-      if (isOverflow) {
-        const fontSizeNew = fontSizePrev < fontSize ? fontSizePrev : fontSize - (fontSizePrev - fontSize);
-        setState({
-          fontSize: fontSizeNew,
-          fontSizeMax,
-          fontSizeMin,
-          fontSizePrev
-        });
-      }
-
-      return;
-    } // binary search to adjust font size
-
-
-    let delta;
-    let newMax = fontSizeMax;
-    let newMin = fontSizeMin;
-
-    if (isOverflow) {
-      delta = isAsc ? fontSizePrev - fontSize : fontSizeMin - fontSize;
-      newMax = Math.min(fontSizeMax, fontSize);
-    } else {
-      delta = isAsc ? fontSizeMax - fontSize : fontSizePrev - fontSize;
-      newMin = Math.max(fontSizeMin, fontSize);
-    }
-
-    setState({
-      fontSize: fontSize + delta / 2,
-      fontSizeMax: newMax,
-      fontSizeMin: newMin,
-      fontSizePrev: fontSize
-    });
-  }, [fontSize, fontSizeMax, fontSizeMin, fontSizePrev, ref]);
-  return {
-    fontSize: `${fontSize}%`,
-    ref
-  };
-};
 
 /***/ }),
 

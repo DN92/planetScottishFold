@@ -53,8 +53,11 @@
     font-size: var(--fs-300);
   }
 
-  .navBar a:hover {
-    background-color: var(--clr-100)
+  .navBar a:hover,
+  .navBar a:focus-visible {
+    background-color: var(--clr-100);
+    transform: none;
+    font-weight:normal;
   }
 }
 

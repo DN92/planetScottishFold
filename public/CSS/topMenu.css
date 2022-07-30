@@ -37,8 +37,6 @@
 
 .topMenu__links a:hover {
   color: var(--clr-black);
-  transform: translate(0, -0.15rem);
-  font-weight: 900;
 }
 
 @media (min-width: 50em) {

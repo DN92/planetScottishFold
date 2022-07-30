@@ -1,28 +1,36 @@
 .home * {
-  /* width: 100%; */
 }
 
 .home {
-  /* display: flex;
-  flex-direction: column;
-  align-content: center;
-  padding-bottom: 40px;
-  width: 100%;
-  color: var(--clr-200);
-  font-size: var(--fs-300);
-  text-align: justify; */
 }
 
 .home__card1, .home__card2  {
   display: flex;
   justify-content: center;
-
-
 }
 
 .home__card1__img, .home__card2__img {
   width: auto;
   height: auto;
-  /* max-width: calc(var(--maxWidthBody) / 2); */
+}
+
+.home__link-wrapper {
+  margin: .5rem
+}
+
+.home__about-us p{
+  text-align: justify;
+}
+.home__about-us ul {
+  padding-left: 1.75rem
+}
+
+.home__about-us p {
+  margin: 1rem .125rem;
+}
+
+.home__about-us li {
+  margin: .25rem 0;
+  line-height: 1.6;
 }
 
