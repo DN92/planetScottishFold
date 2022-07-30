@@ -18,7 +18,6 @@ const TopLineMenuBar = ({setViewNav, setShowMobileNav}) => {
     hamburgerMenu?.className === `nav__toggle` ?
       hamburgerMenu.className = 'nav__toggle nav-open' :
       hamburgerMenu.className = 'nav__toggle'
-
     const hamburgerMenuWrapper = document.querySelector('#hamburger-wrapper')
     hamburgerMenuWrapper?.className === 'hamburger-wrapper' ?
       hamburgerMenuWrapper.className = 'hamburger-wrapper nav-open' :
@@ -28,11 +27,10 @@ const TopLineMenuBar = ({setViewNav, setShowMobileNav}) => {
 
   const closeMobileNav = () => {
     const hamburgerMenu = document.querySelector('#nav__toggle')
+    if(hamburgerMenu) hamburgerMenu.className = 'nav__toggle'
     const hamburgerMenuWrapper = document.querySelector('#hamburger-wrapper')
-    hamburgerMenu.className = 'nav__toggle'
-    hamburgerMenuWrapper = 'hamburger-wrapper'
+    if(hamburgerMenuWrapper) hamburgerMenuWrapper = 'hamburger-wrapper'
     setShowMobileNav(false)
-    console.log(document.querySelector('#nav__toggle')?.className )
   }
 
   return (
