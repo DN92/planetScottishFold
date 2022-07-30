@@ -100,21 +100,12 @@ const AuthForm = () => {
                 <button id='sign-in-button' className='buttonStyle3' type='submit'>Sign In</button>
               </div>
             </div>
-
-
           </form>
         </div>
-        <div className='login__extras'>
-          <div >
-          </div>
-        </div>
       </div>
-          <div>
-            <p>Don't have an account?</p>
-            <Link to='/waitingListForm'>
-              <button className='buttonStyle2'><h2>Sign Up</h2></button>
-            </Link>
-          </div>
+      <div className='login-wrapper no-account'>
+        <p>Don't have an account? <Link id='signUp-link' to='/waitingListForm'>Sign Up</Link></p>
+      </div>
     </div>
   )}
 export default AuthForm

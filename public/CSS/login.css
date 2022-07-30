@@ -83,6 +83,15 @@
   width:1.5rem
 }
 
+.no-account {
+  font-size: var(--fs-500);
+  padding: 2rem;
+}
+
+#signUp-link {
+  color:blue
+}
+
 @media (max-width: 380px) {
   .login-wrapper {
     margin: 0 0rem;
