@@ -56,16 +56,18 @@ const AuthForm = () => {
 
   return (
     <div className='login'>
-      <div className='login-wide'>
+          {!error && <h4 className='login__h4'>Sign in to Planet Scottish Fold</h4>}
+      <div className='login-wrapper'>
+        <h2 className='visually-hidden'>Login</h2>
         <div >
-          <h2>Login</h2>
-          {!error && <h5>Login Information</h5>}
           {error && <h6 className='required'>Email or Password is incorrect. Try Again</h6>}
           <form onSubmit={handleSubmit} onChange={handleChange}>
-
-              <div className='login__container'>
-                <div>
-                  <label htmlFor="eMailLogin" className='required'>Email</label>
+            <div className='login__container'>
+              <div className='login__container__div'>
+                <div className='input-labels-wrapper'>
+                  <label htmlFor="eMailLogin" className='required'>Email Address</label>
+                </div>
+                <div className='login__input-wrapper'>
                   <input id='eMailLogin'
                     name="eMail"
                     type="email"
@@ -74,43 +76,45 @@ const AuthForm = () => {
                     required
                   />
                 </div>
-                <div>
+              </div>
+              <div className='login__container__div'>
+                <div className='input-labels-wrapper'>
                   <label htmlFor="passwordLogin" className='required'>Password</label>
-                  <input id='passwordLogin'
-                    name="password"
-                    type="password"
-                    value={loginInfo.password}
-                    onChange={handleChange}
-                    required
-                  />
+                  <Link id='link-forgotPass' to='home'>
+                    Forgot Password?
+                  </Link>
                 </div>
-                <div>
-                  <input id='rememberMe' className='auth__remMe__checkbox' onChange={handleRememberMe} type="checkbox" name="rememberMe" checked={rememberMe}/>
-                  <label htmlFor="auth__remMe" className='auth__remMe'>Remember Me</label>
-                </div>
+                <input id='passwordLogin'
+                  name="password"
+                  type="password"
+                  value={loginInfo.password}
+                  onChange={handleChange}
+                  required
+                />
               </div>
-              <div className='buttonsWrapper'>
-                <button className='buttonStyle2' type='submit'>Submit </button>
+              <div className='remMe-wrapper'>
+                <input id='rememberMe' className='auth__remMe__checkbox' onChange={handleRememberMe} type="checkbox" name="rememberMe" checked={rememberMe}/>
+                <label htmlFor="auth__remMe" className='auth__remMe'>Remember Me</label>
               </div>
+              <div className='login-container__div'>
+                <button id='sign-in-button' className='buttonStyle3' type='submit'>Sign In</button>
+              </div>
+            </div>
 
 
           </form>
         </div>
         <div className='login__extras'>
+          <div >
+          </div>
+        </div>
+      </div>
           <div>
             <p>Don't have an account?</p>
             <Link to='/waitingListForm'>
               <button className='buttonStyle2'><h2>Sign Up</h2></button>
             </Link>
           </div>
-          <div >
-            <Link to='home'>
-              Forgot Password?
-            </Link>
-          </div>
-        </div>
-
-      </div>
     </div>
   )}
 export default AuthForm

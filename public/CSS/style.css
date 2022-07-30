@@ -33,6 +33,11 @@ label {
   margin: 0.15rem;
 }
 
+input {
+  border-radius: .33rem;
+  border-color: var(--clr-800);
+}
+
 select {
   min-width: 120px;
 }
@@ -79,6 +84,7 @@ svg {
   --clr-300: #93E1D8;
   /* dark and greys */
   --clr-700: #EBECF0;
+  --clr-750: #d1cfc8;
   --clr-800: rgb(105,105,105);
   --clr-900: #000080;
   /* white black */

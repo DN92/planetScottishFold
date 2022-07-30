@@ -1,0 +1,13 @@
+.buttonStyle3 {
+  min-height: 3rem;
+  min-width: 200px;
+  background-color: #2da44e;
+  border-radius: .5rem;
+  width: 100%;
+}
+
+.buttonStyle3:hover {
+  color: var(--clr-black);
+  transform: translate(0, -0.15rem);
+  font-weight: 900;
+}
