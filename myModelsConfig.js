@@ -14,7 +14,6 @@ module.exports = {
     'Tortoiseshell/Tricolor/Calico',
     'Bicolor/Any Color with White',
     'Chocolate/Black/Cinnamon',
-
   ],
   // end last comment
   furColors: [

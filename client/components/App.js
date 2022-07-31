@@ -1,5 +1,6 @@
-import React, {useState, useContext} from 'react'
+import React, { useState, useContext } from 'react'
 import { unstable_HistoryRouter as HistoryRouter } from 'react-router-dom'
+import { Helmet } from 'react-helmet'  // react Head component
 import FrontEndRoutes from '../FrontEndRoutes'
 import AdminRoutes from '../AdminRoutes'
 import NavBar from './NavBar'
@@ -19,23 +20,29 @@ const App = () => {
   const [showMobileNav, setShowMobileNav] = useState(false);
 
   return (
-    <HistoryRouter history={history}>
-      <div className='header'>
-        <TopLineMenuBar setViewNav={setViewNav} setShowMobileNav={setShowMobileNav}/>
-        {isPrivileged(type) ? <AdminBar /> :  <NavBar />}
-        {isPrivileged(type) && viewNav && <NavBar />}
-      </div>
-      <div className='mainContentContainer'>
-        {showMobileNav && <NavMobile setShowMobileNav={setShowMobileNav} />}
-        {!showMobileNav &&
-          <>
-            <FrontEndRoutes />
-            {isPrivileged(type) && <AdminRoutes />}
-            <Footer />
-          </>
-        }
-      </div>
-    </HistoryRouter>
+    <>
+      <Helmet>
+        <title>Planet Scottish Fold | Scottish Fold Cattery</title>
+        <meta name='Planet Scottish Fold' contents='Proud Breeders of Scottish Fold Kittens' />
+      </Helmet>
+      <HistoryRouter history={history}>
+        <div className='header'>
+          <TopLineMenuBar setViewNav={setViewNav} setShowMobileNav={setShowMobileNav}/>
+          {isPrivileged(type) ? <AdminBar /> :  <NavBar />}
+          {isPrivileged(type) && viewNav && <NavBar />}
+        </div>
+        <div className='mainContentContainer'>
+          {showMobileNav && <NavMobile setShowMobileNav={setShowMobileNav} />}
+          {!showMobileNav &&
+            <>
+              <FrontEndRoutes />
+              {isPrivileged(type) && <AdminRoutes />}
+            </>
+          }
+        </div>
+        {!showMobileNav && <Footer /> }
+      </HistoryRouter>
+    </>
   )
 }
 

@@ -1,0 +1,23 @@
+.logout {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.logout h4 {
+  text-align: center;
+}
+
+.logout-img-wrapper {
+  flex-grow: 1;
+  min-width: 50vw;
+  object-fit: contain;
+}
+
+.logout-img-wrapper img {
+  object-fit: contain;
+  width: 100%;
+}
+

@@ -2,7 +2,7 @@
   height: 100%;
   width: 96.5%;
   margin-top: calc(var(--headerSize) + .5rem );
-  margin-bottom: 3.5rem;
+  margin-bottom: 12rem;
 }
 
 .mainContentContainer a {

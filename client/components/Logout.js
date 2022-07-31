@@ -15,12 +15,12 @@ const Logout = () => {
   },[])
 
   return (
-    <div>
-      <h2>You have been Successfully logged out</h2>
-      <p>username: {username} type {type} id {id}</p>
-      <img src="/catPictures/outsideCat.jpeg" alt="Image of cat outside" />
-      <Link to='/login'>Log In</Link> <br />
-      <Link to='/home'> Back To Homepage</Link>
+    <div className='logout'>
+      <h4>You have been Successfully</h4>
+        <h4>logged out</h4>
+      <div className='logout-img-wrapper'>
+        <img src="/catPictures/outsideCat.jpeg" alt="Image of cat outside" />
+      </div>
     </div>
   )
 }

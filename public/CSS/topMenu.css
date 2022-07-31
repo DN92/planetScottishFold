@@ -33,6 +33,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  color: var(--clr-white);
 }
 
 .topMenu__links a:hover {

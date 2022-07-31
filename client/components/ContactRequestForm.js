@@ -65,8 +65,8 @@ const ContactRequestForm = () => {
                   <form id="ContactRequest" className='contact__form' onKeyDown={handleKeyPress} onChange={handleChange} onSubmit={handleSubmit1}>
                     <label className='required' htmlFor='yourName'>Full Name</label>
                     <input id='contact__yourName' type="text" name="name" placeholder='Name' required/>
-                    <label htmlFor="contact__phone">Phone Number</label>
-                    <input id='contact__phone' type="tel" name="phone" placeholder='Phone number' />
+                    <label htmlFor="contact__phone" className='required'>Phone Number</label>
+                    <input id='contact__phone' type="tel" name="phone" placeholder='Phone number' required/>
                     <label htmlFor="contact__eMail" className='required'>Email</label>
                     <input id='contact__eMail' type="email" name="eMail" placeholder='Email' required/>
                     <label htmlFor="contact__aboutYou" className='required'>Message</label>

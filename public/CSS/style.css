@@ -131,6 +131,8 @@ svg {
 
 @media (min-width: 50em) {
   :root {
+    --fs-100: .5rem;
+    --fs-200: .625rem;
     --fs-300: .75rem;
     --fs-400: .875rem;
     --fs-500: 1rem;
@@ -184,6 +186,10 @@ svg {
   text-decoration: underline;
 }
 
+.shrink-text {
+  font-size: var(--fs-300) !important;
+}
+
 /* headers */
 
 
@@ -199,6 +205,12 @@ h1, h2, h3, h4, h5, h6 {
 
 h2{
   font-size: var(--fs-900);
+}
+
+@media (min-width: 24em) {
+  h2{
+    margin-left: 5rem
+  }
 }
 
 h3{

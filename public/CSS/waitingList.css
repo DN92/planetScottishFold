@@ -1,5 +1,19 @@
+.waitingList__form {
+  display: flex;
+  flex-direction: column;
+}
+
+.waitingList-left,
+.waitingList-right {
+  flex-basis: 45%;
+}
+
 .waitingList input {
   min-width: 200px;
+}
+
+.waitingList input[type='checkbox'] {
+  min-width: auto;
 }
 
 .waitingList__buttons {
@@ -12,8 +26,35 @@
   padding-left: .5rem;
 }
 
+.cq-furcolors-wrapper {
+  background-color: aqua;
+  display: flex;
+  flex-wrap: wrap;
+  /* max-width: 45%; */
+}
+
+.cq-single-color-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.cq-single-color-wrapper input {
+  height: auto;
+  width: auto;
+}
+
+.cq-furcolors-wrapper label {
+  display: inline;
+}
+
 @media (min-width: 50em) {
-  .waitingList {
-    padding-left: 4rem;
+
+}
+
+@media (min-width: 670px) {
+  .waitingList__form {
+    flex-direction: row;
   }
 }
