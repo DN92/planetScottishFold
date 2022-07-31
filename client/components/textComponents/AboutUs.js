@@ -21,7 +21,7 @@ const AboutUs = () => {
     </div>
    <h5>About Our Scottish Fold Cattery</h5>
    <article>
-    <p >Scottish Fold Cattery: Planet Scottish fold is a small cattery located in High Point, North Carolina USA. We breed Scottish fold and Scottish straight kittens with the intent to improve the breed.
+    <p >Planet Scottish fold is a small cattery located in High Point, North Carolina USA. We breed Scottish fold and Scottish straight kittens with the intent to improve the breed.
     </p>
     <p>
       We also have sister catteries that are located in Bergenfield, New Jersey and Pompano Beach, Florida.
@@ -38,10 +38,10 @@ const AboutUs = () => {
     <p>
       So if you’re looking for a mellow and loyal best furrend then this breed is for you!
     </p>
-    <Link to='/availableKittens'>Scottish Fold Kittens for Sale</Link>
+    <Link to='/availableKittens'>View Scottish Fold Kittens for Sale</Link>
     <h5>Our Kittens</h5>
     <p>
-    Our kittens well-being is very important, thus choosing the right owners for our babies is another priority! If you’re ready for your perfect baby, please fill out the <Link to='/waitingListForm'>adoption form.</Link> You’ll be notified via email wether you’re approved or not.
+    Our kittens well-being is very important, thus choosing the right owners for our babies is another priority! If you’re ready for your perfect baby, please fill out the <Link to='/waitingListForm'>Questionnaire.</Link>
     </p>
     <p>
       What you’re getting from Planet Scottish fold:
@@ -77,7 +77,7 @@ const AboutUs = () => {
     <h5>Pick up options:</h5>
     <p>
       <span className='underlined'>Flying Over:</span> you can fly over to one of our airports (GSO, RDU, or CLT) and we will meet you there with your kitten. Expect to pay $80-$125 to the airline for the kitten’s one way ticket. Each airline has its own policy, please review it before confirming.
-      We do not provide booking in this case. Will help you the best we can, but no booking/purchasing tickets will be provided from our end.
+      We will assist you the best we can, but no booking/purchasing tickets will be provided from our end.
     </p>
     <p>
       <span className='underlined'>Amtrack:</span> you can travel by AMTRACK to our station in High Point, NC, and we will meet you at the station with your kitten.
@@ -87,7 +87,7 @@ const AboutUs = () => {
 
     </p>
     <p>
-      We do not provide booking in this case. Will help you the best we can, but no booking/purchasing tickets will be provided from our end.
+      We will help you the best we can, but no booking/purchasing tickets will be provided from our end.
     </p>
     <p>
       <span className='underlined'>Meeting half way:</span>  if you’d like us to meet you half way, same fee of 90 cents per mile will be applied and charged for one way.
@@ -99,10 +99,10 @@ const AboutUs = () => {
       If driving far, please plan accordingly and consider having multiple stops to rest and take care of the kitten. It’s good to have 2 people so that the passenger can take the kitten out of the kennel during the drive if it starts being stressed out.
     </p>
     <Link to='/waitingListFrom'>
-      Apply for your kitten baby here
+      Apply for your kitten here
     </Link>
     <p>
-      After your application is reviewed and you are approved, you will be able to reserve any currently available kitten or be placed for the expected litters.
+      After your application is reviewed, you'll be notified. After that, you will be able to reserve any currently available kitten or reserve a spot for future litters.
     </p>
 
    </article>

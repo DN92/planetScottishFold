@@ -43,7 +43,7 @@ const ConfirmClientQuestionnaire = () => {
     fetchEffect(
       [setInfoPosted,setError],
       'put',
-      `/api/anonVisitors`,
+      `/api/users`,
       clientInfo
     )
   }

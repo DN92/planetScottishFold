@@ -15,7 +15,7 @@ useEffect(()=>{
   fetchEffect(
     [setRequests, setError],
     'get',
-    `/api/anonVisitors`
+    `/api/users`
   )
 }, [])
 

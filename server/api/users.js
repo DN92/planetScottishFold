@@ -10,7 +10,7 @@ router.get('/', async (req, res, next) => {
   // passAuth(3, req, res)
   try {
     const users = await User.findAll({
-      attributes: {exclude: ['password', 'updatedAt', 'createdAt']}
+      attributes: {exclude: ['password', 'updatedAt']}
     })
     res.send(users) // array
   } catch (err) {
@@ -44,7 +44,6 @@ router.post('/anonToUser', async (req, res, next) => {
 router.put('/', async(req, res, next) => {
   try {
     passAuth(3, req, res)
-    //  this probably belongs in hooks. security measure
     delete req.body.type
     const user = await User.findByPk(req.query.id)
     const update = await user.update(req.body)
@@ -71,9 +70,5 @@ router.delete('/', async(req, res, next) => {
     next(err)
   }
 })
-
-module.exports = router
-
-
 
 module.exports = router

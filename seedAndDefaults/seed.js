@@ -3,7 +3,6 @@
 const { db, models } = require ('../server/db')
 const dummyKittens = require('./kittensDummy')
 const dummyUsers = require('./userDummy')
-const dummyAnon = require('./anonDummy')
 const dummyStuds = require('./studsDummy')
 const dummyDams = require('./damsDummy')
 const contactRequests = require('./contactReqDummy')
@@ -13,8 +12,8 @@ const damsActual = require('./damsActual')
 const kittensActual = require('./kittensActual')
 
 
-const { Kitten, Mother, Stud, User, AnonVisitor, ContactRequest } = models
-const modelsArray = [ Kitten, Mother, Stud, User, AnonVisitor, ContactRequest ]
+const { Kitten, Mother, Stud, User, ContactRequest } = models
+const modelsArray = [ Kitten, Mother, Stud, User, ContactRequest ]
 /**
  *  seed - this function clears the database, updates tables to
  *    match our models, and populates the database
@@ -30,9 +29,6 @@ async function seed() {
     })),
     Promise.all(dummyUsers.map(user => {
       return User.create(user)
-    })),
-    Promise.all(dummyAnon.map(anon => {
-      return AnonVisitor.create(anon)
     })),
     Promise.all(studsActual.map(stud => {
       return Stud.create(stud)

@@ -67,7 +67,6 @@ const EditKitten = () => {
       `/api/kittens`,
       kittenToEdit
     )
-
     !dams.length && fetchEffect(
       [setDams, setError],
       'get',

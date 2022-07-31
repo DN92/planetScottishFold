@@ -28,7 +28,9 @@ const RequestReview = () => {
     'IPaddress',
   ]
   const wordsFromKeys = getWordsFromArrayOfKeys(arrayFromRequestKeys)
-  const request = history.location.state ? history.location.state.request : false
+  const request = history.location.state ?
+    history.location.state.request :
+    false
 
   const {requestId} = useParams()
   const [error, setError] = useState(null)
@@ -53,7 +55,7 @@ const RequestReview = () => {
     fetchEffect(
       [,setError],
       'delete',
-      `/api/anonVisitors?id=${requestId}`
+      `/api/users?id=${requestId}`
     )
     setDeleted(true)
     setPosted(true)
@@ -65,7 +67,7 @@ const RequestReview = () => {
       fetchEffect(
         [,setError],
         'delete',
-        `/api/anonVisitors?id=${requestId}`
+        `/api/users?id=${requestId}`
       )
     }
   }, [posted])

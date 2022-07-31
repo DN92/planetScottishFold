@@ -10,7 +10,6 @@ router.use('/kittens', require('./kittens'))
 router.use('/mothers', require('./mothers'))
 router.use('/fathers', require('./fathers'))
 router.use('/users', require('./users'))
-router.use('/anonVisitors', require('./anonVisitor'))
 router.use('/contactRequests', require('./contactRequest'))
 
 // error endpoint

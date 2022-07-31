@@ -40,9 +40,17 @@ module.exports = {
     'Blue',
     'Yellow',
     'Copper',
-    'Unknown',
     'Odd',
   ],
+  eyeColorsAdmin: [
+    'Unknown',
+    'Green',
+    'Blue',
+    'Yellow',
+    'Copper',
+    'Odd',
+  ],
+
   //  for public file serving
   defaultCatPictureSrc: '/catPictures/cat404.png',
 
@@ -84,5 +92,30 @@ module.exports = {
     'No Preference',
     'Boy',
     'Girl',
-  ]
+  ],
+  willBreedOptions: [
+    'Have Not Decided',
+    'Yes',
+    'No',
+  ],
+  hasAllergiesOptions: [
+    'Dont Know',
+    'Yes',
+    'No',
+  ],
+  foundUsByOptions: [
+    'Google',
+    'Facebook',
+    'Instagram',
+    'Pinterest',
+    'TikTok',
+    'Youtube',
+    'Referral',
+    'Other',
+  ],
+  applyStatusOptions: [
+    'pending',
+    'denied',
+    'approved'
+  ],
 }

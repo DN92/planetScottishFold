@@ -30,7 +30,7 @@ textarea {
 label {
   font-size: var(--fs-400);
   display: block;
-  margin: 0.15rem;
+  margin: 0.35rem;
 }
 
 input {
@@ -41,7 +41,6 @@ input {
 
 select {
   min-width: 120px;
-  margin: .125rem
 }
 
 p, span {

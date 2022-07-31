@@ -61,7 +61,7 @@ const DirectMessages = () => {
     counterRef.current < 3 &&
     setAllMessages(allMessages.sort((a, b) => {
       return (b.wasRead ? 0 : 1) - (a.wasRead ? 0 : 1)
-    }) )
+    }))
   }, [allMessages])
 
   useEffect(() => {
