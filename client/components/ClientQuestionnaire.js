@@ -255,15 +255,6 @@ const ClientQuestionnaire = () => {
             </div>
           </>
           <>
-            <label htmlFor="clientFormFurColor" className='required'>Fur Color</label>
-            <select name="furColor" value={clientInfo.furColor} onChange={handleChange} required>
-              <option value={''}></option>
-              {furColors.map((color, index) => (
-                <option key={index} value={color}>{color}</option>
-              ))}
-            </select>
-          </>
-          <>
             <label htmlFor="clientForm" className='required'>Budget</label>
             <select name="budget" value={clientInfo.budget} onChange={handleChange} required>
               <option value={''}></option>

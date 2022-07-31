@@ -3513,19 +3513,6 @@ const ClientQuestionnaire = () => {
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
     htmlFor: `cq-fur-${fur}`
   }, fur))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
-    htmlFor: "clientFormFurColor",
-    className: "required"
-  }, "Fur Color"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("select", {
-    name: "furColor",
-    value: clientInfo.furColor,
-    onChange: handleChange,
-    required: true
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
-    value: ''
-  }), _myModelsConfig__WEBPACK_IMPORTED_MODULE_2__.furColors.map((color, index) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
-    key: index,
-    value: color
-  }, color)))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
     htmlFor: "clientForm",
     className: "required"
   }, "Budget"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("select", {
@@ -5758,7 +5745,7 @@ const AboutUs = () => {
     className: "underlined"
   }, "Flying Over:"), " you can fly over to one of our airports (GSO, RDU, or CLT) and we will meet you there with your kitten. Expect to pay $80-$125 to the airline for the kitten\u2019s one way ticket. Each airline has its own policy, please review it before confirming. We will assist you the best we can, but no booking/purchasing tickets will be provided from our end."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
     className: "underlined"
-  }, "Amtrack:"), " you can travel by AMTRACK to our station in High Point, NC, and we will meet you at the station with your kitten.", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "IMPORTANT Amtrack policy: cats up to 20 pounds (combined weight of pet and carrier) are welcome on trips up to seven hours on most routes (some restrictions apply).")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "We will help you the best we can, but no booking/purchasing tickets will be provided from our end."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
+  }, "Amtrack:"), " you can travel by AMTRACK to our station in High Point, NC, and we will meet you at the station with your kitten. IMPORTANT Amtrack policy: cats up to 20 pounds (combined weight of pet and carrier) are welcome on trips up to seven hours on most routes (some restrictions apply)."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "We will help you the best we can, but no booking/purchasing tickets will be provided from our end."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
     className: "underlined"
   }, "Meeting half way:"), "  if you\u2019d like us to meet you half way, same fee of 90 cents per mile will be applied and charged for one way."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
     className: "underlined"
@@ -5933,13 +5920,12 @@ const history =  false ? 0 : (0,history__WEBPACK_IMPORTED_MODULE_0__.createBrows
   \***************************/
 /***/ (function(module) {
 
-//  this file is a good place to put low / no security data that takes would take up space were it put in the middle of complicated files
+//  this file is a good place to put low / no security data that would take up space were it put in the middle of complicated files
 module.exports = {
   //  furColors and eyeColors are used in the Cat Models Enum tables for their corresponding keys.
   //  FOR CLIENT Q FORM v2
-  furColorsOnQuestionnaire: ['White', 'Silver Chinchilla', 'Gold Chinchilla', 'Blue Gold Chinchilla', 'Colorpoint', 'Blue - Ticket/Tabby', 'Lilac', 'Tortoiseshell/Tricolor/Calico', 'Bicolor/Any Color with White', 'Chocolate/Black/Cinnamon'],
+  furColors: ['White', 'Silver Chinchilla', 'Gold Chinchilla', 'Blue Gold Chinchilla', 'Colorpoint', 'Blue - Ticket/Tabby', 'Lilac', 'Tortoiseshell/Tricolor/Calico', 'Bicolor/Any Color with White', 'Chocolate/Black/Cinnamon'],
   // end last comment
-  furColors: ['No Preference', 'White', 'Silver', 'Gold', 'Colorpoint', 'Blue', 'Brown', 'Black', 'Silver Chinchilla Point', 'Silver Shaded Chinchilla', 'Black Marble Tabby', 'Blue Bicolor Tabby', 'Brown Ticked Bicolor', 'Blue Ticked Bicolor', 'Black Tabby', 'Blue Colorpoint'],
   eyeColors: ['No Preference', 'Green', 'Blue', 'Yellow', 'Copper', 'Odd'],
   eyeColorsAdmin: ['Unknown', 'Green', 'Blue', 'Yellow', 'Copper', 'Odd'],
   //  for public file serving

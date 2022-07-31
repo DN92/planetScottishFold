@@ -81,11 +81,8 @@ const AboutUs = () => {
     </p>
     <p>
       <span className='underlined'>Amtrack:</span> you can travel by AMTRACK to our station in High Point, NC, and we will meet you at the station with your kitten.
-     <p>
      IMPORTANT Amtrack policy: cats up to 20 pounds (combined weight of pet and carrier) are welcome on trips up to seven hours on most routes (some restrictions apply).
      </p>
-
-    </p>
     <p>
       We will help you the best we can, but no booking/purchasing tickets will be provided from our end.
     </p>

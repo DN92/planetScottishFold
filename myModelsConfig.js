@@ -1,9 +1,9 @@
-//  this file is a good place to put low / no security data that takes would take up space were it put in the middle of complicated files
+//  this file is a good place to put low / no security data that would take up space were it put in the middle of complicated files
 
 module.exports = {
   //  furColors and eyeColors are used in the Cat Models Enum tables for their corresponding keys.
   //  FOR CLIENT Q FORM v2
-  furColorsOnQuestionnaire: [
+  furColors: [
     'White',
     'Silver Chinchilla',
     'Gold Chinchilla',
@@ -16,24 +16,6 @@ module.exports = {
     'Chocolate/Black/Cinnamon',
   ],
   // end last comment
-  furColors: [
-    'No Preference',
-    'White',
-    'Silver',
-    'Gold',
-    'Colorpoint',
-    'Blue',
-    'Brown',
-    'Black',
-    'Silver Chinchilla Point',
-    'Silver Shaded Chinchilla',
-    'Black Marble Tabby',
-    'Blue Bicolor Tabby',
-    'Brown Ticked Bicolor',
-    'Blue Ticked Bicolor',
-    'Black Tabby',
-    'Blue Colorpoint',
-  ],
   eyeColors: [
     'No Preference',
     'Green',
