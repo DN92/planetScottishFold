@@ -27,10 +27,8 @@
 }
 
 .cq-furcolors-wrapper {
-  background-color: aqua;
   display: flex;
   flex-wrap: wrap;
-  /* max-width: 45%; */
 }
 
 .cq-single-color-wrapper {
