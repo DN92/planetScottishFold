@@ -91,7 +91,7 @@ const kittensArray = [
     price: 1500,
     location: 'Fort Lauderdale, Florida',
     description: '',
-    mainImageSrcValue: '',
+    mainImageSrcValue: '/catPictures/kittenBumblebeeFudge.jpg',
   },
   // Lucia
   {
