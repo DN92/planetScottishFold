@@ -20,6 +20,7 @@ router.get('/', async (req, res, next) => {
 
 router.post('/', async (req, res, next) => {
   try{
+    req.body.furColor = JSON.stringify(req.body.furColor)
     const newUser = await User.create(req.body)
     if(!newUser) {
       throw new Error('newUser creation failed')

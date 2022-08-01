@@ -20,11 +20,13 @@ const ConfirmClientQuestionnaire = () => {
 
   const [clientInfo, setClientInfo] = useState(history.location?.state?.clientInfo)
 
-  useEffect(() => {
-    return () => {
-    localStorage.removeItem('clientInfo')
-  }
-  },[])
+  console.log('client info, confirm page: ', clientInfo)
+
+  // useEffect(() => {
+  //   return () => {
+  //   localStorage.removeItem('clientInfo')
+  // }
+  // },[])
 
   const handleSubmit = async (event) => {
     event.preventDefault()
@@ -65,7 +67,6 @@ const ConfirmClientQuestionnaire = () => {
             <li>State:</li>
             <li>Kitten's Gender:</li>
             <li>Ears:</li>
-            <li>Fur Colors:</li>
             <li>Eye Colors</li>
             <li>Important Feature:</li>
             <li>Price Range:</li>
@@ -87,7 +88,6 @@ const ConfirmClientQuestionnaire = () => {
             <span>{clientInfo.state}</span><br />
             <span>{clientInfo.gender}</span><br />
             <span>{clientInfo.ears}</span><br />
-            <span>{clientInfo.furColor} </span><br />
             <span>{clientInfo.eyeColor} </span><br />
             <span>{clientInfo.mif}</span><br />
             <span>{clientInfo.budget}</span><br />

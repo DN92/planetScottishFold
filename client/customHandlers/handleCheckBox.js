@@ -1,6 +1,6 @@
 const checkBoxHandler  = (event, setterFunc, attName) => {
 
-//  this dynamic function handles setState for nested Obj state - checkBoxes
+//  this function handles setState for nested Obj state - checkBoxes
 //  attName (string) is the name of the custom tag with the id of the model that needs to be updated
 
 

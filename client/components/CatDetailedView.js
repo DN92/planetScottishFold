@@ -40,7 +40,9 @@ const CatDetailedView = () => {
       {!error && cat &&
         <div>
           <div>
-            <img src={cat.mainImageSrcValue} alt={`Picture of ${MOTHERorFATHER}`}/> <br />
+            <div className='detailedView-imgWrapper'>
+              <img src={cat.mainImageSrcValue} alt="Picture of Selected Cat"/> <br />
+            </div>
             <span>{cat.name}</span> <br />
             <span>{cat.breed}</span> <br />
             {cat.regNum &&

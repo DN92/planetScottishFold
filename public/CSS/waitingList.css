@@ -47,6 +47,12 @@
   display: inline;
 }
 
+.cq-form-buttons-top {
+  justify-content: flex-end;
+  align-items: flex-end;
+  width: 90%;
+}
+
 @media (min-width: 50em) {
 
 }

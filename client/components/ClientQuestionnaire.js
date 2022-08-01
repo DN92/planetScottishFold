@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import history from '../history'
-import {furColors, furColorsOnQuestionnaire, eyeColors, mifOptions, budgetRanges, earOptions, genderOptions, willBreedOptions, hasAllergiesOptions, foundUsByOptions, applyStatusOptions} from "../../myModelsConfig"
+import {furColors, furColorsOnQuestionnaire, eyeColors, mifOptions, budgetRanges, earOptions, genderOptions, willBreedOptions, hasAllergiesOptions, foundUsByOptions} from "../../myModelsConfig"
 import handleFormChange from '../customHandlers/handleFormChange'
+import useLocalStorage from '../customHooks/useLocalStorage'
+
 
 const ClientQuestionnaire = () => {
 
@@ -20,7 +22,7 @@ const ClientQuestionnaire = () => {
     gender:'',
     ears:'',
     eyeColor:'',
-    furColor: '',
+    furColor: {},
     mif:'',  // most important feature(s)
     willBreed: '',
     hasAllergies: '',
@@ -28,15 +30,31 @@ const ClientQuestionnaire = () => {
     phoneNumber: '',
   }
 
-  const [clientInfo, setClientInfo] = useState(defaultClientInfo)
+  // const [clientInfo, setClientInfo] = useState(defaultClientInfo)
+  const [clientInfo, setClientInfo] = useLocalStorage('clientInfo', defaultClientInfo)
 
   const handleChange = (event) => {
     event.preventDefault()
     handleFormChange(event, setClientInfo)
   }
 
+  const handleCheckBoxForFur = (event) => {
+    setClientInfo(prev => {
+      const {name, checked} = event.target
+      return {...prev,
+        ['furColor']: {
+          ...prev['furColor'],
+          [name]: checked
+        }
+      }
+    })
+  }
+
+  useEffect(()=>{
+
+  },[clientInfo])
+
   const handleReset = () => {
-    localStorage.removeItem('clientInfo')
     setClientInfo(defaultClientInfo)
   }
 
@@ -46,11 +64,24 @@ const ClientQuestionnaire = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    history.push('/confirmClientQuestionnaire', {clientInfo: {...clientInfo}})
+    const furColorsToArray = Object.keys(clientInfo.furColor)
+      .filter(color => clientInfo.furColor[color] === true)
+    // console.log('furColorsToArray' , furColorsToArray)
+    // console.log('Stringify: ',JSON.stringify(furColorsToArray))
+    // console.log('Parse Json', JSON.parse(JSON.stringify(furColorsToArray)))
+    // console.log(
+    //   {...clientInfo, 'furColor': furColorsToArray}
+    // )
+    history.push('/confirmClientQuestionnaire', {clientInfo:
+      {...clientInfo, 'furColor': furColorsToArray}
+    })
   }
 
   return (
     <div className='waitingList'>
+      <div className='buttonsWrapper cq-form-buttons-top'>
+        <button className='buttonStyle2' type="reset" onClick={handleReset} >Reset</button>
+      </div>
       <form id="clientQuestionnaire" className='waitingList__form' onSubmit={handleSubmit} onKeyDown={handleKeyPress} onReset={handleReset}
       >
         <div className='waitingList-left'>
@@ -227,7 +258,7 @@ const ClientQuestionnaire = () => {
           </>
           <>
             <label htmlFor="clientFormEyeColor" className='required'>Eye Color</label>
-            <select id="clientFormEyeColor" name="eyeColor" value={clientInfo.color} onChange={handleChange} required>
+            <select id="clientFormEyeColor" name="eyeColor" value={clientInfo.eyeColor} onChange={handleChange} required>
             <option value={''}></option>
               {eyeColors.map((color, index) => (
                 <option key={index} value={color}>{color}</option>
@@ -239,7 +270,13 @@ const ClientQuestionnaire = () => {
             <div id='clientFormFurColors' className='cq-furcolors-wrapper'>
               {furColors.map((fur, index) => (
                 <div key={index} className='cq-single-color-wrapper'>
-                  <input id={`cq-fur-${fur}`} type='checkbox' name={fur} onChange={handleChange}></input>
+                  <input id={`cq-fur-${fur}`}
+                    type='checkbox'
+                    name={fur}
+                    onChange={handleCheckBoxForFur}
+                    checked={!!clientInfo.furColor[fur]}
+                  >
+                  </input>
                   <label htmlFor={`cq-fur-${fur}`}>{fur}</label>
                 </div>
               ))}
@@ -283,9 +320,9 @@ const ClientQuestionnaire = () => {
           </>
         </div>
       </form>
-      <div className='buttonsWrapper cq-form-buttons'>
+      <div className='buttonsWrapper cq-form-buttons-bottom'>
         <button className='buttonStyle2' type="submit" form="clientQuestionnaire">Submit</button>
-        <button className='buttonStyle2' type="reset" >Reset</button>
+        <button className='buttonStyle2' type="reset" onClick={handleReset} >Reset</button>
         <div className='cq-form-buttons-blank' ></div>
       </div>
     </div>

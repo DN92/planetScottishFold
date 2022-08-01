@@ -1,0 +1,23 @@
+.detailedView {
+  padding-top: 1rem;
+  padding-bottom: 1rem
+}
+
+.detailedView__imgWrapper {
+  padding-bottom: 4rem;
+  width: 95%;
+  margin: auto
+}
+
+@media (min-width:40em) {
+  .detailedView {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+
+  .detailedView__imgWrapper {
+    width: 80%;
+  }
+
+}
+

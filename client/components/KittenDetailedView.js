@@ -28,13 +28,17 @@ const KittenDetailedView = () => {
       `/api/kittens?id=${id}`)
   }, [])
 
+  console.log("kitten: ",kitten)
+
   return (
     <div key={id}>
       {error && <ErrorFill msg={error} />}
 
       {!error && kitten &&
-        <div>
-          <img src={kitten.mainImageSrcValue} alt="Picture of Kitten" />
+        <div className='detailedView'>
+          <div className='detailedView__imgWrapper'>
+            <img src={kitten.mainImageSrcValue} alt="Picture of Kitten" />
+          </div>
           <p> Status: {kitten.isAvailable ? 'Available' : 'Reserved'}</p>
           <p> Location: {kitten.location}</p>
           <p> Price: ${kitten.price}</p>

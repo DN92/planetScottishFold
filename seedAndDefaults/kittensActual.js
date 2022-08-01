@@ -13,7 +13,7 @@ const kittensArray = [
     price: 1900,
     location: 'Bergenfield, New Jersey',
     description: '',
-    mainImageSrcValue: './catPictures/kittenFelisiyaFinley.jpg',
+    mainImageSrcValue: '/catPictures/kittenFelisiyaFinley.jpg',
   },
   // Danissima
   {
@@ -29,7 +29,7 @@ const kittensArray = [
     price: 2300,
     location: 'Bergenfield, New Jersey',
     description: '',
-    mainImageSrcValue: './catPictures/kittenDanissimaDew.jpg',
+    mainImageSrcValue: '/catPictures/kittenDanissimaDew.jpg',
   },
   {
     name: 'Daiquiri',
@@ -44,7 +44,7 @@ const kittensArray = [
     price: 1700,
     location: 'Bergenfield, New Jersey',
     description: '',
-    mainImageSrcValue: './catPictures/kittenDanissimaDaiquiri.jpg',
+    mainImageSrcValue: '/catPictures/kittenDanissimaDaiquiri.jpg',
   },
   {
     name: 'Dumpling',
@@ -59,7 +59,7 @@ const kittensArray = [
     price: 2300,
     location: 'Bergenfield, New Jersey',
     description: '',
-    mainImageSrcValue: './catPictures/kittenDanissimaDumpling.jpg',
+    mainImageSrcValue: '/catPictures/kittenDanissimaDumpling.jpg',
     // status: 'Sold',
   },
   {
@@ -75,7 +75,7 @@ const kittensArray = [
     price: 2500,
     location: 'Bergenfield, New Jersey',
     description: '',
-    mainImageSrcValue: './catPictures/kittenDanissimaDG.jpg',
+    mainImageSrcValue: '/catPictures/kittenDanissimaDG.jpg',
   },
     // BumbleBee
   {
@@ -107,7 +107,7 @@ const kittensArray = [
     price: 1600,
     location: 'High Point, North Carolina',
     description: '',
-    mainImageSrcValue: './catPictures/kittenLuciaOlaf.jpg',
+    mainImageSrcValue: '/catPictures/kittenLuciaOlaf.jpg',
   },
   {
     name: 'Koda',
@@ -122,7 +122,7 @@ const kittensArray = [
     price: 1600,
     location: 'High Point, North Carolina',
     description: '',
-    mainImageSrcValue: './catPictures/kittenLuciaKoda.jpg',
+    mainImageSrcValue: '/catPictures/kittenLuciaKoda.jpg',
   },
   {
     name: 'Baloo',
@@ -137,7 +137,7 @@ const kittensArray = [
     price: 1600,
     location: 'High Point, North Carolina',
     description: '',
-    mainImageSrcValue: './catPictures/kittenLuciaBaloo.jpg',
+    mainImageSrcValue: '/catPictures/kittenLuciaBaloo.jpg',
   },
   {
     name: 'Tiana',
@@ -152,7 +152,7 @@ const kittensArray = [
     price: 1600,
     location: 'High Point, North Carolina',
     description: '',
-    mainImageSrcValue: './catPictures/kittenLuciaTiana.jpg',
+    mainImageSrcValue: '/catPictures/kittenLuciaTiana.jpg',
   },
   {
     name: 'Jasmine',
@@ -167,7 +167,7 @@ const kittensArray = [
     price: 1600,
     location: 'High Point, North Carolina',
     description: '',
-    mainImageSrcValue: './catPictures/kittenLuciaJasmine.jpg',
+    mainImageSrcValue: '/catPictures/kittenLuciaJasmine.jpg',
   },
   {
     name: 'Merida',
@@ -182,7 +182,7 @@ const kittensArray = [
     price: 1600,
     location: 'High Point, North Carolina',
     description: '',
-    mainImageSrcValue: './catPictures/kittenLuciaMerida.jpg',
+    mainImageSrcValue: '/catPictures/kittenLuciaMerida.jpg',
   },
     // Iris
   {
@@ -198,7 +198,7 @@ const kittensArray = [
     price: 2500,
     location: 'Hight Point, North Carolina',
     description: '',
-    mainImageSrcValue: './catPictures/kittenIrisBentley.jpg',
+    mainImageSrcValue: '/catPictures/kittenIrisBentley.jpg',
   },
 ]
 

@@ -7,7 +7,7 @@ const obj1 = {
   car: false
 
 }
-const array = ['zero', 'one']
+const array = "['White', 'Blue Gold Chinchilla', 'Lilac', 'Silver Chinchilla', 'Gold Chinchilla']"
 
-console.log(obj1?.car)
+array = array.split()
 
