@@ -37,13 +37,18 @@ const TopLineMenuBar = ({setViewNav, setShowMobileNav}) => {
     <nav className='topNav'>
         <>
           <div className='topMenu'>
-            <div>
-              <h1 id='h1'>Planet Scottish Fold{meContext.username ? meContext.username : ''}</h1>
+            <div className='topMenu__headline'>
+              <h1 id='h1'>
+                {isPrivileged(type) ? 'ADMIN VIEW' : 'Planet Scottish Fold'}
+              </h1>
             </div>
             {meContext.id ?
-              <div>
-                <p>Logged in as {meContext.email} </p>
-                <Link className='topMenu__loginout' to='logout'>Log Out</Link>
+              <div className='topMenu__links'>
+                {isPrivileged(type) &&
+                  <button className='buttonAsLink' type='button' onClick={handleNavView}>View User Navigation</button>
+                }
+                <p className='topMenu__greeting'>Logged in as {meContext.email} </p>
+                <Link onClick={closeMobileNav} className='topMenu__loginout' to='logout'>Log Out</Link>
 
               </div> :
               <div className='topMenu__links'>
@@ -56,20 +61,9 @@ const TopLineMenuBar = ({setViewNav, setShowMobileNav}) => {
           <div id='hamburger-wrapper' className='hamburger-wrapper' onClick={handleMobileNav}>
             <button id='nav__toggle' className='nav__toggle' >
                 <span className='hamburger'></span>
-            </button>F
+            </button>
           </div>
         </>
-      {meContext.id &&
-        <>
-            <div className='topMenu__navButton'>
-            {isPrivileged(type) &&
-              <>
-                <button className='buttonAsLink' type='button' onClick={handleNavView}>View User Navigation</button>
-              </>
-            }
-            </div>
-        </>
-        }
     </nav>
   )
 }

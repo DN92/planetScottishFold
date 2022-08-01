@@ -3,6 +3,9 @@
 /* main files with resets, variables and html and body */
 @import "./style.css";
 @import "./htmlBody.css";
+@import "./header.css";
+@import "./mainContentContainer.css";
+@import "./footer.css";
 
 /* not component specific  */
 @import "./buttonStyle1.css";
@@ -15,11 +18,9 @@
 @import "./hamburger.css";
 
 /* component targeted styles */
-@import "./header.css";
 @import "./topMenu.css";
 @import "./buttonAsLink.css";
 @import "./navbar.css";
-@import "./mainContentContainer.css";
 @import "./home.css";
 @import "./about.css";
 @import "./availableKittens.css";
@@ -33,4 +34,3 @@
 @import "./login.css";
 @import "./logout.css";
 
-@import "./footer.css";

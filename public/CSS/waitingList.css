@@ -53,6 +53,14 @@
   width: 90%;
 }
 
+.waitingList__already-approved {
+  display: flex;
+  gap: 1rem;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 @media (min-width: 50em) {
 
 }
