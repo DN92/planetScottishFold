@@ -4,12 +4,11 @@ import { Link } from 'react-router-dom'
 
 const Logout = () => {
 
-  const {setUsername, setType, setId} = useContext(MeContext)
-  const {username, type, id} = useContext(MeContext)
+  const {setEmail, setType, setId} = useContext(MeContext)
 
   useEffect(()=>{
     localStorage.clear()
-    setUsername(null)
+    setEmail(null)
     setType(null)
     setId(null)
   },[])

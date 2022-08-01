@@ -41,7 +41,6 @@ const AuthForm = () => {
     }
     //  else fail case
     setError(message)
-    setAttemptsCounter(prev => prev + 1)
   }
 
   useEffect(() => {

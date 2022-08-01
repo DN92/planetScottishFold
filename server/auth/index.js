@@ -30,8 +30,8 @@ router.get('/me', async (req, res, next) => {
   try {
     const user = await User.findByToken(req.headers.authorization)
     // deconstruct and reconstruct user for security
-    const { type, username, id } = user
-    res.send({type, username, id})
+    const { type, eMail, id } = user
+    res.send({type, eMail, id})
   } catch (err) {
     next(err)
   }

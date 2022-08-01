@@ -2690,13 +2690,13 @@ const MeProvider = ({
     psfMe = JSON.parse(localStorage.getItem('psfMe'));
   }
 
-  const [username, setUsername] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(psfMe ? psfMe.username : null);
+  const [email, setEmail] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(psfMe ? psfMe.eMail : null);
   const [type, setType] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(psfMe ? psfMe.type : null);
   const [id, setId] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(psfMe ? psfMe.id : null);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(MeContext.Provider, {
     value: {
-      username,
-      setUsername,
+      email,
+      setEmail,
       type,
       setType,
       id,
@@ -2757,27 +2757,29 @@ __webpack_require__.r(__webpack_exports__);
 const AdminBar = ({
   setViewNav
 }) => {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("nav", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("nav", {
+    className: "navBar"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
     to: "/home"
-  }, "Home"), "\xA0\xA0", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
+  }, "Home"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
     to: "newUserRequests"
-  }, "Applications"), "\xA0\xA0", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
+  }, "Applications"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
     to: "viewUsers"
-  }, "All Members"), "\xA0\xA0", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
+  }, "All Members"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
     to: "createKitten"
-  }, "Add A Kitten"), "\xA0\xA0", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
+  }, "Add A Kitten"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
     to: "availableKittens"
-  }, "View/Edit Kittens"), "\xA0\xA0", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
+  }, "View/Edit Kittens"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
     to: "createCat/mother"
-  }, "Add A Dam "), "\xA0\xA0", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
+  }, "Add A Dam "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
     to: "createCat/father"
-  }, "Add A Sire "), "\xA0\xA0", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
+  }, "Add A Sire "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
     to: "viewCats/mother"
-  }, "View/Edit A Dam "), "\xA0\xA0", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
+  }, "View/Edit A Dam "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
     to: "viewCats/father"
-  }, "View/Edit A Sire "), "\xA0\xA0", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
+  }, "View/Edit A Sire "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
     to: "directMessages"
-  }, "Direct Messages "), "\xA0\xA0");
+  }, "Direct Messages "));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (AdminBar);
@@ -2829,12 +2831,12 @@ const App = () => {
 
   const [viewNav, setViewNav] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
   const [showMobileNav, setShowMobileNav] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_helmet__WEBPACK_IMPORTED_MODULE_1__.Helmet, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("title", null, "Planet Scottish Fold | Scottish Fold Cattery"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("meta", {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.unstable_HistoryRouter, {
+    history: _history__WEBPACK_IMPORTED_MODULE_6__["default"]
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_helmet__WEBPACK_IMPORTED_MODULE_1__.Helmet, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("title", null, "Planet Scottish Fold | Scottish Fold Cattery"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("meta", {
     name: "Planet Scottish Fold",
     contents: "Proud Breeders of Scottish Fold Kittens"
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.unstable_HistoryRouter, {
-    history: _history__WEBPACK_IMPORTED_MODULE_6__["default"]
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "header"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_TopLineMenuBar__WEBPACK_IMPORTED_MODULE_8__["default"], {
     setViewNav: setViewNav,
@@ -2910,7 +2912,6 @@ const AuthForm = () => {
 
 
     setError(message);
-    setAttemptsCounter(prev => prev + 1);
   };
 
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
@@ -4095,18 +4096,13 @@ __webpack_require__.r(__webpack_exports__);
 
 const Logout = () => {
   const {
-    setUsername,
+    setEmail,
     setType,
     setId
   } = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_MeContextPro__WEBPACK_IMPORTED_MODULE_1__["default"]);
-  const {
-    username,
-    type,
-    id
-  } = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_MeContextPro__WEBPACK_IMPORTED_MODULE_1__["default"]);
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
     localStorage.clear();
-    setUsername(null);
+    setEmail(null);
     setType(null);
     setId(null);
   }, []);
@@ -4492,11 +4488,14 @@ const TopLineMenuBar = ({
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("nav", {
     className: "topNav"
-  }, !meContext.id && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "topMenu"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", {
     id: "h1"
-  }, "Planet Scottish Fold", meContext.username ? meContext.username : '')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+  }, "Planet Scottish Fold", meContext.username ? meContext.username : '')), meContext.id ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Logged in as ", meContext.email, " "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+    className: "topMenu__loginout",
+    to: "logout"
+  }, "Log Out")) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "topMenu__links"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
     onClick: closeMobileNav,
@@ -4513,18 +4512,13 @@ const TopLineMenuBar = ({
     className: "nav__toggle"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
     className: "hamburger"
-  })))), meContext.id && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+  })), "F")), meContext.id && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "topMenu__navButton"
   }, (0,_secrets__WEBPACK_IMPORTED_MODULE_2__.isPrivileged)(type) && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
     className: "buttonAsLink",
     type: "button",
     onClick: handleNavView
-  }, "View User Navigation"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "topMenu__msg"
-  }, "Hello ", meContext.username, ". Welcome to Planet Scottish Fold!"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
-    className: "topMenu__loginout",
-    to: "logout"
-  }, "Log Out")));
+  }, "View User Navigation")))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (TopLineMenuBar);
@@ -5851,7 +5845,7 @@ __webpack_require__.r(__webpack_exports__);
 
 const handleLogin = async (meContext, loginInfo) => {
   const loginAndGetToken = async loginInfo => {
-    let success = true;
+    const success = true;
 
     try {
       const {
@@ -5872,7 +5866,7 @@ const handleLogin = async (meContext, loginInfo) => {
   };
 
   const setMe = async token => {
-    let success = true;
+    const success = true;
 
     try {
       const {
@@ -5884,11 +5878,12 @@ const handleLogin = async (meContext, loginInfo) => {
       });
 
       if (data) {
-        meContext.setUsername(data.username);
+        console.log('login info data: ', data);
+        meContext.setEmail(data.eMail);
         meContext.setType(data.type);
         meContext.setId(data.id);
         localStorage.setItem('psfMe', JSON.stringify({
-          username: data.username,
+          eMail: data.eMail,
           type: data.type,
           id: data.id
         }));
@@ -5916,9 +5911,9 @@ const handleLogin = async (meContext, loginInfo) => {
   }
 
   if (token) {
-    let good = await setMe(token);
+    let successful = await setMe(token);
 
-    if (good) {
+    if (successful) {
       //  user type and id set to MeContext / Login Successful
       message = 'login successful';
       return [true, message];

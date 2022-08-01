@@ -21,11 +21,11 @@ const App = () => {
 
   return (
     <>
-      <Helmet>
-        <title>Planet Scottish Fold | Scottish Fold Cattery</title>
-        <meta name='Planet Scottish Fold' contents='Proud Breeders of Scottish Fold Kittens' />
-      </Helmet>
       <HistoryRouter history={history}>
+        <Helmet>
+          <title>Planet Scottish Fold | Scottish Fold Cattery</title>
+          <meta name='Planet Scottish Fold' contents='Proud Breeders of Scottish Fold Kittens' />
+        </Helmet>
         <div className='header'>
           <TopLineMenuBar setViewNav={setViewNav} setShowMobileNav={setShowMobileNav}/>
           {isPrivileged(type) ? <AdminBar /> :  <NavBar />}

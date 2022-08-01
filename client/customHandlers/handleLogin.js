@@ -6,7 +6,7 @@ import axios from 'axios'
 const handleLogin = async ( meContext, loginInfo) => {
 
   const loginAndGetToken = async(loginInfo) => {
-    let success = true
+    const success = true
     try {
       const {data} = await axios.post('/auth/login', loginInfo)
       if (data) {
@@ -22,7 +22,7 @@ const handleLogin = async ( meContext, loginInfo) => {
   }
 
   const setMe = async (token) => {
-    let success = true
+    const success = true
     try {
       const {data} = await axios.get('/auth/me', {
         headers: {
@@ -30,11 +30,12 @@ const handleLogin = async ( meContext, loginInfo) => {
         }
       })
       if(data) {
-        meContext.setUsername(data.username)
+        console.log('login info data: ', data)
+        meContext.setEmail(data.eMail)
         meContext.setType(data.type)
         meContext.setId(data.id)
         localStorage.setItem('psfMe', JSON.stringify({
-          username: data.username,
+          eMail: data.eMail,
           type: data.type,
           id: data.id
         }))
@@ -63,8 +64,8 @@ const handleLogin = async ( meContext, loginInfo) => {
   }
 
   if(token) {
-    let good = await setMe(token)
-    if(good) {
+    let successful = await setMe(token)
+    if(successful) {
       //  user type and id set to MeContext / Login Successful
       message = 'login successful'
       return [true, message]

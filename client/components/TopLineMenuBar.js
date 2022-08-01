@@ -35,24 +35,30 @@ const TopLineMenuBar = ({setViewNav, setShowMobileNav}) => {
 
   return (
     <nav className='topNav'>
-      {!meContext.id &&
         <>
           <div className='topMenu'>
             <div>
               <h1 id='h1'>Planet Scottish Fold{meContext.username ? meContext.username : ''}</h1>
             </div>
-            <div className='topMenu__links'>
-              <Link onClick={closeMobileNav} to='/waitingListForm'>Apply</Link>
-              <Link onClick={closeMobileNav} to='login'>Login</Link>
-            </div>
+            {meContext.id ?
+              <div>
+                <p>Logged in as {meContext.email} </p>
+                <Link className='topMenu__loginout' to='logout'>Log Out</Link>
+
+              </div> :
+              <div className='topMenu__links'>
+                <Link onClick={closeMobileNav} to='/waitingListForm'>Apply</Link>
+                <Link onClick={closeMobileNav} to='login'>Login</Link>
+              </div>
+
+            }
           </div>
           <div id='hamburger-wrapper' className='hamburger-wrapper' onClick={handleMobileNav}>
             <button id='nav__toggle' className='nav__toggle' >
                 <span className='hamburger'></span>
-            </button>
+            </button>F
           </div>
         </>
-      }
       {meContext.id &&
         <>
             <div className='topMenu__navButton'>
@@ -62,8 +68,6 @@ const TopLineMenuBar = ({setViewNav, setShowMobileNav}) => {
               </>
             }
             </div>
-            <div className='topMenu__msg'>Hello {meContext.username}. Welcome to Planet Scottish Fold!</div>
-            <Link className='topMenu__loginout' to='logout'>Log Out</Link>
         </>
         }
     </nav>

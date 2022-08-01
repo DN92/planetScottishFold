@@ -13,17 +13,17 @@ export const MeProvider = ({children}) => {
     psfMe = JSON.parse(localStorage.getItem('psfMe'))
   }
 
-  const [username, setUsername] = useState(psfMe ? psfMe.username : null)
+  const [email, setEmail] = useState(psfMe ? psfMe.eMail : null)
   const [type, setType] = useState(psfMe ? psfMe.type : null)
   const [id, setId] = useState(psfMe ? psfMe.id : null)
 
   return (
     <MeContext.Provider value={{
-      username, setUsername,
+      email, setEmail,
       type, setType,
       id, setId,
-      }}>
-    {children}
+    }}>
+      {children}
     </MeContext.Provider>
   )
 }
