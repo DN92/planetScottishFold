@@ -18,6 +18,18 @@ router.get('/', async (req, res, next) => {
   }
 })
 
+router.post('/', async (req, res, next) => {
+  try{
+    const newUser = await User.create(req.body)
+    if(!newUser) {
+      throw new Error('newUser creation failed')
+    }
+    res.send(newUser)
+  } catch (error) {
+    next(error)
+  }
+})
+
 router.post('/anonToUser', async (req, res, next) => {
   try{
     const request = req.body

@@ -16,6 +16,24 @@ module.exports = {
     'Chocolate/Black/Cinnamon',
   ],
   // end last comment
+  furColorsAdmin: [
+    'No Preference',
+    'White',
+    'Silver',
+    'Gold',
+    'Colorpoint',
+    'Blue',
+    'Brown',
+    'Black',
+    'Silver Chinchilla Point',
+    'Silver Shaded Chinchilla',
+    'Black Marble Tabby',
+    'Blue Bicolor Tabby',
+    'Brown Ticked Bicolor',
+    'Blue Ticked Bicolor',
+    'Black Tabby',
+    'Blue Colorpoint',
+  ],
   eyeColors: [
     'No Preference',
     'Green',
@@ -31,6 +49,7 @@ module.exports = {
     'Yellow',
     'Copper',
     'Odd',
+    // 'No Preference'
   ],
 
   //  for public file serving

@@ -1,0 +1,28 @@
+.client-confirmation {
+  text-align: center;
+
+}
+
+.clientInfo-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: .5rem;
+}
+
+.clientInfo-questions {
+  line-height: 1.6;
+  text-align: right;
+  list-style: none;
+}
+
+.clientInfo-answers {
+  text-align: left;
+  line-height: 1.6;
+}
+
+.confirmation-buttons {
+  align-items: center;
+  justify-content: center;
+}

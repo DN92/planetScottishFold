@@ -30,14 +30,6 @@ const ClientQuestionnaire = () => {
 
   const [clientInfo, setClientInfo] = useState(defaultClientInfo)
 
-  useEffect(()=>{
-    setClientInfo(
-      JSON.parse(localStorage.getItem('clientInfo')) ?
-        JSON.parse(localStorage.getItem('clientInfo')) :
-        defaultClientInfo
-    )
-  },[])
-
   const handleChange = (event) => {
     event.preventDefault()
     handleFormChange(event, setClientInfo)
@@ -54,14 +46,13 @@ const ClientQuestionnaire = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    history.push('/confirmClientQuestionnaire')
+    history.push('/confirmClientQuestionnaire', {clientInfo: {...clientInfo}})
   }
 
   return (
     <div className='waitingList'>
       <form id="clientQuestionnaire" className='waitingList__form' onSubmit={handleSubmit} onKeyDown={handleKeyPress} onReset={handleReset}
       >
-
         <div className='waitingList-left'>
           <h4>About You</h4>
           <>
@@ -246,7 +237,7 @@ const ClientQuestionnaire = () => {
           <>
             <label htmlFor='clientFormFurColors'>Fur Color Preferences</label>
             <div id='clientFormFurColors' className='cq-furcolors-wrapper'>
-              {furColorsOnQuestionnaire.map((fur, index) => (
+              {furColors.map((fur, index) => (
                 <div key={index} className='cq-single-color-wrapper'>
                   <input id={`cq-fur-${fur}`} type='checkbox' name={fur} onChange={handleChange}></input>
                   <label htmlFor={`cq-fur-${fur}`}>{fur}</label>
@@ -293,8 +284,8 @@ const ClientQuestionnaire = () => {
         </div>
       </form>
       <div className='buttonsWrapper cq-form-buttons'>
-        <input className='buttonStyle2' type="submit" />
-        <input className='buttonStyle2' type="reset" />
+        <button className='buttonStyle2' type="submit" form="clientQuestionnaire">Submit</button>
+        <button className='buttonStyle2' type="reset" >Reset</button>
         <div className='cq-form-buttons-blank' ></div>
       </div>
     </div>

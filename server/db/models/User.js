@@ -70,7 +70,7 @@ const User = db.define("user", {
     defaultValue: earOptions[1],
   },
   eyeColor: {
-    type: Sequelize.ENUM(eyeColorsAdmin),
+    type: Sequelize.ENUM(eyeColorsAdmin, 'No Preference'),
     defaultValue: eyeColorsAdmin[0],
   },
   furColor: {     // Stringified JSON array from frontend

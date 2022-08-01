@@ -1,16 +1,3 @@
-const makeKitten = (
-  name, ears, furColor, eyeColor, dob, status, description, image
-) => ({
-  name,
-  ears,
-  furColor,
-  eyeColor,
-  status,
-  dob,
-  description,
-  image,
-})
-
 const kittensArray = [
   //  Felisiya
   {

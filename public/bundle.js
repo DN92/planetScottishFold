@@ -3275,9 +3275,6 @@ const ClientQuestionnaire = () => {
     phoneNumber: ''
   };
   const [clientInfo, setClientInfo] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(defaultClientInfo);
-  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
-    setClientInfo(JSON.parse(localStorage.getItem('clientInfo')) ? JSON.parse(localStorage.getItem('clientInfo')) : defaultClientInfo);
-  }, []);
 
   const handleChange = event => {
     event.preventDefault();
@@ -3295,7 +3292,10 @@ const ClientQuestionnaire = () => {
 
   const handleSubmit = event => {
     event.preventDefault();
-    _history__WEBPACK_IMPORTED_MODULE_1__["default"].push('/confirmClientQuestionnaire');
+    _history__WEBPACK_IMPORTED_MODULE_1__["default"].push('/confirmClientQuestionnaire', {
+      clientInfo: { ...clientInfo
+      }
+    });
   };
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
@@ -3502,7 +3502,7 @@ const ClientQuestionnaire = () => {
   }, "Fur Color Preferences"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     id: "clientFormFurColors",
     className: "cq-furcolors-wrapper"
-  }, _myModelsConfig__WEBPACK_IMPORTED_MODULE_2__.furColorsOnQuestionnaire.map((fur, index) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+  }, _myModelsConfig__WEBPACK_IMPORTED_MODULE_2__.furColors.map((fur, index) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     key: index,
     className: "cq-single-color-wrapper"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
@@ -3555,13 +3555,14 @@ const ClientQuestionnaire = () => {
     onChange: handleChange
   })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "buttonsWrapper cq-form-buttons"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
     className: "buttonStyle2",
-    type: "submit"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    type: "submit",
+    form: "clientQuestionnaire"
+  }, "Submit"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
     className: "buttonStyle2",
     type: "reset"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+  }, "Reset"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "cq-form-buttons-blank"
   })));
 };
@@ -3581,9 +3582,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _history__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../history */ "./client/history.js");
-/* harmony import */ var _axiosHandlers_fetchEffect__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./axiosHandlers/fetchEffect */ "./client/components/axiosHandlers/fetchEffect.js");
-/* harmony import */ var _myUtilFuncs_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../myUtilFuncs.js */ "./myUtilFuncs.js");
-/* harmony import */ var _myUtilFuncs_js__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_myUtilFuncs_js__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _ErrorFill__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ErrorFill */ "./client/components/ErrorFill.js");
+/* harmony import */ var _axiosHandlers_fetchEffect__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./axiosHandlers/fetchEffect */ "./client/components/axiosHandlers/fetchEffect.js");
+/* harmony import */ var _myUtilFuncs_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../myUtilFuncs.js */ "./myUtilFuncs.js");
+/* harmony import */ var _myUtilFuncs_js__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_myUtilFuncs_js__WEBPACK_IMPORTED_MODULE_4__);
+
 
 
 
@@ -3593,25 +3596,13 @@ __webpack_require__.r(__webpack_exports__);
 const ConfirmClientQuestionnaire = () => {
   const [infoPosted, setInfoPosted] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
   const [error, setError] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('');
-  const clientInfoFromStorage = JSON.parse(localStorage.getItem('clientInfo'));
-
-  if (clientInfoFromStorage) {
-    Object.keys(clientInfoFromStorage).forEach(key => {
-      if (clientInfoFromStorage[key] === 'true') {
-        clientInfoFromStorage[key] = true;
-      }
-
-      if (clientInfoFromStorage[key] === 'false') {
-        clientInfoFromStorage[key] = false;
-      }
-    });
-  }
+  console.log(_history__WEBPACK_IMPORTED_MODULE_1__["default"].location.state);
 
   const handleGoBack = () => {
     _history__WEBPACK_IMPORTED_MODULE_1__["default"].back();
   };
 
-  const [clientInfo, setClientInfo] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(clientInfoFromStorage);
+  const [clientInfo, setClientInfo] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(_history__WEBPACK_IMPORTED_MODULE_1__["default"].location?.state?.clientInfo);
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
     return () => {
       localStorage.removeItem('clientInfo');
@@ -3620,29 +3611,37 @@ const ConfirmClientQuestionnaire = () => {
 
   const handleSubmit = async event => {
     event.preventDefault();
-    clientInfo.IPaddress = await (0,_myUtilFuncs_js__WEBPACK_IMPORTED_MODULE_3__.getUserIP)();
-    (0,_axiosHandlers_fetchEffect__WEBPACK_IMPORTED_MODULE_2__.fetchEffect)([setInfoPosted, setError], 'put', `/api/users`, clientInfo);
+    clientInfo.IPaddress = await (0,_myUtilFuncs_js__WEBPACK_IMPORTED_MODULE_4__.getUserIP)();
+    (0,_axiosHandlers_fetchEffect__WEBPACK_IMPORTED_MODULE_3__.fetchEffect)([setInfoPosted, setError], 'post', `/api/users`, clientInfo);
   };
 
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
     if (infoPosted) {
       localStorage.removeItem('clientInfo');
-      _history__WEBPACK_IMPORTED_MODULE_1__["default"].push('QConfirmation');
+      _history__WEBPACK_IMPORTED_MODULE_1__["default"].push('/QConfirmation');
     }
   }, [infoPosted]);
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, clientInfo && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "Please Review Your Answers Before Submitting"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h3", null, "Your Information"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("ul", {
-    className: "clientInfoQuestions"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "First Name: "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "Last Name: "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "eMail: "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "About You: "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "Is this your first cat?: "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "Other pets: "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "Budget: "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "City: "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "State: "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "FaceBook: "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "InstaGram: ")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h3", null, "What you're looking for in a cat."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("ul", {
-    className: "clientInfoQuestions"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "Gender: "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "Fold or Straight?: "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "Color: "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "Most Important Feature: ")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("ul", {
-    className: "clientInfoAnswers"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, clientInfo.firstName), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, clientInfo.lastName), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, clientInfo.email), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, clientInfo.aboutYou), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, clientInfo.firstCat.toString()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, clientInfo.otherPets), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, clientInfo.budget), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, clientInfo.city), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, clientInfo.state), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, clientInfo.fB), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, clientInfo.iG), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, clientInfo.gender), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, clientInfo.ears), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, clientInfo.color), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, clientInfo.mif)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, clientInfo && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "client-confirmation"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h4", null, "Please Review Your Answers Before Submitting"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "clientInfo-wrapper"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("ul", {
+    className: "clientInfo-questions"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "E-mail: "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "First Name: "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "Lase Name:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "Phone Number:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "Plan to Breed:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "Allergies:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "This Your First Cat:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "Other Pets:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "City:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "State:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "Kitten's Gender:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "Ears:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "Fur Colors:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "Eye Colors"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "Important Feature:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "Price Range:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "Found Us By:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "About You:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "Facebook:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "Instagram:")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "clientInfo-answers"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, clientInfo.eMail), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, clientInfo.firstName), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, clientInfo.lastName), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, clientInfo.phoneNumber), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, clientInfo.willBreed), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, clientInfo.hasAllergies), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, clientInfo.firstCat), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, clientInfo.otherPets), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, clientInfo.city), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, clientInfo.state), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, clientInfo.gender), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, clientInfo.ears), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, clientInfo.furColor, " "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, clientInfo.eyeColor, " "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, clientInfo.mif), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, clientInfo.budget), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, clientInfo.foundUsBy), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, clientInfo.aboutYou), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, clientInfo.fB), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, clientInfo.iG), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "buttonsWrapper confirmation-buttons"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    className: "buttonStyle2",
     type: "button",
     onClick: handleGoBack
   }, " Edit My Answers "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    className: "buttonStyle2",
     type: "submit",
     onClick: handleSubmit
-  }, " Confirm ")), !clientInfo && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "OOPS! Something went wrong!"));
+  }, " Confirm "))), !clientInfo && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "OOPS! Something went wrong!"), error && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ErrorFill__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    msg: error
+  }));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (ConfirmClientQuestionnaire);
@@ -4257,7 +4256,7 @@ __webpack_require__.r(__webpack_exports__);
  //  /QConfirmation
 
 const QuestionnaireConfirmation = () => {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "Thank you filling out our form"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "We have received your submission and will review it as soon as possible."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Once approved, you will receive and email with Login and Password information and can use those to login and get more information about our kittens."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h3", null, "Thank you filling out our form"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "We have received your submission and will review it as soon as possible."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Once approved, you will receive and email with Login and Password information and can use those to login and get more information about our kittens."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
     to: "/home"
   }, "Back To Home Page"));
 };
@@ -5926,8 +5925,10 @@ module.exports = {
   //  FOR CLIENT Q FORM v2
   furColors: ['White', 'Silver Chinchilla', 'Gold Chinchilla', 'Blue Gold Chinchilla', 'Colorpoint', 'Blue - Ticket/Tabby', 'Lilac', 'Tortoiseshell/Tricolor/Calico', 'Bicolor/Any Color with White', 'Chocolate/Black/Cinnamon'],
   // end last comment
+  furColorsAdmin: ['No Preference', 'White', 'Silver', 'Gold', 'Colorpoint', 'Blue', 'Brown', 'Black', 'Silver Chinchilla Point', 'Silver Shaded Chinchilla', 'Black Marble Tabby', 'Blue Bicolor Tabby', 'Brown Ticked Bicolor', 'Blue Ticked Bicolor', 'Black Tabby', 'Blue Colorpoint'],
   eyeColors: ['No Preference', 'Green', 'Blue', 'Yellow', 'Copper', 'Odd'],
-  eyeColorsAdmin: ['Unknown', 'Green', 'Blue', 'Yellow', 'Copper', 'Odd'],
+  eyeColorsAdmin: ['Unknown', 'Green', 'Blue', 'Yellow', 'Copper', 'Odd' // 'No Preference'
+  ],
   //  for public file serving
   defaultCatPictureSrc: '/catPictures/cat404.png',
   budgetRanges: ['$4000+', '$3500-$4000', '$3000-$3500', '$2500-$3000', '$2000-$2500', '$1500-$2000'],
