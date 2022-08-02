@@ -1,10 +1,15 @@
 const Sequelize = require('sequelize')
 const db = require('../dbSetup')
-const { userTypes } = require('../../../secrets')
+const { userTypes, } = require('../../../myModelsConfig')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
-const {saltRounds} = require('../../../secrets')
 const { eyeColorsAdmin, budgetRanges, mifOptions, genderOptions, earOptions, willBreedOptions, hasAllergiesOptions, foundUsByOptions, applyStatusOptions } = require('../../../myModelsConfig')
+
+if(process.env.NODE_ENV !== 'production') {
+  const saltRounds = require('../secrets')
+  process.env.saltRounds = saltRounds
+}
+
 
 const User = db.define("user", {
   type: {
@@ -156,7 +161,7 @@ User.findByToken = async function (token) {
  const hashPassword = async (user) => {
   //in case the password has been changed, we want to encrypt it with bcrypt
   if (user.changed("password")) {
-    user.password = await bcrypt.hash(user.password, saltRounds);
+    user.password = await bcrypt.hash(user.password, process.env.saltRounds);
   }
 };
 

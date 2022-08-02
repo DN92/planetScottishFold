@@ -1,6 +1,6 @@
 //  this file is a good place to put low / no security data that would take up space were it put in the middle of complicated files
 
-module.exports = {
+const myConfig = {
   //  furColors and eyeColors are used in the Cat Models Enum tables for their corresponding keys.
   //  FOR CLIENT Q FORM v2
   furColors: [
@@ -119,4 +119,16 @@ module.exports = {
     'Denied',
     'Approved'
   ],
+  userTypes: [
+    'guest',
+    'registered',
+    'ghost',
+    'admin',
+    'master',
+  ],
 }
+
+myConfig.isPrivileged = (type) => (myConfig.userTypes.slice(2).includes(type))
+myConfig.getAuthGrade = (type) => (myConfig.userTypes.indexOf(type))
+
+module.exports = myConfig

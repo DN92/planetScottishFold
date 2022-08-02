@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
 import MeContext from '../MeContextPro'
-import { isPrivileged } from '../../secrets'
+import { isPrivileged } from '../../myModelsConfig'
 
 
 //  props from AvailableKitten || AdminAllView

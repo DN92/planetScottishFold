@@ -5,7 +5,6 @@ import {furColors, furColorsOnQuestionnaire, eyeColors, mifOptions, budgetRanges
 import handleFormChange from '../customHandlers/handleFormChange'
 import useLocalStorage from '../customHooks/useLocalStorage'
 import MeContext from '../MeContextPro'
-import { isPrivileged } from '../../secrets'
 
 
 const ClientQuestionnaire = () => {

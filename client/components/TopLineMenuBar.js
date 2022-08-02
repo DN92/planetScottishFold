@@ -1,7 +1,7 @@
 import React, {useState, useContext} from 'react'
 import { Link } from 'react-router-dom'
 import MeContext from '../MeContextPro'
-import { isPrivileged } from '../../secrets'
+import { isPrivileged } from '../../myModelsConfig'
 
 
 const TopLineMenuBar = ({setViewNav, setShowMobileNav}) => {

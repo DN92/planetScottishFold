@@ -8,7 +8,7 @@ import Footer from './Footer'
 import history from '../history'
 import AdminBar from './AdminBar'
 import TopLineMenuBar from './TopLineMenuBar'
-import { isPrivileged } from '../../secrets'
+import { isPrivileged } from '../../myModelsConfig'
 import MeContext from '../MeContextPro'
 import NavMobile from './NavMobile'
 

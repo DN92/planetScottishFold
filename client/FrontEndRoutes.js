@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Routes, Route, Navigate } from "react-router-dom";
 import PlaceHolder from "./components/PlaceHolder";
 import HomeComponent from './components/Home';
@@ -15,13 +15,12 @@ import Logout from './components/Logout'
 import ViewCats from './components/ViewCats'
 import CatDetailedView from './components/CatDetailedView';
 import QuestionnaireConfirmation from './components/QuestionnaireConfirmation'
-import MeContext from './MeContextPro'
-import { isPrivileged } from '../secrets'
+
 
 const FrontEndRoutes = () => {
 
-  const meContext = useContext(MeContext)
-  const { type } = meContext
+
+
 
   //  later, there should be guest, user, adminViewer, and admin Route views
   return (
@@ -50,29 +49,6 @@ const FrontEndRoutes = () => {
       <Route path='/viewCats' element={<Navigate to='mother'/>}></Route>
       <Route path='/catDetailed' element={<Navigate to='mother' />} />
       <Route path='/catDetailed/mother' element={<Navigate to='1' />} />
-
-    {/* admin routes */}
-
-      {
-      // isPrivileged(type) &&
-      //   <>
-      //     <Route path='/newUserRequests' element={<NewUserRequests />} />
-      //     <Route path='/newUserRequests/:requestId' element={<RequestReview />}></Route>
-      //     <Route path='/viewUsers' element={<ViewUsers />}></Route>
-      //     <Route path='/viewUsers/:id' element={<UserLongView />}></Route>
-      //     <Route path='/adminAllView' element={<AdminAllView />} />
-      //     <Route path='/createKitten' element={<CreateKitten />} />
-      //     <Route path='/editKitten' element={<EditKitten />} />
-      //     <Route path='/createCat/:MOTHERorFATHER' element={<CreateCat />} />
-      //     <Route path='/editCat/:MOTHERorFATHER/:id' element={<EditCat />} />
-      //     <Route path='/directMessages' element={<DirectMessages />} />
-
-      //     {/* Redirects */}
-      //     <Route path='/createCat' element={<Navigate to='mother'/>}></Route>
-      //     <Route path='/editCat' element={<Navigate to='mother' />} />
-      //   </>
-      }
-
     </Routes>
   )
 }

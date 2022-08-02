@@ -4,7 +4,7 @@ import ErrorFill from './ErrorFill'
 import { Link, useParams } from 'react-router-dom'
 import My404 from './My404'
 import MeContext from '../MeContextPro'
-import { isPrivileged } from '../../secrets'
+import { isPrivileged } from '../../myModelsConfig'
 import { fetchEffect } from './axiosHandlers/fetchEffect'
 
 //  /catDetailed

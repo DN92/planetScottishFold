@@ -1,6 +1,6 @@
 import React, {useState, useEffect, useContext} from 'react'
 import MeContext from '../../MeContextPro'
-import { isPrivileged } from '../../../secrets'
+import { isPrivileged } from '../../../myModelsConfig'
 import ErrorFill from '../ErrorFill'
 import history from '../../history'
 import { eyeColors, earOptions } from '../../../myModelsConfig'

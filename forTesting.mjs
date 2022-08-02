@@ -9,5 +9,12 @@ const obj1 = {
 }
 const array = "['White', 'Blue Gold Chinchilla', 'Lilac', 'Silver Chinchilla', 'Gold Chinchilla']"
 
-array = array.split()
 
+// console.log(process.env)
+
+// console.log(Object.keys(process.env))
+
+// SSH_AUTH_SOCK
+// SSH_AGENT_PID
+
+console.log(process.env.SSH_AGENT_PID)

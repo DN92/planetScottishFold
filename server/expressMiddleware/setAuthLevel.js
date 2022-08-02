@@ -1,6 +1,6 @@
 const express = require('express')
 const { User } = require('../db').models
-const { getAuthGrade } = require('../../secrets')
+const { getAuthGrade } = require('../../myModelsConfig')
 
 const setAuthorizations = async (req, res, next) => {
 
