@@ -25,8 +25,8 @@ return (
     {! error && !requests.length && <h3>No New Requests</h3>}
     {!error && !!requests.length &&
       <table className='users-table'>
-        <thead className='usere-table__head'>
-          <tr>
+        <thead className='users-table__head'>
+          <tr className='table-head-shader'>
             <th className='opacity-zero'>Select</th>
             <th className='opacity-zero'>gutter</th>
             <th>E Mail</th>

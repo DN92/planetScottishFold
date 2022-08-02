@@ -3,7 +3,7 @@ import MeContext from '../../MeContextPro'
 import { isPrivileged } from '../../../secrets'
 import ErrorFill from '../ErrorFill'
 import history from '../../history'
-import { furColors, eyeColors} from '../../../myModelsConfig'
+import { furColors, eyeColors, genderOptions, earOptions, statusOptionsKitten} from '../../../myModelsConfig'
 import handleControlledValueFieldToState from '../../customHandlers/handleFormChange'
 import { fetchEffect } from '../axiosHandlers/fetchEffect'
 import { useParams } from 'react-router-dom'
@@ -26,8 +26,8 @@ const EditKitten = () => {
 
   const imgInLine= {
     width: "100%",
-    maxWidth: "200px",
-    maxHeight: "200px",
+    maxWidth: "400px",
+    maxHeight: "400px",
     marginLeft: "2%",
   }
 
@@ -92,84 +92,158 @@ const EditKitten = () => {
       }
 
       {!error && isPrivileged(type) && kittenToEdit &&
-        <div>
-          <img src={kittenToEdit.mainImageSrcValue} alt="kitten to edit" style={imgInLine} />
-          <form onKeyDown={handleKeyPress} onSubmit={handleSubmit}>
-            <h2>EDIT SELECTED KITTEN</h2>
-            <input
-              type="text"
-              name='name'
-              placeholder='Name'
-              value={kittenToEdit.name}
-              onChange={handleChange}
-            /> <br />
-            <input
-              type="text"
-              name='breed'
-              placeholder='Cat Breed'
-              value={kittenToEdit.breed}
-              onChange={handleChange}
-            /> <br />
-             <input
-              type="text"
-              name='regNum'
-              placeholder='Registration Number'
-              value={kittenToEdit.regNum}
-              onChange={handleChange}
-            /> <br />
-            <select name="gender" value={kittenToEdit.gender} onChange={handleChange}>
-              <option value={genderOptions[0]}>Boy or Girl</option>
-                {genderOptions.map((ear, index) => (
-                  <option key={index} value={ear}>{ear}</option>
-                ))}
-            </select> <br />
-            <select name="ears" value={kittenToEdit.ears} onChange={handleChange}>
-              <option value={earOptions[0]}>Fold or Straight</option>
-                {earOptions.map((ear, index) => (
-                  <option key={index} value={ear}>{ear}</option>
-                ))}
-            </select> <br />
-            <select name="furColor" value={kittenToEdit.furColor} onChange={handleChange}>
-              <option value="">Fur Color</option>
-              {furColors.map((color, index) => (
-                <option key={index} value={color}>{color}</option>
-              ))}
-            </select> <br />
-            <select name="eyeColor" value={kittenToEdit.eyeColor} onChange={handleChange}>
-              <option value="">Eye Color</option>
-                {eyeColors.map((color, index) => (
-                  <option key={index} value={color}>{color}</option>
+        <>
+          <h2>EDIT SELECTED KITTEN</h2>
+          <div>
+            <img src={kittenToEdit.mainImageSrcValue} alt="kitten to edit" style={imgInLine} />
+            <form onKeyDown={handleKeyPress} onSubmit={handleSubmit}>
+              <>
+                <label htmlFor="editKittenName">Name</label>
+                <input id='editKittenName'
+                  type="text"
+                  name='name'
+                  placeholder='Name'
+                  value={kittenToEdit.name}
+                  onChange={handleChange}
+                /> <br />
+              </>
+              <>
+              <label htmlFor="editKittenBreed">Breed</label>
+              <input id="editKittenBreed"
+                type="text"
+                name='breed'
+                placeholder='Cat Breed'
+                value={kittenToEdit.breed}
+                onChange={handleChange}
+              /> <br />
+              </>
+              <>
+                <label htmlFor="editKittenRegNum">Reg Num</label>
+                <input id="editKittenRegNum"
+                  type="text"
+                  name='regNum'
+                  placeholder='Registration Number'
+                  value={kittenToEdit.regNum}
+                  onChange={handleChange}
+                /> <br />
+              </>
+              <>
+                <label htmlFor="editKittenGender">Gender</label>
+                <select id="editKittenGender"
+                  name="gender"
+                  value={kittenToEdit.gender}
+                  onChange={handleChange}
+                >
+                  <option value={genderOptions[0]}>Boy or Girl</option>
+                    {genderOptions.map((ear, index) => (
+                      <option key={index} value={ear}>{ear}</option>
+                    ))}
+                </select> <br />
+              </>
+              <>
+                <label htmlFor="editKittensEars">Ears</label>
+                <select id='editKittensEars'
+                  name="ears"
+                  value={kittenToEdit.ears}
+                  onChange={handleChange}
+                >
+                  <option value={earOptions[0]}>Fold or Straight</option>
+                    {earOptions.map((ear, index) => (
+                      <option key={index} value={ear}>{ear}</option>
+                    ))}
+                </select> <br />
+              </>
+              <>
+                <label htmlFor="editKittenFur">Fur Color</label>
+                <select id="editKittenFur"
+                  name="furColor"
+                  value={kittenToEdit.furColor}
+                  onChange={handleChange}
+                >
+                  <option value="">Fur Color</option>
+                  {furColors.map((color, index) => (
+                    <option key={index} value={color}>{color}</option>
                   ))}
-            </select> <br />
-            <select name="mother" value={kittenToEdit.mother} onChange={handleChange}>
-              <option value="">Select Dam</option>
-                {dams.map((name, index) => (
-                  <option key={index} value={name}>{name}</option>
-                ))}
-            </select> <br />
-            <select name="father" value={kittenToEdit.father} onChange={handleChange}>
-              <option value="">Select Stud</option>
-                {studs.map((name, index) => (
-                  <option key={index} value={name}>{name}</option>
-                ))}
-            </select> <br />
-            <input
-              type="number"
-              name='price'
-              placeholder='price'
-              value={kittenToEdit.price}
-              onChange={handleChange} /> <br />
-            <select name="isAvailable" value={kittenToEdit.isAvailable} onChange={handleChange}>
-              <option value="isAvailable">isAvailable</option>
-              <option value="reserved">Reserved</option>
-              <option value="sold">Sold</option>
-            </select><br />
+                </select> <br />
+              </>
+              <>
+              </>
+              <>
+                <label htmlFor="editKittenEyes">Eye Color</label>
+                <select id="editKittenEyes"
+                  name="eyeColor"
+                  value={kittenToEdit.eyeColor}
+                  onChange={handleChange}
+                >
+                  <option value="">Eye Color</option>
+                    {eyeColors.map((color, index) => (
+                      <option key={index} value={color}>{color}</option>
+                      ))}
+                </select> <br />
+              </>
+              <>
+                <label htmlFor="editKittenMother">Mother</label>
+                <select id="editKittenMother"
+                  name="mother"
+                  value={kittenToEdit.mother}
+                  onChange={handleChange}
+                >
+                  <option value="">Select Dam</option>
+                    {dams.map((name, index) => (
+                      <option key={index} value={name}>{name}</option>
+                    ))}
+                </select> <br />
+              </>
+              <>
+                <label htmlFor="editKittenFather">Father</label>
+                <select id="editKittenFather"
+                  name="father"
+                  value={kittenToEdit.father}
+                  onChange={handleChange}>
+                  <option value="">Select Stud</option>
+                    {studs.map((name, index) => (
+                      <option key={index} value={name}>{name}</option>
+                    ))}
+                </select> <br />
+              </>
+              <>
+                <label htmlFor="editKittenPrice">Price</label>
+                <input id="editKittenPrice"
+                  type="number"
+                  name='price'
+                  placeholder='price'
+                  value={kittenToEdit.price}
+                  onChange={handleChange} /> <br />
+              </>
+              <>
+                <label htmlFor="editKittenStatus">Status</label>
+                <select id="editKittenStatus"
+                  name="status"
+                  value={kittenToEdit.status}
+                  onChange={handleChange}
+                >
 
-            <textarea name="description" cols="50" rows="15" placeholder='description'></textarea>
-            <button onClick={handleReset} type='button'>Reset Changes</button>
-            <button type='submit'>Submit Changes</button>
-          </form>
-        </div>
+                  {statusOptionsKitten.map((option, index) => (
+                    <option key={index} value={option}>{option}</option>
+                  ))}
+                </select><br />
+              </>
+              <>
+                <label htmlFor="editKittenDescription">Description</label>
+              </>
+              <textarea id="editKittenDescription"
+                name="description"
+                cols="50" rows="15"
+                placeholder='description'
+              />
+              <div className='buttonsWrapper'>
+
+              </div>
+              <button className='buttonStyle2' onClick={handleReset} type='button'>Reset Changes</button>
+              <button className='buttonStyle2' type='submit'>Submit Changes</button>
+            </form>
+          </div>
+        </>
       }
     </>
   )

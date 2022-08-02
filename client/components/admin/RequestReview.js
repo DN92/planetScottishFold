@@ -8,7 +8,6 @@ import WrongPath from '../WrongPath'
 const RequestReview = () => {
 
   const arrayFromRequestKeys = [
-    'requestedUsername',
     'eMail',
     'firstName',
     'lastName',
@@ -83,8 +82,8 @@ const RequestReview = () => {
                   <td>{wordsFromKeys[index]}</td>
                   <td>
                     {(key !== 'firstCat')
-                    ? request[key]
-                    : request[key].toString()
+                    ? request[key] || 'NULL'
+                    : request[key].toString() || 'NULL'
                     }
                   </td>
                 </tr>
@@ -94,7 +93,6 @@ const RequestReview = () => {
           <div className='buttonsWrapper'>
             <button className='buttonStyle2' type='button' onClick={handleApprove}> APPROVE </button> <br />
             <button className='buttonStyle2' type='button' onClick={handleDeny}> DENY </button>
-
           </div>
           <p>{error}</p>
         </>

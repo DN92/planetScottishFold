@@ -199,6 +199,10 @@ svg {
   opacity: 0;
 }
 
+.table-head-shader {
+  background-color: var(--clr-white) !important;
+}
+
 /* headers */
 
 

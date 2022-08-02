@@ -23,38 +23,46 @@ const ViewUsers = () => {
       {!error && users.length &&
         <>
           <h2>Members</h2>
-          <table>
+          <table className='members-table'>
             <thead>
-              <tr>
+              <tr className='table-head-shader'>
+                <th className='opacity-zero'>Select</th>
+                <th className='opacity-zero'>gutter</th>
                 <th>Email</th>
-                <th>User Name</th>
+                <th>Name</th>
                 <th>budget</th>
                 <th>City and State</th>
-                <th>FaceBook</th>
-                <th>InstaGram</th>
+                <th>Role</th>
+                <th>Status</th>
               </tr>
             </thead>
             <tbody>
               {users.map(user => (
                 <tr key={user.id}>
-                  <td>{user.eMail}</td>
-                  <td>{user.lastName + ', '}{user.firstName} </td>
-                  <td>{user.budget}</td>
-                  <td>{user.city + ' '}{user.state}</td>
-                  <td>{user.fB}</td>
-                  <td>{user.iG}</td>
                   <td>
                     <Link to={`/viewUsers/id=${user.id}`} state={{user: user}}>
                       <button>See More Details</button>
                     </Link>
                   </td>
+                  <td className='opacity-zero'>gutter</td>
+                  <td>{user.eMail  || 'NULL'}</td>
+                  <td>{(user.lastName || user.firstName) ?
+                    (user.lastName + ', ' + user.firstName)
+                    :
+                    'NULL'
+                  } </td>
+                  <td>{user.budget  || 'NULL'}</td>
+                  <td>{(user.city || user.state) ?
+                    (user.city + ' ' + user.state)
+                    :
+                    'NULL'
+                  }</td>
+                  <td>{user.type}</td>
+                  <td>{user.applyStatus}</td>
                 </tr>
               ))}
             </tbody>
           </table>
-          <Link to='/home'>
-            <button>Back to Home</button>
-          </Link>
         </>
       }
     </div>

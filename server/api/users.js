@@ -56,13 +56,18 @@ router.put('/handleApplicant', async(req, res, next) => {
       if(!['guest', 'registered'].includes(user.type)) {
         throw new Error('cannot edit this user')
       }
-      req.body.type = 'registered'
+      if(req.body.applyStatus === 'Denied') {
+        req.body.type = 'guest'
+      } else {
+        req.body.type = 'registered'
+      }
       const update = await user.update(req.body)
       if(update) {
         res.send(update)
       }
+    } else {
+      throw new Error('user update failed')
     }
-    throw new Error('user update failed')
   } catch (err) {
     next(err)
   }

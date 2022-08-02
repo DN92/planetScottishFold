@@ -8,8 +8,9 @@ router.post('/login', async (req, res, next) => {
     //  throw back no and null passwords
     if(req.body.password) {
       res.send({ token: await User.authenticate(req.body)});
+    } else {
+      throw new Error('bad password')
     }
-    throw new Error('bad password')
   } catch (err) {
     next(err)
   }
