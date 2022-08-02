@@ -108,7 +108,7 @@ const EditCat = () => {
             type="text"
             name='regNum'
             placeholder='Registration Number'
-            value={catToCreate.regNum}
+            value={catToEdit.regNum}
             onChange={handleChange}
           /> <br />
           <input

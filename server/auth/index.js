@@ -5,7 +5,11 @@ const {models:{ User } } = require('../db')
 
 router.post('/login', async (req, res, next) => {
   try {
-    res.send({ token: await User.authenticate(req.body)});
+    //  throw back no and null passwords
+    if(req.body.password) {
+      res.send({ token: await User.authenticate(req.body)});
+    }
+    throw new Error('bad password')
   } catch (err) {
     next(err)
   }

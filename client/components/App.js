@@ -35,8 +35,7 @@ const App = () => {
           {showMobileNav && <NavMobile setShowMobileNav={setShowMobileNav} />}
           {!showMobileNav &&
             <>
-              <FrontEndRoutes />
-              {isPrivileged(type) && <AdminRoutes />}
+              {isPrivileged(type) ? <AdminRoutes /> : <FrontEndRoutes />}
             </>
           }
         </div>

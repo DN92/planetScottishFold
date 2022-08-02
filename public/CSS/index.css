@@ -18,6 +18,7 @@
 @import "./hamburger.css";
 
 /* component targeted styles */
+/* public */
 @import "./topMenu.css";
 @import "./buttonAsLink.css";
 @import "./navbar.css";
@@ -33,4 +34,9 @@
 @import "./contact.css";
 @import "./login.css";
 @import "./logout.css";
+
+/* admin */
+
+@import "./newUserRequests.css";
+
 

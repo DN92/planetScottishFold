@@ -7,10 +7,26 @@ const { Op } = require('sequelize')
 //  api/users
 
 router.get('/', async (req, res, next) => {
-  // passAuth(3, req, res)
+  passAuth(2, req, res)
   try {
     const users = await User.findAll({
       attributes: {exclude: ['password', 'updatedAt']}
+    })
+    res.send(users) // array
+  } catch (err) {
+    next(err)
+  }
+})
+
+router.get('/pending', async (req, res, next) => {
+  passAuth(2, req, res)
+  try {
+    const users = await User.findAll({
+      attributes: {exclude: ['password', 'updatedAt']},
+      where : {
+        applyStatus: 'Pending',
+        type: ['registered', 'guest', null]
+      }
     })
     res.send(users) // array
   } catch (err) {
@@ -31,39 +47,22 @@ router.post('/', async (req, res, next) => {
   }
 })
 
-router.post('/anonToUser', async (req, res, next) => {
-  try{
-    const request = req.body
-    //  we have to remove id so it doesn't interfere with db model creation
-    delete request['id']
-    //  and perform some other preparatory operations
-    request.username = request.requestedUsername
-    request.type = 'registered'
-    request.password = pwGenerator.generate({
-      numbers: true,
-      exclude: ' -_',
-      strict: true,
-    })
-    const newUser = await User.create(request)
-    if(!newUser) {
-      throw new Error('newUser creation failed')
-    }
-    res.send(newUser)
-  } catch (err) {
-    next(err)
-  }
-})
-
-router.put('/', async(req, res, next) => {
+router.put('/handleApplicant', async(req, res, next) => {
   try {
     passAuth(3, req, res)
     delete req.body.type
     const user = await User.findByPk(req.query.id)
-    const update = await user.update(req.body)
-    if(!update) {
-      throw new Error('user update failed')
+    if (user) {
+      if(!['guest', 'registered'].includes(user.type)) {
+        throw new Error('cannot edit this user')
+      }
+      req.body.type = 'registered'
+      const update = await user.update(req.body)
+      if(update) {
+        res.send(update)
+      }
     }
-    res.send(update)
+    throw new Error('user update failed')
   } catch (err) {
     next(err)
   }
@@ -71,7 +70,7 @@ router.put('/', async(req, res, next) => {
 
 router.delete('/', async(req, res, next) => {
   try {
-    passAuth(5, req, res)
+    passAuth(4, req, res)
     const userToDelete = await User.findByPk(req.query.userId)
     if(userToDelete) {
       await userToDelete.destroy()

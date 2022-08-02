@@ -16,7 +16,7 @@ router.get('/', async (req, res, next) => {
 
 router.post('/', async (req, res, next) => {
   try{
-    passAuth(4, req, res)
+    passAuth(3, req, res)
     const newKitty = await Kitten.create(req.body)
     if(!newKitty) {
       throw new Error('newKitty creation failed')
@@ -29,7 +29,7 @@ router.post('/', async (req, res, next) => {
 
 router.put('/', async(req, res, next) => {
   try {
-    passAuth(4, req, res)
+    passAuth(3, req, res)
     const kitten = await Kitten.findByPk(req.body.id)
     const update = await kitten.update(req.body)
     if(!update) {
@@ -43,7 +43,7 @@ router.put('/', async(req, res, next) => {
 
 router.delete('/', async(req, res, next) => {
   try {
-    passAuth(5, req, res)
+    passAuth(4, req, res)
     const kittenToDelete = await Kitten.findByPk(req.query.kittenId)
     if(kittenToDelete) {
       await kittenToDelete.destroy()

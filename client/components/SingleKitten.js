@@ -24,7 +24,8 @@ const SingleKitten = (props) => {
     description,
     status,
     mainImageSrcValue,
-    id
+    id,
+    isAvailable,
   } = kitten
 
   const image = mainImageSrcValue ? mainImageSrcValue : "/catPictures/catError3.gif"

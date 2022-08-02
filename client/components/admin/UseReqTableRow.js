@@ -4,12 +4,11 @@ import history from '../../history'
 const UseReqTableRow = (props) => {
 
   const defaultUser = {
-    username: 'This is the Default State',
-    eMail: '324@gmail.com',
+    eMail: 'defaultUser@gmail.com',
     firstName: 'firstName',
     lastName: 'lastName',
     aboutYou: 'About Me',
-    firstCat: true,
+    firstCat: 'firstCat',
     otherPets: 'otherPets',
     city: 'cartown',
     state: 'downTown',
@@ -34,28 +33,29 @@ const UseReqTableRow = (props) => {
   }
 
   return (
-
-
-    <tr onClick={handleSelectRequest}>
-        <td>{user.requestedUsername}</td>
-        <td>{user.eMail}</td>
-        <td>{user.firstName}</td>
-        <td>{user.lastName}</td>
-        <td>{user.aboutYou}</td>
-        <td>{user.firstCat.toString()}</td>
-        <td>{user.otherPets}</td>
-        <td>{user.city}</td>
-        <td>{user.state}</td>
-        <td>{user.fB}</td>
-        <td>{user.iG}</td>
-        <td>{user.gender}</td>
-        <td>{user.ears}</td>
-        <td>{user.eyeColor}</td>
-        <td>{user.furColor}</td>
-        <td>{user.mif}</td>
-        <td>{user.budget}</td>
-        <td>{user.IPaddress}</td>
-      </tr>
+    <tr >
+      <td className='users-table__view-button-wrapper' onClick={handleSelectRequest}><button className='users-table__view-button'>VIEW</button></td>
+      <td className='opacity-zero'>gutter</td>
+      <td>{user.eMail || 'NULL'}</td>
+      <td>{user.firstName || 'NULL'}</td>
+      <td>{user.lastName || 'NULL'}</td>
+      <td>{user.phoneNumber || 'NULL'}</td>
+      <td>{user.firstCat?.toString() || 'NULL'}</td>
+      <td>{user.otherPets || 'NULL'}</td>
+      <td>{user.city || 'NULL'}</td>
+      <td>{user.state || 'NULL'}</td>
+      <td>{user.fB || 'NULL'}</td>
+      <td>{user.iG || 'NULL'}</td>
+      <td>{user.gender || 'NULL'}</td>
+      <td>{user.ears || 'NULL'}</td>
+      <td>{user.eyeColor || 'NULL'}</td>
+      <td>{user.mif || 'NULL'}</td>
+      <td>{user.budget || 'NULL'}</td>
+      <td>{user.willBreed || 'NULL'}</td>
+      <td>{user.hasAllergies || 'NULL'}</td>
+      <td>{user.IPaddress || 'NULL'}</td>
+      <td>{user.applyStatus || 'NULL'}</td>
+    </tr>
 
   )
 }

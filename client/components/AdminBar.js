@@ -6,7 +6,6 @@ const AdminBar = ({setViewNav}) => {
 
   return (
     <nav className='navBar'>
-      <Link to='/home'>Home</Link>
       <Link to='newUserRequests'>Applications</Link>
       <Link to='viewUsers'>All Members</Link>
       <Link to='createKitten'>Add A Kitten</Link>

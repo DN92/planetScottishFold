@@ -36,7 +36,6 @@ const RequestReview = () => {
   const [error, setError] = useState(null)
   const [endMessage, setEndMessage] = useState('empty message')
   const [posted, setPosted] = useState(null)
-  const [deleted, setDeleted] = useState(false)
 
 
   // todo: take the newly created user's info and send email after that system is set up
@@ -44,33 +43,23 @@ const RequestReview = () => {
   const handleApprove = async () => {
     fetchEffect(
       [setPosted, setError],
-      'post',
-      '/api/users/anonToUser',
-      request
+      'put',
+      `/api/users/handleApplicant?id=${requestId}`,
+      {...request, 'applyStatus': 'Approved'}
     )
-    setEndMessage('Application Approved')
+    setEndMessage('Application has been successfully Approved')
   }
 
   const handleDeny = async () => {
     fetchEffect(
-      [,setError],
-      'delete',
-      `/api/users?id=${requestId}`
+      [setPosted, setError],
+      'put',
+      `/api/users/handleApplicant?id=${requestId}`,
+      {...request, 'applyStatus': 'Denied'}
     )
-    setDeleted(true)
     setPosted(true)
-    setEndMessage('Application has been successfully rejected.')
+    setEndMessage('Application has been successfully Rejected.')
   }
-
-  useEffect(() => {
-    if(posted && !deleted) {
-      fetchEffect(
-        [,setError],
-        'delete',
-        `/api/users?id=${requestId}`
-      )
-    }
-  }, [posted])
 
   return(
     <>
@@ -79,7 +68,8 @@ const RequestReview = () => {
       }
       {!posted && request &&
         <>
-          <h2>Awaiting Your Approval</h2>
+          <h3>Awaiting Your Approval</h3>
+          <br />
           <table>
             <thead>
               <tr>
@@ -101,8 +91,11 @@ const RequestReview = () => {
               ))}
             </tbody>
           </table>
-          <button type='button' onClick={handleApprove}> APPROVE </button> <br />
-          <button type='button' onClick={handleDeny}> DENY </button>
+          <div className='buttonsWrapper'>
+            <button className='buttonStyle2' type='button' onClick={handleApprove}> APPROVE </button> <br />
+            <button className='buttonStyle2' type='button' onClick={handleDeny}> DENY </button>
+
+          </div>
           <p>{error}</p>
         </>
       }

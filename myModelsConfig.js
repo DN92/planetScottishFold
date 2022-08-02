@@ -115,8 +115,8 @@ module.exports = {
     'Other',
   ],
   applyStatusOptions: [
-    'pending',
-    'denied',
-    'approved'
+    'Pending',
+    'Denied',
+    'Approved'
   ],
 }

@@ -8,7 +8,8 @@ const { eyeColorsAdmin, budgetRanges, mifOptions, genderOptions, earOptions, wil
 
 const User = db.define("user", {
   type: {
-    type: Sequelize.ENUM(...userTypes)
+    type: Sequelize.ENUM(userTypes),
+    defaultValue: userTypes[0]
   },
   eMail: {
     type: Sequelize.STRING,
@@ -91,16 +92,12 @@ const User = db.define("user", {
     defaultValue: willBreedOptions[0],
   },
   hasAllergies: {
-    type: Sequelize.ENUM(hasAllergiesOptions)
+    type: Sequelize.ENUM(hasAllergiesOptions),
+    defaultValue: hasAllergiesOptions[0],
   },
   foundUsBy: {
     type: Sequelize.ENUM(foundUsByOptions),
     defaultValue: foundUsByOptions[foundUsByOptions.length - 1],
-  },
-
-  hasBeenReviewedByAdmin: {
-    type: Sequelize.BOOLEAN,
-    defaultValue: false,
   },
   applyStatus: {
     type: Sequelize.ENUM(applyStatusOptions),

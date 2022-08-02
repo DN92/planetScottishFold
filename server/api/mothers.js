@@ -23,7 +23,7 @@ router.get('/', async (req, res, next) => {
 
 router.post('/', async (req, res, next) => {
   try{
-    passAuth(4, req, res)
+    passAuth(3, req, res)
     const newMother = await Mother.create(req.body)
     if(!newMother) {
       throw new Error('newMother creation failed')
@@ -36,7 +36,7 @@ router.post('/', async (req, res, next) => {
 
 router.put('/', async(req, res, next) => {
   try {
-    passAuth(4, req, res)
+    passAuth(3, req, res)
     const mother = req.query.id
       ? await Mother.findByPk(req.query.id)
       : await Mother.findByPk(req.body.id)
@@ -52,7 +52,7 @@ router.put('/', async(req, res, next) => {
 
 router.delete('/', async(req, res, next) => {
   try {
-    passAuth(5, req)
+    passAuth(4, req)
     const motherToDelete = await Mother.findByPk(req.query.motherId)
     if(motherToDelete) {
       await motherToDelete.destroy()

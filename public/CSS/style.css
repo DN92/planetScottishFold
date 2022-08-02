@@ -150,6 +150,12 @@ svg {
   }
 }
 
+@media (min-width: 80em)  {
+  :root {
+    --maxWidthBody: 89em;
+  }
+}
+
 /* Utility classes */
 
 .visually-hidden {
@@ -187,6 +193,10 @@ svg {
 
 .shrink-text {
   font-size: var(--fs-300) !important;
+}
+
+.opacity-zero {
+  opacity: 0;
 }
 
 /* headers */
