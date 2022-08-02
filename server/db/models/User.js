@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize')
 const db = require('../dbSetup')
 const { userTypes, } = require('../../../myModelsConfig')
-const bcrypt = require('bcrypt')
+const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 const { eyeColorsAdmin, budgetRanges, mifOptions, genderOptions, earOptions, willBreedOptions, hasAllergiesOptions, foundUsByOptions, applyStatusOptions } = require('../../../myModelsConfig')
 
