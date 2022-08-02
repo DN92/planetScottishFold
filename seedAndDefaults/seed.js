@@ -1,10 +1,7 @@
 "use-strict"
 
 const { db, models } = require ('../server/db')
-const dummyKittens = require('./kittensDummy')
 const dummyUsers = require('./userDummy')
-const dummyStuds = require('./studsDummy')
-const dummyDams = require('./damsDummy')
 const contactRequests = require('./contactReqDummy')
 
 const studsActual = require('./studsActual')
