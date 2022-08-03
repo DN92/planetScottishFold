@@ -12,14 +12,8 @@ const EditKitten = () => {
   const {type} = useContext(MeContext)
   const {id} = useParams()
 
-  const [kittenToEdit, setKittenToEdit] = useState(history.location.state
-    ? history.location.state.kitten
-    : null
-  )
-  const [error, setError] = useState(history.location.state
-    ? history.location.state.error
-    : ''
-  )
+  const [kittenToEdit, setKittenToEdit] = useState(history.location.state?.kitten)
+  const [error, setError] = useState('')
   const [dams, setDams] = useState([])
   const [studs, setStuds] = useState([])
   const [posted, setPosted] = useState(null)
@@ -237,10 +231,9 @@ const EditKitten = () => {
                 placeholder='description'
               />
               <div className='buttonsWrapper'>
-
+                <button className='buttonStyle2' onClick={handleReset} type='button'>Reset Changes</button>
+                <button className='buttonStyle2' type='submit'>Submit Changes</button>
               </div>
-              <button className='buttonStyle2' onClick={handleReset} type='button'>Reset Changes</button>
-              <button className='buttonStyle2' type='submit'>Submit Changes</button>
             </form>
           </div>
         </>

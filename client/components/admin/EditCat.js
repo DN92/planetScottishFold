@@ -11,11 +11,7 @@ import { fetchEffect } from '../axiosHandlers/fetchEffect'
 const EditCat = () => {
   const {type} = useContext(MeContext)
   const {MOTHERorFATHER, id} = useParams()
-
-  const [catToEdit, setCatToEdit] = useState(history.location.state
-    ? history.location.state.cat
-    : null
-  )
+  const [catToEdit, setCatToEdit] = useState(history.location.state?.cat)
   const [catLoaded, setCatLoaded] = useState(false)
   const [initialState, setInitialState] = useState(catToEdit ?
     catToEdit :
@@ -23,13 +19,6 @@ const EditCat = () => {
   )
   const [posted, setPosted] = useState(null)
   const [error, setError] = useState('')
-
-  const imgInLine= {
-    width: "100%",
-    maxWidth: "200px",
-    maxHeight: "200px",
-    marginLeft: "2%",
-  }
 
   const handleChange = (event) => {
     handleControlledValueFieldToState(event, setCatToEdit)
@@ -46,7 +35,6 @@ const EditCat = () => {
   const handleSubmit = async (event) => {
     event.preventDefault()
     !Object.keys(initialState).length && setInitialState(catToEdit)
-
     fetchEffect(
       [setPosted, setError],
       'put',
@@ -87,60 +75,81 @@ const EditCat = () => {
 
       {!error && isPrivileged(type) && catToEdit &&
       <div>
-        <img src={catToEdit.mainImageSrcValue} alt="cat to edit" style={imgInLine} />
+        <img src={catToEdit.mainImageSrcValue} alt="cat to edit" />
         <form onKeyDown={handleKeyPress} onSubmit={handleSubmit}>
           <h2>EDIT SELECTED {`${MOTHERorFATHER}`}</h2>
-          <input
+          <>
+          </>
+          <>
+          </>
+          <>
+          </>
+          <>
+          </>
+          <>
+          </>
+          <>
+          </>
+          <label htmlFor="catToEditName">Name</label>
+          <input id='catToEditName'
             type="text"
             name='name'
             placeholder='Name'
             value={catToEdit.name}
             onChange={handleChange}
           /> <br />
-           <input
+          <label htmlFor="catToEditBreed">Breed</label>
+          <input id="catToEditBreed"
             type="text"
             name='breed'
             placeholder='Cat Breed'
             value={catToEdit.breed}
             onChange={handleChange}
           /> <br />
-           <input
+          <label htmlFor="catToEditRegNum">Registration#</label>
+          <input id="catToEditRegNum"
             type="text"
             name='regNum'
             placeholder='Registration Number'
             value={catToEdit.regNum}
             onChange={handleChange}
           /> <br />
-          <input
+          <label htmlFor="catToEditDob">Date of Birth</label>
+          <input id="catToEditDob"
             type="text"
             name='dob'
             placeholder='Date of Birth'
             value={catToEdit.dob}
             onChange={handleChange}
           /> <br />
-          <select name="ears" value={catToEdit.ears} onChange={handleChange}>
+          <label htmlFor="catToEditEars">Ears</label>
+          <select id="catToEditEars" name="ears" value={catToEdit.ears} onChange={handleChange}>
             <option value={earOptions[0]}>Fold or Straight</option>
             {earOptions.map((ear, index) => (
               <option key={index} value={ear}>{ear}</option>
             ))}
           </select> <br />
-          <input
+          <label htmlFor="catToEditFurColor">Fur Color</label>
+          <input id="catToEditFurColor"
             type="text"
             name='furColor'
             placeholder='Fur Color'
             value={catToEdit.furColor}
             onChange={handleChange}
           /> <br />
-          <select name="eyeColor" value={catToEdit.eyeColor} onChange={handleChange}>
+          <label htmlFor="catToEditEyes">Eye Color</label>
+          <select id="catToEditEyes" name="eyeColor" value={catToEdit.eyeColor} onChange={handleChange}>
             <option value="">Eye Color</option>
               {eyeColors.map((color, index) => (
                 <option key={index} value={color}>{color}</option>
                 ))}
           </select> <br />
-          <textarea name="description" cols="50" rows="8" value={catToEdit.description} onChange={handleChange} placeholder='description'></textarea>
-          <button onClick={handleReset} type='button'>Reset Changes</button>
-          <button type='submit'>Submit Changes</button>
-
+          <label htmlFor="catToEditDescription">Description</label>
+          <textarea id="catToEditDescription" name="description" cols="50" rows="8" value={catToEdit.description} onChange={handleChange} placeholder='description'></textarea>
+          <div className='buttonsWrapper'>
+            <button className='buttonStyle2' onClick={handleReset} type='button'>Reset Changes</button>
+            <button className='buttonStyle2' type='submit'>Submit Changes</button>
+          </div>
         </form>
       </div>
       }

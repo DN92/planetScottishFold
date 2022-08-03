@@ -31,13 +31,19 @@
 
 .footer__cards {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
 }
 
 .footer__card {
-  flex-grow: 1;
+  /* flex-grow: 1; */
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+@media (max-width:22em) {
+  .tica-card {
+    display: none;
+  }
 }
