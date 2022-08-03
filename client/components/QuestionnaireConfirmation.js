@@ -9,7 +9,7 @@ const QuestionnaireConfirmation = () => {
     <div>
       <h3>Thank you filling out our form</h3>
       <p>We have received your submission and will review it as soon as possible.</p>
-      <p>Once approved, you will receive and email with Login and Password information and can use those to login and get more information about our kittens.</p><br />
+      <p>Once approved, you will receive an email with Login and Password information which can be used to login.</p><br />
       <Link to='/home'>Back To Home Page</Link>
     </div>
   )

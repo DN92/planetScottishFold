@@ -59,7 +59,9 @@ const ContactRequestForm = () => {
                 <div className='contact__msg'>
                   <p>Use this form to send us a direct message without having to log in.</p>
                   <br />
-                  <p>Our Address: We breed in our homes, so we do not share our addresses unless reservation deposit is placed.</p>
+                  <div className='img-wrapper'>
+                    <img src="/catPictures/studCupid.jpg" alt="cat picture filler" />
+                  </div>
                 </div>
                 <div className='contact__formContainer'>
                   <form id="ContactRequest" className='contact__form' onKeyDown={handleKeyPress} onChange={handleChange} onSubmit={handleSubmit1}>
@@ -94,7 +96,7 @@ const ContactRequestForm = () => {
       {/* success message */}
       {done &&
         <>
-          <p className='contact-post'>Your message has been submitted. We will review it as soon possible. Thanks!</p>
+          <p className='contact-post'>Thank You! Your message has been submitted. We will respond as soon as possible.</p>
           <img src="/otherPictures/catTyping.jpg" alt="cat typing on a keyboard, comical" />
         </>
       }

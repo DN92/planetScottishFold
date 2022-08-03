@@ -12,10 +12,18 @@
 .availableKittens {
   width: 100%;
   display: flex;
-  align-content: flex-start;
+  align-content: center;
   justify-content: center;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   gap: 1rem;
   padding-top: 20px;
+  flex-direction: column;
 }
 
+@media (min-width: 50em) {
+  .availableKittens {
+    align-content: flex-start;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+}

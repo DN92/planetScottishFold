@@ -14,7 +14,8 @@ const kittensArray = [
     location: 'Bergenfield, New Jersey',
     description: '',
     mainImageSrcValue: '/catPictures/kittenFelisiyaFinley.jpg',
-  },
+    status: "Sold",
+    },
   // Danissima
   {
     name: 'Dew',
@@ -47,6 +48,22 @@ const kittensArray = [
     mainImageSrcValue: '/catPictures/kittenDanissimaDaiquiri.jpg',
   },
   {
+    name: 'Elsa',
+    breed:'Scottish Straight Shorthair',
+    gender: 'Girl',
+    ears: 'Straight',
+    furColor: 'Silver Shaded Chinchilla',
+    eyeColor: 'Green',
+    dob: 'April 27th, 2022',
+    mother: 'Danissima',
+    father: 'Artemis',
+    price: 1700,
+    location: 'Bergenfield, New Jersey',
+    description: '',
+    mainImageSrcValue: '/catPictures/kittenDanissimaDaiquiriTwin.jpg',
+    status: 'Sold',
+    },
+  {
     name: 'Dumpling',
     breed:'Scottish Fold Shorthair',
     gender: 'Boy',
@@ -60,7 +77,7 @@ const kittensArray = [
     location: 'Bergenfield, New Jersey',
     description: '',
     mainImageSrcValue: '/catPictures/kittenDanissimaDumpling.jpg',
-    // status: 'Sold',
+    status: 'Sold',
   },
   {
     name: 'Dolce Gabbana',

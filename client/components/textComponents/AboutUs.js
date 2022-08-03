@@ -95,7 +95,7 @@ const AboutUs = () => {
     <p>
       If driving far, please plan accordingly and consider having multiple stops to rest and take care of the kitten. It’s good to have 2 people so that the passenger can take the kitten out of the kennel during the drive if it starts being stressed out.
     </p>
-    <Link to='/waitingListFrom'>
+    <Link to='/waitingListForm'>
       Apply for your kitten here
     </Link>
     <p>

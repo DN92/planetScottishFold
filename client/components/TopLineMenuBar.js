@@ -38,10 +38,12 @@ const TopLineMenuBar = ({setViewNav, setShowMobileNav}) => {
         <>
           <div className='topMenu'>
             <div className='topMenu__headline'>
-              <h1 id='h1'>
-                {isPrivileged(type) ? 'ADMIN VIEW' : 'Planet Scottish Fold'}
-              </h1>
-              <h1 id='h1TinyScreen'>PSF</h1>
+              <Link to='/home'>
+                <h1 id='h1'>
+                  {isPrivileged(type) ? 'ADMIN VIEW' : 'PLANET SCOTTISH FOLD'}
+                </h1>
+                <h1 id='h1TinyScreen'>PSF</h1>
+              </Link>
             </div>
             {meContext.id ?
               <div className='topMenu__links'>

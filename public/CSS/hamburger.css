@@ -19,7 +19,7 @@
   width: 2.25em;
   height: 3px;
   background: var(--clr-black);
-  transition: 600ms ease-in-out;
+  /* transition: 600ms ease-in-out; */
 }
 
 .hamburger::before,

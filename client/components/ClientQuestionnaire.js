@@ -185,8 +185,8 @@ const ClientQuestionnaire = () => {
                 </select>
               </>
               <>
-                <label htmlFor="clientFormFoundBy">How did you find us?</label>
-                <select id="clientFormFoundBy" className="required"
+                <label className="required" htmlFor="clientFormFoundBy">How did you find us?</label>
+                <select id="clientFormFoundBy"
                   name="foundUsBy"
                   value={clientInfo.foundUsBy}
                   onChange={handleChange}
