@@ -58,17 +58,18 @@ const CatDetailedView = () => {
             <span> Description: {cat.description}</span> <br />
 
           </div>
-          {isPrivileged(type) &&
-            <Link to={`/createCat/${MOTHERorFATHER}`} >
-              <button>Upload Another {`${MOTHERorFATHER}`}</button>
-            </Link>
-          }
-          {isPrivileged(type) &&
-            <Link to={`/viewCats/${MOTHERorFATHER}`} >
-              <button>Back to {`${MOTHERorFATHER}s`}</button>
-            </Link>
-          }
+            {isPrivileged(type) &&
+              <div className='buttonsWrapper'>
+                <Link to={`/createCat/${MOTHERorFATHER}`} >
+                  <button className='buttonStyle2'>Upload Another {`${MOTHERorFATHER}`}</button>
+                </Link>
+                <Link to={`/viewCats/${MOTHERorFATHER}`} >
+                <button className='buttonStyle2'>Back to {`${MOTHERorFATHER}s`}</button>
+                </Link>
+              </div>
+            }
         </div>
+
       }
 
       {!error && !cat && !id &&

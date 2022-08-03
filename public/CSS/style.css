@@ -17,14 +17,8 @@ html:focus-within {
   scroll-behavior: smooth;
 }
 
-html,
-body {
-  /* height: 100%; */
-  /* this preset was added later but broke the css of the navbar: todo: investigate */
-}
-
 textarea {
-  max-width: 200px;
+  max-width: 300px;
 }
 
 label {
@@ -214,6 +208,21 @@ h1, h2, h3, h4, h5, h6 {
 #h1 {
   font-weight: 650;
   font-size: var(--fs-primary-heading);
+}
+#h1TinyScreen {
+  font-weight: 650;
+  font-size: var(--fs-primary-heading);
+  display: none;
+}
+
+@media (max-width: 15.3125em) {
+  #h1 {
+    display: none;
+  }
+
+  #h1TinyScreen {
+    display: block;
+  }
 }
 
 h2{

@@ -51,9 +51,8 @@ const KittenDetailedView = () => {
           <p> Eye color: {kitten.eyeColor}</p>
           <p> Dam: {kitten.mother}</p>
           <p> Sire: {kitten.father}</p>
-          <p> Registration Number: {kitten.regNum}</p>
-          <p> Description: {kitten.description}</p>
-
+          <p>{kitten.regNum ? ('Registration Number: ' + kitten.regNum) : ''}</p>
+          <p>{kitten.description ?  ('Description: ' + kitten.description) : ''}</p>
         </div>
       }
       {isPrivileged(type) && !fromEdit &&

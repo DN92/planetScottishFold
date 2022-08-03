@@ -8,6 +8,10 @@ const ViewUsers = () => {
   const [users, setUsers] = useState([])
   const [error, setError] = useState(null)
 
+  const handleSeeMoreDetails = (event, user) => {
+    history.push(`/viewUsers/id=${user.id}`, {user: user})
+  }
+
   useEffect(() => {
     !users.length && fetchEffect(
       [setUsers, setError],
@@ -40,9 +44,8 @@ const ViewUsers = () => {
               {users.map(user => (
                 <tr key={user.id}>
                   <td>
-                    <Link to={`/viewUsers/id=${user.id}`} state={{user: user}}>
-                      <button>See More Details</button>
-                    </Link>
+                    <button className="buttonStyle1" onClick={(event, user)=>{handleSeeMoreDetails(event, user)
+                    }}>See More Details</button>
                   </td>
                   <td className='opacity-zero'>gutter</td>
                   <td>{user.eMail  || 'NULL'}</td>

@@ -42,7 +42,7 @@ const CatSingleView = (props) => {
           to={isPrivileged(type) ? `/editCat/${props.parent}/${id}` : `/catDetailedView/${props.parent}/${id}`}
           state={{cat: cat}}
         >
-          <button className='btnS1'>View More</button>
+          <button className='btnS1'>{isPrivileged(type) ? 'Edit Cat' : 'View More'}</button>
         </Link>
       </div>
     </div>

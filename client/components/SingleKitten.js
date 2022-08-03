@@ -57,7 +57,7 @@ const SingleKitten = (props) => {
         to={isPrivileged(type) ? '/editKitten' : `/kittenDetailed/${id}`}
         state={{kitten: kitten}}
         >
-          <button className='btnS1'>View More</button>
+          <button className='btnS1'>{isPrivileged(type) ? 'Edit' : 'View More'}</button>
         </Link>
       </div>
     </div>

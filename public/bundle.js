@@ -3248,11 +3248,17 @@ const CatDetailedView = () => {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
     src: cat.mainImageSrcValue,
     alt: "Picture of Selected Cat"
-  }), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, cat.name), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, cat.breed), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), cat.regNum && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, " Registration Number: ", cat.regNum), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, " Ears: ", cat.ears), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, " FurColor: ", cat.furColor), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, " EyeColor: ", cat.eyeColor), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, " Date Of Birth: ", cat.dob), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, " Description: ", cat.description), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null)), (0,_myModelsConfig__WEBPACK_IMPORTED_MODULE_5__.isPrivileged)(type) && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Link, {
+  }), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, cat.name), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, cat.breed), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), cat.regNum && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, " Registration Number: ", cat.regNum), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, " Ears: ", cat.ears), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, " FurColor: ", cat.furColor), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, " EyeColor: ", cat.eyeColor), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, " Date Of Birth: ", cat.dob), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, " Description: ", cat.description), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null)), (0,_myModelsConfig__WEBPACK_IMPORTED_MODULE_5__.isPrivileged)(type) && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "buttonsWrapper"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Link, {
     to: `/createCat/${MOTHERorFATHER}`
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", null, "Upload Another ", `${MOTHERorFATHER}`)), (0,_myModelsConfig__WEBPACK_IMPORTED_MODULE_5__.isPrivileged)(type) && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Link, {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    className: "buttonStyle2"
+  }, "Upload Another ", `${MOTHERorFATHER}`)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Link, {
     to: `/viewCats/${MOTHERorFATHER}`
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", null, "Back to ", `${MOTHERorFATHER}s`))), !error && !cat && !id && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_My404__WEBPACK_IMPORTED_MODULE_3__["default"], null)));
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    className: "buttonStyle2"
+  }, "Back to ", `${MOTHERorFATHER}s`)))), !error && !cat && !id && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_My404__WEBPACK_IMPORTED_MODULE_3__["default"], null)));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (CatDetailedView);
@@ -3323,7 +3329,7 @@ const CatSingleView = props => {
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
     className: "btnS1"
-  }, "View More"))));
+  }, (0,_myModelsConfig__WEBPACK_IMPORTED_MODULE_2__.isPrivileged)(type) ? 'Edit Cat' : 'View More'))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (CatSingleView);
@@ -3975,7 +3981,7 @@ const Footer = () => {
   }, !(0,_myModelsConfig__WEBPACK_IMPORTED_MODULE_1__.isPrivileged)(type) && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "footer__cards"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "footer__card"
+    className: "footer__card tica-card"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("a", {
     href: "https://tica.org/",
     target: "_blank"
@@ -3994,7 +4000,7 @@ const Footer = () => {
     className: "footer__nav-wrapper"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
     to: "/waitingListForm"
-  }, "Apply for Adoption"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+  }, "Apply"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
     to: "/availableKittens"
   }, "Kittens"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
     to: "/contactUs"
@@ -4096,7 +4102,7 @@ const KittenDetailedView = () => {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
     src: kitten.mainImageSrcValue,
     alt: "Picture of Kitten"
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, " Status: ", kitten.isAvailable ? 'Available' : 'Reserved'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, " Location: ", kitten.location), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, " Price: $", kitten.price), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, " ", kitten.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, " ", kitten.breed), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, " Gender: ", kitten.gender), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, " Ears: ", kitten.ears), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, " Fur color: ", kitten.furColor), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, " Eye color: ", kitten.eyeColor), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, " Dam: ", kitten.mother), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, " Sire: ", kitten.father), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, " Registration Number: ", kitten.regNum), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, " Description: ", kitten.description)), (0,_myModelsConfig__WEBPACK_IMPORTED_MODULE_5__.isPrivileged)(type) && !fromEdit && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Link, {
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, " Status: ", kitten.isAvailable ? 'Available' : 'Reserved'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, " Location: ", kitten.location), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, " Price: $", kitten.price), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, " ", kitten.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, " ", kitten.breed), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, " Gender: ", kitten.gender), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, " Ears: ", kitten.ears), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, " Fur color: ", kitten.furColor), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, " Eye color: ", kitten.eyeColor), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, " Dam: ", kitten.mother), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, " Sire: ", kitten.father), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, kitten.regNum ? 'Registration Number: ' + kitten.regNum : ''), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, kitten.description ? 'Description: ' + kitten.description : '')), (0,_myModelsConfig__WEBPACK_IMPORTED_MODULE_5__.isPrivileged)(type) && !fromEdit && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Link, {
     to: "/createKitten"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", null, "Upload Another Kitten")), (0,_myModelsConfig__WEBPACK_IMPORTED_MODULE_5__.isPrivileged)(type) && fromEdit && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Link, {
     to: "/availableKittens"
@@ -4451,7 +4457,7 @@ const Reviews = () => {
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "kittens"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "Reviews"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: " reviews"
+    className: "reviews"
   }, _seedAndDefaults_defaultReviews__WEBPACK_IMPORTED_MODULE_2___default().map((review, index) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_SingleReview__WEBPACK_IMPORTED_MODULE_1__["default"], {
     review: review,
     key: index
@@ -4526,7 +4532,7 @@ const SingleKitten = props => {
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
     className: "btnS1"
-  }, "View More"))));
+  }, (0,_myModelsConfig__WEBPACK_IMPORTED_MODULE_2__.isPrivileged)(type) ? 'Edit' : 'View More'))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (SingleKitten);
@@ -4625,7 +4631,9 @@ const TopLineMenuBar = ({
     className: "topMenu__headline"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", {
     id: "h1"
-  }, (0,_myModelsConfig__WEBPACK_IMPORTED_MODULE_2__.isPrivileged)(type) ? 'ADMIN VIEW' : 'Planet Scottish Fold')), meContext.id ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+  }, (0,_myModelsConfig__WEBPACK_IMPORTED_MODULE_2__.isPrivileged)(type) ? 'ADMIN VIEW' : 'Planet Scottish Fold'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", {
+    id: "h1TinyScreen"
+  }, "PSF")), meContext.id ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "topMenu__links"
   }, (0,_myModelsConfig__WEBPACK_IMPORTED_MODULE_2__.isPrivileged)(type) && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
     className: "buttonAsLink",
@@ -4830,31 +4838,45 @@ const CreateCat = () => {
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("form", {
     onKeyDown: handleKeyPress,
     onSubmit: handleSubmit
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, `${MOTHERorFATHER}`, " Creation Form"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, `${MOTHERorFATHER}`, " Creation Form"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+    htmlFor: "catToCreateName"
+  }, "Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    id: "catToCreateName",
     type: "text",
     name: "name",
     placeholder: "Name",
     value: catToCreate.name,
     onChange: handleChange
-  }), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+  }), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+    htmlFor: "catToCreateBreed"
+  }, "Breed"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    id: "catToCreateBreed",
     type: "text",
     name: "breed",
     placeholder: "Cat Breed",
     value: catToCreate.breed,
     onChange: handleChange
-  }), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+  }), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+    htmlFor: "catToCreateRegNum"
+  }, "Registration#"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    id: "catToCreateRegNum",
     type: "text",
     name: "regNum",
     placeholder: "Registration Number",
     value: catToCreate.regNum,
     onChange: handleChange
-  }), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+  }), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+    htmlFor: "catToCreateDob"
+  }, "Date of Birth"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    id: "catToCreateDob",
     type: "text",
     name: "dob",
     placeholder: "Date of Birth",
     value: catToCreate.dob,
     onChange: handleChange
-  }), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("select", {
+  }), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+    htmlFor: "catToCreate"
+  }, "Ears"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("select", {
     name: "ears",
     value: catToCreate.ears,
     onChange: handleChange
@@ -4863,13 +4885,19 @@ const CreateCat = () => {
   }, "Fold or Straight"), _myModelsConfig__WEBPACK_IMPORTED_MODULE_1__.earOptions.map((ear, index) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
     key: index,
     value: ear
-  }, ear))), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+  }, ear))), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+    htmlFor: "catToCreateFur"
+  }, "Fur Color"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    id: "catToCreateFur",
     type: "text",
     name: "furColor",
     placeholder: "Fur Color",
     value: catToCreate.furColor,
     onChange: handleChange
-  }), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("select", {
+  }), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+    htmlFor: "catToCreateEyes"
+  }, "Eye Color"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("select", {
+    id: "catToCreateEyes",
     name: "eyeColor",
     value: catToCreate.eyeColor,
     onChange: handleChange
@@ -4878,14 +4906,20 @@ const CreateCat = () => {
   }, "Eye Color"), _myModelsConfig__WEBPACK_IMPORTED_MODULE_1__.eyeColors.map((color, index) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
     key: index,
     value: color
-  }, color))), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("textarea", {
+  }, color))), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+    htmlFor: "catToCreateDescription"
+  }, "Description"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("textarea", {
+    id: "catToCreateDescription",
     name: "description",
     cols: "50",
     rows: "8",
     placeholder: "description"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "buttonsWrapper"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    className: "buttonStyle2",
     type: "submit"
-  }, "Create"));
+  }, "Create")));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (CreateCat);
@@ -4967,25 +5001,37 @@ const CreateKitten = () => {
   }), !error && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("form", {
     onKeyDown: handleKeyPress,
     onSubmit: handleSubmit
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "Kitten Creation Form"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "Kitten Creation Form"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+    htmlFor: "kittenToCreateName"
+  }, "Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    id: "kittenToCreateName",
     type: "text",
     name: "name",
     placeholder: "Name",
     value: kittenToCreate.name,
     onChange: handleChange
-  }), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+  }), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+    htmlFor: "kittenToCreateBreed"
+  }, "Breed"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    id: "kittenToCreateBreed",
     type: "text",
     name: "breed",
     placeholder: "Cat Breed",
     value: kittenToCreate.breed,
     onChange: handleChange
-  }), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+  }), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+    htmlFor: "kittenToCreateRegNum"
+  }, "Registration#"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    id: "kittenToCreateRegNum",
     type: "text",
     name: "regNum",
     placeholder: "Registration Number",
     value: kittenToCreate.regNum,
     onChange: handleChange
-  }), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("select", {
+  }), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+    htmlFor: "kittenToCreateGender"
+  }, "Gender"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("select", {
+    id: "kittenToCreateGender",
     name: "gender",
     value: kittenToCreate.gender,
     onChange: handleChange
@@ -4994,7 +5040,10 @@ const CreateKitten = () => {
   }, "Boy or Girl"), _myModelsConfig__WEBPACK_IMPORTED_MODULE_2__.genderOptions.map((ear, index) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
     key: index,
     value: ear
-  }, ear))), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("select", {
+  }, ear))), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+    htmlFor: "kittenToCreateEars"
+  }, "Ears"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("select", {
+    id: "kittenToCreateEars",
     name: "ears",
     value: kittenToCreate.ears,
     onChange: handleChange
@@ -5003,7 +5052,10 @@ const CreateKitten = () => {
   }, "Fold or Straight"), _myModelsConfig__WEBPACK_IMPORTED_MODULE_2__.earOptions.map((ear, index) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
     key: index,
     value: ear
-  }, ear))), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("select", {
+  }, ear))), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+    htmlFor: "kittenToCreateFur"
+  }, "Fur Color"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("select", {
+    id: "kittenToCreateFur",
     name: "furColor",
     value: kittenToCreate.furColor,
     onChange: handleChange
@@ -5012,7 +5064,10 @@ const CreateKitten = () => {
   }, "Fur Color"), _myModelsConfig__WEBPACK_IMPORTED_MODULE_2__.furColors.map((color, index) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
     key: index,
     value: color
-  }, color))), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("select", {
+  }, color))), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+    htmlFor: "kittenToCreateEyes"
+  }, "Eye Color"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("select", {
+    id: "kittenToCreateEyes",
     name: "eyeColor",
     value: kittenToCreate.eyeColor,
     onChange: handleChange
@@ -5021,7 +5076,10 @@ const CreateKitten = () => {
   }, "Eye Color"), _myModelsConfig__WEBPACK_IMPORTED_MODULE_2__.eyeColors.map((color, index) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
     key: index,
     value: color
-  }, color))), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("select", {
+  }, color))), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+    htmlFor: "kittenToCreateMother"
+  }, "Mother"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("select", {
+    id: "kittenToCreateMother",
     name: "mother",
     value: kittenToCreate.mother,
     onChange: handleChange
@@ -5030,7 +5088,10 @@ const CreateKitten = () => {
   }, "Select Dam"), dams.map((dam, index) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
     key: index,
     value: dam.name
-  }, dam.name))), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("select", {
+  }, dam.name))), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+    htmlFor: "kittenToCreate"
+  }, "Father"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("select", {
+    id: "kittenToCreateFather",
     name: "father",
     value: kittenToCreate.father,
     onChange: handleChange
@@ -5039,20 +5100,27 @@ const CreateKitten = () => {
   }, "Select Stud"), studs.map((stud, index) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
     key: index,
     value: stud.name
-  }, stud.name))), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+  }, stud.name))), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+    htmlFor: "kittenToCreatePrice"
+  }, "Price"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
     type: "number",
     name: "price",
     placeholder: "price",
     value: kittenToCreate.price,
     onChange: handleChange
-  }), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("textarea", {
+  }), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+    htmlFor: "kittenToCreateDescription"
+  }, "Description"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("textarea", {
     name: "description",
     cols: "50",
     rows: "8",
     placeholder: "description"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "buttonsWrapper"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    className: "buttonStyle2",
     type: "submit"
-  }, "Create")));
+  }, "Create"))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (CreateKitten);
@@ -5211,17 +5279,11 @@ const EditCat = () => {
     MOTHERorFATHER,
     id
   } = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_7__.useParams)();
-  const [catToEdit, setCatToEdit] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(_history__WEBPACK_IMPORTED_MODULE_4__["default"].location.state ? _history__WEBPACK_IMPORTED_MODULE_4__["default"].location.state.cat : null);
+  const [catToEdit, setCatToEdit] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(_history__WEBPACK_IMPORTED_MODULE_4__["default"].location.state?.cat);
   const [catLoaded, setCatLoaded] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
   const [initialState, setInitialState] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(catToEdit ? catToEdit : {});
   const [posted, setPosted] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null);
   const [error, setError] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('');
-  const imgInLine = {
-    width: "100%",
-    maxWidth: "200px",
-    maxHeight: "200px",
-    marginLeft: "2%"
-  };
 
   const handleChange = event => {
     (0,_customHandlers_handleFormChange__WEBPACK_IMPORTED_MODULE_5__["default"])(event, setCatToEdit);
@@ -5246,48 +5308,62 @@ const EditCat = () => {
     setCatLoaded(true);
   }, []);
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
-    posted && _history__WEBPACK_IMPORTED_MODULE_4__["default"].push(`/viewCats/${MOTHERorFATHER}`);
-  }, [posted]);
-  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
     !catToEdit && setCatLoaded(false);
     !catLoaded && catToEdit && setInitialState(catToEdit);
   }, [catLoaded]);
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+    posted && _history__WEBPACK_IMPORTED_MODULE_4__["default"].push(`/catDetailedView/${MOTHERorFATHER}/${posted?.id}`);
+  }, [posted]);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, error && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ErrorFill__WEBPACK_IMPORTED_MODULE_3__["default"], {
     msg: error
   }), !error && !(0,_myModelsConfig__WEBPACK_IMPORTED_MODULE_2__.isPrivileged)(type) && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "You don't have the privileges to view this page"), !error && !catToEdit && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ErrorFill__WEBPACK_IMPORTED_MODULE_3__["default"], {
     msg: `No ${MOTHERorFATHER} Loaded. Report this issue to System Admin`
   }), !error && (0,_myModelsConfig__WEBPACK_IMPORTED_MODULE_2__.isPrivileged)(type) && catToEdit && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
     src: catToEdit.mainImageSrcValue,
-    alt: "cat to edit",
-    style: imgInLine
+    alt: "cat to edit"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("form", {
     onKeyDown: handleKeyPress,
     onSubmit: handleSubmit
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "EDIT SELECTED ", `${MOTHERorFATHER}`), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "EDIT SELECTED ", `${MOTHERorFATHER}`), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+    htmlFor: "catToEditName"
+  }, "Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    id: "catToEditName",
     type: "text",
     name: "name",
     placeholder: "Name",
     value: catToEdit.name,
     onChange: handleChange
-  }), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+  }), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+    htmlFor: "catToEditBreed"
+  }, "Breed"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    id: "catToEditBreed",
     type: "text",
     name: "breed",
     placeholder: "Cat Breed",
     value: catToEdit.breed,
     onChange: handleChange
-  }), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+  }), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+    htmlFor: "catToEditRegNum"
+  }, "Registration#"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    id: "catToEditRegNum",
     type: "text",
     name: "regNum",
     placeholder: "Registration Number",
     value: catToEdit.regNum,
     onChange: handleChange
-  }), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+  }), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+    htmlFor: "catToEditDob"
+  }, "Date of Birth"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    id: "catToEditDob",
     type: "text",
     name: "dob",
     placeholder: "Date of Birth",
     value: catToEdit.dob,
     onChange: handleChange
-  }), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("select", {
+  }), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+    htmlFor: "catToEditEars"
+  }, "Ears"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("select", {
+    id: "catToEditEars",
     name: "ears",
     value: catToEdit.ears,
     onChange: handleChange
@@ -5296,13 +5372,19 @@ const EditCat = () => {
   }, "Fold or Straight"), _myModelsConfig__WEBPACK_IMPORTED_MODULE_2__.earOptions.map((ear, index) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
     key: index,
     value: ear
-  }, ear))), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+  }, ear))), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+    htmlFor: "catToEditFurColor"
+  }, "Fur Color"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    id: "catToEditFurColor",
     type: "text",
     name: "furColor",
     placeholder: "Fur Color",
     value: catToEdit.furColor,
     onChange: handleChange
-  }), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("select", {
+  }), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+    htmlFor: "catToEditEyes"
+  }, "Eye Color"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("select", {
+    id: "catToEditEyes",
     name: "eyeColor",
     value: catToEdit.eyeColor,
     onChange: handleChange
@@ -5311,19 +5393,26 @@ const EditCat = () => {
   }, "Eye Color"), _myModelsConfig__WEBPACK_IMPORTED_MODULE_2__.eyeColors.map((color, index) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
     key: index,
     value: color
-  }, color))), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("textarea", {
+  }, color))), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+    htmlFor: "catToEditDescription"
+  }, "Description"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("textarea", {
+    id: "catToEditDescription",
     name: "description",
     cols: "50",
     rows: "8",
     value: catToEdit.description,
     onChange: handleChange,
     placeholder: "description"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "buttonsWrapper"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    className: "buttonStyle2",
     onClick: handleReset,
     type: "button"
   }, "Reset Changes"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    className: "buttonStyle2",
     type: "submit"
-  }, "Submit Changes"))));
+  }, "Submit Changes")))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (EditCat);
@@ -5365,8 +5454,8 @@ const EditKitten = () => {
   const {
     id
   } = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_7__.useParams)();
-  const [kittenToEdit, setKittenToEdit] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(_history__WEBPACK_IMPORTED_MODULE_4__["default"].location.state ? _history__WEBPACK_IMPORTED_MODULE_4__["default"].location.state.kitten : null);
-  const [error, setError] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(_history__WEBPACK_IMPORTED_MODULE_4__["default"].location.state ? _history__WEBPACK_IMPORTED_MODULE_4__["default"].location.state.error : '');
+  const [kittenToEdit, setKittenToEdit] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(_history__WEBPACK_IMPORTED_MODULE_4__["default"].location.state?.kitten);
+  const [error, setError] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('');
   const [dams, setDams] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]);
   const [studs, setStuds] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]);
   const [posted, setPosted] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null);
@@ -5547,14 +5636,14 @@ const EditKitten = () => {
     placeholder: "description"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "buttonsWrapper"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
     className: "buttonStyle2",
     onClick: handleReset,
     type: "button"
   }, "Reset Changes"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
     className: "buttonStyle2",
     type: "submit"
-  }, "Submit Changes"))))); // return (
+  }, "Submit Changes")))))); // return (
   //   <div></div>
   // )
 };
@@ -5733,7 +5822,7 @@ const UseReqTableRow = props => {
     className: "users-table__view-button-wrapper",
     onClick: handleSelectRequest
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
-    className: "users-table__view-button"
+    className: "users-table__view-button buttonStyle1"
   }, "VIEW")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", {
     className: "opacity-zero"
   }, "gutter"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, user.eMail || 'NULL'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, user.firstName || 'NULL'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, user.lastName || 'NULL'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, user.phoneNumber || 'NULL'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, user.firstCat?.toString() || 'NULL'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, user.otherPets || 'NULL'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, user.city || 'NULL'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, user.state || 'NULL'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, user.fB || 'NULL'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, user.iG || 'NULL'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, user.gender || 'NULL'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, user.ears || 'NULL'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, user.eyeColor || 'NULL'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, user.mif || 'NULL'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, user.budget || 'NULL'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, user.willBreed || 'NULL'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, user.hasAllergies || 'NULL'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, user.IPaddress || 'NULL'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, user.applyStatus || 'NULL'));
@@ -5802,7 +5891,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _ErrorFill__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../ErrorFill */ "./client/components/ErrorFill.js");
 /* harmony import */ var _axiosHandlers_fetchEffect__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../axiosHandlers/fetchEffect */ "./client/components/axiosHandlers/fetchEffect.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/index.js");
 
 
 
@@ -5811,6 +5899,13 @@ __webpack_require__.r(__webpack_exports__);
 const ViewUsers = () => {
   const [users, setUsers] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]);
   const [error, setError] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null);
+
+  const handleSeeMoreDetails = (event, user) => {
+    history.push(`/viewUsers/id=${user.id}`, {
+      user: user
+    });
+  };
+
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
     !users.length && (0,_axiosHandlers_fetchEffect__WEBPACK_IMPORTED_MODULE_2__.fetchEffect)([setUsers, setError], 'get', `/api/users`);
   }, []);
@@ -5826,12 +5921,12 @@ const ViewUsers = () => {
     className: "opacity-zero"
   }, "gutter"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "Email"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "budget"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "City and State"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "Role"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("th", null, "Status"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("tbody", null, users.map(user => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("tr", {
     key: user.id
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
-    to: `/viewUsers/id=${user.id}`,
-    state: {
-      user: user
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    className: "buttonStyle1",
+    onClick: (event, user) => {
+      handleSeeMoreDetails(event, user);
     }
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", null, "See More Details"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", {
+  }, "See More Details")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", {
     className: "opacity-zero"
   }, "gutter"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, user.eMail || 'NULL'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, user.lastName || user.firstName ? user.lastName + ', ' + user.firstName : 'NULL', " "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, user.budget || 'NULL'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, user.city || user.state ? user.city + ' ' + user.state : 'NULL'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, user.type), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("td", null, user.applyStatus)))))));
 };

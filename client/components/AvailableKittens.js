@@ -3,7 +3,7 @@ import SingleKitten from './SingleKitten'
 import ErrorFill from './ErrorFill'
 import { fetchEffect } from './axiosHandlers/fetchEffect'
 import KittenFilter from './KittensFilter'
-import {getObjMatches} from '../../myUtilFuncs'
+import  {getObjMatches } from '../../myUtilFuncs'
 
 //  /available Kittens
 const AvailableKittens = () => {

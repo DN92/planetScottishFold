@@ -13,7 +13,7 @@ const Footer = () => {
       {!isPrivileged(type) &&
         <>
           <div className='footer__cards'>
-            <div className='footer__card'>
+            <div className='footer__card tica-card'>
               <a href='https://tica.org/' target='_blank'>
                 <img src="/otherPictures/ticaLogo.webp" alt="Tica Logo" />
               </a>
@@ -24,7 +24,7 @@ const Footer = () => {
               </a>
             </div>
             <div className='footer__nav-wrapper'>
-              <Link to='/waitingListForm' >Apply for Adoption</Link>
+              <Link to='/waitingListForm' >Apply</Link>
               <Link to='/availableKittens'>Kittens</Link>
               <Link to='/contactUs'>Contact</Link>
             </div>
