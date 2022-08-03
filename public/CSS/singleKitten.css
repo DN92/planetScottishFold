@@ -12,6 +12,11 @@
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+.kitten-sold {
+  background-color: var(--clr-500);
+  color: white;
+}
+
 .singleKitten:hover {
   background-color: var(--clr-300);
   transform: translate(0, -0.57rem);

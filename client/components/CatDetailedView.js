@@ -33,6 +33,8 @@ const CatDetailedView = () => {
     )
   }, [])
 
+  console.log('desc: ', !!cat.description)
+
   return (
     <div key={id.toString() + MOTHERorFATHER}>
       {error && <ErrorFill msg={error} />}
@@ -45,17 +47,13 @@ const CatDetailedView = () => {
             </div>
             <span>{cat.name}</span> <br />
             <span>{cat.breed}</span> <br />
-            {cat.regNum &&
-              <>
-                <span> Registration Number: {cat.regNum}</span>
-                <br />
-              </>
-            }
+            <span>{cat.regNum ? ("Registration Number: " + cat.regNum) : ""}</span><br />
             <span> Ears: {cat.ears}</span> <br />
             <span> FurColor: {cat.furColor}</span> <br />
             <span> EyeColor: {cat.eyeColor}</span> <br />
             <span> Date Of Birth: {cat.dob}</span> <br />
             <span> Description: {cat.description}</span> <br />
+            <span>{cat.description ? ("Description: " + cat.description) : ""}</span><br />
 
           </div>
             {isPrivileged(type) &&

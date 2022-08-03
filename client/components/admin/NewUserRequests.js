@@ -21,6 +21,7 @@ useEffect(()=>{
 
 return (
   <>
+    <h2>New Applicants</h2>
     {error && <ErrorFill msg={error} />}
     {! error && !requests.length && <h3>No New Requests</h3>}
     {!error && !!requests.length &&

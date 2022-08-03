@@ -5,7 +5,7 @@
   gap: 1rem;
   width: 100%;
   align-items: baseline;
-  padding-top: 5rem;
+  padding-top: 1rem;
 }
 
 .contact-pre input {
@@ -23,16 +23,35 @@
 }
 
 .contact__formContainer {
-  flex-basis: 50%;
-  overflow: hidden;
-  min-width: 200;
-  max-width: 400px;
+  position: static;
+}
+
+.contact-form {
+  position: static;
+  top: 0;
+  left: 0
 }
 
 @media (min-width: 50em) {
   .contact-pre {
     flex-direction: row;
   }
+
+  .contact__formContainer {
+    flex-basis: 50%;
+    overflow: hidden;
+    min-width: 200;
+    max-width: 400px;
+    height:400px;
+    position: relative;
+  }
+
+  .contact__form {
+    position: relative;
+    top: 5rem;
+    left: 1rem
+  }
+
   .contact__textarea {
     min-width: 302px;
   }

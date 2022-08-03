@@ -1,5 +1,6 @@
 const router = require('express').Router()
 const {models:{ User } } = require('../db')
+const pwGenerator = require('generate-password')
 
 //  auth
 

@@ -197,16 +197,19 @@ svg {
   background-color: var(--clr-white) !important;
 }
 
+.background-img1 {
+  background-image: url("/otherPictures/backgroundImg1.jpg") !important;
+}
+
 /* headers */
 
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: var(--FF2);
+  font-family: var(--FF1);
   letter-spacing: 0.01em;
   color: var(--clr-500);
 }
 #h1 {
-  font-weight: 650;
   font-size: var(--fs-primary-heading);
 }
 #h1TinyScreen {

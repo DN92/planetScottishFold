@@ -9,7 +9,7 @@
   border: 1px solid black;
   /* display: block; */
   /* float: left;*/
-  background-color: aqua;
+  background-color: var(--clr-white);
 }
 
 .members-table th,

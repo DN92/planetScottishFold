@@ -13,7 +13,7 @@ const KittenFilter = (props) => {
   return (
     <>
       <form className='advSearch' >
-        <h4>Advanced Search</h4>
+        <h4>Sort Kittens</h4>
         <select name="gender" value={gender} onChange={handleChange} >
           {genderOptions.map((gen, index) => (
             <option key={index} value={gen}>{index === 0 ? `Boy or Girl` : gen }</option>
@@ -25,7 +25,7 @@ const KittenFilter = (props) => {
             <option key={index} value={ear}>{index === 0 ? `Fold or Straight` : ear }</option>
             ))}
         </select>
-        <label htmlFor="ears">Ears: Fold or Straight</label><br />
+        <label htmlFor="ears">Ears</label><br />
         <select name="eyeColor" value={eyeColor} onChange={handleChange}>
           {eyeColors.map((color, index) => {
             return <option key={index} value={color}>{index === 0 ? `Eye Color` : color}</option>

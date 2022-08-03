@@ -26,7 +26,7 @@ const Footer = () => {
             <div className='footer__nav-wrapper'>
               <Link to='/waitingListForm' >Apply</Link>
               <Link to='/availableKittens'>Kittens</Link>
-              <Link to='/contactUs'>Contact</Link>
+              <Link to='/contact'>Contact</Link>
             </div>
           </div>
         </>

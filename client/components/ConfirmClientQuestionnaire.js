@@ -43,7 +43,7 @@ const ConfirmClientQuestionnaire = () => {
   useEffect(()=>{
     if(infoPosted) {
       localStorage.removeItem('clientInfo')
-      history.push('/QConfirmation')
+      history.replace('/QConfirmation')
     }
   },[infoPosted])
 
