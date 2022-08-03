@@ -8,7 +8,7 @@ const Kitten = db.define("kitten", {
   },
   gender:{
     type: Sequelize.ENUM(genderOptions),
-    defaultValue: genderOptions[0]
+    defaultValue: genderOptions[0],
   },
   ears:{
     type: Sequelize.ENUM(earOptions),

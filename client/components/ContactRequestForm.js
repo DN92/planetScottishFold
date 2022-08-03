@@ -57,10 +57,10 @@ const ContactRequestForm = () => {
             {!newReq && !error &&
               <>
                 <div className='contact__msg'>
-                  <p>Use this form to send us a direct message without having to log in.</p>
+                  <p>Use this form to send us a direct message.</p>
                   <br />
                   <div className='img-wrapper'>
-                    <img src="/catPictures/studCupid.jpg" alt="cat picture filler" />
+                    <img src="/fillerPictures/fillerArmsOut.jpg" alt="cat picture filler" />
                   </div>
                 </div>
                 <div className='contact__formContainer'>

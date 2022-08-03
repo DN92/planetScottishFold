@@ -9,7 +9,7 @@
   display: flex;
 }
 
-.availableKittens {
+.kittensWrapper {
   width: 100%;
   display: flex;
   align-content: center;
@@ -21,7 +21,7 @@
 }
 
 @media (min-width: 50em) {
-  .availableKittens {
+  .kittensWrapper {
     align-content: flex-start;
     flex-direction: row;
     flex-wrap: wrap;

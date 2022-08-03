@@ -197,6 +197,10 @@ svg {
   background-color: var(--clr-white) !important;
 }
 
+.background-img1 {
+  background-image: url("/otherPictures/backgroundImg1.jpg") !important;
+}
+
 /* headers */
 
 

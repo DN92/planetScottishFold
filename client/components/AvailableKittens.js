@@ -1,14 +1,20 @@
-import React, { useState, useEffect, useContext }from 'react'
+import React, { useState, useEffect, useMemo }from 'react'
 import SingleKitten from './SingleKitten'
 import ErrorFill from './ErrorFill'
 import { fetchEffect } from './axiosHandlers/fetchEffect'
 import KittenFilter from './KittensFilter'
-import  {getObjMatches } from '../../myUtilFuncs'
+import {getObjMatches } from '../../myUtilFuncs'
 
 //  /available Kittens
 const AvailableKittens = () => {
 
   const [kittens, setKittens] = useState([])
+  const availableKittens = useMemo(()=>{
+    return kittens.filter(kitten => kitten.status === "Available")
+  },[kittens])
+  const unavailableKittens = useMemo(() => {
+    return kittens.filter(kitten => kitten.status !== "Available" )
+  },[kittens])
   const [error, setError] = useState(null)
   const [showSearch, setShowSearch] = useState(false)
   /* filterState is the culmination of user search preferences and the setter is passed
@@ -54,6 +60,8 @@ const AvailableKittens = () => {
 
   return (
     <div className='kittens'>
+      <h2>Our Available Kittens</h2>
+
       {error && <ErrorFill msg={error} />}
       {!error &&
         <>
@@ -63,11 +71,18 @@ const AvailableKittens = () => {
               onClick={handleShowSearch}
             >{showSearch ? 'Hide' : 'Show'} Advanced Search</button>
           </div>
-          <div className='availableKittens'>
+          <div className='kittensWrapper'>
             {showSearch && <KittenFilter searcher={handleFilterBySearch} filterState={filterState} setter={setFilterState} />}
-            {kittens.map((kitten) => (
+            {availableKittens.map((kitten) => (
               <SingleKitten key={kitten.id} kitten={kitten} />
             ))}
+          </div>
+          <hr /><br />
+          <h4>Reserved and Sold</h4>
+          <div className='kittensWrapper kittens-sold'>
+            {unavailableKittens.map((kitten) => (
+                <SingleKitten key={kitten.id} kitten={kitten} />
+              ))}
           </div>
         </>
       }

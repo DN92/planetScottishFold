@@ -36,7 +36,23 @@ router.get('/pending', async (req, res, next) => {
 
 router.post('/', async (req, res, next) => {
   try{
+    const allEmailsData = await User.findAll( {attributes: ['eMail']} )
+    const allEmails = allEmailsData.map(ele => ele.dataValues.eMail)
+    if(!req.body.eMail) {
+      res.status(400).send({errorMessage: 'Email Field Empty'})
+      return
+    }
+    if(allEmails.includes(req.body.eMail)) {
+      res.status(400).send({errorMessage: 'That Email already Exists'})
+      return
+    }
+    //  furColors is an array that needs to be converted to a String before being stored.
     req.body.furColor = JSON.stringify(req.body.furColor)
+    //  generate random password
+    req.body.password = pwGenerator.generate({
+      length: 10,
+      numbers: true,
+    })
     const newUser = await User.create(req.body)
     if(!newUser) {
       throw new Error('newUser creation failed')

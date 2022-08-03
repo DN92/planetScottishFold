@@ -1,4 +1,4 @@
-import React, {useState, useContext} from 'react'
+import React, {useContext} from 'react'
 import { Link } from 'react-router-dom'
 import MeContext from '../MeContextPro'
 import { isPrivileged } from '../../myModelsConfig'
@@ -13,7 +13,11 @@ const TopLineMenuBar = ({setViewNav, setShowMobileNav}) => {
     setViewNav(prev => !prev)
   }
 
-  const handleMobileNav = () => {
+  const handleMobileNavToggle = () => {
+    const root = document.querySelector('#root')
+    root?.className === '' ?
+      root.className = 'background-img1' :
+      root.className = ''
     const hamburgerMenu = document.querySelector('#nav__toggle')
     hamburgerMenu?.className === `nav__toggle` ?
       hamburgerMenu.className = 'nav__toggle nav-open' :
@@ -25,7 +29,9 @@ const TopLineMenuBar = ({setViewNav, setShowMobileNav}) => {
     setShowMobileNav(prev => !prev)
   }
 
-  const closeMobileNav = () => {
+  const handleCloseMobileNav = () => {
+    const root = document.querySelector('#root')
+    if(root) root.className = ''
     const hamburgerMenu = document.querySelector('#nav__toggle')
     if(hamburgerMenu) hamburgerMenu.className = 'nav__toggle'
     const hamburgerMenuWrapper = document.querySelector('#hamburger-wrapper')
@@ -51,17 +57,17 @@ const TopLineMenuBar = ({setViewNav, setShowMobileNav}) => {
                   <button className='buttonAsLink' type='button' onClick={handleNavView}>View User Navigation</button>
                 }
                 <p className='topMenu__greeting'>Logged in as {meContext.email} </p>
-                <Link onClick={closeMobileNav} className='topMenu__loginout' to='logout'>Log Out</Link>
+                <Link onClick={handleCloseMobileNav} className='topMenu__loginout' to='logout'>Log Out</Link>
 
               </div> :
               <div className='topMenu__links'>
-                <Link onClick={closeMobileNav} to='/waitingListForm'>Apply</Link>
-                <Link onClick={closeMobileNav} to='login'>Login</Link>
+                <Link onClick={handleCloseMobileNav} to='/waitingListForm'>Apply</Link>
+                <Link onClick={handleCloseMobileNav} to='login'>Login</Link>
               </div>
 
             }
           </div>
-          <div id='hamburger-wrapper' className='hamburger-wrapper' onClick={handleMobileNav}>
+          <div id='hamburger-wrapper' className='hamburger-wrapper' onClick={handleMobileNavToggle}>
             <button id='nav__toggle' className='nav__toggle' >
                 <span className='hamburger'></span>
             </button>

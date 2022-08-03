@@ -16,6 +16,34 @@ const kittensArray = [
     mainImageSrcValue: '/catPictures/kittenFelisiyaFinley.jpg',
     status: "Sold",
     },
+  {
+    name: 'Einstein',
+    mother: 'Felisiya',
+    price: 2100,
+    mainImageSrcValue: '/catPictures/kittenFelisiyaEinstein.jpg',
+    status: "Sold",
+  },
+  {
+    name: 'Freya',
+    mother: 'Felisiya',
+    price: 1700,
+    mainImageSrcValue: '/catPictures/kittenFelisiyaFreya.jpg',
+    status: "Sold",
+  },
+  {
+    name: 'Frosty',
+    mother: 'Felisiya',
+    price: 1700,
+    mainImageSrcValue: '/catPictures/kittenFelisiyaFrosty.jpg',
+    status: "Sold",
+  },
+  {
+    name: 'Sunny',
+    mother: 'Felisiya',
+    price: 2300,
+    mainImageSrcValue: '/catPictures/kittenFelisiyaFreya.jpg',
+    status: "Sold",
+  },
   // Danissima
   {
     name: 'Dew',
@@ -60,7 +88,7 @@ const kittensArray = [
     price: 1700,
     location: 'Bergenfield, New Jersey',
     description: '',
-    mainImageSrcValue: '/catPictures/kittenDanissimaDaiquiriTwin.jpg',
+    mainImageSrcValue: '/catPictures/kittenDanissimaElsa.jpg',
     status: 'Sold',
     },
   {
@@ -216,6 +244,27 @@ const kittensArray = [
     location: 'Hight Point, North Carolina',
     description: '',
     mainImageSrcValue: '/catPictures/kittenIrisBentley.jpg',
+  },
+  {
+    name: 'Nola',
+    mother: 'Iris',
+    price: 1800,
+    mainImageSrcValue: '/catPictures/kittenIrisNola.jpg',
+    status: "Sold",
+  },
+  {
+    name: 'Pearl',
+    mother: 'Iris',
+    price: 2300,
+    mainImageSrcValue: '/catPictures/kittenIrisPearl.jpg',
+    status: "Sold",
+  },
+  {
+    name: 'Ivy',
+    mother: 'Iris',
+    price: 2300,
+    mainImageSrcValue: '/catPictures/kittenIrisIvy.jpg',
+    status: "Sold",
   },
 ]
 

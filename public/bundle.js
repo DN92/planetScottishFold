@@ -3132,6 +3132,12 @@ __webpack_require__.r(__webpack_exports__);
 
 const AvailableKittens = () => {
   const [kittens, setKittens] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]);
+  const availableKittens = (0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(() => {
+    return kittens.filter(kitten => kitten.status === "Available");
+  }, [kittens]);
+  const unavailableKittens = (0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(() => {
+    return kittens.filter(kitten => kitten.status !== "Available");
+  }, [kittens]);
   const [error, setError] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null);
   const [showSearch, setShowSearch] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
   /* filterState is the culmination of user search preferences and the setter is passed
@@ -3171,7 +3177,7 @@ const AvailableKittens = () => {
   }, []);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "kittens"
-  }, error && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ErrorFill__WEBPACK_IMPORTED_MODULE_2__["default"], {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "Our Available Kittens"), error && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ErrorFill__WEBPACK_IMPORTED_MODULE_2__["default"], {
     msg: error
   }), !error && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "adv-search-wrapper"
@@ -3181,12 +3187,17 @@ const AvailableKittens = () => {
     type: "button",
     onClick: handleShowSearch
   }, showSearch ? 'Hide' : 'Show', " Advanced Search")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "availableKittens"
+    className: "kittensWrapper"
   }, showSearch && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_KittensFilter__WEBPACK_IMPORTED_MODULE_4__["default"], {
     searcher: handleFilterBySearch,
     filterState: filterState,
     setter: setFilterState
-  }), kittens.map(kitten => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_SingleKitten__WEBPACK_IMPORTED_MODULE_1__["default"], {
+  }), availableKittens.map(kitten => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_SingleKitten__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    key: kitten.id,
+    kitten: kitten
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("hr", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h4", null, "Reserved and Sold"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "kittensWrapper kittens-sold"
+  }, unavailableKittens.map(kitten => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_SingleKitten__WEBPACK_IMPORTED_MODULE_1__["default"], {
     key: kitten.id,
     kitten: kitten
   })))));
@@ -3626,14 +3637,12 @@ const ClientQuestionnaire = () => {
     key: index,
     value: ear
   }, ear)))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
-    htmlFor: "clientFormEyeColor",
-    className: "required"
+    htmlFor: "clientFormEyeColor"
   }, "Eye Color"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("select", {
     id: "clientFormEyeColor",
     name: "eyeColor",
     value: clientInfo.eyeColor,
-    onChange: handleChange,
-    required: true
+    onChange: handleChange
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
     value: ''
   }), _myModelsConfig__WEBPACK_IMPORTED_MODULE_2__.eyeColors.map((color, index) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
@@ -3855,10 +3864,10 @@ const ContactRequestForm = () => {
     msg: error
   }), !newReq && !error && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "contact__msg"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Use this form to send us a direct message without having to log in."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Use this form to send us a direct message."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "img-wrapper"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
-    src: "/catPictures/studCupid.jpg",
+    src: "/fillerPictures/fillerArmsOut.jpg",
     alt: "cat picture filler"
   }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "contact__formContainer"
@@ -4504,22 +4513,18 @@ const SingleKitten = props => {
     name,
     breed,
     gender,
-    ears,
     furColor,
     eyeColor,
     mother,
     father,
-    price,
-    location,
-    description,
-    status,
     mainImageSrcValue,
     id,
     isAvailable
   } = kitten;
   const image = mainImageSrcValue ? mainImageSrcValue : "/catPictures/catError3.gif";
+  console.log(kitten.status);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "singleKitten"
+    className: kitten?.status === 'Sold' ? 'singleKitten kitten-sold' : 'singleKitten'
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "singleKitten__card"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
@@ -4529,7 +4534,7 @@ const SingleKitten = props => {
     kitten: kitten
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "singleKittenInfo"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Hi I'm ", name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "I am a ", breed, " ", gender), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "My color is "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, furColor), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "I have ", eyeColor, " eyes"), (0,_myModelsConfig__WEBPACK_IMPORTED_MODULE_2__.isPrivileged)(type) && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Mother: ", mother), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Father: ", father), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Status: ", isAvailable), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Availability: ", isAvailable ? 'Available' : 'Reserved'))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, kitten?.status === "Sold" && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, kitten.status), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "$", kitten.price)), kitten?.status !== "Sold" && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Hi I'm ", name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "I am a ", breed, " ", gender), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "My color is "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, furColor), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "I have ", eyeColor, " eyes"), (0,_myModelsConfig__WEBPACK_IMPORTED_MODULE_2__.isPrivileged)(type) && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Mother: ", mother), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Father: ", father), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Status: ", isAvailable), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Availability: ", isAvailable ? 'Available' : 'Reserved'))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "singleKitten__button"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
     to: (0,_myModelsConfig__WEBPACK_IMPORTED_MODULE_2__.isPrivileged)(type) ? '/editKitten' : `/kittenDetailed/${id}`,
@@ -4613,7 +4618,9 @@ const TopLineMenuBar = ({
     setViewNav(prev => !prev);
   };
 
-  const handleMobileNav = () => {
+  const handleMobileNavToggle = () => {
+    const root = document.querySelector('#root');
+    root?.className === '' ? root.className = 'background-img1' : root.className = '';
     const hamburgerMenu = document.querySelector('#nav__toggle');
     hamburgerMenu?.className === `nav__toggle` ? hamburgerMenu.className = 'nav__toggle nav-open' : hamburgerMenu.className = 'nav__toggle';
     const hamburgerMenuWrapper = document.querySelector('#hamburger-wrapper');
@@ -4621,7 +4628,9 @@ const TopLineMenuBar = ({
     setShowMobileNav(prev => !prev);
   };
 
-  const closeMobileNav = () => {
+  const handleCloseMobileNav = () => {
+    const root = document.querySelector('#root');
+    if (root) root.className = '';
     const hamburgerMenu = document.querySelector('#nav__toggle');
     if (hamburgerMenu) hamburgerMenu.className = 'nav__toggle';
     const hamburgerMenuWrapper = document.querySelector('#hamburger-wrapper');
@@ -4650,21 +4659,21 @@ const TopLineMenuBar = ({
   }, "View User Navigation"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
     className: "topMenu__greeting"
   }, "Logged in as ", meContext.email, " "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
-    onClick: closeMobileNav,
+    onClick: handleCloseMobileNav,
     className: "topMenu__loginout",
     to: "logout"
   }, "Log Out")) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "topMenu__links"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
-    onClick: closeMobileNav,
+    onClick: handleCloseMobileNav,
     to: "/waitingListForm"
   }, "Apply"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
-    onClick: closeMobileNav,
+    onClick: handleCloseMobileNav,
     to: "login"
   }, "Login"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     id: "hamburger-wrapper",
     className: "hamburger-wrapper",
-    onClick: handleMobileNav
+    onClick: handleMobileNavToggle
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
     id: "nav__toggle",
     className: "nav__toggle"

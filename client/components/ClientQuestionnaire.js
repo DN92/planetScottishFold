@@ -258,8 +258,8 @@ const ClientQuestionnaire = () => {
                 </select>
               </>
               <>
-                <label htmlFor="clientFormEyeColor" className='required'>Eye Color</label>
-                <select id="clientFormEyeColor" name="eyeColor" value={clientInfo.eyeColor} onChange={handleChange} required>
+                <label htmlFor="clientFormEyeColor">Eye Color</label>
+                <select id="clientFormEyeColor" name="eyeColor" value={clientInfo.eyeColor} onChange={handleChange}>
                 <option value={''}></option>
                   {eyeColors.map((color, index) => (
                     <option key={index} value={color}>{color}</option>
