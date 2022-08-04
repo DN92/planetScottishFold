@@ -6,6 +6,7 @@ models.Stud = require("./StudModel")
 models.Mother = require("./MotherModel")
 models.Kitten = require("./KittenModel")
 models.User = require("./User")
+models.InitialUser = require("./InitialUsers")
 models.ContactRequest = require('./ContactRequest')
 
 module.exports = models

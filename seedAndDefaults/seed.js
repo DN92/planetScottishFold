@@ -3,13 +3,13 @@
 const { db, models } = require ('../server/db')
 const dummyUsers = require('./userDummy')
 const contactRequests = require('./contactReqDummy')
-
 const studsActual = require('./studsActual')
 const damsActual = require('./damsActual')
 const kittensActual = require('./kittensActual')
+const initialUsers = require("./initTest")
 
 
-const { Kitten, Mother, Stud, User, ContactRequest } = models
+const { Kitten, Mother, Stud, User, ContactRequest, InitialUser } = models
 const modelsArray = [ Kitten, Mother, Stud, User, ContactRequest ]
 /**
  *  seed - this function clears the database, updates tables to
@@ -35,6 +35,9 @@ async function seed() {
     })),
     Promise.all(contactRequests.map(req => {
       return ContactRequest.create(req)
+    })),
+    Promise.all(initialUsers.map(init => {
+      return InitialUser.create(init)
     })),
   ])
 }

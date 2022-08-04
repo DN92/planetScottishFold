@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const { User } = require('../db').models
+const { User, InitialUser } = require('../db').models
 const passAuth = require('../expressMiddleware/checkValidAuthLevel')
 const pwGenerator = require('generate-password')
 const { Op } = require('sequelize')
@@ -57,7 +57,13 @@ router.post('/', async (req, res, next) => {
     if(!newUser) {
       throw new Error('newUser creation failed')
     }
-    res.send(newUser)
+    await InitialUser.create({
+      userId: newUser.id,
+      eMail: req.body.eMail,
+      firstPassword: req.body.password
+    })
+    newUser.password = ''
+    res.send({newUser})
   } catch (error) {
     next(error)
   }
