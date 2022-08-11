@@ -1,14 +1,14 @@
 const router = require('express').Router();
 const { InitialUser } = require("../db").models
-let initRoute = null;
+let code = '';
 
 if(process.env.NODE_ENV !== 'production') {
-  initRoute = require("../../secrets").initRoute
+  code = require("../../secrets").initRoute
 }
 
 //  /api/init
 
-const secretCode = process.env.natasha || initRoute
+const secretCode = process.env.natasha || code
 
 router.get('/', async (req, res, next) => {
   try {

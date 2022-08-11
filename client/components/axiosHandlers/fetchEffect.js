@@ -28,7 +28,7 @@ export const fetchEffect = async (setterFuncArray, method, path, body,) => {
       setterFuncArray[1]('')
     }
   } catch(err) {
-    console.err(err.message)
+    console.error(err.message)
     console.log(error.stack)
     if(setterFuncArray.length > 1) {
       setterFuncArray[1](err.message)
