@@ -44,7 +44,7 @@ myUtilFuncs.getUserIP = async () => {
     const { data } = await axios.get('https://geolocation-db.com/json/')
     return data.IPv4
   } catch (err) {
-
+    return " "
   }
 }
 
