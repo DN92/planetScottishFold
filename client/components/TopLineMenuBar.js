@@ -31,10 +31,10 @@ const TopLineMenuBar = ({setViewNav, setShowMobileNav}) => {
 
   const handleCloseMobileNav = () => {
     const root = document.querySelector('#root')
-    if(root) root.className = ''
     const hamburgerMenu = document.querySelector('#nav__toggle')
-    if(hamburgerMenu) hamburgerMenu.className = 'nav__toggle'
     const hamburgerMenuWrapper = document.querySelector('#hamburger-wrapper')
+    if(root) root.className = ''
+    if(hamburgerMenu) hamburgerMenu.className = 'nav__toggle'
     if(hamburgerMenuWrapper) hamburgerMenuWrapper = 'hamburger-wrapper'
     setShowMobileNav(false)
   }

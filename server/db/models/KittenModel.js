@@ -34,10 +34,6 @@ const Kitten = db.define("kitten", {
     type: Sequelize.ENUM(statusOptionsKitten),
     defaultValue: statusOptionsKitten[0],
   },
-  isAvailable: {
-    type: Sequelize.BOOLEAN,
-    defaultValue: true,
-  },
   description: {
     type: Sequelize.TEXT,
     defaultValue: ''

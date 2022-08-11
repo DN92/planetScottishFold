@@ -27,8 +27,6 @@ if (process.env.NODE_ENV !== 'production') {
   // body parsers
   app.use(express.json())
   app.use(express.urlencoded({extended: true}))
-  // security middleware
-
 
   // compression middleware
   app.use(compression())

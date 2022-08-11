@@ -1,6 +1,7 @@
 .waitingList__form {
   display: flex;
   flex-direction: column;
+  padding-top: 2rem;
 }
 
 .waitingList-left,
@@ -24,6 +25,16 @@
   gap: 1rem;
   padding: 1.5rem;
   padding-left: .5rem;
+}
+
+.apply-header {
+  text-align: center;
+  font-size: var(--fs-900);
+  font-family: var(--FF2);
+  color: var(--clr-500);
+  padding: 0.25rem;
+  letter-spacing: 0.01em;
+  margin: 0;
 }
 
 .cq-furcolors-wrapper {
@@ -53,12 +64,28 @@
   width: 90%;
 }
 
+.waitingList ul {
+  font-size: var(--fs-200);
+  line-height: 1.6;
+  list-style: none;
+  text-align: center;
+  width: 70%;
+  margin: 1rem auto;
+}
+
 .waitingList__already-approved {
   display: flex;
   gap: 1rem;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+.waitingList-description {
+  text-align: justify;
+  width: 90%;
+  margin: auto;
+  padding: 1rem;
 }
 
 @media (min-width: 50em) {

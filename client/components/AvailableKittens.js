@@ -71,8 +71,8 @@ const AvailableKittens = () => {
               onClick={handleShowSearch}
             >{showSearch ? 'Hide' : 'Show'} Advanced Search</button>
           </div>
+          {showSearch && <KittenFilter searcher={handleFilterBySearch} filterState={filterState} setter={setFilterState} />}
           <div className='kittensWrapper'>
-            {showSearch && <KittenFilter searcher={handleFilterBySearch} filterState={filterState} setter={setFilterState} />}
             {availableKittens.map((kitten) => (
               <SingleKitten key={kitten.id} kitten={kitten} />
             ))}

@@ -9,12 +9,12 @@ const ViewCats = () => {
   const {MOTHERorFATHER} = useParams()
 
   const [cats, setCats] = useState([])
-  const [fetchError, setFetchError] = useState(null)
+  const [error, setError] = useState(null)
 
 
   useEffect(() => {
     fetchEffect(
-      [setCats, setFetchError],
+      [setCats, setError],
       'get',
       `/api/${MOTHERorFATHER}s`,
     )
@@ -23,9 +23,9 @@ const ViewCats = () => {
   return (
     <div className='kittens'>
       <h2>Our {MOTHERorFATHER === 'mother' ? 'Dams' : 'Sires'}</h2>
-      <div className='availableKittens' >
-        {fetchError && <ErrorFill />}
-        {!fetchError &&
+      <div className='kittensWrapper' >
+        {error && <ErrorFill />}
+        {!error &&
           <>
             {cats.map((cat) => (
               <CatSingleView key={cat.id} cat={cat} parent={MOTHERorFATHER} />

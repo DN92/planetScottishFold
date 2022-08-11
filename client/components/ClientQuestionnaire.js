@@ -35,10 +35,15 @@ const ClientQuestionnaire = () => {
   }
 
   const [clientInfo, setClientInfo] = useLocalStorage('clientInfo', defaultClientInfo)
+  const [showIncluded, setShowIncluded] = useState(false)
 
   const handleChange = (event) => {
     event.preventDefault()
     handleFormChange(event, setClientInfo)
+  }
+
+  const handleViewIncluded = () => {
+    setShowIncluded(prev => !prev)
   }
 
   const handleCheckBoxForFur = (event) => {
@@ -83,6 +88,30 @@ const ClientQuestionnaire = () => {
         </div>
         :
         <div className='waitingList'>
+          <p className='apply-header'>Apply for your Kitty</p>
+          <p className='waitingList-description'>
+            Please fill out this questionnaire to apply for a Planet Scottish Fold Kitten. Once your application is approved, you will receive an email with how you can reserve a kitten. We require a $300 non-refundable deposit in order to reserve a kitten from current or future litters. Remaining balance is due during pick up.
+          </p>
+          <div className='buttonsWrapper2'>
+            <button className='buttonStyle4' onClick={handleViewIncluded}>What you're getting with your Kitten</button>
+          </div>
+          {showIncluded &&
+            <div className='waitingList-info'>
+              <ul>
+                <li>1 year health guarantee (covers hereditary defects and offers a replacement kitten)</li>
+                <li>age appropriate vaccinations and deworming </li>
+                <li>spay/neuter once kitten is at least 12 weeks old (only NC kittens)</li>
+                <li>microchip</li>
+                <li>well socialized kitten raised at home in warm and loving environment with other pets and children</li>
+                <li>weaned off and litter box trained kitten</li>
+                <li>weekly updates with photos and/or videos</li>
+                <li>lifetime breeder support</li>
+                <li>30 days FREE pet insurance </li>
+                <li>FaceTime is available before or after the reservation. </li>
+              </ul>
+            </div>
+
+          }
           <form id="clientQuestionnaire" className='waitingList__form' onSubmit={handleSubmit} onKeyDown={handleKeyPress} onReset={handleReset}
           >
             <div className='waitingList-left'>

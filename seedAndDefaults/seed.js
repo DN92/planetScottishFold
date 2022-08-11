@@ -8,9 +8,8 @@ const damsActual = require('./damsActual')
 const kittensActual = require('./kittensActual')
 const initialUsers = require("./initTest")
 
-
 const { Kitten, Mother, Stud, User, ContactRequest, InitialUser } = models
-const modelsArray = [ Kitten, Mother, Stud, User, ContactRequest ]
+const modelsArray = [ ... Object.values(models) ]
 /**
  *  seed - this function clears the database, updates tables to
  *    match our models, and populates the database
@@ -48,6 +47,7 @@ async function runSeed() {
   try {
     console.log("Running database seed function")
     await seed()
+    console.log('Seed function completed with no errors')
   } catch (err) {
     console.log("Database seed failed")
     console.error(err)

@@ -53,6 +53,10 @@ svg {
   height: auto;
 }
 
+img {
+  border: 5px solid white;
+}
+
 @media (prefers-reduced-motion) {
   html:focus-within {
     scroll-behavior: auto;
@@ -101,6 +105,8 @@ svg {
 
   /* Font Sizes */
   /* 13, 14, 16!1rem etc */
+  --fs-100: .5rem;
+  --fs-200: .7rem;
   --fs-300: .8125rem;
   --fs-400: .875rem;
   --fs-500: 1rem;
@@ -181,6 +187,10 @@ svg {
   color: red;
 }
 
+.center-text {
+  text-align: center;
+}
+
 .underlined {
   text-decoration: underline;
 }
@@ -201,6 +211,8 @@ svg {
   background-image: url("/otherPictures/backgroundImg1.jpg") !important;
 }
 
+
+
 /* headers */
 
 
@@ -208,6 +220,7 @@ h1, h2, h3, h4, h5, h6 {
   font-family: var(--FF1);
   letter-spacing: 0.01em;
   color: var(--clr-500);
+  padding: 0.25rem;
 }
 #h1 {
   font-size: var(--fs-primary-heading);
