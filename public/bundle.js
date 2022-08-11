@@ -6419,7 +6419,9 @@ myUtilFuncs.getUserIP = async () => {
       data
     } = await axios.get('https://geolocation-db.com/json/');
     return data.IPv4;
-  } catch (err) {}
+  } catch (err) {
+    return " ";
+  }
 };
 
 myUtilFuncs.getWordsFromArrayOfKeys = arrayOfWords => {
