@@ -12,14 +12,12 @@ const NavMobile = ({setShowMobileNav}) => {
     if (event.target.localName === 'a') {
       setShowMobileNav(false)
 
+      const root = document.querySelector('#root')
       const hamburgerMenu = document.querySelector('#nav__toggle')
-        if(hamburgerMenu) {
-          hamburgerMenu.className = `nav__toggle`
-        }
       const hamburgerMenuWrapper = document.querySelector('#hamburger-wrapper')
-        if(hamburgerMenuWrapper) {
-          hamburgerMenuWrapper.className = 'hamburger-wrapper'
-        }
+      if(root) root.className = ''
+      if(hamburgerMenu) hamburgerMenu.className = `nav__toggle`
+      if(hamburgerMenuWrapper) hamburgerMenuWrapper.className = 'hamburger-wrapper'
     }
   }
 

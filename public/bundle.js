@@ -3186,13 +3186,13 @@ const AvailableKittens = () => {
     className: "adv-search-button buttonStyle2",
     type: "button",
     onClick: handleShowSearch
-  }, showSearch ? 'Hide' : 'Show', " Advanced Search")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "kittensWrapper"
-  }, showSearch && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_KittensFilter__WEBPACK_IMPORTED_MODULE_4__["default"], {
+  }, showSearch ? 'Hide' : 'Show', " Advanced Search")), showSearch && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_KittensFilter__WEBPACK_IMPORTED_MODULE_4__["default"], {
     searcher: handleFilterBySearch,
     filterState: filterState,
     setter: setFilterState
-  }), availableKittens.map(kitten => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_SingleKitten__WEBPACK_IMPORTED_MODULE_1__["default"], {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "kittensWrapper"
+  }, availableKittens.map(kitten => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_SingleKitten__WEBPACK_IMPORTED_MODULE_1__["default"], {
     key: kitten.id,
     kitten: kitten
   }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("hr", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h4", null, "Reserved and Sold"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
@@ -3401,10 +3401,15 @@ const ClientQuestionnaire = () => {
     phoneNumber: ''
   };
   const [clientInfo, setClientInfo] = (0,_customHooks_useLocalStorage__WEBPACK_IMPORTED_MODULE_4__["default"])('clientInfo', defaultClientInfo);
+  const [showIncluded, setShowIncluded] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
 
   const handleChange = event => {
     event.preventDefault();
     (0,_customHandlers_handleFormChange__WEBPACK_IMPORTED_MODULE_3__["default"])(event, setClientInfo);
+  };
+
+  const handleViewIncluded = () => {
+    setShowIncluded(prev => !prev);
   };
 
   const handleCheckBoxForFur = event => {
@@ -3453,7 +3458,18 @@ const ClientQuestionnaire = () => {
     alt: "cute cat image2"
   }))) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "waitingList"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("form", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
+    className: "apply-header"
+  }, "Apply for your Kitty"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
+    className: "waitingList-description"
+  }, "Please fill out this questionnaire to apply for a Planet Scottish Fold Kitten. Once your application is approved, you will receive an email with how you can reserve a kitten. We require a $300 non-refundable deposit in order to reserve a kitten from current or future litters. Remaining balance is due during pick up."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "buttonsWrapper2"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    className: "buttonStyle4",
+    onClick: handleViewIncluded
+  }, "What you're getting with your Kitten")), showIncluded && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "waitingList-info"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("ul", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "1 year health guarantee (covers hereditary defects and offers a replacement kitten)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "age appropriate vaccinations and deworming "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "spay/neuter once kitten is at least 12 weeks old (only NC kittens)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "microchip"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "well socialized kitten raised at home in warm and loving environment with other pets and children"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "weaned off and litter box trained kitten"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "weekly updates with photos and/or videos"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "lifetime breeder support"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "30 days FREE pet insurance "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "FaceTime is available before or after the reservation. "))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("form", {
     id: "clientQuestionnaire",
     className: "waitingList__form",
     onSubmit: handleSubmit,
@@ -4001,6 +4017,7 @@ const Footer = () => {
     href: "https://tica.org/",
     target: "_blank"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
+    className: "footer-img-tica",
     src: "/otherPictures/ticaLogo.webp",
     alt: "Tica Logo"
   }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
@@ -4009,6 +4026,7 @@ const Footer = () => {
     href: "https://catkingpin.com/",
     target: "_blank"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
+    className: "footer-img-kingpin",
     src: "/otherPictures/catKingPinAffPic.webp",
     alt: "Cat King Pin Affiliate Image"
   }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
@@ -4156,9 +4174,9 @@ const KittenFilter = props => {
     (0,_customHandlers_handleFormChange__WEBPACK_IMPORTED_MODULE_1__["default"])(event, props.setter);
   };
 
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("form", {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("form", {
     className: "advSearch"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h4", null, "Sort Kittens"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("select", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h4", null, "Sort Kittens"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("select", {
     name: "gender",
     value: gender,
     onChange: handleChange
@@ -4167,7 +4185,7 @@ const KittenFilter = props => {
     value: gen
   }, index === 0 ? `Boy or Girl` : gen))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
     htmlFor: "gender"
-  }, "Gender"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("select", {
+  }, "Gender"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("select", {
     name: "ears",
     value: ears,
     onChange: handleChange
@@ -4176,7 +4194,7 @@ const KittenFilter = props => {
     value: ear
   }, index === 0 ? `Fold or Straight` : ear))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
     htmlFor: "ears"
-  }, "Ears"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("select", {
+  }, "Ears"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("select", {
     name: "eyeColor",
     value: eyeColor,
     onChange: handleChange
@@ -4187,13 +4205,13 @@ const KittenFilter = props => {
     }, index === 0 ? `Eye Color` : color);
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
     htmlFor: "eyeColor"
-  }, "Eye Color"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+  }, "Eye Color"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "advSearch__search"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
     className: "buttonStyle2",
     type: "button",
     onClick: props.searcher
-  }, "Search"))));
+  }, "Sort")));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (KittenFilter);
@@ -4232,7 +4250,7 @@ const Logout = () => {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h4", null, "You have been Successfully"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h4", null, "logged out"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "logout-img-wrapper"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
-    src: "/catPictures/outsideCat.jpeg",
+    src: "/fillerPictures/fillerKittenStanding.jpg",
     alt: "Image of cat outside"
   })));
 };
@@ -4343,17 +4361,12 @@ const NavMobile = ({
   const handleClick = event => {
     if (event.target.localName === 'a') {
       setShowMobileNav(false);
+      const root = document.querySelector('#root');
       const hamburgerMenu = document.querySelector('#nav__toggle');
-
-      if (hamburgerMenu) {
-        hamburgerMenu.className = `nav__toggle`;
-      }
-
       const hamburgerMenuWrapper = document.querySelector('#hamburger-wrapper');
-
-      if (hamburgerMenuWrapper) {
-        hamburgerMenuWrapper.className = 'hamburger-wrapper';
-      }
+      if (root) root.className = '';
+      if (hamburgerMenu) hamburgerMenu.className = `nav__toggle`;
+      if (hamburgerMenuWrapper) hamburgerMenuWrapper.className = 'hamburger-wrapper';
     }
   };
 
@@ -4560,21 +4573,19 @@ const SingleKitten = props => {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _My404__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./My404 */ "./client/components/My404.js");
-
-
  //  Each review has a image, text, and reviewer property
 
 const SingleReview = ({
   review
 }) => {
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "singleKitten"
+    className: "singleReview"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "singleKitten__card"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
-    className: "singleKitten__card__img",
-    src: review.image
+    className: "review__card__img",
+    src: review.image,
+    alt: "Cat Picture"
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "singleKittenInfo"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, review.text), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, review.reviewer)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
@@ -4630,10 +4641,10 @@ const TopLineMenuBar = ({
 
   const handleCloseMobileNav = () => {
     const root = document.querySelector('#root');
-    if (root) root.className = '';
     const hamburgerMenu = document.querySelector('#nav__toggle');
-    if (hamburgerMenu) hamburgerMenu.className = 'nav__toggle';
     const hamburgerMenuWrapper = document.querySelector('#hamburger-wrapper');
+    if (root) root.className = '';
+    if (hamburgerMenu) hamburgerMenu.className = 'nav__toggle';
     if (hamburgerMenuWrapper) hamburgerMenuWrapper = 'hamburger-wrapper';
     setShowMobileNav(false);
   };
@@ -4711,15 +4722,15 @@ const ViewCats = () => {
     MOTHERorFATHER
   } = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.useParams)();
   const [cats, setCats] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]);
-  const [fetchError, setFetchError] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null);
+  const [error, setError] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null);
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
-    (0,_axiosHandlers_fetchEffect__WEBPACK_IMPORTED_MODULE_3__.fetchEffect)([setCats, setFetchError], 'get', `/api/${MOTHERorFATHER}s`);
+    (0,_axiosHandlers_fetchEffect__WEBPACK_IMPORTED_MODULE_3__.fetchEffect)([setCats, setError], 'get', `/api/${MOTHERorFATHER}s`);
   }, [MOTHERorFATHER]);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "kittens"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "Our ", MOTHERorFATHER === 'mother' ? 'Dams' : 'Sires'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "availableKittens"
-  }, fetchError && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ErrorFill__WEBPACK_IMPORTED_MODULE_2__["default"], null), !fetchError && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, cats.map(cat => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_CatSingleView__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    className: "kittensWrapper"
+  }, error && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ErrorFill__WEBPACK_IMPORTED_MODULE_2__["default"], null), !error && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, cats.map(cat => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_CatSingleView__WEBPACK_IMPORTED_MODULE_1__["default"], {
     key: cat.id,
     cat: cat,
     parent: MOTHERorFATHER
@@ -5995,28 +6006,27 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _addToken__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./addToken */ "./client/components/axiosHandlers/addToken.js");
 
-
-const validRequestMethods = ['get', 'post', 'put', 'delete']; // setterFunc Array should include either just the state setter or the
+ // setterFunc Array should include either just the state setter or the
 //  state setter followed by the error setter.
 //  method is the RESTFUL method
 //  path is the url, body is request body
 
 const fetchEffect = async (setterFuncArray, method, path, body) => {
-  //  check for valid method type
-  if (!validRequestMethods.includes(method)) {
+  const acceptedRequestMethods = ['get', 'post', 'put', 'delete']; //  check for valid method type
+
+  if (!acceptedRequestMethods.includes(method)) {
     throw new Error('invalid request method. Request not sent');
   } //  if a token exits, put it on the headers.authorization
 
 
   try {
-    const token = localStorage.getItem('psfToken');
     const {
       data
     } = !['post', 'put'].includes(method) ? //  gets and deletes
     await (axios__WEBPACK_IMPORTED_MODULE_0___default())[method](path, (0,_addToken__WEBPACK_IMPORTED_MODULE_1__.putTokenOnHeader)()) : //  posts and puts
     await (axios__WEBPACK_IMPORTED_MODULE_0___default())[method](path, body, (0,_addToken__WEBPACK_IMPORTED_MODULE_1__.putTokenOnHeader)()); // set state upon promise resolving
 
-    if (setterFuncArray.length && method != 'delete') {
+    if (setterFuncArray.length && method !== 'delete') {
       setterFuncArray[0](data); //  clear error if errorSetter was provided
     }
 
@@ -6024,7 +6034,8 @@ const fetchEffect = async (setterFuncArray, method, path, body) => {
       setterFuncArray[1]('');
     }
   } catch (err) {
-    console.log(err);
+    console.err(err.message);
+    console.log(error.stack);
 
     if (setterFuncArray.length > 1) {
       setterFuncArray[1](err.message);
@@ -6053,26 +6064,34 @@ const AboutUs = () => {
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "home__about-us"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "home__link-wrapper"
+    className: "home__links-wrapper"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "home__link"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
     to: "/availableKittens"
   }, "View Available Kittens")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "home__link-wrapper"
+    className: "home__link"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
     to: "/viewCats/mother"
   }, "See Our Queens / Dams")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "home__link-wrapper"
+    className: "home__link"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
     to: "/viewCats/father"
   }, "See Our Kings / Sires")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "home__link-wrapper"
+    className: "home__link"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
     to: "/waitingListForm"
-  }, "Apply to start the adoption process")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h5", null, "About Our Scottish Fold Cattery"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("article", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Planet Scottish fold is a small cattery located in High Point, North Carolina USA. We breed Scottish fold and Scottish straight kittens with the intent to improve the breed."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "We also have sister catteries that are located in Bergenfield, New Jersey and Pompano Beach, Florida."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "We mainly specialize in chinchilla colors, such as gold, blue gold, silver and pointed chinchillas. But also have non chinchilla kittens, such as solid white, blue tabby, blue and chocolate colorpoints, bicolor and tortoiseshell kittens."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h5", null, "About the breed"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Scottish folds are known to be suuupperr affectionate and get along with other pets and small children. This breed does not fit the standard cat stereotype! They don\u2019t want to be left alone in their lair, instead, they\u2019ll want to sit on your lap, lie under your arm or on your pillow as close to your face as possible. If you get them a sibling you\u2019ll enjoy watching them jump around and groom each other, but they wont forget about you! You\u2019ll simply get double affection and love."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "So if you\u2019re looking for a mellow and loyal best furrend then this breed is for you!"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
+  }, "Apply to start the adoption process"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h5", null, "About Our Scottish Fold Cattery"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("article", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Planet Scottish fold is a small cattery located in High Point, North Carolina USA. We breed Scottish fold and Scottish straight kittens with the intent to improve the breed."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "We also have sister catteries that are located in Bergenfield, New Jersey and Pompano Beach, Florida."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "We mainly specialize in chinchilla colors, such as gold, blue gold, silver and pointed chinchillas. But also have non chinchilla kittens, such as solid white, blue tabby, blue and chocolate colorpoints, bicolor and tortoiseshell kittens."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h5", null, "About the breed"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Scottish folds are known to be suuupperr affectionate and get along with other pets and small children. This breed does not fit the standard cat stereotype! They don\u2019t want to be left alone in their lair, instead, they\u2019ll want to sit on your lap, lie under your arm or on your pillow as close to your face as possible. If you get them a sibling you\u2019ll enjoy watching them jump around and groom each other, but they wont forget about you! You\u2019ll simply get double affection and love."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "So if you\u2019re looking for a mellow and loyal best furrend then this breed is for you!"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
     to: "/availableKittens"
-  }, "View Scottish Fold Kittens for Sale"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h5", null, "Our Kittens"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Our kittens well-being is very important, thus choosing the right owners for our babies is another priority! If you\u2019re ready for your perfect baby, please fill out the ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
+  }, "View Scottish Fold Kittens for Sale"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "aboutUs__card2"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
+    className: "aboutUs__card2__img",
+    src: "/fillerPictures/fillerLandscape2.jpg",
+    alt: "cat picture"
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h5", null, "Our Kittens"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Our kittens well-being is very important, thus choosing the right owners for our babies is another priority! If you\u2019re ready for your perfect baby, please fill out the ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
     to: "/waitingListForm"
-  }, "Questionnaire.")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "What you\u2019re getting from Planet Scottish fold:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("ul", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "1 year health guarantee (covers hereditary defects and offers a replacement kitten)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "age appropriate vaccinations and deworming "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "spay/neuter once kitten is at least 5lbs (only NC kittens)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "microchip"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "well socialized kitten raised at home in warm and loving environment with other pets and children"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "weaned off and litter box trained kitten"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "weekly updates with photos and/or videos"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "lifetime breeder support"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "30 days FREE pet insurance "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "FaceTime is available before or after the reservation. ")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h5", null, "Delivery options:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
+  }, "Questionnaire.")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "What you\u2019re getting from Planet Scottish fold:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("ul", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "1 year health guarantee (covers hereditary defects and offers a replacement kitten)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "age appropriate vaccinations and deworming "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "spay/neuter once kitten is at least 12 weeks old (only NC kittens)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "microchip"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "well socialized kitten raised at home in warm and loving environment with other pets and children"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "weaned off and litter box trained kitten"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "weekly updates with photos and/or videos"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "lifetime breeder support"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "30 days FREE pet insurance "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "FaceTime is available before or after the reservation. ")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h5", null, "Delivery options:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
     className: "underlined"
   }, "Air delivery:"), " Delivery within USA is available. Delivery price depends on the destination and airlines schedule. We will deliver to your closest international airport where you\u2019d pick up your kitten from our trusted flight nanny."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Please note, we do not and will not deliver via cargo. If choosing air delivery, only in cabin delivery will be provided. Your kitten will be accompanied with a flight nanny throughout the whole trip and will receive the best care possible! You will be notified throughout the day about your kittens travel."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
     className: "underlined"
@@ -6245,7 +6264,7 @@ const handleLogin = async (meContext, loginInfo) => {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-
+ // Custom Hook
 
 function useLocalStorage(key, initialValue) {
   // State to store our value
@@ -6400,12 +6419,7 @@ myUtilFuncs.getUserIP = async () => {
       data
     } = await axios.get('https://geolocation-db.com/json/');
     return data.IPv4;
-  } catch (err) {
-    console.log('failed to get IP, no worries');
-    console.log(err);
-  } finally {
-    return;
-  }
+  } catch (err) {}
 };
 
 myUtilFuncs.getWordsFromArrayOfKeys = arrayOfWords => {

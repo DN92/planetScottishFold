@@ -19,3 +19,12 @@
 .adv-search-checkbox {
   margin-right: 1rem;
 }
+
+.advSearch {
+  width: 30%;
+  margin: 1rem auto;
+}
+
+.advSearch select {
+  margin: 0.25rem;
+}

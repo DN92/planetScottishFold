@@ -7,18 +7,19 @@
 @import "./mainContentContainer.css";
 @import "./footer.css";
 
-/* not component specific  */
+/* non component specific  */
 @import "./buttonStyle1.css";
 @import "./buttonStyle2.css";
 @import "./buttonStyle3.css";
+@import "./buttonStyle4.css";
 @import "./buttonsWrapper.css";
+@import "./buttonsWrapper2.css";
 
 /* mobile nav */
 @import "./navMobile.css";
 @import "./hamburger.css";
 
-/* component targeted styles */
-/* public */
+/* component targeted styles - public */
 @import "./topMenu.css";
 @import "./buttonAsLink.css";
 @import "./navbar.css";
@@ -35,7 +36,7 @@
 @import "./login.css";
 @import "./logout.css";
 
-/* admin */
+/* component targeted styles - public - admin */
 
 @import "./newUserRequests.css";
 @import "./viewUsers.css";

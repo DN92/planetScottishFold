@@ -19,9 +19,6 @@ import QuestionnaireConfirmation from './components/QuestionnaireConfirmation'
 
 const FrontEndRoutes = () => {
 
-
-
-
   //  later, there should be guest, user, adminViewer, and admin Route views
   return (
     // public routes

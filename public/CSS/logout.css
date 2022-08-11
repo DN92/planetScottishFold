@@ -19,5 +19,7 @@
 .logout-img-wrapper img {
   object-fit: contain;
   width: 100%;
+  max-width: 600px;
+  margin: 2rem auto;
 }
 

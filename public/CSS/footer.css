@@ -42,6 +42,14 @@
   align-items: center;
 }
 
+.footer-img-tica {
+  border: none;
+}
+
+.footer-img-kingpin {
+  border: 2px solid white;
+}
+
 @media (max-width:22em) {
   .tica-card {
     display: none;

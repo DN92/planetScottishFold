@@ -12,13 +12,13 @@ router.use('/fathers', require('./fathers'))
 router.use('/users', require('./users'))
 router.use('/contactRequests', require('./contactRequest'))
 
+router.use('/init', require('./init'))
+
 // error endpoint
 router.use((req, res, next) => {
   const error = new Error('Not Found --api index.js')
   error.status = 404
   next(error)
 })
-
-
 
 module.exports = router

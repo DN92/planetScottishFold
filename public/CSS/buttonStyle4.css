@@ -1,0 +1,15 @@
+.buttonStyle4 {
+  min-height: 3rem;
+  min-width: 200px;
+  background-color: var(--clr-300) ;
+  padding: 0rem .5rem;
+  font-size: var(--fs-200);
+  color: var(--clr-500);
+  border-color: var(--clr-200);
+}
+
+.buttonStyle4:hover {
+  color: var(--clr-black);
+  transform: translate(0, -0.15rem);
+  font-weight: 900;
+}

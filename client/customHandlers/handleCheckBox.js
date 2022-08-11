@@ -7,7 +7,6 @@ const checkBoxHandler  = (event, setterFunc, attName) => {
     setterFunc(prev => {
       const {name, checked} = event.target
       const IdToUpdate = event.target.getAttribute(attName)
-
       return {...prev,
         [name]: {
           ...prev[name],
