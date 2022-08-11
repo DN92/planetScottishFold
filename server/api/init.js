@@ -1,6 +1,10 @@
 const router = require('express').Router();
 const { InitialUser } = require("../db").models
-const { initRoute } = require("../../secrets")
+let initRoute = null;
+
+if(process.env.NODE_ENV !== 'production') {
+  initRoute = require("../../secrets").initRoute
+}
 
 //  /api/init
 
