@@ -30,7 +30,6 @@ const handleLogin = async ( meContext, loginInfo) => {
         }
       })
       if(data) {
-        console.log('login info data: ', data)
         meContext.setEmail(data.eMail)
         meContext.setType(data.type)
         meContext.setId(data.id)
