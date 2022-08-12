@@ -126,6 +126,8 @@ const myConfig = {
     'admin',
     'master',
   ],
+
+  emailsFrom: '"Planet Scottish Fold" <planetscottishfold@outlook.com>',
 }
 
 myConfig.isPrivileged = (type) => (myConfig.userTypes.slice(2).includes(type))

@@ -25,8 +25,6 @@ const SingleKitten = (props) => {
 
   const image = mainImageSrcValue ? mainImageSrcValue : "/catPictures/catError3.gif"
 
-  console.log(kitten.status)
-
   return (
     <div className={kitten?.status === 'Sold' ? 'singleKitten kitten-sold' : 'singleKitten'}>
       <div className='singleKitten__card'>

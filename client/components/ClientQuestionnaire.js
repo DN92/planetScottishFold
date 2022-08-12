@@ -1,10 +1,12 @@
 import React, { useState, useEffect, useContext } from 'react'
 import { Link } from 'react-router-dom'
 import history from '../history'
-import {furColors, furColorsOnQuestionnaire, eyeColors, mifOptions, budgetRanges, earOptions, genderOptions, willBreedOptions, hasAllergiesOptions, foundUsByOptions} from "../../myModelsConfig"
+import {furColors, eyeColors, mifOptions, budgetRanges, earOptions, genderOptions, willBreedOptions, hasAllergiesOptions, foundUsByOptions} from "../../myModelsConfig"
 import handleFormChange from '../customHandlers/handleFormChange'
 import useLocalStorage from '../customHooks/useLocalStorage'
 import MeContext from '../MeContextPro'
+import axios from 'axios'
+import ErrorFill from './ErrorFill'
 
 
 const ClientQuestionnaire = () => {
@@ -36,10 +38,14 @@ const ClientQuestionnaire = () => {
 
   const [clientInfo, setClientInfo] = useLocalStorage('clientInfo', defaultClientInfo)
   const [showIncluded, setShowIncluded] = useState(false)
+  const [formValidated, setFormValidated] = useState(false)
+  const [displayBadEmail, setDisplayBadEmail] = useState(false)
+  const [error, setError] = useState('')
 
   const handleChange = (event) => {
     event.preventDefault()
     handleFormChange(event, setClientInfo)
+    setDisplayBadEmail(false)
   }
 
   const handleViewIncluded = () => {
@@ -60,19 +66,47 @@ const ClientQuestionnaire = () => {
 
   const handleReset = () => {
     setClientInfo(defaultClientInfo)
+    setDisplayBadEmail(false)
+    setShowIncluded(false)
+    setError('')
   }
 
   const handleKeyPress = (event) => {
     event.code === 'Enter' && event.target.localName !== 'textarea' && event.preventDefault();
   }
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
+    const validateForm = async() => {
+      try {
+        const { data } = await axios.post('/api/users/validate', clientInfo)
+        setFormValidated(data?.isValidSubmission)
+        if(!data?.isValidSubmission) {
+          setDisplayBadEmail(true)
+          window.scrollTo(0, 0)
+        }
+      } catch (err) {
+        setError(err)
+      }
+    }
+
     event.preventDefault();
-    const furColorsToArray = Object.keys(clientInfo.furColor)
-      .filter(color => clientInfo.furColor[color] === true)
-    history.push('/confirmClientQuestionnaire', {clientInfo:
-      {...clientInfo, 'furColor': furColorsToArray}
-    })
+    await validateForm()
+  }
+
+  useEffect(() => {
+    if(formValidated) {
+      const furColorsToArray = Object.keys(clientInfo.furColor)
+        .filter(color => clientInfo.furColor[color] === true)
+      history.push('/confirmClientQuestionnaire', {clientInfo:
+        {...clientInfo, 'furColor': furColorsToArray}
+      })
+    }
+  }, [formValidated])
+
+  if(error) {
+    return (
+      <ErrorFill msg={error} />
+    )
   }
 
   return (
@@ -112,12 +146,19 @@ const ClientQuestionnaire = () => {
             </div>
 
           }
-          <form id="clientQuestionnaire" className='waitingList__form' onSubmit={handleSubmit} onKeyDown={handleKeyPress} onReset={handleReset}
+          <form id="clientQuestionnaire" className='waitingList__form'
+            onSubmit={handleSubmit}
+            onKeyDown={handleKeyPress}
+            onReset={handleReset}
           >
             <div className='waitingList-left'>
               <h4>About You</h4>
               <>
-                <label htmlFor="clientFormEmail" className='required'>E-mail</label>
+                <label htmlFor="clientFormEmail"
+                  className={displayBadEmail ? 'required error' : 'required'}
+                >
+                  {displayBadEmail ? 'That email is already in use' : 'E-mail'}
+                </label>
                 <input id="clientFormEmail"
                   type="email"
                   name="eMail"
@@ -267,7 +308,6 @@ const ClientQuestionnaire = () => {
 
             <div className='waitingList-right'>
               <h4>Kitten Preferences</h4>
-
               <>
                 <label htmlFor="clientFormGender" className='required'>Boy or Girl?</label>
                 <select id='clientFormGender' name="gender" value={clientInfo.gender} onChange={handleChange} required>

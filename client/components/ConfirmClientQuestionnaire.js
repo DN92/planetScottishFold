@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+  import React, {useState, useEffect} from "react";
 import history from "../history";
 import ErrorFill from './ErrorFill'
 import { fetchEffect } from "./axiosHandlers/fetchEffect";
@@ -11,22 +11,11 @@ const ConfirmClientQuestionnaire = () => {
 
   const [infoPosted, setInfoPosted] = useState(false)
   const [error, setError] = useState('')
-
-  console.log(history.location.state)
+  const [clientInfo, setClientInfo] = useState(history.location?.state?.clientInfo)
 
   const handleGoBack = () => {
     history.back()
   }
-
-  const [clientInfo, setClientInfo] = useState(history.location?.state?.clientInfo)
-
-  console.log('client info, confirm page: ', clientInfo)
-
-  // useEffect(() => {
-  //   return () => {
-  //   localStorage.removeItem('clientInfo')
-  // }
-  // },[])
 
   const handleSubmit = async (event) => {
     event.preventDefault()

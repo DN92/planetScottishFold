@@ -54,7 +54,7 @@ svg {
 }
 
 img {
-  border: 5px solid white;
+  border: 5px solid var(--clr-100);
 }
 
 @media (prefers-reduced-motion) {
@@ -180,6 +180,11 @@ img {
   clip: auto;
   white-space: normal;
   border: none;
+}
+
+.error {
+  color: red;
+  font-family: var(--FF2);
 }
 
 .required::after{

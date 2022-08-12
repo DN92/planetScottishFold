@@ -3250,7 +3250,6 @@ const CatDetailedView = () => {
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
     !cat && id && (0,_axiosHandlers_fetchEffect__WEBPACK_IMPORTED_MODULE_6__.fetchEffect)([setCat, setError], 'get', `/api/${MOTHERorFATHER}s?id=${id}`);
   }, []);
-  console.log('desc: ', !!cat.description);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     key: id.toString() + MOTHERorFATHER
   }, error && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ErrorFill__WEBPACK_IMPORTED_MODULE_2__["default"], {
@@ -3358,13 +3357,18 @@ const CatSingleView = props => {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/index.js");
 /* harmony import */ var _history__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../history */ "./client/history.js");
 /* harmony import */ var _myModelsConfig__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../myModelsConfig */ "./myModelsConfig.js");
 /* harmony import */ var _myModelsConfig__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_myModelsConfig__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _customHandlers_handleFormChange__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../customHandlers/handleFormChange */ "./client/customHandlers/handleFormChange.js");
 /* harmony import */ var _customHooks_useLocalStorage__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../customHooks/useLocalStorage */ "./client/customHooks/useLocalStorage.js");
 /* harmony import */ var _MeContextPro__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../MeContextPro */ "./client/MeContextPro.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _ErrorFill__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./ErrorFill */ "./client/components/ErrorFill.js");
+
+
 
 
 
@@ -3402,10 +3406,14 @@ const ClientQuestionnaire = () => {
   };
   const [clientInfo, setClientInfo] = (0,_customHooks_useLocalStorage__WEBPACK_IMPORTED_MODULE_4__["default"])('clientInfo', defaultClientInfo);
   const [showIncluded, setShowIncluded] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
+  const [formValidated, setFormValidated] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
+  const [displayBadEmail, setDisplayBadEmail] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
+  const [error, setError] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('');
 
   const handleChange = event => {
     event.preventDefault();
     (0,_customHandlers_handleFormChange__WEBPACK_IMPORTED_MODULE_3__["default"])(event, setClientInfo);
+    setDisplayBadEmail(false);
   };
 
   const handleViewIncluded = () => {
@@ -3428,27 +3436,58 @@ const ClientQuestionnaire = () => {
 
   const handleReset = () => {
     setClientInfo(defaultClientInfo);
+    setDisplayBadEmail(false);
+    setShowIncluded(false);
+    setError('');
   };
 
   const handleKeyPress = event => {
     event.code === 'Enter' && event.target.localName !== 'textarea' && event.preventDefault();
   };
 
-  const handleSubmit = event => {
-    event.preventDefault();
-    const furColorsToArray = Object.keys(clientInfo.furColor).filter(color => clientInfo.furColor[color] === true);
-    _history__WEBPACK_IMPORTED_MODULE_1__["default"].push('/confirmClientQuestionnaire', {
-      clientInfo: { ...clientInfo,
-        'furColor': furColorsToArray
+  const handleSubmit = async event => {
+    const validateForm = async () => {
+      try {
+        const {
+          data
+        } = await axios__WEBPACK_IMPORTED_MODULE_6___default().post('/api/users/validate', clientInfo);
+        setFormValidated(data?.isValidSubmission);
+
+        if (!data?.isValidSubmission) {
+          setDisplayBadEmail(true);
+          window.scrollTo(0, 0);
+        }
+      } catch (err) {
+        setError(err);
       }
-    });
+    };
+
+    event.preventDefault();
+    await validateForm();
   };
+
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+    if (formValidated) {
+      const furColorsToArray = Object.keys(clientInfo.furColor).filter(color => clientInfo.furColor[color] === true);
+      _history__WEBPACK_IMPORTED_MODULE_1__["default"].push('/confirmClientQuestionnaire', {
+        clientInfo: { ...clientInfo,
+          'furColor': furColorsToArray
+        }
+      });
+    }
+  }, [formValidated]);
+
+  if (error) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ErrorFill__WEBPACK_IMPORTED_MODULE_7__["default"], {
+      msg: error
+    });
+  }
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, meContext.id ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "waitingList__already-approved"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h4", null, "You have already been Approved"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Link, {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h4", null, "You have already been Approved"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Link, {
     to: "/availableKittens"
-  }, "Check out our kittens"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "or ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Link, {
+  }, "Check out our kittens"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "or ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Link, {
     to: "/logout"
   }, "Logout"), " "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "home__card2"
@@ -3479,8 +3518,8 @@ const ClientQuestionnaire = () => {
     className: "waitingList-left"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h4", null, "About You"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
     htmlFor: "clientFormEmail",
-    className: "required"
-  }, "E-mail"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    className: displayBadEmail ? 'required error' : 'required'
+  }, displayBadEmail ? 'That email is already in use' : 'E-mail'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
     id: "clientFormEmail",
     type: "email",
     name: "eMail",
@@ -3765,18 +3804,11 @@ __webpack_require__.r(__webpack_exports__);
 const ConfirmClientQuestionnaire = () => {
   const [infoPosted, setInfoPosted] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
   const [error, setError] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('');
-  console.log(_history__WEBPACK_IMPORTED_MODULE_1__["default"].location.state);
+  const [clientInfo, setClientInfo] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(_history__WEBPACK_IMPORTED_MODULE_1__["default"].location?.state?.clientInfo);
 
   const handleGoBack = () => {
     _history__WEBPACK_IMPORTED_MODULE_1__["default"].back();
   };
-
-  const [clientInfo, setClientInfo] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(_history__WEBPACK_IMPORTED_MODULE_1__["default"].location?.state?.clientInfo);
-  console.log('client info, confirm page: ', clientInfo); // useEffect(() => {
-  //   return () => {
-  //   localStorage.removeItem('clientInfo')
-  // }
-  // },[])
 
   const handleSubmit = async event => {
     event.preventDefault();
@@ -4135,7 +4167,7 @@ const KittenDetailedView = () => {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
     src: kitten.mainImageSrcValue,
     alt: "Picture of Kitten"
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, " Status: ", kitten.isAvailable ? 'Available' : 'Reserved'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, " Location: ", kitten.location), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, " Price: $", kitten.price), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, " ", kitten.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, " ", kitten.breed), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, " Gender: ", kitten.gender), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, " Ears: ", kitten.ears), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, " Fur color: ", kitten.furColor), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, " Eye color: ", kitten.eyeColor), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, " Dam: ", kitten.mother), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, " Sire: ", kitten.father), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, kitten.regNum ? 'Registration Number: ' + kitten.regNum : ''), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, kitten.description ? 'Description: ' + kitten.description : '')), (0,_myModelsConfig__WEBPACK_IMPORTED_MODULE_5__.isPrivileged)(type) && !fromEdit && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Link, {
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, " Status: ", kitten.status), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, " Location: ", kitten.location), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, " Price: $", kitten.price), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, " ", kitten.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, " ", kitten.breed), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, " Gender: ", kitten.gender), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, " Ears: ", kitten.ears), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, " Fur color: ", kitten.furColor), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, " Eye color: ", kitten.eyeColor), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, " Dam: ", kitten.mother), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, " Sire: ", kitten.father), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, kitten.regNum ? 'Registration Number: ' + kitten.regNum : ''), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, kitten.description ? 'Description: ' + kitten.description : '')), (0,_myModelsConfig__WEBPACK_IMPORTED_MODULE_5__.isPrivileged)(type) && !fromEdit && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Link, {
     to: "/createKitten"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", null, "Upload Another Kitten")), (0,_myModelsConfig__WEBPACK_IMPORTED_MODULE_5__.isPrivileged)(type) && fromEdit && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Link, {
     to: "/availableKittens"
@@ -4535,7 +4567,6 @@ const SingleKitten = props => {
     isAvailable
   } = kitten;
   const image = mainImageSrcValue ? mainImageSrcValue : "/catPictures/catError3.gif";
-  console.log(kitten.status);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: kitten?.status === 'Sold' ? 'singleKitten kitten-sold' : 'singleKitten'
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
@@ -5003,11 +5034,7 @@ const CreateKitten = () => {
 
   const handleKeyPress = event => {
     event.code === 'Enter' && event.target.localName !== 'textarea' && event.preventDefault();
-  }; // const handleImage = (event) => {
-  //   console.log(event)
-  //   return
-  // }
-
+  };
 
   const handleSubmit = async event => {
     event.preventDefault();
@@ -6034,8 +6061,8 @@ const fetchEffect = async (setterFuncArray, method, path, body) => {
       setterFuncArray[1]('');
     }
   } catch (err) {
-    console.err(err.message);
-    console.log(error.stack);
+    console.error(err.message);
+    if (err.stack) console.log(err.stack);
 
     if (setterFuncArray.length > 1) {
       setterFuncArray[1](err.message);
@@ -6200,7 +6227,6 @@ const handleLogin = async (meContext, loginInfo) => {
       });
 
       if (data) {
-        console.log('login info data: ', data);
         meContext.setEmail(data.eMail);
         meContext.setType(data.type);
         meContext.setId(data.id);
@@ -6355,7 +6381,8 @@ const myConfig = {
   hasAllergiesOptions: ['Dont Know', 'Yes', 'No'],
   foundUsByOptions: ['Google', 'Facebook', 'Instagram', 'Pinterest', 'TikTok', 'Youtube', 'Referral', 'Other'],
   applyStatusOptions: ['Pending', 'Denied', 'Approved'],
-  userTypes: ['guest', 'registered', 'ghost', 'admin', 'master']
+  userTypes: ['guest', 'registered', 'ghost', 'admin', 'master'],
+  emailsFrom: '"Planet Scottish Fold" <planetscottishfold@outlook.com>'
 };
 
 myConfig.isPrivileged = type => myConfig.userTypes.slice(2).includes(type);
@@ -6380,7 +6407,7 @@ myUtilFuncs.resetForm = event => {
   try {
     document.getElementById(event.nativeEvent.srcElement.id).reset();
   } catch (err) {
-    console.err(err);
+    console.error(err);
     console.log(err.stack);
   }
 };

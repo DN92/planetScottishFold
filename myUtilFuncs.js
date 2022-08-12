@@ -7,7 +7,7 @@ myUtilFuncs.resetForm = (event) => {
   try {
     document.getElementById(event.nativeEvent.srcElement.id).reset()
   } catch (err) {
-    console.err(err)
+    console.error(err)
     console.log(err.stack)
   }
 }

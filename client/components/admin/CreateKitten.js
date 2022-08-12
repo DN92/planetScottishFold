@@ -39,12 +39,6 @@ const CreateKitten = () => {
     event.code === 'Enter' && event.target.localName !== 'textarea' && event.preventDefault();
   }
 
-  // const handleImage = (event) => {
-    //   console.log(event)
-
-    //   return
-    // }
-
   const handleSubmit = async (event) => {
     event.preventDefault()
     fetchEffect(

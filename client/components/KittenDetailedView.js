@@ -39,7 +39,7 @@ const KittenDetailedView = () => {
           <div className='detailedView__imgWrapper'>
             <img src={kitten.mainImageSrcValue} alt="Picture of Kitten" />
           </div>
-          <p> Status: {kitten.isAvailable ? 'Available' : 'Reserved'}</p>
+          <p> Status: {kitten.status}</p>
           <p> Location: {kitten.location}</p>
           <p> Price: ${kitten.price}</p>
           <br />
