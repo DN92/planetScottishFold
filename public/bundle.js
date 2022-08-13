@@ -5552,6 +5552,7 @@ const EditKitten = () => {
     !dams.length && (0,_axiosHandlers_fetchEffect__WEBPACK_IMPORTED_MODULE_6__.fetchEffect)([setDams, setError], 'get', `/api/mothers?onlyNames=true`);
     !studs.length && (0,_axiosHandlers_fetchEffect__WEBPACK_IMPORTED_MODULE_6__.fetchEffect)([setStuds, setError], 'get', `api/fathers?onlyNames=true`);
   }, []);
+  console.log(kittenToEdit);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, error && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ErrorFill__WEBPACK_IMPORTED_MODULE_3__["default"], {
     msg: error
   }), !error && !(0,_myModelsConfig__WEBPACK_IMPORTED_MODULE_2__.isPrivileged)(type) && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "You don't have the privileges to view this page"), !error && !kittenToEdit && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ErrorFill__WEBPACK_IMPORTED_MODULE_3__["default"], {
@@ -5597,9 +5598,7 @@ const EditKitten = () => {
     name: "gender",
     value: kittenToEdit.gender,
     onChange: handleChange
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
-    value: _myModelsConfig__WEBPACK_IMPORTED_MODULE_2__.genderOptions[0]
-  }, "Boy or Girl"), _myModelsConfig__WEBPACK_IMPORTED_MODULE_2__.genderOptions.map((ear, index) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+  }, _myModelsConfig__WEBPACK_IMPORTED_MODULE_2__.genderOptions.map((ear, index) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
     key: index,
     value: ear
   }, ear))), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
@@ -5609,9 +5608,7 @@ const EditKitten = () => {
     name: "ears",
     value: kittenToEdit.ears,
     onChange: handleChange
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
-    value: _myModelsConfig__WEBPACK_IMPORTED_MODULE_2__.earOptions[0]
-  }, "Fold or Straight"), _myModelsConfig__WEBPACK_IMPORTED_MODULE_2__.earOptions.map((ear, index) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+  }, _myModelsConfig__WEBPACK_IMPORTED_MODULE_2__.earOptions.map((ear, index) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
     key: index,
     value: ear
   }, ear))), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
@@ -5621,9 +5618,7 @@ const EditKitten = () => {
     name: "furColor",
     value: kittenToEdit.furColor,
     onChange: handleChange
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
-    value: ""
-  }, "Fur Color"), _myModelsConfig__WEBPACK_IMPORTED_MODULE_2__.furColors.map((color, index) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+  }, _myModelsConfig__WEBPACK_IMPORTED_MODULE_2__.furColorsAdmin.map((color, index) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
     key: index,
     value: color
   }, color))), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
@@ -5645,9 +5640,7 @@ const EditKitten = () => {
     name: "mother",
     value: kittenToEdit.mother,
     onChange: handleChange
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
-    value: ""
-  }, "Select Dam"), dams.map((name, index) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+  }, dams.map((name, index) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
     key: index,
     value: name
   }, name))), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
@@ -5657,9 +5650,7 @@ const EditKitten = () => {
     name: "father",
     value: kittenToEdit.father,
     onChange: handleChange
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
-    value: ""
-  }, "Select Stud"), studs.map((name, index) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+  }, studs.map((name, index) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
     key: index,
     value: name
   }, name))), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
