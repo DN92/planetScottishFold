@@ -17,7 +17,7 @@ catAsKittenArray = [
     name: 'Twix',
     gender: 'Girl',
     ears: 'Straight',
-    furColor: 'Silver Tabby',
+    furColor: 'Black Silver Spotted',
     eyeColor: 'Copper',
     breed: 'Scottish Straight Shorthair',
     status: 'Available',
