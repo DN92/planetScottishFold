@@ -16,9 +16,7 @@ const modelsArray = [ ... Object.values(models) ]
  */
 
 async function seed() {
-  await Promise.all(modelsArray.map(model => (model.drop({force: true}))))
   await db.sync({force: true})  //  clears the db and matches models to tables
-
   await Promise.all([
     Promise.all(kittensActual.map(kitten => {
       return Kitten.create(kitten)

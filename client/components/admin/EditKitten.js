@@ -3,7 +3,7 @@ import MeContext from '../../MeContextPro'
 import { isPrivileged } from '../../../myModelsConfig'
 import ErrorFill from '../ErrorFill'
 import history from '../../history'
-import { furColors, eyeColors, genderOptions, earOptions, statusOptionsKitten} from '../../../myModelsConfig'
+import { furColorsAdmin, eyeColors, genderOptions, earOptions, statusOptionsKitten} from '../../../myModelsConfig'
 import handleControlledValueFieldToState from '../../customHandlers/handleFormChange'
 import { fetchEffect } from '../axiosHandlers/fetchEffect'
 import { useParams } from 'react-router-dom'
@@ -73,6 +73,8 @@ const EditKitten = () => {
     )
   },[])
 
+  console.log(kittenToEdit)
+
   return (
     <>
       {error && <ErrorFill msg={error} />}
@@ -128,7 +130,6 @@ const EditKitten = () => {
                   value={kittenToEdit.gender}
                   onChange={handleChange}
                 >
-                  <option value={genderOptions[0]}>Boy or Girl</option>
                     {genderOptions.map((ear, index) => (
                       <option key={index} value={ear}>{ear}</option>
                     ))}
@@ -141,7 +142,6 @@ const EditKitten = () => {
                   value={kittenToEdit.ears}
                   onChange={handleChange}
                 >
-                  <option value={earOptions[0]}>Fold or Straight</option>
                     {earOptions.map((ear, index) => (
                       <option key={index} value={ear}>{ear}</option>
                     ))}
@@ -154,8 +154,7 @@ const EditKitten = () => {
                   value={kittenToEdit.furColor}
                   onChange={handleChange}
                 >
-                  <option value="">Fur Color</option>
-                  {furColors.map((color, index) => (
+                  {furColorsAdmin.map((color, index) => (
                     <option key={index} value={color}>{color}</option>
                   ))}
                 </select> <br />
@@ -182,10 +181,9 @@ const EditKitten = () => {
                   value={kittenToEdit.mother}
                   onChange={handleChange}
                 >
-                  <option value="">Select Dam</option>
-                    {dams.map((name, index) => (
-                      <option key={index} value={name}>{name}</option>
-                    ))}
+                  {dams.map((name, index) => (
+                    <option key={index} value={name}>{name}</option>
+                  ))}
                 </select> <br />
               </>
               <>
@@ -193,11 +191,11 @@ const EditKitten = () => {
                 <select id="editKittenFather"
                   name="father"
                   value={kittenToEdit.father}
-                  onChange={handleChange}>
-                  <option value="">Select Stud</option>
-                    {studs.map((name, index) => (
-                      <option key={index} value={name}>{name}</option>
-                    ))}
+                  onChange={handleChange}
+                >
+                  {studs.map((name, index) => (
+                    <option key={index} value={name}>{name}</option>
+                  ))}
                 </select> <br />
               </>
               <>
