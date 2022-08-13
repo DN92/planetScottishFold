@@ -12,7 +12,6 @@ const templateNewApplicantNotification = (applicant) => {
     to: 'nataliyaKlin@gmail.com',
     subject: 'New Application ready for review',
     text: applicant.eMail + ` has submitted an application. Review it when you're ready beautiful.`,
-    html: link
   }
 }
 

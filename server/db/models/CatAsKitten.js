@@ -2,7 +2,7 @@ const Sequelize = require('sequelize')
 const db = require("../dbSetup")
 const {eyeColorsAdmin, defaultCatPictureSrc, earOptions, genderOptions, statusOptionsKitten} = require("../../../myModelsConfig")
 
-const Kitten = db.define("kitten", {
+const CatAsKitten = db.define("catAsKitten", {
   name: {
     type:Sequelize.STRING
   },
@@ -22,17 +22,13 @@ const Kitten = db.define("kitten", {
     type: Sequelize.ENUM(eyeColorsAdmin),
     defaultValue: eyeColorsAdmin[0]
   },
-  dob: {
+  breed: {
     type: Sequelize.STRING,
     defaultValue: '',
   },
-  mother: {
-    type:Sequelize.STRING,
-    defaultValue: ''
-  },
-  father: {
-    type:Sequelize.STRING,
-    defaultValue: ''
+  dob: {
+    type: Sequelize.STRING,
+    defaultValue: '',
   },
   status: {
     type: Sequelize.ENUM(statusOptionsKitten),
@@ -52,11 +48,7 @@ const Kitten = db.define("kitten", {
   },
   regNum: {
     type: Sequelize.STRING,
-    defaultValue: '5432'
-  },
-  breed: {
-    type: Sequelize.STRING,
-    defaultValue: '',
+    defaultValue: ''
   },
   mainImageSrcValue: {
     type:Sequelize.STRING,
@@ -64,4 +56,4 @@ const Kitten = db.define("kitten", {
   },
 })
 
-module.exports = Kitten
+module.exports = CatAsKitten
