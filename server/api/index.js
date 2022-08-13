@@ -12,6 +12,7 @@ router.use('/fathers', require('./fathers'))
 router.use('/users', require('./users'))
 router.use('/contactRequests', require('./contactRequest'))
 router.use('/emails', require('./emails'))
+router.use('/catAsKitten', require('./catAsKitten'))
 
 router.use('/init', require('./init'))
 

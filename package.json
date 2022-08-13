@@ -7,10 +7,10 @@
     "seed": "node seedAndDefaults/seed.js",
     "start": "node server",
     "start:dev": "npm run build:dev & npm run start-server",
-    "start:fullReload": "seed & npm run start:dev",
+    "start:fullReload": "npm run seed & npm run start:dev",
     "start:dev:logger": "LOGGING=true npm run start:dev",
-    "start:windows": "set JWT=shh&&nodemon server",
-    "start-server": "JWT=shh nodemon server -e html,js,scss --ignore public --ignore client",
+    "start:windows": "nodemon server",
+    "start-server": "nodemon server -e html,js,scss --ignore public --ignore client",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

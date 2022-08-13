@@ -7,8 +7,9 @@ const studsActual = require('./studsActual')
 const damsActual = require('./damsActual')
 const kittensActual = require('./kittensActual')
 const initialUsers = require("./initTest")
+const catAsKittenArray = require('./catAsKittenActual')
 
-const { Kitten, Mother, Stud, User, ContactRequest, InitialUser } = models
+const { Kitten, Mother, Stud, User, ContactRequest, InitialUser, CatAsKitten } = models
 const modelsArray = [ ... Object.values(models) ]
 /**
  *  seed - this function clears the database, updates tables to
@@ -36,6 +37,9 @@ async function seed() {
     Promise.all(initialUsers.map(init => {
       return InitialUser.create(init)
     })),
+    Promise.all(catAsKittenArray.map(cat => {
+      return CatAsKitten.create(cat)
+    }))
   ])
 }
 

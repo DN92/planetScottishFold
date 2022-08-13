@@ -7,6 +7,7 @@ const models = {
   User : require("./User"),
   InitialUser : require("./InitialUsers"),
   ContactRequest : require('./ContactRequest'),
+  CatAsKitten : require('./CatAsKitten')
 
 }
 

@@ -15,6 +15,7 @@ const AvailableKittens = () => {
   const unavailableKittens = useMemo(() => {
     return kittens.filter(kitten => kitten.status !== "Available" )
   },[kittens])
+  const [availableAdults, setAvailableAdults] = useState([])
   const [error, setError] = useState(null)
   const [showSearch, setShowSearch] = useState(false)
   /* filterState is the culmination of user search preferences and the setter is passed
@@ -38,7 +39,7 @@ const AvailableKittens = () => {
     const keysToDestroy = Object.entries(filterState)
       .filter(entry => (entry[1] === 'No Preference' || entry[1] === ''))
       .map(entry => (entry[0]))
-    // Mutate filterState by making a copy.
+    // Avoid mutating filterState by making a copy.
     const filterer = {...filterState}
     keysToDestroy.forEach(key => {
       delete filterer[key]
@@ -55,6 +56,14 @@ const AvailableKittens = () => {
       [setKittens, setError],
       'get',
       `/api/kittens`,
+    )
+  }, [])
+
+  useEffect(() => {
+    fetchEffect(
+      [setAvailableAdults, setError],
+      `get`,
+      `/api/catAsKitten`
     )
   }, [])
 
@@ -75,6 +84,13 @@ const AvailableKittens = () => {
           <div className='kittensWrapper'>
             {availableKittens.map((kitten) => (
               <SingleKitten key={kitten.id} kitten={kitten} />
+            ))}
+          </div>
+          <hr /><br />
+          <h4>Available Adults</h4>
+          <div className='kittensWrapper'>
+            {availableAdults.map((cat) => (
+              <SingleKitten key={cat.id} kitten={cat} />
             ))}
           </div>
           <hr /><br />
