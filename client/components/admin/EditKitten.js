@@ -73,8 +73,6 @@ const EditKitten = () => {
     )
   },[])
 
-  console.log(kittenToEdit)
-
   return (
     <>
       {error && <ErrorFill msg={error} />}
@@ -225,6 +223,8 @@ const EditKitten = () => {
               </>
               <textarea id="editKittenDescription"
                 name="description"
+                value={kittenToEdit.description}
+                onChange={handleChange}
                 cols="50" rows="15"
                 placeholder='description'
               />

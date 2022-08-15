@@ -90,12 +90,12 @@ router.put('/handleApplicant', async(req, res, next) => {
         req.body.type = 'guest'
         req.body.applyStatus = 'Denied'
         req.body.password = null
-        transporter.sendMail(templateDeniedUser(req.body.eMail))
+        // transporter.sendMail(templateDeniedUser(req.body.eMail))
       } else {
         req.body.type = 'registered'
         req.body.applyStatus = 'Approved'
         req.body.password = newPassword
-        transporter.sendMail(templateApprovedUser(req.body.eMail, newPassword))
+        // transporter.sendMail(templateApprovedUser(req.body.eMail, newPassword))
       }
       const update = await user.update(req.body)
       res.send(update)

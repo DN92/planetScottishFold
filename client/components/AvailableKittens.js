@@ -25,7 +25,6 @@ const AvailableKittens = () => {
     ears: 'No Pref',
     eyeColor: 'No Pref',
     furColor: 'No Pref',
-    isAvailable: true, // not visible to user, but will help to show available at top of results
   })
 
   const handleShowSearch = () => {

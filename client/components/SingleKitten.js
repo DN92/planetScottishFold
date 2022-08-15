@@ -20,7 +20,7 @@ const SingleKitten = (props) => {
     father,
     mainImageSrcValue,
     id,
-    isAvailable,
+    status,
   } = kitten
 
   const image = mainImageSrcValue ? mainImageSrcValue : "/catPictures/catError3.gif"
@@ -52,8 +52,7 @@ const SingleKitten = (props) => {
                 <>
                   <p>Mother: {mother}</p>
                   <p>Father: {father}</p>
-                  <p>Status: {isAvailable}</p>
-                  <p>Availability: {isAvailable ? 'Available' : 'Reserved'}</p>
+                  <p>Status: {status}</p>
                 </>
               }
             </>
