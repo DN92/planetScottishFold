@@ -14,20 +14,10 @@ const AuthForm = () => {
     password: '',
   })
   const [rememberMe, setRememberMe] = useState(false)
+  const [willAttemptLogin, setWillAttemptLogin] = useState(false)
   const [error, setError] = useState('')
 
-  const handleRememberMe = () => {
-    setRememberMe(prevState => {
-      return !prevState
-    })
-  }
-
-  const handleChange = (event) => {
-    handleControlledValueFieldToState(event, setLoginInfo)
-  }
-
-  const handleSubmit = async (event) => {
-    event.preventDefault()
+  const login = async () => {
     const [successStatus, message] = await handleLogin(meContext, loginInfo)
     //  successful
     if(rememberMe && successStatus) {
@@ -43,6 +33,23 @@ const AuthForm = () => {
     setError(message)
   }
 
+  const handleRememberMe = () => {
+    setRememberMe(prevState => {
+      return !prevState
+    })
+  }
+
+  const handleChange = (event) => {
+    handleControlledValueFieldToState(event, setLoginInfo)
+  }
+
+  const handleSubmit = (event) => {
+    event.preventDefault()
+    setLoginInfo(loginInfo => ({...loginInfo, eMail: loginInfo.eMail.toLowerCase()}))
+    setWillAttemptLogin(true)
+
+  }
+
   useEffect(() => {
     if(
       localStorage.hasOwnProperty('autoLogin')
@@ -53,6 +60,12 @@ const AuthForm = () => {
         history.push('/home')
     }
   }, [])
+
+  useEffect(() => {
+
+    setWillAttemptLogin(false)
+    login()
+  }, [willAttemptLogin])
 
   return (
     <>
