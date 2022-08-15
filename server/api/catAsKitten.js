@@ -5,11 +5,16 @@ const { CatAsKitten } = require("../db").models
 
 router.get('/', async (req, res, next) => {
   try {
-    const cats = await CatAsKitten.findAll()
-    res.send(cats)
+    let data;
+    req.query.id ?
+      data = await CatAsKitten.findByPk(id) :
+      data = await CatAsKitten.findAll()
+    res.send(data)
   } catch (err) {
     next(err)
   }
 })
+
+
 
 module.exports = router
