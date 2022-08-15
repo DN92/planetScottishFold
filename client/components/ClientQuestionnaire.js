@@ -1,10 +1,12 @@
 import React, { useState, useEffect, useContext } from 'react'
 import { Link } from 'react-router-dom'
 import history from '../history'
-import {furColors, furColorsOnQuestionnaire, eyeColors, mifOptions, budgetRanges, earOptions, genderOptions, willBreedOptions, hasAllergiesOptions, foundUsByOptions} from "../../myModelsConfig"
+import {furColors, eyeColors, mifOptions, budgetRanges, earOptions, genderOptions, willBreedOptions, hasAllergiesOptions, foundUsByOptions} from "../../myModelsConfig"
 import handleFormChange from '../customHandlers/handleFormChange'
 import useLocalStorage from '../customHooks/useLocalStorage'
 import MeContext from '../MeContextPro'
+import axios from 'axios'
+import ErrorFill from './ErrorFill'
 
 
 const ClientQuestionnaire = () => {
@@ -35,10 +37,19 @@ const ClientQuestionnaire = () => {
   }
 
   const [clientInfo, setClientInfo] = useLocalStorage('clientInfo', defaultClientInfo)
+  const [showIncluded, setShowIncluded] = useState(false)
+  const [formValidated, setFormValidated] = useState(false)
+  const [displayBadEmail, setDisplayBadEmail] = useState(false)
+  const [error, setError] = useState('')
 
   const handleChange = (event) => {
     event.preventDefault()
     handleFormChange(event, setClientInfo)
+    setDisplayBadEmail(false)
+  }
+
+  const handleViewIncluded = () => {
+    setShowIncluded(prev => !prev)
   }
 
   const handleCheckBoxForFur = (event) => {
@@ -55,19 +66,47 @@ const ClientQuestionnaire = () => {
 
   const handleReset = () => {
     setClientInfo(defaultClientInfo)
+    setDisplayBadEmail(false)
+    setShowIncluded(false)
+    setError('')
   }
 
   const handleKeyPress = (event) => {
     event.code === 'Enter' && event.target.localName !== 'textarea' && event.preventDefault();
   }
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
+    const validateForm = async() => {
+      try {
+        const { data } = await axios.post('/api/users/validate', clientInfo)
+        setFormValidated(data?.isValidSubmission)
+        if(!data?.isValidSubmission) {
+          setDisplayBadEmail(true)
+          window.scrollTo(0, 0)
+        }
+      } catch (err) {
+        setError(err)
+      }
+    }
+
     event.preventDefault();
-    const furColorsToArray = Object.keys(clientInfo.furColor)
-      .filter(color => clientInfo.furColor[color] === true)
-    history.push('/confirmClientQuestionnaire', {clientInfo:
-      {...clientInfo, 'furColor': furColorsToArray}
-    })
+    await validateForm()
+  }
+
+  useEffect(() => {
+    if(formValidated) {
+      const furColorsToArray = Object.keys(clientInfo.furColor)
+        .filter(color => clientInfo.furColor[color] === true)
+      history.push('/confirmClientQuestionnaire', {clientInfo:
+        {...clientInfo, 'furColor': furColorsToArray}
+      })
+    }
+  }, [formValidated])
+
+  if(error) {
+    return (
+      <ErrorFill msg={error} />
+    )
   }
 
   return (
@@ -83,12 +122,43 @@ const ClientQuestionnaire = () => {
         </div>
         :
         <div className='waitingList'>
-          <form id="clientQuestionnaire" className='waitingList__form' onSubmit={handleSubmit} onKeyDown={handleKeyPress} onReset={handleReset}
+          <p className='apply-header'>Apply for your Kitty</p>
+          <p className='waitingList-description'>
+            Please fill out this questionnaire to apply for a Planet Scottish Fold Kitten. Once your application is approved, you will receive an email with how you can reserve a kitten. We require a $300 non-refundable deposit in order to reserve a kitten from current or future litters. Remaining balance is due during pick up.
+          </p>
+          <div className='buttonsWrapper2'>
+            <button className='buttonStyle4' onClick={handleViewIncluded}>What you're getting with your Kitten</button>
+          </div>
+          {showIncluded &&
+            <div className='waitingList-info'>
+              <ul>
+                <li>1 year health guarantee (covers hereditary defects and offers a replacement kitten)</li>
+                <li>age appropriate vaccinations and deworming </li>
+                <li>spay/neuter once kitten is at least 12 weeks old (only NC kittens)</li>
+                <li>microchip</li>
+                <li>well socialized kitten raised at home in warm and loving environment with other pets and children</li>
+                <li>weaned off and litter box trained kitten</li>
+                <li>weekly updates with photos and/or videos</li>
+                <li>lifetime breeder support</li>
+                <li>30 days FREE pet insurance </li>
+                <li>FaceTime is available before or after the reservation. </li>
+              </ul>
+            </div>
+
+          }
+          <form id="clientQuestionnaire" className='waitingList__form'
+            onSubmit={handleSubmit}
+            onKeyDown={handleKeyPress}
+            onReset={handleReset}
           >
             <div className='waitingList-left'>
               <h4>About You</h4>
               <>
-                <label htmlFor="clientFormEmail" className='required'>E-mail</label>
+                <label htmlFor="clientFormEmail"
+                  className={displayBadEmail ? 'required error' : 'required'}
+                >
+                  {displayBadEmail ? 'That email is already in use' : 'E-mail'}
+                </label>
                 <input id="clientFormEmail"
                   type="email"
                   name="eMail"
@@ -185,8 +255,8 @@ const ClientQuestionnaire = () => {
                 </select>
               </>
               <>
-                <label htmlFor="clientFormFoundBy">How did you find us?</label>
-                <select id="clientFormFoundBy" className="required"
+                <label className="required" htmlFor="clientFormFoundBy">How did you find us?</label>
+                <select id="clientFormFoundBy"
                   name="foundUsBy"
                   value={clientInfo.foundUsBy}
                   onChange={handleChange}
@@ -238,7 +308,6 @@ const ClientQuestionnaire = () => {
 
             <div className='waitingList-right'>
               <h4>Kitten Preferences</h4>
-
               <>
                 <label htmlFor="clientFormGender" className='required'>Boy or Girl?</label>
                 <select id='clientFormGender' name="gender" value={clientInfo.gender} onChange={handleChange} required>
@@ -258,8 +327,8 @@ const ClientQuestionnaire = () => {
                 </select>
               </>
               <>
-                <label htmlFor="clientFormEyeColor" className='required'>Eye Color</label>
-                <select id="clientFormEyeColor" name="eyeColor" value={clientInfo.eyeColor} onChange={handleChange} required>
+                <label htmlFor="clientFormEyeColor">Eye Color</label>
+                <select id="clientFormEyeColor" name="eyeColor" value={clientInfo.eyeColor} onChange={handleChange}>
                 <option value={''}></option>
                   {eyeColors.map((color, index) => (
                     <option key={index} value={color}>{color}</option>

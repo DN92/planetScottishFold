@@ -17,14 +17,8 @@ html:focus-within {
   scroll-behavior: smooth;
 }
 
-html,
-body {
-  /* height: 100%; */
-  /* this preset was added later but broke the css of the navbar: todo: investigate */
-}
-
 textarea {
-  max-width: 200px;
+  max-width: 300px;
 }
 
 label {
@@ -57,6 +51,10 @@ svg {
   display: block;
   max-width: 100%;
   height: auto;
+}
+
+img {
+  border: 5px solid var(--clr-100);
 }
 
 @media (prefers-reduced-motion) {
@@ -107,6 +105,8 @@ svg {
 
   /* Font Sizes */
   /* 13, 14, 16!1rem etc */
+  --fs-100: .5rem;
+  --fs-200: .7rem;
   --fs-300: .8125rem;
   --fs-400: .875rem;
   --fs-500: 1rem;
@@ -182,9 +182,18 @@ svg {
   border: none;
 }
 
+.error {
+  color: red;
+  font-family: var(--FF2);
+}
+
 .required::after{
   content: " *";
   color: red;
+}
+
+.center-text {
+  text-align: center;
 }
 
 .underlined {
@@ -203,17 +212,38 @@ svg {
   background-color: var(--clr-white) !important;
 }
 
+.background-img1 {
+  background-image: url("/otherPictures/backgroundImg1.jpg") !important;
+}
+
+
+
 /* headers */
 
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: var(--FF2);
+  font-family: var(--FF1);
   letter-spacing: 0.01em;
   color: var(--clr-500);
+  padding: 0.25rem;
 }
 #h1 {
+  font-size: var(--fs-primary-heading);
+}
+#h1TinyScreen {
   font-weight: 650;
   font-size: var(--fs-primary-heading);
+  display: none;
+}
+
+@media (max-width: 15.3125em) {
+  #h1 {
+    display: none;
+  }
+
+  #h1TinyScreen {
+    display: block;
+  }
 }
 
 h2{

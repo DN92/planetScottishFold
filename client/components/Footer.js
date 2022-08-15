@@ -13,20 +13,20 @@ const Footer = () => {
       {!isPrivileged(type) &&
         <>
           <div className='footer__cards'>
-            <div className='footer__card'>
+            <div className='footer__card tica-card'>
               <a href='https://tica.org/' target='_blank'>
-                <img src="/otherPictures/ticaLogo.webp" alt="Tica Logo" />
+                <img className='footer-img-tica' src="/otherPictures/ticaLogo.webp" alt="Tica Logo" />
               </a>
             </div>
             <div className='footer__card'>
               <a href='https://catkingpin.com/' target='_blank' >
-                <img src="/otherPictures/catKingPinAffPic.webp" alt="Cat King Pin Affiliate Image" />
+                <img className='footer-img-kingpin' src="/otherPictures/catKingPinAffPic.webp" alt="Cat King Pin Affiliate Image" />
               </a>
             </div>
             <div className='footer__nav-wrapper'>
-              <Link to='/waitingListForm' >Apply for Adoption</Link>
+              <Link to='/waitingListForm' >Apply</Link>
               <Link to='/availableKittens'>Kittens</Link>
-              <Link to='/contactUs'>Contact</Link>
+              <Link to='/contact'>Contact</Link>
             </div>
           </div>
         </>

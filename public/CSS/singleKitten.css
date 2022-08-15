@@ -12,10 +12,14 @@
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+.kitten-sold {
+  background-color: var(--clr-500);
+  color: white;
+}
+
 .singleKitten:hover {
   background-color: var(--clr-300);
   transform: translate(0, -0.57rem);
-  /* box-shadow: 2px -5px 5px 1px var(--clr-300); */
   border: 2px solid var(--clr-100);
 }
 
@@ -32,11 +36,8 @@
 }
 
 .singleKitten__card__img {
-  object-fit: fill;
-  width: auto;
-  height: auto;
-  float: left;
   border-radius: 1.5rem 1.5rem 0 0;
+  border: none;
   transform: translate(0, -9px);
 }
 

@@ -151,17 +151,26 @@ User.findByToken = async function (token) {
 };
 
 /**
- * hooks
- */
- const hashPassword = async (user) => {
+  * hooks
+  */
+  const hashPassword = async (user) => {
   //in case the password has been changed, we want to encrypt it with bcrypt
-  if (user.changed("password")) {
-    user.password = await bcrypt.hash(user.password, 6);
+    if (user.password && user.changed("password")) {
+      user.password = await bcrypt.hash(user.password, 6);
+    }
+  };
+
+  const emailToLowerCase = async (user) => {
+    if(user.eMail) {
+      user.eMail = user.eMail.toLowerCase()
+    }
   }
-};
 
 User.beforeCreate(hashPassword);
 User.beforeUpdate(hashPassword);
 User.beforeBulkCreate((users) => Promise.all(users.map(hashPassword)));
+User.beforeCreate(emailToLowerCase);
+User.beforeUpdate(emailToLowerCase)
+User.beforeBulkCreate((users) => Promise.all(users.map(emailToLowerCase)))
 
 module.exports = User

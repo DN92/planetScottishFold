@@ -37,7 +37,9 @@ router.post('/', async (req, res, next) => {
 router.put('/', async(req, res, next) => {
   try {
     passAuth(3, req, res)
-    const stud = await Stud.findByPk(req.query.id)
+    const stud = req.query.id
+      ? await Stud.findByPk(req.query.id)
+      : await Stud.findByPk(req.body.id)
     const update = await stud.update(req.body)
     if(!update) {
       throw new Error('stud update failed')

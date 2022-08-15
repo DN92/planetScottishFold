@@ -18,7 +18,7 @@ const Logout = () => {
       <h4>You have been Successfully</h4>
         <h4>logged out</h4>
       <div className='logout-img-wrapper'>
-        <img src="/catPictures/outsideCat.jpeg" alt="Image of cat outside" />
+        <img src="/fillerPictures/fillerKittenStanding.jpg" alt="Image of cat outside" />
       </div>
     </div>
   )

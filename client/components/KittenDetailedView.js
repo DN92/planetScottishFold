@@ -39,21 +39,21 @@ const KittenDetailedView = () => {
           <div className='detailedView__imgWrapper'>
             <img src={kitten.mainImageSrcValue} alt="Picture of Kitten" />
           </div>
-          <p> Status: {kitten.isAvailable ? 'Available' : 'Reserved'}</p>
-          <p> Location: {kitten.location}</p>
-          <p> Price: ${kitten.price}</p>
+          <p>Status: {kitten.status}</p>
+          <p>Location: {kitten.location}</p>
+          <p>Price: ${kitten.price}</p>
           <br />
-          <p> {kitten.name}</p>
-          <p> {kitten.breed}</p>
-          <p> Gender: {kitten.gender}</p>
-          <p> Ears: {kitten.ears}</p>
-          <p> Fur color: {kitten.furColor}</p>
-          <p> Eye color: {kitten.eyeColor}</p>
-          <p> Dam: {kitten.mother}</p>
-          <p> Sire: {kitten.father}</p>
-          <p> Registration Number: {kitten.regNum}</p>
-          <p> Description: {kitten.description}</p>
-
+          <p>{kitten.name}</p>
+          <p>{kitten.breed}</p>
+          <p>Gender: {kitten.gender}</p>
+          <p>Ears: {kitten.ears}</p>
+          <p>Fur color: {kitten.furColor}</p>
+          <p>Eye color: {kitten.eyeColor}</p>
+          <p>{kitten.dob ? ('Date of Birth: ' + kitten.dob) : ''}</p>
+          <p>{kitten.mother ? ('Dam: ' + kitten.mother) : ''}</p>
+          <p>{kitten.father ? ('Sire: ' + kitten.father) : ''}</p>
+          <p>{kitten.regNum ? ('Registration Number: ' + kitten.regNum) : ''}</p>
+          <p>{kitten.description ?  ('Description: ' + kitten.description) : ''}</p>
         </div>
       }
       {isPrivileged(type) && !fromEdit &&

@@ -1,7 +1,9 @@
-.home * {
-}
 
 .home {
+}
+
+.home a {
+  color: var(--clr-400)
 }
 
 .home__card1, .home__card2  {
@@ -14,7 +16,12 @@
   height: auto;
 }
 
-.home__link-wrapper {
+.home__links-wrapper {
+  padding: 1rem;
+}
+
+.home__link{
+  text-align: center;
   margin: .5rem
 }
 

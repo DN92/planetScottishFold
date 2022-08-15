@@ -19,9 +19,6 @@ import QuestionnaireConfirmation from './components/QuestionnaireConfirmation'
 
 const FrontEndRoutes = () => {
 
-
-
-
   //  later, there should be guest, user, adminViewer, and admin Route views
   return (
     // public routes
@@ -31,7 +28,7 @@ const FrontEndRoutes = () => {
       <Route path='/home' element={<HomeComponent />} />
       <Route path='/about' element={<About />} />
       <Route path='/availableKittens' element={<AvailableKittens />} />
-      <Route path='/kittenDetailed/:id' element={<KittenDetailedView />} />
+      <Route path='/kittenDetailed/:model/:id' element={<KittenDetailedView />} />
       <Route path='/viewCats/:MOTHERorFATHER' element={<ViewCats />} >
       </Route>
       <Route path='/catDetailedView/:MOTHERorFATHER/:id' element={<CatDetailedView />} />

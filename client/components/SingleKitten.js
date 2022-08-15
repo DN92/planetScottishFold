@@ -14,50 +14,57 @@ const SingleKitten = (props) => {
     name,
     breed,
     gender,
-    ears,
     furColor,
     eyeColor,
     mother,
     father,
-    price,
-    location,
-    description,
-    status,
     mainImageSrcValue,
     id,
-    isAvailable,
+    status,
   } = kitten
-
   const image = mainImageSrcValue ? mainImageSrcValue : "/catPictures/catError3.gif"
+  const model = kitten?.isAdultCat ? 'catAsKitten' : 'kittens'
 
   return (
-    <div className='singleKitten'>
+    <div className={kitten?.status === 'Sold' ? 'singleKitten kitten-sold' : 'singleKitten'}>
       <div className='singleKitten__card'>
         <img className='singleKitten__card__img' src={image} alt="kitten picture "
         kitten={kitten}
         />
       </div>
       <div className='singleKittenInfo'>
-        <p>Hi I'm {name}</p>
-        <p>I am a {breed} {gender}</p>
-        <p>My color is </p>
-        <p>{furColor}</p>
-        <p>I have {eyeColor} eyes</p>
-        {isPrivileged(type) &&
-          <>
-            <p>Mother: {mother}</p>
-            <p>Father: {father}</p>
-            <p>Status: {isAvailable}</p>
-            <p>Availability: {isAvailable ? 'Available' : 'Reserved'}</p>
-          </>
-        }
+        <>
+          {kitten?.status === "Sold" &&
+            <>
+              <p>{name}</p>
+              <p>{kitten.status}</p>
+              <p>${kitten.price}</p>
+            </>
+          }
+          {kitten?.status !== "Sold" &&
+            <>
+              <p>Hi I'm {name}</p>
+              <p>I am a {breed} {gender}</p>
+              <p>My color is </p>
+              <p>{furColor}</p>
+              <p>I have {eyeColor} eyes</p>
+              {isPrivileged(type) &&
+                <>
+                  <p>Mother: {mother}</p>
+                  <p>Father: {father}</p>
+                  <p>Status: {status}</p>
+                </>
+              }
+            </>
+          }
+        </>
       </div>
       <div className='singleKitten__button'>
         <Link
-        to={isPrivileged(type) ? '/editKitten' : `/kittenDetailed/${id}`}
+        to={isPrivileged(type) ? '/editKitten' : `/kittenDetailed/${model}/${id}`}
         state={{kitten: kitten}}
         >
-          <button className='btnS1'>View More</button>
+          <button className='btnS1'>{isPrivileged(type) ? 'Edit' : 'View More'}</button>
         </Link>
       </div>
     </div>

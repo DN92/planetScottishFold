@@ -1,14 +1,12 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
-import My404 from './My404'
 
 //  Each review has a image, text, and reviewer property
 
 const SingleReview = ({review}) => {
   return (
-    <div className='singleKitten'>
+    <div className='singleReview'>
       <div className='singleKitten__card'>
-        <img className='singleKitten__card__img' src={review.image}/>
+        <img className='review__card__img' src={review.image} alt='Cat Picture'/>
       </div>
       <div className='singleKittenInfo'>
         <p>{review.text}</p>

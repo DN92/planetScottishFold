@@ -34,7 +34,7 @@ const UseReqTableRow = (props) => {
 
   return (
     <tr >
-      <td className='users-table__view-button-wrapper' onClick={handleSelectRequest}><button className='users-table__view-button'>VIEW</button></td>
+      <td className='users-table__view-button-wrapper' onClick={handleSelectRequest}><button className='users-table__view-button buttonStyle1'>VIEW</button></td>
       <td className='opacity-zero'>gutter</td>
       <td>{user.eMail || 'NULL'}</td>
       <td>{user.firstName || 'NULL'}</td>

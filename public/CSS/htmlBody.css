@@ -13,7 +13,7 @@ body {
   font-family: var(--FF1) ;
   font-size: 14px;
   color: var(--clr-500);
-  background-color: var(--clr-700) ;
+  background-color: var(--clr-white) ;
   -webkit-font-smoothing: antialiased;
   -mox-osx-font-smoothing: grayscale;
   min-height: 100vh;

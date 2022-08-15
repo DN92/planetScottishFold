@@ -7,7 +7,7 @@ myUtilFuncs.resetForm = (event) => {
   try {
     document.getElementById(event.nativeEvent.srcElement.id).reset()
   } catch (err) {
-    console.err(err)
+    console.error(err)
     console.log(err.stack)
   }
 }
@@ -44,10 +44,7 @@ myUtilFuncs.getUserIP = async () => {
     const { data } = await axios.get('https://geolocation-db.com/json/')
     return data.IPv4
   } catch (err) {
-    console.log('failed to get IP, no worries')
-    console.log(err)
-  } finally {
-    return
+    return " "
   }
 }
 

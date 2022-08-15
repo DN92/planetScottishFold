@@ -31,13 +31,27 @@
 
 .footer__cards {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
 }
 
 .footer__card {
-  flex-grow: 1;
+  /* flex-grow: 1; */
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.footer-img-tica {
+  border: none;
+}
+
+.footer-img-kingpin {
+  border: 2px solid white;
+}
+
+@media (max-width:22em) {
+  .tica-card {
+    display: none;
+  }
 }

@@ -7,17 +7,19 @@ const AboutUs = () => {
 
  return (
   <div className='home__about-us'>
-    <div className='home__link-wrapper'>
-      <Link to='/availableKittens' >View Available Kittens</Link>
-    </div>
-    <div className='home__link-wrapper'>
-      <Link to='/viewCats/mother'>See Our Queens / Dams</Link>
-    </div>
-    <div className='home__link-wrapper'>
-    <Link to='/viewCats/father'>See Our Kings / Sires</Link>
-    </div>
-    <div className='home__link-wrapper'>
-      <Link to='/waitingListForm'>Apply to start the adoption process</Link>
+    <div className='home__links-wrapper'>
+      <div className='home__link'>
+        <Link to='/availableKittens' >View Available Kittens</Link>
+      </div>
+      <div className='home__link'>
+        <Link to='/viewCats/mother'>See Our Queens / Dams</Link>
+      </div>
+      <div className='home__link'>
+      <Link to='/viewCats/father'>See Our Kings / Sires</Link>
+      </div>
+      <div className='home__link'>
+        <Link to='/waitingListForm'>Apply to start the adoption process</Link>
+      </div>
     </div>
    <h5>About Our Scottish Fold Cattery</h5>
    <article>
@@ -39,6 +41,9 @@ const AboutUs = () => {
       So if you’re looking for a mellow and loyal best furrend then this breed is for you!
     </p>
     <Link to='/availableKittens'>View Scottish Fold Kittens for Sale</Link>
+    <div className='aboutUs__card2'>
+      <img className='aboutUs__card2__img' src="/fillerPictures/fillerLandscape2.jpg" alt="cat picture" />
+    </div>
     <h5>Our Kittens</h5>
     <p>
     Our kittens well-being is very important, thus choosing the right owners for our babies is another priority! If you’re ready for your perfect baby, please fill out the <Link to='/waitingListForm'>Questionnaire.</Link>
@@ -49,7 +54,7 @@ const AboutUs = () => {
     <ul>
       <li>1 year health guarantee (covers hereditary defects and offers a replacement kitten)</li>
       <li>age appropriate vaccinations and deworming </li>
-      <li>spay/neuter once kitten is at least 5lbs (only NC kittens)</li>
+      <li>spay/neuter once kitten is at least 12 weeks old (only NC kittens)</li>
       <li>microchip</li>
       <li>well socialized kitten raised at home in warm and loving environment with other pets and children</li>
       <li>weaned off and litter box trained kitten</li>
@@ -95,7 +100,7 @@ const AboutUs = () => {
     <p>
       If driving far, please plan accordingly and consider having multiple stops to rest and take care of the kitten. It’s good to have 2 people so that the passenger can take the kitten out of the kennel during the drive if it starts being stressed out.
     </p>
-    <Link to='/waitingListFrom'>
+    <Link to='/waitingListForm'>
       Apply for your kitten here
     </Link>
     <p>

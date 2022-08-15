@@ -3,7 +3,7 @@ import MeContext from '../../MeContextPro'
 import { isPrivileged } from '../../../myModelsConfig'
 import ErrorFill from '../ErrorFill'
 import history from '../../history'
-import { furColors, eyeColors, genderOptions, earOptions, statusOptionsKitten} from '../../../myModelsConfig'
+import { furColorsAdmin, eyeColors, genderOptions, earOptions, statusOptionsKitten} from '../../../myModelsConfig'
 import handleControlledValueFieldToState from '../../customHandlers/handleFormChange'
 import { fetchEffect } from '../axiosHandlers/fetchEffect'
 import { useParams } from 'react-router-dom'
@@ -12,14 +12,8 @@ const EditKitten = () => {
   const {type} = useContext(MeContext)
   const {id} = useParams()
 
-  const [kittenToEdit, setKittenToEdit] = useState(history.location.state
-    ? history.location.state.kitten
-    : null
-  )
-  const [error, setError] = useState(history.location.state
-    ? history.location.state.error
-    : ''
-  )
+  const [kittenToEdit, setKittenToEdit] = useState(history.location.state?.kitten)
+  const [error, setError] = useState('')
   const [dams, setDams] = useState([])
   const [studs, setStuds] = useState([])
   const [posted, setPosted] = useState(null)
@@ -134,7 +128,6 @@ const EditKitten = () => {
                   value={kittenToEdit.gender}
                   onChange={handleChange}
                 >
-                  <option value={genderOptions[0]}>Boy or Girl</option>
                     {genderOptions.map((ear, index) => (
                       <option key={index} value={ear}>{ear}</option>
                     ))}
@@ -147,7 +140,6 @@ const EditKitten = () => {
                   value={kittenToEdit.ears}
                   onChange={handleChange}
                 >
-                  <option value={earOptions[0]}>Fold or Straight</option>
                     {earOptions.map((ear, index) => (
                       <option key={index} value={ear}>{ear}</option>
                     ))}
@@ -160,8 +152,7 @@ const EditKitten = () => {
                   value={kittenToEdit.furColor}
                   onChange={handleChange}
                 >
-                  <option value="">Fur Color</option>
-                  {furColors.map((color, index) => (
+                  {furColorsAdmin.map((color, index) => (
                     <option key={index} value={color}>{color}</option>
                   ))}
                 </select> <br />
@@ -188,10 +179,9 @@ const EditKitten = () => {
                   value={kittenToEdit.mother}
                   onChange={handleChange}
                 >
-                  <option value="">Select Dam</option>
-                    {dams.map((name, index) => (
-                      <option key={index} value={name}>{name}</option>
-                    ))}
+                  {dams.map((name, index) => (
+                    <option key={index} value={name}>{name}</option>
+                  ))}
                 </select> <br />
               </>
               <>
@@ -199,11 +189,11 @@ const EditKitten = () => {
                 <select id="editKittenFather"
                   name="father"
                   value={kittenToEdit.father}
-                  onChange={handleChange}>
-                  <option value="">Select Stud</option>
-                    {studs.map((name, index) => (
-                      <option key={index} value={name}>{name}</option>
-                    ))}
+                  onChange={handleChange}
+                >
+                  {studs.map((name, index) => (
+                    <option key={index} value={name}>{name}</option>
+                  ))}
                 </select> <br />
               </>
               <>
@@ -233,14 +223,15 @@ const EditKitten = () => {
               </>
               <textarea id="editKittenDescription"
                 name="description"
+                value={kittenToEdit.description}
+                onChange={handleChange}
                 cols="50" rows="15"
                 placeholder='description'
               />
               <div className='buttonsWrapper'>
-
+                <button className='buttonStyle2' onClick={handleReset} type='button'>Reset Changes</button>
+                <button className='buttonStyle2' type='submit'>Submit Changes</button>
               </div>
-              <button className='buttonStyle2' onClick={handleReset} type='button'>Reset Changes</button>
-              <button className='buttonStyle2' type='submit'>Submit Changes</button>
             </form>
           </div>
         </>

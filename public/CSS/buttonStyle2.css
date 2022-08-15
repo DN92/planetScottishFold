@@ -2,6 +2,7 @@
   min-height: 3rem;
   min-width: 200px;
   background-color: var(--clr-100) ;
+  padding: 0rem .5rem;
 }
 
 .buttonStyle2:hover {

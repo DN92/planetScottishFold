@@ -1,11 +1,15 @@
 // all models go here to be exported together
 
-const models = {}
+const models = {
+  Stud : require("./StudModel"),
+  Mother : require("./MotherModel"),
+  Kitten : require("./KittenModel"),
+  User : require("./User"),
+  InitialUser : require("./InitialUsers"),
+  ContactRequest : require('./ContactRequest'),
+  CatAsKitten : require('./CatAsKitten')
 
-models.Stud = require("./StudModel")
-models.Mother = require("./MotherModel")
-models.Kitten = require("./KittenModel")
-models.User = require("./User")
-models.ContactRequest = require('./ContactRequest')
+}
+
 
 module.exports = models

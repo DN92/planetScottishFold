@@ -45,30 +45,27 @@ const CatDetailedView = () => {
             </div>
             <span>{cat.name}</span> <br />
             <span>{cat.breed}</span> <br />
-            {cat.regNum &&
-              <>
-                <span> Registration Number: {cat.regNum}</span>
-                <br />
-              </>
-            }
+            <span>{cat.regNum ? ("Registration Number: " + cat.regNum) : ""}</span><br />
             <span> Ears: {cat.ears}</span> <br />
             <span> FurColor: {cat.furColor}</span> <br />
             <span> EyeColor: {cat.eyeColor}</span> <br />
             <span> Date Of Birth: {cat.dob}</span> <br />
             <span> Description: {cat.description}</span> <br />
+            <span>{cat.description ? ("Description: " + cat.description) : ""}</span><br />
 
           </div>
-          {isPrivileged(type) &&
-            <Link to={`/createCat/${MOTHERorFATHER}`} >
-              <button>Upload Another {`${MOTHERorFATHER}`}</button>
-            </Link>
-          }
-          {isPrivileged(type) &&
-            <Link to={`/viewCats/${MOTHERorFATHER}`} >
-              <button>Back to {`${MOTHERorFATHER}s`}</button>
-            </Link>
-          }
+            {isPrivileged(type) &&
+              <div className='buttonsWrapper'>
+                <Link to={`/createCat/${MOTHERorFATHER}`} >
+                  <button className='buttonStyle2'>Upload Another {`${MOTHERorFATHER}`}</button>
+                </Link>
+                <Link to={`/viewCats/${MOTHERorFATHER}`} >
+                <button className='buttonStyle2'>Back to {`${MOTHERorFATHER}s`}</button>
+                </Link>
+              </div>
+            }
         </div>
+
       }
 
       {!error && !cat && !id &&

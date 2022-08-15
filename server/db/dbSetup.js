@@ -1,7 +1,6 @@
 const Sequelize = require('sequelize')
 const pkg = require('../../package.json')
 
-//  2 local databases are associated with this app. psf and psf-test, the latter being a test server
 const databaseName = pkg.name + (process.env.NODE_ENV === 'test' ? '-test' : '')
 
 let config = {}
