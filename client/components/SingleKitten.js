@@ -22,8 +22,8 @@ const SingleKitten = (props) => {
     id,
     status,
   } = kitten
-
   const image = mainImageSrcValue ? mainImageSrcValue : "/catPictures/catError3.gif"
+  const model = kitten?.isAdultCat ? 'catAsKitten' : 'kittens'
 
   return (
     <div className={kitten?.status === 'Sold' ? 'singleKitten kitten-sold' : 'singleKitten'}>
@@ -61,7 +61,7 @@ const SingleKitten = (props) => {
       </div>
       <div className='singleKitten__button'>
         <Link
-        to={isPrivileged(type) ? '/editKitten' : `/kittenDetailed/${id}`}
+        to={isPrivileged(type) ? '/editKitten' : `/kittenDetailed/${model}/${id}`}
         state={{kitten: kitten}}
         >
           <button className='btnS1'>{isPrivileged(type) ? 'Edit' : 'View More'}</button>
