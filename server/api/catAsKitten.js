@@ -7,7 +7,7 @@ router.get('/', async (req, res, next) => {
   try {
     let data;
     req.query.id ?
-      data = await CatAsKitten.findByPk(id) :
+      data = await CatAsKitten.findByPk(id) :2
       data = await CatAsKitten.findAll()
     res.send(data)
   } catch (err) {

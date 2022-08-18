@@ -39,4 +39,11 @@ router.get('/me', async (req, res, next) => {
   }
 })
 
+// error endpoint
+router.use((req, res, next) => {
+  const error = new Error('Not Found --auth index.js')
+  error.status = 404
+  next(error)
+})
+
 module.exports = router

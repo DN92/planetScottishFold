@@ -10,7 +10,7 @@
 const path = require('path')
 const express = require('express')
 const morgan = require('morgan')
-const compression = require('compression')  // note to self = read docs about this
+const compression = require('compression')
 const { db } = require('./db')
 const PORT = process.env.PORT || 8081
 const app = express()
@@ -21,51 +21,51 @@ if (process.env.NODE_ENV !== 'production') {
   process.env.JWT_SIG = secrets.JWT_SIG
 }
 
-  // logging middleware
-  app.use(morgan('dev'))
+// logging middleware
+app.use(morgan('dev'))
 
-  // body parsers
-  app.use(express.json())
-  app.use(express.urlencoded({extended: true}))
+// body parsers
+app.use(express.json())
+app.use(express.urlencoded({extended: true}))
 
-  // compression middleware
-  app.use(compression())
+// compression middleware
+app.use(compression())
 
 
-  // api routes
-  app.use('/auth', require('./auth'))
-  app.use('/api', require('./api'))
+// api routes
+app.use('/auth', require('./auth'))
+app.use('/api', require('./api'))
 
-  app.get('/', (req, res)=> {
-    res.sendFile(path.join(__dirname, '..', 'public/index.html'))
-  });
+app.get('/', (req, res)=> {
+  res.sendFile(path.join(__dirname, '..', 'public/index.html'))
+});
 
-  // file serving middleware
-  app.use(express.static(path.join(__dirname, '..', 'public')))
+// file serving middleware
+app.use(express.static(path.join(__dirname, '..', 'public')))
 
-  // remaining requests with an extension (.js, .css, other) send 404
+// remaining requests with an extension (.js, .css, other) send 404
 
-  app.use((req, res, next) => {
-    if (path.extname(req.path).length) {
-      const err = new Error(`File Could not be located: ${req.path}`)
-      err.status = 404
-      next(err)
-    } else {
-      next()
-    }
-  })
+app.use((req, res, next) => {
+  if (path.extname(req.path).length) {
+    const err = new Error(`File Could not be located: ${req.path}`)
+    err.status = 404
+    next(err)
+  } else {
+    next()
+  }
+})
 
-  // send index.html
-  app.use('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '..', 'public/index.html'))
-  })
+// send index.html
+app.use('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '..', 'public/index.html'))
+})
 
-  // error handlers
-  app.use((err, req, res, next) => {
-    console.error(err)
-    console.error(err.stack)
-    res.status(err.status || 500).send(err.message || 'Endpoint Server Error')
-  })
+// error handlers
+app.use((err, req, res, next) => {
+  console.error(err)
+  console.error(err.stack)
+  res.status(err.status || 500).send(err.message || 'Endpoint Server Error')
+})
 
 const syncDb = async () => {
   await db.sync()

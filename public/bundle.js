@@ -3009,6 +3009,7 @@ const AuthForm = () => {
   };
 
   const handleChange = event => {
+    setError('');
     (0,_customHandlers_handleFormChange__WEBPACK_IMPORTED_MODULE_4__["default"])(event, setLoginInfo);
   };
 
@@ -3032,8 +3033,10 @@ const AuthForm = () => {
     }
   }, []);
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
-    setWillAttemptLogin(false);
-    login();
+    if (willAttemptLogin) {
+      setWillAttemptLogin(false);
+      login();
+    }
   }, [willAttemptLogin]);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_helmet__WEBPACK_IMPORTED_MODULE_5__.Helmet, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("title", null, "Planet Scottish Fold | Login Page"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("meta", {
     name: "Planet Scottish Fold",

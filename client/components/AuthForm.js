@@ -40,6 +40,7 @@ const AuthForm = () => {
   }
 
   const handleChange = (event) => {
+    setError('')
     handleControlledValueFieldToState(event, setLoginInfo)
   }
 
@@ -62,9 +63,10 @@ const AuthForm = () => {
   }, [])
 
   useEffect(() => {
-
-    setWillAttemptLogin(false)
-    login()
+    if(willAttemptLogin) {
+      setWillAttemptLogin(false)
+      login()
+    }
   }, [willAttemptLogin])
 
   return (
