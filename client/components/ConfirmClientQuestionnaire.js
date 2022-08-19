@@ -46,7 +46,7 @@ const ConfirmClientQuestionnaire = () => {
           <ul className="clientInfo-questions">
             <li>E-mail: </li>
             <li>First Name: </li>
-            <li>Lase Name:</li>
+            <li>Last Name:</li>
             <li>Phone Number:</li>
             <li>Plan to Breed:</li>
             <li>Allergies:</li>

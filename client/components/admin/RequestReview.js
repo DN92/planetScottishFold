@@ -9,21 +9,25 @@ const RequestReview = () => {
 
   const arrayFromRequestKeys = [
     'eMail',
+    'phoneNumber',
+    'city',
+    'state',
     'firstName',
     'lastName',
     'aboutYou',
     'firstCat',
     'otherPets',
-    'city',
-    'state',
-    'fB',
-    'iG',
+    'willBreed',
+    'hasAllergy',
     'gender',
     'ears',
     'eyeColor',
     'furColor',
     'mif',
     'budget',
+    'foundUsBy',
+    'fB',
+    'iG',
     'IPaddress',
   ]
   const wordsFromKeys = getWordsFromArrayOfKeys(arrayFromRequestKeys)
@@ -69,7 +73,7 @@ const RequestReview = () => {
         <>
           <h3>Awaiting Your Approval</h3>
           <br />
-          <table>
+          <table className='awaiting-approval-table'>
             <thead>
               <tr>
                 <td>Field</td>
@@ -81,9 +85,10 @@ const RequestReview = () => {
                 <tr key={key}>
                   <td>{wordsFromKeys[index]}</td>
                   <td>
-                    {(key !== 'firstCat')
-                    ? request[key] || 'NULL'
-                    : request[key].toString() || 'NULL'
+                    {(key === 'firstCat') ?
+                      (request[key] === true ? 'Yes' : 'No') || 'NULL'
+                      :
+                      request[key] || 'NULL'
                     }
                   </td>
                 </tr>

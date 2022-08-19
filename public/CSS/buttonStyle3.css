@@ -1,7 +1,9 @@
 .buttonStyle3 {
   min-height: 3rem;
   min-width: 200px;
-  background-color: #2da44e;
+  background-color: rgb(21,116,204);
+  background-color: var(--clr-400);
+  color: white;
   border-radius: .5rem;
   width: 100%;
 }

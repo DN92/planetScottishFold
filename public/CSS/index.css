@@ -35,6 +35,7 @@
 @import "./contact.css";
 @import "./login.css";
 @import "./logout.css";
+@import "./awaitingApproval.css";
 
 /* component targeted styles - public - admin */
 
