@@ -11,9 +11,17 @@ const AvailableKittens = () => {
   const [kittens, setKittens] = useState([])
   const availableKittens = useMemo(()=>{
     return kittens.filter(kitten => kitten.status === "Available")
+      .sort((a, b) => {
+        if(b.mother < a.mother) {
+        return 1
+      } else {
+        return -1
+      }
+    })
   },[kittens])
   const unavailableKittens = useMemo(() => {
     return kittens.filter(kitten => kitten.status !== "Available" )
+      .sort((a, b) => Number(b.price) - Number(a.price) )
   },[kittens])
   const [availableAdults, setAvailableAdults] = useState([])
   const [error, setError] = useState(null)

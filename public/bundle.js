@@ -3148,10 +3148,16 @@ __webpack_require__.r(__webpack_exports__);
 const AvailableKittens = () => {
   const [kittens, setKittens] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]);
   const availableKittens = (0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(() => {
-    return kittens.filter(kitten => kitten.status === "Available");
+    return kittens.filter(kitten => kitten.status === "Available").sort((a, b) => {
+      if (b.mother < a.mother) {
+        return 1;
+      } else {
+        return -1;
+      }
+    });
   }, [kittens]);
   const unavailableKittens = (0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(() => {
-    return kittens.filter(kitten => kitten.status !== "Available");
+    return kittens.filter(kitten => kitten.status !== "Available").sort((a, b) => Number(b.price) - Number(a.price));
   }, [kittens]);
   const [availableAdults, setAvailableAdults] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]);
   const [error, setError] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null);
