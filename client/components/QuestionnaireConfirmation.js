@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom'
 const QuestionnaireConfirmation = () => {
   return (
     <div>
-      <h3>Thank you filling out our form</h3>
+      <h3>Thank you for filling out our form</h3>
       <p>We have received your submission and will review it as soon as possible.</p>
       <p>Once approved, you will receive an email with Login and Password information which can be used to login.</p><br />
       <Link to='/home'>Back To Home Page</Link>
