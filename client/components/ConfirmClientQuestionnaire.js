@@ -60,7 +60,6 @@ const ConfirmClientQuestionnaire = () => {
             <li>Important Feature:</li>
             <li>Price Range:</li>
             <li>Found Us By:</li>
-            <li>About You:</li>
             <li>Facebook:</li>
             <li>Instagram:</li>
           </ul>
@@ -81,7 +80,6 @@ const ConfirmClientQuestionnaire = () => {
             <span>{clientInfo.mif}</span><br />
             <span>{clientInfo.budget}</span><br />
             <span>{clientInfo.foundUsBy}</span><br />
-            <span>{clientInfo.aboutYou}</span><br />
             <span>{clientInfo.fB}</span><br />
             <span>{clientInfo.iG}</span><br />
           </div>
