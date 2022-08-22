@@ -6386,7 +6386,7 @@ const myConfig = {
   //  FOR CLIENT Q FORM v2
   furColors: ['White', 'Silver Chinchilla', 'Gold Chinchilla', 'Blue Gold Chinchilla', 'Colorpoint', 'Blue - Ticket/Tabby', 'Lilac', 'Tortoiseshell/Tricolor/Calico', 'Bicolor/Any Color with White', 'Chocolate/Black/Cinnamon'],
   // end last comment
-  furColorsAdmin: ['No Preference', 'White', 'Silver', 'Gold', 'Colorpoint', 'Blue', 'Brown', 'Black', 'Silver Chinchilla Point', 'Silver Shaded Chinchilla', 'Black Marble Tabby', 'Blue Bicolor Tabby', 'Brown Ticked Bicolor', 'Blue Ticked Bicolor', 'Black Tabby', 'Blue Colorpoint'],
+  furColorsAdmin: ['No Preference', 'White', 'Silver', 'Gold', 'Colorpoint', 'Blue', 'Brown', 'Black', 'Black Golden Shaded', 'Black Golden Shell', 'Silver Chinchilla Point', 'Silver Shaded Chinchilla', 'Black Marble Tabby', 'Blue Bicolor Tabby', 'Brown Ticked Bicolor', 'Blue Ticked Bicolor', 'Black Tabby', 'Blue Colorpoint'],
   eyeColors: ['No Preference', 'Green', 'Blue', 'Yellow', 'Copper', 'Odd'],
   eyeColorsAdmin: ['Unknown', 'Green', 'Blue', 'Yellow', 'Copper', 'Odd' // 'No Preference'
   ],
