@@ -26,6 +26,7 @@ const myConfig = {
     'Brown',
     'Black',
     'Black Golden Shaded',
+    'Black Golden Shell',
     'Black Golden Ticked',
     'Black Silver Ticked',
     'Silver Chinchilla Point',
