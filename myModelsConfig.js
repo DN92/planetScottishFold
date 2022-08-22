@@ -25,6 +25,8 @@ const myConfig = {
     'Blue',
     'Brown',
     'Black',
+    'Black Golden Shaded',
+    'Black Golden Shell',
     'Silver Chinchilla Point',
     'Silver Shaded Chinchilla',
     'Black Marble Tabby',
