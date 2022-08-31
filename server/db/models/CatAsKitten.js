@@ -51,13 +51,21 @@ const CatAsKitten = db.define("catAsKitten", {
     defaultValue: ''
   },
   mainImageSrcValue: {
-    type:Sequelize.STRING,
+    type: Sequelize.STRING,
     defaultValue: defaultCatPictureSrc,
   },
   isAdultCat: {
-    type:Sequelize.BOOLEAN,
+    type: Sequelize.BOOLEAN,
     defaultValue: true,
-  }
+  },
+  isHidden: {
+    type: Sequelize.BOOLEAN,
+    defaultValue: false,
+  },
+  isHiddenAdmin: {
+    type: Sequelize.BOOLEAN,
+    defaultValue: false,
+  },
 })
 
 module.exports = CatAsKitten

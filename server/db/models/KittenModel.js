@@ -62,6 +62,14 @@ const Kitten = db.define("kitten", {
     type:Sequelize.STRING,
     defaultValue: defaultCatPictureSrc,
   },
+  isHidden: {
+    type: Sequelize.BOOLEAN,
+    defaultValue: false,
+  },
+  isHiddenAdmin: {
+    type: Sequelize.BOOLEAN,
+    defaultVaue: false,
+  }
 })
 
 module.exports = Kitten
