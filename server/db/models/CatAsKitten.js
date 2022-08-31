@@ -57,6 +57,14 @@ const CatAsKitten = db.define("catAsKitten", {
   isAdultCat: {
     type:Sequelize.BOOLEAN,
     defaultValue: true,
+  },
+  isHidden: {
+    type: Sequelize.STRING,
+    defaultValue:false,
+  },
+  isAdminHidden: {
+    type: Sequelize.STRING,
+    defaultValue: false,
   }
 })
 

@@ -40,9 +40,17 @@ const Stud = db.define('stud', {
     defaultValue: ''
   },
   mainImageSrcValue: {
-    type:Sequelize.STRING,
+    type: Sequelize.STRING,
     defaultValue: '/otherPictures/photoComingSoon.png'
   },
+  isHidden: {
+    type: Sequelize.STRING,
+    defaultValue:false,
+  },
+  isAdminHidden: {
+    type: Sequelize.STRING,
+    defaultValue: false,
+  }
 })
 
 module.exports = Stud

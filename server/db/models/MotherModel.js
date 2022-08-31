@@ -43,6 +43,14 @@ const Mother = db.define("mother", {
     type:Sequelize.STRING,
     defaultValue: '/otherPictures/photoComingSoon.png'
   },
+  isHidden: {
+    type: Sequelize.STRING,
+    defaultValue:false,
+  },
+  isAdminHidden: {
+    type: Sequelize.STRING,
+    defaultValue: false,
+  }
 })
 
 module.exports = Mother
