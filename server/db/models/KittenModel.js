@@ -52,7 +52,7 @@ const Kitten = db.define("kitten", {
   },
   regNum: {
     type: Sequelize.STRING,
-    defaultValue: '5432'
+    defaultValue: ''
   },
   breed: {
     type: Sequelize.STRING,

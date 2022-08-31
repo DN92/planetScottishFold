@@ -37,7 +37,7 @@ const Mother = db.define("mother", {
   },
   regNum: {
     type: Sequelize.STRING,
-    defaultValue: '5432'
+    defaultValue: ''
   },
   mainImageSrcValue: {
     type:Sequelize.STRING,
