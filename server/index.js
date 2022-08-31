@@ -68,7 +68,7 @@ app.use((err, req, res, next) => {
 })
 
 const syncDb = async () => {
-  await db.sync()
+  await db.sync({ force: false, alter: true })
 }
 
 const startServer = () => {
