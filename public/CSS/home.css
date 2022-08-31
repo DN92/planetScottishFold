@@ -2,6 +2,49 @@
 .home {
 }
 
+.home__banner {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin: .5rem 0 .25rem 0;
+  background-color: var(--clr-500);
+  background-color: rgb(246,167,163);
+  padding: 1rem .25rem;
+  border: 3px solid black;
+}
+
+.home__banner-text {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  margin-left: 1rem;
+}
+
+.home__banner-text p {
+  line-height: 1;
+  color: var(--clr-500);
+  font-weight: bold;
+  font-size: var(--fs-300);
+}
+
+.home__banner-close {
+  position: relative;
+}
+
+.home__banner-close-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translate(.2rem, -1rem);
+}
+
+.home__modalButton__wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  margin: 0.5rem 0 .5rem 0;
+}
+
 .home a {
   color: var(--clr-400)
 }

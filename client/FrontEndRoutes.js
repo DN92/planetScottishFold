@@ -2,7 +2,6 @@ import React from 'react';
 import { Routes, Route, Navigate } from "react-router-dom";
 import PlaceHolder from "./components/PlaceHolder";
 import HomeComponent from './components/Home';
-import About from './components/About';
 import AvailableKittens from './components/AvailableKittens';
 import Reviews from './components/Reviews';
 import ClientQuestionnaire from './components/ClientQuestionnaire';
@@ -17,7 +16,7 @@ import CatDetailedView from './components/CatDetailedView';
 import QuestionnaireConfirmation from './components/QuestionnaireConfirmation'
 
 
-const FrontEndRoutes = () => {
+const FrontEndRoutes = ({setModalOpen}) => {
 
   //  later, there should be guest, user, adminViewer, and admin Route views
   return (
@@ -25,8 +24,7 @@ const FrontEndRoutes = () => {
     <Routes>
       <Route path='/' element={<HomeComponent />} />
       <Route path='/login' element={<AuthFrom />} />
-      <Route path='/home' element={<HomeComponent />} />
-      <Route path='/about' element={<About />} />
+      <Route path='/home' element={<HomeComponent setModalOpen={setModalOpen} />} />
       <Route path='/availableKittens' element={<AvailableKittens />} />
       <Route path='/kittenDetailed/:model/:id' element={<KittenDetailedView />} />
       <Route path='/viewCats/:MOTHERorFATHER' element={<ViewCats />} >

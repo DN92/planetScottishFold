@@ -160,7 +160,7 @@ const hashPassword = async (user) => {
   }
 };
 
-const emailToLowerCase = async (user) => {
+const emailToLowerCase = (user) => {
   if(user.eMail) {
     user.eMail = user.eMail.toLowerCase()
   }

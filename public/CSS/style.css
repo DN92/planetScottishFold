@@ -216,10 +216,34 @@ img {
   background-image: url("/otherPictures/backgroundImg1.jpg") !important;
 }
 
+.overlay {
+  background-color: rgba(0, 0, 0, .8) !important;
+  position: fixed !important;
+  left: 50%;
+  top: 0;
+  height: 100%;
+  transform: translate(-50%, 0%);
+  width: var(--maxWidthBody);
+  z-index: 10;
+}
+
+.modal{
+  width: calc(var(--maxWidthBody) * 6/10);
+  max-width: 90%;
+  width: 62.5;
+  position: fixed;
+  left: 50%;
+  top: 20%;
+  transform: translate(-50%, -50%);
+  background-color: var(--clr-white);
+  box-shadow: 0 0 1.1rem 0 rgba(0, 0, 0, .75);
+  text-align: center;
+
+  /* border: 3px solid blue; */
+}
 
 
 /* headers */
-
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--FF1);

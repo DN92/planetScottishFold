@@ -2472,7 +2472,7 @@ module.exports = {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/index.js");
 /* harmony import */ var _components_admin_NewUserRequests__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/admin/NewUserRequests */ "./client/components/admin/NewUserRequests.js");
 /* harmony import */ var _components_admin_RequestReview__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/admin/RequestReview */ "./client/components/admin/RequestReview.js");
 /* harmony import */ var _components_admin_AdminAllView__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/admin/AdminAllView */ "./client/components/admin/AdminAllView.js");
@@ -2485,20 +2485,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_admin_UserLongView__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./components/admin/UserLongView */ "./client/components/admin/UserLongView.js");
 /* harmony import */ var _components_PlaceHolder__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./components/PlaceHolder */ "./client/components/PlaceHolder.js");
 /* harmony import */ var _components_Home__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./components/Home */ "./client/components/Home.js");
-/* harmony import */ var _components_About__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./components/About */ "./client/components/About.js");
-/* harmony import */ var _components_AvailableKittens__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./components/AvailableKittens */ "./client/components/AvailableKittens.js");
-/* harmony import */ var _components_Reviews__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./components/Reviews */ "./client/components/Reviews.js");
-/* harmony import */ var _components_ClientQuestionnaire__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./components/ClientQuestionnaire */ "./client/components/ClientQuestionnaire.js");
-/* harmony import */ var _components_ContactRequestForm__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./components/ContactRequestForm */ "./client/components/ContactRequestForm.js");
-/* harmony import */ var _components_ConfirmClientQuestionnaire__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./components/ConfirmClientQuestionnaire */ "./client/components/ConfirmClientQuestionnaire.js");
-/* harmony import */ var _components_AuthForm__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./components/AuthForm */ "./client/components/AuthForm.js");
-/* harmony import */ var _components_My404__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./components/My404 */ "./client/components/My404.js");
-/* harmony import */ var _components_KittenDetailedView__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./components/KittenDetailedView */ "./client/components/KittenDetailedView.js");
-/* harmony import */ var _components_Logout__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./components/Logout */ "./client/components/Logout.js");
-/* harmony import */ var _components_ViewCats__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./components/ViewCats */ "./client/components/ViewCats.js");
-/* harmony import */ var _components_CatDetailedView__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./components/CatDetailedView */ "./client/components/CatDetailedView.js");
-/* harmony import */ var _components_QuestionnaireConfirmation__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./components/QuestionnaireConfirmation */ "./client/components/QuestionnaireConfirmation.js");
-
+/* harmony import */ var _components_AvailableKittens__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./components/AvailableKittens */ "./client/components/AvailableKittens.js");
+/* harmony import */ var _components_Reviews__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./components/Reviews */ "./client/components/Reviews.js");
+/* harmony import */ var _components_ClientQuestionnaire__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./components/ClientQuestionnaire */ "./client/components/ClientQuestionnaire.js");
+/* harmony import */ var _components_ContactRequestForm__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./components/ContactRequestForm */ "./client/components/ContactRequestForm.js");
+/* harmony import */ var _components_ConfirmClientQuestionnaire__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./components/ConfirmClientQuestionnaire */ "./client/components/ConfirmClientQuestionnaire.js");
+/* harmony import */ var _components_AuthForm__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./components/AuthForm */ "./client/components/AuthForm.js");
+/* harmony import */ var _components_My404__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./components/My404 */ "./client/components/My404.js");
+/* harmony import */ var _components_KittenDetailedView__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./components/KittenDetailedView */ "./client/components/KittenDetailedView.js");
+/* harmony import */ var _components_Logout__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./components/Logout */ "./client/components/Logout.js");
+/* harmony import */ var _components_ViewCats__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./components/ViewCats */ "./client/components/ViewCats.js");
+/* harmony import */ var _components_CatDetailedView__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./components/CatDetailedView */ "./client/components/CatDetailedView.js");
+/* harmony import */ var _components_QuestionnaireConfirmation__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./components/QuestionnaireConfirmation */ "./client/components/QuestionnaireConfirmation.js");
 
 
 
@@ -2527,110 +2525,107 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const AdminRoutes = () => {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_26__.Routes, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_26__.Route, {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_25__.Routes, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_25__.Route, {
     path: "/newUserRequests",
     element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_admin_NewUserRequests__WEBPACK_IMPORTED_MODULE_1__["default"], null)
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_26__.Route, {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_25__.Route, {
     path: "/newUserRequests/:requestId",
     element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_admin_RequestReview__WEBPACK_IMPORTED_MODULE_2__["default"], null)
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_26__.Route, {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_25__.Route, {
     path: "/viewUsers",
     element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_admin_ViewUsers__WEBPACK_IMPORTED_MODULE_9__["default"], null)
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_26__.Route, {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_25__.Route, {
     path: "/viewUsers/:id",
     element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_admin_UserLongView__WEBPACK_IMPORTED_MODULE_10__["default"], null)
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_26__.Route, {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_25__.Route, {
     path: "/adminAllView",
     element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_admin_AdminAllView__WEBPACK_IMPORTED_MODULE_3__["default"], null)
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_26__.Route, {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_25__.Route, {
     path: "/createKitten",
     element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_admin_CreateKitten__WEBPACK_IMPORTED_MODULE_4__["default"], null)
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_26__.Route, {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_25__.Route, {
     path: "/editKitten",
     element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_admin_EditKitten__WEBPACK_IMPORTED_MODULE_5__["default"], null)
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_26__.Route, {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_25__.Route, {
     path: "/createCat/:MOTHERorFATHER",
     element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_admin_CreateCat__WEBPACK_IMPORTED_MODULE_6__["default"], null)
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_26__.Route, {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_25__.Route, {
     path: "/editCat/:MOTHERorFATHER/:id",
     element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_admin_EditCat__WEBPACK_IMPORTED_MODULE_7__["default"], null)
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_26__.Route, {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_25__.Route, {
     path: "/directMessages",
     element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_admin_DirectMessages__WEBPACK_IMPORTED_MODULE_8__["default"], null)
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_26__.Route, {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_25__.Route, {
     path: "/createCat",
-    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_26__.Navigate, {
+    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_25__.Navigate, {
       to: "mother"
     })
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_26__.Route, {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_25__.Route, {
     path: "/editCat",
-    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_26__.Navigate, {
+    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_25__.Navigate, {
       to: "mother"
     })
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_26__.Route, {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_25__.Route, {
     path: "/",
     element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_Home__WEBPACK_IMPORTED_MODULE_12__["default"], null)
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_26__.Route, {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_25__.Route, {
     path: "/login",
-    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_AuthForm__WEBPACK_IMPORTED_MODULE_19__["default"], null)
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_26__.Route, {
+    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_AuthForm__WEBPACK_IMPORTED_MODULE_18__["default"], null)
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_25__.Route, {
     path: "/home",
     element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_Home__WEBPACK_IMPORTED_MODULE_12__["default"], null)
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_26__.Route, {
-    path: "/about",
-    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_About__WEBPACK_IMPORTED_MODULE_13__["default"], null)
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_26__.Route, {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_25__.Route, {
     path: "/availableKittens",
-    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_AvailableKittens__WEBPACK_IMPORTED_MODULE_14__["default"], null)
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_26__.Route, {
+    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_AvailableKittens__WEBPACK_IMPORTED_MODULE_13__["default"], null)
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_25__.Route, {
     path: "/kittenDetailed/:id",
-    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_KittenDetailedView__WEBPACK_IMPORTED_MODULE_21__["default"], null)
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_26__.Route, {
+    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_KittenDetailedView__WEBPACK_IMPORTED_MODULE_20__["default"], null)
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_25__.Route, {
     path: "/viewCats/:MOTHERorFATHER",
-    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_ViewCats__WEBPACK_IMPORTED_MODULE_23__["default"], null)
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_26__.Route, {
+    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_ViewCats__WEBPACK_IMPORTED_MODULE_22__["default"], null)
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_25__.Route, {
     path: "/catDetailedView/:MOTHERorFATHER/:id",
-    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_CatDetailedView__WEBPACK_IMPORTED_MODULE_24__["default"], null)
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_26__.Route, {
+    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_CatDetailedView__WEBPACK_IMPORTED_MODULE_23__["default"], null)
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_25__.Route, {
     path: "/reviews",
-    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_Reviews__WEBPACK_IMPORTED_MODULE_15__["default"], null)
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_26__.Route, {
+    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_Reviews__WEBPACK_IMPORTED_MODULE_14__["default"], null)
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_25__.Route, {
     path: "/waitingListForm",
-    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_ClientQuestionnaire__WEBPACK_IMPORTED_MODULE_16__["default"], null)
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_26__.Route, {
+    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_ClientQuestionnaire__WEBPACK_IMPORTED_MODULE_15__["default"], null)
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_25__.Route, {
     path: "/confirmClientQuestionnaire",
-    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_ConfirmClientQuestionnaire__WEBPACK_IMPORTED_MODULE_18__["default"], null)
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_26__.Route, {
+    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_ConfirmClientQuestionnaire__WEBPACK_IMPORTED_MODULE_17__["default"], null)
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_25__.Route, {
     path: "/contact",
-    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_ContactRequestForm__WEBPACK_IMPORTED_MODULE_17__["default"], null)
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_26__.Route, {
+    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_ContactRequestForm__WEBPACK_IMPORTED_MODULE_16__["default"], null)
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_25__.Route, {
     path: "/instagram",
     element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_PlaceHolder__WEBPACK_IMPORTED_MODULE_11__["default"], null)
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_26__.Route, {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_25__.Route, {
     path: "/facebook",
     element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_PlaceHolder__WEBPACK_IMPORTED_MODULE_11__["default"], null)
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_26__.Route, {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_25__.Route, {
     path: "/404",
-    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_My404__WEBPACK_IMPORTED_MODULE_20__["default"], null)
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_26__.Route, {
+    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_My404__WEBPACK_IMPORTED_MODULE_19__["default"], null)
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_25__.Route, {
     path: "/QConfirmation",
-    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_QuestionnaireConfirmation__WEBPACK_IMPORTED_MODULE_25__["default"], null)
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_26__.Route, {
+    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_QuestionnaireConfirmation__WEBPACK_IMPORTED_MODULE_24__["default"], null)
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_25__.Route, {
     path: "/logout",
-    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_Logout__WEBPACK_IMPORTED_MODULE_22__["default"], null)
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_26__.Route, {
+    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_Logout__WEBPACK_IMPORTED_MODULE_21__["default"], null)
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_25__.Route, {
     path: "/viewCats",
-    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_26__.Navigate, {
+    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_25__.Navigate, {
       to: "mother"
     })
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_26__.Route, {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_25__.Route, {
     path: "/catDetailed",
-    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_26__.Navigate, {
+    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_25__.Navigate, {
       to: "mother"
     })
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_26__.Route, {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_25__.Route, {
     path: "/catDetailed/mother",
-    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_26__.Navigate, {
+    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_25__.Navigate, {
       to: "1"
     })
   }));
@@ -2650,22 +2645,21 @@ const AdminRoutes = () => {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/index.js");
 /* harmony import */ var _components_PlaceHolder__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/PlaceHolder */ "./client/components/PlaceHolder.js");
 /* harmony import */ var _components_Home__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/Home */ "./client/components/Home.js");
-/* harmony import */ var _components_About__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/About */ "./client/components/About.js");
-/* harmony import */ var _components_AvailableKittens__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/AvailableKittens */ "./client/components/AvailableKittens.js");
-/* harmony import */ var _components_Reviews__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/Reviews */ "./client/components/Reviews.js");
-/* harmony import */ var _components_ClientQuestionnaire__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/ClientQuestionnaire */ "./client/components/ClientQuestionnaire.js");
-/* harmony import */ var _components_ContactRequestForm__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/ContactRequestForm */ "./client/components/ContactRequestForm.js");
-/* harmony import */ var _components_ConfirmClientQuestionnaire__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/ConfirmClientQuestionnaire */ "./client/components/ConfirmClientQuestionnaire.js");
-/* harmony import */ var _components_AuthForm__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./components/AuthForm */ "./client/components/AuthForm.js");
-/* harmony import */ var _components_My404__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./components/My404 */ "./client/components/My404.js");
-/* harmony import */ var _components_KittenDetailedView__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./components/KittenDetailedView */ "./client/components/KittenDetailedView.js");
-/* harmony import */ var _components_Logout__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./components/Logout */ "./client/components/Logout.js");
-/* harmony import */ var _components_ViewCats__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./components/ViewCats */ "./client/components/ViewCats.js");
-/* harmony import */ var _components_CatDetailedView__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./components/CatDetailedView */ "./client/components/CatDetailedView.js");
-/* harmony import */ var _components_QuestionnaireConfirmation__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./components/QuestionnaireConfirmation */ "./client/components/QuestionnaireConfirmation.js");
+/* harmony import */ var _components_AvailableKittens__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/AvailableKittens */ "./client/components/AvailableKittens.js");
+/* harmony import */ var _components_Reviews__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/Reviews */ "./client/components/Reviews.js");
+/* harmony import */ var _components_ClientQuestionnaire__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/ClientQuestionnaire */ "./client/components/ClientQuestionnaire.js");
+/* harmony import */ var _components_ContactRequestForm__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/ContactRequestForm */ "./client/components/ContactRequestForm.js");
+/* harmony import */ var _components_ConfirmClientQuestionnaire__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/ConfirmClientQuestionnaire */ "./client/components/ConfirmClientQuestionnaire.js");
+/* harmony import */ var _components_AuthForm__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/AuthForm */ "./client/components/AuthForm.js");
+/* harmony import */ var _components_My404__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./components/My404 */ "./client/components/My404.js");
+/* harmony import */ var _components_KittenDetailedView__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./components/KittenDetailedView */ "./client/components/KittenDetailedView.js");
+/* harmony import */ var _components_Logout__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./components/Logout */ "./client/components/Logout.js");
+/* harmony import */ var _components_ViewCats__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./components/ViewCats */ "./client/components/ViewCats.js");
+/* harmony import */ var _components_CatDetailedView__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./components/CatDetailedView */ "./client/components/CatDetailedView.js");
+/* harmony import */ var _components_QuestionnaireConfirmation__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./components/QuestionnaireConfirmation */ "./client/components/QuestionnaireConfirmation.js");
 
 
 
@@ -2683,76 +2677,76 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
-const FrontEndRoutes = () => {
+const FrontEndRoutes = ({
+  setModalOpen
+}) => {
   //  later, there should be guest, user, adminViewer, and admin Route views
   return (
     /*#__PURE__*/
     // public routes
-    react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_16__.Routes, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_16__.Route, {
+    react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_15__.Routes, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_15__.Route, {
       path: "/",
       element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_Home__WEBPACK_IMPORTED_MODULE_2__["default"], null)
-    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_16__.Route, {
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_15__.Route, {
       path: "/login",
-      element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_AuthForm__WEBPACK_IMPORTED_MODULE_9__["default"], null)
-    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_16__.Route, {
+      element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_AuthForm__WEBPACK_IMPORTED_MODULE_8__["default"], null)
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_15__.Route, {
       path: "/home",
-      element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_Home__WEBPACK_IMPORTED_MODULE_2__["default"], null)
-    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_16__.Route, {
-      path: "/about",
-      element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_About__WEBPACK_IMPORTED_MODULE_3__["default"], null)
-    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_16__.Route, {
+      element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_Home__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        setModalOpen: setModalOpen
+      })
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_15__.Route, {
       path: "/availableKittens",
-      element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_AvailableKittens__WEBPACK_IMPORTED_MODULE_4__["default"], null)
-    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_16__.Route, {
+      element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_AvailableKittens__WEBPACK_IMPORTED_MODULE_3__["default"], null)
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_15__.Route, {
       path: "/kittenDetailed/:model/:id",
-      element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_KittenDetailedView__WEBPACK_IMPORTED_MODULE_11__["default"], null)
-    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_16__.Route, {
+      element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_KittenDetailedView__WEBPACK_IMPORTED_MODULE_10__["default"], null)
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_15__.Route, {
       path: "/viewCats/:MOTHERorFATHER",
-      element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_ViewCats__WEBPACK_IMPORTED_MODULE_13__["default"], null)
-    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_16__.Route, {
+      element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_ViewCats__WEBPACK_IMPORTED_MODULE_12__["default"], null)
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_15__.Route, {
       path: "/catDetailedView/:MOTHERorFATHER/:id",
-      element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_CatDetailedView__WEBPACK_IMPORTED_MODULE_14__["default"], null)
-    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_16__.Route, {
+      element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_CatDetailedView__WEBPACK_IMPORTED_MODULE_13__["default"], null)
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_15__.Route, {
       path: "/reviews",
-      element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_Reviews__WEBPACK_IMPORTED_MODULE_5__["default"], null)
-    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_16__.Route, {
+      element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_Reviews__WEBPACK_IMPORTED_MODULE_4__["default"], null)
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_15__.Route, {
       path: "/waitingListForm",
-      element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_ClientQuestionnaire__WEBPACK_IMPORTED_MODULE_6__["default"], null)
-    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_16__.Route, {
+      element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_ClientQuestionnaire__WEBPACK_IMPORTED_MODULE_5__["default"], null)
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_15__.Route, {
       path: "/confirmClientQuestionnaire",
-      element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_ConfirmClientQuestionnaire__WEBPACK_IMPORTED_MODULE_8__["default"], null)
-    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_16__.Route, {
+      element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_ConfirmClientQuestionnaire__WEBPACK_IMPORTED_MODULE_7__["default"], null)
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_15__.Route, {
       path: "/contact",
-      element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_ContactRequestForm__WEBPACK_IMPORTED_MODULE_7__["default"], null)
-    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_16__.Route, {
+      element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_ContactRequestForm__WEBPACK_IMPORTED_MODULE_6__["default"], null)
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_15__.Route, {
       path: "/instagram",
       element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_PlaceHolder__WEBPACK_IMPORTED_MODULE_1__["default"], null)
-    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_16__.Route, {
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_15__.Route, {
       path: "/facebook",
       element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_PlaceHolder__WEBPACK_IMPORTED_MODULE_1__["default"], null)
-    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_16__.Route, {
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_15__.Route, {
       path: "/404",
-      element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_My404__WEBPACK_IMPORTED_MODULE_10__["default"], null)
-    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_16__.Route, {
+      element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_My404__WEBPACK_IMPORTED_MODULE_9__["default"], null)
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_15__.Route, {
       path: "/QConfirmation",
-      element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_QuestionnaireConfirmation__WEBPACK_IMPORTED_MODULE_15__["default"], null)
-    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_16__.Route, {
+      element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_QuestionnaireConfirmation__WEBPACK_IMPORTED_MODULE_14__["default"], null)
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_15__.Route, {
       path: "/logout",
-      element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_Logout__WEBPACK_IMPORTED_MODULE_12__["default"], null)
-    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_16__.Route, {
+      element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_Logout__WEBPACK_IMPORTED_MODULE_11__["default"], null)
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_15__.Route, {
       path: "/viewCats",
-      element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_16__.Navigate, {
+      element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_15__.Navigate, {
         to: "mother"
       })
-    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_16__.Route, {
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_15__.Route, {
       path: "/catDetailed",
-      element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_16__.Navigate, {
+      element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_15__.Navigate, {
         to: "mother"
       })
-    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_16__.Route, {
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_15__.Route, {
       path: "/catDetailed/mother",
-      element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_16__.Navigate, {
+      element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_15__.Navigate, {
         to: "1"
       })
     }))
@@ -2805,38 +2799,6 @@ const MeProvider = ({
   }, children);
 };
 /* harmony default export */ __webpack_exports__["default"] = (MeContext);
-
-/***/ }),
-
-/***/ "./client/components/About.js":
-/*!************************************!*\
-  !*** ./client/components/About.js ***!
-  \************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _textComponents_OurStory__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./textComponents/OurStory */ "./client/components/textComponents/OurStory.js");
-
-
-
-const About = () => {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "home__aboutUs"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "aboutUs__card1"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
-    className: "aboutUs__card1__img",
-    src: "catPictures/ourStory1.webp",
-    alt: ""
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "home__aboutUs__text"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "Our Story"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_textComponents_OurStory__WEBPACK_IMPORTED_MODULE_1__["default"], null)));
-};
-
-/* harmony default export */ __webpack_exports__["default"] = (About);
 
 /***/ }),
 
@@ -2894,7 +2856,7 @@ const AdminBar = ({
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/index.js");
 /* harmony import */ var react_helmet__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-helmet */ "./node_modules/react-helmet/es/Helmet.js");
 /* harmony import */ var _FrontEndRoutes__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../FrontEndRoutes */ "./client/FrontEndRoutes.js");
 /* harmony import */ var _AdminRoutes__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../AdminRoutes */ "./client/AdminRoutes.js");
@@ -2907,9 +2869,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _myModelsConfig__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_myModelsConfig__WEBPACK_IMPORTED_MODULE_9__);
 /* harmony import */ var _MeContextPro__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../MeContextPro */ "./client/MeContextPro.js");
 /* harmony import */ var _NavMobile__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./NavMobile */ "./client/components/NavMobile.js");
+/* harmony import */ var _AttentionModal__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./AttentionModal */ "./client/components/AttentionModal.js");
+/* harmony import */ var _customHooks_useLocalStorage__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../customHooks/useLocalStorage */ "./client/customHooks/useLocalStorage.js");
 
 
  // react Head component
+
+
 
 
 
@@ -2929,7 +2895,8 @@ const App = () => {
 
   const [viewNav, setViewNav] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
   const [showMobileNav, setShowMobileNav] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.unstable_HistoryRouter, {
+  const [modalOpen, setModalOpen] = (0,_customHooks_useLocalStorage__WEBPACK_IMPORTED_MODULE_13__["default"])('modalOpen', localStorage.hasOwnProperty('modalOpen') ? localStorage.getItem('modalOpen') : false);
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_14__.unstable_HistoryRouter, {
     history: _history__WEBPACK_IMPORTED_MODULE_6__["default"]
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_helmet__WEBPACK_IMPORTED_MODULE_1__.Helmet, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("title", null, "Planet Scottish Fold | Scottish Fold Cattery"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("meta", {
     name: "Planet Scottish Fold",
@@ -2941,12 +2908,43 @@ const App = () => {
     setShowMobileNav: setShowMobileNav
   }), (0,_myModelsConfig__WEBPACK_IMPORTED_MODULE_9__.isPrivileged)(type) ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_AdminBar__WEBPACK_IMPORTED_MODULE_7__["default"], null) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_NavBar__WEBPACK_IMPORTED_MODULE_4__["default"], null), (0,_myModelsConfig__WEBPACK_IMPORTED_MODULE_9__.isPrivileged)(type) && viewNav && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_NavBar__WEBPACK_IMPORTED_MODULE_4__["default"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "mainContentContainer"
-  }, showMobileNav && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_NavMobile__WEBPACK_IMPORTED_MODULE_11__["default"], {
+  }, modalOpen && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_AttentionModal__WEBPACK_IMPORTED_MODULE_12__["default"], {
+    setModalOpen: setModalOpen
+  }), showMobileNav && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_NavMobile__WEBPACK_IMPORTED_MODULE_11__["default"], {
     setShowMobileNav: setShowMobileNav
-  }), !showMobileNav && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, (0,_myModelsConfig__WEBPACK_IMPORTED_MODULE_9__.isPrivileged)(type) ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_AdminRoutes__WEBPACK_IMPORTED_MODULE_3__["default"], null) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_FrontEndRoutes__WEBPACK_IMPORTED_MODULE_2__["default"], null))), !showMobileNav && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Footer__WEBPACK_IMPORTED_MODULE_5__["default"], null)));
+  }), !showMobileNav && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, (0,_myModelsConfig__WEBPACK_IMPORTED_MODULE_9__.isPrivileged)(type) ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_AdminRoutes__WEBPACK_IMPORTED_MODULE_3__["default"], null) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_FrontEndRoutes__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    setModalOpen: setModalOpen
+  }))), !showMobileNav && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Footer__WEBPACK_IMPORTED_MODULE_5__["default"], null)));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (App);
+
+/***/ }),
+
+/***/ "./client/components/AttentionModal.js":
+/*!*********************************************!*\
+  !*** ./client/components/AttentionModal.js ***!
+  \*********************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+const AttentionModal = ({
+  setModalOpen
+}) => {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "overlay",
+    onClick: () => setModalOpen(false)
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "modal"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", null, "TESTING THE MODAL")));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (AttentionModal);
 
 /***/ }),
 
@@ -4118,8 +4116,33 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-const homeComponent = () => {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+const homeComponent = ({
+  setModalOpen
+}) => {
+  const [showBanner, setShowBanner] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(true);
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+    const timeout = setTimeout(() => {
+      setShowBanner(false);
+    }, 10000);
+    return clearTimeout(timeout);
+  }, [showBanner]);
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, showBanner && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "home__banner"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "home__banner-text"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "$200 off when you buy 2 kittens. Get $100 per referral. All available kittens are currently on discount until 9/15/22. "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "FREE DELIVERY to NJ on all kittens from NC from 9/1/22 to 9/15/22."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "FREE DELIVERY to SC / GA on all kittens on 9/10/22.")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "home__banner-close"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    className: "home__banner-close-button buttonStyle5",
+    onClick: () => setShowBanner(false)
+  }, "X"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "home__modalButton__wrapper"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    className: "home__modalButton buttonStyle2",
+    onClick: () => {
+      setShowBanner(prev => !prev);
+    }
+  }, showBanner ? 'Hide' : 'Special Offers')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "home"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "home__card1"
@@ -4133,7 +4156,7 @@ const homeComponent = () => {
     className: "home__card2__img",
     src: "/catPictures/catHome2.webp",
     alt: "cute cat image2"
-  })));
+  }))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (homeComponent);
@@ -4458,8 +4481,6 @@ const NavMobile = ({
   }, "Direct Messages ")) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
     to: "/home"
   }, "Home"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
-    to: "/about"
-  }, "About"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
     to: "/availableKittens"
   }, "Our Kittens"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
     to: "/viewCats/mother"
@@ -6162,26 +6183,6 @@ const AboutUs = () => {
 
 /***/ }),
 
-/***/ "./client/components/textComponents/OurStory.js":
-/*!******************************************************!*\
-  !*** ./client/components/textComponents/OurStory.js ***!
-  \******************************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-
-
-const OurStory = () => {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Hi, there! ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), "My name is Nataliya and here I will tell you the story of our breeding practice.", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), "Back in 2015 my sister Julia made a decision to breed Scottish Folds. She has done all the research, found reputable breeders (which took months!) with healthy cats and kittens that give breeding rights and have amazing pedigrees.", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), "In 2016 we got our first two Queens - a Scottish Fold Aylin and a Scottish Straight Athena. We also got two studs to breed each queen with. (We've always bred straight to fold, and never ever fold to fold!)", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), "When we began, I was more on a neutral side. But as soon as I got Athena and spent our first month together, I fell in love with her! She is now my forever best cat in the world! And that is how I fell in the love with the breed itself. My sister Julia had no convincing to do!", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), "Julia was always guiding me with the proper breeding practices as we were starting up. Later on, I took most things into my hands, like talking to the clients and setting up visiting.", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), "Today, my sister still breeds in Bergenfield, NJ while I am in High Point, NC.", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), "When you inquire, I am the one who responds and guides you through the buying process. I am also the one who provides life time breeders support. However, if my sister has to be involved, she's always there to give her support and guidance!", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), "We are in contact with most of our clients that we've met from these past years. We are always looking forward to new photos of our graduated kittens and cats. I am really proud to say that we have met amazing people who are addicted to Scottish Folds and cats in general!", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), "Our clients are all over the United States and fly and drive to get their kittens from us all the way from Boston, Pittsburg, Richmond, Houston, San Diego, New Orleans and many others.", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), "We also provide in cabin delivery throughout US with the help of a flight nanny.\u200B");
-};
-
-/* harmony default export */ __webpack_exports__["default"] = (OurStory);
-
-/***/ }),
-
 /***/ "./client/customHandlers/handleFormChange.js":
 /*!***************************************************!*\
   !*** ./client/customHandlers/handleFormChange.js ***!
@@ -6386,7 +6387,7 @@ const myConfig = {
   //  FOR CLIENT Q FORM v2
   furColors: ['White', 'Silver Chinchilla', 'Gold Chinchilla', 'Blue Gold Chinchilla', 'Colorpoint', 'Blue - Ticket/Tabby', 'Lilac', 'Tortoiseshell/Tricolor/Calico', 'Bicolor/Any Color with White', 'Chocolate/Black/Cinnamon'],
   // end last comment
-  furColorsAdmin: ['No Preference', 'White', 'Silver', 'Gold', 'Colorpoint', 'Blue', 'Brown', 'Black', 'Black Golden Shaded', 'Black Golden Shell', 'Silver Chinchilla Point', 'Silver Shaded Chinchilla', 'Black Marble Tabby', 'Blue Bicolor Tabby', 'Brown Ticked Bicolor', 'Blue Ticked Bicolor', 'Black Tabby', 'Blue Colorpoint'],
+  furColorsAdmin: ['No Preference', 'White', 'Silver', 'Gold', 'Colorpoint', 'Blue', 'Brown', 'Black', 'Black Golden Shaded', 'Black Golden Shell', 'Black Golden Ticked', 'Black Silver Ticked', 'Silver Chinchilla Point', 'Silver Shaded Chinchilla', 'Black Marble Tabby', 'Blue Bicolor Tabby', 'Brown Ticked Bicolor', 'Blue Ticked Bicolor', 'Black Tabby', 'Blue Colorpoint'],
   eyeColors: ['No Preference', 'Green', 'Blue', 'Yellow', 'Copper', 'Odd'],
   eyeColorsAdmin: ['Unknown', 'Green', 'Blue', 'Yellow', 'Copper', 'Odd' // 'No Preference'
   ],

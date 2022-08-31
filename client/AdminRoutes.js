@@ -12,7 +12,6 @@ import ViewUsers from './components/admin/ViewUsers'
 import UserLongView from './components/admin/UserLongView'
 import PlaceHolder from "./components/PlaceHolder";
 import HomeComponent from './components/Home';
-import About from './components/About';
 import AvailableKittens from './components/AvailableKittens';
 import Reviews from './components/Reviews';
 import ClientQuestionnaire from './components/ClientQuestionnaire';
@@ -51,7 +50,6 @@ const AdminRoutes = () => {
       <Route path='/' element={<HomeComponent />} />
       <Route path='/login' element={<AuthFrom />} />
       <Route path='/home' element={<HomeComponent />} />
-      <Route path='/about' element={<About />} />
       <Route path='/availableKittens' element={<AvailableKittens />} />
       <Route path='/kittenDetailed/:id' element={<KittenDetailedView />} />
       <Route path='/viewCats/:MOTHERorFATHER' element={<ViewCats />} >

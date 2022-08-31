@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import { unstable_HistoryRouter as HistoryRouter } from 'react-router-dom'
 import { Helmet } from 'react-helmet'  // react Head component
 import FrontEndRoutes from '../FrontEndRoutes'
@@ -11,6 +11,8 @@ import TopLineMenuBar from './TopLineMenuBar'
 import { isPrivileged } from '../../myModelsConfig'
 import MeContext from '../MeContextPro'
 import NavMobile from './NavMobile'
+import AttentionModal from './AttentionModal'
+import useLocalStorage from '../customHooks/useLocalStorage'
 
 const App = () => {
 
@@ -18,6 +20,12 @@ const App = () => {
   //  as an admin, this flag lets you view or hide the regular navbar
   const [viewNav, setViewNav] = useState(false)
   const [showMobileNav, setShowMobileNav] = useState(false);
+  const [modalOpen, setModalOpen] = useLocalStorage(
+    'modalOpen', localStorage.hasOwnProperty('modalOpen') ?
+      localStorage.getItem('modalOpen')
+      :
+      false
+  )
 
   return (
     <>
@@ -32,10 +40,11 @@ const App = () => {
           {isPrivileged(type) && viewNav && <NavBar />}
         </div>
         <div className='mainContentContainer'>
+          {modalOpen && <AttentionModal setModalOpen={setModalOpen} /> }
           {showMobileNav && <NavMobile setShowMobileNav={setShowMobileNav} />}
           {!showMobileNav &&
             <>
-              {isPrivileged(type) ? <AdminRoutes /> : <FrontEndRoutes />}
+              {isPrivileged(type) ? <AdminRoutes /> : <FrontEndRoutes setModalOpen={setModalOpen} />}
             </>
           }
         </div>

@@ -4,8 +4,8 @@ const { User, InitialUser } = require('../db').models
 const passAuth = require('../expressMiddleware/checkValidAuthLevel')
 const { generate } = require('generate-password')
 const transporter = require('../transporter')
-const templateApprovedUser = require('../emailTemplates/templateApprovedUser')
-const templateDeniedUser = require('../emailTemplates/templateDeniedUser')
+// const templateApprovedUser = require('../emailTemplates/templateApprovedUser')
+// const templateDeniedUser = require('../emailTemplates/templateDeniedUser')
 const templateNewApplicantNotification = require('../emailTemplates/templateNewApplicantNotification')
 
 //  api/users
