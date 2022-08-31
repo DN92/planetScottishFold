@@ -7,26 +7,26 @@ const Mother = db.define("mother", {
     type: Sequelize.STRING,
     defaultValue:'',
   },
-  // ears: {
-  //   type: Sequelize.ENUM(earOptions),
-  //   defaultValue: earOptions[0]
-  // },
+  ears: {
+    type: Sequelize.ENUM(earOptions),
+    defaultValue: earOptions[0]
+  },
   furColor: {
     type:Sequelize.STRING,
     defaultValue:'',
   },
-  // eyeColor: {
-  //   type: Sequelize.ENUM(eyeColors),
-  //   defaultValue: eyeColors[0]
-  // },
+  eyeColor: {
+    type: Sequelize.ENUM(eyeColors),
+    defaultValue: eyeColors[0]
+  },
   dob: {
     type:Sequelize.STRING,
     defaultValue:'',
   },
-  // status: {
-  //   type: Sequelize.ENUM(statusOptionsParents),
-  //   defaultValue: statusOptionsParents[0]
-  // },
+  status: {
+    type: Sequelize.ENUM(statusOptionsParents),
+    defaultValue: statusOptionsParents[0]
+  },
   description: {
     type: Sequelize.TEXT,
     defaultValue: ''
@@ -49,7 +49,7 @@ const Mother = db.define("mother", {
   },
   isHiddenAdmin: {
     type: Sequelize.BOOLEAN,
-    defaultVaue: false,
+    defaultValue: false,
   }
 })
 

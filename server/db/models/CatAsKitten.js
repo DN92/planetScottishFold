@@ -6,22 +6,22 @@ const CatAsKitten = db.define("catAsKitten", {
   name: {
     type:Sequelize.STRING
   },
-  // gender:{
-  //   type: Sequelize.ENUM(genderOptions),
-  //   defaultValue: genderOptions[0],
-  // },
-  // ears:{
-  //   type: Sequelize.ENUM(earOptions),
-  //   defaultValue: earOptions[0]
-  // },
+  gender:{
+    type: Sequelize.ENUM(genderOptions),
+    defaultValue: genderOptions[0],
+  },
+  ears:{
+    type: Sequelize.ENUM(earOptions),
+    defaultValue: earOptions[0]
+  },
   furColor: {
     type: Sequelize.STRING,
     defaultValue: '',
   },
-  // eyeColor: {
-  //   type: Sequelize.ENUM(eyeColorsAdmin),
-  //   defaultValue: eyeColorsAdmin[0]
-  // },
+  eyeColor: {
+    type: Sequelize.ENUM(eyeColorsAdmin),
+    defaultValue: eyeColorsAdmin[0]
+  },
   breed: {
     type: Sequelize.STRING,
     defaultValue: '',
@@ -30,10 +30,10 @@ const CatAsKitten = db.define("catAsKitten", {
     type: Sequelize.STRING,
     defaultValue: '',
   },
-  // status: {
-  //   type: Sequelize.ENUM(statusOptionsKitten),
-  //   defaultValue: statusOptionsKitten[0],
-  // },
+  status: {
+    type: Sequelize.ENUM(statusOptionsKitten),
+    defaultValue: statusOptionsKitten[0],
+  },
   description: {
     type: Sequelize.TEXT,
     defaultValue: ''
