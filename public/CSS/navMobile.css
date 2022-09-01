@@ -4,7 +4,8 @@
   padding-bottom: 200px;
   background-size: 800px 1200px;
   overflow: hidden;
-
+  display: flex;
+  flex-direction: column;
 }
 
 .navMobile {

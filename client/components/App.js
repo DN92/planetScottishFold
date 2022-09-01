@@ -14,6 +14,7 @@ import NavMobile from './NavMobile'
 import AttentionModal from './AttentionModal'
 import useLocalStorage from '../customHooks/useLocalStorage'
 
+
 const App = () => {
 
   const {type} = useContext(MeContext)
@@ -47,6 +48,7 @@ const App = () => {
               {isPrivileged(type) ? <AdminRoutes /> : <FrontEndRoutes setModalOpen={setModalOpen} />}
             </>
           }
+
         </div>
         {!showMobileNav && <Footer /> }
       </HistoryRouter>

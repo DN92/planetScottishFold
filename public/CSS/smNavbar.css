@@ -1,0 +1,16 @@
+.sm-navbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.smIcon-wrapper {
+
+}
+
+.smIcon-image {
+  width: 3rem;
+  height: auto;
+  border: none;
+}

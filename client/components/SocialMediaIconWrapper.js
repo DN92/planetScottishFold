@@ -1,15 +1,13 @@
 import React from 'react'
-import { Link, useHref } from 'react-router-dom'
+// import { Link, useHref } from 'react-router-dom'
 
 const SocialMediaIconWrapper = ({iconSrc, href, site}) => {
 
-  const path = useHref(href)
-
   return (
     <div className='smIcon-wrapper'>
-      <Link to={path}>
+      <a href={href} target='_blank'>
         <img className='smIcon-image' src={iconSrc} alt={'link to ' + site} />
-      </Link>
+      </a>
     </div>
   )
 }

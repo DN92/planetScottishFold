@@ -4052,10 +4052,14 @@ const ErrorFill = ({
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/index.js");
 /* harmony import */ var _myModelsConfig__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../myModelsConfig */ "./myModelsConfig.js");
 /* harmony import */ var _myModelsConfig__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_myModelsConfig__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _MeContextPro__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../MeContextPro */ "./client/MeContextPro.js");
+/* harmony import */ var _customHooks_useWindowSize__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../customHooks/useWindowSize */ "./client/customHooks/useWindowSize.js");
+/* harmony import */ var _SocialMediaNavBar__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./SocialMediaNavBar */ "./client/components/SocialMediaNavBar.js");
+
+
 
 
 
@@ -4065,7 +4069,10 @@ const Footer = () => {
   const {
     type
   } = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_MeContextPro__WEBPACK_IMPORTED_MODULE_2__["default"]);
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+  const {
+    width: screenWidth
+  } = (0,_customHooks_useWindowSize__WEBPACK_IMPORTED_MODULE_3__["default"])();
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "footer"
   }, !(0,_myModelsConfig__WEBPACK_IMPORTED_MODULE_1__.isPrivileged)(type) && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "footer__cards"
@@ -4078,8 +4085,8 @@ const Footer = () => {
     className: "footer-img-tica",
     src: "/otherPictures/ticaLogo.webp",
     alt: "Tica Logo"
-  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "footer__card"
+  })), screenWidth > 799 && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_SocialMediaNavBar__WEBPACK_IMPORTED_MODULE_4__["default"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "footer__card kingpin-card"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("a", {
     href: "https://catkingpin.com/",
     target: "_blank"
@@ -4089,13 +4096,13 @@ const Footer = () => {
     alt: "Cat King Pin Affiliate Image"
   }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "footer__nav-wrapper"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Link, {
     to: "/waitingListForm"
-  }, "Apply"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+  }, "Apply"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Link, {
     to: "/availableKittens"
-  }, "Kittens"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+  }, "Kittens"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Link, {
     to: "/contact"
-  }, "Contact")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "\xA92022 by Planet Scottish Fold"));
+  }, "Contact")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "\xA92022 by Planet Scottish Fold")));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Footer);
@@ -4424,10 +4431,12 @@ const NavBar = () => {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/index.js");
 /* harmony import */ var _MeContextPro__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../MeContextPro */ "./client/MeContextPro.js");
 /* harmony import */ var _myModelsConfig__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../myModelsConfig */ "./myModelsConfig.js");
 /* harmony import */ var _myModelsConfig__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_myModelsConfig__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _SocialMediaNavBar__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./SocialMediaNavBar */ "./client/components/SocialMediaNavBar.js");
+
 
 
 
@@ -4458,41 +4467,41 @@ const NavMobile = ({
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("nav", {
     onClick: handleClick,
     className: "navMobile"
-  }, (0,_myModelsConfig__WEBPACK_IMPORTED_MODULE_2__.isPrivileged)(type) ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+  }, (0,_myModelsConfig__WEBPACK_IMPORTED_MODULE_2__.isPrivileged)(type) ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
     to: "/home"
-  }, "Home"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+  }, "Home"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
     to: "newUserRequests"
-  }, "Applications"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+  }, "Applications"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
     to: "viewUsers"
-  }, "All Members"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+  }, "All Members"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
     to: "createKitten"
-  }, "Add A Kitten"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+  }, "Add A Kitten"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
     to: "availableKittens"
-  }, "View/Edit Kittens"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+  }, "View/Edit Kittens"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
     to: "createCat/mother"
-  }, "Add A Dam "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+  }, "Add A Dam "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
     to: "createCat/father"
-  }, "Add A Sire "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+  }, "Add A Sire "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
     to: "viewCats/mother"
-  }, "View/Edit A Dam "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+  }, "View/Edit A Dam "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
     to: "viewCats/father"
-  }, "View/Edit A Sire "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+  }, "View/Edit A Sire "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
     to: "directMessages"
-  }, "Direct Messages ")) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+  }, "Direct Messages ")) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
     to: "/home"
-  }, "Home"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+  }, "Home"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
     to: "/availableKittens"
-  }, "Our Kittens"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+  }, "Our Kittens"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
     to: "/viewCats/mother"
-  }, "Our Dams"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+  }, "Our Dams"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
     to: "/viewCats/father"
-  }, "Our Sires"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+  }, "Our Sires"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
     to: "/reviews"
-  }, "Reviews"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+  }, "Reviews"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
     to: "/waitingListForm"
-  }, "Apply To Adopt"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+  }, "Apply To Adopt"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
     to: "/contact"
-  }, "Contact"))));
+  }, "Contact"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_SocialMediaNavBar__WEBPACK_IMPORTED_MODULE_3__["default"], null));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (NavMobile);
@@ -4675,6 +4684,70 @@ const SingleReview = ({
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (SingleReview);
+
+/***/ }),
+
+/***/ "./client/components/SocialMediaIconWrapper.js":
+/*!*****************************************************!*\
+  !*** ./client/components/SocialMediaIconWrapper.js ***!
+  \*****************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+ // import { Link, useHref } from 'react-router-dom'
+
+const SocialMediaIconWrapper = ({
+  iconSrc,
+  href,
+  site
+}) => {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "smIcon-wrapper"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("a", {
+    href: href,
+    target: "_blank"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
+    className: "smIcon-image",
+    src: iconSrc,
+    alt: 'link to ' + site
+  })));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (SocialMediaIconWrapper);
+
+/***/ }),
+
+/***/ "./client/components/SocialMediaNavBar.js":
+/*!************************************************!*\
+  !*** ./client/components/SocialMediaNavBar.js ***!
+  \************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _SocialMediaIconWrapper__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./SocialMediaIconWrapper */ "./client/components/SocialMediaIconWrapper.js");
+/* harmony import */ var _socialMediaInfo__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../socialMediaInfo */ "./client/socialMediaInfo.js");
+
+
+
+
+const SocialMediaNavBar = () => {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("nav", {
+    className: "sm-navbar"
+  }, _socialMediaInfo__WEBPACK_IMPORTED_MODULE_2__["default"].map(platform => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_SocialMediaIconWrapper__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    key: platform.site,
+    iconSrc: platform.iconSrc,
+    href: platform.href,
+    site: platform.site
+  })));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (SocialMediaNavBar);
 
 /***/ }),
 
@@ -6360,6 +6433,49 @@ function useLocalStorage(key, initialValue) {
 
 /***/ }),
 
+/***/ "./client/customHooks/useWindowSize.js":
+/*!*********************************************!*\
+  !*** ./client/customHooks/useWindowSize.js ***!
+  \*********************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+ // Custom Hook
+
+function useWindowSize() {
+  const firstLoad = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(true);
+  const [windowSize, setWindowSize] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
+    width: null,
+    height: null
+  });
+
+  const handleResize = () => {
+    // Set window width/height to state
+    setWindowSize({
+      width: window.innerWidth,
+      height: window.innerHeight
+    });
+  };
+
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+    // Handler to call on window resize
+    window.addEventListener("resize", handleResize); // Call handler right away so state gets updated with initial window size
+
+    handleResize(); // Remove event listener on cleanup
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []); //
+
+  return windowSize;
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (useWindowSize);
+
+/***/ }),
+
 /***/ "./client/history.js":
 /*!***************************!*\
   !*** ./client/history.js ***!
@@ -6372,6 +6488,39 @@ __webpack_require__.r(__webpack_exports__);
 
 const history =  false ? 0 : (0,history__WEBPACK_IMPORTED_MODULE_0__.createBrowserHistory)();
 /* harmony default export */ __webpack_exports__["default"] = (history);
+
+/***/ }),
+
+/***/ "./client/socialMediaInfo.js":
+/*!***********************************!*\
+  !*** ./client/socialMediaInfo.js ***!
+  \***********************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+const socialMediaInfo = [{
+  site: 'youtube',
+  href: 'https://www.youtube.com/channel/UC3O7RNKGYtocqgB8d-QTZkg',
+  iconSrc: '/socialMediaIcons/youtube.png'
+}, {
+  site: 'instagram',
+  href: 'https://www.instagram.com/planetscottishfold/',
+  iconSrc: '/socialMediaIcons/instagram.png'
+}, {
+  site: 'pintrest',
+  href: 'https://www.pinterest.com/planetscottishfold/',
+  iconSrc: '/socialMediaIcons/pintrest.png'
+}, {
+  site: 'tiktok',
+  href: 'https://www.tiktok.com/@planetscottishfold',
+  iconSrc: '/socialMediaIcons/tiktok.png'
+}, {
+  site: 'facebook',
+  href: '',
+  iconSrc: '/socialMediaIcons/facebook.png'
+}];
+/* harmony default export */ __webpack_exports__["default"] = (socialMediaInfo);
 
 /***/ }),
 

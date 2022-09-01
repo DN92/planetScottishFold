@@ -19,6 +19,7 @@
 /* mobile nav */
 @import "./navMobile.css";
 @import "./hamburger.css";
+@import "./smNavbar.css";
 
 /* component targeted styles - public */
 @import "./topMenu.css";
