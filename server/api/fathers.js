@@ -9,14 +9,13 @@ router.get('/', async (req, res, next) => {
     if(req.query.onlyNames) {
       const studs = await Stud.findAll({
         attributes: ['name'],
-        where: {isHidden: false}
       })
       res.send(studs.map(stud => stud.name))
       return
     }
     req.query.id
     ? res.send(await Stud.findByPk(req.query.id))
-    : res.send(await Stud.findAll())
+    : res.send(await Stud.findAll({where: {isHidden: 'false'}}))
   } catch (err) {
     next(err)
   }

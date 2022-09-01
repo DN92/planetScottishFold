@@ -1,5 +1,5 @@
 const makeDam = (
-  name, ears, furColor, eyeColor, dob, status, description, image
+  name, ears, furColor, eyeColor, dob, status, description, image, isHidden
 ) => ({
   name,
   ears,
@@ -9,6 +9,7 @@ const makeDam = (
   dob,
   description,
   image,
+  isHidden
 })
 
 const damsArray = [
@@ -44,6 +45,7 @@ const damsArray = [
     dob: 'April 4th, 2017',
     description: '',
     mainImageSrcValue: '/catPictures/damBumbleBee.jpg',
+    isHidden: true,
   },
   {
     name: 'Iris',

@@ -15,7 +15,11 @@ router.get('/', async (req, res, next) => {
     }
     req.query.id
     ? res.send(await Mother.findByPk(req.query.id))
-    : res.send(await Mother.findAll())
+    : res.send(await Mother.findAll({
+      where: {
+        isHidden: false,
+      }
+    }))
   } catch (err) {
     next(err)
   }

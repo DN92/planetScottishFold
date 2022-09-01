@@ -4637,7 +4637,7 @@ const SingleKitten = props => {
     kitten: kitten
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "singleKittenInfo"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, kitten?.status === "Sold" && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, kitten.status), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "$", kitten.price)), kitten?.status !== "Sold" && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Hi I'm ", name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "I am a ", breed, " ", gender), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "My color is "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, furColor), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "I have ", eyeColor, " eyes"), (0,_myModelsConfig__WEBPACK_IMPORTED_MODULE_2__.isPrivileged)(type) && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Mother: ", mother), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Father: ", father), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Status: ", status))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, kitten?.status === "Available" && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Hi I'm ", name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "I am a ", breed, " ", gender), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "My color is "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, furColor), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "I have ", eyeColor, " eyes"), (0,_myModelsConfig__WEBPACK_IMPORTED_MODULE_2__.isPrivileged)(type) && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Mother: ", mother), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Father: ", father), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Status: ", status)), kitten?.status !== "Available" && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, kitten.status), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "$", kitten.price))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "singleKitten__button"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
     to: (0,_myModelsConfig__WEBPACK_IMPORTED_MODULE_2__.isPrivileged)(type) ? '/editKitten' : `/kittenDetailed/${model}/${id}`,
@@ -4784,8 +4784,7 @@ const TopLineMenuBar = ({
   };
 
   const handleMobileNavToggle = () => {
-    const root = document.querySelector('#root');
-    root?.className === '' ? root.className = 'background-img1' : root.className = '';
+    document.querySelector('#root')?.classList.toggle('background-img1');
     const hamburgerMenu = document.querySelector('#nav__toggle');
     hamburgerMenu?.className === `nav__toggle` ? hamburgerMenu.className = 'nav__toggle nav-open' : hamburgerMenu.className = 'nav__toggle';
     const hamburgerMenuWrapper = document.querySelector('#hamburger-wrapper');
@@ -6500,25 +6499,25 @@ const history =  false ? 0 : (0,history__WEBPACK_IMPORTED_MODULE_0__.createBrows
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 const socialMediaInfo = [{
-  site: 'youtube',
-  href: 'https://www.youtube.com/channel/UC3O7RNKGYtocqgB8d-QTZkg',
-  iconSrc: '/socialMediaIcons/youtube.png'
-}, {
   site: 'instagram',
   href: 'https://www.instagram.com/planetscottishfold/',
   iconSrc: '/socialMediaIcons/instagram.png'
 }, {
-  site: 'pintrest',
-  href: 'https://www.pinterest.com/planetscottishfold/',
-  iconSrc: '/socialMediaIcons/pintrest.png'
+  site: 'facebook',
+  href: 'https://www.facebook.com/PlanetScottishFoldKittens',
+  iconSrc: '/socialMediaIcons/facebook.png'
 }, {
   site: 'tiktok',
   href: 'https://www.tiktok.com/@planetscottishfold',
   iconSrc: '/socialMediaIcons/tiktok.png'
 }, {
-  site: 'facebook',
-  href: '',
-  iconSrc: '/socialMediaIcons/facebook.png'
+  site: 'pintrest',
+  href: 'https://www.pinterest.com/planetscottishfold/',
+  iconSrc: '/socialMediaIcons/pintrest.png'
+}, {
+  site: 'youtube',
+  href: 'https://www.youtube.com/channel/UC3O7RNKGYtocqgB8d-QTZkg',
+  iconSrc: '/socialMediaIcons/youtube.png'
 }];
 /* harmony default export */ __webpack_exports__["default"] = (socialMediaInfo);
 

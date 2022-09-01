@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react'
+import React, { useState, useContext} from 'react'
 import { unstable_HistoryRouter as HistoryRouter } from 'react-router-dom'
 import { Helmet } from 'react-helmet'  // react Head component
 import FrontEndRoutes from '../FrontEndRoutes'
@@ -48,7 +48,6 @@ const App = () => {
               {isPrivileged(type) ? <AdminRoutes /> : <FrontEndRoutes setModalOpen={setModalOpen} />}
             </>
           }
-
         </div>
         {!showMobileNav && <Footer /> }
       </HistoryRouter>

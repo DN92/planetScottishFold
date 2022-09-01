@@ -14,10 +14,7 @@ const TopLineMenuBar = ({setViewNav, setShowMobileNav}) => {
   }
 
   const handleMobileNavToggle = () => {
-    const root = document.querySelector('#root')
-    root?.className === '' ?
-      root.className = 'background-img1' :
-      root.className = ''
+    document.querySelector('#root')?.classList.toggle('background-img1')
     const hamburgerMenu = document.querySelector('#nav__toggle')
     hamburgerMenu?.className === `nav__toggle` ?
       hamburgerMenu.className = 'nav__toggle nav-open' :
@@ -38,6 +35,7 @@ const TopLineMenuBar = ({setViewNav, setShowMobileNav}) => {
     if(hamburgerMenuWrapper) hamburgerMenuWrapper = 'hamburger-wrapper'
     setShowMobileNav(false)
   }
+
 
   return (
     <nav className='topNav'>
