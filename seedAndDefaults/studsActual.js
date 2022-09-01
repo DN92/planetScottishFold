@@ -45,6 +45,7 @@ const studsArray = [
     dob: 'August, 2018',
     description: '',
     mainImageSrcValue: '/catPictures/studBrooklyn.jpg',
+    isHidden: true,
   },
   {
     name: 'Pompano',
@@ -56,7 +57,9 @@ const studsArray = [
     dob: 'December, 2017',
     description: '',
     mainImageSrcValue: '/catPictures/studPompano.jpg',
+    isHidden: true,
   },
+
 ]
 
 module.exports = studsArray
