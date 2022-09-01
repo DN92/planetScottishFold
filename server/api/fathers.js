@@ -8,7 +8,8 @@ router.get('/', async (req, res, next) => {
   try {
     if(req.query.onlyNames) {
       const studs = await Stud.findAll({
-        attributes: ['name']
+        attributes: ['name'],
+        where: {isHidden: false}
       })
       res.send(studs.map(stud => stud.name))
       return
