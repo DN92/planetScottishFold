@@ -7,6 +7,7 @@ const transporter = require('../transporter')
 // const templateApprovedUser = require('../emailTemplates/templateApprovedUser')
 // const templateDeniedUser = require('../emailTemplates/templateDeniedUser')
 const templateNewApplicantNotification = require('../emailTemplates/templateNewApplicantNotification')
+const { Application } = require('../db/models')
 
 //  api/users
 
@@ -59,6 +60,11 @@ router.post('/validate', async (req, res, next) => {
 
 router.post('/', async (req, res, next) => {
   try{
+    try{
+      await Application.create(JSON.stringify(req.body))
+    } catch(error) {
+      await Application.create(JSON.stringify(error))
+    }
     //  furColors is an array that needs to be converted to a String before being stored.
     req.body.furColor = JSON.stringify(req.body.furColor)
     const newUser = await User.create(req.body)
