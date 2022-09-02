@@ -37,18 +37,18 @@ const Mother = db.define("mother", {
   },
   regNum: {
     type: Sequelize.STRING,
-    defaultValue: '5432'
+    defaultValue: ''
   },
   mainImageSrcValue: {
     type:Sequelize.STRING,
     defaultValue: '/otherPictures/photoComingSoon.png'
   },
   isHidden: {
-    type: Sequelize.BOOLEAN,
-    defaultValue: false,
+    type: Sequelize.STRING,
+    defaultValue:false,
   },
-  isHiddenAdmin: {
-    type: Sequelize.BOOLEAN,
+  isAdminHidden: {
+    type: Sequelize.STRING,
     defaultValue: false,
   }
 })

@@ -34,6 +34,9 @@
   justify-content: space-around;
   align-items: center;
 }
+.footer__cards > * {
+  flex-grow: 1;
+}
 
 .footer__card {
   /* flex-grow: 1; */
@@ -48,6 +51,31 @@
 
 .footer-img-kingpin {
   border: 2px solid white;
+}
+
+.tica-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 100%;
+  gap: 1rem;
+}
+
+.kingpin-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (min-width: 50em) {
+  .kingpin-card {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  .footer__nav-wrapper {
+    align-items: flex-start;
+  }
 }
 
 @media (max-width:22em) {

@@ -2,6 +2,7 @@ import React, {useContext} from 'react'
 import { Link } from 'react-router-dom'
 import MeContext from '../MeContextPro'
 import { isPrivileged } from '../../myModelsConfig'
+import SocialMediaNavBar from './SocialMediaNavBar'
 
 const NavMobile = ({setShowMobileNav}) => {
 
@@ -49,7 +50,7 @@ const NavMobile = ({setShowMobileNav}) => {
         </>
       }
       </nav>
-
+      <SocialMediaNavBar />
     </div>
   )
 }

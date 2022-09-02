@@ -59,13 +59,13 @@ const CatAsKitten = db.define("catAsKitten", {
     defaultValue: true,
   },
   isHidden: {
-    type: Sequelize.BOOLEAN,
-    defaultValue: false,
+    type: Sequelize.STRING,
+    defaultValue:false,
   },
-  isHiddenAdmin: {
-    type: Sequelize.BOOLEAN,
+  isAdminHidden: {
+    type: Sequelize.STRING,
     defaultValue: false,
-  },
+  }
 })
 
 module.exports = CatAsKitten

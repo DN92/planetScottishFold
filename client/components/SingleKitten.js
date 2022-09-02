@@ -34,14 +34,7 @@ const SingleKitten = (props) => {
       </div>
       <div className='singleKittenInfo'>
         <>
-          {kitten?.status === "Sold" &&
-            <>
-              <p>{name}</p>
-              <p>{kitten.status}</p>
-              <p>${kitten.price}</p>
-            </>
-          }
-          {kitten?.status !== "Sold" &&
+          {kitten?.status === "Available" &&
             <>
               <p>Hi I'm {name}</p>
               <p>I am a {breed} {gender}</p>
@@ -53,6 +46,13 @@ const SingleKitten = (props) => {
                   <p>Mother: {mother}</p>
                   <p>Father: {father}</p>
                   <p>Status: {status}</p>
+                </>
+              }
+              {kitten?.status !== "Available" &&
+                <>
+                  <p>{name}</p>
+                  <p>{kitten.status}</p>
+                  <p>${kitten.price}</p>
                 </>
               }
             </>

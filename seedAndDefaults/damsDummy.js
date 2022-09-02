@@ -1,7 +1,7 @@
 const { eyeColors, } = require('../myModelsConfig')
 
 const makeMother = (
-  name, ears, furColor, eyeColor, dob, description, image
+  name, ears, furColor, eyeColor, dob, description, image, isHidden
 ) => ({
   name,
   ears,
@@ -10,6 +10,7 @@ const makeMother = (
   dob,
   description,
   image,
+  isHidden,
 })
 
 const mothersArray = [
@@ -36,6 +37,7 @@ const mothersArray = [
     eyeColors[Math.floor(Math.random() * eyeColors.length)],
     'April 4th, 2017',
     'This is where the description goes.This is where the description goes.This is where the description goes.description goes.This is where the description goes.',
+    true
   ),
   makeMother(
     'Iris',

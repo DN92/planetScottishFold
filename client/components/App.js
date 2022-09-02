@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react'
+import React, { useState, useContext} from 'react'
 import { unstable_HistoryRouter as HistoryRouter } from 'react-router-dom'
 import { Helmet } from 'react-helmet'  // react Head component
 import FrontEndRoutes from '../FrontEndRoutes'
@@ -13,6 +13,8 @@ import MeContext from '../MeContextPro'
 import NavMobile from './NavMobile'
 import AttentionModal from './AttentionModal'
 import useLocalStorage from '../customHooks/useLocalStorage'
+import ScrollMemo from '../ScrollMemo'
+
 
 const App = () => {
 
@@ -34,21 +36,23 @@ const App = () => {
           <title>Planet Scottish Fold | Scottish Fold Cattery</title>
           <meta name='Planet Scottish Fold' contents='Proud Breeders of Scottish Fold Kittens' />
         </Helmet>
-        <div className='header'>
-          <TopLineMenuBar setViewNav={setViewNav} setShowMobileNav={setShowMobileNav}/>
-          {isPrivileged(type) ? <AdminBar /> :  <NavBar />}
-          {isPrivileged(type) && viewNav && <NavBar />}
-        </div>
-        <div className='mainContentContainer'>
-          {modalOpen && <AttentionModal setModalOpen={setModalOpen} /> }
-          {showMobileNav && <NavMobile setShowMobileNav={setShowMobileNav} />}
-          {!showMobileNav &&
-            <>
-              {isPrivileged(type) ? <AdminRoutes /> : <FrontEndRoutes setModalOpen={setModalOpen} />}
-            </>
-          }
-        </div>
-        {!showMobileNav && <Footer /> }
+          <div className='header'>
+            <TopLineMenuBar setViewNav={setViewNav} setShowMobileNav={setShowMobileNav}/>
+            {isPrivileged(type) ? <AdminBar /> :  <NavBar />}
+            {isPrivileged(type) && viewNav && <NavBar />}
+          </div>
+        <ScrollMemo>
+          <div className='mainContentContainer'>
+            {modalOpen && <AttentionModal setModalOpen={setModalOpen} /> }
+            {showMobileNav && <NavMobile setShowMobileNav={setShowMobileNav} />}
+            {!showMobileNav &&
+              <>
+                {isPrivileged(type) ? <AdminRoutes /> : <FrontEndRoutes setModalOpen={setModalOpen} />}
+              </>
+            }
+          </div>
+        </ScrollMemo>
+          {!showMobileNav && <Footer /> }
       </HistoryRouter>
     </>
   )

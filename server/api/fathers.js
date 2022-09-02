@@ -1,5 +1,6 @@
 const router = require('express').Router()
 const { Stud } = require('../db').models
+const { Op } = require("sequelize");
 const passAuth = require('../expressMiddleware/checkValidAuthLevel')
 
 // api/fathers
@@ -8,14 +9,20 @@ router.get('/', async (req, res, next) => {
   try {
     if(req.query.onlyNames) {
       const studs = await Stud.findAll({
-        attributes: ['name']
+        attributes: ['name'],
       })
       res.send(studs.map(stud => stud.name))
       return
     }
     req.query.id
     ? res.send(await Stud.findByPk(req.query.id))
-    : res.send(await Stud.findAll())
+    : res.send(await Stud.findAll({
+      where: {
+        isHidden: {
+          [Op.eq]: 'false'
+        }
+      }
+    }))
   } catch (err) {
     next(err)
   }

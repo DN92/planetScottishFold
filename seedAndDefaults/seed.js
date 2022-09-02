@@ -17,7 +17,17 @@ const modelsArray = [ ... Object.values(models) ]
  */
 
 async function seed() {
-  await db.sync({force: true})  //  clears the db and matches models to tables
+  // await Promise.all([
+  //   Kitten.sync({force:true}),
+  //   Mother.sync({force:true}),
+  //   Stud.sync({force:true}),
+  //   User.sync({force:true}),
+  //   ContactRequest.sync({force:true}),
+  //   InitialUser.sync({force:true}),
+  //   CatAsKitten.sync({force:true}),
+  // ])
+
+  await db.sync({force: true, alter: true})  //  clears the db and matches models to tables
   await Promise.all([
     Promise.all(kittensActual.map(kitten => {
       return Kitten.create(kitten)
