@@ -70,7 +70,7 @@ const ConfirmClientQuestionnaire = () => {
             <span>{clientInfo.phoneNumber}</span><br />
             <span>{clientInfo.willBreed}</span><br />
             <span>{clientInfo.hasAllergies}</span><br />
-            <span>{clientInfo.firstCat ? 'Yes' : 'No'}</span><br />
+            <span>{clientInfo.firstCat === 'true' ? 'Yes' : 'No'}</span><br />
             <span>{clientInfo.otherPets}</span><br />
             <span>{clientInfo.city}</span><br />
             <span>{clientInfo.state}</span><br />

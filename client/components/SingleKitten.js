@@ -26,7 +26,7 @@ const SingleKitten = (props) => {
   const model = kitten?.isAdultCat ? 'catAsKitten' : 'kittens'
 
   return (
-    <div className={kitten?.status === 'Sold' ? 'singleKitten kitten-sold' : 'singleKitten'}>
+    <div className={kitten?.status === 'Available' ? 'singleKitten' : 'singleKitten kitten-sold'}>
       <div className='singleKitten__card'>
         <img className='singleKitten__card__img' src={image} alt="kitten picture "
         kitten={kitten}
