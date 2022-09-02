@@ -19,7 +19,7 @@ router.get('/', async (req, res, next) => {
     : res.send(await Stud.findAll({
       where: {
         isHidden: {
-          [Op.eq]: false
+          [Op.eq]: 'false'
         }
       }
     }))
