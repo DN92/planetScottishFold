@@ -2,7 +2,6 @@
   height: 100%;
   width: 96.5%;
   padding: calc(var(--headerSize) + 1.5rem ) auto 12rem auto;
-  border: 5px solid blue
 }
 
 .mainContentContainer a {

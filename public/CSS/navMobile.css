@@ -1,7 +1,6 @@
 .navMobileWrapper {
   height: 100%;
   width: 100%;
-  /* padding-bottom: 200px; */
   overflow: hidden;
   display: flex;
   flex-direction: column;
