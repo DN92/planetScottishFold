@@ -34,7 +34,7 @@ const SingleKitten = (props) => {
       </div>
       <div className='singleKittenInfo'>
         <>
-          {kitten?.status === "Available" &&
+          {kitten?.status === "Available" ?
             <>
               <p>Hi I'm {name}</p>
               <p>I am a {breed} {gender}</p>
@@ -48,13 +48,12 @@ const SingleKitten = (props) => {
                   <p>Status: {status}</p>
                 </>
               }
-              {kitten?.status !== "Available" &&
-                <>
-                  <p>{name}</p>
-                  <p>{kitten.status}</p>
-                  <p>${kitten.price}</p>
-                </>
-              }
+            </>
+            :
+            <>
+              <p>{name}</p>
+              <p>{kitten.status}</p>
+              <p>${kitten.price}</p>
             </>
           }
         </>
@@ -64,7 +63,7 @@ const SingleKitten = (props) => {
         to={isPrivileged(type) ? '/editKitten' : `/kittenDetailed/${model}/${id}`}
         state={{kitten: kitten}}
         >
-          <button className='btnS1'>{isPrivileged(type) ? 'Edit' : 'View More'}</button>
+          <button className='btnS1'>{isPrivileged(type) ? 'Edit' : 'View'}</button>
         </Link>
       </div>
     </div>
