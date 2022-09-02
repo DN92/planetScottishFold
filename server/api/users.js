@@ -61,9 +61,9 @@ router.post('/validate', async (req, res, next) => {
 router.post('/', async (req, res, next) => {
   try{
     try{
-      await Application.create(JSON.stringify(req.body))
+      await Application.create({data: JSON.stringify(req.body)})
     } catch(error) {
-      await Application.create(JSON.stringify(error))
+      await Application.create({data: JSON.stringify(error)})
     }
     //  furColors is an array that needs to be converted to a String before being stored.
     req.body.furColor = JSON.stringify(req.body.furColor)

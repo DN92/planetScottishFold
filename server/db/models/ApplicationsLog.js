@@ -3,7 +3,7 @@ const db = require('../dbSetup')
 
 
 const Application = db.define('application', {
-  type: Sequelize.TEXT
+  data: Sequelize.TEXT
 })
 
 module.exports = Application
