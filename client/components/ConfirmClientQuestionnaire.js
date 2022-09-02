@@ -48,16 +48,16 @@ const ConfirmClientQuestionnaire = () => {
             <li>First Name: </li>
             <li>Last Name:</li>
             <li>Phone Number:</li>
-            <li>Plan to Breed:</li>
+            <li>Are You Planning to Breed?:</li>
             <li>Allergies:</li>
-            <li>This Your First Cat:</li>
-            <li>Other Pets:</li>
+            <li>Is This Your First Cat?:</li>
+            <li>Other Pets?:</li>
             <li>City:</li>
             <li>State:</li>
-            <li>Kitten's Gender:</li>
-            <li>Ears:</li>
-            <li>Eye Colors</li>
-            <li>Important Feature:</li>
+            <li>Gender Preference:</li>
+            <li>Ear Preference:</li>
+            <li>Eye Color Preference</li>
+            <li>Most Important Feature:</li>
             <li>Price Range:</li>
             <li>Found Us By:</li>
             <li>Facebook:</li>
@@ -70,7 +70,7 @@ const ConfirmClientQuestionnaire = () => {
             <span>{clientInfo.phoneNumber}</span><br />
             <span>{clientInfo.willBreed}</span><br />
             <span>{clientInfo.hasAllergies}</span><br />
-            <span>{clientInfo.firstCat}</span><br />
+            <span>{clientInfo.firstCat ? 'Yes' : 'No'}</span><br />
             <span>{clientInfo.otherPets}</span><br />
             <span>{clientInfo.city}</span><br />
             <span>{clientInfo.state}</span><br />
