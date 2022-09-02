@@ -2802,50 +2802,6 @@ const MeProvider = ({
 
 /***/ }),
 
-/***/ "./client/ScrollMemo.js":
-/*!******************************!*\
-  !*** ./client/ScrollMemo.js ***!
-  \******************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _customHooks_useScrollPosition__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./customHooks/useScrollPosition */ "./client/customHooks/useScrollPosition.js");
-/* harmony import */ var react_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router */ "./node_modules/react-router/index.js");
-
-
-
-
-const ScrollMemo = ({
-  children
-}) => {
-  const {
-    pathname
-  } = (0,react_router__WEBPACK_IMPORTED_MODULE_2__.useLocation)();
-  const [scrollMemory, setScrollMemory] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({});
-  const scrollPosition = (0,_customHooks_useScrollPosition__WEBPACK_IMPORTED_MODULE_1__["default"])();
-  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
-    // window.scroll(0, 0)
-    console.log('pathname', pathname);
-    console.log('scrollPosition', scrollMemory.pathname ?? 0);
-    console.log('scrollMemory', scrollMemory);
-    return () => {
-      setScrollMemory(prev => ({ ...prev,
-        [pathname]: scrollPosition
-      }));
-    };
-  }, [pathname]);
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "scroll-memo"
-  }, children);
-};
-
-/* harmony default export */ __webpack_exports__["default"] = (ScrollMemo);
-
-/***/ }),
-
 /***/ "./client/components/AdminBar.js":
 /*!***************************************!*\
   !*** ./client/components/AdminBar.js ***!
@@ -2900,7 +2856,7 @@ const AdminBar = ({
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/index.js");
 /* harmony import */ var react_helmet__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-helmet */ "./node_modules/react-helmet/es/Helmet.js");
 /* harmony import */ var _FrontEndRoutes__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../FrontEndRoutes */ "./client/FrontEndRoutes.js");
 /* harmony import */ var _AdminRoutes__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../AdminRoutes */ "./client/AdminRoutes.js");
@@ -2915,11 +2871,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _NavMobile__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./NavMobile */ "./client/components/NavMobile.js");
 /* harmony import */ var _AttentionModal__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./AttentionModal */ "./client/components/AttentionModal.js");
 /* harmony import */ var _customHooks_useLocalStorage__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../customHooks/useLocalStorage */ "./client/customHooks/useLocalStorage.js");
-/* harmony import */ var _ScrollMemo__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../ScrollMemo */ "./client/ScrollMemo.js");
 
 
  // react Head component
-
 
 
 
@@ -2942,7 +2896,7 @@ const App = () => {
   const [viewNav, setViewNav] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
   const [showMobileNav, setShowMobileNav] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
   const [modalOpen, setModalOpen] = (0,_customHooks_useLocalStorage__WEBPACK_IMPORTED_MODULE_13__["default"])('modalOpen', localStorage.hasOwnProperty('modalOpen') ? localStorage.getItem('modalOpen') : false);
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_15__.unstable_HistoryRouter, {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_14__.unstable_HistoryRouter, {
     history: _history__WEBPACK_IMPORTED_MODULE_6__["default"]
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_helmet__WEBPACK_IMPORTED_MODULE_1__.Helmet, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("title", null, "Planet Scottish Fold | Scottish Fold Cattery"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("meta", {
     name: "Planet Scottish Fold",
@@ -2952,7 +2906,7 @@ const App = () => {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_TopLineMenuBar__WEBPACK_IMPORTED_MODULE_8__["default"], {
     setViewNav: setViewNav,
     setShowMobileNav: setShowMobileNav
-  }), (0,_myModelsConfig__WEBPACK_IMPORTED_MODULE_9__.isPrivileged)(type) ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_AdminBar__WEBPACK_IMPORTED_MODULE_7__["default"], null) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_NavBar__WEBPACK_IMPORTED_MODULE_4__["default"], null), (0,_myModelsConfig__WEBPACK_IMPORTED_MODULE_9__.isPrivileged)(type) && viewNav && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_NavBar__WEBPACK_IMPORTED_MODULE_4__["default"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ScrollMemo__WEBPACK_IMPORTED_MODULE_14__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+  }), (0,_myModelsConfig__WEBPACK_IMPORTED_MODULE_9__.isPrivileged)(type) ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_AdminBar__WEBPACK_IMPORTED_MODULE_7__["default"], null) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_NavBar__WEBPACK_IMPORTED_MODULE_4__["default"], null), (0,_myModelsConfig__WEBPACK_IMPORTED_MODULE_9__.isPrivileged)(type) && viewNav && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_NavBar__WEBPACK_IMPORTED_MODULE_4__["default"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "mainContentContainer"
   }, modalOpen && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_AttentionModal__WEBPACK_IMPORTED_MODULE_12__["default"], {
     setModalOpen: setModalOpen
@@ -2960,7 +2914,7 @@ const App = () => {
     setShowMobileNav: setShowMobileNav
   }), !showMobileNav && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, (0,_myModelsConfig__WEBPACK_IMPORTED_MODULE_9__.isPrivileged)(type) ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_AdminRoutes__WEBPACK_IMPORTED_MODULE_3__["default"], null) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_FrontEndRoutes__WEBPACK_IMPORTED_MODULE_2__["default"], {
     setModalOpen: setModalOpen
-  })))), !showMobileNav && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Footer__WEBPACK_IMPORTED_MODULE_5__["default"], null)));
+  }))), !showMobileNav && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Footer__WEBPACK_IMPORTED_MODULE_5__["default"], null)));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (App);
@@ -3900,9 +3854,9 @@ const ConfirmClientQuestionnaire = () => {
     className: "clientInfo-wrapper"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("ul", {
     className: "clientInfo-questions"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "E-mail: "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "First Name: "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "Last Name:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "Phone Number:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "Plan to Breed:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "Allergies:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "This Your First Cat:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "Other Pets:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "City:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "State:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "Kitten's Gender:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "Ears:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "Eye Colors"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "Important Feature:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "Price Range:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "Found Us By:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "Facebook:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "Instagram:")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "E-mail: "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "First Name: "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "Last Name:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "Phone Number:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "Are You Planning to Breed?:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "Allergies:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "Is This Your First Cat?:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "Other Pets?:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "City:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "State:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "Gender Preference:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "Ear Preference:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "Eye Color Preference"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "Most Important Feature:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "Price Range:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "Found Us By:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "Facebook:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "Instagram:")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "clientInfo-answers"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, clientInfo.eMail), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, clientInfo.firstName), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, clientInfo.lastName), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, clientInfo.phoneNumber), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, clientInfo.willBreed), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, clientInfo.hasAllergies), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, clientInfo.firstCat), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, clientInfo.otherPets), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, clientInfo.city), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, clientInfo.state), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, clientInfo.gender), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, clientInfo.ears), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, clientInfo.eyeColor, " "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, clientInfo.mif), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, clientInfo.budget), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, clientInfo.foundUsBy), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, clientInfo.fB), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, clientInfo.iG), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, clientInfo.eMail), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, clientInfo.firstName), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, clientInfo.lastName), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, clientInfo.phoneNumber), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, clientInfo.willBreed), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, clientInfo.hasAllergies), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, clientInfo.firstCat === 'true' ? 'Yes' : 'No'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, clientInfo.otherPets), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, clientInfo.city), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, clientInfo.state), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, clientInfo.gender), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, clientInfo.ears), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, clientInfo.eyeColor, " "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, clientInfo.mif), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, clientInfo.budget), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, clientInfo.foundUsBy), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, clientInfo.fB), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, clientInfo.iG), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "buttonsWrapper confirmation-buttons"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
     className: "buttonStyle2",
@@ -4673,7 +4627,7 @@ const SingleKitten = props => {
   const image = mainImageSrcValue ? mainImageSrcValue : "/catPictures/catError3.gif";
   const model = kitten?.isAdultCat ? 'catAsKitten' : 'kittens';
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: kitten?.status === 'Sold' ? 'singleKitten kitten-sold' : 'singleKitten'
+    className: kitten?.status === 'Available' ? 'singleKitten' : 'singleKitten kitten-sold'
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "singleKitten__card"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
@@ -4683,7 +4637,7 @@ const SingleKitten = props => {
     kitten: kitten
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "singleKittenInfo"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, kitten?.status === "Available" && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Hi I'm ", name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "I am a ", breed, " ", gender), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "My color is "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, furColor), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "I have ", eyeColor, " eyes"), (0,_myModelsConfig__WEBPACK_IMPORTED_MODULE_2__.isPrivileged)(type) && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Mother: ", mother), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Father: ", father), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Status: ", status)), kitten?.status !== "Available" && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, kitten.status), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "$", kitten.price))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, kitten?.status === "Available" ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Hi I'm ", name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "I am a ", breed, " ", gender), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "My color is "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, furColor), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "I have ", eyeColor, " eyes"), (0,_myModelsConfig__WEBPACK_IMPORTED_MODULE_2__.isPrivileged)(type) && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Mother: ", mother), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Father: ", father), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Status: ", status))) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, kitten.status), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "$", kitten.price)))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "singleKitten__button"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
     to: (0,_myModelsConfig__WEBPACK_IMPORTED_MODULE_2__.isPrivileged)(type) ? '/editKitten' : `/kittenDetailed/${model}/${id}`,
@@ -4692,7 +4646,7 @@ const SingleKitten = props => {
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
     className: "btnS1"
-  }, (0,_myModelsConfig__WEBPACK_IMPORTED_MODULE_2__.isPrivileged)(type) ? 'Edit' : 'View More'))));
+  }, (0,_myModelsConfig__WEBPACK_IMPORTED_MODULE_2__.isPrivileged)(type) ? 'Edit' : 'View'))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (SingleKitten);
@@ -6478,36 +6432,6 @@ function useLocalStorage(key, initialValue) {
 
 /***/ }),
 
-/***/ "./client/customHooks/useScrollPosition.js":
-/*!*************************************************!*\
-  !*** ./client/customHooks/useScrollPosition.js ***!
-  \*************************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-
-
-const useScrollPosition = () => {
-  const [scrollPosition, setScrollPosition] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0);
-  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
-    const updatePosition = () => {
-      setScrollPosition(window.pageYOffset);
-    };
-
-    window.addEventListener("scroll", updatePosition);
-    updatePosition();
-    return () => window.removeEventListener("scroll", updatePosition);
-  }, []);
-  return scrollPosition;
-};
-
-/* harmony default export */ __webpack_exports__["default"] = (useScrollPosition);
-
-/***/ }),
-
 /***/ "./client/customHooks/useWindowSize.js":
 /*!*********************************************!*\
   !*** ./client/customHooks/useWindowSize.js ***!
@@ -6617,7 +6541,7 @@ const myConfig = {
   ],
   //  for public file serving
   defaultCatPictureSrc: '/catPictures/cat404.png',
-  budgetRanges: ['$4000+', '$3500-$4000', '$3000-$3500', '$2500-$3000', '$2000-$2500', '$1500-$2000'],
+  budgetRanges: ['$4000+', '$3500-$4000', '$3000-$3500', '$2500-$3000', '$2000-$2500', '$1500-$2000', '$1000-$1500'],
   // most important feature (of product - cat)
   mifOptions: ['No Preference', 'Health', 'Appearance', 'Show Quality', 'Personality', 'Price'],
   statusOptionsKitten: ['Available', 'Reserved', 'Sold'],

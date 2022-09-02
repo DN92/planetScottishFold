@@ -1,7 +1,8 @@
 .mainContentContainer {
   height: 100%;
   width: 96.5%;
-  margin: calc(var(--headerSize) + 1.5rem ) auto 12rem auto;
+  padding: calc(var(--headerSize) + 1.5rem ) auto 12rem auto;
+  border: 5px solid blue
 }
 
 .mainContentContainer a {
@@ -12,3 +13,4 @@
 .mainContentContainer a:focus-visible {
   text-decoration: underline;
 }
+

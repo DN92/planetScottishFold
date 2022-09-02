@@ -13,7 +13,6 @@ import MeContext from '../MeContextPro'
 import NavMobile from './NavMobile'
 import AttentionModal from './AttentionModal'
 import useLocalStorage from '../customHooks/useLocalStorage'
-import ScrollMemo from '../ScrollMemo'
 
 
 const App = () => {
@@ -41,7 +40,6 @@ const App = () => {
             {isPrivileged(type) ? <AdminBar /> :  <NavBar />}
             {isPrivileged(type) && viewNav && <NavBar />}
           </div>
-        <ScrollMemo>
           <div className='mainContentContainer'>
             {modalOpen && <AttentionModal setModalOpen={setModalOpen} /> }
             {showMobileNav && <NavMobile setShowMobileNav={setShowMobileNav} />}
@@ -51,7 +49,6 @@ const App = () => {
               </>
             }
           </div>
-        </ScrollMemo>
           {!showMobileNav && <Footer /> }
       </HistoryRouter>
     </>
