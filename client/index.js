@@ -1,8 +1,7 @@
-import React, {createContext} from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom/client';
-// import '../public/App.css';
 import App from './components/App'
-import {MeProvider} from './MeContextPro'
+import { MeProvider } from './MeContextPro'
 
 //  This is the User Object on the frontEnd. The getMe function sets the context from the login page.
 

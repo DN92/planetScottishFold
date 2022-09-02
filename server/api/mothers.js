@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const { Mother } = require('../db').models
+const { Op } = require("sequelize");
 const passAuth = require('../expressMiddleware/checkValidAuthLevel')
 
 //  api/mothers
@@ -17,7 +18,9 @@ router.get('/', async (req, res, next) => {
     ? res.send(await Mother.findByPk(req.query.id))
     : res.send(await Mother.findAll({
       where: {
-        isHidden: false,
+        isHidden: {
+          [Op.eq] : false
+        }
       }
     }))
   } catch (err) {
