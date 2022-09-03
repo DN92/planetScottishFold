@@ -28,6 +28,8 @@ const App = () => {
       false
   )
 
+  //  Inline style was necessary for mainContentContainer to account for dynamic conditional rendering of footer on Mobile Nav Open Screen
+
   return (
     <>
       <HistoryRouter history={history}>
@@ -40,7 +42,7 @@ const App = () => {
             {isPrivileged(type) ? <AdminBar /> :  <NavBar />}
             {isPrivileged(type) && viewNav && <NavBar />}
           </div>
-          <div className='mainContentContainer'>
+          <div className='mainContentContainer' style={showMobileNav ? {marginBottom: '0'} : {}}>
             {modalOpen && <AttentionModal setModalOpen={setModalOpen} /> }
             {showMobileNav && <NavMobile setShowMobileNav={setShowMobileNav} />}
             {!showMobileNav &&

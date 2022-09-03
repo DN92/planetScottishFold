@@ -1,7 +1,7 @@
 .mainContentContainer {
   height: 100%;
   width: 96.5%;
-  padding: calc(var(--headerSize) + 1.5rem ) auto 12rem auto;
+  margin: calc(var(--headerSize) + 1.5rem ) auto 12rem auto;
 }
 
 .mainContentContainer a {
@@ -13,3 +13,8 @@
   text-decoration: underline;
 }
 
+@media (min-width: 50em) {
+  .mainContentContainer {
+    margin: calc(var(--headerSize) + 1.5rem ) auto 12rem auto;
+  }
+}
