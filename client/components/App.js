@@ -42,6 +42,7 @@ const App = () => {
             {isPrivileged(type) ? <AdminBar /> :  <NavBar />}
             {isPrivileged(type) && viewNav && <NavBar />}
           </div>
+          {/* inline styling present here */}
           <div className='mainContentContainer' style={showMobileNav ? {marginBottom: '0'} : {}}>
             {modalOpen && <AttentionModal setModalOpen={setModalOpen} /> }
             {showMobileNav && <NavMobile setShowMobileNav={setShowMobileNav} />}
