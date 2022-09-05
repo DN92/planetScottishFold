@@ -2,6 +2,13 @@ const { emailsFrom } = require('../../myModelsConfig')
 
 const templateNewApplicantNotification = (applicant) => {
 
+  // if(applicant.furColors) {
+  //   applicant.furColors = applicant.furColors.subString(1, applicant.furColors.length)
+  //     .join(' ')
+  // }
+
+  const userInfoAsText = Object.entries(applicant).reduce((acc, [key, value]) => `${acc}${key}: ${value}\n`,"" )
+
   const link =  `<a
       href='https://www.planetscottishfold.com/login'
       target='_blank'
@@ -11,7 +18,7 @@ const templateNewApplicantNotification = (applicant) => {
     from: emailsFrom,
     to: 'nataliyaKlin@gmail.com',
     subject: 'New Application ready for review',
-    text: applicant.eMail + ` has submitted an application. Review it when you're ready beautiful.`,
+    text: applicant.eMail + ` has submitted an application. Review it when you're ready beautiful. \n\n\n${userInfoAsText}`,
   }
 }
 

@@ -60,8 +60,9 @@ router.post('/validate', async (req, res, next) => {
 
 router.post('/', async (req, res, next) => {
   try{
+    const applicationJSON = JSON.stringify(req.body)
     try{
-      await Application.create({data: JSON.stringify(req.body)})
+      await Application.create({data: applicationJSON})
     } catch(error) {
       await Application.create({data: JSON.stringify(error)})
     }
@@ -72,8 +73,9 @@ router.post('/', async (req, res, next) => {
       throw new Error('newUser creation failed')
     }
     newUser.password = ''
-    transporter.sendMail(templateNewApplicantNotification(newUser))
-    res.send({newUser})
+    console.log(newUser, ": NEW USER!!!!!!!!")
+    transporter.sendMail(templateNewApplicantNotification(req.body))
+    res.send(newUser)
   } catch (error) {
     next(error)
   }

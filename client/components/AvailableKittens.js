@@ -1,61 +1,84 @@
-import React, { useState, useEffect, useMemo }from 'react'
+import React, { useState, useEffect, useMemo, useReducer }from 'react'
 import SingleKitten from './SingleKitten'
 import ErrorFill from './ErrorFill'
 import { fetchEffect } from './axiosHandlers/fetchEffect'
 import KittenFilter from './KittensFilter'
-import {getObjMatches } from '../../myUtilFuncs'
 
 //  /available Kittens
 const AvailableKittens = () => {
 
-  const [kittens, setKittens] = useState([])
-  const availableKittens = useMemo(()=>{
-    return kittens.filter(kitten => kitten.status === "Available")
-      .sort((a, b) => {
-        if(b.mother < a.mother) {
-        return 1
-      } else {
-        return -1
-      }
-    })
-  },[kittens])
+  const getWeight = (obj, filterer) => {
+    let score = 0;
+    for( const key in filterer) {
+      if (filterer[key] === 'No Preference' || filterer[key] === '') continue;
+      if(filterer[key]?.selection === obj[key]) score += filterer[key]?.weight
+    }
+    return score
+  }
+
+  const [error, setError] = useState(null)
+  const [kittens, setKittens] = useState([]);
+  const [availableAdults, setAvailableAdults] = useState([])
+  const [initAvailKittens, setInitAvailKittens] = useState(false)
+  const [showSearch, setShowSearch] = useState(false)
+  const [filterState, dispatchFilterState] = useReducer((state, action) => {
+    switch (action.type) {
+      case 'set':
+        return {...state, [action.field]: {
+          ...state[action.field],
+          selection: action.value
+          }
+        };
+      default:
+        return {...state}
+    }},
+    {
+      gender: {
+        selection: 'No Preference',
+        weight: 0.8,
+      },
+      ears: {
+        selection: 'No Preference',
+        weight: 1.1
+      },
+      eyeColor: {
+        selection: 'No Preference',
+        weight: 1.2
+      },
+    }
+  )
+
   const unavailableKittens = useMemo(() => {
     return kittens.filter(kitten => kitten.status !== "Available" )
       .sort((a, b) => Number(b.price) - Number(a.price) )
-  },[kittens])
-  const [availableAdults, setAvailableAdults] = useState([])
-  const [error, setError] = useState(null)
-  const [showSearch, setShowSearch] = useState(false)
-  /* filterState is the culmination of user search preferences and the setter is passed
-    down to KittensFilter.js */
-  const [filterState, setFilterState] = useState({
-    gender: 'No Pref',
-    ears: 'No Pref',
-    eyeColor: 'No Pref',
-    furColor: 'No Pref',
-  })
+  },[kittens]);
+
+  const [availableKittens, dispatchAvailableKittens] = useReducer((state, action) => {
+    switch(action.type) {
+      case 'init':
+      return  kittens.filter(kitten => kitten.status === "Available")
+        .sort((a, b) => {
+          if(b.mother < a.mother) {
+            return 1
+          } else {
+            return -1
+          }
+        })
+      case 'applyFilter':
+        const weightedArr = [...state].map(kitten => ([kitten, getWeight(kitten, filterState)]))
+        weightedArr.sort((a, b) => ( b[1] - a[1]))
+        return weightedArr.map(kitten => kitten[0]);
+      default:
+        return [...state]
+    }
+  }, [])
 
   const handleShowSearch = () => {
     setShowSearch(prev => !prev)
   }
 
-  //  the filter(SORTER) will reorganize the items(kittens) array by weighted value,
-  //    it will not lessen the number of visible kittens. This is a sorter.
   const handleFilterBySearch = () => {
-    //  delete keys with values of 'No Preference' or empty strings
-    const keysToDestroy = Object.entries(filterState)
-      .filter(entry => (entry[1] === 'No Preference' || entry[1] === ''))
-      .map(entry => (entry[0]))
-    // Avoid mutating filterState by making a copy.
-    const filterer = {...filterState}
-    keysToDestroy.forEach(key => {
-      delete filterer[key]
-    })
-    // set state to resulting sorting array
-    const weightedArr = kittens.map(kitten => ([kitten, getObjMatches(kitten, filterer)]))
-      .sort((a, b) => ( b[1] - a[1]))
-    setKittens(weightedArr.map(kitten => kitten[0]))
-    // items should now be sorted by user preferences. All user options are currently weighted equally. (1x)
+    dispatchAvailableKittens({type: 'applyFilter'})
   }
 
   useEffect(() => {
@@ -63,21 +86,25 @@ const AvailableKittens = () => {
       [setKittens, setError],
       'get',
       `/api/kittens`,
-    )
-  }, [])
-
-  useEffect(() => {
+    );
     fetchEffect(
       [setAvailableAdults, setError],
       `get`,
       `/api/catAsKitten`
-    )
+    );
+    setInitAvailKittens(true)
   }, [])
+
+  useEffect(() => {
+    if(initAvailKittens && kittens.length) {
+      setInitAvailKittens(false)
+      dispatchAvailableKittens({type: 'init'})
+    }
+  }, [kittens])
 
   return (
     <div className='kittens'>
       <h2>Our Available Kittens</h2>
-
       {error && <ErrorFill msg={error} />}
       {!error &&
         <>
@@ -85,9 +112,9 @@ const AvailableKittens = () => {
             <button id='adv-search-checkbox' className='adv-search-button buttonStyle2'
               type="button"
               onClick={handleShowSearch}
-            >{showSearch ? 'Hide' : 'Show'} Advanced Search</button>
+            >{showSearch ? 'Hide' : 'Sort By'}</button>
           </div>
-          {showSearch && <KittenFilter searcher={handleFilterBySearch} filterState={filterState} setter={setFilterState} />}
+          {showSearch && <KittenFilter searcher={handleFilterBySearch} filterState={filterState} dispatch={dispatchFilterState} />}
           <div className='kittensWrapper'>
             {availableKittens.map((kitten) => (
               <SingleKitten key={kitten.id} kitten={kitten} />
@@ -112,6 +139,5 @@ const AvailableKittens = () => {
     </div>
   )
 }
-
 
 export default AvailableKittens

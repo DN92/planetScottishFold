@@ -3138,9 +3138,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ErrorFill__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ErrorFill */ "./client/components/ErrorFill.js");
 /* harmony import */ var _axiosHandlers_fetchEffect__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./axiosHandlers/fetchEffect */ "./client/components/axiosHandlers/fetchEffect.js");
 /* harmony import */ var _KittensFilter__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./KittensFilter */ "./client/components/KittensFilter.js");
-/* harmony import */ var _myUtilFuncs__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../myUtilFuncs */ "./myUtilFuncs.js");
-/* harmony import */ var _myUtilFuncs__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_myUtilFuncs__WEBPACK_IMPORTED_MODULE_5__);
-
 
 
 
@@ -3148,58 +3145,96 @@ __webpack_require__.r(__webpack_exports__);
  //  /available Kittens
 
 const AvailableKittens = () => {
+  const getWeight = (obj, filterer) => {
+    let score = 0;
+
+    for (const key in filterer) {
+      if (filterer[key] === 'No Preference' || filterer[key] === '') continue;
+      if (filterer[key]?.selection === obj[key]) score += filterer[key]?.weight;
+    }
+
+    return score;
+  };
+
+  const [error, setError] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null);
   const [kittens, setKittens] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]);
-  const availableKittens = (0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(() => {
-    return kittens.filter(kitten => kitten.status === "Available").sort((a, b) => {
-      if (b.mother < a.mother) {
-        return 1;
-      } else {
-        return -1;
-      }
-    });
-  }, [kittens]);
+  const [availableAdults, setAvailableAdults] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]);
+  const [initAvailKittens, setInitAvailKittens] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
+  const [showSearch, setShowSearch] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
+  const [filterState, dispatchFilterState] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useReducer)((state, action) => {
+    switch (action.type) {
+      case 'set':
+        return { ...state,
+          [action.field]: { ...state[action.field],
+            selection: action.value
+          }
+        };
+
+      default:
+        return { ...state
+        };
+    }
+  }, {
+    gender: {
+      selection: 'No Preference',
+      weight: 0.8
+    },
+    ears: {
+      selection: 'No Preference',
+      weight: 1.1
+    },
+    eyeColor: {
+      selection: 'No Preference',
+      weight: 1.2
+    }
+  });
   const unavailableKittens = (0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(() => {
     return kittens.filter(kitten => kitten.status !== "Available").sort((a, b) => Number(b.price) - Number(a.price));
   }, [kittens]);
-  const [availableAdults, setAvailableAdults] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]);
-  const [error, setError] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null);
-  const [showSearch, setShowSearch] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
-  /* filterState is the culmination of user search preferences and the setter is passed
-    down to KittensFilter.js */
+  const [availableKittens, dispatchAvailableKittens] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useReducer)((state, action) => {
+    switch (action.type) {
+      case 'init':
+        return kittens.filter(kitten => kitten.status === "Available").sort((a, b) => {
+          if (b.mother < a.mother) {
+            return 1;
+          } else {
+            return -1;
+          }
+        });
 
-  const [filterState, setFilterState] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
-    gender: 'No Pref',
-    ears: 'No Pref',
-    eyeColor: 'No Pref',
-    furColor: 'No Pref'
-  });
+      case 'applyFilter':
+        const weightedArr = [...state].map(kitten => [kitten, getWeight(kitten, filterState)]);
+        weightedArr.sort((a, b) => b[1] - a[1]);
+        return weightedArr.map(kitten => kitten[0]);
+
+      default:
+        return [...state];
+    }
+  }, []);
 
   const handleShowSearch = () => {
     setShowSearch(prev => !prev);
-  }; //  the filter(SORTER) will reorganize the items(kittens) array by weighted value,
-  //    it will not lessen the number of visible kittens. This is a sorter.
-
+  };
 
   const handleFilterBySearch = () => {
-    //  delete keys with values of 'No Preference' or empty strings
-    const keysToDestroy = Object.entries(filterState).filter(entry => entry[1] === 'No Preference' || entry[1] === '').map(entry => entry[0]); // Avoid mutating filterState by making a copy.
-
-    const filterer = { ...filterState
-    };
-    keysToDestroy.forEach(key => {
-      delete filterer[key];
-    }); // set state to resulting sorting array
-
-    const weightedArr = kittens.map(kitten => [kitten, (0,_myUtilFuncs__WEBPACK_IMPORTED_MODULE_5__.getObjMatches)(kitten, filterer)]).sort((a, b) => b[1] - a[1]);
-    setKittens(weightedArr.map(kitten => kitten[0])); // items should now be sorted by user preferences. All user options are currently weighted equally. (1x)
+    dispatchAvailableKittens({
+      type: 'applyFilter'
+    });
   };
 
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
     (0,_axiosHandlers_fetchEffect__WEBPACK_IMPORTED_MODULE_3__.fetchEffect)([setKittens, setError], 'get', `/api/kittens`);
+    (0,_axiosHandlers_fetchEffect__WEBPACK_IMPORTED_MODULE_3__.fetchEffect)([setAvailableAdults, setError], `get`, `/api/catAsKitten`);
+    setInitAvailKittens(true);
   }, []);
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
-    (0,_axiosHandlers_fetchEffect__WEBPACK_IMPORTED_MODULE_3__.fetchEffect)([setAvailableAdults, setError], `get`, `/api/catAsKitten`);
-  }, []);
+    if (initAvailKittens && kittens.length) {
+      setInitAvailKittens(false);
+      dispatchAvailableKittens({
+        type: 'init'
+      });
+    }
+  }, [kittens]);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "kittens"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "Our Available Kittens"), error && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ErrorFill__WEBPACK_IMPORTED_MODULE_2__["default"], {
@@ -3211,10 +3246,10 @@ const AvailableKittens = () => {
     className: "adv-search-button buttonStyle2",
     type: "button",
     onClick: handleShowSearch
-  }, showSearch ? 'Hide' : 'Show', " Advanced Search")), showSearch && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_KittensFilter__WEBPACK_IMPORTED_MODULE_4__["default"], {
+  }, showSearch ? 'Hide' : 'Sort By')), showSearch && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_KittensFilter__WEBPACK_IMPORTED_MODULE_4__["default"], {
     searcher: handleFilterBySearch,
     filterState: filterState,
-    setter: setFilterState
+    dispatch: dispatchFilterState
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "kittensWrapper"
   }, availableKittens.map(kitten => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_SingleKitten__WEBPACK_IMPORTED_MODULE_1__["default"], {
@@ -4250,22 +4285,26 @@ const KittenDetailedView = () => {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _customHandlers_handleFormChange__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../customHandlers/handleFormChange */ "./client/customHandlers/handleFormChange.js");
-/* harmony import */ var _myModelsConfig__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../myModelsConfig */ "./myModelsConfig.js");
-/* harmony import */ var _myModelsConfig__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_myModelsConfig__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _myModelsConfig__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../myModelsConfig */ "./myModelsConfig.js");
+/* harmony import */ var _myModelsConfig__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_myModelsConfig__WEBPACK_IMPORTED_MODULE_1__);
 
 
 
-
-const KittenFilter = props => {
-  const {
-    gender,
-    ears,
-    eyeColor
-  } = props.filterState;
+const KittenFilter = ({
+  filterState,
+  dispatch,
+  searcher
+}) => {
+  const gender = filterState.gender.selection;
+  const ears = filterState.ears.selection;
+  const eyeColor = filterState.eyeColor.selection;
 
   const handleChange = event => {
-    (0,_customHandlers_handleFormChange__WEBPACK_IMPORTED_MODULE_1__["default"])(event, props.setter);
+    dispatch({
+      type: 'set',
+      field: event.target.name,
+      value: event.target.value
+    });
   };
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("form", {
@@ -4274,7 +4313,7 @@ const KittenFilter = props => {
     name: "gender",
     value: gender,
     onChange: handleChange
-  }, _myModelsConfig__WEBPACK_IMPORTED_MODULE_2__.genderOptions.map((gen, index) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+  }, _myModelsConfig__WEBPACK_IMPORTED_MODULE_1__.genderOptions.map((gen, index) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
     key: index,
     value: gen
   }, index === 0 ? `Boy or Girl` : gen))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
@@ -4283,7 +4322,7 @@ const KittenFilter = props => {
     name: "ears",
     value: ears,
     onChange: handleChange
-  }, _myModelsConfig__WEBPACK_IMPORTED_MODULE_2__.earOptions.map((ear, index) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+  }, _myModelsConfig__WEBPACK_IMPORTED_MODULE_1__.earOptions.map((ear, index) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
     key: index,
     value: ear
   }, index === 0 ? `Fold or Straight` : ear))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
@@ -4292,7 +4331,7 @@ const KittenFilter = props => {
     name: "eyeColor",
     value: eyeColor,
     onChange: handleChange
-  }, _myModelsConfig__WEBPACK_IMPORTED_MODULE_2__.eyeColors.map((color, index) => {
+  }, _myModelsConfig__WEBPACK_IMPORTED_MODULE_1__.eyeColors.map((color, index) => {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
       key: index,
       value: color
@@ -4304,7 +4343,7 @@ const KittenFilter = props => {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
     className: "buttonStyle2",
     type: "button",
-    onClick: props.searcher
+    onClick: searcher
   }, "Sort")));
 };
 
@@ -6659,15 +6698,15 @@ myUtilFuncs.getWordsFromArrayOfKeys = arrayOfWords => {
 
 
 myUtilFuncs.getObjMatches = (obj1, obj2) => {
-  let counter = 0;
+  let score = 0;
   const obj1ToS = Object.entries(obj1).map(key => JSON.stringify(key));
   const obj2ToS = Object.entries(obj2).map(key => JSON.stringify(key));
   obj1ToS.forEach(key => {
     if (obj2ToS.includes(key)) {
-      counter++;
+      score++;
     }
   });
-  return counter;
+  return score;
 };
 
 module.exports = myUtilFuncs;

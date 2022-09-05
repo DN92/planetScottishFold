@@ -17,8 +17,6 @@ const QuestionnaireConfirmation = () => {
       </div>
     </div>
   )
-
-
 }
 
 export default QuestionnaireConfirmation

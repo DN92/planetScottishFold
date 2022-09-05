@@ -1,13 +1,18 @@
 import React from 'react'
-import handleControlledValueFieldToState from '../customHandlers/handleFormChange'
-import { furColors, eyeColors, earOptions, genderOptions } from '../../myModelsConfig'
+import { eyeColors, earOptions, genderOptions } from '../../myModelsConfig'
 
-const KittenFilter = (props) => {
+const KittenFilter = ({filterState, dispatch, searcher}) => {
 
-  const {gender, ears, eyeColor} = props.filterState
+  const gender = filterState.gender.selection
+  const ears = filterState.ears.selection
+  const eyeColor =filterState.eyeColor.selection
 
   const handleChange = (event) => {
-    handleControlledValueFieldToState(event, props.setter)
+    dispatch({
+      type: 'set',
+      field: event.target.name,
+      value: event.target.value,
+    })
   }
 
   return (
@@ -38,11 +43,10 @@ const KittenFilter = (props) => {
         <label htmlFor="eyeColor">Eye Color</label><br />
       </>
       <div className='advSearch__search'>
-        <button className='buttonStyle2' type='button' onClick={props.searcher}>Sort</button>
+        <button className='buttonStyle2' type='button' onClick={searcher}>Sort</button>
       </div>
     </form>
   )
-
 }
 
 export default KittenFilter
