@@ -1,5 +1,4 @@
 import React from 'react'
-// import { Link, useHref } from 'react-router-dom'
 
 const SocialMediaIconWrapper = ({iconSrc, href, site}) => {
 

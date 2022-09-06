@@ -22,8 +22,8 @@ const setAuthorizations = async (req, res, next) => {
     res.status(401)
     next(err)
   }
-
   next()
+
 }
 
 module.exports = setAuthorizations

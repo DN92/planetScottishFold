@@ -24,7 +24,6 @@ const socialMediaInfo = [
     href: 'https://www.youtube.com/channel/UC3O7RNKGYtocqgB8d-QTZkg',
     iconSrc: '/socialMediaIcons/youtube.png'
   },
-
 ]
 
 export default socialMediaInfo

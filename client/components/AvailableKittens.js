@@ -11,9 +11,9 @@ const AvailableKittens = () => {
     let score = 0;
     for( const key in filterer) {
       if (filterer[key] === 'No Preference' || filterer[key] === '') continue;
-      if(filterer[key]?.selection === obj[key]) score += filterer[key]?.weight
+      if(filterer[key]?.selection === obj[key]) score += filterer[key].weight
     }
-    return score
+    return score || 0
   }
 
   const [error, setError] = useState(null)
@@ -56,18 +56,19 @@ const AvailableKittens = () => {
   const [availableKittens, dispatchAvailableKittens] = useReducer((state, action) => {
     switch(action.type) {
       case 'init':
-      return  kittens.filter(kitten => kitten.status === "Available")
-        .sort((a, b) => {
-          if(b.mother < a.mother) {
-            return 1
-          } else {
-            return -1
-          }
+        return  kittens.filter(kitten => kitten.status === "Available")
+          .sort((a, b) => {
+            if(b.mother < a.mother) {
+              return 1
+            } else {
+              return -1
+            }
         })
-      case 'applyFilter':
+      case 'applyFilter': {
         const weightedArr = [...state].map(kitten => ([kitten, getWeight(kitten, filterState)]))
-        weightedArr.sort((a, b) => ( b[1] - a[1]))
+        weightedArr.sort((a, b) => (b[1] - a[1]))
         return weightedArr.map(kitten => kitten[0]);
+      }
       default:
         return [...state]
     }

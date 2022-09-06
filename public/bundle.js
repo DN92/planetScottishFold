@@ -3150,10 +3150,10 @@ const AvailableKittens = () => {
 
     for (const key in filterer) {
       if (filterer[key] === 'No Preference' || filterer[key] === '') continue;
-      if (filterer[key]?.selection === obj[key]) score += filterer[key]?.weight;
+      if (filterer[key]?.selection === obj[key]) score += filterer[key].weight;
     }
 
-    return score;
+    return score || 0;
   };
 
   const [error, setError] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null);
@@ -3203,9 +3203,11 @@ const AvailableKittens = () => {
         });
 
       case 'applyFilter':
-        const weightedArr = [...state].map(kitten => [kitten, getWeight(kitten, filterState)]);
-        weightedArr.sort((a, b) => b[1] - a[1]);
-        return weightedArr.map(kitten => kitten[0]);
+        {
+          const weightedArr = [...state].map(kitten => [kitten, getWeight(kitten, filterState)]);
+          weightedArr.sort((a, b) => b[1] - a[1]);
+          return weightedArr.map(kitten => kitten[0]);
+        }
 
       default:
         return [...state];
@@ -4740,7 +4742,7 @@ const SingleReview = ({
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
- // import { Link, useHref } from 'react-router-dom'
+
 
 const SocialMediaIconWrapper = ({
   iconSrc,
