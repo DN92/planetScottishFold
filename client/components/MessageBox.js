@@ -13,9 +13,9 @@ const MessageBox = ({messageArray, options={}}) => {
   return (
     <>
       {showBox &&
-        <div onClick={handleClick} className='messagebox-wrapper'>
+        <div className='messagebox-wrapper'>
           <div className='messagebox-buttons'>
-            <button className='messagebox-button-close buttonStyle5'>
+            <button onClick={handleClick} className='messagebox-button-close buttonStyle5'>
               X
             </button>
           </div>
