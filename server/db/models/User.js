@@ -31,7 +31,7 @@ const User = db.define("user", {
     type: Sequelize.ENUM(budgetRanges)
   },
   aboutYou: {
-    type: Sequelize.STRING,
+    type: Sequelize.TEXT,
     defaultValue: '',
   },
   firstCat: {

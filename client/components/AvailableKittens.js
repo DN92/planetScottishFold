@@ -27,16 +27,16 @@ const AvailableKittens = () => {
         return {...state, [action.field]: {
           ...state[action.field],
           selection: action.value
-          }
-        };
+        }
+      };
       default:
         return {...state}
-    }},
-    {
-      gender: {
-        selection: 'No Preference',
-        weight: 0.8,
-      },
+      }},
+      {
+        gender: {
+          selection: 'No Preference',
+          weight: 0.8,
+        },
       ears: {
         selection: 'No Preference',
         weight: 1.1
@@ -46,8 +46,11 @@ const AvailableKittens = () => {
         weight: 1.2
       },
     }
-  )
+    )
 
+  const shownAdults = useMemo(() => {
+    availableAdults.filter(adult => adult.isHidden = false)
+  }, [availableAdults])
   const unavailableKittens = useMemo(() => {
     return kittens.filter(kitten => kitten.status !== "Available" )
       .sort((a, b) => Number(b.price) - Number(a.price) )
@@ -101,7 +104,7 @@ const AvailableKittens = () => {
       setInitAvailKittens(false)
       dispatchAvailableKittens({type: 'init'})
     }
-  }, [kittens])
+  }, [initAvailKittens, kittens])
 
   return (
     <div className='kittens'>
@@ -124,7 +127,7 @@ const AvailableKittens = () => {
           <hr /><br />
           <h4>Available Adults</h4>
           <div className='kittensWrapper'>
-            {availableAdults.map((cat) => (
+            {shownAdults.map((cat) => (
               <SingleKitten key={cat.id} kitten={cat} />
             ))}
           </div>

@@ -3188,6 +3188,9 @@ const AvailableKittens = () => {
       weight: 1.2
     }
   });
+  const shownAdults = (0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(() => {
+    availableAdults.filter(adult => adult.isHidden = false);
+  }, [availableAdults]);
   const unavailableKittens = (0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(() => {
     return kittens.filter(kitten => kitten.status !== "Available").sort((a, b) => Number(b.price) - Number(a.price));
   }, [kittens]);
@@ -3236,7 +3239,7 @@ const AvailableKittens = () => {
         type: 'init'
       });
     }
-  }, [kittens]);
+  }, [initAvailKittens, kittens]);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "kittens"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "Our Available Kittens"), error && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ErrorFill__WEBPACK_IMPORTED_MODULE_2__["default"], {
@@ -3259,7 +3262,7 @@ const AvailableKittens = () => {
     kitten: kitten
   }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("hr", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h4", null, "Available Adults"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "kittensWrapper"
-  }, availableAdults.map(cat => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_SingleKitten__WEBPACK_IMPORTED_MODULE_1__["default"], {
+  }, shownAdults.map(cat => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_SingleKitten__WEBPACK_IMPORTED_MODULE_1__["default"], {
     key: cat.id,
     kitten: cat
   }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("hr", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h4", null, "Reserved and Sold"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
