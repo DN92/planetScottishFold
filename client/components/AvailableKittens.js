@@ -49,7 +49,7 @@ const AvailableKittens = () => {
     )
 
   const shownAdults = useMemo(() => {
-    return availableAdults.filter(adult => adult.isHidden === false)
+    return availableAdults.filter(adult => adult.isHidden === false || adult.isHidden === 'false')
   }, [availableAdults])
   const unavailableKittens = useMemo(() => {
     return kittens.filter(kitten => kitten.status !== "Available" )
