@@ -5,7 +5,6 @@ const models = {
   Mother : require("./MotherModel"),
   Kitten : require("./KittenModel"),
   User : require("./User"),
-  InitialUser : require("./InitialUsers"),
   ContactRequest : require('./ContactRequest'),
   CatAsKitten : require('./CatAsKitten'),
   Application : require('./ApplicationsLog')

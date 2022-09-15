@@ -1,6 +1,6 @@
 const { Op } = require('sequelize')
 const router = require('express').Router()
-const { User, InitialUser } = require('../db').models
+const { User } = require('../db').models
 const passAuth = require('../expressMiddleware/checkValidAuthLevel')
 const { generate } = require('generate-password')
 const transporter = require('../transporter')

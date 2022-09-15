@@ -14,8 +14,6 @@ router.use('/contactRequests', require('./contactRequest'))
 router.use('/emails', require('./emails'))
 router.use('/catAsKitten', require('./catAsKitten'))
 
-router.use('/init', require('./init'))
-
 // error endpoint
 router.use((req, res, next) => {
   const error = new Error('Not Found --api index.js')

@@ -44,9 +44,6 @@ async function seed() {
     Promise.all(contactRequests.map(req => {
       return ContactRequest.create(req)
     })),
-    Promise.all(initialUsers.map(init => {
-      return InitialUser.create(init)
-    })),
     Promise.all(catAsKittenArray.map(cat => {
       return CatAsKitten.create(cat)
     }))
