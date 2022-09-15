@@ -7,7 +7,6 @@
   flex-direction: row;
   justify-content: space-around;
   margin: .5rem 0 .25rem 0;
-  background-color: var(--clr-500);
   background-color: rgb(246,167,163);
   padding: 1rem .25rem;
   border: 3px solid black;

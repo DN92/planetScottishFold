@@ -4161,43 +4161,31 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _textComponents_AboutUs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./textComponents/AboutUs */ "./client/components/textComponents/AboutUs.js");
+/* harmony import */ var _MessageBox__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./MessageBox */ "./client/components/MessageBox.js");
 
 
 
-const homeComponent = ({
-  setModalOpen
-}) => {
-  const [showBanner, setShowBanner] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(true);
-  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
-    const timeout = setTimeout(() => {
-      setShowBanner(false);
-    }, 10000);
-    return clearTimeout(timeout);
-  }, [showBanner]);
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, showBanner && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "home__banner"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "home__banner-text"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "$200 off when you buy 2 kittens. Get $100 per referral. All available kittens are currently on discount until 9/15/22. "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "FREE DELIVERY to NJ on all kittens from NC from 9/1/22 to 9/15/22."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "FREE DELIVERY to SC / GA on all kittens on 9/10/22.")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "home__banner-close"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
-    className: "home__banner-close-button buttonStyle5",
-    onClick: () => setShowBanner(false)
-  }, "X"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "home__modalButton__wrapper"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
-    className: "home__modalButton buttonStyle2",
-    onClick: () => {
-      setShowBanner(prev => !prev);
-    }
-  }, showBanner ? 'Hide' : 'Special Offers')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+
+const homeComponent = () => {
+  const messageArray = ['$200 off when you buy 2 kittens. Get $100 per referral. All available kittens are currently on discount until 9/16/22.', 'FREE DELIVERY to NJ/NYC on all kittens from NC on 9/17/2022.'];
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "home"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_MessageBox__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    messageArray: messageArray,
+    options: {
+      closeOnClick: true,
+      onCloseText: 'Show Announcements'
+    }
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "home__card1"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
     className: "home__card1__img",
-    src: "/catPictures/catHome1.webp",
-    alt: "cute cat image1"
+    src: "/catPictures/homepage2.jpg",
+    alt: "cute cat image1",
+    style: {
+      width: '60%',
+      margin: 'auto'
+    }
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_textComponents_AboutUs__WEBPACK_IMPORTED_MODULE_1__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "home__card2"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
@@ -4391,6 +4379,51 @@ const Logout = () => {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Logout);
+
+/***/ }),
+
+/***/ "./client/components/MessageBox.js":
+/*!*****************************************!*\
+  !*** ./client/components/MessageBox.js ***!
+  \*****************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+const MessageBox = ({
+  messageArray,
+  options = {}
+}) => {
+  const [showBox, setShowBox] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(true);
+
+  const handleClick = () => {
+    if (options.closeOnClick) {
+      setShowBox(prev => !prev);
+    }
+  };
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, showBox && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    onClick: handleClick,
+    className: "messagebox-wrapper"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "messagebox-buttons"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    className: "messagebox-button-close buttonStyle5"
+  }, "X")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "messagebox-message"
+  }, messageArray.map((msg, idx) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
+    key: msg + idx
+  }, msg)))), !showBox && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    onClick: handleClick,
+    className: "messagebox-closed"
+  }, options.onCloseText));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (MessageBox);
 
 /***/ }),
 

@@ -1,40 +1,23 @@
 import React, { useState, useEffect } from 'react'
 import AboutUs from './textComponents/AboutUs'
+import MessageBox from './MessageBox'
 
-const homeComponent = ({setModalOpen}) => {
+const homeComponent = () => {
 
-  const [showBanner, setShowBanner] = useState(true)
-
-  useEffect(() => {
-    const timeout = setTimeout(()=>{
-      setShowBanner(false)
-    }, 10000)
-    return clearTimeout(timeout)
-  }, [showBanner])
+  const messageArray = [
+    '$200 off when you buy 2 kittens. Get $100 per referral. All available kittens are currently on discount until 9/16/22.',
+    'FREE DELIVERY to NJ/NYC on all kittens from NC on 9/17/2022.',
+  ]
 
   return (
     <>
-      {showBanner &&
-        <div className='home__banner'>
-          <div className='home__banner-text'>
-            <p>$200 off when you buy 2 kittens. Get $100 per referral. All available kittens are currently on discount until 9/15/22. </p>
-            <p>FREE DELIVERY to NJ on all kittens from NC from 9/1/22 to 9/15/22.</p>
-            <p>FREE DELIVERY to SC / GA on all kittens on 9/10/22.</p>
-          </div>
-          <div className='home__banner-close'>
-            <button className='home__banner-close-button buttonStyle5' onClick={() => setShowBanner(false)}>X</button>
-          </div>
-        </div>
-      }
-      <div className='home__modalButton__wrapper'>
-        <button className='home__modalButton buttonStyle2' onClick={() => {
-          setShowBanner(prev => !prev)
-          }}
-        >{showBanner ? 'Hide' : 'Special Offers'}</button>
-      </div>
       <div className='home'>
+        <MessageBox messageArray={messageArray} options={{
+          closeOnClick: true,
+          onCloseText: 'Show Announcements'
+        }} />
         <div className='home__card1'>
-          <img className='home__card1__img' src="/catPictures/catHome1.webp" alt="cute cat image1"/>
+          <img className='home__card1__img' src="/catPictures/homepage2.jpg" alt="cute cat image1" style={{width: '60%', margin: 'auto'}}/>
         </div>
         <AboutUs />
         <div className='home__card2'>
