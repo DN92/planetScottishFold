@@ -13,6 +13,7 @@ router.use('/users', require('./users'))
 router.use('/contactRequests', require('./contactRequest'))
 router.use('/emails', require('./emails'))
 router.use('/catAsKitten', require('./catAsKitten'))
+router.use('/applications', require('./applications'))
 
 // error endpoint
 router.use((req, res, next) => {
