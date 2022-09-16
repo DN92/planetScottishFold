@@ -6314,7 +6314,19 @@ __webpack_require__.r(__webpack_exports__);
 
 const Reviews2 = () => {
   const [reviews, setReviews] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]);
-  console.log(typeof reviews[0]);
+  const reviewsLength = (0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(() => reviews.length, [reviews]);
+  const reviewsColumn1 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(() => {
+    if (reviewsLength < 0) return [];
+    return reviews.slice(0, Math.ceil(reviewsLength / 3));
+  }, [reviewsLength]);
+  const reviewsColumn2 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(() => {
+    if (reviewsLength < 1) return [];
+    return reviews.slice(Math.ceil(reviewsLength / 3), Math.ceil(reviewsLength / 3 * 2));
+  }, [reviewsLength]);
+  const reviewsColumn3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(() => {
+    if (reviewsLength < 2) return [];
+    return reviews.slice(Math.ceil(reviewsLength / 3 * 2), Math.ceil(reviewsLength));
+  }, [reviewsLength]);
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
     fetch('/api/reviews', {
       method: 'get',
@@ -6323,10 +6335,22 @@ const Reviews2 = () => {
   }, []);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "reviews-wrapper"
-  }, reviews.map((review, idx) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ReviewWrapper__WEBPACK_IMPORTED_MODULE_1__["default"], {
-    key: idx,
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "reviews-column"
+  }, reviewsColumn1.map((review, idx) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ReviewWrapper__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    key: idx + '-.-' + review,
     imgPath: review
-  })));
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "reviews-column"
+  }, reviewsColumn2.map((review, idx) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ReviewWrapper__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    key: idx + '-.-' + review,
+    imgPath: review
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "reviews-column"
+  }, reviewsColumn3.map((review, idx) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ReviewWrapper__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    key: idx + '-.-' + review,
+    imgPath: review
+  }))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Reviews2);

@@ -6,7 +6,9 @@
 }
 
 .smIcon-wrapper {
-
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .smIcon-image {

@@ -1,6 +1,8 @@
 .reviews-wrapper {
   display: flex;
   flex-direction: column;
+  width: 100%;
+  margin: auto;
 }
 
 .review-card {
@@ -45,13 +47,23 @@
   .reviews-wrapper {
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  .reviews-column {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 30%;
   }
 
   .review-card {
-    width: 30%;
+    width: 100%;
     height: auto;
-    margin: .5rem;
+    margin: .5rem 0 .5rem 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   .review-card > img {
