@@ -1,3 +1,17 @@
+.reviews-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.review-card {
+  width: 100%;
+  height: auto;
+}
+
+.review-card > img {
+  object-fit: contain;
+}
+
 .reviews {
   display: flex;
   flex-direction: column;
@@ -25,6 +39,24 @@
 .review__card__img {
 
   margin: 1.5rem auto;
+}
+
+@media (min-width: 50em) {
+  .reviews-wrapper {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .review-card {
+    width: 30%;
+    height: auto;
+    margin: .5rem;
+  }
+
+  .review-card > img {
+    object-fit: contain;
+  }
 }
 
 @media (min-width: 80em) {

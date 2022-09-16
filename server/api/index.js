@@ -14,6 +14,7 @@ router.use('/contactRequests', require('./contactRequest'))
 router.use('/emails', require('./emails'))
 router.use('/catAsKitten', require('./catAsKitten'))
 router.use('/applications', require('./applications'))
+router.use('/reviews', require('./reviews'))
 
 // error endpoint
 router.use((req, res, next) => {

@@ -14,6 +14,7 @@ import Logout from './components/Logout'
 import ViewCats from './components/ViewCats'
 import CatDetailedView from './components/CatDetailedView';
 import QuestionnaireConfirmation from './components/QuestionnaireConfirmation'
+import Reviews2 from './components/reviews/Reviews2';
 
 
 const FrontEndRoutes = ({setModalOpen}) => {
@@ -30,7 +31,7 @@ const FrontEndRoutes = ({setModalOpen}) => {
       <Route path='/viewCats/:MOTHERorFATHER' element={<ViewCats />} >
       </Route>
       <Route path='/catDetailedView/:MOTHERorFATHER/:id' element={<CatDetailedView />} />
-      <Route path='/reviews' element={<Reviews />} />
+      <Route path='/reviews' element={<Reviews2 />} />
       <Route path='/waitingListForm' element={<ClientQuestionnaire />} />
       <Route path='/confirmClientQuestionnaire' element={<ConfirmClientQuestionnaire />} />
       <Route path='/contact' element={<ContactRequestForm />} />
