@@ -6286,10 +6286,11 @@ __webpack_require__.r(__webpack_exports__);
 const ReviewWrapper = ({
   imgPath
 }) => {
+  console.log(imgPath);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "review-card"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
-    src: imgPath,
+    src: '/reviews/' + imgPath,
     alt: "image file of a review"
   }));
 };
