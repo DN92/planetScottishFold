@@ -12,9 +12,9 @@ const AdminBar = ({setViewNav}) => {
       <Link to='createKitten'>Add A Kitten</Link>
       <Link to='createCat/mother' >Add A Dam </Link>
       <Link to='createCat/father' >Add A Sire </Link>
-      <Link to='availableKittens' >View/Edit Kittens</Link>
-      <Link to='viewCats/mother' >View/Edit A Dam </Link>
-      <Link to='viewCats/father' >View/Edit A Sire </Link>
+      <Link to='availableKittens' >Edit Kittens</Link>
+      <Link to='viewCats/mother' >Edit A Dam </Link>
+      <Link to='viewCats/father' >Edit A Sire </Link>
     </nav>
   )
 }

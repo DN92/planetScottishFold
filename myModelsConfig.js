@@ -9,7 +9,7 @@ const myConfig = {
     'Gold Chinchilla',
     'Blue Gold Chinchilla',
     'Colorpoint',
-    'Blue - Ticket/Tabby',
+    'Blue - Ticked/Tabby',
     'Lilac',
     'Tortoiseshell/Tricolor/Calico',
     'Bicolor/Any Color with White',

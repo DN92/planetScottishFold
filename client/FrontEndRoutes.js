@@ -35,8 +35,6 @@ const FrontEndRoutes = ({setModalOpen}) => {
       <Route path='/waitingListForm' element={<ClientQuestionnaire />} />
       <Route path='/confirmClientQuestionnaire' element={<ConfirmClientQuestionnaire />} />
       <Route path='/contact' element={<ContactRequestForm />} />
-      <Route path='/instagram' element={<PlaceHolder />} />
-      <Route path='/facebook' element={<PlaceHolder />} />
       <Route path='/404' element={<My404 />} />
       <Route path='/QConfirmation' element={<QuestionnaireConfirmation />} />
       <Route path='/logout' element={<Logout />} />

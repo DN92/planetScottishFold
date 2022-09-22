@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import handleControlledValueFieldToState from '../../customHandlers/handleFormChange'
-import {furColors, eyeColors, earOptions, genderOptions} from "../../../myModelsConfig"
+import {furColorsAdmin, eyeColors, earOptions, genderOptions} from "../../../myModelsConfig"
 import history from '../../history'
 import { fetchEffect } from '../axiosHandlers/fetchEffect'
 import ErrorFill from '../ErrorFill'
@@ -15,7 +15,7 @@ const CreateKitten = () => {
     regNum: '',
     gender: genderOptions[0],
     ears: earOptions[0],
-    furColor: furColors[0],
+    furColor: furColorsAdmin[0],
     eyeColor: eyeColors[0],
     mother: '',
     father:'',
@@ -128,8 +128,8 @@ const CreateKitten = () => {
           <>
             <label htmlFor="kittenToCreateFur">Fur Color</label>
             <select id="kittenToCreateFur" name="furColor" value={kittenToCreate.furColor} onChange={handleChange}>
-              <option value={furColors[0]}>Fur Color</option>
-              {furColors.map((color, index) => (
+              <option value={furColorsAdmin[0]}>Fur Color</option>
+              {furColorsAdmin.map((color, index) => (
                 <option key={index} value={color}>{color}</option>
               ))}
             </select> <br />

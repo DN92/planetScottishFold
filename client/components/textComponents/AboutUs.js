@@ -42,7 +42,7 @@ const AboutUs = () => {
     </p>
     <Link to='/availableKittens'>View Scottish Fold Kittens for Sale</Link>
     <div className='aboutUs__card2'>
-      <img className='aboutUs__card2__img' src="/fillerPictures/fillerLandscape2.jpg" alt="cat picture" />
+      <img className='aboutUs__card2__img' src="/fillerPictures/homepageFiller2cats.jpg" alt="cat picture" style={{maxHeight : '540px', width: 'auto'}} />
     </div>
     <h5>Our Kittens</h5>
     <p>
@@ -60,7 +60,7 @@ const AboutUs = () => {
       <li>weaned off and litter box trained kitten</li>
       <li>weekly updates with photos and/or videos</li>
       <li>lifetime breeder support</li>
-      <li>30 days FREE pet insurance </li>
+      <li>30 days FREE pet insurance (NY and FL excluded) </li>
       <li>FaceTime is available before or after the reservation. </li>
     </ul>
     <h5>Delivery options:</h5>

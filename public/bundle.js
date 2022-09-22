@@ -2722,12 +2722,6 @@ const FrontEndRoutes = ({
       path: "/contact",
       element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_ContactRequestForm__WEBPACK_IMPORTED_MODULE_6__["default"], null)
     }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_16__.Route, {
-      path: "/instagram",
-      element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_PlaceHolder__WEBPACK_IMPORTED_MODULE_1__["default"], null)
-    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_16__.Route, {
-      path: "/facebook",
-      element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_PlaceHolder__WEBPACK_IMPORTED_MODULE_1__["default"], null)
-    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_16__.Route, {
       path: "/404",
       element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_My404__WEBPACK_IMPORTED_MODULE_9__["default"], null)
     }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_16__.Route, {
@@ -2837,11 +2831,11 @@ const AdminBar = ({
     to: "createCat/father"
   }, "Add A Sire "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
     to: "availableKittens"
-  }, "View/Edit Kittens"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
+  }, "Edit Kittens"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
     to: "viewCats/mother"
-  }, "View/Edit A Dam "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
+  }, "Edit A Dam "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
     to: "viewCats/father"
-  }, "View/Edit A Sire "));
+  }, "Edit A Sire "));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (AdminBar);
@@ -3571,16 +3565,16 @@ const ClientQuestionnaire = () => {
     className: "waitingList"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
     className: "apply-header"
-  }, "Apply for your Kitty"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
+  }, "Apply for your Kitten"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
     className: "waitingList-description"
-  }, "Please fill out this questionnaire to apply for a Planet Scottish Fold Kitten. Once your application is approved, you will receive an email with how you can reserve a kitten. We require a $300 non-refundable deposit in order to reserve a kitten from current or future litters. Remaining balance is due during pick up."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+  }, "Please fill out this questionnaire to apply for a Planet Scottish Fold Kitten. Once your application is reviewed, you will be contacted. We require a $300 deposit to be on the waiting list for the future litters and a $500 non-refundable deposit to reserve a kitten from current litters. Remaining balance is due during pick up."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "buttonsWrapper2"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
     className: "buttonStyle4",
     onClick: handleViewIncluded
   }, "What you're getting with your Kitten")), showIncluded && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "waitingList-info"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("ul", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "1 year health guarantee (covers hereditary defects and offers a replacement kitten)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "age appropriate vaccinations and deworming "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "spay/neuter once kitten is at least 12 weeks old (only NC kittens)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "microchip"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "well socialized kitten raised at home in warm and loving environment with other pets and children"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "weaned off and litter box trained kitten"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "weekly updates with photos and/or videos"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "lifetime breeder support"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "30 days FREE pet insurance "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "FaceTime is available before or after the reservation. "))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("form", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("ul", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "1 year health guarantee (covers hereditary defects and offers a replacement kitten)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "age appropriate vaccinations and deworming "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "spay/neuter once kitten is at least 12 weeks old (only NC kittens)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "microchip"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "well socialized kitten raised at home in warm and loving environment with other pets and children"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "weaned off and litter box trained kitten"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "weekly updates with photos and/or videos"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "lifetime breeder support"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "30 days FREE pet insurance (NY and FL excluded) "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "FaceTime is available before or after the reservation. "))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("form", {
     id: "clientQuestionnaire",
     className: "waitingList__form",
     onSubmit: handleSubmit,
@@ -4172,10 +4166,11 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const homeComponent = () => {
-  const messageArray = ['$200 off when you buy 2 kittens. Get $100 per referral. All available kittens are currently on discount until 9/16/22.', 'FREE DELIVERY to NJ/NYC on all kittens from NC on 9/17/2022.'];
+  const [showMessageBox, setShowMessageBox] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
+  const messageArray = ['$200 off when you buy 2 kittens. Get $100 per referral.'];
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "home"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_MessageBox__WEBPACK_IMPORTED_MODULE_2__["default"], {
+  }, showMessageBox && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_MessageBox__WEBPACK_IMPORTED_MODULE_2__["default"], {
     messageArray: messageArray,
     options: {
       closeOnClick: true,
@@ -4188,8 +4183,8 @@ const homeComponent = () => {
     src: "/catPictures/homepage2.jpg",
     alt: "cute cat image1",
     style: {
-      width: '60%',
-      margin: 'auto'
+      maxHeight: '540px',
+      width: 'auto'
     }
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_textComponents_AboutUs__WEBPACK_IMPORTED_MODULE_1__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "home__card2"
@@ -4560,15 +4555,15 @@ const NavMobile = ({
     to: "createKitten"
   }, "Add A Kitten"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
     to: "availableKittens"
-  }, "View/Edit Kittens"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
+  }, "Edit Kittens"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
     to: "createCat/mother"
   }, "Add A Dam "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
     to: "createCat/father"
   }, "Add A Sire "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
     to: "viewCats/mother"
-  }, "View/Edit A Dam "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
+  }, "Edit A Dam "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
     to: "viewCats/father"
-  }, "View/Edit A Sire "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
+  }, "Edit A Sire "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
     to: "directMessages"
   }, "Direct Messages ")) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
     to: "/home"
@@ -5220,7 +5215,7 @@ const CreateKitten = () => {
     regNum: '',
     gender: _myModelsConfig__WEBPACK_IMPORTED_MODULE_2__.genderOptions[0],
     ears: _myModelsConfig__WEBPACK_IMPORTED_MODULE_2__.earOptions[0],
-    furColor: _myModelsConfig__WEBPACK_IMPORTED_MODULE_2__.furColors[0],
+    furColor: _myModelsConfig__WEBPACK_IMPORTED_MODULE_2__.furColorsAdmin[0],
     eyeColor: _myModelsConfig__WEBPACK_IMPORTED_MODULE_2__.eyeColors[0],
     mother: '',
     father: '',
@@ -5320,8 +5315,8 @@ const CreateKitten = () => {
     value: kittenToCreate.furColor,
     onChange: handleChange
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
-    value: _myModelsConfig__WEBPACK_IMPORTED_MODULE_2__.furColors[0]
-  }, "Fur Color"), _myModelsConfig__WEBPACK_IMPORTED_MODULE_2__.furColors.map((color, index) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+    value: _myModelsConfig__WEBPACK_IMPORTED_MODULE_2__.furColorsAdmin[0]
+  }, "Fur Color"), _myModelsConfig__WEBPACK_IMPORTED_MODULE_2__.furColorsAdmin.map((color, index) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
     key: index,
     value: color
   }, color))), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
@@ -6400,11 +6395,15 @@ const AboutUs = () => {
     className: "aboutUs__card2"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
     className: "aboutUs__card2__img",
-    src: "/fillerPictures/fillerLandscape2.jpg",
-    alt: "cat picture"
+    src: "/fillerPictures/homepageFiller2cats.jpg",
+    alt: "cat picture",
+    style: {
+      maxHeight: '540px',
+      width: 'auto'
+    }
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h5", null, "Our Kittens"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Our kittens well-being is very important, thus choosing the right owners for our babies is another priority! If you\u2019re ready for your perfect baby, please fill out the ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
     to: "/waitingListForm"
-  }, "Questionnaire.")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "What you\u2019re getting from Planet Scottish fold:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("ul", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "1 year health guarantee (covers hereditary defects and offers a replacement kitten)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "age appropriate vaccinations and deworming "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "spay/neuter once kitten is at least 12 weeks old (only NC kittens)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "microchip"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "well socialized kitten raised at home in warm and loving environment with other pets and children"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "weaned off and litter box trained kitten"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "weekly updates with photos and/or videos"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "lifetime breeder support"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "30 days FREE pet insurance "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "FaceTime is available before or after the reservation. ")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h5", null, "Delivery options:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
+  }, "Questionnaire.")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "What you\u2019re getting from Planet Scottish fold:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("ul", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "1 year health guarantee (covers hereditary defects and offers a replacement kitten)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "age appropriate vaccinations and deworming "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "spay/neuter once kitten is at least 12 weeks old (only NC kittens)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "microchip"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "well socialized kitten raised at home in warm and loving environment with other pets and children"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "weaned off and litter box trained kitten"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "weekly updates with photos and/or videos"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "lifetime breeder support"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "30 days FREE pet insurance (NY and FL excluded) "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "FaceTime is available before or after the reservation. ")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h5", null, "Delivery options:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
     className: "underlined"
   }, "Air delivery:"), " Delivery within USA is available. Delivery price depends on the destination and airlines schedule. We will deliver to your closest international airport where you\u2019d pick up your kitten from our trusted flight nanny."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Please note, we do not and will not deliver via cargo. If choosing air delivery, only in cabin delivery will be provided. Your kitten will be accompanied with a flight nanny throughout the whole trip and will receive the best care possible! You will be notified throughout the day about your kittens travel."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
     className: "underlined"
@@ -6703,7 +6702,7 @@ const socialMediaInfo = [{
 const myConfig = {
   //  furColors and eyeColors are used in the Cat Models Enum tables for their corresponding keys.
   //  FOR CLIENT Q FORM v2
-  furColors: ['White', 'Silver Chinchilla', 'Gold Chinchilla', 'Blue Gold Chinchilla', 'Colorpoint', 'Blue - Ticket/Tabby', 'Lilac', 'Tortoiseshell/Tricolor/Calico', 'Bicolor/Any Color with White', 'Chocolate/Black/Cinnamon'],
+  furColors: ['White', 'Silver Chinchilla', 'Gold Chinchilla', 'Blue Gold Chinchilla', 'Colorpoint', 'Blue - Ticked/Tabby', 'Lilac', 'Tortoiseshell/Tricolor/Calico', 'Bicolor/Any Color with White', 'Chocolate/Black/Cinnamon'],
   // end last comment
   furColorsAdmin: ['No Preference', 'White', 'Silver', 'Gold', 'Colorpoint', 'Blue', 'Brown', 'Black', 'Black Golden Shaded', 'Black Golden Shell', 'Black Golden Ticked', 'Black Silver Ticked', 'Silver Chinchilla Point', 'Silver Shaded Chinchilla', 'Black Marble Tabby', 'Blue Bicolor Tabby', 'Brown Ticked Bicolor', 'Blue Ticked Bicolor', 'Black Tabby', 'Blue Colorpoint'],
   eyeColors: ['No Preference', 'Green', 'Blue', 'Yellow', 'Copper', 'Odd'],
