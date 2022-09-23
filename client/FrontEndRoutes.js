@@ -1,9 +1,7 @@
 import React from 'react';
 import { Routes, Route, Navigate } from "react-router-dom";
-import PlaceHolder from "./components/PlaceHolder";
 import HomeComponent from './components/Home';
 import AvailableKittens from './components/AvailableKittens';
-import Reviews from './components/Reviews';
 import ClientQuestionnaire from './components/ClientQuestionnaire';
 import ContactRequestForm from './components/ContactRequestForm';
 import ConfirmClientQuestionnaire from './components/ConfirmClientQuestionnaire';
@@ -11,7 +9,7 @@ import AuthFrom from './components/AuthForm';
 import My404 from './components/My404'
 import KittenDetailedView from './components/KittenDetailedView'
 import Logout from './components/Logout'
-import ViewCats from './components/ViewCats'
+import ViewCats from './components/ViewCats2'
 import CatDetailedView from './components/CatDetailedView';
 import QuestionnaireConfirmation from './components/QuestionnaireConfirmation'
 import Reviews2 from './components/reviews/Reviews2';
@@ -19,7 +17,6 @@ import Reviews2 from './components/reviews/Reviews2';
 
 const FrontEndRoutes = ({setModalOpen}) => {
 
-  //  later, there should be guest, user, adminViewer, and admin Route views
   return (
     // public routes
     <Routes>
@@ -28,7 +25,7 @@ const FrontEndRoutes = ({setModalOpen}) => {
       <Route path='/home' element={<HomeComponent setModalOpen={setModalOpen} />} />
       <Route path='/availableKittens' element={<AvailableKittens />} />
       <Route path='/kittenDetailed/:model/:id' element={<KittenDetailedView />} />
-      <Route path='/viewCats/:MOTHERorFATHER' element={<ViewCats />} >
+      <Route path='/viewCats' element={<ViewCats />} >
       </Route>
       <Route path='/catDetailedView/:MOTHERorFATHER/:id' element={<CatDetailedView />} />
       <Route path='/reviews' element={<Reviews2 />} />
@@ -40,7 +37,6 @@ const FrontEndRoutes = ({setModalOpen}) => {
       <Route path='/logout' element={<Logout />} />
 
 {/* Redirects */}
-      <Route path='/viewCats' element={<Navigate to='mother'/>}></Route>
       <Route path='/catDetailed' element={<Navigate to='mother' />} />
       <Route path='/catDetailed/mother' element={<Navigate to='1' />} />
     </Routes>
