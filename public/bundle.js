@@ -5405,7 +5405,16 @@ const CreateKitten = () => {
     cols: "50",
     rows: "8",
     placeholder: "description"
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+    htmlFor: "createKittenDob"
+  }, "Date of Birth"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    type: "text",
+    id: "createKittenDob",
+    name: "dob",
+    placeholder: "DOB",
+    value: kittenToCreate.dob,
+    onChange: handleChange
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "buttonsWrapper"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
     className: "buttonStyle2",
@@ -5916,6 +5925,15 @@ const EditKitten = () => {
     cols: "50",
     rows: "15",
     placeholder: "description"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+    htmlFor: "editKittenDob"
+  }, "Date of Birth"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    type: "text",
+    id: "editKittenDob",
+    name: "dob",
+    placeholder: "DOB",
+    value: kittenToEdit.dob,
+    onChange: handleChange
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "buttonsWrapper"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {

@@ -228,6 +228,16 @@ const EditKitten = () => {
                 cols="50" rows="15"
                 placeholder='description'
               />
+              <label htmlFor='editKittenDob'>
+                Date of Birth
+              </label>
+              <input type="text"
+                id="editKittenDob"
+                name='dob'
+                placeholder='DOB'
+                value={kittenToEdit.dob}
+                onChange={handleChange}
+              />
               <div className='buttonsWrapper'>
                 <button className='buttonStyle2' onClick={handleReset} type='button'>Reset Changes</button>
                 <button className='buttonStyle2' type='submit'>Submit Changes</button>

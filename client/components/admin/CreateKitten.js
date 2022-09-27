@@ -175,6 +175,16 @@ const CreateKitten = () => {
           <label htmlFor="kittenToCreateDescription">Description</label>
             <textarea name="description" cols="50" rows="8" placeholder='description'></textarea>
           </>
+          <label htmlFor='createKittenDob'>
+                Date of Birth
+              </label>
+              <input type="text"
+                id="createKittenDob"
+                name='dob'
+                placeholder='DOB'
+                value={kittenToCreate.dob}
+                onChange={handleChange}
+              />
           <div className='buttonsWrapper'>
             <button className='buttonStyle2' type='submit'>Create</button>
           </div>
