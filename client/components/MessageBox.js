@@ -1,6 +1,11 @@
 import React, {useState} from 'react'
 
-const MessageBox = ({messageArray, options={}}) => {
+const MessageBox = ({messageArray, image, options={}, style={
+  width: '40%',
+  height: 'auto',
+  margin: 'auto',
+  border: '4px solid var(--clr-500)'
+}}) => {
 
   const [showBox, setShowBox] = useState(true)
 
@@ -19,6 +24,8 @@ const MessageBox = ({messageArray, options={}}) => {
               X
             </button>
           </div>
+          {image &&  <img src={image.src || ""} alt={image.alt || ""} style={style} />}
+
           <div className='messagebox-message'>
             {messageArray.map((msg, idx) => (
               <p key={msg+idx}>{msg}</p>

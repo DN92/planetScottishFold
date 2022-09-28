@@ -1,9 +1,9 @@
 .messagebox-wrapper {
-  background-color: var(--clr-400);
+  background-color: var(--clr-100);
   border: 3px solid black;
   padding: 1rem;
   position: relative;
-  margin: .5rem 0 .5rem 0;
+  margin: 1rem 0 3rem 0;
 }
 
 .messagebox-buttons {
@@ -20,8 +20,8 @@
   line-height: 1;
   color: var(--clr-500);
   font-weight: bold;
-  font-size: var(--fs-300);
-  text-align: justify;
+  font-size: var(--fs-400);
+  text-align: center;
 }
 
 .messagebox-closed {

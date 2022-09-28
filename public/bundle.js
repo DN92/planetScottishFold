@@ -4151,17 +4151,28 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _textComponents_AboutUs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./textComponents/AboutUs */ "./client/components/textComponents/AboutUs.js");
 /* harmony import */ var _MessageBox__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./MessageBox */ "./client/components/MessageBox.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/index.js");
+
 
 
 
 
 const homeComponent = () => {
-  const [showMessageBox, setShowMessageBox] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
-  const messageArray = ['$200 off when you buy 2 kittens. Get $100 per referral.'];
+  const [showMessageBox, setShowMessageBox] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(true);
+  const messageArray = ['We have four new kittens that have just joined our wonderfur family!', 'Breed: British Shorthair', 'Location: High Point, NC', /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+    style: {
+      color: 'var(--clr-500)'
+    },
+    to: "/waitinglistForm"
+  }, "If interested, please apply here")];
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "home"
   }, showMessageBox && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_MessageBox__WEBPACK_IMPORTED_MODULE_2__["default"], {
     messageArray: messageArray,
+    image: {
+      src: "/catPictures/newLitter1.jpg",
+      alt: "kittens"
+    },
     options: {
       closeOnClick: true,
       onCloseText: 'Show Announcements'
@@ -4386,7 +4397,14 @@ __webpack_require__.r(__webpack_exports__);
 
 const MessageBox = ({
   messageArray,
-  options = {}
+  image,
+  options = {},
+  style = {
+    width: '40%',
+    height: 'auto',
+    margin: 'auto',
+    border: '4px solid var(--clr-500)'
+  }
 }) => {
   const [showBox, setShowBox] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(true);
 
@@ -4403,7 +4421,11 @@ const MessageBox = ({
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
     onClick: handleClick,
     className: "messagebox-button-close buttonStyle5"
-  }, "X")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+  }, "X")), image && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
+    src: image.src || "",
+    alt: image.alt || "",
+    style: style
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "messagebox-message"
   }, messageArray.map((msg, idx) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
     key: msg + idx

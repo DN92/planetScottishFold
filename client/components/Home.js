@@ -1,22 +1,34 @@
 import React, { useState } from 'react'
 import AboutUs from './textComponents/AboutUs'
 import MessageBox from './MessageBox'
+import { Link } from 'react-router-dom'
 
 const homeComponent = () => {
 
-  const [showMessageBox, setShowMessageBox] = useState(false)
+  const [showMessageBox, setShowMessageBox] = useState(true)
 
   const messageArray = [
-    '$200 off when you buy 2 kittens. Get $100 per referral.',
+    'We have four new kittens that have just joined our wonderfur family!',
+    'Breed: British Shorthair',
+    'Location: High Point, NC',
+    <Link style={{color: 'var(--clr-500)'}} to='/waitinglistForm'>If interested, please apply here</Link>
   ]
+
+
 
   return (
     <>
       <div className='home'>
         {showMessageBox &&
-          <MessageBox messageArray={messageArray} options={{
-            closeOnClick: true,
-            onCloseText: 'Show Announcements'
+          <MessageBox
+            messageArray={messageArray}
+            image={{
+              src: "/catPictures/newLitter1.jpg",
+              alt: "kittens"
+            }}
+            options={{
+              closeOnClick: true,
+              onCloseText: 'Show Announcements'
           }} />
         }
         <div className='home__card1'>
