@@ -14,8 +14,6 @@ const homeComponent = () => {
     <Link style={{color: 'var(--clr-500)'}} to='/waitinglistForm'>If interested, please apply here</Link>
   ]
 
-
-
   return (
     <>
       <div className='home'>
