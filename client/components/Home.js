@@ -21,8 +21,8 @@ const homeComponent = () => {
           <MessageBox
             messageArray={messageArray}
             image={{
-              src: "/catPictures/newLitter1.jpg",
-              alt: "kittens"
+              src: "/otherPictures/homepagebanner.jpg",
+              alt: "home page banner"
             }}
             options={{
               closeOnClick: true,
