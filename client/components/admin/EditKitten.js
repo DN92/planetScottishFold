@@ -220,7 +220,6 @@ const EditKitten = () => {
               </>
               <>
                 <label htmlFor="editKittenDescription">Description</label>
-              </>
               <textarea id="editKittenDescription"
                 name="description"
                 value={kittenToEdit.description}
@@ -228,6 +227,17 @@ const EditKitten = () => {
                 cols="50" rows="15"
                 placeholder='description'
               />
+              </>
+              <>
+                <label htmlFor="kittenToEditLocation">Location</label>
+                <input id='kittenToEditLocation'
+                  type='text'
+                  name='location'
+                  placeholder='Location'
+                  value={kittenToEdit.location}
+                  onChange={handleChange}
+                />
+              </>
               <label htmlFor='editKittenDob'>
                 Date of Birth
               </label>
@@ -248,10 +258,6 @@ const EditKitten = () => {
       }
     </>
   )
-
-  // return (
-  //   <div></div>
-  // )
 }
 
 export default EditKitten

@@ -147,6 +147,16 @@ const EditCat = () => {
             </select> <br />
           </>
           <>
+            <label htmlFor="catToEditLocation">Location</label>
+            <input id='catToEditLocation'
+              type='text'
+              name='location'
+              placeholder='Location'
+              value={catToEdit.location}
+              onChange={handleChange}
+            />
+          </>
+          <>
             <label htmlFor="catToEditDescription">Description</label>
             <textarea id="catToEditDescription" name="description" cols="50" rows="8" value={catToEdit.description} onChange={handleChange} placeholder='description'></textarea>
           </>

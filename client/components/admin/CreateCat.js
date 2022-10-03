@@ -18,6 +18,7 @@ const CreateCat = () => {
     furColor: '',
     eyeColor: eyeColors[0],
     description: '',
+    location: '',
   }
 
   const [catToCreate, setCatToCreate] = useState(defaultState)
@@ -116,6 +117,16 @@ const CreateCat = () => {
             <option key={index} value={color}>{color}</option>
             ))}
         </select> <br />
+      </>
+      <>
+        <label htmlFor="catToCreateLocation">Location</label>
+        <input id='catToCreateLocation'
+          type='text'
+          name='location'
+          placeholder='Location'
+          value={catToCreate.location}
+          onChange={handleChange}
+        />
       </>
       <>
         <label htmlFor="catToCreateDescription">Description</label>

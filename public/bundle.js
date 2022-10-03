@@ -4170,8 +4170,8 @@ const homeComponent = () => {
   }, showMessageBox && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_MessageBox__WEBPACK_IMPORTED_MODULE_2__["default"], {
     messageArray: messageArray,
     image: {
-      src: "/catPictures/newLitter1.jpg",
-      alt: "kittens"
+      src: "/otherPictures/homepagebanner.jpg",
+      alt: "home page banner"
     },
     options: {
       closeOnClick: true,
@@ -5125,7 +5125,8 @@ const CreateCat = () => {
     ears: _myModelsConfig__WEBPACK_IMPORTED_MODULE_1__.earOptions[0],
     furColor: '',
     eyeColor: _myModelsConfig__WEBPACK_IMPORTED_MODULE_1__.eyeColors[0],
-    description: ''
+    description: '',
+    location: ''
   };
   const [catToCreate, setCatToCreate] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(defaultState);
   const [posted, setPosted] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null);
@@ -5223,6 +5224,15 @@ const CreateCat = () => {
     key: index,
     value: color
   }, color))), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+    htmlFor: "catToCreateLocation"
+  }, "Location"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    id: "catToCreateLocation",
+    type: "text",
+    name: "location",
+    placeholder: "Location",
+    value: catToCreate.location,
+    onChange: handleChange
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
     htmlFor: "catToCreateDescription"
   }, "Description"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("textarea", {
     id: "catToCreateDescription",
@@ -5277,7 +5287,8 @@ const CreateKitten = () => {
     mother: '',
     father: '',
     description: '',
-    price: ''
+    price: '',
+    location: ''
   };
   const [kittenToCreate, setKittenToCreate] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(defaultState);
   const [dams, setDams] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]);
@@ -5421,13 +5432,15 @@ const CreateKitten = () => {
     value: kittenToCreate.price,
     onChange: handleChange
   }), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
-    htmlFor: "kittenToCreateDescription"
-  }, "Description"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("textarea", {
-    name: "description",
-    cols: "50",
-    rows: "8",
-    placeholder: "description"
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+    htmlFor: "kittenToCreateLocation"
+  }, "Location"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    id: "kittenToCreateLocation",
+    type: "text",
+    name: "location",
+    placeholder: "Location",
+    value: kittenToCreate.location,
+    onChange: handleChange
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
     htmlFor: "createKittenDob"
   }, "Date of Birth"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
     type: "text",
@@ -5436,7 +5449,14 @@ const CreateKitten = () => {
     placeholder: "DOB",
     value: kittenToCreate.dob,
     onChange: handleChange
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+    htmlFor: "kittenToCreateDescription"
+  }, "Description"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("textarea", {
+    name: "description",
+    cols: "50",
+    rows: "8",
+    placeholder: "description"
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "buttonsWrapper"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
     className: "buttonStyle2",
@@ -5715,6 +5735,15 @@ const EditCat = () => {
     key: index,
     value: color
   }, color))), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+    htmlFor: "catToEditLocation"
+  }, "Location"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    id: "catToEditLocation",
+    type: "text",
+    name: "location",
+    placeholder: "Location",
+    value: catToEdit.location,
+    onChange: handleChange
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
     htmlFor: "catToEditDescription"
   }, "Description"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("textarea", {
     id: "catToEditDescription",
@@ -5939,7 +5968,7 @@ const EditKitten = () => {
     value: option
   }, option))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
     htmlFor: "editKittenDescription"
-  }, "Description")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("textarea", {
+  }, "Description"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("textarea", {
     id: "editKittenDescription",
     name: "description",
     value: kittenToEdit.description,
@@ -5947,7 +5976,16 @@ const EditKitten = () => {
     cols: "50",
     rows: "15",
     placeholder: "description"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+    htmlFor: "kittenToEditLocation"
+  }, "Location"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    id: "kittenToEditLocation",
+    type: "text",
+    name: "location",
+    placeholder: "Location",
+    value: kittenToEdit.location,
+    onChange: handleChange
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
     htmlFor: "editKittenDob"
   }, "Date of Birth"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
     type: "text",
@@ -5965,9 +6003,7 @@ const EditKitten = () => {
   }, "Reset Changes"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
     className: "buttonStyle2",
     type: "submit"
-  }, "Submit Changes")))))); // return (
-  //   <div></div>
-  // )
+  }, "Submit Changes"))))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (EditKitten);
