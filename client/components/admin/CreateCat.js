@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom'
 import handleControlledValueFieldToState from '../../customHandlers/handleFormChange'
 import { fetchEffect } from '../axiosHandlers/fetchEffect'
 
+
 const CreateCat = () => {
 
   const {MOTHERorFATHER} = useParams()
@@ -25,6 +26,7 @@ const CreateCat = () => {
   const [posted, setPosted] = useState(null)
   const [error, setError] = useState('')
 
+
   const handleChange = (event) => {
     handleControlledValueFieldToState(event, setCatToCreate)
   }
@@ -32,6 +34,8 @@ const CreateCat = () => {
   const handleKeyPress = (event) => {
     event.code === 'Enter' && event.target.localName !== 'textarea' && event.preventDefault();
   }
+
+
 
   const handleSubmit = async (event) => {
       event.preventDefault()
@@ -59,6 +63,7 @@ const CreateCat = () => {
           value={catToCreate.name}
           onChange={handleChange}
         /> <br />
+        <button onClick={handleRandomName}>Randomize Name</button>
       </>
       <>
       </>

@@ -12,8 +12,8 @@ const { Application } = require('../db/models')
 //  api/users
 
 router.get('/', async (req, res, next) => {
-  passAuth(2, req, res)
   try {
+    passAuth(2, req, res)
     const users = await User.findAll({
       attributes: {exclude: ['password', 'updatedAt']}
     })
@@ -24,8 +24,8 @@ router.get('/', async (req, res, next) => {
 })
 
 router.get('/pending', async (req, res, next) => {
-  passAuth(2, req, res)
   try {
+    passAuth(2, req, res)
     const users = await User.findAll({
       attributes: {exclude: ['password', 'updatedAt']},
       where : {

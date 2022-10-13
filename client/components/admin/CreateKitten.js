@@ -4,6 +4,7 @@ import {furColorsAdmin, eyeColors, earOptions, genderOptions} from "../../../myM
 import history from '../../history'
 import { fetchEffect } from '../axiosHandlers/fetchEffect'
 import ErrorFill from '../ErrorFill'
+import useNameGenerator from '../../customHooks/useNameGenerator'
 
 
 //  /createKitten
@@ -29,6 +30,7 @@ const CreateKitten = () => {
   const [studs, setStuds] = useState([])
   const [posted, setPosted] = useState(null)
   const [error, setError] = useState(null)
+  const [randomName, getNewRandomName] = useNameGenerator()
 
 
   const handleChange = (event) => {
@@ -49,6 +51,10 @@ const CreateKitten = () => {
     )
   }
 
+  const handleRandomName = () => {
+    getNewRandomName();
+  }
+
   useEffect(() => {
     fetchEffect(
       [setDams, setError],
@@ -66,6 +72,12 @@ const CreateKitten = () => {
     posted && history.push(`/kittenDetailed/${posted.id}`, {kitten: posted, fromCreate: true})
   }, [posted])
 
+  useEffect(() =>{
+    if (randomName) {
+      setKittenToCreate(prev => ({...prev, name: randomName}))
+    }
+  }, [randomName])
+
   return (
     <>
       {error && <ErrorFill msg={error}/>}
@@ -82,6 +94,7 @@ const CreateKitten = () => {
               value={kittenToCreate.name}
               onChange={handleChange}
             /> <br />
+            <button type='button' onClick={handleRandomName}>Randomize Name</button>
           </>
           <>
             <label htmlFor="kittenToCreateBreed">Breed</label>

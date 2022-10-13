@@ -29,8 +29,8 @@ router.get('/', async (req, res, next) => {
 })
 
 router.post('/', async (req, res, next) => {
-  passAuth(3, req, res)
   try{
+    passAuth(3, req, res)
     const newStud = await Stud.create(req.body)
     if(!newStud) {
       throw new Error('newStud creation failed')
@@ -58,8 +58,8 @@ router.put('/', async(req, res, next) => {
 })
 
 router.delete('/', async(req, res, next) => {
-  passAuth(4, req, res)
   try {
+    passAuth(4, req, res)
     const studToDelete = await Stud.findByPk(req.query.studId)
     if(studToDelete) {
       await studToDelete.destroy()
