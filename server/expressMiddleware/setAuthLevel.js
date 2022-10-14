@@ -14,7 +14,7 @@ const setAuthorizations = async (req, res, next) => {
 
     const verifiedUser = await User.findByToken(req.headers.authorization)
     if(!verifiedUser.fail) {
-      req.body.authLevel = getAuthGrade(verifiedUser.type)
+      req.body.authLevel = getAuthGrade(verifiedUser.type.toLowerCase())
     } else {
       req.body.authLevel = 0
     }
