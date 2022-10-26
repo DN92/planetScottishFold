@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 
 const homeComponent = () => {
 
-  const [showMessageBox, setShowMessageBox] = useState(true)
+  const [showMessageBox, setShowMessageBox] = useState(false)
 
   const messageArray = [
     'We have four new kittens that have just joined our wonderfur family!',
