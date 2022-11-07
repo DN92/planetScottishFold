@@ -4,6 +4,7 @@ import history from "../../history"
 import { useParams } from 'react-router-dom'
 import handleControlledValueFieldToState from '../../customHandlers/handleFormChange'
 import { fetchEffect } from '../axiosHandlers/fetchEffect'
+import useNameGenerator from '../../customHooks/useNameGenerator'
 
 
 const CreateCat = () => {
@@ -25,6 +26,7 @@ const CreateCat = () => {
   const [catToCreate, setCatToCreate] = useState(defaultState)
   const [posted, setPosted] = useState(null)
   const [error, setError] = useState('')
+  const [randomName, getNewRandomName] = useNameGenerator()
 
 
   const handleChange = (event) => {
@@ -45,6 +47,10 @@ const CreateCat = () => {
         `/api/${MOTHERorFATHER}s`,
         catToCreate
       )
+  }
+
+  const handleRandomName = () => {
+    getNewRandomName();
   }
 
   useEffect(() => {

@@ -13,12 +13,17 @@ import MeContext from '../MeContextPro'
 import NavMobile from './NavMobile'
 import AttentionModal from './AttentionModal'
 import useLocalStorage from '../customHooks/useLocalStorage'
+import MessageBox from './MessageBox'
 
+const messageArray = [
+  "Price negotiable for Lorenzo, Jasmine, and Iris ONLY until 11/17/22",
+  "Delivering to NJ/NY 11/18/22-11/20/22"
+]
 
 const App = () => {
-
   const {type} = useContext(MeContext)
   //  as an admin, this flag lets you view or hide the regular navbar
+  const [showMessageBox, setShowMessageBox] = useState(true)
   const [viewNav, setViewNav] = useState(false)
   const [showMobileNav, setShowMobileNav] = useState(false);
   const [modalOpen, setModalOpen] = useLocalStorage(
@@ -45,6 +50,15 @@ const App = () => {
           {/* inline styling present here */}
           <div className='mainContentContainer' style={showMobileNav ? {marginBottom: '0'} : {}}>
             {modalOpen && <AttentionModal setModalOpen={setModalOpen} /> }
+            {showMessageBox &&
+              <MessageBox
+                messageArray={messageArray}
+                options={{
+                  closeOnClick: true,
+                  onCloseText: 'Show Announcements'
+                }}
+              />
+            }
             {showMobileNav && <NavMobile setShowMobileNav={setShowMobileNav} />}
             {!showMobileNav &&
               <>
