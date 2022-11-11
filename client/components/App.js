@@ -16,7 +16,7 @@ import useLocalStorage from '../customHooks/useLocalStorage'
 import MessageBox from './MessageBox'
 
 const messageArray = [
-  "Price negotiable for Lorenzo, Jasmine, and Iris ONLY until 11/17/22",
+  "Price negotiable for Lorenzo and Jasmine ONLY until 11/17/22",
   "Delivering to NJ/NY 11/18/22-11/20/22"
 ]
 

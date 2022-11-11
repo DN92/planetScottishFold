@@ -1,7 +1,9 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import useWindowSize from '../../customHooks/useWindowSize'
 
 const AboutUs = () => {
+  const { width } = useWindowSize()
 
 // const {fontSize, ref} = useFitText();
 
@@ -19,17 +21,25 @@ const AboutUs = () => {
       </div>
       <div className='home__link'>
         <Link to='/waitingListForm'>Apply to start the adoption process</Link>
-      </div>
+    </div>
+    <div >
+      <img style={{
+        height:'auto',
+        width: (width < 769 ? '360px' : '600px'),
+        margin: '2rem auto 0 auto'}
+        }
+        src="/tica/ticaReg.jpg" alt="tica certificate" />
+    </div>
     </div>
    <h5>About Our Scottish Fold Cattery</h5>
    <article>
-    <p >Planet Scottish fold is a small cattery located in High Point, North Carolina USA. We breed Scottish fold and Scottish straight kittens with the intent to improve the breed.
+    <p >Planet Scottish fold is a small cattery located in High Point, North Carolina USA. We breed Scottish fold and Scottish straight kittens as well as British Shorthair kittens with the intent to improve the breeds.
     </p>
     <p>
       We also have sister catteries that are located in Bergenfield, New Jersey and Pompano Beach, Florida.
     </p>
     <p>
-      We mainly specialize in chinchilla colors, such as gold, blue gold, silver and pointed chinchillas. But also have non chinchilla kittens, such as solid white, blue tabby, blue and chocolate colorpoints, bicolor and tortoiseshell kittens.
+      We mainly specialize in chinchilla colors, such as gold, blue gold, silver and pointed chinchillas. But also have non chinchilla kittens, such as solid white, solid blue, blue tabby, blue and chocolate colorpoints, bicolor and tortoiseshell kittens.
     </p>
     <h5>About the breed</h5>
     <p>
@@ -52,7 +62,21 @@ const AboutUs = () => {
       What you’re getting from Planet Scottish fold:
     </p>
     <ul>
+
       <li>1 year health guarantee (covers hereditary defects and offers a replacement kitten)</li>
+      <li>2 rounds of vaccinations and deworming</li>
+      <li>spay/neuter once kitten is at least 12 weeks old (only NC kittens)</li>
+      <li>microchip</li>
+      <li>well socialized kitten raised at home in warm and loving environment with other pets and children</li>
+      <li>weaned off and litter box trained kitten</li>
+      <li>weekly updates with photos and/or videos</li>
+      <li>lifetime breeder support</li>
+      <li>30 days FREE pet insurance (NY and FL excluded)</li>
+      <li>complementary kitten kit</li>
+      <li>lowest rates for delivery to other states</li>
+      <li>FaceTime is available before or after the reservation</li>
+
+      {/* <li>1 year health guarantee (covers hereditary defects and offers a replacement kitten)</li>
       <li>age appropriate vaccinations and deworming </li>
       <li>spay/neuter once kitten is at least 12 weeks old (only NC kittens)</li>
       <li>microchip</li>
@@ -61,45 +85,17 @@ const AboutUs = () => {
       <li>weekly updates with photos and/or videos</li>
       <li>lifetime breeder support</li>
       <li>30 days FREE pet insurance (NY and FL excluded) </li>
-      <li>FaceTime is available before or after the reservation. </li>
+      <li>FaceTime is available before or after the reservation. </li> */}
     </ul>
-    <h5>Delivery options:</h5>
-    <p>
-      <span className='underlined'>Air delivery:</span> Delivery within USA is available. Delivery price depends on the destination and airlines schedule. We will deliver to your closest international airport where you’d pick up your kitten from our trusted flight nanny.
-    </p>
-    <p>
-      Please note, we do not and will not deliver via cargo. If choosing air delivery, only in cabin delivery will be provided. Your kitten will be accompanied with a flight nanny throughout the whole trip and will receive the best care possible! You will be notified throughout the day about your kittens travel.
-    </p>
-    <p>
-      <span className='underlined'>Car delivery:</span> Car delivery is also available. Cost to deliver by car is 90 cents per mile (charged for one way). Destination limit is 600 mi from our location in High Point, North Carolina 27265.
-    </p>
-    <p>
-      Please note, kitten well being is very important, thus we put a limit of miles to deliver by car. Time to deliver might vary a lot depending on traffic changes and number of stops needed to make to eat, rest and provide care for the kitten, such as changing pee pads, cleaning the kennel and/or kitten, making sure it’s hydrated and socialized with to avoid having stress during the drive.
-    </p>
-    <p>
-      If you’d like us to meet you half way, same fee of 90 cents per mile will be applied and charged for one way.
-    </p>
-    <h5>Pick up options:</h5>
-    <p>
-      <span className='underlined'>Flying Over:</span> you can fly over to one of our airports (GSO, RDU, or CLT) and we will meet you there with your kitten. Expect to pay $80-$125 to the airline for the kitten’s one way ticket. Each airline has its own policy, please review it before confirming.
-      We will assist you the best we can, but no booking/purchasing tickets will be provided from our end.
-    </p>
-    <p>
-      <span className='underlined'>Amtrack:</span> you can travel by AMTRACK to our station in High Point, NC, and we will meet you at the station with your kitten.
-     IMPORTANT Amtrack policy: cats up to 20 pounds (combined weight of pet and carrier) are welcome on trips up to seven hours on most routes (some restrictions apply).
-     </p>
-    <p>
-      We will help you the best we can, but no booking/purchasing tickets will be provided from our end.
-    </p>
-    <p>
-      <span className='underlined'>Meeting half way:</span>  if you’d like us to meet you half way, same fee of 90 cents per mile will be applied and charged for one way.
-    </p>
-    <p>
-      <span className='underlined'>Driving Over:</span> most of our kitten owners come to pickup from our home locations. Our address is shared to reserved applicants only.
-    </p>
-    <p>
-      If driving far, please plan accordingly and consider having multiple stops to rest and take care of the kitten. It’s good to have 2 people so that the passenger can take the kitten out of the kennel during the drive if it starts being stressed out.
-    </p>
+    <h5>How will you receive your kitten?</h5>
+
+    <p>You have many options on how to get your new family member.
+    If you're close, picking up from our cattery is the best option.</p>
+
+    <p>Delivery. Depending on distance and location, we offer the lowest possible rates on car and plane deliveries.</p>
+
+    <p>You can fly over to one of our local airports and we will come to meet you with your kitten.
+    Please be aware that the airline will charge a pet air fare of up to $125 as of this writing.</p>
     <Link to='/waitingListForm'>
       Apply for your kitten here
     </Link>
