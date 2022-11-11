@@ -5304,7 +5304,7 @@ const CreateKitten = () => {
     gender: _myModelsConfig__WEBPACK_IMPORTED_MODULE_2__.genderOptions[0],
     ears: _myModelsConfig__WEBPACK_IMPORTED_MODULE_2__.earOptions[0],
     furColor: _myModelsConfig__WEBPACK_IMPORTED_MODULE_2__.furColorsAdmin[0],
-    eyeColor: _myModelsConfig__WEBPACK_IMPORTED_MODULE_2__.eyeColors[0],
+    eyeColor: _myModelsConfig__WEBPACK_IMPORTED_MODULE_2__.eyeColorsAdmin[0],
     mother: '',
     father: '',
     description: '',
@@ -5431,8 +5431,8 @@ const CreateKitten = () => {
     value: kittenToCreate.eyeColor,
     onChange: handleChange
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
-    value: _myModelsConfig__WEBPACK_IMPORTED_MODULE_2__.eyeColors[0]
-  }, "Eye Color"), _myModelsConfig__WEBPACK_IMPORTED_MODULE_2__.eyeColors.map((color, index) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+    value: _myModelsConfig__WEBPACK_IMPORTED_MODULE_2__.eyeColorsAdmin[0]
+  }, "Eye Color"), _myModelsConfig__WEBPACK_IMPORTED_MODULE_2__.eyeColorsAdmin.map((color, index) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
     key: index,
     value: color
   }, color))), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
