@@ -14,6 +14,7 @@ function readFilePaths(path) {
   }
 }
 
+//  requires id query
 router.get('/kitten', async (req, res, next) => {
   try {
     if(!req.query.id) {

@@ -17,16 +17,35 @@ const KittenDetailedView = () => {
     history.location.state.kitten :
     null
   )
+  const [albumPaths, setAlbumPaths] = useState([])
   const [error, setError] = useState('')
 
     //  if we don't have a KITTEN from history, fetch one by id.
     //  no params and no history should result in a local 404
   useEffect(() => {
-    !kitten && id && fetchEffect(
-      [setKitten, setError],
-      'get',
-      `/api/kittens?id=${id}`)
+    if(!kitten && id) {
+      fetchEffect(
+        [setKitten, setError],
+        'get',
+        `/api/kittens?id=${id}`)
+    }
+    if(id) {
+      fetchEffect(
+        [setAlbumPaths, setError],
+        'get',
+        `/api/albums/kitten?id=${id}`
+      )
+    }
   }, [])
+
+  useEffect(() => {
+    if(albumPaths) console.log(`paths for ${kitten?.name}:: `, albumPaths)
+  },[albumPaths])
+
+  useEffect(() => {
+    if(kitten.id) {
+    }
+  },[kitten])
 
   console.log("kitten: ",kitten)
 
