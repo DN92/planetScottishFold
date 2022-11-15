@@ -1,3 +1,7 @@
+.detailed-view-wrapper {
+  display: flex;
+}
+
 .detailedView {
   padding-top: 1rem;
   padding-bottom: 1rem

@@ -27,7 +27,7 @@ router.get('/kitten', async (req, res, next) => {
     const name = kitten.name.toLowerCase()
     const paths = readFilePaths(`/${name}`)
     paths ?
-      res.send(paths) :
+      res.send(paths.map(path => (`/catImageRouter/${name}/${path}`))) :
       res.send('Code should not reach here')
   } catch (err) {
     next(err)

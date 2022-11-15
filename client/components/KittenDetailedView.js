@@ -6,6 +6,7 @@ import My404 from './My404'
 import MeContext from '../MeContextPro'
 import { isPrivileged } from '../../myModelsConfig'
 import { fetchEffect } from './axiosHandlers/fetchEffect'
+import CarouselOne from './CarouselOne'
 
 //  /kittenDetailed
 const KittenDetailedView = () => {
@@ -40,40 +41,36 @@ const KittenDetailedView = () => {
 
   useEffect(() => {
     if(albumPaths) console.log(`paths for ${kitten?.name}:: `, albumPaths)
+    console.log('main image src:: ', kitten?.mainImageSrcValue)
   },[albumPaths])
-
-  useEffect(() => {
-    if(kitten.id) {
-    }
-  },[kitten])
-
-  console.log("kitten: ",kitten)
 
   return (
     <div key={id}>
       {error && <ErrorFill msg={error} />}
 
       {!error && kitten &&
-        <div className='detailedView'>
-          <div className='detailedView__imgWrapper'>
-            <img src={kitten.mainImageSrcValue} alt="Picture of Kitten" />
+         <div className='detailed-view-wrapper'>
+          {Array.isArray(albumPaths) &&
+            <CarouselOne paths={albumPaths} />
+          }
+          <div className='detailedView'>
+            <p>Status: {kitten.status}</p>
+            <p>Location: {kitten.location}</p>
+            <p>Price: ${kitten.price}</p>
+            <br />
+            <p>{kitten.name}</p>
+            <p>{kitten.breed}</p>
+            <p>Gender: {kitten.gender}</p>
+            <p>Ears: {kitten.ears}</p>
+            <p>Fur color: {kitten.furColor}</p>
+            <p>Eye color: {kitten.eyeColor}</p>
+            <p>{kitten.dob ? ('Date of Birth: ' + kitten.dob) : ''}</p>
+            <p>{kitten.mother ? ('Dam: ' + kitten.mother) : ''}</p>
+            <p>{kitten.father ? ('Sire: ' + kitten.father) : ''}</p>
+            <p>{kitten.regNum ? ('Registration Number: ' + kitten.regNum) : ''}</p>
+            <p>{kitten.description ?  ('Description: ' + kitten.description) : ''}</p>
           </div>
-          <p>Status: {kitten.status}</p>
-          <p>Location: {kitten.location}</p>
-          <p>Price: ${kitten.price}</p>
-          <br />
-          <p>{kitten.name}</p>
-          <p>{kitten.breed}</p>
-          <p>Gender: {kitten.gender}</p>
-          <p>Ears: {kitten.ears}</p>
-          <p>Fur color: {kitten.furColor}</p>
-          <p>Eye color: {kitten.eyeColor}</p>
-          <p>{kitten.dob ? ('Date of Birth: ' + kitten.dob) : ''}</p>
-          <p>{kitten.mother ? ('Dam: ' + kitten.mother) : ''}</p>
-          <p>{kitten.father ? ('Sire: ' + kitten.father) : ''}</p>
-          <p>{kitten.regNum ? ('Registration Number: ' + kitten.regNum) : ''}</p>
-          <p>{kitten.description ?  ('Description: ' + kitten.description) : ''}</p>
-        </div>
+         </div>
       }
       {isPrivileged(type) && !fromEdit &&
         <Link to='/createKitten'>
