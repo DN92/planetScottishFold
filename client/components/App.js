@@ -14,6 +14,7 @@ import NavMobile from './NavMobile'
 import AttentionModal from './AttentionModal'
 import useLocalStorage from '../customHooks/useLocalStorage'
 import MessageBox from './MessageBox'
+import { MantineProvider } from '@mantine/core';
 
 const messageArray = [
   "Price negotiable for Lorenzo and Jasmine ONLY until 11/17/22",
@@ -38,10 +39,11 @@ const App = () => {
   return (
     <>
       <HistoryRouter history={history}>
-        <Helmet>
-          <title>Planet Scottish Fold | Scottish Fold Cattery</title>
-          <meta name='Planet Scottish Fold' contents='Proud Breeders of Scottish Fold Kittens' />
-        </Helmet>
+        <MantineProvider >
+          <Helmet>
+            <title>Planet Scottish Fold | Scottish Fold Cattery</title>
+            <meta name='Planet Scottish Fold' contents='Proud Breeders of Scottish Fold Kittens' />
+          </Helmet>
           <div className='header'>
             <TopLineMenuBar setViewNav={setViewNav} setShowMobileNav={setShowMobileNav}/>
             {isPrivileged(type) ? <AdminBar /> :  <NavBar />}
@@ -67,6 +69,7 @@ const App = () => {
             }
           </div>
           {!showMobileNav && <Footer /> }
+        </MantineProvider>
       </HistoryRouter>
     </>
   )

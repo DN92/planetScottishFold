@@ -36,7 +36,6 @@ const CatDetailedView = () => {
   return (
     <div key={id.toString() + MOTHERorFATHER}>
       {error && <ErrorFill msg={error} />}
-
       {!error && cat &&
         <div>
           <div>
@@ -52,7 +51,6 @@ const CatDetailedView = () => {
             <span> Date Of Birth: {cat.dob}</span> <br />
             <span> Description: {cat.description}</span> <br />
             <span>{cat.description ? ("Description: " + cat.description) : ""}</span><br />
-
           </div>
             {isPrivileged(type) &&
               <div className='buttonsWrapper'>
@@ -65,9 +63,7 @@ const CatDetailedView = () => {
               </div>
             }
         </div>
-
       }
-
       {!error && !cat && !id &&
         <>
           <My404 />

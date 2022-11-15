@@ -6,6 +6,7 @@ const setAuthorizations = require('../expressMiddleware/setAuthLevel')
 router.use(setAuthorizations)
 
 //  api/
+router.use('/albums', require('./albums'))
 router.use('/kittens', require('./kittens'))
 router.use('/mothers', require('./mothers'))
 router.use('/fathers', require('./fathers'))
@@ -18,7 +19,7 @@ router.use('/reviews', require('./reviews'))
 
 // error endpoint
 router.use((req, res, next) => {
-  const error = new Error('Not Found --api index.js')
+  const error = new Error(`Not Found --api index.js, path:: ${req.path}`)
   error.status = 404
   next(error)
 })

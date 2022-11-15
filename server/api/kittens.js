@@ -1,14 +1,17 @@
 const router = require('express').Router()
 const { Kitten } = require("../db").models
+const fs = require('fs');
 const passAuth = require('../expressMiddleware/checkValidAuthLevel')
 
 // api/kittens
 
 router.get('/', async (req, res, next) => {
   try {
-    req.query.id
-      ? res.send(await Kitten.findByPk(req.query.id))
-      : res.send(await Kitten.findAll())
+    if(req.query.id) {
+      res.send(await Kitten.findByPk(req.query.id))
+    } else {
+      res.send(await Kitten.findAll())
+    }
   } catch (err) {
     next(err)
   }
