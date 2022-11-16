@@ -53,22 +53,24 @@ const KittenDetailedView = () => {
           {Array.isArray(albumPaths) &&
             <CarouselOne paths={albumPaths} />
           }
-          <div className='detailedView'>
-            <p>Status: {kitten.status}</p>
-            <p>Location: {kitten.location}</p>
-            <p>Price: ${kitten.price}</p>
-            <br />
-            <p>{kitten.name}</p>
-            <p>{kitten.breed}</p>
-            <p>Gender: {kitten.gender}</p>
-            <p>Ears: {kitten.ears}</p>
-            <p>Fur color: {kitten.furColor}</p>
-            <p>Eye color: {kitten.eyeColor}</p>
-            <p>{kitten.dob ? ('Date of Birth: ' + kitten.dob) : ''}</p>
-            <p>{kitten.mother ? ('Dam: ' + kitten.mother) : ''}</p>
-            <p>{kitten.father ? ('Sire: ' + kitten.father) : ''}</p>
-            <p>{kitten.regNum ? ('Registration Number: ' + kitten.regNum) : ''}</p>
-            <p>{kitten.description ?  ('Description: ' + kitten.description) : ''}</p>
+          <div className='detailedView-text-wrapper'>
+            <div className='detailedView-text'>
+              <p>{kitten.name}</p>
+              <p>Status: {kitten.status}</p>
+              <p>Location: {kitten.location}</p>
+              <p>Price: ${kitten.price}</p>
+              <br />
+              <p>{kitten.breed}</p>
+              <p>Gender: {kitten.gender}</p>
+              <p>Ears: {kitten.ears}</p>
+              <p>Fur color: {kitten.furColor}</p>
+              <p>Eye color: {kitten.eyeColor}</p>
+              <p>{kitten.dob ? ('Date of Birth: ' + kitten.dob) : ''}</p>
+              <p>{kitten.mother ? ('Dam: ' + kitten.mother) : ''}</p>
+              <p>{kitten.father ? ('Sire: ' + kitten.father) : ''}</p>
+              <p>{kitten.regNum ? ('Registration Number: ' + kitten.regNum) : ''}</p>
+              <p>{kitten.description ?  ('Description: ' + kitten.description) : ''}</p>
+            </div>
           </div>
          </div>
       }

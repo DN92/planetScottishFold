@@ -49,7 +49,6 @@ export default function CarouselOne({paths = []}) {
         PlaceHolder
       </Slide>
       }
-
     </Carousel>
   )
 }
