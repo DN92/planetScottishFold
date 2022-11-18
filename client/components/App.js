@@ -23,7 +23,7 @@ const messageArray = [
 const App = () => {
   const {type} = useContext(MeContext)
   //  as an admin, this flag lets you view or hide the regular navbar
-  const [showMessageBox, setShowMessageBox] = useState(true)
+  const [showMessageBox, setShowMessageBox] = useState(false)
   const [viewNav, setViewNav] = useState(false)
   const [showMobileNav, setShowMobileNav] = useState(false);
   const [modalOpen, setModalOpen] = useLocalStorage(
