@@ -1,16 +1,9 @@
 import React from 'react'
 import { Carousel } from '@mantine/carousel';
 const { Slide } = Carousel
+import ImageWrapper from './ImageWrapper'
 
 const cardWidth = 320
-
-function ImageWrapper({src: src, width, alternative = 'placeholder'}) {
-  return (
-    <div className='carousel-img-wrapper' style={{width: width, height: 'auto'}}>
-      <img style={{height: 'auto', width: '100%', objectFit: 'cover'}} className='carousel-img' src={src} alt={alternative} />
-    </div>
-  )
-}
 
 export default function CarouselOne({paths = []}) {
   return (

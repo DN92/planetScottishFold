@@ -7,6 +7,7 @@ import MeContext from '../MeContextPro'
 import { isPrivileged } from '../../myModelsConfig'
 import { fetchEffect } from './axiosHandlers/fetchEffect'
 import CarouselOne from './CarouselOne'
+import ImageSlideBar from './ImageSlideBar'
 
 //  /kittenDetailed
 const KittenDetailedView = () => {
@@ -51,7 +52,10 @@ const KittenDetailedView = () => {
       {!error && kitten &&
          <div className='detailed-view-wrapper'>
           {Array.isArray(albumPaths) &&
-            <CarouselOne paths={albumPaths} />
+            <>
+              <CarouselOne paths={albumPaths} />
+              <ImageSlideBar pathsArray={albumPaths}/>
+            </>
           }
           <div className='detailedView-text-wrapper'>
             <div className='detailedView-text'>
