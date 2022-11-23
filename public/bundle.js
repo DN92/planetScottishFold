@@ -2882,7 +2882,7 @@ const App = () => {
     type
   } = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_MeContextPro__WEBPACK_IMPORTED_MODULE_10__["default"]); //  as an admin, this flag lets you view or hide the regular navbar
 
-  const [showMessageBox, setShowMessageBox] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(true);
+  const [showMessageBox, setShowMessageBox] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
   const [viewNav, setViewNav] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
   const [showMobileNav, setShowMobileNav] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
   const [modalOpen, setModalOpen] = (0,_customHooks_useLocalStorage__WEBPACK_IMPORTED_MODULE_13__["default"])('modalOpen', localStorage.hasOwnProperty('modalOpen') ? localStorage.getItem('modalOpen') : false); //  Inline style was necessary for mainContentContainer to account for dynamic conditional rendering of footer on Mobile Nav Open Screen
