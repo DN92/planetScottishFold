@@ -1,34 +1,47 @@
 const router = require('express').Router()
-const { Kitten } = require("../db").models
-const fs = require('fs');
+const { Kitten, Stud, Mother } = require("../db").models
+const { readdir, mkdir, writeFile, copyFile } = require( 'fs/promises');
+const { existsSync, readdirSync } = require('fs');
+const path = require('path')
 
-//  /api/albums
-
-function readFilePaths(path) {
-  const mainPath = 'public/catImageRouter'
+router.get('/', async (req, res, next) => {
   try {
-    const files = fs.readdirSync(mainPath+path.toLowerCase()) // array of strings
-    return files
-  } catch (e) {
-    console.log(`ERROR FROM api/albums:: failed to find image dir from path: ${e}.`)
-  }
-}
+    const tarBase = `catImageRouter`
+    const tarParentDir = `public/${tarBase}`
+    const { id, type} = req.query
+    if( ! (id && type ) ) {
+      throw Error('api albums requires an id and type')
+    }
+    const tarDir = tarParentDir + `/${type}${id}`
+    if(!existsSync(tarDir)) {
+      await mkdir(tarDir)
+    }
+    if(readdirSync(tarDir).length === 0) {
+      const animal = await (async () => {
+        switch (type.toLowerCase()) {
+          case 'kitten': {
+            return await Kitten.findByPk(id)
+          }
+          case 'dam': {
+            return await Mother.findByPk(id)
+          }
+          case 'sire': {
+            return await Stud.findByPk(id)
+          }
+          default:
+            return null
+          }
+        })()
+      if(animal) {
+        const { mainImageSrcValue }= animal
+        const extname = path.extname(mainImageSrcValue)
+        await copyFile(`public${mainImageSrcValue}`, `${tarDir}/main${extname}`)
+      }
+    }
+    const publicPath = `/${tarBase}/${type}${id}`
+    const files = await readdir(tarDir)
+    res.send(files.map(file => `${publicPath}/${file}`))
 
-//  requires id query
-router.get('/kitten', async (req, res, next) => {
-  try {
-    if(!req.query.id) {
-      throw Error('This api route requires an id query')
-    }
-    const kitten = await Kitten.findByPk(req.query.id)
-    if(!kitten) {
-      throw Error('no match found from /api/albums/kitten')
-    }
-    const name = kitten.name.toLowerCase()
-    const paths = readFilePaths(`/${name}`)
-    paths ?
-      res.send(paths.map(path => (`/catImageRouter/${name}/${path}`))) :
-      res.send('Code should not reach here')
   } catch (err) {
     next(err)
   }

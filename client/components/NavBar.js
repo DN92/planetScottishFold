@@ -12,13 +12,6 @@ const NavBar = () => {
       <Link to='/viewCats'>DAMS AND SIRES</Link>
       <Link to="/reviews">REVIEWS</Link>
       <Link to="/contact">CONTACT</Link>
-      {/* below routes under construction */}
-      { false &&
-        <>
-          <Link to="/instagram">IG</Link>
-          <Link to="/facebook">FB</Link>
-        </>
-      }
     </nav>
   )
 }

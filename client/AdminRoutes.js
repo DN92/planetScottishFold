@@ -24,6 +24,7 @@ import Logout from './components/Logout'
 import ViewCats from './components/ViewCats'
 import CatDetailedView from './components/CatDetailedView';
 import QuestionnaireConfirmation from './components/QuestionnaireConfirmation'
+import ImageDash from './components/admin/imageUploads/ImageDash'
 
 const AdminRoutes = () => {
 
@@ -40,6 +41,8 @@ const AdminRoutes = () => {
       <Route path='/createCat/:MOTHERorFATHER' element={<CreateCat />} />
       <Route path='/editCat/:MOTHERorFATHER/:id' element={<EditCat />} />
       <Route path='/directMessages' element={<DirectMessages />} />
+      <Route path='/imageDash' element={<ImageDash />} />
+
 
       {/* Redirects */}
       <Route path='/createCat' element={<Navigate to='mother'/>}></Route>
