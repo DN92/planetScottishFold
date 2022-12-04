@@ -1,12 +1,12 @@
 import React, {useState, useEffect} from 'react'
-import {useParams, Link} from 'react-router-dom'
-import history from '../../history'
+import {useParams, Link, useNavigate, useLocation} from 'react-router-dom'
 import {getWordsFromArrayOfKeys} from '../../../myUtilFuncs'
 import { fetchEffect } from '../axiosHandlers/fetchEffect'
 import WrongPath from '../WrongPath'
 
 const RequestReview = () => {
 
+  const navigate = useNavigate()
   const arrayFromRequestKeys = [
     'eMail',
     'phoneNumber',
@@ -31,9 +31,7 @@ const RequestReview = () => {
     'IPaddress',
   ]
   const wordsFromKeys = getWordsFromArrayOfKeys(arrayFromRequestKeys)
-  const request = history.location.state ?
-    history.location.state.request :
-    false
+  const request = location.state?.request ?? false
 
   const {requestId} = useParams()
   const [error, setError] = useState(null)

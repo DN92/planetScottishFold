@@ -1,7 +1,6 @@
 import React, {useState, useEffect, useContext} from 'react'
-import history from '../history'
 import ErrorFill from './ErrorFill'
-import { Link, useParams } from 'react-router-dom'
+import { Link, useParams, useNavigate, useLocation } from 'react-router-dom'
 import My404 from './My404'
 import MeContext from '../MeContextPro'
 import { isPrivileged } from '../../myModelsConfig'
@@ -9,22 +8,13 @@ import { fetchEffect } from './axiosHandlers/fetchEffect'
 
 //  /catDetailed
 const CatDetailedView = () => {
+  const location = useLocation()
+  console.log(location)
   const {type} =useContext(MeContext)
-
   const {MOTHERorFATHER, id} = useParams()
+  const [cat, setCat] = useState(location.state?.cat ?? null)
+  const [error, setError] = useState(location.state?.error ?? null)
 
-  const [cat, setCat] = useState(history.location.state ?
-    history.location.state.cat :
-    null
-  )
-
-  const [error, setError] = useState(history.location.state
-    ? history.location.state.error
-    : ''
-  )
-
-  //  if we don't have a Mommy or Daddy from history, fetch one by id.
-  //  no params and no history should result in a local 404
   useEffect(() => {
     !cat && id && fetchEffect(
       [setCat, setError],

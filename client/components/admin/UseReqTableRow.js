@@ -1,8 +1,9 @@
 import React, {useState} from 'react'
-import history from '../../history'
+import { useNavigate } from 'react-router-dom'
 
 const UseReqTableRow = (props) => {
 
+  const navigate = useNavigate()
   const defaultUser = {
     eMail: 'defaultUser@gmail.com',
     firstName: 'firstName',
@@ -27,9 +28,7 @@ const UseReqTableRow = (props) => {
   const [user, setUser] = useState(props.request ? props.request : defaultUser)
 
   const handleSelectRequest = (event) => {
-    history.push(`newUserRequests/${props.id}`, {
-      request: props.request
-    })
+    navigate(`newUserRequests/${props.id}`, {state: {request: props.request}})
   }
 
   return (

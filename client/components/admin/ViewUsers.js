@@ -1,15 +1,16 @@
 import React, { useState, useEffect }from 'react'
 import ErrorFill from '../ErrorFill'
 import { fetchEffect } from '../axiosHandlers/fetchEffect'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 const ViewUsers = () => {
 
+  const navigate = useNavigate()
   const [users, setUsers] = useState([])
   const [error, setError] = useState(null)
 
   const handleSeeMoreDetails = (event, user) => {
-    history.push(`/viewUsers/id=${user.id}`, {user: user})
+    navigate(`/viewUsers/id=${user.id}`, {state: {user: user}})
   }
 
   useEffect(() => {

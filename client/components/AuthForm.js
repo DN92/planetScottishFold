@@ -1,13 +1,13 @@
 import React, {useState, useEffect, useContext} from 'react'
-import{ Link } from 'react-router-dom'
+import{ Link, useNavigate } from 'react-router-dom'
 import MeContext from '../MeContextPro'
 import handleLogin from '../customHandlers/handleLogin'
-import history from '../history'
 import handleControlledValueFieldToState from '../customHandlers/handleFormChange'
 import { Helmet } from 'react-helmet'
 
 const AuthForm = () => {
 
+  const navigate = useNavigate()
   const meContext = useContext(MeContext)
   const [loginInfo, setLoginInfo] = useState({
     eMail: '',
@@ -26,7 +26,7 @@ const AuthForm = () => {
       localStorage.removeItem('autoLogin')
     }
     if(successStatus) {
-      history.push('/home')
+      navigate('/home')
       return
     }
     //  else fail case
@@ -58,7 +58,7 @@ const AuthForm = () => {
       && (JSON.parse(localStorage.getItem('psfMe')).username)) {
         const user = {username: meContext.username, type: meContext.type, id: meContext.id}
         localStorage.setItem('psfMe', JSON.stringify(user))
-        history.push('/home')
+        navigate('/home')
     }
   }, [])
 

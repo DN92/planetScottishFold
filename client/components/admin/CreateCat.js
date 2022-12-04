@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import {eyeColors, earOptions} from "../../../myModelsConfig"
-import history from "../../history"
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import handleControlledValueFieldToState from '../../customHandlers/handleFormChange'
 import { fetchEffect } from '../axiosHandlers/fetchEffect'
 import useNameGenerator from '../../customHooks/useNameGenerator'
@@ -9,6 +8,7 @@ import useNameGenerator from '../../customHooks/useNameGenerator'
 
 const CreateCat = () => {
 
+  const navigate = useNavigate()
   const {MOTHERorFATHER} = useParams()
 
   const defaultState = {
@@ -54,7 +54,9 @@ const CreateCat = () => {
   }
 
   useEffect(() => {
-    posted && history.push(`/catDetailedView/${MOTHERorFATHER}/${posted.id}`, {cat: posted, error: error, fromCreate: true})
+    posted && navigate(`/catDetailedView/${MOTHERorFATHER}/${posted.id}`, {
+      state: {cat: posted, error: error, fromCreate: true}
+    })
   }, [posted])
 
   return (

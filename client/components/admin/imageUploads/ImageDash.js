@@ -18,8 +18,8 @@ const imageDash = () => {
   const [selectedDam, setSelectedDam] = useState(null)
   const [selectedSire, setSelectedSire] = useState(null)
 
-  const [viewAlbum, setViewAlbum] = useState(false)
-  const [viewUploadPane, setViewUploadPain] = useState(false)
+  const [viewAlbum, setViewAlbum] = useState(true)
+  const [viewUploadPane, setViewUploadPain] = useState(true)
   const prime = useMemo(() => {
     return (()=>{
       switch(selectedType) {
@@ -45,12 +45,12 @@ const imageDash = () => {
       console.warn('invalid selection:: ', selection)
     }
   }
-  // useEffect(() => {
-  //   if (prime) {
+  useEffect(() => {
+    if (prime) {
 
-  //     console.log('prime:: ', prime)
-  //   }
-  // }, [prime])
+      console.log('prime:: ', prime)
+    }
+  }, [prime])
 
   // useEffect(() => {
   //   console.log('selected values')
@@ -89,7 +89,9 @@ const imageDash = () => {
   return (
     <div>
       <h2>IMAGE DASH</h2>
+      <label htmlFor="image-dash-type-selector">Select Cat Category</label>
       <select
+        id='image-dash-type-selector'
         name="typeSelector"
         onChange={e => {validateSetType(e)}}
       >
@@ -156,7 +158,7 @@ const imageDash = () => {
       <PhotoAlbum type={selectedType} cat={prime} />
       }
       {viewUploadPane &&
-      <UploadPane />
+      <UploadPane selectedType={selectedType} />
       }
     </div>
   )

@@ -1,15 +1,16 @@
 import React, {useState, useEffect} from 'react'
 import handleControlledValueFieldToState from '../../customHandlers/handleFormChange'
 import {furColorsAdmin, eyeColorsAdmin, earOptions, genderOptions} from "../../../myModelsConfig"
-import history from '../../history'
 import { fetchEffect } from '../axiosHandlers/fetchEffect'
 import ErrorFill from '../ErrorFill'
 import useNameGenerator from '../../customHooks/useNameGenerator'
+import { useNavigate } from 'react-router-dom'
 
 
 //  /createKitten
 const CreateKitten = () => {
 
+  const navigate = useNavigate()
   const defaultState = {
     name:'',
     breed: '',
@@ -69,7 +70,7 @@ const CreateKitten = () => {
   }, [])
 
   useEffect(() => {
-    posted && history.push(`/kittenDetailed/${posted.id}`, {kitten: posted, fromCreate: true})
+    posted && navigate(`/kittenDetailed/${posted.id}`, {state:{kitten: posted, fromCreate: true}})
   }, [posted])
 
   useEffect(() =>{

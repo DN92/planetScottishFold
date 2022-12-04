@@ -1,20 +1,20 @@
   import React, {useState, useEffect} from "react";
-import history from "../history";
 import ErrorFill from './ErrorFill'
 import { fetchEffect } from "./axiosHandlers/fetchEffect";
 import { getUserIP } from '../../myUtilFuncs.js'
-
-//  this component is accessed through ClientQuestionnaire's onSubmit through the history library. ::  history.push('confirmClientQuestionnaire)
+import { useNavigate, useLocation } from "react-router-dom";
 
 // props are pushed through local storage since we are using storage anyway, to make sure client doesn't have to reenter the same information ad nauseam
 const ConfirmClientQuestionnaire = () => {
 
+  const navigate = useNavigate()
+  const location = useLocation()
   const [infoPosted, setInfoPosted] = useState(false)
+  const [clientInfo, setClientInfo] = useState(location.state?.clientInfo ?? null)
   const [error, setError] = useState('')
-  const [clientInfo, setClientInfo] = useState(history.location?.state?.clientInfo)
 
   const handleGoBack = () => {
-    history.back()
+    useNavigate(-1)
   }
 
   const handleSubmit = async (event) => {
@@ -32,7 +32,7 @@ const ConfirmClientQuestionnaire = () => {
   useEffect(()=>{
     if(infoPosted) {
       localStorage.removeItem('clientInfo')
-      history.replace('/QConfirmation')
+      navigate('/QConfirmation', {replace: true})
     }
   },[infoPosted])
 
@@ -64,24 +64,24 @@ const ConfirmClientQuestionnaire = () => {
             <li>Instagram:</li>
           </ul>
           <div className="clientInfo-answers">
-            <span>{clientInfo.eMail}</span><br />
-            <span>{clientInfo.firstName}</span><br />
-            <span>{clientInfo.lastName}</span><br />
-            <span>{clientInfo.phoneNumber}</span><br />
-            <span>{clientInfo.willBreed}</span><br />
-            <span>{clientInfo.hasAllergies}</span><br />
-            <span>{clientInfo.firstCat === 'true' ? 'Yes' : 'No'}</span><br />
-            <span>{clientInfo.otherPets}</span><br />
-            <span>{clientInfo.city}</span><br />
-            <span>{clientInfo.state}</span><br />
-            <span>{clientInfo.gender}</span><br />
-            <span>{clientInfo.ears}</span><br />
-            <span>{clientInfo.eyeColor} </span><br />
-            <span>{clientInfo.mif}</span><br />
-            <span>{clientInfo.budget}</span><br />
-            <span>{clientInfo.foundUsBy}</span><br />
-            <span>{clientInfo.fB}</span><br />
-            <span>{clientInfo.iG}</span><br />
+            <span>{clientInfo?.eMail}</span><br />
+            <span>{clientInfo?.firstName}</span><br />
+            <span>{clientInfo?.lastName}</span><br />
+            <span>{clientInfo?.phoneNumber}</span><br />
+            <span>{clientInfo?.willBreed}</span><br />
+            <span>{clientInfo?.hasAllergies}</span><br />
+            <span>{clientInfo?.firstCat === 'true' ? 'Yes' : 'No'}</span><br />
+            <span>{clientInfo?.otherPets}</span><br />
+            <span>{clientInfo?.city}</span><br />
+            <span>{clientInfo?.state}</span><br />
+            <span>{clientInfo?.gender}</span><br />
+            <span>{clientInfo?.ears}</span><br />
+            <span>{clientInfo?.eyeColor} </span><br />
+            <span>{clientInfo?.mif}</span><br />
+            <span>{clientInfo?.budget}</span><br />
+            <span>{clientInfo?.foundUsBy}</span><br />
+            <span>{clientInfo?.fB}</span><br />
+            <span>{clientInfo?.iG}</span><br />
           </div>
         </div>
         <div className="buttonsWrapper confirmation-buttons">

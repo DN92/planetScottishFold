@@ -1,11 +1,10 @@
 import React, { useState, useContext} from 'react'
-import { unstable_HistoryRouter as HistoryRouter } from 'react-router-dom'
+import { BrowserRouter } from "react-router-dom"
 import { Helmet } from 'react-helmet'  // react Head component
 import FrontEndRoutes from '../FrontEndRoutes'
 import AdminRoutes from '../AdminRoutes'
 import NavBar from './NavBar'
 import Footer from './Footer'
-import history from '../history'
 import AdminBar from './AdminBar'
 import TopLineMenuBar from './TopLineMenuBar'
 import { isPrivileged } from '../../myModelsConfig'
@@ -38,7 +37,7 @@ const App = () => {
 
   return (
     <>
-      <HistoryRouter history={history}>
+      <BrowserRouter >
         <MantineProvider >
           <Helmet>
             <title>Planet Scottish Fold | Scottish Fold Cattery</title>
@@ -70,7 +69,7 @@ const App = () => {
           </div>
           {!showMobileNav && <Footer /> }
         </MantineProvider>
-      </HistoryRouter>
+      </BrowserRouter>
     </>
   )
 }

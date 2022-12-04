@@ -2,16 +2,16 @@ import React, {useState, useEffect, useContext} from 'react'
 import MeContext from '../../MeContextPro'
 import { isPrivileged } from '../../../myModelsConfig'
 import ErrorFill from '../ErrorFill'
-import history from '../../history'
 import { eyeColors, earOptions } from '../../../myModelsConfig'
 import handleControlledValueFieldToState from '../../customHandlers/handleFormChange'
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate, useLocation } from 'react-router-dom'
 import { fetchEffect } from '../axiosHandlers/fetchEffect'
 
 const EditCat = () => {
+  const navigate = useNavigate()
   const {type} = useContext(MeContext)
   const {MOTHERorFATHER, id} = useParams()
-  const [catToEdit, setCatToEdit] = useState(history.location.state?.cat)
+  const [catToEdit, setCatToEdit] = useState(location.state?.cat ?? null)
   const [catLoaded, setCatLoaded] = useState(false)
   const [initialState, setInitialState] = useState(catToEdit ?
     catToEdit :
@@ -58,7 +58,7 @@ const EditCat = () => {
   },[catLoaded])
 
   useEffect(() => {
-    posted && history.push(`/catDetailedView/${MOTHERorFATHER}/${posted?.id}`)
+    posted && navigate(`/catDetailedView/${MOTHERorFATHER}/${posted?.id}`)
   },[posted])
 
   return (

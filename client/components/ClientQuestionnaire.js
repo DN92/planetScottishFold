@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react'
-import { Link } from 'react-router-dom'
-import history from '../history'
+import { Link, useNavigate } from 'react-router-dom'
 import {furColors, eyeColors, mifOptions, budgetRanges, earOptions, genderOptions, willBreedOptions, hasAllergiesOptions, foundUsByOptions} from "../../myModelsConfig"
 import handleFormChange from '../customHandlers/handleFormChange'
 import useLocalStorage from '../customHooks/useLocalStorage'
@@ -11,6 +10,7 @@ import ErrorFill from './ErrorFill'
 
 const ClientQuestionnaire = () => {
 
+  const navigate = useNavigate()
   const meContext = useContext(MeContext)
 
   const defaultClientInfo = {
@@ -97,7 +97,7 @@ const ClientQuestionnaire = () => {
     if(formValidated) {
       const furColorsToArray = Object.keys(clientInfo.furColor)
         .filter(color => clientInfo.furColor[color] === true)
-      history.push('/confirmClientQuestionnaire', {clientInfo:
+      navigate('/confirmClientQuestionnaire', {clientInfo:
         {...clientInfo, 'furColor': furColorsToArray}
       })
     }

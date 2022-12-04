@@ -2,17 +2,18 @@ import React, {useState, useEffect, useContext} from 'react'
 import MeContext from '../../MeContextPro'
 import { isPrivileged } from '../../../myModelsConfig'
 import ErrorFill from '../ErrorFill'
-import history from '../../history'
 import { furColorsAdmin, eyeColors, genderOptions, earOptions, statusOptionsKitten} from '../../../myModelsConfig'
 import handleControlledValueFieldToState from '../../customHandlers/handleFormChange'
 import { fetchEffect } from '../axiosHandlers/fetchEffect'
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate, useLocation } from 'react-router-dom'
 
 const EditKitten = () => {
   const {type} = useContext(MeContext)
   const {id} = useParams()
 
-  const [kittenToEdit, setKittenToEdit] = useState(history.location.state?.kitten)
+  const navigate = useNavigate()
+  const location = useLocation()
+  const [kittenToEdit, setKittenToEdit] = useState(location.state?.kitten ?? null)
   const [error, setError] = useState('')
   const [dams, setDams] = useState([])
   const [studs, setStuds] = useState([])
@@ -50,7 +51,7 @@ const EditKitten = () => {
 
   useEffect(() => {
     if(posted) {
-      history.push(`/kittenDetailed/${posted.id}`, {kitten: posted, fromEdit: true})
+      navigate(`/kittenDetailed/${posted.id}`, {kitten: posted, fromEdit: true})
     }
   }, [posted])
 

@@ -1,7 +1,6 @@
 import React, {useState, useEffect, useContext} from 'react'
-import history from '../history'
 import ErrorFill from './ErrorFill'
-import { Link, useParams } from 'react-router-dom'
+import { Link, useParams, useLocation } from 'react-router-dom'
 import My404 from './My404'
 import MeContext from '../MeContextPro'
 import { isPrivileged } from '../../myModelsConfig'
@@ -11,19 +10,15 @@ import ImageSlideBar from './ImageSlideBar'
 
 //  /kittenDetailed
 const KittenDetailedView = () => {
+  const location = useLocation()
   const {type} =useContext(MeContext)
   const {id} = useParams()
 
-  const fromEdit = history.location.state?.fromEdit
-  const [kitten, setKitten] = useState(history.location.state ?
-    history.location.state.kitten :
-    null
-  )
+  const fromEdit = location.state?.fromEdit
+  const [kitten, setKitten] = useState(location.state?.kitten ?? null)
   const [albumPaths, setAlbumPaths] = useState([])
   const [error, setError] = useState('')
 
-    //  if we don't have a KITTEN from history, fetch one by id.
-    //  no params and no history should result in a local 404
   useEffect(() => {
     if(!kitten && id) {
       fetchEffect(
