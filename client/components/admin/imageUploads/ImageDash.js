@@ -4,7 +4,6 @@ import PhotoAlbum from './PhotoAlbum'
 import UploadPane from './UploadPane'
 
 const types = ['none', 'kitten', 'sire', 'dam']
-const none = []
 
 const imageDash = () => {
 
@@ -17,7 +16,7 @@ const imageDash = () => {
   const [selectedKitten, setSelectedKitten] = useState(null)
   const [selectedDam, setSelectedDam] = useState(null)
   const [selectedSire, setSelectedSire] = useState(null)
-  const [newFileWasUploaded, setNewFileWasUploaded] = useState(false)
+  const [fileChangeOccurred, setFileChangeOccurred] = useState(false)
   const [viewAlbum, setViewAlbum] = useState(true)
 
   const [viewUploadPane, setViewUploadPain] = useState(true)
@@ -46,11 +45,6 @@ const imageDash = () => {
       console.warn('invalid selection:: ', selection)
     }
   }
-  // useEffect(() => {
-  //   if (prime) {
-  //     console.log('prime:: ', prime)
-  //   }
-  // }, [prime])
 
   useEffect(() => {
     fetchEffect(
@@ -75,6 +69,7 @@ const imageDash = () => {
   return (
     <div>
       <h2>IMAGE DASH</h2>
+
       <label htmlFor="image-dash-type-selector">Select Cat Category</label>
       <select
         id='image-dash-type-selector'
@@ -122,6 +117,10 @@ const imageDash = () => {
         }
       })()}
 
+      {viewUploadPane &&
+      <UploadPane prime={prime} category={selectedType} setFileChangeOccurred={setFileChangeOccurred}/>
+      }
+
       <div>
         <h3>Main Image for {prime?.name} </h3>
         {prime &&
@@ -141,10 +140,7 @@ const imageDash = () => {
         <button onClick={() => setViewUploadPain(prev => !prev)}>{viewUploadPane ? 'Hide' : 'View'} Upload Panel</button>
       </nav>
       {viewAlbum &&
-      <PhotoAlbum type={selectedType} cat={prime} newFileWasUploaded={newFileWasUploaded} setNewFileWasUploaded={setNewFileWasUploaded}  />
-      }
-      {viewUploadPane &&
-      <UploadPane prime={prime} category={selectedType} setNewFileWasUploaded={setNewFileWasUploaded}/>
+      <PhotoAlbum type={selectedType} cat={prime} fileChangeOccurred={fileChangeOccurred} setFileChangeOccurred={setFileChangeOccurred}  />
       }
     </div>
   )

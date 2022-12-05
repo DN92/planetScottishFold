@@ -1,8 +1,6 @@
 const router = require('express').Router()
-const { copyFile, constants, readdir, writeFile, mkdir } = require( 'fs/promises');
-const { existsSync, openSync } = require('fs')
+const { unlink } = require('fs')
 const path = require('path')
-const readFilesRec = require('fs-readdir-recursive')
 const fileExtensionValidator = require('../expressMiddleware/fileExtensionValidator')
 
 const fileUpload = require('express-fileupload')
@@ -51,6 +49,28 @@ router.post('/upimage',
     })
     res.send({msg: ''})
   } catch(err) {
+    next(err)
+  }
+})
+
+router.delete('/images', (req, res, next) => {
+  try {
+    // confirm deletion only valid for catImageRouter Directory
+    const validDir = 'catImageRouter'
+    const tarPath = req.query.path || ''
+    if(!tarPath.includes(validDir)) {
+      res.send({success: false, msg:'bad target directory'})
+      return
+    }
+    const basePath = path.join(__dirname, '..', '..', 'public' )
+    const targetFile = tarPath.split(validDir)[1] ?? ''
+    const pathToDelete = path.join(basePath, validDir, targetFile)
+    unlink(pathToDelete, (err)=>{
+      if(err) console.log('error from unlink:: ', err)
+    })
+    console.log('final:: ', pathToDelete)
+    res.sendStatus(200)
+  } catch (err) {
     next(err)
   }
 })

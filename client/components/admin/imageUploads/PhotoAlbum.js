@@ -1,20 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import { fetchEffect } from '../../axiosHandlers/fetchEffect'
 
-const PhotoAlbum = ({cat, type, newFileWasUploaded, setNewFileWasUploaded}) => {
+const PhotoAlbum = ({cat, type, fileChangeOccurred, setFileChangeOccurred}) => {
   const [imagePaths, setImagePaths] = useState([])
   const [selectedPath, setSelectedPath] = useState('')
   const [pathsToDelete, setPathsToDelete] = useState([])
   const [readyDeleteAll, setReadyDeleteAll] = useState(false)
   const [error, setError] = useState('')
-
-  // useEffect(() => {
-  //   cat && console.log(cat.id)
-  // }, [cat])
-
-  // useEffect(() => {
-  //   console.log(newFileWasUploaded.toString())
-  // }, [newFileWasUploaded])
 
   function handleSelectImage(e) {
     if(e.target.src) setSelectedPath(e.target.src)
@@ -35,10 +27,18 @@ const PhotoAlbum = ({cat, type, newFileWasUploaded, setNewFileWasUploaded}) => {
     setPathsToDelete([])
   }
 
-  function handleDeleteAll() {
+  async function handleDeleteAll() {
+    console.log('fire delete all')
     setReadyDeleteAll(false)
-    // DELETE ALL IMAGES
-    //
+    console.log('pathsToDelete: ', pathsToDelete)
+    await Promise.all(pathsToDelete.map(path => {
+      return fetch(`/api/createFiles/images?path=${path}`, {
+        method: 'delete',
+      })
+    }))
+    setFileChangeOccurred(true)
+    setPathsToDelete([])
+    setSelectedPath('')
   }
 
   function clearSelected() {
@@ -50,15 +50,15 @@ const PhotoAlbum = ({cat, type, newFileWasUploaded, setNewFileWasUploaded}) => {
   }, [pathsToDelete])
 
   useEffect(() => {
-    if ((cat && type) || newFileWasUploaded) {
-      setNewFileWasUploaded(false)
+    if ((cat && type) || fileChangeOccurred) {
+      setFileChangeOccurred(false)
       fetchEffect(
         [setImagePaths, setError],
         'get',
         `/api/albums?type=${type}&id=${cat.id}`
       )
     }
-  }, [cat, type, newFileWasUploaded, setNewFileWasUploaded])
+  }, [cat, type, fileChangeOccurred, setFileChangeOccurred])
 
   // useEffect(() => {
   //   console.log('paths:: ', imagePaths)
@@ -94,11 +94,16 @@ const PhotoAlbum = ({cat, type, newFileWasUploaded, setNewFileWasUploaded}) => {
         </div>
         ))}
       </div>
+
+      {selectedPath &&
       <div>
+
         <button onClick={clearSelected}>
           Clear Selected
         </button>
       </div>
+      }
+
       <div className='album-selected-image'>
         <h4>deletion</h4>
         <div className='album-selected-image-container'

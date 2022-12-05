@@ -5,9 +5,7 @@ function getExtension(filename) {
   return filename.substring(filename.lastIndexOf(".") + 1);
 }
 
-const UploadPane = ({prime, category, setNewFileWasUploaded}) => {
-
-  // console.log('upload pane prime', prime)
+const UploadPane = ({prime, category, setFileChangeOccurred}) => {
 
   const [selectedFile, setSelectedFile] = useState(null)
   const [customFilename, setCustomFilename] = useState('')
@@ -64,7 +62,7 @@ const UploadPane = ({prime, category, setNewFileWasUploaded}) => {
         setResponseCode(response?.status ?? 600)
         setResponseMsg(json?.msg ?? '')
         resetState()
-        setNewFileWasUploaded(true)
+        setFileChangeOccurred(true)
       } else {
         console.log('ERROR RESPONSE:: ', response)
         setUploadError(response.statusText || 'unknown error')
@@ -79,20 +77,11 @@ const UploadPane = ({prime, category, setNewFileWasUploaded}) => {
     resetState()
   }
 
-  // useEffect(() => {
-  //   console.log('selectedFile :: ', selectedFile)
-  // }, [selectedFile])
-  // useEffect(() => {
-  //   console.log('selectedFileEXT :: ', ext)
-  // }, [ext])
-  // useEffect(() => {
-  //   console.log('customFileName :: ', customFilename)
-  // }, [customFilename])
-
   return (
     <div>
       <h3>UploadPane</h3>
-      {/* {prime ? */}
+
+      {prime ?
       <form onSubmit={handlePushFile}>
         {validationError && <p className='error'>{validationError}</p>}
         <input
@@ -104,7 +93,7 @@ const UploadPane = ({prime, category, setNewFileWasUploaded}) => {
           onChange={handleCustomFilename}
           type="text"
           name='name'
-          placeholder={selectedFile ? 'optional custom file name' : 'Select a file' }
+          placeholder={selectedFile ? 'optional custom file name' : 'Click Choose File' }
         />
         <button type='reset' onClick={handleReset}>
           Clear
@@ -114,23 +103,9 @@ const UploadPane = ({prime, category, setNewFileWasUploaded}) => {
         </button>
       </form>
 
-      {/* :
+      :
       <h4>Select A Cat to upload an image</h4>
-    } */}
-      <div>
-        <h3>Response Info</h3>
-        <p>Response Code: {responseCode}</p>
-        <p>Response Message: {responseMsg}</p>
-        {uploadError && <p className='error'>UploadError:: {uploadError}</p>}
-      </div>
-
-      <button onClick={ async () => {
-        const response = await fetch('/api/createFiles/upimage')
-        const json = await response.json()
-        console.log(json)
-      }}>
-        TESTER BUTTON
-      </button>
+      }
     </div>
   )
 }

@@ -15364,7 +15364,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const types = ['none', 'kitten', 'sire', 'dam'];
-const none = [];
 const imageDash = () => {
   const [kittens, setKittens] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]);
   const [dams, setDams] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]);
@@ -15374,7 +15373,7 @@ const imageDash = () => {
   const [selectedKitten, setSelectedKitten] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null);
   const [selectedDam, setSelectedDam] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null);
   const [selectedSire, setSelectedSire] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null);
-  const [newFileWasUploaded, setNewFileWasUploaded] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
+  const [fileChangeOccurred, setFileChangeOccurred] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
   const [viewAlbum, setViewAlbum] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(true);
   const [viewUploadPane, setViewUploadPain] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(true);
   const prime = (0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(() => {
@@ -15401,12 +15400,6 @@ const imageDash = () => {
       console.warn('invalid selection:: ', selection);
     }
   }
-  // useEffect(() => {
-  //   if (prime) {
-  //     console.log('prime:: ', prime)
-  //   }
-  // }, [prime])
-
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
     (0,_axiosHandlers_fetchEffect__WEBPACK_IMPORTED_MODULE_1__.fetchEffect)([setDams, setError], 'get', `/api/mothers`);
     (0,_axiosHandlers_fetchEffect__WEBPACK_IMPORTED_MODULE_1__.fetchEffect)([setSires, setError], 'get', `/api/fathers`);
@@ -15463,7 +15456,11 @@ const imageDash = () => {
       default:
         return null;
     }
-  })(), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h3", null, "Main Image for ", prime?.name, " "), prime && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
+  })(), viewUploadPane && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_UploadPane__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    prime: prime,
+    category: selectedType,
+    setFileChangeOccurred: setFileChangeOccurred
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h3", null, "Main Image for ", prime?.name, " "), prime && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
     src: prime.mainImageSrcValue,
     alt: "main image for selected cat",
     style: {
@@ -15479,12 +15476,8 @@ const imageDash = () => {
   }, viewUploadPane ? 'Hide' : 'View', " Upload Panel")), viewAlbum && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_PhotoAlbum__WEBPACK_IMPORTED_MODULE_2__["default"], {
     type: selectedType,
     cat: prime,
-    newFileWasUploaded: newFileWasUploaded,
-    setNewFileWasUploaded: setNewFileWasUploaded
-  }), viewUploadPane && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_UploadPane__WEBPACK_IMPORTED_MODULE_3__["default"], {
-    prime: prime,
-    category: selectedType,
-    setNewFileWasUploaded: setNewFileWasUploaded
+    fileChangeOccurred: fileChangeOccurred,
+    setFileChangeOccurred: setFileChangeOccurred
   }));
 };
 /* harmony default export */ __webpack_exports__["default"] = (imageDash);
@@ -15507,23 +15500,14 @@ __webpack_require__.r(__webpack_exports__);
 const PhotoAlbum = ({
   cat,
   type,
-  newFileWasUploaded,
-  setNewFileWasUploaded
+  fileChangeOccurred,
+  setFileChangeOccurred
 }) => {
   const [imagePaths, setImagePaths] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]);
   const [selectedPath, setSelectedPath] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('');
   const [pathsToDelete, setPathsToDelete] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]);
   const [readyDeleteAll, setReadyDeleteAll] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
   const [error, setError] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('');
-
-  // useEffect(() => {
-  //   cat && console.log(cat.id)
-  // }, [cat])
-
-  // useEffect(() => {
-  //   console.log(newFileWasUploaded.toString())
-  // }, [newFileWasUploaded])
-
   function handleSelectImage(e) {
     if (e.target.src) setSelectedPath(e.target.src);
   }
@@ -15539,12 +15523,19 @@ const PhotoAlbum = ({
     setReadyDeleteAll(false);
     setPathsToDelete([]);
   }
-  function handleDeleteAll() {
+  async function handleDeleteAll() {
+    console.log('fire delete all');
     setReadyDeleteAll(false);
-    // DELETE ALL IMAGES
-    //
+    console.log('pathsToDelete: ', pathsToDelete);
+    await Promise.all(pathsToDelete.map(path => {
+      return fetch(`/api/createFiles/images?path=${path}`, {
+        method: 'delete'
+      });
+    }));
+    setFileChangeOccurred(true);
+    setPathsToDelete([]);
+    setSelectedPath('');
   }
-
   function clearSelected() {
     setSelectedPath('');
   }
@@ -15552,11 +15543,11 @@ const PhotoAlbum = ({
     console.log('PATHS TO DELETE:: ', pathsToDelete);
   }, [pathsToDelete]);
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
-    if (cat && type || newFileWasUploaded) {
-      setNewFileWasUploaded(false);
+    if (cat && type || fileChangeOccurred) {
+      setFileChangeOccurred(false);
       (0,_axiosHandlers_fetchEffect__WEBPACK_IMPORTED_MODULE_1__.fetchEffect)([setImagePaths, setError], 'get', `/api/albums?type=${type}&id=${cat.id}`);
     }
-  }, [cat, type, newFileWasUploaded, setNewFileWasUploaded]);
+  }, [cat, type, fileChangeOccurred, setFileChangeOccurred]);
 
   // useEffect(() => {
   //   console.log('paths:: ', imagePaths)
@@ -15585,7 +15576,7 @@ const PhotoAlbum = ({
       height: '100%',
       objectFit: 'contain'
     }
-  })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+  })))), selectedPath && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
     onClick: clearSelected
   }, "Clear Selected")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "album-selected-image"
@@ -15663,10 +15654,8 @@ function getExtension(filename) {
 const UploadPane = ({
   prime,
   category,
-  setNewFileWasUploaded
+  setFileChangeOccurred
 }) => {
-  // console.log('upload pane prime', prime)
-
   const [selectedFile, setSelectedFile] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null);
   const [customFilename, setCustomFilename] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('');
   const [formData, setFormData] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(new FormData());
@@ -15714,7 +15703,7 @@ const UploadPane = ({
         setResponseCode(response?.status ?? 600);
         setResponseMsg(json?.msg ?? '');
         resetState();
-        setNewFileWasUploaded(true);
+        setFileChangeOccurred(true);
       } else {
         console.log('ERROR RESPONSE:: ', response);
         setUploadError(response.statusText || 'unknown error');
@@ -15726,18 +15715,7 @@ const UploadPane = ({
   function handleReset() {
     resetState();
   }
-
-  // useEffect(() => {
-  //   console.log('selectedFile :: ', selectedFile)
-  // }, [selectedFile])
-  // useEffect(() => {
-  //   console.log('selectedFileEXT :: ', ext)
-  // }, [ext])
-  // useEffect(() => {
-  //   console.log('customFileName :: ', customFilename)
-  // }, [customFilename])
-
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h3", null, "UploadPane"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("form", {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h3", null, "UploadPane"), prime ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("form", {
     onSubmit: handlePushFile
   }, validationError && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
     className: "error"
@@ -15749,21 +15727,13 @@ const UploadPane = ({
     onChange: handleCustomFilename,
     type: "text",
     name: "name",
-    placeholder: selectedFile ? 'optional custom file name' : 'Select a file'
+    placeholder: selectedFile ? 'optional custom file name' : 'Click Choose File'
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
     type: "reset",
     onClick: handleReset
   }, "Clear"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
     type: "submit"
-  }, "Push File To Server")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h3", null, "Response Info"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Response Code: ", responseCode), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Response Message: ", responseMsg), uploadError && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
-    className: "error"
-  }, "UploadError:: ", uploadError)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
-    onClick: async () => {
-      const response = await fetch('/api/createFiles/upimage');
-      const json = await response.json();
-      console.log(json);
-    }
-  }, "TESTER BUTTON"));
+  }, "Push File To Server")) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h4", null, "Select A Cat to upload an image"));
 };
 /* harmony default export */ __webpack_exports__["default"] = (UploadPane);
 
