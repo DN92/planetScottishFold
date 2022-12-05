@@ -15,7 +15,6 @@ const { db } = require('./db')
 const PORT = process.env.PORT || 8081
 const app = express()
 
-
 if (process.env.NODE_ENV !== 'production') {
   const secrets = require('../secrets')
   process.env.JWT_SIG = secrets.JWT_SIG
@@ -66,6 +65,12 @@ app.use((err, req, res, next) => {
   console.error(err.stack)
   res.status(err.status || 500).send(err.message || 'Endpoint Server Error')
 })
+
+process.on('SIGINT', function() {
+  console.log( "\nGracefully shutting down from SIGINT (Ctrl-C)" );
+  // some other closing procedures go here
+  process.exit(0);
+});
 
 const syncDb = async () => {
   await db.sync({ force: false, alter: false })

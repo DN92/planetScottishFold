@@ -39,7 +39,7 @@ router.get('/', async (req, res, next) => {
       }
     }
     const publicPath = `/${tarBase}/${type}${id}`
-    const files = await readdir(tarDir)
+    const files = readdirSync(tarDir).sort((a, b) => (a === 'main.jpg' ? -1 : 1))
     res.send(files.map(file => `${publicPath}/${file}`))
 
   } catch (err) {

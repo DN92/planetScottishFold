@@ -1,11 +1,3 @@
-// for(let i = 0; i < 5; i++) {
-//   setTimeout(function(){
-//       console.log(i)
-//   },1000)
-// }
+const arr = []
 
-for (var i = 0; i<5 ; i++){
-setTimeout(function(){
-  console.log(i)
-}(),2000)
-}
+console.log(arr.includes(''))

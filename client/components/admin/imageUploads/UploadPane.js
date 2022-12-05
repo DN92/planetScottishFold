@@ -1,51 +1,98 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useMemo, useEffect } from 'react'
 import validateFile from '../../../customHandlers/validateFile'
 
-const UploadPane = ({selectedType}) => {
+function getExtension(filename) {
+  return filename.substring(filename.lastIndexOf(".") + 1);
+}
+
+const UploadPane = ({prime, category, setNewFileWasUploaded}) => {
+
+  // console.log('upload pane prime', prime)
 
   const [selectedFile, setSelectedFile] = useState(null)
-  const [customFilename, setCustomeFilename] = useState('')
-  const formData = new FormData()
+  const [customFilename, setCustomFilename] = useState('')
+  const [formData, setFormData] = useState(new FormData())
   const [validationError, setValidationError] = useState('')
+  const [uploadError, setUploadError] = useState('')
+  const [responseCode, setResponseCode] = useState(null)
+  const [responseMsg, setResponseMsg] = useState('')
 
-  function handleCustomFilename() {
+  const ext = useMemo(() => {
+    if(!selectedFile) return ''
+    return getExtension(selectedFile.name)
+  }, [selectedFile])
 
+  function resetState() {
+    setSelectedFile(null);
+    setCustomFilename('')
+    setFormData(new FormData())
+    setValidationError('')
+  }
+
+  function handleCustomFilename(e) {
+    setCustomFilename(`${e.target.value}.${ext}`)
   }
 
   function handleSelectFile(file) {
     setValidationError('')
-    console.log('file:: ', file)
     if (!file) return
     if (!validateFile(file, 'image')) setValidationError('File type validation failed. Only .img .jpg .jpeg files are allowed')
     file && setSelectedFile(file)
   }
 
-  function handlePushFile(e) {
+  async function handlePushFile(e) {
     e.preventDefault()
-    console.log('push file')
+
     if(!selectedFile) return
     setValidationError('')
     if (validateFile(selectedFile, 'image')) {
       formData.append('image', selectedFile, selectedFile.name)
-      formData.append('category', selectedType)
+      formData.append('catName', prime?.name || '')
+      formData.append('category', category)
+      formData.append('id', prime?.id ?? 0)
       formData.append('filename', customFilename || selectedFile.name)
 
-      // console.log('image', formData.has('image'))
-      // console.log('category', formData.has('category'))
-      // console.log('filename', formData.has('filename'))
+      console.log('here!!')
+
+      const response = await fetch('/api/createFiles/upimage', {
+        method: 'post',
+        body: formData,
+      })
+      if(response.status > 199 && response.status < 300) {
+        const json = await response.json()
+        console.log('JSON :: ', json)
+        setResponseCode(response?.status ?? 600)
+        setResponseMsg(json?.msg ?? '')
+        resetState()
+        setNewFileWasUploaded(true)
+      } else {
+        console.log('ERROR RESPONSE:: ', response)
+        setUploadError(response.statusText || 'unknown error')
+      }
 
     } else {
       setValidationError('File type validation failed. Only .img .jpg .jpeg files are allowed')
     }
   }
 
-  useEffect(() => {
-    console.log('selectedFile :: ', selectedFile)
-  }, [selectedFile])
+  function handleReset() {
+    resetState()
+  }
+
+  // useEffect(() => {
+  //   console.log('selectedFile :: ', selectedFile)
+  // }, [selectedFile])
+  // useEffect(() => {
+  //   console.log('selectedFileEXT :: ', ext)
+  // }, [ext])
+  // useEffect(() => {
+  //   console.log('customFileName :: ', customFilename)
+  // }, [customFilename])
 
   return (
     <div>
       <h3>UploadPane</h3>
+      {/* {prime ? */}
       <form onSubmit={handlePushFile}>
         {validationError && <p className='error'>{validationError}</p>}
         <input
@@ -53,20 +100,37 @@ const UploadPane = ({selectedType}) => {
           onChange={e => handleSelectFile(e.target.files[0])}
         />
         <input
-          type="text"
-          name='type'
-          placeholder='category'
-        />
-        <input
+          disabled={!selectedFile}
           onChange={handleCustomFilename}
           type="text"
           name='name'
-          placeholder='optional custom file name'
+          placeholder={selectedFile ? 'optional custom file name' : 'Select a file' }
         />
-      <button type='submit'>
-        Push File To Server
-      </button>
+        <button type='reset' onClick={handleReset}>
+          Clear
+        </button>
+        <button type='submit'>
+          Push File To Server
+        </button>
       </form>
+
+      {/* :
+      <h4>Select A Cat to upload an image</h4>
+    } */}
+      <div>
+        <h3>Response Info</h3>
+        <p>Response Code: {responseCode}</p>
+        <p>Response Message: {responseMsg}</p>
+        {uploadError && <p className='error'>UploadError:: {uploadError}</p>}
+      </div>
+
+      <button onClick={ async () => {
+        const response = await fetch('/api/createFiles/upimage')
+        const json = await response.json()
+        console.log(json)
+      }}>
+        TESTER BUTTON
+      </button>
     </div>
   )
 }

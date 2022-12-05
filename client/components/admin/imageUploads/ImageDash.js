@@ -17,8 +17,9 @@ const imageDash = () => {
   const [selectedKitten, setSelectedKitten] = useState(null)
   const [selectedDam, setSelectedDam] = useState(null)
   const [selectedSire, setSelectedSire] = useState(null)
-
+  const [newFileWasUploaded, setNewFileWasUploaded] = useState(false)
   const [viewAlbum, setViewAlbum] = useState(true)
+
   const [viewUploadPane, setViewUploadPain] = useState(true)
   const prime = useMemo(() => {
     return (()=>{
@@ -45,26 +46,11 @@ const imageDash = () => {
       console.warn('invalid selection:: ', selection)
     }
   }
-  useEffect(() => {
-    if (prime) {
-
-      console.log('prime:: ', prime)
-    }
-  }, [prime])
-
   // useEffect(() => {
-  //   console.log('selected values')
-  //   console.log(selectedDam)
-  //   console.log(selectedSire)
-  //   console.log(selectedKitten)
-  // }, [selectedDam, selectedKitten, selectedSire])
-
-  // useEffect(() => {
-  //   console.log('kittens:', kittens)
-  //   console.log('dams', dams.length)
-  //   console.log(sires.length)
-
-  // }, [kittens, dams, sires])
+  //   if (prime) {
+  //     console.log('prime:: ', prime)
+  //   }
+  // }, [prime])
 
   useEffect(() => {
     fetchEffect(
@@ -137,7 +123,7 @@ const imageDash = () => {
       })()}
 
       <div>
-        <h3>Main Image for </h3>
+        <h3>Main Image for {prime?.name} </h3>
         {prime &&
         <img
           src={prime.mainImageSrcValue}
@@ -155,10 +141,10 @@ const imageDash = () => {
         <button onClick={() => setViewUploadPain(prev => !prev)}>{viewUploadPane ? 'Hide' : 'View'} Upload Panel</button>
       </nav>
       {viewAlbum &&
-      <PhotoAlbum type={selectedType} cat={prime} />
+      <PhotoAlbum type={selectedType} cat={prime} newFileWasUploaded={newFileWasUploaded} setNewFileWasUploaded={setNewFileWasUploaded}  />
       }
       {viewUploadPane &&
-      <UploadPane selectedType={selectedType} />
+      <UploadPane prime={prime} category={selectedType} setNewFileWasUploaded={setNewFileWasUploaded}/>
       }
     </div>
   )

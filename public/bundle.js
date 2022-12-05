@@ -15374,6 +15374,7 @@ const imageDash = () => {
   const [selectedKitten, setSelectedKitten] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null);
   const [selectedDam, setSelectedDam] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null);
   const [selectedSire, setSelectedSire] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null);
+  const [newFileWasUploaded, setNewFileWasUploaded] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
   const [viewAlbum, setViewAlbum] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(true);
   const [viewUploadPane, setViewUploadPain] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(true);
   const prime = (0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(() => {
@@ -15400,25 +15401,11 @@ const imageDash = () => {
       console.warn('invalid selection:: ', selection);
     }
   }
-  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
-    if (prime) {
-      console.log('prime:: ', prime);
-    }
-  }, [prime]);
-
   // useEffect(() => {
-  //   console.log('selected values')
-  //   console.log(selectedDam)
-  //   console.log(selectedSire)
-  //   console.log(selectedKitten)
-  // }, [selectedDam, selectedKitten, selectedSire])
-
-  // useEffect(() => {
-  //   console.log('kittens:', kittens)
-  //   console.log('dams', dams.length)
-  //   console.log(sires.length)
-
-  // }, [kittens, dams, sires])
+  //   if (prime) {
+  //     console.log('prime:: ', prime)
+  //   }
+  // }, [prime])
 
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
     (0,_axiosHandlers_fetchEffect__WEBPACK_IMPORTED_MODULE_1__.fetchEffect)([setDams, setError], 'get', `/api/mothers`);
@@ -15476,7 +15463,7 @@ const imageDash = () => {
       default:
         return null;
     }
-  })(), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h3", null, "Main Image for "), prime && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
+  })(), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h3", null, "Main Image for ", prime?.name, " "), prime && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
     src: prime.mainImageSrcValue,
     alt: "main image for selected cat",
     style: {
@@ -15491,9 +15478,13 @@ const imageDash = () => {
     onClick: () => setViewUploadPain(prev => !prev)
   }, viewUploadPane ? 'Hide' : 'View', " Upload Panel")), viewAlbum && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_PhotoAlbum__WEBPACK_IMPORTED_MODULE_2__["default"], {
     type: selectedType,
-    cat: prime
+    cat: prime,
+    newFileWasUploaded: newFileWasUploaded,
+    setNewFileWasUploaded: setNewFileWasUploaded
   }), viewUploadPane && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_UploadPane__WEBPACK_IMPORTED_MODULE_3__["default"], {
-    selectedType: selectedType
+    prime: prime,
+    category: selectedType,
+    setNewFileWasUploaded: setNewFileWasUploaded
   }));
 };
 /* harmony default export */ __webpack_exports__["default"] = (imageDash);
@@ -15515,21 +15506,62 @@ __webpack_require__.r(__webpack_exports__);
 
 const PhotoAlbum = ({
   cat,
-  type
+  type,
+  newFileWasUploaded,
+  setNewFileWasUploaded
 }) => {
   const [imagePaths, setImagePaths] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]);
+  const [selectedPath, setSelectedPath] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('');
+  const [pathsToDelete, setPathsToDelete] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]);
+  const [readyDeleteAll, setReadyDeleteAll] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
   const [error, setError] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('');
+
+  // useEffect(() => {
+  //   cat && console.log(cat.id)
+  // }, [cat])
+
+  // useEffect(() => {
+  //   console.log(newFileWasUploaded.toString())
+  // }, [newFileWasUploaded])
+
+  function handleSelectImage(e) {
+    if (e.target.src) setSelectedPath(e.target.src);
+  }
+  function handleMarkForDeletion(e) {
+    if (selectedPath) {
+      setPathsToDelete(pathsToDelete => [...pathsToDelete, selectedPath]);
+    }
+  }
+  function handleUndoDeletion(e) {
+    setPathsToDelete(pathsToDelete => pathsToDelete.filter(path => path !== selectedPath));
+  }
+  function undoAllDeletions() {
+    setReadyDeleteAll(false);
+    setPathsToDelete([]);
+  }
+  function handleDeleteAll() {
+    setReadyDeleteAll(false);
+    // DELETE ALL IMAGES
+    //
+  }
+
+  function clearSelected() {
+    setSelectedPath('');
+  }
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
-    cat && console.log(cat.id);
-  }, [cat]);
+    console.log('PATHS TO DELETE:: ', pathsToDelete);
+  }, [pathsToDelete]);
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
-    if (cat && type && imagePaths.length < 1) {
+    if (cat && type || newFileWasUploaded) {
+      setNewFileWasUploaded(false);
       (0,_axiosHandlers_fetchEffect__WEBPACK_IMPORTED_MODULE_1__.fetchEffect)([setImagePaths, setError], 'get', `/api/albums?type=${type}&id=${cat.id}`);
     }
-  }, [cat, type]);
-  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
-    console.log('paths:: ', imagePaths);
-  }, [imagePaths]);
+  }, [cat, type, newFileWasUploaded, setNewFileWasUploaded]);
+
+  // useEffect(() => {
+  //   console.log('paths:: ', imagePaths)
+  // }, [imagePaths])
+
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h3", null, "Photo Album"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "album-container",
     style: {
@@ -15539,14 +15571,74 @@ const PhotoAlbum = ({
   }, imagePaths.map((path, idx) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     key: idx + path,
     value: idx,
+    onClick: handleSelectImage,
     style: {
       width: '100px',
-      height: '100px'
+      height: '100px',
+      padding: '.5rem'
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
     src: path,
-    alt: "album image"
-  })))));
+    alt: "album image",
+    style: {
+      width: '100%',
+      height: '100%',
+      objectFit: 'contain'
+    }
+  })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    onClick: clearSelected
+  }, "Clear Selected")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "album-selected-image"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h4", null, "deletion"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "album-selected-image-container",
+    style: {
+      height: '250px',
+      maxHeight: '250px',
+      marginBottom: '3rem'
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Currently Selected"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    onClick: pathsToDelete.includes(selectedPath) ? handleUndoDeletion : handleMarkForDeletion,
+    disabled: selectedPath ? false : true,
+    style: {
+      opacity: selectedPath ? '1.0' : '.8'
+    }
+  }, pathsToDelete.includes(selectedPath) ? `Keep Image` : `Mark for deletion`), selectedPath && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
+    src: selectedPath,
+    alt: "selected image",
+    style: {
+      width: '100%',
+      height: '100%',
+      margin: 'auto',
+      objectFit: 'contain'
+    }
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "album-container",
+    style: {
+      display: 'flex',
+      flexWrap: 'wrap',
+      marginBottom: '2rem'
+    }
+  }, pathsToDelete.map((path, idx) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    key: idx + path,
+    onClick: handleSelectImage,
+    style: {
+      width: '100px',
+      height: '100px',
+      padding: '.5rem'
+    }
+  }, "To Be Deleted", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
+    src: path,
+    alt: "album image to delete",
+    style: {
+      width: '100%',
+      height: '100%',
+      objectFit: 'contain'
+    }
+  })))), pathsToDelete.length > 0 && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    onClick: undoAllDeletions
+  }, "Undo All"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    onClick: readyDeleteAll ? handleDeleteAll : () => setReadyDeleteAll(true)
+  }, readyDeleteAll ? `Confirm Delete Action` : `Delete All`)));
 };
 /* harmony default export */ __webpack_exports__["default"] = (PhotoAlbum);
 
@@ -15565,41 +15657,86 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _customHandlers_validateFile__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../customHandlers/validateFile */ "./client/customHandlers/validateFile.js");
 
 
+function getExtension(filename) {
+  return filename.substring(filename.lastIndexOf(".") + 1);
+}
 const UploadPane = ({
-  selectedType
+  prime,
+  category,
+  setNewFileWasUploaded
 }) => {
+  // console.log('upload pane prime', prime)
+
   const [selectedFile, setSelectedFile] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null);
-  const [customFilename, setCustomeFilename] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('');
-  const formData = new FormData();
+  const [customFilename, setCustomFilename] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('');
+  const [formData, setFormData] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(new FormData());
   const [validationError, setValidationError] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('');
-  function handleCustomFilename() {}
+  const [uploadError, setUploadError] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('');
+  const [responseCode, setResponseCode] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null);
+  const [responseMsg, setResponseMsg] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('');
+  const ext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(() => {
+    if (!selectedFile) return '';
+    return getExtension(selectedFile.name);
+  }, [selectedFile]);
+  function resetState() {
+    setSelectedFile(null);
+    setCustomFilename('');
+    setFormData(new FormData());
+    setValidationError('');
+  }
+  function handleCustomFilename(e) {
+    setCustomFilename(`${e.target.value}.${ext}`);
+  }
   function handleSelectFile(file) {
     setValidationError('');
-    console.log('file:: ', file);
     if (!file) return;
     if (!(0,_customHandlers_validateFile__WEBPACK_IMPORTED_MODULE_1__["default"])(file, 'image')) setValidationError('File type validation failed. Only .img .jpg .jpeg files are allowed');
     file && setSelectedFile(file);
   }
-  function handlePushFile(e) {
+  async function handlePushFile(e) {
     e.preventDefault();
-    console.log('push file');
     if (!selectedFile) return;
     setValidationError('');
     if ((0,_customHandlers_validateFile__WEBPACK_IMPORTED_MODULE_1__["default"])(selectedFile, 'image')) {
       formData.append('image', selectedFile, selectedFile.name);
-      formData.append('category', selectedType);
+      formData.append('catName', prime?.name || '');
+      formData.append('category', category);
+      formData.append('id', prime?.id ?? 0);
       formData.append('filename', customFilename || selectedFile.name);
-
-      // console.log('image', formData.has('image'))
-      // console.log('category', formData.has('category'))
-      // console.log('filename', formData.has('filename'))
+      console.log('here!!');
+      const response = await fetch('/api/createFiles/upimage', {
+        method: 'post',
+        body: formData
+      });
+      if (response.status > 199 && response.status < 300) {
+        const json = await response.json();
+        console.log('JSON :: ', json);
+        setResponseCode(response?.status ?? 600);
+        setResponseMsg(json?.msg ?? '');
+        resetState();
+        setNewFileWasUploaded(true);
+      } else {
+        console.log('ERROR RESPONSE:: ', response);
+        setUploadError(response.statusText || 'unknown error');
+      }
     } else {
       setValidationError('File type validation failed. Only .img .jpg .jpeg files are allowed');
     }
   }
-  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
-    console.log('selectedFile :: ', selectedFile);
-  }, [selectedFile]);
+  function handleReset() {
+    resetState();
+  }
+
+  // useEffect(() => {
+  //   console.log('selectedFile :: ', selectedFile)
+  // }, [selectedFile])
+  // useEffect(() => {
+  //   console.log('selectedFileEXT :: ', ext)
+  // }, [ext])
+  // useEffect(() => {
+  //   console.log('customFileName :: ', customFilename)
+  // }, [customFilename])
+
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h3", null, "UploadPane"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("form", {
     onSubmit: handlePushFile
   }, validationError && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
@@ -15608,17 +15745,25 @@ const UploadPane = ({
     type: "file",
     onChange: e => handleSelectFile(e.target.files[0])
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
-    type: "text",
-    name: "type",
-    placeholder: "category"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    disabled: !selectedFile,
     onChange: handleCustomFilename,
     type: "text",
     name: "name",
-    placeholder: "optional custom file name"
+    placeholder: selectedFile ? 'optional custom file name' : 'Select a file'
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    type: "reset",
+    onClick: handleReset
+  }, "Clear"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
     type: "submit"
-  }, "Push File To Server")));
+  }, "Push File To Server")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h3", null, "Response Info"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Response Code: ", responseCode), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Response Message: ", responseMsg), uploadError && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
+    className: "error"
+  }, "UploadError:: ", uploadError)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    onClick: async () => {
+      const response = await fetch('/api/createFiles/upimage');
+      const json = await response.json();
+      console.log(json);
+    }
+  }, "TESTER BUTTON"));
 };
 /* harmony default export */ __webpack_exports__["default"] = (UploadPane);
 
