@@ -6,7 +6,7 @@ const socialMediaInfo = [
   },
   {
     site: 'facebook',
-    href: 'https://www.facebook.com/PlanetScottishFoldKittens',
+    href: 'https://www.facebook.com/profile.php?id=100086918329822',
     iconSrc: '/socialMediaIcons/facebook.png'
   },
   {
