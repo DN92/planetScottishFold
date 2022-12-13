@@ -122,7 +122,6 @@ const Carousel = ({
         rightPointer++
       }
     }
-    console.log('left, right, :: ', leftPointer, rightPointer)
     metas.forEach(meta => {
       if(meta.index >= leftPointer && meta.index <= rightPointer) {
         meta.classList = meta.classList.filter(ele => ele !== DISPLAYNONE)
@@ -136,10 +135,6 @@ const Carousel = ({
     })
     refresh()
   }, [selected, maxLength])
-
-  // useEffect(() => {
-  //   console.log('left, right:: ', leftPointer, rightPointer)
-  // }, [leftPointer, rightPointer])
 
   return (
     <div
