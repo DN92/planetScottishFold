@@ -5,8 +5,7 @@ import My404 from './My404'
 import MeContext from '../MeContextPro'
 import { isPrivileged } from '../../myModelsConfig'
 import { fetchEffect } from './axiosHandlers/fetchEffect'
-import CarouselOne from './CarouselOne'
-import ImageSlideBar from './ImageSlideBar'
+import MyCarousel from './carousel/MyCarousel.js'
 
 //  /kittenDetailed
 const KittenDetailedView = () => {
@@ -30,15 +29,15 @@ const KittenDetailedView = () => {
       fetchEffect(
         [setAlbumPaths, setError],
         'get',
-        `/api/albums/kitten?id=${id}`
+        `/api/albums?id=${id}&type=${`kitten`}`
       )
     }
   }, [])
 
-  useEffect(() => {
-    if(albumPaths) console.log(`paths for ${kitten?.name}:: `, albumPaths)
-    console.log('main image src:: ', kitten?.mainImageSrcValue)
-  },[albumPaths])
+  // useEffect(() => {
+  //   if(albumPaths) console.log(`paths for ${kitten?.name}:: `, albumPaths)
+  //   console.log('main image src:: ', kitten?.mainImageSrcValue)
+  // },[albumPaths])
 
   return (
     <div key={id}>
@@ -46,10 +45,15 @@ const KittenDetailedView = () => {
 
       {!error && kitten &&
          <div className='detailed-view-wrapper'>
-          {Array.isArray(albumPaths) &&
+
+          {/* <img src={kitten.mainImageSrcValue} /> */}
+
+          {
             <>
-              <CarouselOne paths={albumPaths} />
-              <ImageSlideBar pathsArray={albumPaths}/>
+              <MyCarousel
+                data={albumPaths}
+                placeHolderImagePath = '/otherPictures/photoComingSoon.png'
+              />
             </>
           }
           <div className='detailedView-text-wrapper'>
