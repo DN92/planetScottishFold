@@ -12678,7 +12678,7 @@ const ClientQuestionnaire = () => {
         const {
           data
         } = await axios__WEBPACK_IMPORTED_MODULE_5___default().post('/api/users/validate', clientInfo);
-        setFormValidated(data?.isValidSubmission);
+        setFormValidated(data?.isValidSubmission ?? false);
         if (!data?.isValidSubmission) {
           setDisplayBadEmail(true);
           window.scrollTo(0, 0);
@@ -12694,9 +12694,11 @@ const ClientQuestionnaire = () => {
     if (formValidated) {
       const furColorsToArray = Object.keys(clientInfo.furColor).filter(color => clientInfo.furColor[color] === true);
       navigate('/confirmClientQuestionnaire', {
-        clientInfo: {
-          ...clientInfo,
-          'furColor': furColorsToArray
+        state: {
+          clientInfo: {
+            ...clientInfo,
+            'furColor': furColorsToArray
+          }
         }
       });
     }
@@ -13045,6 +13047,7 @@ const ConfirmClientQuestionnaire = () => {
       });
     }
   }, [infoPosted]);
+  console.log('INFO:: ', clientInfo);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, clientInfo && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "client-confirmation"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h4", null, "Please Review Your Answers Before Submitting"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
@@ -16189,7 +16192,6 @@ const Carousel = ({
         rightPointer++;
       }
     }
-    console.log('left, right, :: ', leftPointer, rightPointer);
     metas.forEach(meta => {
       if (meta.index >= leftPointer && meta.index <= rightPointer) {
         meta.classList = meta.classList.filter(ele => ele !== DISPLAYNONE);
@@ -16203,11 +16205,6 @@ const Carousel = ({
     });
     refresh();
   }, [selected, maxLength]);
-
-  // useEffect(() => {
-  //   console.log('left, right:: ', leftPointer, rightPointer)
-  // }, [leftPointer, rightPointer])
-
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "carousel-container",
     style: {

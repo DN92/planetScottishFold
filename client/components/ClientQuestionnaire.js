@@ -79,7 +79,7 @@ const ClientQuestionnaire = () => {
     const validateForm = async() => {
       try {
         const { data } = await axios.post('/api/users/validate', clientInfo)
-        setFormValidated(data?.isValidSubmission)
+        setFormValidated(data?.isValidSubmission ?? false)
         if(!data?.isValidSubmission) {
           setDisplayBadEmail(true)
           window.scrollTo(0, 0)
@@ -97,8 +97,9 @@ const ClientQuestionnaire = () => {
     if(formValidated) {
       const furColorsToArray = Object.keys(clientInfo.furColor)
         .filter(color => clientInfo.furColor[color] === true)
-      navigate('/confirmClientQuestionnaire', {clientInfo:
-        {...clientInfo, 'furColor': furColorsToArray}
+      navigate('/confirmClientQuestionnaire', {
+          state: {
+            clientInfo: {...clientInfo, 'furColor': furColorsToArray}}
       })
     }
   }, [formValidated])
