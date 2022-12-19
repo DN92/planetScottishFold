@@ -15640,10 +15640,22 @@ const PhotoAlbum = ({
   function clearSelected() {
     setSelectedPath('');
   }
+
+  // useEffect(() => {
+  //   if ((cat && type) || fileChangeOccurred) {
+  //     setFileChangeOccurred(false)
+  //     fetchEffect(
+  //       [setImagePaths, setError],
+  //       'get',
+  //       `/api/albums?type=${type}&id=${cat.id}`
+  //     )
+  //   }
+  // }, [cat, type, fileChangeOccurred, setFileChangeOccurred])
+
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
     if (cat && type || fileChangeOccurred) {
       setFileChangeOccurred(false);
-      (0,_axiosHandlers_fetchEffect__WEBPACK_IMPORTED_MODULE_1__.fetchEffect)([setImagePaths, setError], 'get', `/api/albums?type=${type}&id=${cat.id}`);
+      (0,_axiosHandlers_fetchEffect__WEBPACK_IMPORTED_MODULE_1__.fetchEffect)([setImagePaths, setError], 'get', `/api/supabase/urlsByBucket?bucket=${type}${cat.id}`);
     }
   }, [cat, type, fileChangeOccurred, setFileChangeOccurred]);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h3", null, "Photo Album"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
@@ -15775,7 +15787,7 @@ const UploadPane = ({
     if (!(0,_customHandlers_validateFile__WEBPACK_IMPORTED_MODULE_1__["default"])(file, 'image')) setValidationError('File type validation failed. Only .img .jpg .jpeg files are allowed');
     file && setSelectedFile(file);
   }
-  async function handlePushFile(e) {
+  async function handlePushFileOld(e) {
     e.preventDefault();
     if (!selectedFile) return;
     setValidationError('');
@@ -15789,10 +15801,36 @@ const UploadPane = ({
         method: 'post',
         body: formData
       });
-      if (response.status > 199 && response.status < 300) {
+      if (response.status >= 200 && response.status <= 299) {
         const json = await response.json();
         setResponseCode(response?.status ?? 600);
         setResponseMsg(json?.msg ?? '');
+        resetState();
+        setFileChangeOccurred(true);
+      } else {
+        console.log('ERROR RESPONSE:: ', response);
+        setUploadError(response.statusText || 'unknown error');
+      }
+    } else {
+      setValidationError('File type validation failed. Only .img .jpg .jpeg files are allowed');
+    }
+  }
+  async function handlePushFileNew(e) {
+    e.preventDefault();
+    if (!selectedFile) return;
+    setValidationError('');
+    if ((0,_customHandlers_validateFile__WEBPACK_IMPORTED_MODULE_1__["default"])(selectedFile, 'image')) {
+      formData.append('image', selectedFile, selectedFile.name);
+      formData.append('catName', prime?.name || '');
+      formData.append('category', category);
+      formData.append('id', prime?.id ?? 0);
+      formData.append('filename', customFilename || selectedFile.name);
+      const response = await fetch('/api/supabase/imageUpload', {
+        method: 'post',
+        body: formData
+      });
+      if (response.status >= 200 && response.status <= 299) {
+        setResponseCode(response?.status ?? 600);
         resetState();
         setFileChangeOccurred(true);
       } else {
@@ -15807,7 +15845,7 @@ const UploadPane = ({
     resetState();
   }
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h3", null, "UploadPane"), prime ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("form", {
-    onSubmit: handlePushFile
+    onSubmit: handlePushFileNew
   }, validationError && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
     className: "error"
   }, validationError), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
