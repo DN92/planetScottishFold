@@ -1,6 +1,9021 @@
 /******/ (function() { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./node_modules/@supabase/auth-helpers-react/dist/index.js":
+/*!*****************************************************************!*\
+  !*** ./node_modules/@supabase/auth-helpers-react/dist/index.js ***!
+  \*****************************************************************/
+/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+
+var __create = Object.create;
+var __defProp = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __getOwnPropNames = Object.getOwnPropertyNames;
+var __getProtoOf = Object.getPrototypeOf;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __export = (target, all) => {
+  for (var name in all)
+    __defProp(target, name, { get: all[name], enumerable: true });
+};
+var __copyProps = (to, from, except, desc) => {
+  if (from && typeof from === "object" || typeof from === "function") {
+    for (let key of __getOwnPropNames(from))
+      if (!__hasOwnProp.call(to, key) && key !== except)
+        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+  }
+  return to;
+};
+var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(isNodeMode || !mod || !mod.__esModule ? __defProp(target, "default", { value: mod, enumerable: true }) : target, mod));
+var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
+
+// src/index.tsx
+var src_exports = {};
+__export(src_exports, {
+  SessionContextProvider: () => SessionContextProvider,
+  useSession: () => useSession,
+  useSessionContext: () => useSessionContext,
+  useSupabaseClient: () => useSupabaseClient,
+  useUser: () => useUser
+});
+module.exports = __toCommonJS(src_exports);
+
+// src/components/SessionContext.tsx
+var import_react = __toESM(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+var SessionContext = (0, import_react.createContext)({
+  isLoading: true,
+  session: null,
+  error: null,
+  supabaseClient: {}
+});
+var SessionContextProvider = ({
+  supabaseClient,
+  initialSession = null,
+  children
+}) => {
+  const [session, setSession] = (0, import_react.useState)(initialSession);
+  const [isLoading, setIsLoading] = (0, import_react.useState)(!initialSession);
+  const [error, setError] = (0, import_react.useState)();
+  (0, import_react.useEffect)(() => {
+    let mounted = true;
+    async function getSession() {
+      const {
+        data: { session: session2 },
+        error: error2
+      } = await supabaseClient.auth.getSession();
+      if (mounted) {
+        if (error2) {
+          setError(error2);
+          setIsLoading(false);
+          return;
+        }
+        setSession(session2);
+        setIsLoading(false);
+      }
+    }
+    getSession();
+  }, []);
+  (0, import_react.useEffect)(() => {
+    const {
+      data: { subscription }
+    } = supabaseClient.auth.onAuthStateChange((event, session2) => {
+      if (session2 && (event === "SIGNED_IN" || event === "TOKEN_REFRESHED")) {
+        setSession(session2);
+      }
+      if (event === "SIGNED_OUT") {
+        setSession(null);
+      }
+    });
+    return () => {
+      subscription.unsubscribe();
+    };
+  }, []);
+  const value = (0, import_react.useMemo)(() => {
+    if (isLoading) {
+      return {
+        isLoading: true,
+        session: null,
+        error: null,
+        supabaseClient
+      };
+    }
+    if (error) {
+      return {
+        isLoading: false,
+        session: null,
+        error,
+        supabaseClient
+      };
+    }
+    return {
+      isLoading: false,
+      session,
+      error: null,
+      supabaseClient
+    };
+  }, [isLoading, session, error]);
+  return /* @__PURE__ */ import_react.default.createElement(SessionContext.Provider, {
+    value
+  }, children);
+};
+var useSessionContext = () => {
+  const context = (0, import_react.useContext)(SessionContext);
+  if (context === void 0) {
+    throw new Error(`useSessionContext must be used within a SessionContextProvider.`);
+  }
+  return context;
+};
+function useSupabaseClient() {
+  const context = (0, import_react.useContext)(SessionContext);
+  if (context === void 0) {
+    throw new Error(`useSupabaseClient must be used within a SessionContextProvider.`);
+  }
+  return context.supabaseClient;
+}
+var useSession = () => {
+  const context = (0, import_react.useContext)(SessionContext);
+  if (context === void 0) {
+    throw new Error(`useSession must be used within a SessionContextProvider.`);
+  }
+  return context.session;
+};
+var useUser = () => {
+  var _a, _b;
+  const context = (0, import_react.useContext)(SessionContext);
+  if (context === void 0) {
+    throw new Error(`useUser must be used within a SessionContextProvider.`);
+  }
+  return (_b = (_a = context.session) == null ? void 0 : _a.user) != null ? _b : null;
+};
+// Annotate the CommonJS export names for ESM import in node:
+0 && (0);
+//# sourceMappingURL=index.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@supabase/auth-ui-react/dist/esm/_virtual/_tslib.js":
+/*!**************************************************************************!*\
+  !*** ./node_modules/@supabase/auth-ui-react/dist/esm/_virtual/_tslib.js ***!
+  \**************************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "__awaiter": function() { return /* binding */ __awaiter; },
+/* harmony export */   "__rest": function() { return /* binding */ __rest; }
+/* harmony export */ });
+/******************************************************************************
+Copyright (c) Microsoft Corporation.
+
+Permission to use, copy, modify, and/or distribute this software for any
+purpose with or without fee is hereby granted.
+
+THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
+REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
+AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
+INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
+LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
+OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+PERFORMANCE OF THIS SOFTWARE.
+***************************************************************************** */
+
+function __rest(s, e) {
+    var t = {};
+    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
+        t[p] = s[p];
+    if (s != null && typeof Object.getOwnPropertySymbols === "function")
+        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
+                t[p[i]] = s[p[i]];
+        }
+    return t;
+}
+
+function __awaiter(thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+}
+
+
+
+
+/***/ }),
+
+/***/ "./node_modules/@supabase/auth-ui-react/dist/esm/common/lib/Localization/de_formal.json.js":
+/*!*************************************************************************************************!*\
+  !*** ./node_modules/@supabase/auth-ui-react/dist/esm/common/lib/Localization/de_formal.json.js ***!
+  \*************************************************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": function() { return /* binding */ de_formal; },
+/* harmony export */   "forgotten_password": function() { return /* binding */ forgotten_password; },
+/* harmony export */   "magic_link": function() { return /* binding */ magic_link; },
+/* harmony export */   "sign_in": function() { return /* binding */ sign_in; },
+/* harmony export */   "sign_up": function() { return /* binding */ sign_up; },
+/* harmony export */   "update_password": function() { return /* binding */ update_password; }
+/* harmony export */ });
+var sign_up = {
+	email_label: "E-Mail Adresse",
+	password_label: "Passwort erstellen",
+	email_input_placeholder: "Ihre E-Mail Adresse",
+	password_input_placeholder: "Ihr Passwort",
+	button_label: "Registrieren",
+	social_provider_text: "Anmelden mit",
+	link_text: "Haben Sie noch kein Konto? Registrieren"
+};
+var sign_in = {
+	email_label: "E-Mail Adresse",
+	password_label: "Passwort erstellen",
+	email_input_placeholder: "Ihre E-Mail Adresse",
+	password_input_placeholder: "Ihr Passwort",
+	button_label: "Anmelden",
+	social_provider_text: "Anmelden mit",
+	link_text: "Haben Sie bereits ein Konto? Anmelden"
+};
+var magic_link = {
+	email_input_label: "E-Mail Adresse",
+	email_input_placeholder: "Ihre E-Mail Adresse",
+	button_label: "Magischen Link senden",
+	link_text: "Einen magischen Link per E-Mail versenden"
+};
+var forgotten_password = {
+	email_label: "E-Mail Adresse",
+	password_label: "Ihr Passwort",
+	email_input_placeholder: "Ihre E-Mail Adresse",
+	button_label: "Anweisungen zum Zurücksetzen des Passworts senden",
+	link_text: "Passwort vergessen?"
+};
+var update_password = {
+	password_label: "Neues Passwort",
+	password_input_placeholder: "Ihr neues Passwort",
+	button_label: "Passwort aktualisieren"
+};
+var de_formal = {
+	sign_up: sign_up,
+	sign_in: sign_in,
+	magic_link: magic_link,
+	forgotten_password: forgotten_password,
+	update_password: update_password
+};
+
+
+
+
+/***/ }),
+
+/***/ "./node_modules/@supabase/auth-ui-react/dist/esm/common/lib/Localization/de_informal.json.js":
+/*!***************************************************************************************************!*\
+  !*** ./node_modules/@supabase/auth-ui-react/dist/esm/common/lib/Localization/de_informal.json.js ***!
+  \***************************************************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": function() { return /* binding */ de_informal; },
+/* harmony export */   "forgotten_password": function() { return /* binding */ forgotten_password; },
+/* harmony export */   "magic_link": function() { return /* binding */ magic_link; },
+/* harmony export */   "sign_in": function() { return /* binding */ sign_in; },
+/* harmony export */   "sign_up": function() { return /* binding */ sign_up; },
+/* harmony export */   "update_password": function() { return /* binding */ update_password; }
+/* harmony export */ });
+var sign_up = {
+	email_label: "E-Mail Adresse",
+	password_label: "Passwort erstellen",
+	email_input_placeholder: "Deine E-Mail Adresse",
+	password_input_placeholder: "Dein Passwort",
+	button_label: "Registrieren",
+	social_provider_text: "Anmelden mit",
+	link_text: "Hast du noch kein Konto? Registrieren"
+};
+var sign_in = {
+	email_label: "E-Mail Adresse",
+	password_label: "Passwort erstellen",
+	email_input_placeholder: "Deine E-Mail Adresse",
+	password_input_placeholder: "Dein Passwort",
+	button_label: "Anmelden",
+	social_provider_text: "Anmelden mit",
+	link_text: "Hast du bereits ein Konto? Anmelden"
+};
+var magic_link = {
+	email_input_label: "E-Mail Adresse",
+	email_input_placeholder: "Deine E-Mail Adresse",
+	button_label: "Magischen Link senden",
+	link_text: "Einen magischen Link per E-Mail versenden"
+};
+var forgotten_password = {
+	email_label: "E-Mail Adresse",
+	password_label: "Dein Passwort",
+	email_input_placeholder: "Deine E-Mail Adresse",
+	button_label: "Anweisungen zum Zurücksetzen des Passworts senden",
+	link_text: "Passwort vergessen?"
+};
+var update_password = {
+	password_label: "Neues Passwort",
+	password_input_placeholder: "Dein neues Passwort",
+	button_label: "Passwort aktualisieren"
+};
+var de_informal = {
+	sign_up: sign_up,
+	sign_in: sign_in,
+	magic_link: magic_link,
+	forgotten_password: forgotten_password,
+	update_password: update_password
+};
+
+
+
+
+/***/ }),
+
+/***/ "./node_modules/@supabase/auth-ui-react/dist/esm/common/lib/Localization/en.json.js":
+/*!******************************************************************************************!*\
+  !*** ./node_modules/@supabase/auth-ui-react/dist/esm/common/lib/Localization/en.json.js ***!
+  \******************************************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": function() { return /* binding */ en; },
+/* harmony export */   "forgotten_password": function() { return /* binding */ forgotten_password; },
+/* harmony export */   "magic_link": function() { return /* binding */ magic_link; },
+/* harmony export */   "sign_in": function() { return /* binding */ sign_in; },
+/* harmony export */   "sign_up": function() { return /* binding */ sign_up; },
+/* harmony export */   "update_password": function() { return /* binding */ update_password; }
+/* harmony export */ });
+var sign_up = {
+	email_label: "Email address",
+	password_label: "Create a Password",
+	email_input_placeholder: "Your email address",
+	password_input_placeholder: "Your password",
+	button_label: "Sign up",
+	social_provider_text: "Sign in with",
+	link_text: "Don't have an account? Sign up"
+};
+var sign_in = {
+	email_label: "Email address",
+	password_label: "Your Password",
+	email_input_placeholder: "Your email address",
+	password_input_placeholder: "Your password",
+	button_label: "Sign in",
+	social_provider_text: "Sign in with",
+	link_text: "Already have an account? Sign in"
+};
+var magic_link = {
+	email_input_label: "Email address",
+	email_input_placeholder: "Your email address",
+	button_label: "Send Magic Link",
+	link_text: "Send a magic link email"
+};
+var forgotten_password = {
+	email_label: "Email address",
+	password_label: "Your Password",
+	email_input_placeholder: "Your email address",
+	button_label: "Send reset password instructions",
+	link_text: "Forgot your password?"
+};
+var update_password = {
+	password_label: "New password",
+	password_input_placeholder: "Your new password",
+	button_label: "Update password"
+};
+var en = {
+	sign_up: sign_up,
+	sign_in: sign_in,
+	magic_link: magic_link,
+	forgotten_password: forgotten_password,
+	update_password: update_password
+};
+
+
+
+
+/***/ }),
+
+/***/ "./node_modules/@supabase/auth-ui-react/dist/esm/common/lib/Localization/index.js":
+/*!****************************************************************************************!*\
+  !*** ./node_modules/@supabase/auth-ui-react/dist/esm/common/lib/Localization/index.js ***!
+  \****************************************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "de_formal": function() { return /* reexport safe */ _de_formal_json_js__WEBPACK_IMPORTED_MODULE_0__["default"]; },
+/* harmony export */   "de_informal": function() { return /* reexport safe */ _de_informal_json_js__WEBPACK_IMPORTED_MODULE_1__["default"]; },
+/* harmony export */   "en": function() { return /* reexport safe */ _en_json_js__WEBPACK_IMPORTED_MODULE_2__["default"]; },
+/* harmony export */   "ja": function() { return /* reexport safe */ _ja_json_js__WEBPACK_IMPORTED_MODULE_3__["default"]; }
+/* harmony export */ });
+/* harmony import */ var _de_formal_json_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./de_formal.json.js */ "./node_modules/@supabase/auth-ui-react/dist/esm/common/lib/Localization/de_formal.json.js");
+/* harmony import */ var _de_informal_json_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./de_informal.json.js */ "./node_modules/@supabase/auth-ui-react/dist/esm/common/lib/Localization/de_informal.json.js");
+/* harmony import */ var _en_json_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./en.json.js */ "./node_modules/@supabase/auth-ui-react/dist/esm/common/lib/Localization/en.json.js");
+/* harmony import */ var _ja_json_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./ja.json.js */ "./node_modules/@supabase/auth-ui-react/dist/esm/common/lib/Localization/ja.json.js");
+
+
+
+
+
+
+/***/ }),
+
+/***/ "./node_modules/@supabase/auth-ui-react/dist/esm/common/lib/Localization/ja.json.js":
+/*!******************************************************************************************!*\
+  !*** ./node_modules/@supabase/auth-ui-react/dist/esm/common/lib/Localization/ja.json.js ***!
+  \******************************************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": function() { return /* binding */ ja; },
+/* harmony export */   "forgotten_password": function() { return /* binding */ forgotten_password; },
+/* harmony export */   "magic_link": function() { return /* binding */ magic_link; },
+/* harmony export */   "sign_in": function() { return /* binding */ sign_in; },
+/* harmony export */   "sign_up": function() { return /* binding */ sign_up; },
+/* harmony export */   "update_password": function() { return /* binding */ update_password; }
+/* harmony export */ });
+var sign_up = {
+	email_label: "電子メールアドレス",
+	password_label: "パスワードを作成",
+	email_input_placeholder: "Your email address",
+	password_input_placeholder: "Your password",
+	button_label: "サインアップ",
+	social_provider_text: "に登録する",
+	link_text: "アカウントをお持ちではありませんか？サインアップ"
+};
+var sign_in = {
+	email_label: "電子メールアドレス",
+	password_label: "あなたのパスワード",
+	email_input_placeholder: "Your email address",
+	password_input_placeholder: "Your password",
+	button_label: "サインイン",
+	social_provider_text: "に登録する",
+	link_text: "Already have an account? Sign in"
+};
+var magic_link = {
+	email_input_label: "Email address",
+	email_input_placeholder: "Your email address",
+	button_label: "Send Magic Link",
+	link_text: "Send a magic link email"
+};
+var forgotten_password = {
+	email_label: "Email address",
+	password_label: "Your Password",
+	email_input_placeholder: "Your email address",
+	button_label: "Send reset password instructions",
+	link_text: "パスワードをお忘れの方"
+};
+var update_password = {
+	password_label: "New password",
+	password_input_placeholder: "Your new password",
+	button_label: "Update password"
+};
+var ja = {
+	sign_up: sign_up,
+	sign_in: sign_in,
+	magic_link: magic_link,
+	forgotten_password: forgotten_password,
+	update_password: update_password
+};
+
+
+
+
+/***/ }),
+
+/***/ "./node_modules/@supabase/auth-ui-react/dist/esm/common/theming/defaultThemes.js":
+/*!***************************************************************************************!*\
+  !*** ./node_modules/@supabase/auth-ui-react/dist/esm/common/theming/defaultThemes.js ***!
+  \***************************************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "ThemeMinimal": function() { return /* binding */ ThemeMinimal; },
+/* harmony export */   "ThemeSupa": function() { return /* binding */ ThemeSupa; }
+/* harmony export */ });
+/**
+ * Create default theme
+ *
+ * createStitches()
+ * https://stitches.dev/docs/api#theme
+ *
+ * to add a new theme use  createTheme({})
+ * https://stitches.dev/docs/api#theme
+ */
+// brand: 'hsl(252 62% 55%)',
+// brandAccent: 'hsl(252 62% 45%)',
+const ThemeSupa = {
+  default: {
+    colors: {
+      brand: 'hsl(153 60.0% 53.0%)',
+      brandAccent: 'hsl(154 54.8% 45.1%)',
+      brandButtonText: 'white',
+      defaultButtonBackground: 'white',
+      defaultButtonBackgroundHover: '#eaeaea',
+      defaultButtonBorder: 'lightgray',
+      defaultButtonText: 'gray',
+      dividerBackground: '#eaeaea',
+      inputBackground: 'transparent',
+      inputBorder: 'lightgray',
+      inputBorderHover: 'gray',
+      inputBorderFocus: 'gray',
+      inputText: 'black',
+      inputLabelText: 'gray',
+      inputPlaceholder: 'darkgray',
+      messageText: 'gray',
+      messageTextDanger: 'red',
+      anchorTextColor: 'gray',
+      anchorTextHoverColor: 'darkgray'
+    },
+    space: {
+      spaceSmall: '4px',
+      spaceMedium: '8px',
+      spaceLarge: '16px',
+      labelBottomMargin: '8px',
+      anchorBottomMargin: '4px',
+      emailInputSpacing: '4px',
+      socialAuthSpacing: '4px',
+      buttonPadding: '10px 15px',
+      inputPadding: '10px 15px'
+    },
+    fontSizes: {
+      baseBodySize: '13px',
+      baseInputSize: '14px',
+      baseLabelSize: '14px',
+      baseButtonSize: '14px'
+    },
+    fonts: {
+      bodyFontFamily: `ui-sans-serif, sans-serif`,
+      buttonFontFamily: `ui-sans-serif, sans-serif`,
+      inputFontFamily: `ui-sans-serif, sans-serif`,
+      labelFontFamily: `ui-sans-serif, sans-serif`
+    },
+    // fontWeights: {},
+    // lineHeights: {},
+    // letterSpacings: {},
+    // sizes: {},
+    borderWidths: {
+      buttonBorderWidth: '1px',
+      inputBorderWidth: '1px'
+    },
+    // borderStyles: {},
+    radii: {
+      borderRadiusButton: '4px',
+      buttonBorderRadius: '4px',
+      inputBorderRadius: '4px'
+    } // shadows: {},
+    // zIndices: {},
+    // transitions: {},
+
+  },
+  dark: {
+    colors: {
+      brandButtonText: 'white',
+      defaultButtonBackground: '#2e2e2e',
+      defaultButtonBackgroundHover: '#3e3e3e',
+      defaultButtonBorder: '#3e3e3e',
+      defaultButtonText: 'white',
+      dividerBackground: '#2e2e2e',
+      inputBackground: '#1e1e1e',
+      inputBorder: '#3e3e3e',
+      inputBorderHover: 'gray',
+      inputBorderFocus: 'gray',
+      inputText: 'white',
+      inputPlaceholder: 'darkgray'
+    }
+  }
+};
+const ThemeMinimal = {
+  default: {
+    colors: {
+      brand: 'black',
+      brandAccent: '#333333',
+      brandButtonText: 'white',
+      defaultButtonBackground: 'white',
+      defaultButtonBorder: 'lightgray',
+      defaultButtonText: 'gray',
+      dividerBackground: '#eaeaea',
+      inputBackground: 'transparent',
+      inputBorder: 'lightgray',
+      inputText: 'black',
+      inputPlaceholder: 'darkgray'
+    },
+    space: {
+      spaceSmall: '4px',
+      spaceMedium: '8px',
+      spaceLarge: '16px'
+    },
+    fontSizes: {
+      baseInputSize: '14px',
+      baseLabelSize: '12px'
+    },
+    fonts: {
+      bodyFontFamily: '',
+      inputFontFamily: '',
+      buttonFontFamily: '',
+      labelFontFamily: '' // linkFontFamily: '',
+
+    },
+    // fontWeights: {},
+    // lineHeights: {},
+    // letterSpacings: {},
+    // sizes: {},
+    borderWidths: {},
+    // borderStyles: {},
+    radii: {} // shadows: {},
+    // zIndices: {},
+    // transitions: {},
+
+  },
+  dark: {
+    colors: {
+      brand: 'white',
+      brandAccent: '#afafaf',
+      brandButtonText: 'black',
+      defaultButtonBackground: '#080808',
+      defaultButtonBorder: 'black',
+      defaultButtonText: 'white',
+      dividerBackground: 'black',
+      inputBackground: 'transparent',
+      inputBorder: 'gray',
+      inputText: 'black',
+      inputPlaceholder: 'darkgray'
+    }
+  }
+};
+
+
+
+
+/***/ }),
+
+/***/ "./node_modules/@supabase/auth-ui-react/dist/esm/common/theming/utils.js":
+/*!*******************************************************************************!*\
+  !*** ./node_modules/@supabase/auth-ui-react/dist/esm/common/theming/utils.js ***!
+  \*******************************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "generateClassNames": function() { return /* binding */ generateClassNames; }
+/* harmony export */ });
+/* harmony import */ var _src_constants_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../src/constants.js */ "./node_modules/@supabase/auth-ui-react/dist/esm/src/constants.js");
+
+
+function generateClassNames(
+/**
+ * name of css class name variable
+ */
+classNameKey,
+/**
+ * stiches CSS output
+ */
+defaultStyles,
+/**
+ * appearance variables
+ */
+appearance) {
+  var _a, _b;
+
+  const classNames = [];
+  const className = _src_constants_js__WEBPACK_IMPORTED_MODULE_0__.CLASS_NAMES[classNameKey];
+  classNames.push((appearance === null || appearance === void 0 ? void 0 : appearance.prependedClassName) ? (appearance === null || appearance === void 0 ? void 0 : appearance.prependedClassName) + '_' + className : _src_constants_js__WEBPACK_IMPORTED_MODULE_0__.PREPENDED_CLASS_NAMES + '_' + className);
+
+  if ((_a = appearance === null || appearance === void 0 ? void 0 : appearance.className) === null || _a === void 0 ? void 0 : _a[classNameKey]) {
+    classNames.push((_b = appearance === null || appearance === void 0 ? void 0 : appearance.className) === null || _b === void 0 ? void 0 : _b[classNameKey]);
+  } // if (
+  //   appearance?.extendAppearance === undefined ||
+  //   appearance?.extendAppearance === true
+  // ) {
+
+
+  classNames.push(defaultStyles); // }
+
+  return classNames;
+}
+
+
+
+
+/***/ }),
+
+/***/ "./node_modules/@supabase/auth-ui-react/dist/esm/src/components/Auth/Auth.js":
+/*!***********************************************************************************!*\
+  !*** ./node_modules/@supabase/auth-ui-react/dist/esm/src/components/Auth/Auth.js ***!
+  \***********************************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": function() { return /* binding */ Auth; },
+/* harmony export */   "getCssText": function() { return /* binding */ getCssText; }
+/* harmony export */ });
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _stitches_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @stitches/core */ "./node_modules/@stitches/core/dist/index.mjs");
+/* harmony import */ var _utils_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../utils.js */ "./node_modules/@supabase/auth-ui-react/dist/esm/src/utils.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _constants_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../constants.js */ "./node_modules/@supabase/auth-ui-react/dist/esm/src/constants.js");
+/* harmony import */ var _interfaces_MagicLink_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./interfaces/MagicLink.js */ "./node_modules/@supabase/auth-ui-react/dist/esm/src/components/Auth/interfaces/MagicLink.js");
+/* harmony import */ var _interfaces_SocialAuth_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./interfaces/SocialAuth.js */ "./node_modules/@supabase/auth-ui-react/dist/esm/src/components/Auth/interfaces/SocialAuth.js");
+/* harmony import */ var _interfaces_EmailAuth_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./interfaces/EmailAuth.js */ "./node_modules/@supabase/auth-ui-react/dist/esm/src/components/Auth/interfaces/EmailAuth.js");
+/* harmony import */ var _interfaces_ForgottenPassword_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./interfaces/ForgottenPassword.js */ "./node_modules/@supabase/auth-ui-react/dist/esm/src/components/Auth/interfaces/ForgottenPassword.js");
+/* harmony import */ var _interfaces_UpdatePassword_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./interfaces/UpdatePassword.js */ "./node_modules/@supabase/auth-ui-react/dist/esm/src/components/Auth/interfaces/UpdatePassword.js");
+/* harmony import */ var _UserContext_js__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./UserContext.js */ "./node_modules/@supabase/auth-ui-react/dist/esm/src/components/Auth/UserContext.js");
+/* harmony import */ var _common_lib_Localization_index_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../common/lib/Localization/index.js */ "./node_modules/@supabase/auth-ui-react/dist/esm/common/lib/Localization/index.js");
+
+
+
+
+
+
+
+
+
+
+
+
+
+const defaultLocalization = Object.assign({}, _common_lib_Localization_index_js__WEBPACK_IMPORTED_MODULE_2__);
+const {
+  getCssText
+} = (0,_stitches_core__WEBPACK_IMPORTED_MODULE_3__.createStitches)();
+
+function Auth(_ref) {
+  let {
+    supabaseClient,
+    socialLayout = 'vertical',
+    providers,
+    view = 'sign_in',
+    redirectTo,
+    onlyThirdPartyProviders = false,
+    magicLink = false,
+    showLinks = true,
+    appearance,
+    theme = 'default',
+    localization = {
+      lang: 'en'
+    }
+  } = _ref;
+
+  /**
+   * Localization support
+   */
+  var _a, _b;
+
+  const i18n = (0,_utils_js__WEBPACK_IMPORTED_MODULE_4__.merge)(defaultLocalization[(_a = localization.lang) !== null && _a !== void 0 ? _a : 'en'], (_b = localization.variables) !== null && _b !== void 0 ? _b : {}); // const themes = Object.values(appearance.themeFile ?? {}).map((theme) => {
+  //   // return
+  // })
+
+  const [authView, setAuthView] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(view);
+  const [defaultEmail, setDefaultEmail] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)('');
+  const [defaultPassword, setDefaultPassword] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)('');
+  const [themes, setThemes] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)({});
+  /**
+   * Simple boolean to detect if authView 'sign_in' or 'sign_up' is used
+   *
+   * @returns boolean
+   */
+
+  const SignView = authView === 'sign_in' || authView === 'sign_up';
+  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(() => {
+    var _a, _b, _c, _d;
+    /**
+     * Create default theme
+     *
+     * createStitches()
+     * https://stitches.dev/docs/api#theme
+     *
+     * to add a new theme use  createTheme({})
+     * https://stitches.dev/docs/api#theme
+     */
+
+
+    (0,_stitches_core__WEBPACK_IMPORTED_MODULE_3__.createStitches)({
+      theme: (0,_utils_js__WEBPACK_IMPORTED_MODULE_4__.merge)((_b = (_a = appearance === null || appearance === void 0 ? void 0 : appearance.theme) === null || _a === void 0 ? void 0 : _a.default) !== null && _b !== void 0 ? _b : {}, (_d = (_c = appearance === null || appearance === void 0 ? void 0 : appearance.variables) === null || _c === void 0 ? void 0 : _c.default) !== null && _d !== void 0 ? _d : {})
+    });
+    const themessss = {};
+    const themeKeys = (appearance === null || appearance === void 0 ? void 0 : appearance.theme) && Object.keys(appearance === null || appearance === void 0 ? void 0 : appearance.theme);
+
+    if (themeKeys) {
+      appearance.theme && Object.values(appearance.theme).map((theme, i) => {
+        var _a, _b;
+
+        const key = themeKeys[i]; // ignore default theme
+
+        if (key === 'default') return {};
+        const merged = (0,_utils_js__WEBPACK_IMPORTED_MODULE_4__.merge)((_a = appearance && appearance.theme && appearance.theme[key]) !== null && _a !== void 0 ? _a : {}, (_b = appearance && appearance.variables && appearance.variables[key]) !== null && _b !== void 0 ? _b : {});
+        themessss[themeKeys[i]] = merged;
+      });
+    }
+
+    setThemes(themessss);
+  }, []);
+  /**
+   * Wraps around all auth components
+   * renders the social auth providers if SignView is true
+   *
+   * also handles the theme override
+   *
+   * @param children
+   * @returns React.ReactNode
+   */
+
+  const Container = _ref2 => {
+    let {
+      children
+    } = _ref2;
+
+    var _a, _b;
+
+    return (// @ts-ignore
+      (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", Object.assign({
+        className: theme !== 'default' ? (0,_stitches_core__WEBPACK_IMPORTED_MODULE_3__.createTheme)((0,_utils_js__WEBPACK_IMPORTED_MODULE_4__.merge)( // @ts-ignore
+        appearance === null || appearance === void 0 ? void 0 : appearance.theme[theme], (_b = (_a = appearance === null || appearance === void 0 ? void 0 : appearance.variables) === null || _a === void 0 ? void 0 : _a[theme]) !== null && _b !== void 0 ? _b : {})) : ''
+      }, {
+        children: [SignView && (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_interfaces_SocialAuth_js__WEBPACK_IMPORTED_MODULE_5__.SocialAuth, {
+          appearance: appearance,
+          supabaseClient: supabaseClient,
+          providers: providers,
+          socialLayout: socialLayout,
+          redirectTo: redirectTo,
+          onlyThirdPartyProviders: onlyThirdPartyProviders,
+          i18n: i18n,
+          view: authView
+        }), !onlyThirdPartyProviders && children]
+      }))
+    );
+  };
+
+  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(() => {
+    /**
+     * Overrides the authview if it is changed externally
+     */
+    setAuthView(view);
+  }, [view]);
+  const emailProp = {
+    supabaseClient,
+    setAuthView,
+    defaultEmail,
+    defaultPassword,
+    setDefaultEmail,
+    setDefaultPassword,
+    redirectTo,
+    magicLink,
+    showLinks,
+    i18n,
+    appearance
+  };
+  /**
+   * View handler, displays the correct Auth view
+   * all views are wrapped in <Container/>
+   */
+
+  switch (authView) {
+    case _constants_js__WEBPACK_IMPORTED_MODULE_6__.VIEWS.SIGN_IN:
+      return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(Container, {
+        children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_interfaces_EmailAuth_js__WEBPACK_IMPORTED_MODULE_7__.EmailAuth, Object.assign({}, emailProp, {
+          authView: 'sign_in'
+        }))
+      });
+
+    case _constants_js__WEBPACK_IMPORTED_MODULE_6__.VIEWS.SIGN_UP:
+      return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(Container, {
+        children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_interfaces_EmailAuth_js__WEBPACK_IMPORTED_MODULE_7__.EmailAuth, {
+          appearance: appearance,
+          supabaseClient: supabaseClient,
+          authView: 'sign_up',
+          setAuthView: setAuthView,
+          defaultEmail: defaultEmail,
+          defaultPassword: defaultPassword,
+          setDefaultEmail: setDefaultEmail,
+          setDefaultPassword: setDefaultPassword,
+          redirectTo: redirectTo,
+          magicLink: magicLink,
+          showLinks: showLinks,
+          i18n: i18n
+        })
+      });
+
+    case _constants_js__WEBPACK_IMPORTED_MODULE_6__.VIEWS.FORGOTTEN_PASSWORD:
+      return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(Container, {
+        children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_interfaces_ForgottenPassword_js__WEBPACK_IMPORTED_MODULE_8__.ForgottenPassword, {
+          appearance: appearance,
+          supabaseClient: supabaseClient,
+          setAuthView: setAuthView,
+          redirectTo: redirectTo,
+          showLinks: showLinks,
+          i18n: i18n
+        })
+      });
+
+    case _constants_js__WEBPACK_IMPORTED_MODULE_6__.VIEWS.MAGIC_LINK:
+      return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(Container, {
+        children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_interfaces_MagicLink_js__WEBPACK_IMPORTED_MODULE_9__.MagicLink, {
+          appearance: appearance,
+          supabaseClient: supabaseClient,
+          setAuthView: setAuthView,
+          redirectTo: redirectTo,
+          showLinks: showLinks,
+          i18n: i18n
+        })
+      });
+
+    case _constants_js__WEBPACK_IMPORTED_MODULE_6__.VIEWS.UPDATE_PASSWORD:
+      return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(Container, {
+        children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_interfaces_UpdatePassword_js__WEBPACK_IMPORTED_MODULE_10__.UpdatePassword, {
+          appearance: appearance,
+          supabaseClient: supabaseClient,
+          i18n: i18n
+        })
+      });
+
+    default:
+      return null;
+  }
+} // @ts-ignore
+
+
+Auth.ForgottenPassword = _interfaces_ForgottenPassword_js__WEBPACK_IMPORTED_MODULE_8__.ForgottenPassword; // @ts-ignore
+
+Auth.UpdatePassword = _interfaces_UpdatePassword_js__WEBPACK_IMPORTED_MODULE_10__.UpdatePassword; // @ts-ignore
+
+Auth.MagicLink = _interfaces_MagicLink_js__WEBPACK_IMPORTED_MODULE_9__.MagicLink; // @ts-ignore
+
+Auth.UserContextProvider = _UserContext_js__WEBPACK_IMPORTED_MODULE_11__.UserContextProvider; // @ts-ignore
+
+Auth.useUser = _UserContext_js__WEBPACK_IMPORTED_MODULE_11__.useUser;
+
+
+
+
+/***/ }),
+
+/***/ "./node_modules/@supabase/auth-ui-react/dist/esm/src/components/Auth/Icons.js":
+/*!************************************************************************************!*\
+  !*** ./node_modules/@supabase/auth-ui-react/dist/esm/src/components/Auth/Icons.js ***!
+  \************************************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "apple": function() { return /* binding */ apple; },
+/* harmony export */   "azure": function() { return /* binding */ azure; },
+/* harmony export */   "bitbucket": function() { return /* binding */ bitbucket; },
+/* harmony export */   "discord": function() { return /* binding */ discord; },
+/* harmony export */   "facebook": function() { return /* binding */ facebook; },
+/* harmony export */   "github": function() { return /* binding */ github; },
+/* harmony export */   "gitlab": function() { return /* binding */ gitlab; },
+/* harmony export */   "google": function() { return /* binding */ google; },
+/* harmony export */   "keycloak": function() { return /* binding */ keycloak; },
+/* harmony export */   "linkedin": function() { return /* binding */ linkedin; },
+/* harmony export */   "notion": function() { return /* binding */ notion; },
+/* harmony export */   "slack": function() { return /* binding */ slack; },
+/* harmony export */   "spotify": function() { return /* binding */ spotify; },
+/* harmony export */   "twitch": function() { return /* binding */ twitch; },
+/* harmony export */   "twitter": function() { return /* binding */ twitter; },
+/* harmony export */   "workos": function() { return /* binding */ workos; }
+/* harmony export */ });
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _stitches_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @stitches/core */ "./node_modules/@stitches/core/dist/index.mjs");
+
+
+
+const iconDefaultStyles = (0,_stitches_core__WEBPACK_IMPORTED_MODULE_1__.css)({
+  width: '21px',
+  height: '21px'
+});
+const google = () => (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("svg", Object.assign({
+  className: iconDefaultStyles(),
+  xmlns: "http://www.w3.org/2000/svg",
+  viewBox: "0 0 48 48",
+  width: "512px",
+  height: "512px"
+}, {
+  children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("path", {
+    fill: "#FFC107",
+    d: "M43.611,20.083H42V20H24v8h11.303c-1.649,4.657-6.08,8-11.303,8c-6.627,0-12-5.373-12-12c0-6.627,5.373-12,12-12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C12.955,4,4,12.955,4,24c0,11.045,8.955,20,20,20c11.045,0,20-8.955,20-20C44,22.659,43.862,21.35,43.611,20.083z"
+  }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("path", {
+    fill: "#FF3D00",
+    d: "M6.306,14.691l6.571,4.819C14.655,15.108,18.961,12,24,12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C16.318,4,9.656,8.337,6.306,14.691z"
+  }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("path", {
+    fill: "#4CAF50",
+    d: "M24,44c5.166,0,9.86-1.977,13.409-5.192l-6.19-5.238C29.211,35.091,26.715,36,24,36c-5.202,0-9.619-3.317-11.283-7.946l-6.522,5.025C9.505,39.556,16.227,44,24,44z"
+  }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("path", {
+    fill: "#1976D2",
+    d: "M43.611,20.083H42V20H24v8h11.303c-0.792,2.237-2.231,4.166-4.087,5.571c0.001-0.001,0.002-0.001,0.003-0.002l6.19,5.238C36.971,39.205,44,34,44,24C44,22.659,43.862,21.35,43.611,20.083z"
+  })]
+}));
+const facebook = () => (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("svg", Object.assign({
+  className: iconDefaultStyles(),
+  xmlns: "http://www.w3.org/2000/svg",
+  viewBox: "0 0 48 48",
+  width: "512px",
+  height: "512px"
+}, {
+  children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("path", {
+    fill: "#039be5",
+    d: "M24 5A19 19 0 1 0 24 43A19 19 0 1 0 24 5Z"
+  }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("path", {
+    fill: "#fff",
+    d: "M26.572,29.036h4.917l0.772-4.995h-5.69v-2.73c0-2.075,0.678-3.915,2.619-3.915h3.119v-4.359c-0.548-0.074-1.707-0.236-3.897-0.236c-4.573,0-7.254,2.415-7.254,7.917v3.323h-4.701v4.995h4.701v13.729C22.089,42.905,23.032,43,24,43c0.875,0,1.729-0.08,2.572-0.194V29.036z"
+  })]
+}));
+const twitter = () => (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("svg", Object.assign({
+  className: iconDefaultStyles(),
+  xmlns: "http://www.w3.org/2000/svg",
+  viewBox: "0 0 48 48",
+  width: "512px",
+  height: "512px"
+}, {
+  children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("path", {
+    fill: "#03A9F4",
+    d: "M42,12.429c-1.323,0.586-2.746,0.977-4.247,1.162c1.526-0.906,2.7-2.351,3.251-4.058c-1.428,0.837-3.01,1.452-4.693,1.776C34.967,9.884,33.05,9,30.926,9c-4.08,0-7.387,3.278-7.387,7.32c0,0.572,0.067,1.129,0.193,1.67c-6.138-0.308-11.582-3.226-15.224-7.654c-0.64,1.082-1,2.349-1,3.686c0,2.541,1.301,4.778,3.285,6.096c-1.211-0.037-2.351-0.374-3.349-0.914c0,0.022,0,0.055,0,0.086c0,3.551,2.547,6.508,5.923,7.181c-0.617,0.169-1.269,0.263-1.941,0.263c-0.477,0-0.942-0.054-1.392-0.135c0.94,2.902,3.667,5.023,6.898,5.086c-2.528,1.96-5.712,3.134-9.174,3.134c-0.598,0-1.183-0.034-1.761-0.104C9.268,36.786,13.152,38,17.321,38c13.585,0,21.017-11.156,21.017-20.834c0-0.317-0.01-0.633-0.025-0.945C39.763,15.197,41.013,13.905,42,12.429"
+  })
+}));
+const apple = () => (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("svg", Object.assign({
+  className: iconDefaultStyles(),
+  fill: "gray",
+  xmlns: "http://www.w3.org/2000/svg",
+  viewBox: "0 0 24 24",
+  width: "512px",
+  height: "512px"
+}, {
+  children: [' ', (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("path", {
+    d: "M 15.904297 1.078125 C 15.843359 1.06875 15.774219 1.0746094 15.699219 1.0996094 C 14.699219 1.2996094 13.600391 1.8996094 12.900391 2.5996094 C 12.300391 3.1996094 11.800781 4.1996094 11.800781 5.0996094 C 11.800781 5.2996094 11.999219 5.5 12.199219 5.5 C 13.299219 5.4 14.399609 4.7996094 15.099609 4.0996094 C 15.699609 3.2996094 16.199219 2.4 16.199219 1.5 C 16.199219 1.275 16.087109 1.10625 15.904297 1.078125 z M 16.199219 5.4003906 C 14.399219 5.4003906 13.600391 6.5 12.400391 6.5 C 11.100391 6.5 9.9003906 5.5 8.4003906 5.5 C 6.3003906 5.5 3.0996094 7.4996094 3.0996094 12.099609 C 2.9996094 16.299609 6.8 21 9 21 C 10.3 21 10.600391 20.199219 12.400391 20.199219 C 14.200391 20.199219 14.600391 21 15.900391 21 C 17.400391 21 18.500391 19.399609 19.400391 18.099609 C 19.800391 17.399609 20.100391 17.000391 20.400391 16.400391 C 20.600391 16.000391 20.4 15.600391 20 15.400391 C 17.4 14.100391 16.900781 9.9003906 19.800781 8.4003906 C 20.300781 8.1003906 20.4 7.4992188 20 7.1992188 C 18.9 6.1992187 17.299219 5.4003906 16.199219 5.4003906 z"
+  })]
+}));
+const github = () => (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("svg", Object.assign({
+  className: iconDefaultStyles(),
+  fill: "gray",
+  xmlns: "http://www.w3.org/2000/svg",
+  viewBox: "0 0 30 30",
+  width: "512px",
+  height: "512px"
+}, {
+  children: [' ', (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("path", {
+    d: "M15,3C8.373,3,3,8.373,3,15c0,5.623,3.872,10.328,9.092,11.63C12.036,26.468,12,26.28,12,26.047v-2.051 c-0.487,0-1.303,0-1.508,0c-0.821,0-1.551-0.353-1.905-1.009c-0.393-0.729-0.461-1.844-1.435-2.526 c-0.289-0.227-0.069-0.486,0.264-0.451c0.615,0.174,1.125,0.596,1.605,1.222c0.478,0.627,0.703,0.769,1.596,0.769 c0.433,0,1.081-0.025,1.691-0.121c0.328-0.833,0.895-1.6,1.588-1.962c-3.996-0.411-5.903-2.399-5.903-5.098 c0-1.162,0.495-2.286,1.336-3.233C9.053,10.647,8.706,8.73,9.435,8c1.798,0,2.885,1.166,3.146,1.481C13.477,9.174,14.461,9,15.495,9 c1.036,0,2.024,0.174,2.922,0.483C18.675,9.17,19.763,8,21.565,8c0.732,0.731,0.381,2.656,0.102,3.594 c0.836,0.945,1.328,2.066,1.328,3.226c0,2.697-1.904,4.684-5.894,5.097C18.199,20.49,19,22.1,19,23.313v2.734 c0,0.104-0.023,0.179-0.035,0.268C23.641,24.676,27,20.236,27,15C27,8.373,21.627,3,15,3z"
+  })]
+}));
+const gitlab = () => (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("svg", Object.assign({
+  className: iconDefaultStyles(),
+  xmlns: "http://www.w3.org/2000/svg",
+  viewBox: "0 0 48 48",
+  width: "512px",
+  height: "512px"
+}, {
+  children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("path", {
+    fill: "#e53935",
+    d: "M24 43L16 20 32 20z"
+  }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("path", {
+    fill: "#ff7043",
+    d: "M24 43L42 20 32 20z"
+  }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("path", {
+    fill: "#e53935",
+    d: "M37 5L42 20 32 20z"
+  }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("path", {
+    fill: "#ffa726",
+    d: "M24 43L42 20 45 28z"
+  }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("path", {
+    fill: "#ff7043",
+    d: "M24 43L6 20 16 20z"
+  }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("path", {
+    fill: "#e53935",
+    d: "M11 5L6 20 16 20z"
+  }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("path", {
+    fill: "#ffa726",
+    d: "M24 43L6 20 3 28z"
+  })]
+}));
+const bitbucket = () => (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("svg", Object.assign({
+  className: iconDefaultStyles(),
+  xmlns: "http://www.w3.org/2000/svg",
+  width: "512",
+  height: "512",
+  viewBox: "0 0 62.42 62.42"
+}, {
+  children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("defs", {
+    children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("linearGradient", Object.assign({
+      id: "New_Gradient_Swatch_1",
+      x1: "64.01",
+      y1: "30.27",
+      x2: "32.99",
+      y2: "54.48",
+      gradientUnits: "userSpaceOnUse"
+    }, {
+      children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("stop", {
+        offset: "0.18",
+        "stop-color": "#0052cc"
+      }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("stop", {
+        offset: "1",
+        "stop-color": "#2684ff"
+      })]
+    }))
+  }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("title", {
+    children: "Bitbucket-blue"
+  }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("g", Object.assign({
+    id: "Layer_2",
+    "data-name": "Layer 2"
+  }, {
+    children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("g", Object.assign({
+      id: "Blue",
+      transform: "translate(0 -3.13)"
+    }, {
+      children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("path", {
+        d: "M2,6.26A2,2,0,0,0,0,8.58L8.49,60.12a2.72,2.72,0,0,0,2.66,2.27H51.88a2,2,0,0,0,2-1.68L62.37,8.59a2,2,0,0,0-2-2.32ZM37.75,43.51h-13L21.23,25.12H40.9Z",
+        fill: "#2684ff"
+      }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("path", {
+        d: "M59.67,25.12H40.9L37.75,43.51h-13L9.4,61.73a2.71,2.71,0,0,0,1.75.66H51.89a2,2,0,0,0,2-1.68Z",
+        fill: "url(#New_Gradient_Swatch_1)"
+      })]
+    }))
+  }))]
+}));
+const discord = () => (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("svg", Object.assign({
+  className: iconDefaultStyles(),
+  xmlns: "http://www.w3.org/2000/svg",
+  viewBox: "0 0 48 48",
+  width: "512px",
+  height: "512px"
+}, {
+  children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("path", {
+    fill: "#536dfe",
+    d: "M39.248,10.177c-2.804-1.287-5.812-2.235-8.956-2.778c-0.057-0.01-0.114,0.016-0.144,0.068\tc-0.387,0.688-0.815,1.585-1.115,2.291c-3.382-0.506-6.747-0.506-10.059,0c-0.3-0.721-0.744-1.603-1.133-2.291\tc-0.03-0.051-0.087-0.077-0.144-0.068c-3.143,0.541-6.15,1.489-8.956,2.778c-0.024,0.01-0.045,0.028-0.059,0.051\tc-5.704,8.522-7.267,16.835-6.5,25.044c0.003,0.04,0.026,0.079,0.057,0.103c3.763,2.764,7.409,4.442,10.987,5.554\tc0.057,0.017,0.118-0.003,0.154-0.051c0.846-1.156,1.601-2.374,2.248-3.656c0.038-0.075,0.002-0.164-0.076-0.194\tc-1.197-0.454-2.336-1.007-3.432-1.636c-0.087-0.051-0.094-0.175-0.014-0.234c0.231-0.173,0.461-0.353,0.682-0.534\tc0.04-0.033,0.095-0.04,0.142-0.019c7.201,3.288,14.997,3.288,22.113,0c0.047-0.023,0.102-0.016,0.144,0.017\tc0.22,0.182,0.451,0.363,0.683,0.536c0.08,0.059,0.075,0.183-0.012,0.234c-1.096,0.641-2.236,1.182-3.434,1.634\tc-0.078,0.03-0.113,0.12-0.075,0.196c0.661,1.28,1.415,2.498,2.246,3.654c0.035,0.049,0.097,0.07,0.154,0.052\tc3.595-1.112,7.241-2.79,11.004-5.554c0.033-0.024,0.054-0.061,0.057-0.101c0.917-9.491-1.537-17.735-6.505-25.044\tC39.293,10.205,39.272,10.187,39.248,10.177z M16.703,30.273c-2.168,0-3.954-1.99-3.954-4.435s1.752-4.435,3.954-4.435\tc2.22,0,3.989,2.008,3.954,4.435C20.658,28.282,18.906,30.273,16.703,30.273z M31.324,30.273c-2.168,0-3.954-1.99-3.954-4.435\ts1.752-4.435,3.954-4.435c2.22,0,3.989,2.008,3.954,4.435C35.278,28.282,33.544,30.273,31.324,30.273z"
+  })
+}));
+const azure = () => (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("svg", Object.assign({
+  className: iconDefaultStyles(),
+  xmlns: "http://www.w3.org/2000/svg",
+  viewBox: "0 0 48 48",
+  width: "512px",
+  height: "512px"
+}, {
+  children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("linearGradient", Object.assign({
+    id: "k8yl7~hDat~FaoWq8WjN6a",
+    x1: "-1254.397",
+    x2: "-1261.911",
+    y1: "877.268",
+    y2: "899.466",
+    gradientTransform: "translate(1981.75 -1362.063) scale(1.5625)",
+    gradientUnits: "userSpaceOnUse"
+  }, {
+    children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("stop", {
+      offset: "0",
+      "stop-color": "#114a8b"
+    }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("stop", {
+      offset: "1",
+      "stop-color": "#0669bc"
+    })]
+  })), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("path", {
+    fill: "url(#k8yl7~hDat~FaoWq8WjN6a)",
+    d: "M17.634,6h11.305L17.203,40.773c-0.247,0.733-0.934,1.226-1.708,1.226H6.697 c-0.994,0-1.8-0.806-1.8-1.8c0-0.196,0.032-0.39,0.094-0.576L15.926,7.227C16.173,6.494,16.86,6,17.634,6L17.634,6z"
+  }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("path", {
+    fill: "#0078d4",
+    d: "M34.062,29.324H16.135c-0.458-0.001-0.83,0.371-0.831,0.829c0,0.231,0.095,0.451,0.264,0.608 l11.52,10.752C27.423,41.826,27.865,42,28.324,42h10.151L34.062,29.324z"
+  }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("linearGradient", Object.assign({
+    id: "k8yl7~hDat~FaoWq8WjN6b",
+    x1: "-1252.05",
+    x2: "-1253.788",
+    y1: "887.612",
+    y2: "888.2",
+    gradientTransform: "translate(1981.75 -1362.063) scale(1.5625)",
+    gradientUnits: "userSpaceOnUse"
+  }, {
+    children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("stop", {
+      offset: "0",
+      "stop-opacity": ".3"
+    }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("stop", {
+      offset: ".071",
+      "stop-opacity": ".2"
+    }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("stop", {
+      offset: ".321",
+      "stop-opacity": ".1"
+    }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("stop", {
+      offset: ".623",
+      "stop-opacity": ".05"
+    }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("stop", {
+      offset: "1",
+      "stop-opacity": "0"
+    })]
+  })), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("path", {
+    fill: "url(#k8yl7~hDat~FaoWq8WjN6b)",
+    d: "M17.634,6c-0.783-0.003-1.476,0.504-1.712,1.25L5.005,39.595 c-0.335,0.934,0.151,1.964,1.085,2.299C6.286,41.964,6.493,42,6.702,42h9.026c0.684-0.122,1.25-0.603,1.481-1.259l2.177-6.416 l7.776,7.253c0.326,0.27,0.735,0.419,1.158,0.422h10.114l-4.436-12.676l-12.931,0.003L28.98,6H17.634z"
+  }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("linearGradient", Object.assign({
+    id: "k8yl7~hDat~FaoWq8WjN6c",
+    x1: "-1252.952",
+    x2: "-1244.704",
+    y1: "876.6",
+    y2: "898.575",
+    gradientTransform: "translate(1981.75 -1362.063) scale(1.5625)",
+    gradientUnits: "userSpaceOnUse"
+  }, {
+    children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("stop", {
+      offset: "0",
+      "stop-color": "#3ccbf4"
+    }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("stop", {
+      offset: "1",
+      "stop-color": "#2892df"
+    })]
+  })), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("path", {
+    fill: "url(#k8yl7~hDat~FaoWq8WjN6c)",
+    d: "M32.074,7.225C31.827,6.493,31.141,6,30.368,6h-12.6c0.772,0,1.459,0.493,1.705,1.224 l10.935,32.399c0.318,0.942-0.188,1.963-1.13,2.281C29.093,41.968,28.899,42,28.703,42h12.6c0.994,0,1.8-0.806,1.8-1.801 c0-0.196-0.032-0.39-0.095-0.575L32.074,7.225z"
+  })]
+}));
+const keycloak = () => (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("svg", Object.assign({
+  className: iconDefaultStyles(),
+  width: "512",
+  height: "512",
+  viewBox: "0 0 512 512",
+  fill: "none",
+  xmlns: "http://www.w3.org/2000/svg"
+}, {
+  children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("path", {
+    d: "M472.136 163.959H408.584C407.401 163.959 406.218 163.327 405.666 162.3L354.651 73.6591C354.02 72.632 352.916 72 351.654 72H143.492C142.309 72 141.126 72.632 140.574 73.6591L87.5084 165.618L36.414 254.259C35.862 255.286 35.862 256.55 36.414 257.656L87.5084 346.297L140.495 438.335C141.047 439.362 142.23 440.073 143.413 439.994H351.654C352.837 439.994 354.02 439.362 354.651 438.335L405.745 349.694C406.297 348.667 407.48 347.956 408.663 348.035H472.215C474.344 348.035 476 346.297 476 344.243V167.83C475.921 165.697 474.186 163.959 472.136 163.959ZM228.728 349.694L212.721 377.345C212.485 377.74 212.091 378.135 211.696 378.372C211.223 378.609 210.75 378.767 210.198 378.767H178.422C177.318 378.767 176.293 378.214 175.82 377.187L128.431 294.787L123.779 286.65L106.748 257.498C106.511 257.103 106.353 256.629 106.432 256.076C106.432 255.602 106.59 255.049 106.827 254.654L123.937 224.949L175.899 134.886C176.451 133.938 177.476 133.306 178.501 133.306H210.198C210.75 133.306 211.302 133.464 211.854 133.701C212.248 133.938 212.643 134.254 212.879 134.728L228.886 162.537C229.359 163.485 229.28 164.67 228.728 165.539L177.397 254.654C177.16 255.049 177.081 255.523 177.081 255.918C177.081 256.392 177.239 256.787 177.397 257.182L228.728 346.218C229.438 347.403 229.359 348.667 228.728 349.694V349.694ZM388.083 257.498L371.051 286.65L366.399 294.787L319.011 377.187C318.459 378.135 317.512 378.767 316.409 378.767H284.632C284.08 378.767 283.607 378.609 283.134 378.372C282.74 378.135 282.346 377.819 282.109 377.345L266.103 349.694C265.393 348.667 265.393 347.403 266.024 346.376L317.355 257.34C317.591 256.945 317.67 256.471 317.67 256.076C317.67 255.602 317.513 255.207 317.355 254.812L266.024 165.697C265.472 164.749 265.393 163.643 265.866 162.695L281.873 134.886C282.109 134.491 282.503 134.096 282.898 133.859C283.371 133.543 283.923 133.464 284.553 133.464H316.409C317.512 133.464 318.538 134.017 319.011 135.044L370.972 225.107L388.083 254.812C388.319 255.286 388.477 255.76 388.477 256.234C388.477 256.55 388.319 257.024 388.083 257.498V257.498Z",
+    fill: "#008AAA"
+  })
+}));
+const linkedin = () => (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("svg", Object.assign({
+  className: iconDefaultStyles(),
+  xmlns: "http://www.w3.org/2000/svg",
+  viewBox: "0 0 48 48",
+  width: "512px",
+  height: "512px"
+}, {
+  children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("path", {
+    fill: "#0288D1",
+    d: "M42,37c0,2.762-2.238,5-5,5H11c-2.761,0-5-2.238-5-5V11c0-2.762,2.239-5,5-5h26c2.762,0,5,2.238,5,5V37z"
+  }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("path", {
+    fill: "#FFF",
+    d: "M12 19H17V36H12zM14.485 17h-.028C12.965 17 12 15.888 12 14.499 12 13.08 12.995 12 14.514 12c1.521 0 2.458 1.08 2.486 2.499C17 15.887 16.035 17 14.485 17zM36 36h-5v-9.099c0-2.198-1.225-3.698-3.192-3.698-1.501 0-2.313 1.012-2.707 1.99C24.957 25.543 25 26.511 25 27v9h-5V19h5v2.616C25.721 20.5 26.85 19 29.738 19c3.578 0 6.261 2.25 6.261 7.274L36 36 36 36z"
+  })]
+}));
+const notion = () => (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("svg", Object.assign({
+  className: iconDefaultStyles(),
+  xmlns: "http://www.w3.org/2000/svg",
+  viewBox: "0 0 48 48",
+  width: "512px",
+  height: "512px",
+  "fill-rule": "evenodd",
+  "clip-rule": "evenodd"
+}, {
+  children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("path", {
+    fill: "#fff",
+    "fill-rule": "evenodd",
+    d: "M11.553,11.099c1.232,1.001,1.694,0.925,4.008,0.77 l21.812-1.31c0.463,0,0.078-0.461-0.076-0.538l-3.622-2.619c-0.694-0.539-1.619-1.156-3.391-1.002l-21.12,1.54 c-0.77,0.076-0.924,0.461-0.617,0.77L11.553,11.099z",
+    "clip-rule": "evenodd"
+  }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("path", {
+    fill: "#fff",
+    "fill-rule": "evenodd",
+    d: "M12.862,16.182v22.95c0,1.233,0.616,1.695,2.004,1.619 l23.971-1.387c1.388-0.076,1.543-0.925,1.543-1.927V14.641c0-1-0.385-1.54-1.234-1.463l-25.05,1.463 C13.171,14.718,12.862,15.181,12.862,16.182L12.862,16.182z",
+    "clip-rule": "evenodd"
+  }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("path", {
+    fill: "#424242",
+    "fill-rule": "evenodd",
+    d: "M11.553,11.099c1.232,1.001,1.694,0.925,4.008,0.77 l21.812-1.31c0.463,0,0.078-0.461-0.076-0.538l-3.622-2.619c-0.694-0.539-1.619-1.156-3.391-1.002l-21.12,1.54 c-0.77,0.076-0.924,0.461-0.617,0.77L11.553,11.099z M12.862,16.182v22.95c0,1.233,0.616,1.695,2.004,1.619l23.971-1.387 c1.388-0.076,1.543-0.925,1.543-1.927V14.641c0-1-0.385-1.54-1.234-1.463l-25.05,1.463C13.171,14.718,12.862,15.181,12.862,16.182 L12.862,16.182z M36.526,17.413c0.154,0.694,0,1.387-0.695,1.465l-1.155,0.23v16.943c-1.003,0.539-1.928,0.847-2.698,0.847 c-1.234,0-1.543-0.385-2.467-1.54l-7.555-11.86v11.475l2.391,0.539c0,0,0,1.386-1.929,1.386l-5.317,0.308 c-0.154-0.308,0-1.078,0.539-1.232l1.388-0.385V20.418l-1.927-0.154c-0.155-0.694,0.23-1.694,1.31-1.772l5.704-0.385l7.862,12.015 V19.493l-2.005-0.23c-0.154-0.848,0.462-1.464,1.233-1.54L36.526,17.413z M7.389,5.862l21.968-1.618 c2.698-0.231,3.392-0.076,5.087,1.155l7.013,4.929C42.614,11.176,43,11.407,43,12.33v27.032c0,1.694-0.617,2.696-2.775,2.849 l-25.512,1.541c-1.62,0.077-2.391-0.154-3.239-1.232l-5.164-6.7C5.385,34.587,5,33.664,5,32.585V8.556 C5,7.171,5.617,6.015,7.389,5.862z",
+    "clip-rule": "evenodd"
+  })]
+}));
+const slack = () => (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("svg", Object.assign({
+  className: iconDefaultStyles(),
+  xmlns: "http://www.w3.org/2000/svg",
+  viewBox: "0 0 48 48",
+  width: "512px",
+  height: "512px"
+}, {
+  children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("path", {
+    fill: "#33d375",
+    d: "M33,8c0-2.209-1.791-4-4-4s-4,1.791-4,4c0,1.254,0,9.741,0,11c0,2.209,1.791,4,4,4s4-1.791,4-4\tC33,17.741,33,9.254,33,8z"
+  }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("path", {
+    fill: "#33d375",
+    d: "M43,19c0,2.209-1.791,4-4,4c-1.195,0-4,0-4,0s0-2.986,0-4c0-2.209,1.791-4,4-4S43,16.791,43,19z"
+  }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("path", {
+    fill: "#40c4ff",
+    d: "M8,14c-2.209,0-4,1.791-4,4s1.791,4,4,4c1.254,0,9.741,0,11,0c2.209,0,4-1.791,4-4s-1.791-4-4-4\tC17.741,14,9.254,14,8,14z"
+  }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("path", {
+    fill: "#40c4ff",
+    d: "M19,4c2.209,0,4,1.791,4,4c0,1.195,0,4,0,4s-2.986,0-4,0c-2.209,0-4-1.791-4-4S16.791,4,19,4z"
+  }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("path", {
+    fill: "#e91e63",
+    d: "M14,39.006C14,41.212,15.791,43,18,43s4-1.788,4-3.994c0-1.252,0-9.727,0-10.984\tc0-2.206-1.791-3.994-4-3.994s-4,1.788-4,3.994C14,29.279,14,37.754,14,39.006z"
+  }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("path", {
+    fill: "#e91e63",
+    d: "M4,28.022c0-2.206,1.791-3.994,4-3.994c1.195,0,4,0,4,0s0,2.981,0,3.994c0,2.206-1.791,3.994-4,3.994\tS4,30.228,4,28.022z"
+  }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("path", {
+    fill: "#ffc107",
+    d: "M39,33c2.209,0,4-1.791,4-4s-1.791-4-4-4c-1.254,0-9.741,0-11,0c-2.209,0-4,1.791-4,4s1.791,4,4,4\tC29.258,33,37.746,33,39,33z"
+  }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("path", {
+    fill: "#ffc107",
+    d: "M28,43c-2.209,0-4-1.791-4-4c0-1.195,0-4,0-4s2.986,0,4,0c2.209,0,4,1.791,4,4S30.209,43,28,43z"
+  })]
+}));
+const spotify = () => (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("svg", Object.assign({
+  className: iconDefaultStyles(),
+  width: "512",
+  height: "512",
+  viewBox: "0 0 512 512",
+  fill: "none",
+  xmlns: "http://www.w3.org/2000/svg"
+}, {
+  children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("path", {
+    d: "M255.498 31.0034C131.513 31.0034 31 131.515 31 255.502C31 379.492 131.513 480 255.498 480C379.497 480 480 379.495 480 255.502C480 131.522 379.497 31.0135 255.495 31.0135L255.498 31V31.0034ZM358.453 354.798C354.432 361.391 345.801 363.486 339.204 359.435C286.496 327.237 220.139 319.947 141.993 337.801C134.463 339.516 126.957 334.798 125.24 327.264C123.516 319.731 128.217 312.225 135.767 310.511C221.284 290.972 294.639 299.384 353.816 335.549C360.413 339.596 362.504 348.2 358.453 354.798ZM385.932 293.67C380.864 301.903 370.088 304.503 361.858 299.438C301.512 262.345 209.528 251.602 138.151 273.272C128.893 276.067 119.118 270.851 116.309 261.61C113.521 252.353 118.74 242.597 127.981 239.782C209.512 215.044 310.87 227.026 380.17 269.612C388.4 274.68 391 285.456 385.935 293.676V293.673L385.932 293.67ZM388.293 230.016C315.935 187.039 196.56 183.089 127.479 204.055C116.387 207.42 104.654 201.159 101.293 190.063C97.9326 178.964 104.189 167.241 115.289 163.87C194.59 139.796 326.418 144.446 409.723 193.902C419.722 199.826 422.995 212.71 417.068 222.675C411.168 232.653 398.247 235.943 388.303 230.016H388.293V230.016Z",
+    fill: "#1ED760"
+  })
+}));
+const twitch = () => (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("svg", Object.assign({
+  className: iconDefaultStyles(),
+  width: "512",
+  height: "512",
+  viewBox: "0 0 512 512",
+  fill: "none",
+  xmlns: "http://www.w3.org/2000/svg"
+}, {
+  children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("path", {
+    d: "M416 240L352 304H288L232 360V304H160V64H416V240Z",
+    fill: "white"
+  }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("path", {
+    d: "M144 32L64 112V400H160V480L240 400H304L448 256V32H144ZM416 240L352 304H288L232 360V304H160V64H416V240Z",
+    fill: "#9146FF"
+  }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("path", {
+    d: "M368 120H336V216H368V120Z",
+    fill: "#9146FF"
+  }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("path", {
+    d: "M280 120H248V216H280V120Z",
+    fill: "#9146FF"
+  })]
+}));
+const workos = () => (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("svg", Object.assign({
+  className: iconDefaultStyles(),
+  width: "512",
+  height: "512",
+  viewBox: "0 0 512 512",
+  fill: "none",
+  xmlns: "http://www.w3.org/2000/svg"
+}, {
+  children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("path", {
+    d: "M33 256.043C33 264.556 35.3159 273.069 39.4845 280.202L117.993 415.493C126.098 429.298 138.373 440.572 153.657 445.634C183.764 455.528 214.797 442.873 229.618 417.333L248.609 384.661L173.806 256.043L252.777 119.831L271.768 87.1591C277.557 77.2654 284.968 69.4424 294 63H285.894H172.185C150.878 63 131.193 74.2742 120.54 92.6812L39.7161 231.884C35.3159 239.016 33 247.53 33 256.043Z",
+    fill: "#6363F1"
+  }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("path", {
+    d: "M480 256.058C480 247.539 477.684 239.021 473.516 231.883L393.849 94.6596C379.028 69.3331 347.995 56.4396 317.888 66.34C302.603 71.4053 290.329 82.6871 282.224 96.5015L264.391 127.354L339.194 256.058L260.223 392.131L241.232 424.825C235.443 434.495 228.032 442.553 219 449H227.106H340.815C362.122 449 381.807 437.718 392.46 419.299L473.284 280.003C477.684 272.866 480 264.577 480 256.058Z",
+    fill: "#6363F1"
+  })]
+}));
+
+
+
+
+/***/ }),
+
+/***/ "./node_modules/@supabase/auth-ui-react/dist/esm/src/components/Auth/UserContext.js":
+/*!******************************************************************************************!*\
+  !*** ./node_modules/@supabase/auth-ui-react/dist/esm/src/components/Auth/UserContext.js ***!
+  \******************************************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "UserContextProvider": function() { return /* binding */ UserContextProvider; },
+/* harmony export */   "useUser": function() { return /* binding */ useUser; }
+/* harmony export */ });
+/* harmony import */ var _virtual_tslib_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../_virtual/_tslib.js */ "./node_modules/@supabase/auth-ui-react/dist/esm/_virtual/_tslib.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+
+
+
+
+const UserContext = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_1__.createContext)({
+  user: null,
+  session: null
+});
+const UserContextProvider = props => {
+  var _a;
+
+  const {
+    supabaseClient
+  } = props;
+  const [session, setSession] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(null);
+  const [user, setUser] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)((_a = session === null || session === void 0 ? void 0 : session.user) !== null && _a !== void 0 ? _a : null);
+  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(() => {
+
+    (() => (0,_virtual_tslib_js__WEBPACK_IMPORTED_MODULE_2__.__awaiter)(void 0, void 0, void 0, function* () {
+      var _a, _b;
+
+      const {
+        data
+      } = yield supabaseClient.auth.getSession();
+      setSession(data.session);
+      setUser((_b = (_a = data.session) === null || _a === void 0 ? void 0 : _a.user) !== null && _b !== void 0 ? _b : null);
+    }))();
+
+    const {
+      data: authListener
+    } = supabaseClient.auth.onAuthStateChange((event, session) => (0,_virtual_tslib_js__WEBPACK_IMPORTED_MODULE_2__.__awaiter)(void 0, void 0, void 0, function* () {
+      var _c;
+
+      setSession(session);
+      setUser((_c = session === null || session === void 0 ? void 0 : session.user) !== null && _c !== void 0 ? _c : null);
+    }));
+    return () => {
+      authListener === null || authListener === void 0 ? void 0 : authListener.subscription.unsubscribe();
+    }; // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+  const value = {
+    session,
+    user
+  };
+  return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(UserContext.Provider, Object.assign({
+    value: value
+  }, props));
+};
+const useUser = () => {
+  const context = (0,react__WEBPACK_IMPORTED_MODULE_1__.useContext)(UserContext);
+
+  if (context === undefined) {
+    throw new Error(`useUser must be used within a UserContextProvider.`);
+  }
+
+  return context;
+};
+
+
+
+
+/***/ }),
+
+/***/ "./node_modules/@supabase/auth-ui-react/dist/esm/src/components/Auth/interfaces/EmailAuth.js":
+/*!***************************************************************************************************!*\
+  !*** ./node_modules/@supabase/auth-ui-react/dist/esm/src/components/Auth/interfaces/EmailAuth.js ***!
+  \***************************************************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "EmailAuth": function() { return /* binding */ EmailAuth; }
+/* harmony export */ });
+/* harmony import */ var _virtual_tslib_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../_virtual/_tslib.js */ "./node_modules/@supabase/auth-ui-react/dist/esm/_virtual/_tslib.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _UI_Anchor_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../UI/Anchor.js */ "./node_modules/@supabase/auth-ui-react/dist/esm/src/components/UI/Anchor.js");
+/* harmony import */ var _UI_Button_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../UI/Button.js */ "./node_modules/@supabase/auth-ui-react/dist/esm/src/components/UI/Button.js");
+/* harmony import */ var _UI_Container_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../UI/Container.js */ "./node_modules/@supabase/auth-ui-react/dist/esm/src/components/UI/Container.js");
+/* harmony import */ var _UI_Input_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../UI/Input.js */ "./node_modules/@supabase/auth-ui-react/dist/esm/src/components/UI/Input.js");
+/* harmony import */ var _UI_Label_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../UI/Label.js */ "./node_modules/@supabase/auth-ui-react/dist/esm/src/components/UI/Label.js");
+/* harmony import */ var _UI_Message_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../UI/Message.js */ "./node_modules/@supabase/auth-ui-react/dist/esm/src/components/UI/Message.js");
+
+
+
+
+
+
+
+
+
+
+
+const VIEWS = {
+  SIGN_IN: 'sign_in',
+  SIGN_UP: 'sign_up',
+  FORGOTTEN_PASSWORD: 'forgotten_password',
+  MAGIC_LINK: 'magic_link',
+  UPDATE_PASSWORD: 'update_password'
+};
+
+function EmailAuth(_ref) {
+  let {
+    authView = 'sign_in',
+    defaultEmail,
+    defaultPassword,
+    setAuthView,
+    setDefaultEmail,
+    setDefaultPassword,
+    supabaseClient,
+    showLinks = true,
+    redirectTo,
+    magicLink,
+    i18n,
+    appearance
+  } = _ref;
+
+  var _a, _b, _c, _d, _e, _f, _g, _h, _j;
+
+  const isMounted = (0,react__WEBPACK_IMPORTED_MODULE_1__.useRef)(true);
+  const [email, setEmail] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(defaultEmail);
+  const [password, setPassword] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(defaultPassword);
+  const [error, setError] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)('');
+  const [loading, setLoading] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false);
+  const [message, setMessage] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)('');
+  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(() => {
+    setEmail(defaultEmail);
+    setPassword(defaultPassword);
+    return () => {
+      isMounted.current = false;
+    };
+  }, [authView]);
+
+  const handleSubmit = e => (0,_virtual_tslib_js__WEBPACK_IMPORTED_MODULE_2__.__awaiter)(this, void 0, void 0, function* () {
+    e.preventDefault();
+    setError('');
+    setLoading(true);
+
+    switch (authView) {
+      case 'sign_in':
+        const {
+          error: signInError
+        } = yield supabaseClient.auth.signInWithPassword({
+          email,
+          password
+        });
+        if (signInError) setError(signInError.message);
+        break;
+
+      case 'sign_up':
+        const {
+          data: {
+            user: signUpUser,
+            session: signUpSession
+          },
+          error: signUpError
+        } = yield supabaseClient.auth.signUp({
+          email,
+          password
+        });
+        if (signUpError) setError(signUpError.message); // Check if session is null -> email confirmation setting is turned on
+        else if (signUpUser && !signUpSession) setMessage('Check your email for the confirmation link.');
+        break;
+    }
+    /*
+     * it is possible the auth component may have been unmounted at this point
+     * check if component is mounted before setting a useState
+     */
+
+
+    if (isMounted.current) setLoading(false);
+  });
+
+  const handleViewChange = newView => {
+    setDefaultEmail(email);
+    setDefaultPassword(password);
+    setAuthView(newView);
+  };
+
+  return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("form", Object.assign({
+    id: authView === 'sign_in' ? `auth-sign-in` : `auth-sign-up`,
+    onSubmit: handleSubmit,
+    autoComplete: 'on',
+    style: {
+      width: '100%'
+    }
+  }, {
+    children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_UI_Container_js__WEBPACK_IMPORTED_MODULE_3__.Container, Object.assign({
+      direction: "vertical",
+      gap: "large",
+      appearance: appearance
+    }, {
+      children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_UI_Container_js__WEBPACK_IMPORTED_MODULE_3__.Container, Object.assign({
+        direction: "vertical",
+        gap: "large",
+        appearance: appearance
+      }, {
+        children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+          children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_UI_Label_js__WEBPACK_IMPORTED_MODULE_4__.Label, Object.assign({
+            htmlFor: "email",
+            appearance: appearance
+          }, {
+            children: (_a = i18n === null || i18n === void 0 ? void 0 : i18n[authView]) === null || _a === void 0 ? void 0 : _a.email_label
+          })), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_UI_Input_js__WEBPACK_IMPORTED_MODULE_5__.Input, {
+            type: "email",
+            name: "email",
+            placeholder: (_b = i18n === null || i18n === void 0 ? void 0 : i18n[authView]) === null || _b === void 0 ? void 0 : _b.email_input_placeholder,
+            defaultValue: email,
+            onChange: e => setEmail(e.target.value),
+            autoComplete: "email",
+            appearance: appearance
+          })]
+        }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+          children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_UI_Label_js__WEBPACK_IMPORTED_MODULE_4__.Label, Object.assign({
+            htmlFor: "password",
+            appearance: appearance
+          }, {
+            children: (_c = i18n === null || i18n === void 0 ? void 0 : i18n[authView]) === null || _c === void 0 ? void 0 : _c.password_label
+          })), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_UI_Input_js__WEBPACK_IMPORTED_MODULE_5__.Input, {
+            type: "password",
+            name: "password",
+            placeholder: (_d = i18n === null || i18n === void 0 ? void 0 : i18n[authView]) === null || _d === void 0 ? void 0 : _d.password_input_placeholder,
+            defaultValue: password,
+            onChange: e => setPassword(e.target.value),
+            autoComplete: authView === 'sign_in' ? 'current-password' : 'new-password',
+            appearance: appearance
+          })]
+        })]
+      })), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_UI_Button_js__WEBPACK_IMPORTED_MODULE_6__.Button, Object.assign({
+        type: "submit",
+        color: "primary",
+        loading: loading,
+        appearance: appearance
+      }, {
+        children: (_e = i18n === null || i18n === void 0 ? void 0 : i18n[authView]) === null || _e === void 0 ? void 0 : _e.button_label
+      })), showLinks && (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_UI_Container_js__WEBPACK_IMPORTED_MODULE_3__.Container, Object.assign({
+        direction: "vertical",
+        gap: "small",
+        appearance: appearance
+      }, {
+        children: [authView === VIEWS.SIGN_IN && magicLink && (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_UI_Anchor_js__WEBPACK_IMPORTED_MODULE_7__.Anchor, Object.assign({
+          href: "#auth-magic-link",
+          onClick: e => {
+            e.preventDefault();
+            setAuthView(VIEWS.MAGIC_LINK);
+          },
+          appearance: appearance
+        }, {
+          children: (_f = i18n === null || i18n === void 0 ? void 0 : i18n.magic_link) === null || _f === void 0 ? void 0 : _f.link_text
+        })), authView === VIEWS.SIGN_IN && (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_UI_Anchor_js__WEBPACK_IMPORTED_MODULE_7__.Anchor, Object.assign({
+          href: "#auth-forgot-password",
+          onClick: e => {
+            e.preventDefault();
+            setAuthView(VIEWS.FORGOTTEN_PASSWORD);
+          },
+          appearance: appearance
+        }, {
+          children: (_g = i18n === null || i18n === void 0 ? void 0 : i18n.forgotten_password) === null || _g === void 0 ? void 0 : _g.link_text
+        })), authView === VIEWS.SIGN_IN ? (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_UI_Anchor_js__WEBPACK_IMPORTED_MODULE_7__.Anchor, Object.assign({
+          href: "#auth-sign-up",
+          onClick: e => {
+            e.preventDefault();
+            handleViewChange(VIEWS.SIGN_UP);
+          },
+          appearance: appearance
+        }, {
+          children: (_h = i18n === null || i18n === void 0 ? void 0 : i18n.sign_up) === null || _h === void 0 ? void 0 : _h.link_text
+        })) : (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_UI_Anchor_js__WEBPACK_IMPORTED_MODULE_7__.Anchor, Object.assign({
+          href: "#auth-sign-in",
+          onClick: e => {
+            e.preventDefault();
+            handleViewChange(VIEWS.SIGN_IN);
+          },
+          appearance: appearance
+        }, {
+          children: (_j = i18n === null || i18n === void 0 ? void 0 : i18n.sign_in) === null || _j === void 0 ? void 0 : _j.link_text
+        }))]
+      }))]
+    })), message && (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_UI_Message_js__WEBPACK_IMPORTED_MODULE_8__.Message, Object.assign({
+      appearance: appearance
+    }, {
+      children: message
+    })), error && (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_UI_Message_js__WEBPACK_IMPORTED_MODULE_8__.Message, Object.assign({
+      color: "danger",
+      appearance: appearance
+    }, {
+      children: error
+    }))]
+  }));
+}
+
+
+
+
+/***/ }),
+
+/***/ "./node_modules/@supabase/auth-ui-react/dist/esm/src/components/Auth/interfaces/ForgottenPassword.js":
+/*!***********************************************************************************************************!*\
+  !*** ./node_modules/@supabase/auth-ui-react/dist/esm/src/components/Auth/interfaces/ForgottenPassword.js ***!
+  \***********************************************************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "ForgottenPassword": function() { return /* binding */ ForgottenPassword; }
+/* harmony export */ });
+/* harmony import */ var _virtual_tslib_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../_virtual/_tslib.js */ "./node_modules/@supabase/auth-ui-react/dist/esm/_virtual/_tslib.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _constants_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../../constants.js */ "./node_modules/@supabase/auth-ui-react/dist/esm/src/constants.js");
+/* harmony import */ var _UI_Anchor_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../UI/Anchor.js */ "./node_modules/@supabase/auth-ui-react/dist/esm/src/components/UI/Anchor.js");
+/* harmony import */ var _UI_Button_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../UI/Button.js */ "./node_modules/@supabase/auth-ui-react/dist/esm/src/components/UI/Button.js");
+/* harmony import */ var _UI_Container_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../UI/Container.js */ "./node_modules/@supabase/auth-ui-react/dist/esm/src/components/UI/Container.js");
+/* harmony import */ var _UI_Input_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../UI/Input.js */ "./node_modules/@supabase/auth-ui-react/dist/esm/src/components/UI/Input.js");
+/* harmony import */ var _UI_Label_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../UI/Label.js */ "./node_modules/@supabase/auth-ui-react/dist/esm/src/components/UI/Label.js");
+/* harmony import */ var _UI_Message_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../UI/Message.js */ "./node_modules/@supabase/auth-ui-react/dist/esm/src/components/UI/Message.js");
+
+
+
+
+
+
+
+
+
+
+
+
+function ForgottenPassword(_ref) {
+  let {
+    setAuthView,
+    supabaseClient,
+    redirectTo,
+    i18n,
+    appearance,
+    showLinks
+  } = _ref;
+
+  var _a, _b, _c, _d;
+
+  const [email, setEmail] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)('');
+  const [error, setError] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)('');
+  const [message, setMessage] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)('');
+  const [loading, setLoading] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false);
+
+  const handlePasswordReset = e => (0,_virtual_tslib_js__WEBPACK_IMPORTED_MODULE_2__.__awaiter)(this, void 0, void 0, function* () {
+    e.preventDefault();
+    setError('');
+    setMessage('');
+    setLoading(true);
+    const {
+      error
+    } = yield supabaseClient.auth.resetPasswordForEmail(email, {
+      redirectTo
+    });
+    if (error) setError(error.message);else setMessage('Check your email for the password reset link');
+    setLoading(false);
+  });
+
+  return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("form", Object.assign({
+    id: "auth-forgot-password",
+    onSubmit: handlePasswordReset
+  }, {
+    children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_UI_Container_js__WEBPACK_IMPORTED_MODULE_3__.Container, Object.assign({
+      gap: "large",
+      direction: "vertical",
+      appearance: appearance
+    }, {
+      children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_UI_Container_js__WEBPACK_IMPORTED_MODULE_3__.Container, Object.assign({
+        gap: "large",
+        direction: "vertical",
+        appearance: appearance
+      }, {
+        children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+          children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_UI_Label_js__WEBPACK_IMPORTED_MODULE_4__.Label, Object.assign({
+            htmlFor: "email",
+            appearance: appearance
+          }, {
+            children: (_a = i18n === null || i18n === void 0 ? void 0 : i18n.forgotten_password) === null || _a === void 0 ? void 0 : _a.email_label
+          })), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_UI_Input_js__WEBPACK_IMPORTED_MODULE_5__.Input, {
+            name: "email",
+            type: "email",
+            placeholder: (_b = i18n === null || i18n === void 0 ? void 0 : i18n.forgotten_password) === null || _b === void 0 ? void 0 : _b.email_input_placeholder,
+            onChange: e => setEmail(e.target.value),
+            appearance: appearance
+          })]
+        }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_UI_Button_js__WEBPACK_IMPORTED_MODULE_6__.Button, Object.assign({
+          type: "submit",
+          color: "primary",
+          loading: loading,
+          appearance: appearance
+        }, {
+          children: (_c = i18n === null || i18n === void 0 ? void 0 : i18n.forgotten_password) === null || _c === void 0 ? void 0 : _c.button_label
+        }))]
+      })), showLinks && (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_UI_Anchor_js__WEBPACK_IMPORTED_MODULE_7__.Anchor, Object.assign({
+        href: "#auth-sign-in",
+        onClick: e => {
+          e.preventDefault();
+          setAuthView(_constants_js__WEBPACK_IMPORTED_MODULE_8__.VIEWS.SIGN_IN);
+        },
+        appearance: appearance
+      }, {
+        children: (_d = i18n === null || i18n === void 0 ? void 0 : i18n.sign_in) === null || _d === void 0 ? void 0 : _d.link_text
+      })), message && (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_UI_Message_js__WEBPACK_IMPORTED_MODULE_9__.Message, Object.assign({
+        appearance: appearance
+      }, {
+        children: message
+      })), error && (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_UI_Message_js__WEBPACK_IMPORTED_MODULE_9__.Message, Object.assign({
+        color: "danger",
+        appearance: appearance
+      }, {
+        children: error
+      }))]
+    }))
+  }));
+}
+
+
+
+
+/***/ }),
+
+/***/ "./node_modules/@supabase/auth-ui-react/dist/esm/src/components/Auth/interfaces/MagicLink.js":
+/*!***************************************************************************************************!*\
+  !*** ./node_modules/@supabase/auth-ui-react/dist/esm/src/components/Auth/interfaces/MagicLink.js ***!
+  \***************************************************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "MagicLink": function() { return /* binding */ MagicLink; }
+/* harmony export */ });
+/* harmony import */ var _virtual_tslib_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../_virtual/_tslib.js */ "./node_modules/@supabase/auth-ui-react/dist/esm/_virtual/_tslib.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _constants_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../../constants.js */ "./node_modules/@supabase/auth-ui-react/dist/esm/src/constants.js");
+/* harmony import */ var _UI_Anchor_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../UI/Anchor.js */ "./node_modules/@supabase/auth-ui-react/dist/esm/src/components/UI/Anchor.js");
+/* harmony import */ var _UI_Button_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../UI/Button.js */ "./node_modules/@supabase/auth-ui-react/dist/esm/src/components/UI/Button.js");
+/* harmony import */ var _UI_Container_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../UI/Container.js */ "./node_modules/@supabase/auth-ui-react/dist/esm/src/components/UI/Container.js");
+/* harmony import */ var _UI_Input_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../UI/Input.js */ "./node_modules/@supabase/auth-ui-react/dist/esm/src/components/UI/Input.js");
+/* harmony import */ var _UI_Label_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../UI/Label.js */ "./node_modules/@supabase/auth-ui-react/dist/esm/src/components/UI/Label.js");
+/* harmony import */ var _UI_Message_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../UI/Message.js */ "./node_modules/@supabase/auth-ui-react/dist/esm/src/components/UI/Message.js");
+
+
+
+
+
+
+
+
+
+
+
+
+function MagicLink(_ref) {
+  let {
+    setAuthView,
+    supabaseClient,
+    redirectTo,
+    i18n,
+    appearance,
+    showLinks
+  } = _ref;
+
+  var _a, _b, _c, _d;
+
+  const [email, setEmail] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)('');
+  const [error, setError] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)('');
+  const [message, setMessage] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)('');
+  const [loading, setLoading] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false);
+
+  const handleMagicLinkSignIn = e => (0,_virtual_tslib_js__WEBPACK_IMPORTED_MODULE_2__.__awaiter)(this, void 0, void 0, function* () {
+    e.preventDefault();
+    setError('');
+    setMessage('');
+    setLoading(true);
+    const {
+      error
+    } = yield supabaseClient.auth.signInWithOtp({
+      email,
+      options: {
+        emailRedirectTo: redirectTo
+      }
+    });
+    if (error) setError(error.message);else setMessage('Check your email for the magic link');
+    setLoading(false);
+  });
+
+  return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("form", Object.assign({
+    id: "auth-magic-link",
+    onSubmit: handleMagicLinkSignIn
+  }, {
+    children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_UI_Container_js__WEBPACK_IMPORTED_MODULE_3__.Container, Object.assign({
+      gap: "large",
+      direction: "vertical",
+      appearance: appearance
+    }, {
+      children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_UI_Container_js__WEBPACK_IMPORTED_MODULE_3__.Container, Object.assign({
+        gap: "large",
+        direction: "vertical",
+        appearance: appearance
+      }, {
+        children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+          children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_UI_Label_js__WEBPACK_IMPORTED_MODULE_4__.Label, Object.assign({
+            appearance: appearance
+          }, {
+            children: (_a = i18n === null || i18n === void 0 ? void 0 : i18n.magic_link) === null || _a === void 0 ? void 0 : _a.email_input_label
+          })), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_UI_Input_js__WEBPACK_IMPORTED_MODULE_5__.Input, {
+            type: "email",
+            placeholder: (_b = i18n === null || i18n === void 0 ? void 0 : i18n.magic_link) === null || _b === void 0 ? void 0 : _b.email_input_placeholder,
+            onChange: e => setEmail(e.target.value),
+            appearance: appearance
+          })]
+        }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_UI_Button_js__WEBPACK_IMPORTED_MODULE_6__.Button, Object.assign({
+          color: "primary",
+          type: "submit",
+          loading: loading,
+          appearance: appearance
+        }, {
+          children: (_c = i18n === null || i18n === void 0 ? void 0 : i18n.magic_link) === null || _c === void 0 ? void 0 : _c.button_label
+        }))]
+      })), showLinks && (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_UI_Anchor_js__WEBPACK_IMPORTED_MODULE_7__.Anchor, Object.assign({
+        href: "#auth-sign-in",
+        onClick: e => {
+          e.preventDefault();
+          setAuthView(_constants_js__WEBPACK_IMPORTED_MODULE_8__.VIEWS.SIGN_IN);
+        },
+        appearance: appearance
+      }, {
+        children: (_d = i18n === null || i18n === void 0 ? void 0 : i18n.sign_in) === null || _d === void 0 ? void 0 : _d.link_text
+      })), message && (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_UI_Message_js__WEBPACK_IMPORTED_MODULE_9__.Message, Object.assign({
+        appearance: appearance
+      }, {
+        children: message
+      })), error && (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_UI_Message_js__WEBPACK_IMPORTED_MODULE_9__.Message, Object.assign({
+        color: "danger",
+        appearance: appearance
+      }, {
+        children: error
+      }))]
+    }))
+  }));
+}
+
+
+
+
+/***/ }),
+
+/***/ "./node_modules/@supabase/auth-ui-react/dist/esm/src/components/Auth/interfaces/SocialAuth.js":
+/*!****************************************************************************************************!*\
+  !*** ./node_modules/@supabase/auth-ui-react/dist/esm/src/components/Auth/interfaces/SocialAuth.js ***!
+  \****************************************************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "SocialAuth": function() { return /* binding */ SocialAuth; }
+/* harmony export */ });
+/* harmony import */ var _virtual_tslib_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../_virtual/_tslib.js */ "./node_modules/@supabase/auth-ui-react/dist/esm/_virtual/_tslib.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _UI_Button_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../UI/Button.js */ "./node_modules/@supabase/auth-ui-react/dist/esm/src/components/UI/Button.js");
+/* harmony import */ var _UI_Container_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../UI/Container.js */ "./node_modules/@supabase/auth-ui-react/dist/esm/src/components/UI/Container.js");
+/* harmony import */ var _UI_Divider_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../UI/Divider.js */ "./node_modules/@supabase/auth-ui-react/dist/esm/src/components/UI/Divider.js");
+/* harmony import */ var _Icons_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../Icons.js */ "./node_modules/@supabase/auth-ui-react/dist/esm/src/components/Auth/Icons.js");
+
+
+
+
+
+
+
+
+
+
+
+
+function SocialAuth(_ref) {
+  let {
+    supabaseClient,
+    socialLayout = 'vertical',
+    providers,
+    redirectTo,
+    onlyThirdPartyProviders,
+    view,
+    i18n,
+    appearance
+  } = _ref;
+  const [loading, setLoading] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false);
+  const [error, setError] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)('');
+  const verticalSocialLayout = socialLayout === 'vertical' ? true : false;
+
+  const handleProviderSignIn = provider => (0,_virtual_tslib_js__WEBPACK_IMPORTED_MODULE_2__.__awaiter)(this, void 0, void 0, function* () {
+    setLoading(true);
+    const {
+      error
+    } = yield supabaseClient.auth.signInWithOAuth({
+      provider,
+      options: {
+        redirectTo
+      }
+    });
+    if (error) setError(error.message);
+    setLoading(false);
+  });
+
+  function capitalize(word) {
+    const lower = word.toLowerCase();
+    return word.charAt(0).toUpperCase() + lower.slice(1);
+  }
+
+  return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
+    children: providers && providers.length > 0 && (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
+      children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_UI_Container_js__WEBPACK_IMPORTED_MODULE_3__.Container, Object.assign({
+        gap: "large",
+        direction: "vertical",
+        appearance: appearance
+      }, {
+        children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_UI_Container_js__WEBPACK_IMPORTED_MODULE_3__.Container, Object.assign({
+          direction: verticalSocialLayout ? 'vertical' : 'horizontal',
+          gap: verticalSocialLayout ? 'small' : 'medium',
+          appearance: appearance
+        }, {
+          children: providers.map(provider => {
+            var _a;
+
+            const AuthIcon = _Icons_js__WEBPACK_IMPORTED_MODULE_4__[provider];
+            return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_UI_Button_js__WEBPACK_IMPORTED_MODULE_5__.Button, Object.assign({
+              color: "default",
+              icon: AuthIcon ? (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(AuthIcon, {}) : '',
+              loading: loading,
+              onClick: () => handleProviderSignIn(provider),
+              appearance: appearance
+            }, {
+              children: verticalSocialLayout && ((_a = i18n[view]) === null || _a === void 0 ? void 0 : _a.social_provider_text) + ' ' + capitalize(provider)
+            }), provider);
+          })
+        }))
+      })), !onlyThirdPartyProviders && (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_UI_Divider_js__WEBPACK_IMPORTED_MODULE_6__.Divider, {
+        appearance: appearance
+      })]
+    })
+  });
+}
+
+
+
+
+/***/ }),
+
+/***/ "./node_modules/@supabase/auth-ui-react/dist/esm/src/components/Auth/interfaces/UpdatePassword.js":
+/*!********************************************************************************************************!*\
+  !*** ./node_modules/@supabase/auth-ui-react/dist/esm/src/components/Auth/interfaces/UpdatePassword.js ***!
+  \********************************************************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "UpdatePassword": function() { return /* binding */ UpdatePassword; }
+/* harmony export */ });
+/* harmony import */ var _virtual_tslib_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../_virtual/_tslib.js */ "./node_modules/@supabase/auth-ui-react/dist/esm/_virtual/_tslib.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _UI_Button_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../UI/Button.js */ "./node_modules/@supabase/auth-ui-react/dist/esm/src/components/UI/Button.js");
+/* harmony import */ var _UI_Container_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../UI/Container.js */ "./node_modules/@supabase/auth-ui-react/dist/esm/src/components/UI/Container.js");
+/* harmony import */ var _UI_Input_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../UI/Input.js */ "./node_modules/@supabase/auth-ui-react/dist/esm/src/components/UI/Input.js");
+/* harmony import */ var _UI_Label_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../UI/Label.js */ "./node_modules/@supabase/auth-ui-react/dist/esm/src/components/UI/Label.js");
+/* harmony import */ var _UI_Message_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../UI/Message.js */ "./node_modules/@supabase/auth-ui-react/dist/esm/src/components/UI/Message.js");
+
+
+
+
+
+
+
+
+
+
+
+function UpdatePassword(_ref) {
+  let {
+    supabaseClient,
+    i18n,
+    appearance
+  } = _ref;
+
+  var _a, _b, _c;
+
+  const [password, setPassword] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)('');
+  const [error, setError] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)('');
+  const [message, setMessage] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)('');
+  const [loading, setLoading] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false);
+
+  const handlePasswordReset = e => (0,_virtual_tslib_js__WEBPACK_IMPORTED_MODULE_2__.__awaiter)(this, void 0, void 0, function* () {
+    e.preventDefault();
+    setError('');
+    setMessage('');
+    setLoading(true);
+    const {
+      error
+    } = yield supabaseClient.auth.updateUser({
+      password
+    });
+    if (error) setError(error.message);else setMessage('Your password has been updated');
+    setLoading(false);
+  });
+
+  return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("form", Object.assign({
+    id: "auth-update-password",
+    onSubmit: handlePasswordReset
+  }, {
+    children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_UI_Container_js__WEBPACK_IMPORTED_MODULE_3__.Container, Object.assign({
+      gap: "large",
+      direction: 'vertical',
+      appearance: appearance
+    }, {
+      children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_UI_Container_js__WEBPACK_IMPORTED_MODULE_3__.Container, Object.assign({
+        gap: "large",
+        direction: "vertical",
+        appearance: appearance
+      }, {
+        children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+          children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_UI_Label_js__WEBPACK_IMPORTED_MODULE_4__.Label, Object.assign({
+            htmlFor: "password",
+            appearance: appearance
+          }, {
+            children: (_a = i18n === null || i18n === void 0 ? void 0 : i18n.update_password) === null || _a === void 0 ? void 0 : _a.password_label
+          })), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_UI_Input_js__WEBPACK_IMPORTED_MODULE_5__.Input, {
+            name: "password",
+            placeholder: (_b = i18n === null || i18n === void 0 ? void 0 : i18n.update_password) === null || _b === void 0 ? void 0 : _b.password_label,
+            type: "password",
+            onChange: e => setPassword(e.target.value),
+            appearance: appearance
+          })]
+        }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_UI_Button_js__WEBPACK_IMPORTED_MODULE_6__.Button, Object.assign({
+          type: "submit",
+          color: "primary",
+          loading: loading,
+          appearance: appearance
+        }, {
+          children: (_c = i18n === null || i18n === void 0 ? void 0 : i18n.update_password) === null || _c === void 0 ? void 0 : _c.button_label
+        }))]
+      })), message && (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_UI_Message_js__WEBPACK_IMPORTED_MODULE_7__.Message, Object.assign({
+        appearance: appearance
+      }, {
+        children: message
+      })), error && (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_UI_Message_js__WEBPACK_IMPORTED_MODULE_7__.Message, Object.assign({
+        color: "danger",
+        appearance: appearance
+      }, {
+        children: error
+      }))]
+    }))
+  }));
+}
+
+
+
+
+/***/ }),
+
+/***/ "./node_modules/@supabase/auth-ui-react/dist/esm/src/components/UI/Anchor.js":
+/*!***********************************************************************************!*\
+  !*** ./node_modules/@supabase/auth-ui-react/dist/esm/src/components/UI/Anchor.js ***!
+  \***********************************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Anchor": function() { return /* binding */ Anchor; }
+/* harmony export */ });
+/* harmony import */ var _virtual_tslib_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../_virtual/_tslib.js */ "./node_modules/@supabase/auth-ui-react/dist/esm/_virtual/_tslib.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _stitches_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @stitches/core */ "./node_modules/@stitches/core/dist/index.mjs");
+/* harmony import */ var _common_theming_utils_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../common/theming/utils.js */ "./node_modules/@supabase/auth-ui-react/dist/esm/common/theming/utils.js");
+
+
+
+
+
+const anchorHTMLAttributes = (0,_stitches_core__WEBPACK_IMPORTED_MODULE_1__.css)({
+  fontFamily: '$bodyFontFamily',
+  fontSize: '$baseBodySize',
+  marginBottom: '$anchorBottomMargin',
+  color: '$anchorTextColor',
+  display: 'block',
+  textAlign: 'center',
+  textDecoration: 'underline',
+  '&:hover': {
+    color: '$anchorTextHoverColor'
+  }
+});
+
+const Anchor = _a => {
+  var _b;
+
+  var {
+    children,
+    appearance
+  } = _a,
+      props = (0,_virtual_tslib_js__WEBPACK_IMPORTED_MODULE_2__.__rest)(_a, ["children", "appearance"]);
+
+  const classNames = (0,_common_theming_utils_js__WEBPACK_IMPORTED_MODULE_3__.generateClassNames)('anchor', anchorHTMLAttributes(), appearance);
+  return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("a", Object.assign({}, props, {
+    style: (_b = appearance === null || appearance === void 0 ? void 0 : appearance.style) === null || _b === void 0 ? void 0 : _b.anchor,
+    className: classNames.join(' ')
+  }, {
+    children: children
+  }));
+};
+
+
+
+
+/***/ }),
+
+/***/ "./node_modules/@supabase/auth-ui-react/dist/esm/src/components/UI/Button.js":
+/*!***********************************************************************************!*\
+  !*** ./node_modules/@supabase/auth-ui-react/dist/esm/src/components/UI/Button.js ***!
+  \***********************************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Button": function() { return /* binding */ Button; }
+/* harmony export */ });
+/* harmony import */ var _virtual_tslib_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../_virtual/_tslib.js */ "./node_modules/@supabase/auth-ui-react/dist/esm/_virtual/_tslib.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _stitches_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @stitches/core */ "./node_modules/@stitches/core/dist/index.mjs");
+/* harmony import */ var _common_theming_utils_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../common/theming/utils.js */ "./node_modules/@supabase/auth-ui-react/dist/esm/common/theming/utils.js");
+
+
+
+
+
+const buttonDefaultStyles = (0,_stitches_core__WEBPACK_IMPORTED_MODULE_1__.css)({
+  fontFamily: '$buttonFontFamily',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  gap: '8px',
+  borderRadius: '$borderRadiusButton',
+  fontSize: '$baseButtonSize',
+  padding: '$buttonPadding',
+  cursor: 'pointer',
+  borderWidth: '$buttonBorderWidth',
+  borderStyle: 'solid',
+  width: '100%',
+  transitionPproperty: 'background-color',
+  transitionTimingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)',
+  transitionDuration: '100ms',
+  variants: {
+    color: {
+      default: {
+        backgroundColor: '$defaultButtonBackground',
+        color: '$defaultButtonText',
+        borderColor: '$defaultButtonBorder',
+        '&:hover': {
+          backgroundColor: '$defaultButtonBackgroundHover'
+        }
+      },
+      primary: {
+        backgroundColor: '$brand',
+        color: '$brandButtonText',
+        borderColor: '$brandAccent',
+        '&:hover': {
+          backgroundColor: '$brandAccent'
+        }
+      }
+    }
+  }
+});
+
+const Button = _a => {
+  var _b;
+
+  var {
+    children,
+    color = 'default',
+    appearance,
+    icon,
+    loading = false
+  } = _a,
+      props = (0,_virtual_tslib_js__WEBPACK_IMPORTED_MODULE_2__.__rest)(_a, ["children", "color", "appearance", "icon", "loading"]);
+
+  const classNames = (0,_common_theming_utils_js__WEBPACK_IMPORTED_MODULE_3__.generateClassNames)('button', buttonDefaultStyles({
+    color: color
+  }), appearance);
+  return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("button", Object.assign({}, props, {
+    style: (_b = appearance === null || appearance === void 0 ? void 0 : appearance.style) === null || _b === void 0 ? void 0 : _b.button,
+    className: classNames.join(' '),
+    disabled: loading
+  }, {
+    children: [icon, children]
+  }));
+};
+
+
+
+
+/***/ }),
+
+/***/ "./node_modules/@supabase/auth-ui-react/dist/esm/src/components/UI/Container.js":
+/*!**************************************************************************************!*\
+  !*** ./node_modules/@supabase/auth-ui-react/dist/esm/src/components/UI/Container.js ***!
+  \**************************************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Container": function() { return /* binding */ Container; }
+/* harmony export */ });
+/* harmony import */ var _virtual_tslib_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../_virtual/_tslib.js */ "./node_modules/@supabase/auth-ui-react/dist/esm/_virtual/_tslib.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _stitches_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @stitches/core */ "./node_modules/@stitches/core/dist/index.mjs");
+/* harmony import */ var _common_theming_utils_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../common/theming/utils.js */ "./node_modules/@supabase/auth-ui-react/dist/esm/common/theming/utils.js");
+
+
+
+
+
+const containerDefaultStyles = (0,_stitches_core__WEBPACK_IMPORTED_MODULE_1__.css)({
+  display: 'flex',
+  gap: '4px',
+  variants: {
+    direction: {
+      horizontal: {
+        flexDirection: 'row',
+        margin: '4px 0'
+      },
+      vertical: {
+        flexDirection: 'column',
+        margin: '8px 0'
+      }
+    },
+    gap: {
+      small: {
+        gap: '4px'
+      },
+      medium: {
+        gap: '8px'
+      },
+      large: {
+        gap: '16px'
+      }
+    }
+  }
+});
+
+const Container = _a => {
+  var _b;
+
+  var {
+    children,
+    appearance
+  } = _a,
+      props = (0,_virtual_tslib_js__WEBPACK_IMPORTED_MODULE_2__.__rest)(_a, ["children", "appearance"]);
+
+  const classNames = (0,_common_theming_utils_js__WEBPACK_IMPORTED_MODULE_3__.generateClassNames)('container', containerDefaultStyles({
+    direction: props.direction,
+    gap: props.gap
+  }), appearance);
+  return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", Object.assign({}, props, {
+    style: (_b = appearance === null || appearance === void 0 ? void 0 : appearance.style) === null || _b === void 0 ? void 0 : _b.container,
+    className: classNames.join(' ')
+  }, {
+    children: children
+  }));
+};
+
+
+
+
+/***/ }),
+
+/***/ "./node_modules/@supabase/auth-ui-react/dist/esm/src/components/UI/Divider.js":
+/*!************************************************************************************!*\
+  !*** ./node_modules/@supabase/auth-ui-react/dist/esm/src/components/UI/Divider.js ***!
+  \************************************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Divider": function() { return /* binding */ Divider; }
+/* harmony export */ });
+/* harmony import */ var _virtual_tslib_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../_virtual/_tslib.js */ "./node_modules/@supabase/auth-ui-react/dist/esm/_virtual/_tslib.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _stitches_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @stitches/core */ "./node_modules/@stitches/core/dist/index.mjs");
+/* harmony import */ var _common_theming_utils_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../common/theming/utils.js */ "./node_modules/@supabase/auth-ui-react/dist/esm/common/theming/utils.js");
+
+
+
+
+
+const dividerDefaultStyles = (0,_stitches_core__WEBPACK_IMPORTED_MODULE_1__.css)({
+  background: '$dividerBackground',
+  display: 'block',
+  margin: '16px 0',
+  height: '1px',
+  width: '100%'
+});
+
+const Divider = _a => {
+  var _b;
+
+  var {
+    children,
+    appearance
+  } = _a,
+      props = (0,_virtual_tslib_js__WEBPACK_IMPORTED_MODULE_2__.__rest)(_a, ["children", "appearance"]);
+
+  const classNames = (0,_common_theming_utils_js__WEBPACK_IMPORTED_MODULE_3__.generateClassNames)('divider', dividerDefaultStyles(), appearance);
+  return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", Object.assign({}, props, {
+    style: (_b = appearance === null || appearance === void 0 ? void 0 : appearance.style) === null || _b === void 0 ? void 0 : _b.divider,
+    className: classNames.join(' ')
+  }));
+};
+
+
+
+
+/***/ }),
+
+/***/ "./node_modules/@supabase/auth-ui-react/dist/esm/src/components/UI/Input.js":
+/*!**********************************************************************************!*\
+  !*** ./node_modules/@supabase/auth-ui-react/dist/esm/src/components/UI/Input.js ***!
+  \**********************************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Input": function() { return /* binding */ Input; }
+/* harmony export */ });
+/* harmony import */ var _virtual_tslib_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../_virtual/_tslib.js */ "./node_modules/@supabase/auth-ui-react/dist/esm/_virtual/_tslib.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _stitches_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @stitches/core */ "./node_modules/@stitches/core/dist/index.mjs");
+/* harmony import */ var _common_theming_utils_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../common/theming/utils.js */ "./node_modules/@supabase/auth-ui-react/dist/esm/common/theming/utils.js");
+
+
+
+
+
+const inputDefaultStyles = (0,_stitches_core__WEBPACK_IMPORTED_MODULE_1__.css)({
+  fontFamily: '$inputFontFamily',
+  background: '$inputBackground',
+  borderRadius: '$inputBorderRadius',
+  padding: '$inputPadding',
+  cursor: 'text',
+  borderWidth: '$inputBorderWidth',
+  borderColor: '$inputBorder',
+  borderStyle: 'solid',
+  fontSize: '$baseInputSize',
+  width: '100%',
+  color: '$inputText',
+  boxSizing: 'border-box',
+  '&:hover': {
+    borderColor: '$inputBorderHover',
+    outline: 'none'
+  },
+  '&:focus': {
+    borderColor: '$inputBorderFocus',
+    outline: 'none'
+  },
+  '&::placeholder': {
+    color: '$inputPlaceholder',
+    letterSpacing: 'initial'
+  },
+  transitionPproperty: 'background-color, border',
+  transitionTimingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)',
+  transitionDuration: '100ms',
+  variants: {
+    type: {
+      default: {
+        letterSpacing: '0px'
+      },
+      password: {
+        letterSpacing: '6px'
+      }
+    }
+  }
+});
+
+const Input = _a => {
+  var _b;
+
+  var {
+    children,
+    appearance
+  } = _a,
+      props = (0,_virtual_tslib_js__WEBPACK_IMPORTED_MODULE_2__.__rest)(_a, ["children", "appearance"]);
+
+  const classNames = (0,_common_theming_utils_js__WEBPACK_IMPORTED_MODULE_3__.generateClassNames)('input', inputDefaultStyles({
+    type: props.type === 'password' ? 'password' : 'default'
+  }), appearance);
+  return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("input", Object.assign({}, props, {
+    style: (_b = appearance === null || appearance === void 0 ? void 0 : appearance.style) === null || _b === void 0 ? void 0 : _b.input,
+    className: classNames.join(' ')
+  }, {
+    children: children
+  }));
+};
+
+
+
+
+/***/ }),
+
+/***/ "./node_modules/@supabase/auth-ui-react/dist/esm/src/components/UI/Label.js":
+/*!**********************************************************************************!*\
+  !*** ./node_modules/@supabase/auth-ui-react/dist/esm/src/components/UI/Label.js ***!
+  \**********************************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Label": function() { return /* binding */ Label; }
+/* harmony export */ });
+/* harmony import */ var _virtual_tslib_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../_virtual/_tslib.js */ "./node_modules/@supabase/auth-ui-react/dist/esm/_virtual/_tslib.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _stitches_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @stitches/core */ "./node_modules/@stitches/core/dist/index.mjs");
+/* harmony import */ var _common_theming_utils_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../common/theming/utils.js */ "./node_modules/@supabase/auth-ui-react/dist/esm/common/theming/utils.js");
+
+
+
+
+
+const labelDefaultStyles = (0,_stitches_core__WEBPACK_IMPORTED_MODULE_1__.css)({
+  fontFamily: '$labelFontFamily',
+  fontSize: '$baseLabelSize',
+  marginBottom: '$labelBottomMargin',
+  color: '$inputLabelText',
+  display: 'block'
+});
+
+const Label = _a => {
+  var _b;
+
+  var {
+    children,
+    appearance
+  } = _a,
+      props = (0,_virtual_tslib_js__WEBPACK_IMPORTED_MODULE_2__.__rest)(_a, ["children", "appearance"]);
+
+  const classNames = (0,_common_theming_utils_js__WEBPACK_IMPORTED_MODULE_3__.generateClassNames)('label', labelDefaultStyles(), appearance);
+  return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("label", Object.assign({}, props, {
+    style: (_b = appearance === null || appearance === void 0 ? void 0 : appearance.style) === null || _b === void 0 ? void 0 : _b.label,
+    className: classNames.join(' ')
+  }, {
+    children: children
+  }));
+};
+
+
+
+
+/***/ }),
+
+/***/ "./node_modules/@supabase/auth-ui-react/dist/esm/src/components/UI/Message.js":
+/*!************************************************************************************!*\
+  !*** ./node_modules/@supabase/auth-ui-react/dist/esm/src/components/UI/Message.js ***!
+  \************************************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Message": function() { return /* binding */ Message; }
+/* harmony export */ });
+/* harmony import */ var _virtual_tslib_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../_virtual/_tslib.js */ "./node_modules/@supabase/auth-ui-react/dist/esm/_virtual/_tslib.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _stitches_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @stitches/core */ "./node_modules/@stitches/core/dist/index.mjs");
+/* harmony import */ var _common_theming_utils_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../common/theming/utils.js */ "./node_modules/@supabase/auth-ui-react/dist/esm/common/theming/utils.js");
+
+
+
+
+
+const messageDefaultStyles = (0,_stitches_core__WEBPACK_IMPORTED_MODULE_1__.css)({
+  fontFamily: '$bodyFontFamily',
+  fontSize: '$baseBodySize',
+  marginBottom: '$labelBottomMargin',
+  display: 'block',
+  textAlign: 'center',
+  variants: {
+    color: {
+      default: {
+        color: '$messageText'
+      },
+      danger: {
+        color: '$messageTextDanger'
+      }
+    }
+  }
+});
+
+const Message = _a => {
+  var _b;
+
+  var {
+    children,
+    appearance
+  } = _a,
+      props = (0,_virtual_tslib_js__WEBPACK_IMPORTED_MODULE_2__.__rest)(_a, ["children", "appearance"]);
+
+  const classNames = (0,_common_theming_utils_js__WEBPACK_IMPORTED_MODULE_3__.generateClassNames)('message', messageDefaultStyles({
+    color: props.color
+  }), appearance);
+  return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", Object.assign({}, props, {
+    style: (_b = appearance === null || appearance === void 0 ? void 0 : appearance.style) === null || _b === void 0 ? void 0 : _b.message,
+    className: classNames.join(' ')
+  }, {
+    children: children
+  }));
+};
+
+
+
+
+/***/ }),
+
+/***/ "./node_modules/@supabase/auth-ui-react/dist/esm/src/constants.js":
+/*!************************************************************************!*\
+  !*** ./node_modules/@supabase/auth-ui-react/dist/esm/src/constants.js ***!
+  \************************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "CLASS_NAMES": function() { return /* binding */ CLASS_NAMES; },
+/* harmony export */   "PREPENDED_CLASS_NAMES": function() { return /* binding */ PREPENDED_CLASS_NAMES; },
+/* harmony export */   "VIEWS": function() { return /* binding */ VIEWS; }
+/* harmony export */ });
+const VIEWS = {
+  SIGN_IN: 'sign_in',
+  SIGN_UP: 'sign_up',
+  FORGOTTEN_PASSWORD: 'forgotten_password',
+  MAGIC_LINK: 'magic_link',
+  UPDATE_PASSWORD: 'update_password'
+};
+const PREPENDED_CLASS_NAMES = 'supabase-ui-auth';
+/**
+ * CSS class names
+ * used for generating prepended classes
+ */
+
+const CLASS_NAMES = {
+  // interfaces
+  ROOT: 'root',
+  SIGN_IN: VIEWS.SIGN_IN,
+  SIGN_UP: VIEWS.SIGN_UP,
+  FORGOTTEN_PASSWORD: VIEWS.FORGOTTEN_PASSWORD,
+  MAGIC_LINK: VIEWS.MAGIC_LINK,
+  UPDATE_PASSWORD: VIEWS.UPDATE_PASSWORD,
+  // ui
+  anchor: 'ui-anchor',
+  button: 'ui-button',
+  container: 'ui-container',
+  divider: 'ui-divider',
+  input: 'ui-input',
+  label: 'ui-label',
+  loader: 'ui-loader',
+  message: 'ui-message'
+};
+
+
+
+
+/***/ }),
+
+/***/ "./node_modules/@supabase/auth-ui-react/dist/esm/src/utils.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/@supabase/auth-ui-react/dist/esm/src/utils.js ***!
+  \********************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "merge": function() { return /* binding */ merge; }
+/* harmony export */ });
+function value(src, next) {
+  let k;
+
+  if (src && next && typeof src === 'object' && typeof next === 'object') {
+    if (Array.isArray(next)) {
+      for (k = 0; k < next.length; k++) {
+        src[k] = value(src[k], next[k]);
+      }
+    } else {
+      for (k in next) {
+        src[k] = value(src[k], next[k]);
+      }
+    }
+
+    return src;
+  }
+
+  return next;
+}
+
+function merge(target) {
+  let len = arguments.length <= 1 ? 0 : arguments.length - 1;
+
+  for (let i = 0; i < len; i++) {
+    target = value(target, i + 1 < 1 || arguments.length <= i + 1 ? undefined : arguments[i + 1]);
+  }
+
+  return target;
+}
+
+
+
+
+/***/ }),
+
+/***/ "./node_modules/@supabase/functions-js/dist/module/FunctionsClient.js":
+/*!****************************************************************************!*\
+  !*** ./node_modules/@supabase/functions-js/dist/module/FunctionsClient.js ***!
+  \****************************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "FunctionsClient": function() { return /* binding */ FunctionsClient; }
+/* harmony export */ });
+/* harmony import */ var _helper__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./helper */ "./node_modules/@supabase/functions-js/dist/module/helper.js");
+/* harmony import */ var _types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./types */ "./node_modules/@supabase/functions-js/dist/module/types.js");
+var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+
+
+class FunctionsClient {
+    constructor(url, { headers = {}, customFetch, } = {}) {
+        this.url = url;
+        this.headers = headers;
+        this.fetch = (0,_helper__WEBPACK_IMPORTED_MODULE_0__.resolveFetch)(customFetch);
+    }
+    /**
+     * Updates the authorization header
+     * @param token - the new jwt token sent in the authorisation header
+     */
+    setAuth(token) {
+        this.headers.Authorization = `Bearer ${token}`;
+    }
+    /**
+     * Invokes a function
+     * @param functionName - the name of the function to invoke
+     */
+    invoke(functionName, invokeOptions = {}) {
+        var _a;
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const { headers, body: functionArgs } = invokeOptions;
+                let _headers = {};
+                let body;
+                if (functionArgs &&
+                    ((headers && !Object.prototype.hasOwnProperty.call(headers, 'Content-Type')) || !headers)) {
+                    if ((typeof Blob !== 'undefined' && functionArgs instanceof Blob) ||
+                        functionArgs instanceof ArrayBuffer) {
+                        // will work for File as File inherits Blob
+                        // also works for ArrayBuffer as it is the same underlying structure as a Blob
+                        _headers['Content-Type'] = 'application/octet-stream';
+                        body = functionArgs;
+                    }
+                    else if (typeof functionArgs === 'string') {
+                        // plain string
+                        _headers['Content-Type'] = 'text/plain';
+                        body = functionArgs;
+                    }
+                    else if (typeof FormData !== 'undefined' && functionArgs instanceof FormData) {
+                        // don't set content-type headers
+                        // Request will automatically add the right boundary value
+                        body = functionArgs;
+                    }
+                    else {
+                        // default, assume this is JSON
+                        _headers['Content-Type'] = 'application/json';
+                        body = JSON.stringify(functionArgs);
+                    }
+                }
+                const response = yield this.fetch(`${this.url}/${functionName}`, {
+                    method: 'POST',
+                    // headers priority is (high to low):
+                    // 1. invoke-level headers
+                    // 2. client-level headers
+                    // 3. default Content-Type header
+                    headers: Object.assign(Object.assign(Object.assign({}, _headers), this.headers), headers),
+                    body,
+                }).catch((fetchError) => {
+                    throw new _types__WEBPACK_IMPORTED_MODULE_1__.FunctionsFetchError(fetchError);
+                });
+                const isRelayError = response.headers.get('x-relay-error');
+                if (isRelayError && isRelayError === 'true') {
+                    throw new _types__WEBPACK_IMPORTED_MODULE_1__.FunctionsRelayError(response);
+                }
+                if (!response.ok) {
+                    throw new _types__WEBPACK_IMPORTED_MODULE_1__.FunctionsHttpError(response);
+                }
+                let responseType = ((_a = response.headers.get('Content-Type')) !== null && _a !== void 0 ? _a : 'text/plain').split(';')[0].trim();
+                let data;
+                if (responseType === 'application/json') {
+                    data = yield response.json();
+                }
+                else if (responseType === 'application/octet-stream') {
+                    data = yield response.blob();
+                }
+                else if (responseType === 'multipart/form-data') {
+                    data = yield response.formData();
+                }
+                else {
+                    // default to text
+                    data = yield response.text();
+                }
+                return { data, error: null };
+            }
+            catch (error) {
+                return { data: null, error };
+            }
+        });
+    }
+}
+//# sourceMappingURL=FunctionsClient.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@supabase/functions-js/dist/module/helper.js":
+/*!*******************************************************************!*\
+  !*** ./node_modules/@supabase/functions-js/dist/module/helper.js ***!
+  \*******************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "resolveFetch": function() { return /* binding */ resolveFetch; }
+/* harmony export */ });
+var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+const resolveFetch = (customFetch) => {
+    let _fetch;
+    if (customFetch) {
+        _fetch = customFetch;
+    }
+    else if (typeof fetch === 'undefined') {
+        _fetch = (...args) => __awaiter(void 0, void 0, void 0, function* () { return yield (yield Promise.resolve(/*! import() */).then(__webpack_require__.t.bind(__webpack_require__, /*! cross-fetch */ "./node_modules/cross-fetch/dist/browser-ponyfill.js", 23))).fetch(...args); });
+    }
+    else {
+        _fetch = fetch;
+    }
+    return (...args) => _fetch(...args);
+};
+//# sourceMappingURL=helper.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@supabase/functions-js/dist/module/types.js":
+/*!******************************************************************!*\
+  !*** ./node_modules/@supabase/functions-js/dist/module/types.js ***!
+  \******************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "FunctionsError": function() { return /* binding */ FunctionsError; },
+/* harmony export */   "FunctionsFetchError": function() { return /* binding */ FunctionsFetchError; },
+/* harmony export */   "FunctionsHttpError": function() { return /* binding */ FunctionsHttpError; },
+/* harmony export */   "FunctionsRelayError": function() { return /* binding */ FunctionsRelayError; }
+/* harmony export */ });
+class FunctionsError extends Error {
+    constructor(message, name = 'FunctionsError', context) {
+        super(message);
+        super.name = name;
+        this.context = context;
+    }
+}
+class FunctionsFetchError extends FunctionsError {
+    constructor(context) {
+        super('Failed to send a request to the Edge Function', 'FunctionsFetchError', context);
+    }
+}
+class FunctionsRelayError extends FunctionsError {
+    constructor(context) {
+        super('Relay Error invoking the Edge Function', 'FunctionsRelayError', context);
+    }
+}
+class FunctionsHttpError extends FunctionsError {
+    constructor(context) {
+        super('Edge Function returned a non-2xx status code', 'FunctionsHttpError', context);
+    }
+}
+//# sourceMappingURL=types.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@supabase/gotrue-js/dist/module/GoTrueAdminApi.js":
+/*!************************************************************************!*\
+  !*** ./node_modules/@supabase/gotrue-js/dist/module/GoTrueAdminApi.js ***!
+  \************************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": function() { return /* binding */ GoTrueAdminApi; }
+/* harmony export */ });
+/* harmony import */ var _lib_fetch__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./lib/fetch */ "./node_modules/@supabase/gotrue-js/dist/module/lib/fetch.js");
+/* harmony import */ var _lib_helpers__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./lib/helpers */ "./node_modules/@supabase/gotrue-js/dist/module/lib/helpers.js");
+/* harmony import */ var _lib_errors__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./lib/errors */ "./node_modules/@supabase/gotrue-js/dist/module/lib/errors.js");
+var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __rest = (undefined && undefined.__rest) || function (s, e) {
+    var t = {};
+    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
+        t[p] = s[p];
+    if (s != null && typeof Object.getOwnPropertySymbols === "function")
+        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
+                t[p[i]] = s[p[i]];
+        }
+    return t;
+};
+
+
+
+class GoTrueAdminApi {
+    constructor({ url = '', headers = {}, fetch, }) {
+        this.url = url;
+        this.headers = headers;
+        this.fetch = (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_1__.resolveFetch)(fetch);
+        this.mfa = {
+            listFactors: this._listFactors.bind(this),
+            deleteFactor: this._deleteFactor.bind(this),
+        };
+    }
+    /**
+     * Removes a logged-in session.
+     * @param jwt A valid, logged-in JWT.
+     */
+    signOut(jwt) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                yield (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_0__._request)(this.fetch, 'POST', `${this.url}/logout`, {
+                    headers: this.headers,
+                    jwt,
+                    noResolveJson: true,
+                });
+                return { data: null, error: null };
+            }
+            catch (error) {
+                if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_2__.isAuthError)(error)) {
+                    return { data: null, error };
+                }
+                throw error;
+            }
+        });
+    }
+    /**
+     * Sends an invite link to an email address.
+     * @param email The email address of the user.
+     * @param options.redirectTo A URL or mobile deeplink to send the user to after they are confirmed.
+     * @param options.data Optional user metadata
+     */
+    inviteUserByEmail(email, options = {}) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                return yield (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_0__._request)(this.fetch, 'POST', `${this.url}/invite`, {
+                    body: { email, data: options.data },
+                    headers: this.headers,
+                    redirectTo: options.redirectTo,
+                    xform: _lib_fetch__WEBPACK_IMPORTED_MODULE_0__._userResponse,
+                });
+            }
+            catch (error) {
+                if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_2__.isAuthError)(error)) {
+                    return { data: { user: null }, error };
+                }
+                throw error;
+            }
+        });
+    }
+    /**
+     * Generates email links and OTPs to be sent via a custom email provider.
+     * @param email The user's email.
+     * @param options.password User password. For signup only.
+     * @param options.data Optional user metadata. For signup only.
+     * @param options.redirectTo The redirect url which should be appended to the generated link
+     */
+    generateLink(params) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const { options } = params, rest = __rest(params, ["options"]);
+                const body = Object.assign(Object.assign({}, rest), options);
+                if ('newEmail' in rest) {
+                    // replace newEmail with new_email in request body
+                    body.new_email = rest === null || rest === void 0 ? void 0 : rest.newEmail;
+                    delete body['newEmail'];
+                }
+                return yield (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_0__._request)(this.fetch, 'POST', `${this.url}/admin/generate_link`, {
+                    body: body,
+                    headers: this.headers,
+                    xform: _lib_fetch__WEBPACK_IMPORTED_MODULE_0__._generateLinkResponse,
+                    redirectTo: options === null || options === void 0 ? void 0 : options.redirectTo,
+                });
+            }
+            catch (error) {
+                if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_2__.isAuthError)(error)) {
+                    return {
+                        data: {
+                            properties: null,
+                            user: null,
+                        },
+                        error,
+                    };
+                }
+                throw error;
+            }
+        });
+    }
+    // User Admin API
+    /**
+     * Creates a new user.
+     * This function should only be called on a server. Never expose your `service_role` key in the browser.
+     */
+    createUser(attributes) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                return yield (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_0__._request)(this.fetch, 'POST', `${this.url}/admin/users`, {
+                    body: attributes,
+                    headers: this.headers,
+                    xform: _lib_fetch__WEBPACK_IMPORTED_MODULE_0__._userResponse,
+                });
+            }
+            catch (error) {
+                if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_2__.isAuthError)(error)) {
+                    return { data: { user: null }, error };
+                }
+                throw error;
+            }
+        });
+    }
+    /**
+     * Get a list of users.
+     *
+     * This function should only be called on a server. Never expose your `service_role` key in the browser.
+     * @param params An object which supports `page` and `perPage` as numbers, to alter the paginated results.
+     */
+    listUsers(params) {
+        var _a, _b, _c, _d, _e, _f, _g;
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const pagination = { nextPage: null, lastPage: 0, total: 0 };
+                const response = yield (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_0__._request)(this.fetch, 'GET', `${this.url}/admin/users`, {
+                    headers: this.headers,
+                    noResolveJson: true,
+                    query: {
+                        page: (_b = (_a = params === null || params === void 0 ? void 0 : params.page) === null || _a === void 0 ? void 0 : _a.toString()) !== null && _b !== void 0 ? _b : '',
+                        per_page: (_d = (_c = params === null || params === void 0 ? void 0 : params.perPage) === null || _c === void 0 ? void 0 : _c.toString()) !== null && _d !== void 0 ? _d : '',
+                    },
+                    xform: _lib_fetch__WEBPACK_IMPORTED_MODULE_0__._noResolveJsonResponse,
+                });
+                if (response.error)
+                    throw response.error;
+                const users = yield response.json();
+                const total = (_e = response.headers.get('x-total-count')) !== null && _e !== void 0 ? _e : 0;
+                const links = (_g = (_f = response.headers.get('link')) === null || _f === void 0 ? void 0 : _f.split(',')) !== null && _g !== void 0 ? _g : [];
+                if (links.length > 0) {
+                    links.forEach((link) => {
+                        const page = parseInt(link.split(';')[0].split('=')[1].substring(0, 1));
+                        const rel = JSON.parse(link.split(';')[1].split('=')[1]);
+                        pagination[`${rel}Page`] = page;
+                    });
+                    pagination.total = parseInt(total);
+                }
+                return { data: Object.assign(Object.assign({}, users), pagination), error: null };
+            }
+            catch (error) {
+                if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_2__.isAuthError)(error)) {
+                    return { data: { users: [] }, error };
+                }
+                throw error;
+            }
+        });
+    }
+    /**
+     * Get user by id.
+     *
+     * @param uid The user's unique identifier
+     *
+     * This function should only be called on a server. Never expose your `service_role` key in the browser.
+     */
+    getUserById(uid) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                return yield (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_0__._request)(this.fetch, 'GET', `${this.url}/admin/users/${uid}`, {
+                    headers: this.headers,
+                    xform: _lib_fetch__WEBPACK_IMPORTED_MODULE_0__._userResponse,
+                });
+            }
+            catch (error) {
+                if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_2__.isAuthError)(error)) {
+                    return { data: { user: null }, error };
+                }
+                throw error;
+            }
+        });
+    }
+    /**
+     * Updates the user data.
+     *
+     * @param attributes The data you want to update.
+     *
+     * This function should only be called on a server. Never expose your `service_role` key in the browser.
+     */
+    updateUserById(uid, attributes) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                return yield (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_0__._request)(this.fetch, 'PUT', `${this.url}/admin/users/${uid}`, {
+                    body: attributes,
+                    headers: this.headers,
+                    xform: _lib_fetch__WEBPACK_IMPORTED_MODULE_0__._userResponse,
+                });
+            }
+            catch (error) {
+                if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_2__.isAuthError)(error)) {
+                    return { data: { user: null }, error };
+                }
+                throw error;
+            }
+        });
+    }
+    /**
+     * Delete a user. Requires a `service_role` key.
+     *
+     * @param id The user id you want to remove.
+     *
+     * This function should only be called on a server. Never expose your `service_role` key in the browser.
+     */
+    deleteUser(id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                return yield (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_0__._request)(this.fetch, 'DELETE', `${this.url}/admin/users/${id}`, {
+                    headers: this.headers,
+                    xform: _lib_fetch__WEBPACK_IMPORTED_MODULE_0__._userResponse,
+                });
+            }
+            catch (error) {
+                if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_2__.isAuthError)(error)) {
+                    return { data: { user: null }, error };
+                }
+                throw error;
+            }
+        });
+    }
+    _listFactors(params) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const { data, error } = yield (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_0__._request)(this.fetch, 'GET', `${this.url}/admin/users/${params.userId}/factors`, {
+                    headers: this.headers,
+                    xform: (factors) => {
+                        return { data: { factors }, error: null };
+                    },
+                });
+                return { data, error };
+            }
+            catch (error) {
+                if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_2__.isAuthError)(error)) {
+                    return { data: null, error };
+                }
+                throw error;
+            }
+        });
+    }
+    _deleteFactor(params) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const data = yield (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_0__._request)(this.fetch, 'DELETE', `${this.url}/admin/users/${params.userId}/factors/${params.id}`, {
+                    headers: this.headers,
+                });
+                return { data, error: null };
+            }
+            catch (error) {
+                if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_2__.isAuthError)(error)) {
+                    return { data: null, error };
+                }
+                throw error;
+            }
+        });
+    }
+}
+//# sourceMappingURL=GoTrueAdminApi.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@supabase/gotrue-js/dist/module/GoTrueClient.js":
+/*!**********************************************************************!*\
+  !*** ./node_modules/@supabase/gotrue-js/dist/module/GoTrueClient.js ***!
+  \**********************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": function() { return /* binding */ GoTrueClient; }
+/* harmony export */ });
+/* harmony import */ var _GoTrueAdminApi__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./GoTrueAdminApi */ "./node_modules/@supabase/gotrue-js/dist/module/GoTrueAdminApi.js");
+/* harmony import */ var _lib_constants__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./lib/constants */ "./node_modules/@supabase/gotrue-js/dist/module/lib/constants.js");
+/* harmony import */ var _lib_errors__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./lib/errors */ "./node_modules/@supabase/gotrue-js/dist/module/lib/errors.js");
+/* harmony import */ var _lib_fetch__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./lib/fetch */ "./node_modules/@supabase/gotrue-js/dist/module/lib/fetch.js");
+/* harmony import */ var _lib_helpers__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./lib/helpers */ "./node_modules/@supabase/gotrue-js/dist/module/lib/helpers.js");
+/* harmony import */ var _lib_local_storage__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./lib/local-storage */ "./node_modules/@supabase/gotrue-js/dist/module/lib/local-storage.js");
+/* harmony import */ var _lib_polyfills__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./lib/polyfills */ "./node_modules/@supabase/gotrue-js/dist/module/lib/polyfills.js");
+var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+
+
+
+
+
+
+
+(0,_lib_polyfills__WEBPACK_IMPORTED_MODULE_6__.polyfillGlobalThis)(); // Make "globalThis" available
+const DEFAULT_OPTIONS = {
+    url: _lib_constants__WEBPACK_IMPORTED_MODULE_1__.GOTRUE_URL,
+    storageKey: _lib_constants__WEBPACK_IMPORTED_MODULE_1__.STORAGE_KEY,
+    autoRefreshToken: true,
+    persistSession: true,
+    detectSessionInUrl: true,
+    headers: _lib_constants__WEBPACK_IMPORTED_MODULE_1__.DEFAULT_HEADERS,
+};
+class GoTrueClient {
+    /**
+     * Create a new client for use in the browser.
+     */
+    constructor(options) {
+        this.stateChangeEmitters = new Map();
+        this.networkRetries = 0;
+        this.refreshingDeferred = null;
+        /**
+         * Keeps track of the async client initialization.
+         * When null or not yet resolved the auth state is `unknown`
+         * Once resolved the the auth state is known and it's save to call any further client methods.
+         * Keep extra care to never reject or throw uncaught errors
+         */
+        this.initializePromise = null;
+        this.detectSessionInUrl = true;
+        const settings = Object.assign(Object.assign({}, DEFAULT_OPTIONS), options);
+        this.inMemorySession = null;
+        this.storageKey = settings.storageKey;
+        this.autoRefreshToken = settings.autoRefreshToken;
+        this.persistSession = settings.persistSession;
+        this.storage = settings.storage || _lib_local_storage__WEBPACK_IMPORTED_MODULE_5__["default"];
+        this.admin = new _GoTrueAdminApi__WEBPACK_IMPORTED_MODULE_0__["default"]({
+            url: settings.url,
+            headers: settings.headers,
+            fetch: settings.fetch,
+        });
+        this.url = settings.url;
+        this.headers = settings.headers;
+        this.fetch = (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.resolveFetch)(settings.fetch);
+        this.detectSessionInUrl = settings.detectSessionInUrl;
+        this.initialize();
+        this.mfa = {
+            verify: this._verify.bind(this),
+            enroll: this._enroll.bind(this),
+            unenroll: this._unenroll.bind(this),
+            challenge: this._challenge.bind(this),
+            listFactors: this._listFactors.bind(this),
+            challengeAndVerify: this._challengeAndVerify.bind(this),
+            getAuthenticatorAssuranceLevel: this._getAuthenticatorAssuranceLevel.bind(this),
+        };
+    }
+    /**
+     * Initializes the client session either from the url or from storage.
+     * This method is automatically called when instantiating the client, but should also be called
+     * manually when checking for an error from an auth redirect (oauth, magiclink, password recovery, etc).
+     */
+    initialize() {
+        if (!this.initializePromise) {
+            this.initializePromise = this._initialize();
+        }
+        return this.initializePromise;
+    }
+    /**
+     * IMPORTANT:
+     * 1. Never throw in this method, as it is called from the constructor
+     * 2. Never return a session from this method as it would be cached over
+     *    the whole lifetime of the client
+     */
+    _initialize() {
+        return __awaiter(this, void 0, void 0, function* () {
+            if (this.initializePromise) {
+                return this.initializePromise;
+            }
+            try {
+                if (this.detectSessionInUrl && this._isImplicitGrantFlow()) {
+                    const { data, error } = yield this._getSessionFromUrl();
+                    if (error) {
+                        // failed login attempt via url,
+                        // remove old session as in verifyOtp, signUp and signInWith*
+                        yield this._removeSession();
+                        return { error };
+                    }
+                    const { session, redirectType } = data;
+                    yield this._saveSession(session);
+                    this._notifyAllSubscribers('SIGNED_IN', session);
+                    if (redirectType === 'recovery') {
+                        this._notifyAllSubscribers('PASSWORD_RECOVERY', session);
+                    }
+                    return { error: null };
+                }
+                // no login attempt via callback url try to recover session from storage
+                yield this._recoverAndRefresh();
+                return { error: null };
+            }
+            catch (error) {
+                if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_2__.isAuthError)(error)) {
+                    return { error };
+                }
+                return {
+                    error: new _lib_errors__WEBPACK_IMPORTED_MODULE_2__.AuthUnknownError('Unexpected error during initialization', error),
+                };
+            }
+            finally {
+                this._handleVisibilityChange();
+            }
+        });
+    }
+    /**
+     * Creates a new user.
+     * @returns A logged-in session if the server has "autoconfirm" ON
+     * @returns A user if the server has "autoconfirm" OFF
+     */
+    signUp(credentials) {
+        var _a, _b;
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                yield this._removeSession();
+                let res;
+                if ('email' in credentials) {
+                    const { email, password, options } = credentials;
+                    res = yield (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_3__._request)(this.fetch, 'POST', `${this.url}/signup`, {
+                        headers: this.headers,
+                        redirectTo: options === null || options === void 0 ? void 0 : options.emailRedirectTo,
+                        body: {
+                            email,
+                            password,
+                            data: (_a = options === null || options === void 0 ? void 0 : options.data) !== null && _a !== void 0 ? _a : {},
+                            gotrue_meta_security: { captcha_token: options === null || options === void 0 ? void 0 : options.captchaToken },
+                        },
+                        xform: _lib_fetch__WEBPACK_IMPORTED_MODULE_3__._sessionResponse,
+                    });
+                }
+                else if ('phone' in credentials) {
+                    const { phone, password, options } = credentials;
+                    res = yield (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_3__._request)(this.fetch, 'POST', `${this.url}/signup`, {
+                        headers: this.headers,
+                        body: {
+                            phone,
+                            password,
+                            data: (_b = options === null || options === void 0 ? void 0 : options.data) !== null && _b !== void 0 ? _b : {},
+                            gotrue_meta_security: { captcha_token: options === null || options === void 0 ? void 0 : options.captchaToken },
+                        },
+                        xform: _lib_fetch__WEBPACK_IMPORTED_MODULE_3__._sessionResponse,
+                    });
+                }
+                else {
+                    throw new _lib_errors__WEBPACK_IMPORTED_MODULE_2__.AuthInvalidCredentialsError('You must provide either an email or phone number and a password');
+                }
+                const { data, error } = res;
+                if (error || !data) {
+                    return { data: { user: null, session: null }, error: error };
+                }
+                const session = data.session;
+                const user = data.user;
+                if (data.session) {
+                    yield this._saveSession(data.session);
+                    this._notifyAllSubscribers('SIGNED_IN', session);
+                }
+                return { data: { user, session }, error: null };
+            }
+            catch (error) {
+                if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_2__.isAuthError)(error)) {
+                    return { data: { user: null, session: null }, error };
+                }
+                throw error;
+            }
+        });
+    }
+    /**
+     * Log in an existing user with an email and password or phone and password.
+     */
+    signInWithPassword(credentials) {
+        var _a, _b;
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                yield this._removeSession();
+                let res;
+                if ('email' in credentials) {
+                    const { email, password, options } = credentials;
+                    res = yield (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_3__._request)(this.fetch, 'POST', `${this.url}/token?grant_type=password`, {
+                        headers: this.headers,
+                        body: {
+                            email,
+                            password,
+                            data: (_a = options === null || options === void 0 ? void 0 : options.data) !== null && _a !== void 0 ? _a : {},
+                            gotrue_meta_security: { captcha_token: options === null || options === void 0 ? void 0 : options.captchaToken },
+                        },
+                        xform: _lib_fetch__WEBPACK_IMPORTED_MODULE_3__._sessionResponse,
+                    });
+                }
+                else if ('phone' in credentials) {
+                    const { phone, password, options } = credentials;
+                    res = yield (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_3__._request)(this.fetch, 'POST', `${this.url}/token?grant_type=password`, {
+                        headers: this.headers,
+                        body: {
+                            phone,
+                            password,
+                            data: (_b = options === null || options === void 0 ? void 0 : options.data) !== null && _b !== void 0 ? _b : {},
+                            gotrue_meta_security: { captcha_token: options === null || options === void 0 ? void 0 : options.captchaToken },
+                        },
+                        xform: _lib_fetch__WEBPACK_IMPORTED_MODULE_3__._sessionResponse,
+                    });
+                }
+                else {
+                    throw new _lib_errors__WEBPACK_IMPORTED_MODULE_2__.AuthInvalidCredentialsError('You must provide either an email or phone number and a password');
+                }
+                const { data, error } = res;
+                if (error || !data)
+                    return { data: { user: null, session: null }, error };
+                if (data.session) {
+                    yield this._saveSession(data.session);
+                    this._notifyAllSubscribers('SIGNED_IN', data.session);
+                }
+                return { data, error };
+            }
+            catch (error) {
+                if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_2__.isAuthError)(error)) {
+                    return { data: { user: null, session: null }, error };
+                }
+                throw error;
+            }
+        });
+    }
+    /**
+     * Log in an existing user via a third-party provider.
+     */
+    signInWithOAuth(credentials) {
+        var _a, _b, _c;
+        return __awaiter(this, void 0, void 0, function* () {
+            yield this._removeSession();
+            return this._handleProviderSignIn(credentials.provider, {
+                redirectTo: (_a = credentials.options) === null || _a === void 0 ? void 0 : _a.redirectTo,
+                scopes: (_b = credentials.options) === null || _b === void 0 ? void 0 : _b.scopes,
+                queryParams: (_c = credentials.options) === null || _c === void 0 ? void 0 : _c.queryParams,
+            });
+        });
+    }
+    /**
+     * Log in a user using magiclink or a one-time password (OTP).
+     * If the `{{ .ConfirmationURL }}` variable is specified in the email template, a magiclink will be sent.
+     * If the `{{ .Token }}` variable is specified in the email template, an OTP will be sent.
+     * If you're using phone sign-ins, only an OTP will be sent. You won't be able to send a magiclink for phone sign-ins.
+     */
+    signInWithOtp(credentials) {
+        var _a, _b, _c, _d;
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                yield this._removeSession();
+                if ('email' in credentials) {
+                    const { email, options } = credentials;
+                    const { error } = yield (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_3__._request)(this.fetch, 'POST', `${this.url}/otp`, {
+                        headers: this.headers,
+                        body: {
+                            email,
+                            data: (_a = options === null || options === void 0 ? void 0 : options.data) !== null && _a !== void 0 ? _a : {},
+                            create_user: (_b = options === null || options === void 0 ? void 0 : options.shouldCreateUser) !== null && _b !== void 0 ? _b : true,
+                            gotrue_meta_security: { captcha_token: options === null || options === void 0 ? void 0 : options.captchaToken },
+                        },
+                        redirectTo: options === null || options === void 0 ? void 0 : options.emailRedirectTo,
+                    });
+                    return { data: { user: null, session: null }, error };
+                }
+                if ('phone' in credentials) {
+                    const { phone, options } = credentials;
+                    const { error } = yield (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_3__._request)(this.fetch, 'POST', `${this.url}/otp`, {
+                        headers: this.headers,
+                        body: {
+                            phone,
+                            data: (_c = options === null || options === void 0 ? void 0 : options.data) !== null && _c !== void 0 ? _c : {},
+                            create_user: (_d = options === null || options === void 0 ? void 0 : options.shouldCreateUser) !== null && _d !== void 0 ? _d : true,
+                            gotrue_meta_security: { captcha_token: options === null || options === void 0 ? void 0 : options.captchaToken },
+                        },
+                    });
+                    return { data: { user: null, session: null }, error };
+                }
+                throw new _lib_errors__WEBPACK_IMPORTED_MODULE_2__.AuthInvalidCredentialsError('You must provide either an email or phone number.');
+            }
+            catch (error) {
+                if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_2__.isAuthError)(error)) {
+                    return { data: { user: null, session: null }, error };
+                }
+                throw error;
+            }
+        });
+    }
+    /**
+     * Log in a user given a User supplied OTP received via mobile.
+     */
+    verifyOtp(params) {
+        var _a, _b;
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                yield this._removeSession();
+                const { data, error } = yield (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_3__._request)(this.fetch, 'POST', `${this.url}/verify`, {
+                    headers: this.headers,
+                    body: Object.assign(Object.assign({}, params), { gotrue_meta_security: { captcha_token: (_a = params.options) === null || _a === void 0 ? void 0 : _a.captchaToken } }),
+                    redirectTo: (_b = params.options) === null || _b === void 0 ? void 0 : _b.redirectTo,
+                    xform: _lib_fetch__WEBPACK_IMPORTED_MODULE_3__._sessionResponse,
+                });
+                if (error) {
+                    throw error;
+                }
+                if (!data) {
+                    throw 'An error occurred on token verification.';
+                }
+                const session = data.session;
+                const user = data.user;
+                if (session === null || session === void 0 ? void 0 : session.access_token) {
+                    yield this._saveSession(session);
+                    this._notifyAllSubscribers('SIGNED_IN', session);
+                }
+                return { data: { user, session }, error: null };
+            }
+            catch (error) {
+                if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_2__.isAuthError)(error)) {
+                    return { data: { user: null, session: null }, error };
+                }
+                throw error;
+            }
+        });
+    }
+    /**
+     * Attempts a single-sign on using an enterprise Identity Provider. A
+     * successful SSO attempt will redirect the current page to the identity
+     * provider authorization page. The redirect URL is implementation and SSO
+     * protocol specific.
+     *
+     * You can use it by providing a SSO domain. Typically you can extract this
+     * domain by asking users for their email address. If this domain is
+     * registered on the Auth instance the redirect will use that organization's
+     * currently active SSO Identity Provider for the login.
+     *
+     * If you have built an organization-specific login page, you can use the
+     * organization's SSO Identity Provider UUID directly instead.
+     *
+     * This API is experimental and availability is conditional on correct
+     * settings on the Auth service.
+     *
+     * @experimental
+     */
+    signInWithSSO(params) {
+        var _a, _b, _c;
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                yield this._removeSession();
+                return yield (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_3__._request)(this.fetch, 'POST', `${this.url}/sso`, {
+                    body: Object.assign(Object.assign(Object.assign(Object.assign(Object.assign({}, ('providerId' in params ? { provider_id: params.providerId } : null)), ('domain' in params ? { domain: params.domain } : null)), { redirect_to: (_b = (_a = params.options) === null || _a === void 0 ? void 0 : _a.redirectTo) !== null && _b !== void 0 ? _b : undefined }), (((_c = params === null || params === void 0 ? void 0 : params.options) === null || _c === void 0 ? void 0 : _c.captchaToken)
+                        ? { gotrue_meta_security: { captcha_token: params.options.captchaToken } }
+                        : null)), { skip_http_redirect: true }),
+                    headers: this.headers,
+                    xform: _lib_fetch__WEBPACK_IMPORTED_MODULE_3__._ssoResponse,
+                });
+            }
+            catch (error) {
+                if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_2__.isAuthError)(error)) {
+                    return { data: null, error };
+                }
+                throw error;
+            }
+        });
+    }
+    /**
+     * Returns the session, refreshing it if necessary.
+     * The session returned can be null if the session is not detected which can happen in the event a user is not signed-in or has logged out.
+     */
+    getSession() {
+        return __awaiter(this, void 0, void 0, function* () {
+            // make sure we've read the session from the url if there is one
+            // save to just await, as long we make sure _initialize() never throws
+            yield this.initializePromise;
+            let currentSession = null;
+            if (this.persistSession) {
+                const maybeSession = yield (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.getItemAsync)(this.storage, this.storageKey);
+                if (maybeSession !== null) {
+                    if (this._isValidSession(maybeSession)) {
+                        currentSession = maybeSession;
+                    }
+                    else {
+                        yield this._removeSession();
+                    }
+                }
+            }
+            else {
+                currentSession = this.inMemorySession;
+            }
+            if (!currentSession) {
+                return { data: { session: null }, error: null };
+            }
+            const hasExpired = currentSession.expires_at
+                ? currentSession.expires_at <= Date.now() / 1000
+                : false;
+            if (!hasExpired) {
+                return { data: { session: currentSession }, error: null };
+            }
+            const { session, error } = yield this._callRefreshToken(currentSession.refresh_token);
+            if (error) {
+                return { data: { session: null }, error };
+            }
+            return { data: { session }, error: null };
+        });
+    }
+    /**
+     * Gets the current user details if there is an existing session.
+     * @param jwt Takes in an optional access token jwt. If no jwt is provided, getUser() will attempt to get the jwt from the current session.
+     */
+    getUser(jwt) {
+        var _a, _b;
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                if (!jwt) {
+                    const { data, error } = yield this.getSession();
+                    if (error) {
+                        throw error;
+                    }
+                    // Default to Authorization header if there is no existing session
+                    jwt = (_b = (_a = data.session) === null || _a === void 0 ? void 0 : _a.access_token) !== null && _b !== void 0 ? _b : undefined;
+                }
+                return yield (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_3__._request)(this.fetch, 'GET', `${this.url}/user`, {
+                    headers: this.headers,
+                    jwt: jwt,
+                    xform: _lib_fetch__WEBPACK_IMPORTED_MODULE_3__._userResponse,
+                });
+            }
+            catch (error) {
+                if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_2__.isAuthError)(error)) {
+                    return { data: { user: null }, error };
+                }
+                throw error;
+            }
+        });
+    }
+    /**
+     * Updates user data, if there is a logged in user.
+     */
+    updateUser(attributes) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const { data: sessionData, error: sessionError } = yield this.getSession();
+                if (sessionError) {
+                    throw sessionError;
+                }
+                if (!sessionData.session) {
+                    throw new _lib_errors__WEBPACK_IMPORTED_MODULE_2__.AuthSessionMissingError();
+                }
+                const session = sessionData.session;
+                const { data, error: userError } = yield (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_3__._request)(this.fetch, 'PUT', `${this.url}/user`, {
+                    headers: this.headers,
+                    body: attributes,
+                    jwt: session.access_token,
+                    xform: _lib_fetch__WEBPACK_IMPORTED_MODULE_3__._userResponse,
+                });
+                if (userError)
+                    throw userError;
+                session.user = data.user;
+                yield this._saveSession(session);
+                this._notifyAllSubscribers('USER_UPDATED', session);
+                return { data: { user: session.user }, error: null };
+            }
+            catch (error) {
+                if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_2__.isAuthError)(error)) {
+                    return { data: { user: null }, error };
+                }
+                throw error;
+            }
+        });
+    }
+    /**
+     * Decodes a JWT (without performing any validation).
+     */
+    _decodeJWT(jwt) {
+        return (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.decodeJWTPayload)(jwt);
+    }
+    /**
+     * Sets the session data from the current session. If the current session is expired, setSession will take care of refreshing it to obtain a new session.
+     * If the refresh token or access token in the current session is invalid, an error will be thrown.
+     * @param currentSession The current session that minimally contains an access token and refresh token.
+     */
+    setSession(currentSession) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                if (!currentSession.access_token || !currentSession.refresh_token) {
+                    throw new _lib_errors__WEBPACK_IMPORTED_MODULE_2__.AuthSessionMissingError();
+                }
+                const timeNow = Date.now() / 1000;
+                let expiresAt = timeNow;
+                let hasExpired = true;
+                let session = null;
+                const payload = (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.decodeJWTPayload)(currentSession.access_token);
+                if (payload.exp) {
+                    expiresAt = payload.exp;
+                    hasExpired = expiresAt <= timeNow;
+                }
+                if (hasExpired) {
+                    const { session: refreshedSession, error } = yield this._callRefreshToken(currentSession.refresh_token);
+                    if (error) {
+                        return { data: { user: null, session: null }, error: error };
+                    }
+                    if (!refreshedSession) {
+                        return { data: { user: null, session: null }, error: null };
+                    }
+                    session = refreshedSession;
+                }
+                else {
+                    const { data, error } = yield this.getUser(currentSession.access_token);
+                    if (error) {
+                        throw error;
+                    }
+                    session = {
+                        access_token: currentSession.access_token,
+                        refresh_token: currentSession.refresh_token,
+                        user: data.user,
+                        token_type: 'bearer',
+                        expires_in: expiresAt - timeNow,
+                        expires_at: expiresAt,
+                    };
+                    yield this._saveSession(session);
+                }
+                return { data: { user: session.user, session }, error: null };
+            }
+            catch (error) {
+                if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_2__.isAuthError)(error)) {
+                    return { data: { session: null, user: null }, error };
+                }
+                throw error;
+            }
+        });
+    }
+    /**
+     * Returns a new session, regardless of expiry status.
+     * Takes in an optional current session. If not passed in, then refreshSession() will attempt to retrieve it from getSession().
+     * If the current session's refresh token is invalid, an error will be thrown.
+     * @param currentSession The current session. If passed in, it must contain a refresh token.
+     */
+    refreshSession(currentSession) {
+        var _a;
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                if (!currentSession) {
+                    const { data, error } = yield this.getSession();
+                    if (error) {
+                        throw error;
+                    }
+                    currentSession = (_a = data.session) !== null && _a !== void 0 ? _a : undefined;
+                }
+                if (!(currentSession === null || currentSession === void 0 ? void 0 : currentSession.refresh_token)) {
+                    throw new _lib_errors__WEBPACK_IMPORTED_MODULE_2__.AuthSessionMissingError();
+                }
+                const { session, error } = yield this._callRefreshToken(currentSession.refresh_token);
+                if (error) {
+                    return { data: { user: null, session: null }, error: error };
+                }
+                if (!session) {
+                    return { data: { user: null, session: null }, error: null };
+                }
+                return { data: { user: session.user, session }, error: null };
+            }
+            catch (error) {
+                if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_2__.isAuthError)(error)) {
+                    return { data: { user: null, session: null }, error };
+                }
+                throw error;
+            }
+        });
+    }
+    /**
+     * Gets the session data from a URL string
+     */
+    _getSessionFromUrl() {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                if (!(0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.isBrowser)())
+                    throw new _lib_errors__WEBPACK_IMPORTED_MODULE_2__.AuthImplicitGrantRedirectError('No browser detected.');
+                if (!this._isImplicitGrantFlow()) {
+                    throw new _lib_errors__WEBPACK_IMPORTED_MODULE_2__.AuthImplicitGrantRedirectError('Not a valid implicit grant flow url.');
+                }
+                const error_description = (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.getParameterByName)('error_description');
+                if (error_description) {
+                    const error_code = (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.getParameterByName)('error_code');
+                    if (!error_code)
+                        throw new _lib_errors__WEBPACK_IMPORTED_MODULE_2__.AuthImplicitGrantRedirectError('No error_code detected.');
+                    const error = (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.getParameterByName)('error');
+                    if (!error)
+                        throw new _lib_errors__WEBPACK_IMPORTED_MODULE_2__.AuthImplicitGrantRedirectError('No error detected.');
+                    throw new _lib_errors__WEBPACK_IMPORTED_MODULE_2__.AuthImplicitGrantRedirectError(error_description, { error, code: error_code });
+                }
+                const provider_token = (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.getParameterByName)('provider_token');
+                const provider_refresh_token = (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.getParameterByName)('provider_refresh_token');
+                const access_token = (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.getParameterByName)('access_token');
+                if (!access_token)
+                    throw new _lib_errors__WEBPACK_IMPORTED_MODULE_2__.AuthImplicitGrantRedirectError('No access_token detected.');
+                const expires_in = (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.getParameterByName)('expires_in');
+                if (!expires_in)
+                    throw new _lib_errors__WEBPACK_IMPORTED_MODULE_2__.AuthImplicitGrantRedirectError('No expires_in detected.');
+                const refresh_token = (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.getParameterByName)('refresh_token');
+                if (!refresh_token)
+                    throw new _lib_errors__WEBPACK_IMPORTED_MODULE_2__.AuthImplicitGrantRedirectError('No refresh_token detected.');
+                const token_type = (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.getParameterByName)('token_type');
+                if (!token_type)
+                    throw new _lib_errors__WEBPACK_IMPORTED_MODULE_2__.AuthImplicitGrantRedirectError('No token_type detected.');
+                const timeNow = Math.round(Date.now() / 1000);
+                const expires_at = timeNow + parseInt(expires_in);
+                const { data, error } = yield this.getUser(access_token);
+                if (error)
+                    throw error;
+                const user = data.user;
+                const session = {
+                    provider_token,
+                    provider_refresh_token,
+                    access_token,
+                    expires_in: parseInt(expires_in),
+                    expires_at,
+                    refresh_token,
+                    token_type,
+                    user,
+                };
+                const redirectType = (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.getParameterByName)('type');
+                // Remove tokens from URL
+                window.location.hash = '';
+                return { data: { session, redirectType }, error: null };
+            }
+            catch (error) {
+                if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_2__.isAuthError)(error)) {
+                    return { data: { session: null, redirectType: null }, error };
+                }
+                throw error;
+            }
+        });
+    }
+    /**
+     * Checks if the current URL contains parameters given by an implicit oauth grant flow (https://www.rfc-editor.org/rfc/rfc6749.html#section-4.2)
+     */
+    _isImplicitGrantFlow() {
+        return ((0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.isBrowser)() &&
+            (Boolean((0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.getParameterByName)('access_token')) ||
+                Boolean((0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.getParameterByName)('error_description'))));
+    }
+    /**
+     * Inside a browser context, `signOut()` will remove the logged in user from the browser session
+     * and log them out - removing all items from localstorage and then trigger a `"SIGNED_OUT"` event.
+     *
+     * For server-side management, you can revoke all refresh tokens for a user by passing a user's JWT through to `auth.api.signOut(JWT: string)`.
+     * There is no way to revoke a user's access token jwt until it expires. It is recommended to set a shorter expiry on the jwt for this reason.
+     */
+    signOut() {
+        var _a;
+        return __awaiter(this, void 0, void 0, function* () {
+            const { data, error: sessionError } = yield this.getSession();
+            if (sessionError) {
+                return { error: sessionError };
+            }
+            const accessToken = (_a = data.session) === null || _a === void 0 ? void 0 : _a.access_token;
+            if (accessToken) {
+                const { error } = yield this.admin.signOut(accessToken);
+                if (error) {
+                    // ignore 404s since user might not exist anymore
+                    // ignore 401s since an invalid or expired JWT should sign out the current session
+                    if (!((0,_lib_errors__WEBPACK_IMPORTED_MODULE_2__.isAuthApiError)(error) && (error.status === 404 || error.status === 401))) {
+                        return { error };
+                    }
+                }
+            }
+            yield this._removeSession();
+            this._notifyAllSubscribers('SIGNED_OUT', null);
+            return { error: null };
+        });
+    }
+    /**
+     * Receive a notification every time an auth event happens.
+     * @param callback A callback function to be invoked when an auth event happens.
+     */
+    onAuthStateChange(callback) {
+        const id = (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.uuid)();
+        const subscription = {
+            id,
+            callback,
+            unsubscribe: () => {
+                this.stateChangeEmitters.delete(id);
+            },
+        };
+        this.stateChangeEmitters.set(id, subscription);
+        return { data: { subscription } };
+    }
+    /**
+     * Sends a password reset request to an email address.
+     * @param email The email address of the user.
+     * @param options.redirectTo The URL to send the user to after they click the password reset link.
+     * @param options.captchaToken Verification token received when the user completes the captcha on the site.
+     */
+    resetPasswordForEmail(email, options = {}) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                return yield (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_3__._request)(this.fetch, 'POST', `${this.url}/recover`, {
+                    body: { email, gotrue_meta_security: { captcha_token: options.captchaToken } },
+                    headers: this.headers,
+                    redirectTo: options.redirectTo,
+                });
+            }
+            catch (error) {
+                if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_2__.isAuthError)(error)) {
+                    return { data: null, error };
+                }
+                throw error;
+            }
+        });
+    }
+    /**
+     * Generates a new JWT.
+     * @param refreshToken A valid refresh token that was returned on login.
+     */
+    _refreshAccessToken(refreshToken) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                return yield (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_3__._request)(this.fetch, 'POST', `${this.url}/token?grant_type=refresh_token`, {
+                    body: { refresh_token: refreshToken },
+                    headers: this.headers,
+                    xform: _lib_fetch__WEBPACK_IMPORTED_MODULE_3__._sessionResponse,
+                });
+            }
+            catch (error) {
+                if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_2__.isAuthError)(error)) {
+                    return { data: { session: null, user: null }, error };
+                }
+                throw error;
+            }
+        });
+    }
+    _isValidSession(maybeSession) {
+        const isValidSession = typeof maybeSession === 'object' &&
+            maybeSession !== null &&
+            'access_token' in maybeSession &&
+            'refresh_token' in maybeSession &&
+            'expires_at' in maybeSession;
+        return isValidSession;
+    }
+    _handleProviderSignIn(provider, options = {}) {
+        const url = this._getUrlForProvider(provider, {
+            redirectTo: options.redirectTo,
+            scopes: options.scopes,
+            queryParams: options.queryParams,
+        });
+        // try to open on the browser
+        if ((0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.isBrowser)()) {
+            window.location.href = url;
+        }
+        return { data: { provider, url }, error: null };
+    }
+    /**
+     * Recovers the session from LocalStorage and refreshes
+     * Note: this method is async to accommodate for AsyncStorage e.g. in React native.
+     */
+    _recoverAndRefresh() {
+        var _a;
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const currentSession = yield (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.getItemAsync)(this.storage, this.storageKey);
+                if (!this._isValidSession(currentSession)) {
+                    if (currentSession !== null) {
+                        yield this._removeSession();
+                    }
+                    return;
+                }
+                const timeNow = Math.round(Date.now() / 1000);
+                if (((_a = currentSession.expires_at) !== null && _a !== void 0 ? _a : Infinity) < timeNow + _lib_constants__WEBPACK_IMPORTED_MODULE_1__.EXPIRY_MARGIN) {
+                    if (this.autoRefreshToken && currentSession.refresh_token) {
+                        this.networkRetries++;
+                        const { error } = yield this._callRefreshToken(currentSession.refresh_token);
+                        if (error) {
+                            console.log(error.message);
+                            if (error instanceof _lib_errors__WEBPACK_IMPORTED_MODULE_2__.AuthRetryableFetchError &&
+                                this.networkRetries < _lib_constants__WEBPACK_IMPORTED_MODULE_1__.NETWORK_FAILURE.MAX_RETRIES) {
+                                if (this.refreshTokenTimer)
+                                    clearTimeout(this.refreshTokenTimer);
+                                this.refreshTokenTimer = setTimeout(() => this._recoverAndRefresh(), Math.pow(_lib_constants__WEBPACK_IMPORTED_MODULE_1__.NETWORK_FAILURE.RETRY_INTERVAL, this.networkRetries) * 100 // exponential backoff
+                                );
+                                return;
+                            }
+                            yield this._removeSession();
+                        }
+                        this.networkRetries = 0;
+                    }
+                    else {
+                        yield this._removeSession();
+                    }
+                }
+                else {
+                    if (this.persistSession) {
+                        yield this._saveSession(currentSession);
+                    }
+                    this._notifyAllSubscribers('SIGNED_IN', currentSession);
+                }
+            }
+            catch (err) {
+                console.error(err);
+                return;
+            }
+        });
+    }
+    _callRefreshToken(refreshToken) {
+        var _a, _b;
+        return __awaiter(this, void 0, void 0, function* () {
+            // refreshing is already in progress
+            if (this.refreshingDeferred) {
+                return this.refreshingDeferred.promise;
+            }
+            try {
+                this.refreshingDeferred = new _lib_helpers__WEBPACK_IMPORTED_MODULE_4__.Deferred();
+                if (!refreshToken) {
+                    throw new _lib_errors__WEBPACK_IMPORTED_MODULE_2__.AuthSessionMissingError();
+                }
+                const { data, error } = yield this._refreshAccessToken(refreshToken);
+                if (error)
+                    throw error;
+                if (!data.session)
+                    throw new _lib_errors__WEBPACK_IMPORTED_MODULE_2__.AuthSessionMissingError();
+                yield this._saveSession(data.session);
+                this._notifyAllSubscribers('TOKEN_REFRESHED', data.session);
+                const result = { session: data.session, error: null };
+                this.refreshingDeferred.resolve(result);
+                return result;
+            }
+            catch (error) {
+                if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_2__.isAuthError)(error)) {
+                    const result = { session: null, error };
+                    (_a = this.refreshingDeferred) === null || _a === void 0 ? void 0 : _a.resolve(result);
+                    return result;
+                }
+                (_b = this.refreshingDeferred) === null || _b === void 0 ? void 0 : _b.reject(error);
+                throw error;
+            }
+            finally {
+                this.refreshingDeferred = null;
+            }
+        });
+    }
+    _notifyAllSubscribers(event, session) {
+        this.stateChangeEmitters.forEach((x) => x.callback(event, session));
+    }
+    /**
+     * set currentSession and currentUser
+     * process to _startAutoRefreshToken if possible
+     */
+    _saveSession(session) {
+        return __awaiter(this, void 0, void 0, function* () {
+            if (!this.persistSession) {
+                this.inMemorySession = session;
+            }
+            const expiresAt = session.expires_at;
+            if (expiresAt) {
+                const timeNow = Math.round(Date.now() / 1000);
+                const expiresIn = expiresAt - timeNow;
+                const refreshDurationBeforeExpires = expiresIn > _lib_constants__WEBPACK_IMPORTED_MODULE_1__.EXPIRY_MARGIN ? _lib_constants__WEBPACK_IMPORTED_MODULE_1__.EXPIRY_MARGIN : 0.5;
+                this._startAutoRefreshToken((expiresIn - refreshDurationBeforeExpires) * 1000);
+            }
+            if (this.persistSession && session.expires_at) {
+                yield this._persistSession(session);
+            }
+        });
+    }
+    _persistSession(currentSession) {
+        return (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.setItemAsync)(this.storage, this.storageKey, currentSession);
+    }
+    _removeSession() {
+        return __awaiter(this, void 0, void 0, function* () {
+            if (this.persistSession) {
+                yield (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.removeItemAsync)(this.storage, this.storageKey);
+            }
+            else {
+                this.inMemorySession = null;
+            }
+            if (this.refreshTokenTimer) {
+                clearTimeout(this.refreshTokenTimer);
+            }
+        });
+    }
+    /**
+     * Clear and re-create refresh token timer
+     * @param value time intervals in milliseconds.
+     * @param session The current session.
+     */
+    _startAutoRefreshToken(value) {
+        if (this.refreshTokenTimer)
+            clearTimeout(this.refreshTokenTimer);
+        if (value <= 0 || !this.autoRefreshToken)
+            return;
+        this.refreshTokenTimer = setTimeout(() => __awaiter(this, void 0, void 0, function* () {
+            this.networkRetries++;
+            const { data: { session }, error: sessionError, } = yield this.getSession();
+            if (!sessionError && session) {
+                const { error } = yield this._callRefreshToken(session.refresh_token);
+                if (!error)
+                    this.networkRetries = 0;
+                if (error instanceof _lib_errors__WEBPACK_IMPORTED_MODULE_2__.AuthRetryableFetchError &&
+                    this.networkRetries < _lib_constants__WEBPACK_IMPORTED_MODULE_1__.NETWORK_FAILURE.MAX_RETRIES)
+                    this._startAutoRefreshToken(Math.pow(_lib_constants__WEBPACK_IMPORTED_MODULE_1__.NETWORK_FAILURE.RETRY_INTERVAL, this.networkRetries) * 100); // exponential backoff
+            }
+        }), value);
+        if (typeof this.refreshTokenTimer.unref === 'function')
+            this.refreshTokenTimer.unref();
+    }
+    _handleVisibilityChange() {
+        if (!(0,_lib_helpers__WEBPACK_IMPORTED_MODULE_4__.isBrowser)() || !(window === null || window === void 0 ? void 0 : window.addEventListener)) {
+            return false;
+        }
+        try {
+            window === null || window === void 0 ? void 0 : window.addEventListener('visibilitychange', () => __awaiter(this, void 0, void 0, function* () {
+                if (document.visibilityState === 'visible') {
+                    yield this.initializePromise;
+                    yield this._recoverAndRefresh();
+                }
+            }));
+        }
+        catch (error) {
+            console.error('_handleVisibilityChange', error);
+        }
+    }
+    /**
+     * Generates the relevant login URL for a third-party provider.
+     * @param options.redirectTo A URL or mobile address to send the user to after they are confirmed.
+     * @param options.scopes A space-separated list of scopes granted to the OAuth application.
+     * @param options.queryParams An object of key-value pairs containing query parameters granted to the OAuth application.
+     */
+    _getUrlForProvider(provider, options) {
+        const urlParams = [`provider=${encodeURIComponent(provider)}`];
+        if (options === null || options === void 0 ? void 0 : options.redirectTo) {
+            urlParams.push(`redirect_to=${encodeURIComponent(options.redirectTo)}`);
+        }
+        if (options === null || options === void 0 ? void 0 : options.scopes) {
+            urlParams.push(`scopes=${encodeURIComponent(options.scopes)}`);
+        }
+        if (options === null || options === void 0 ? void 0 : options.queryParams) {
+            const query = new URLSearchParams(options.queryParams);
+            urlParams.push(query.toString());
+        }
+        return `${this.url}/authorize?${urlParams.join('&')}`;
+    }
+    _unenroll(params) {
+        var _a;
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const { data: sessionData, error: sessionError } = yield this.getSession();
+                if (sessionError) {
+                    return { data: null, error: sessionError };
+                }
+                return yield (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_3__._request)(this.fetch, 'DELETE', `${this.url}/factors/${params.factorId}`, {
+                    headers: this.headers,
+                    jwt: (_a = sessionData === null || sessionData === void 0 ? void 0 : sessionData.session) === null || _a === void 0 ? void 0 : _a.access_token,
+                });
+            }
+            catch (error) {
+                if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_2__.isAuthError)(error)) {
+                    return { data: null, error };
+                }
+                throw error;
+            }
+        });
+    }
+    /**
+     * Enrolls a factor
+     * @param friendlyName Human readable name assigned to a device
+     * @param factorType device which we're validating against. Can only be TOTP for now.
+     * @param issuer domain which the user is enrolling with
+     */
+    _enroll(params) {
+        var _a, _b;
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const { data: sessionData, error: sessionError } = yield this.getSession();
+                if (sessionError) {
+                    return { data: null, error: sessionError };
+                }
+                const { data, error } = yield (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_3__._request)(this.fetch, 'POST', `${this.url}/factors`, {
+                    body: {
+                        friendly_name: params.friendlyName,
+                        factor_type: params.factorType,
+                        issuer: params.issuer,
+                    },
+                    headers: this.headers,
+                    jwt: (_a = sessionData === null || sessionData === void 0 ? void 0 : sessionData.session) === null || _a === void 0 ? void 0 : _a.access_token,
+                });
+                if (error) {
+                    return { data: null, error };
+                }
+                if ((_b = data === null || data === void 0 ? void 0 : data.totp) === null || _b === void 0 ? void 0 : _b.qr_code) {
+                    data.totp.qr_code = `data:image/svg+xml;utf-8,${data.totp.qr_code}`;
+                }
+                return { data, error: null };
+            }
+            catch (error) {
+                if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_2__.isAuthError)(error)) {
+                    return { data: null, error };
+                }
+                throw error;
+            }
+        });
+    }
+    /**
+     * Validates a device as part of the enrollment step.
+     * @param factorId System assigned identifier for authenticator device as returned by enroll
+     * @param code Code Generated by an authenticator device
+     */
+    _verify(params) {
+        var _a;
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const { data: sessionData, error: sessionError } = yield this.getSession();
+                if (sessionError) {
+                    return { data: null, error: sessionError };
+                }
+                const { data, error } = yield (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_3__._request)(this.fetch, 'POST', `${this.url}/factors/${params.factorId}/verify`, {
+                    body: { code: params.code, challenge_id: params.challengeId },
+                    headers: this.headers,
+                    jwt: (_a = sessionData === null || sessionData === void 0 ? void 0 : sessionData.session) === null || _a === void 0 ? void 0 : _a.access_token,
+                });
+                if (error) {
+                    return { data: null, error };
+                }
+                yield this._saveSession(Object.assign({ expires_at: Math.round(Date.now() / 1000) + data.expires_in }, data));
+                this._notifyAllSubscribers('MFA_CHALLENGE_VERIFIED', data);
+                return { data, error };
+            }
+            catch (error) {
+                if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_2__.isAuthError)(error)) {
+                    return { data: null, error };
+                }
+                throw error;
+            }
+        });
+    }
+    /**
+     * Creates a challenge which a user can verify against
+     * @param factorId System assigned identifier for authenticator device as returned by enroll
+     */
+    _challenge(params) {
+        var _a;
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const { data: sessionData, error: sessionError } = yield this.getSession();
+                if (sessionError) {
+                    return { data: null, error: sessionError };
+                }
+                return yield (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_3__._request)(this.fetch, 'POST', `${this.url}/factors/${params.factorId}/challenge`, {
+                    headers: this.headers,
+                    jwt: (_a = sessionData === null || sessionData === void 0 ? void 0 : sessionData.session) === null || _a === void 0 ? void 0 : _a.access_token,
+                });
+            }
+            catch (error) {
+                if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_2__.isAuthError)(error)) {
+                    return { data: null, error };
+                }
+                throw error;
+            }
+        });
+    }
+    /**
+     * Creates a challenge and immediately verifies it
+     * @param factorId System assigned identifier for authenticator device as returned by enroll
+     * @param code Code Generated by an authenticator device
+     */
+    _challengeAndVerify(params) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { data: challengeData, error: challengeError } = yield this._challenge({
+                factorId: params.factorId,
+            });
+            if (challengeError) {
+                return { data: null, error: challengeError };
+            }
+            return yield this._verify({
+                factorId: params.factorId,
+                challengeId: challengeData.id,
+                code: params.code,
+            });
+        });
+    }
+    /**
+     * Displays all devices for a given user
+     */
+    _listFactors() {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { data: { user }, error: userError, } = yield this.getUser();
+            if (userError) {
+                return { data: null, error: userError };
+            }
+            const factors = (user === null || user === void 0 ? void 0 : user.factors) || [];
+            const totp = factors.filter((factor) => factor.factor_type === 'totp' && factor.status === 'verified');
+            return {
+                data: {
+                    all: factors,
+                    totp,
+                },
+                error: null,
+            };
+        });
+    }
+    /**
+     * Gets the current and next authenticator assurance level (AAL)
+     * and the current authentication methods for the session (AMR)
+     */
+    _getAuthenticatorAssuranceLevel() {
+        var _a, _b;
+        return __awaiter(this, void 0, void 0, function* () {
+            const { data: { session }, error: sessionError, } = yield this.getSession();
+            if (sessionError) {
+                return { data: null, error: sessionError };
+            }
+            if (!session) {
+                return {
+                    data: { currentLevel: null, nextLevel: null, currentAuthenticationMethods: [] },
+                    error: null,
+                };
+            }
+            const payload = this._decodeJWT(session.access_token);
+            let currentLevel = null;
+            if (payload.aal) {
+                currentLevel = payload.aal;
+            }
+            let nextLevel = currentLevel;
+            const verifiedFactors = (_b = (_a = session.user.factors) === null || _a === void 0 ? void 0 : _a.filter((factor) => factor.status === 'verified')) !== null && _b !== void 0 ? _b : [];
+            if (verifiedFactors.length > 0) {
+                nextLevel = 'aal2';
+            }
+            const currentAuthenticationMethods = payload.amr || [];
+            return { data: { currentLevel, nextLevel, currentAuthenticationMethods }, error: null };
+        });
+    }
+}
+//# sourceMappingURL=GoTrueClient.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@supabase/gotrue-js/dist/module/index.js":
+/*!***************************************************************!*\
+  !*** ./node_modules/@supabase/gotrue-js/dist/module/index.js ***!
+  \***************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "AuthApiError": function() { return /* reexport safe */ _lib_errors__WEBPACK_IMPORTED_MODULE_3__.AuthApiError; },
+/* harmony export */   "AuthError": function() { return /* reexport safe */ _lib_errors__WEBPACK_IMPORTED_MODULE_3__.AuthError; },
+/* harmony export */   "AuthImplicitGrantRedirectError": function() { return /* reexport safe */ _lib_errors__WEBPACK_IMPORTED_MODULE_3__.AuthImplicitGrantRedirectError; },
+/* harmony export */   "AuthInvalidCredentialsError": function() { return /* reexport safe */ _lib_errors__WEBPACK_IMPORTED_MODULE_3__.AuthInvalidCredentialsError; },
+/* harmony export */   "AuthRetryableFetchError": function() { return /* reexport safe */ _lib_errors__WEBPACK_IMPORTED_MODULE_3__.AuthRetryableFetchError; },
+/* harmony export */   "AuthSessionMissingError": function() { return /* reexport safe */ _lib_errors__WEBPACK_IMPORTED_MODULE_3__.AuthSessionMissingError; },
+/* harmony export */   "AuthUnknownError": function() { return /* reexport safe */ _lib_errors__WEBPACK_IMPORTED_MODULE_3__.AuthUnknownError; },
+/* harmony export */   "CustomAuthError": function() { return /* reexport safe */ _lib_errors__WEBPACK_IMPORTED_MODULE_3__.CustomAuthError; },
+/* harmony export */   "GoTrueAdminApi": function() { return /* reexport safe */ _GoTrueAdminApi__WEBPACK_IMPORTED_MODULE_0__["default"]; },
+/* harmony export */   "GoTrueClient": function() { return /* reexport safe */ _GoTrueClient__WEBPACK_IMPORTED_MODULE_1__["default"]; },
+/* harmony export */   "isAuthApiError": function() { return /* reexport safe */ _lib_errors__WEBPACK_IMPORTED_MODULE_3__.isAuthApiError; },
+/* harmony export */   "isAuthError": function() { return /* reexport safe */ _lib_errors__WEBPACK_IMPORTED_MODULE_3__.isAuthError; }
+/* harmony export */ });
+/* harmony import */ var _GoTrueAdminApi__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./GoTrueAdminApi */ "./node_modules/@supabase/gotrue-js/dist/module/GoTrueAdminApi.js");
+/* harmony import */ var _GoTrueClient__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./GoTrueClient */ "./node_modules/@supabase/gotrue-js/dist/module/GoTrueClient.js");
+/* harmony import */ var _lib_types__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./lib/types */ "./node_modules/@supabase/gotrue-js/dist/module/lib/types.js");
+/* harmony import */ var _lib_errors__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./lib/errors */ "./node_modules/@supabase/gotrue-js/dist/module/lib/errors.js");
+
+
+
+
+
+//# sourceMappingURL=index.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@supabase/gotrue-js/dist/module/lib/constants.js":
+/*!***********************************************************************!*\
+  !*** ./node_modules/@supabase/gotrue-js/dist/module/lib/constants.js ***!
+  \***********************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "AUDIENCE": function() { return /* binding */ AUDIENCE; },
+/* harmony export */   "DEFAULT_HEADERS": function() { return /* binding */ DEFAULT_HEADERS; },
+/* harmony export */   "EXPIRY_MARGIN": function() { return /* binding */ EXPIRY_MARGIN; },
+/* harmony export */   "GOTRUE_URL": function() { return /* binding */ GOTRUE_URL; },
+/* harmony export */   "NETWORK_FAILURE": function() { return /* binding */ NETWORK_FAILURE; },
+/* harmony export */   "STORAGE_KEY": function() { return /* binding */ STORAGE_KEY; }
+/* harmony export */ });
+/* harmony import */ var _version__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./version */ "./node_modules/@supabase/gotrue-js/dist/module/lib/version.js");
+
+const GOTRUE_URL = 'http://localhost:9999';
+const STORAGE_KEY = 'supabase.auth.token';
+const AUDIENCE = '';
+const DEFAULT_HEADERS = { 'X-Client-Info': `gotrue-js/${_version__WEBPACK_IMPORTED_MODULE_0__.version}` };
+const EXPIRY_MARGIN = 10; // in seconds
+const NETWORK_FAILURE = {
+    MAX_RETRIES: 10,
+    RETRY_INTERVAL: 2, // in deciseconds
+};
+//# sourceMappingURL=constants.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@supabase/gotrue-js/dist/module/lib/errors.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/@supabase/gotrue-js/dist/module/lib/errors.js ***!
+  \********************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "AuthApiError": function() { return /* binding */ AuthApiError; },
+/* harmony export */   "AuthError": function() { return /* binding */ AuthError; },
+/* harmony export */   "AuthImplicitGrantRedirectError": function() { return /* binding */ AuthImplicitGrantRedirectError; },
+/* harmony export */   "AuthInvalidCredentialsError": function() { return /* binding */ AuthInvalidCredentialsError; },
+/* harmony export */   "AuthRetryableFetchError": function() { return /* binding */ AuthRetryableFetchError; },
+/* harmony export */   "AuthSessionMissingError": function() { return /* binding */ AuthSessionMissingError; },
+/* harmony export */   "AuthUnknownError": function() { return /* binding */ AuthUnknownError; },
+/* harmony export */   "CustomAuthError": function() { return /* binding */ CustomAuthError; },
+/* harmony export */   "isAuthApiError": function() { return /* binding */ isAuthApiError; },
+/* harmony export */   "isAuthError": function() { return /* binding */ isAuthError; }
+/* harmony export */ });
+class AuthError extends Error {
+    constructor(message) {
+        super(message);
+        this.__isAuthError = true;
+        this.name = 'AuthError';
+    }
+}
+function isAuthError(error) {
+    return typeof error === 'object' && error !== null && '__isAuthError' in error;
+}
+class AuthApiError extends AuthError {
+    constructor(message, status) {
+        super(message);
+        this.name = 'AuthApiError';
+        this.status = status;
+    }
+    toJSON() {
+        return {
+            name: this.name,
+            message: this.message,
+            status: this.status,
+        };
+    }
+}
+function isAuthApiError(error) {
+    return isAuthError(error) && error.name === 'AuthApiError';
+}
+class AuthUnknownError extends AuthError {
+    constructor(message, originalError) {
+        super(message);
+        this.name = 'AuthUnknownError';
+        this.originalError = originalError;
+    }
+}
+class CustomAuthError extends AuthError {
+    constructor(message, name, status) {
+        super(message);
+        this.name = name;
+        this.status = status;
+    }
+    toJSON() {
+        return {
+            name: this.name,
+            message: this.message,
+            status: this.status,
+        };
+    }
+}
+class AuthSessionMissingError extends CustomAuthError {
+    constructor() {
+        super('Auth session missing!', 'AuthSessionMissingError', 400);
+    }
+}
+class AuthInvalidCredentialsError extends CustomAuthError {
+    constructor(message) {
+        super(message, 'AuthInvalidCredentialsError', 400);
+    }
+}
+class AuthImplicitGrantRedirectError extends CustomAuthError {
+    constructor(message, details = null) {
+        super(message, 'AuthImplicitGrantRedirectError', 500);
+        this.details = null;
+        this.details = details;
+    }
+    toJSON() {
+        return {
+            name: this.name,
+            message: this.message,
+            status: this.status,
+            details: this.details,
+        };
+    }
+}
+class AuthRetryableFetchError extends CustomAuthError {
+    constructor(message, status) {
+        super(message, 'AuthRetryableFetchError', status);
+    }
+}
+//# sourceMappingURL=errors.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@supabase/gotrue-js/dist/module/lib/fetch.js":
+/*!*******************************************************************!*\
+  !*** ./node_modules/@supabase/gotrue-js/dist/module/lib/fetch.js ***!
+  \*******************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "_generateLinkResponse": function() { return /* binding */ _generateLinkResponse; },
+/* harmony export */   "_noResolveJsonResponse": function() { return /* binding */ _noResolveJsonResponse; },
+/* harmony export */   "_request": function() { return /* binding */ _request; },
+/* harmony export */   "_sessionResponse": function() { return /* binding */ _sessionResponse; },
+/* harmony export */   "_ssoResponse": function() { return /* binding */ _ssoResponse; },
+/* harmony export */   "_userResponse": function() { return /* binding */ _userResponse; }
+/* harmony export */ });
+/* harmony import */ var _helpers__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./helpers */ "./node_modules/@supabase/gotrue-js/dist/module/lib/helpers.js");
+/* harmony import */ var _errors__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./errors */ "./node_modules/@supabase/gotrue-js/dist/module/lib/errors.js");
+var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __rest = (undefined && undefined.__rest) || function (s, e) {
+    var t = {};
+    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
+        t[p] = s[p];
+    if (s != null && typeof Object.getOwnPropertySymbols === "function")
+        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
+                t[p[i]] = s[p[i]];
+        }
+    return t;
+};
+
+
+const _getErrorMessage = (err) => err.msg || err.message || err.error_description || err.error || JSON.stringify(err);
+const handleError = (error, reject) => __awaiter(void 0, void 0, void 0, function* () {
+    const NETWORK_ERROR_CODES = [502, 503, 504];
+    if (!(0,_helpers__WEBPACK_IMPORTED_MODULE_0__.looksLikeFetchResponse)(error)) {
+        reject(new _errors__WEBPACK_IMPORTED_MODULE_1__.AuthRetryableFetchError(_getErrorMessage(error), 0));
+    }
+    else if (NETWORK_ERROR_CODES.includes(error.status)) {
+        // status in 500...599 range - server had an error, request might be retryed.
+        reject(new _errors__WEBPACK_IMPORTED_MODULE_1__.AuthRetryableFetchError(_getErrorMessage(error), error.status));
+    }
+    else {
+        // got a response from server that is not in the 500...599 range - should not retry
+        error
+            .json()
+            .then((err) => {
+            reject(new _errors__WEBPACK_IMPORTED_MODULE_1__.AuthApiError(_getErrorMessage(err), error.status || 500));
+        })
+            .catch((e) => {
+            // not a valid json response
+            reject(new _errors__WEBPACK_IMPORTED_MODULE_1__.AuthUnknownError(_getErrorMessage(e), e));
+        });
+    }
+});
+const _getRequestParams = (method, options, parameters, body) => {
+    const params = { method, headers: (options === null || options === void 0 ? void 0 : options.headers) || {} };
+    if (method === 'GET') {
+        return params;
+    }
+    params.headers = Object.assign({ 'Content-Type': 'application/json;charset=UTF-8' }, options === null || options === void 0 ? void 0 : options.headers);
+    params.body = JSON.stringify(body);
+    return Object.assign(Object.assign({}, params), parameters);
+};
+function _request(fetcher, method, url, options) {
+    var _a;
+    return __awaiter(this, void 0, void 0, function* () {
+        const headers = Object.assign({}, options === null || options === void 0 ? void 0 : options.headers);
+        if (options === null || options === void 0 ? void 0 : options.jwt) {
+            headers['Authorization'] = `Bearer ${options.jwt}`;
+        }
+        const qs = (_a = options === null || options === void 0 ? void 0 : options.query) !== null && _a !== void 0 ? _a : {};
+        if (options === null || options === void 0 ? void 0 : options.redirectTo) {
+            qs['redirect_to'] = options.redirectTo;
+        }
+        const queryString = Object.keys(qs).length ? '?' + new URLSearchParams(qs).toString() : '';
+        const data = yield _handleRequest(fetcher, method, url + queryString, { headers, noResolveJson: options === null || options === void 0 ? void 0 : options.noResolveJson }, {}, options === null || options === void 0 ? void 0 : options.body);
+        return (options === null || options === void 0 ? void 0 : options.xform) ? options === null || options === void 0 ? void 0 : options.xform(data) : { data: Object.assign({}, data), error: null };
+    });
+}
+function _handleRequest(fetcher, method, url, options, parameters, body) {
+    return __awaiter(this, void 0, void 0, function* () {
+        return new Promise((resolve, reject) => {
+            fetcher(url, _getRequestParams(method, options, parameters, body))
+                .then((result) => {
+                if (!result.ok)
+                    throw result;
+                if (options === null || options === void 0 ? void 0 : options.noResolveJson)
+                    return result;
+                return result.json();
+            })
+                .then((data) => resolve(data))
+                .catch((error) => handleError(error, reject));
+        });
+    });
+}
+function _sessionResponse(data) {
+    var _a;
+    let session = null;
+    if (hasSession(data)) {
+        session = Object.assign({}, data);
+        session.expires_at = (0,_helpers__WEBPACK_IMPORTED_MODULE_0__.expiresAt)(data.expires_in);
+    }
+    const user = (_a = data.user) !== null && _a !== void 0 ? _a : data;
+    return { data: { session, user }, error: null };
+}
+function _userResponse(data) {
+    var _a;
+    const user = (_a = data.user) !== null && _a !== void 0 ? _a : data;
+    return { data: { user }, error: null };
+}
+function _ssoResponse(data) {
+    return { data, error: null };
+}
+function _generateLinkResponse(data) {
+    const { action_link, email_otp, hashed_token, redirect_to, verification_type } = data, rest = __rest(data, ["action_link", "email_otp", "hashed_token", "redirect_to", "verification_type"]);
+    const properties = {
+        action_link,
+        email_otp,
+        hashed_token,
+        redirect_to,
+        verification_type,
+    };
+    const user = Object.assign({}, rest);
+    return {
+        data: {
+            properties,
+            user,
+        },
+        error: null,
+    };
+}
+function _noResolveJsonResponse(data) {
+    return data;
+}
+/**
+ * hasSession checks if the response object contains a valid session
+ * @param data A response object
+ * @returns true if a session is in the response
+ */
+function hasSession(data) {
+    return data.access_token && data.refresh_token && data.expires_in;
+}
+//# sourceMappingURL=fetch.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@supabase/gotrue-js/dist/module/lib/helpers.js":
+/*!*********************************************************************!*\
+  !*** ./node_modules/@supabase/gotrue-js/dist/module/lib/helpers.js ***!
+  \*********************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Deferred": function() { return /* binding */ Deferred; },
+/* harmony export */   "decodeBase64URL": function() { return /* binding */ decodeBase64URL; },
+/* harmony export */   "decodeJWTPayload": function() { return /* binding */ decodeJWTPayload; },
+/* harmony export */   "expiresAt": function() { return /* binding */ expiresAt; },
+/* harmony export */   "getItemAsync": function() { return /* binding */ getItemAsync; },
+/* harmony export */   "getParameterByName": function() { return /* binding */ getParameterByName; },
+/* harmony export */   "isBrowser": function() { return /* binding */ isBrowser; },
+/* harmony export */   "looksLikeFetchResponse": function() { return /* binding */ looksLikeFetchResponse; },
+/* harmony export */   "removeItemAsync": function() { return /* binding */ removeItemAsync; },
+/* harmony export */   "resolveFetch": function() { return /* binding */ resolveFetch; },
+/* harmony export */   "setItemAsync": function() { return /* binding */ setItemAsync; },
+/* harmony export */   "uuid": function() { return /* binding */ uuid; }
+/* harmony export */ });
+var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+function expiresAt(expiresIn) {
+    const timeNow = Math.round(Date.now() / 1000);
+    return timeNow + expiresIn;
+}
+function uuid() {
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+        const r = (Math.random() * 16) | 0, v = c == 'x' ? r : (r & 0x3) | 0x8;
+        return v.toString(16);
+    });
+}
+const isBrowser = () => typeof document !== 'undefined';
+function getParameterByName(name, url) {
+    var _a;
+    if (!url)
+        url = ((_a = window === null || window === void 0 ? void 0 : window.location) === null || _a === void 0 ? void 0 : _a.href) || '';
+    // eslint-disable-next-line no-useless-escape
+    name = name.replace(/[\[\]]/g, '\\$&');
+    const regex = new RegExp('[?&#]' + name + '(=([^&#]*)|&|#|$)'), results = regex.exec(url);
+    if (!results)
+        return null;
+    if (!results[2])
+        return '';
+    return decodeURIComponent(results[2].replace(/\+/g, ' '));
+}
+const resolveFetch = (customFetch) => {
+    let _fetch;
+    if (customFetch) {
+        _fetch = customFetch;
+    }
+    else if (typeof fetch === 'undefined') {
+        _fetch = (...args) => __awaiter(void 0, void 0, void 0, function* () { return yield (yield Promise.resolve(/*! import() */).then(__webpack_require__.t.bind(__webpack_require__, /*! cross-fetch */ "./node_modules/cross-fetch/dist/browser-ponyfill.js", 23))).fetch(...args); });
+    }
+    else {
+        _fetch = fetch;
+    }
+    return (...args) => _fetch(...args);
+};
+const looksLikeFetchResponse = (maybeResponse) => {
+    return (typeof maybeResponse === 'object' &&
+        maybeResponse !== null &&
+        'status' in maybeResponse &&
+        'ok' in maybeResponse &&
+        'json' in maybeResponse &&
+        typeof maybeResponse.json === 'function');
+};
+// Storage helpers
+const setItemAsync = (storage, key, data) => __awaiter(void 0, void 0, void 0, function* () {
+    yield storage.setItem(key, JSON.stringify(data));
+});
+const getItemAsync = (storage, key) => __awaiter(void 0, void 0, void 0, function* () {
+    const value = yield storage.getItem(key);
+    if (!value) {
+        return null;
+    }
+    try {
+        return JSON.parse(value);
+    }
+    catch (_a) {
+        return value;
+    }
+});
+const removeItemAsync = (storage, key) => __awaiter(void 0, void 0, void 0, function* () {
+    yield storage.removeItem(key);
+});
+const decodeBase64URL = (value) => {
+    try {
+        // atob is present in all browsers and nodejs >= 16
+        // but if it is not it will throw a ReferenceError in which case we can try to use Buffer
+        // replace are here to convert the Base64-URL into Base64 which is what atob supports
+        // replace with //g regex acts like replaceAll
+        // Decoding base64 to UTF8 see https://stackoverflow.com/a/30106551/17622044
+        return decodeURIComponent(atob(value.replace(/[-]/g, '+').replace(/[_]/g, '/'))
+            .split('')
+            .map((c) => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2))
+            .join(''));
+    }
+    catch (e) {
+        if (e instanceof ReferenceError) {
+            // running on nodejs < 16
+            // Buffer supports Base64-URL transparently
+            return Buffer.from(value, 'base64').toString('utf-8');
+        }
+        else {
+            throw e;
+        }
+    }
+};
+/**
+ * A deferred represents some asynchronous work that is not yet finished, which
+ * may or may not culminate in a value.
+ * Taken from: https://github.com/mike-north/types/blob/master/src/async.ts
+ */
+class Deferred {
+    constructor() {
+        // eslint-disable-next-line @typescript-eslint/no-extra-semi
+        ;
+        this.promise = new Deferred.promiseConstructor((res, rej) => {
+            // eslint-disable-next-line @typescript-eslint/no-extra-semi
+            ;
+            this.resolve = res;
+            this.reject = rej;
+        });
+    }
+}
+Deferred.promiseConstructor = Promise;
+// Taken from: https://stackoverflow.com/questions/38552003/how-to-decode-jwt-token-in-javascript-without-using-a-library
+function decodeJWTPayload(token) {
+    // Regex checks for base64url format
+    const base64UrlRegex = /^([a-z0-9_-]{4})*($|[a-z0-9_-]{3}=?$|[a-z0-9_-]{2}(==)?$)$/i;
+    const parts = token.split('.');
+    if (parts.length !== 3) {
+        throw new Error('JWT is not valid: not a JWT structure');
+    }
+    if (!base64UrlRegex.test(parts[1])) {
+        throw new Error('JWT is not valid: payload is not in base64url format');
+    }
+    const base64Url = parts[1];
+    return JSON.parse(decodeBase64URL(base64Url));
+}
+//# sourceMappingURL=helpers.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@supabase/gotrue-js/dist/module/lib/local-storage.js":
+/*!***************************************************************************!*\
+  !*** ./node_modules/@supabase/gotrue-js/dist/module/lib/local-storage.js ***!
+  \***************************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _helpers__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./helpers */ "./node_modules/@supabase/gotrue-js/dist/module/lib/helpers.js");
+
+const localStorageAdapter = {
+    getItem: (key) => {
+        if (!(0,_helpers__WEBPACK_IMPORTED_MODULE_0__.isBrowser)()) {
+            return null;
+        }
+        return globalThis.localStorage.getItem(key);
+    },
+    setItem: (key, value) => {
+        if (!(0,_helpers__WEBPACK_IMPORTED_MODULE_0__.isBrowser)()) {
+            return;
+        }
+        globalThis.localStorage.setItem(key, value);
+    },
+    removeItem: (key) => {
+        if (!(0,_helpers__WEBPACK_IMPORTED_MODULE_0__.isBrowser)()) {
+            return;
+        }
+        globalThis.localStorage.removeItem(key);
+    },
+};
+/* harmony default export */ __webpack_exports__["default"] = (localStorageAdapter);
+//# sourceMappingURL=local-storage.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@supabase/gotrue-js/dist/module/lib/polyfills.js":
+/*!***********************************************************************!*\
+  !*** ./node_modules/@supabase/gotrue-js/dist/module/lib/polyfills.js ***!
+  \***********************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "polyfillGlobalThis": function() { return /* binding */ polyfillGlobalThis; }
+/* harmony export */ });
+/**
+ * https://mathiasbynens.be/notes/globalthis
+ */
+function polyfillGlobalThis() {
+    if (typeof globalThis === 'object')
+        return;
+    try {
+        Object.defineProperty(Object.prototype, '__magic__', {
+            get: function () {
+                return this;
+            },
+            configurable: true,
+        });
+        // @ts-expect-error 'Allow access to magic'
+        __magic__.globalThis = __magic__;
+        // @ts-expect-error 'Allow access to magic'
+        delete Object.prototype.__magic__;
+    }
+    catch (e) {
+        if (typeof self !== 'undefined') {
+            // @ts-expect-error 'Allow access to globals'
+            self.globalThis = self;
+        }
+    }
+}
+//# sourceMappingURL=polyfills.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@supabase/gotrue-js/dist/module/lib/types.js":
+/*!*******************************************************************!*\
+  !*** ./node_modules/@supabase/gotrue-js/dist/module/lib/types.js ***!
+  \*******************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+
+//# sourceMappingURL=types.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@supabase/gotrue-js/dist/module/lib/version.js":
+/*!*********************************************************************!*\
+  !*** ./node_modules/@supabase/gotrue-js/dist/module/lib/version.js ***!
+  \*********************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "version": function() { return /* binding */ version; }
+/* harmony export */ });
+// Generated by genversion.
+const version = '2.6.1';
+//# sourceMappingURL=version.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@supabase/postgrest-js/dist/module/PostgrestBuilder.js":
+/*!*****************************************************************************!*\
+  !*** ./node_modules/@supabase/postgrest-js/dist/module/PostgrestBuilder.js ***!
+  \*****************************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": function() { return /* binding */ PostgrestBuilder; }
+/* harmony export */ });
+/* harmony import */ var cross_fetch__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! cross-fetch */ "./node_modules/cross-fetch/dist/browser-ponyfill.js");
+/* harmony import */ var cross_fetch__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(cross_fetch__WEBPACK_IMPORTED_MODULE_0__);
+var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+
+class PostgrestBuilder {
+    constructor(builder) {
+        this.shouldThrowOnError = false;
+        this.method = builder.method;
+        this.url = builder.url;
+        this.headers = builder.headers;
+        this.schema = builder.schema;
+        this.body = builder.body;
+        this.shouldThrowOnError = builder.shouldThrowOnError;
+        this.signal = builder.signal;
+        this.allowEmpty = builder.allowEmpty;
+        if (builder.fetch) {
+            this.fetch = builder.fetch;
+        }
+        else if (typeof fetch === 'undefined') {
+            this.fetch = (cross_fetch__WEBPACK_IMPORTED_MODULE_0___default());
+        }
+        else {
+            this.fetch = fetch;
+        }
+    }
+    /**
+     * If there's an error with the query, throwOnError will reject the promise by
+     * throwing the error instead of returning it as part of a successful response.
+     *
+     * {@link https://github.com/supabase/supabase-js/issues/92}
+     */
+    throwOnError() {
+        this.shouldThrowOnError = true;
+        return this;
+    }
+    then(onfulfilled, onrejected) {
+        // https://postgrest.org/en/stable/api.html#switching-schemas
+        if (this.schema === undefined) {
+            // skip
+        }
+        else if (['GET', 'HEAD'].includes(this.method)) {
+            this.headers['Accept-Profile'] = this.schema;
+        }
+        else {
+            this.headers['Content-Profile'] = this.schema;
+        }
+        if (this.method !== 'GET' && this.method !== 'HEAD') {
+            this.headers['Content-Type'] = 'application/json';
+        }
+        // NOTE: Invoke w/o `this` to avoid illegal invocation error.
+        // https://github.com/supabase/postgrest-js/pull/247
+        const _fetch = this.fetch;
+        let res = _fetch(this.url.toString(), {
+            method: this.method,
+            headers: this.headers,
+            body: JSON.stringify(this.body),
+            signal: this.signal,
+        }).then((res) => __awaiter(this, void 0, void 0, function* () {
+            var _a, _b, _c;
+            let error = null;
+            let data = null;
+            let count = null;
+            let status = res.status;
+            let statusText = res.statusText;
+            if (res.ok) {
+                if (this.method !== 'HEAD') {
+                    const body = yield res.text();
+                    if (body === '') {
+                        // Prefer: return=minimal
+                    }
+                    else if (this.headers['Accept'] === 'text/csv') {
+                        data = body;
+                    }
+                    else if (this.headers['Accept'] &&
+                        this.headers['Accept'].includes('application/vnd.pgrst.plan+text')) {
+                        data = body;
+                    }
+                    else {
+                        data = JSON.parse(body);
+                    }
+                }
+                const countHeader = (_a = this.headers['Prefer']) === null || _a === void 0 ? void 0 : _a.match(/count=(exact|planned|estimated)/);
+                const contentRange = (_b = res.headers.get('content-range')) === null || _b === void 0 ? void 0 : _b.split('/');
+                if (countHeader && contentRange && contentRange.length > 1) {
+                    count = parseInt(contentRange[1]);
+                }
+            }
+            else {
+                const body = yield res.text();
+                try {
+                    error = JSON.parse(body);
+                    // Workaround for https://github.com/supabase/postgrest-js/issues/295
+                    if (Array.isArray(error) && res.status === 404) {
+                        data = [];
+                        error = null;
+                        status = 200;
+                        statusText = 'OK';
+                    }
+                }
+                catch (_d) {
+                    // Workaround for https://github.com/supabase/postgrest-js/issues/295
+                    if (res.status === 404 && body === '') {
+                        status = 204;
+                        statusText = 'No Content';
+                    }
+                    else {
+                        error = {
+                            message: body,
+                        };
+                    }
+                }
+                if (error && this.allowEmpty && ((_c = error === null || error === void 0 ? void 0 : error.details) === null || _c === void 0 ? void 0 : _c.includes('Results contain 0 rows'))) {
+                    error = null;
+                    status = 200;
+                    statusText = 'OK';
+                }
+                if (error && this.shouldThrowOnError) {
+                    throw error;
+                }
+            }
+            const postgrestResponse = {
+                error,
+                data,
+                count,
+                status,
+                statusText,
+            };
+            return postgrestResponse;
+        }));
+        if (!this.shouldThrowOnError) {
+            res = res.catch((fetchError) => ({
+                error: {
+                    message: `FetchError: ${fetchError.message}`,
+                    details: '',
+                    hint: '',
+                    code: fetchError.code || '',
+                },
+                data: null,
+                count: null,
+                status: 0,
+                statusText: '',
+            }));
+        }
+        return res.then(onfulfilled, onrejected);
+    }
+}
+//# sourceMappingURL=PostgrestBuilder.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@supabase/postgrest-js/dist/module/PostgrestClient.js":
+/*!****************************************************************************!*\
+  !*** ./node_modules/@supabase/postgrest-js/dist/module/PostgrestClient.js ***!
+  \****************************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": function() { return /* binding */ PostgrestClient; }
+/* harmony export */ });
+/* harmony import */ var _PostgrestQueryBuilder__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./PostgrestQueryBuilder */ "./node_modules/@supabase/postgrest-js/dist/module/PostgrestQueryBuilder.js");
+/* harmony import */ var _PostgrestFilterBuilder__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./PostgrestFilterBuilder */ "./node_modules/@supabase/postgrest-js/dist/module/PostgrestFilterBuilder.js");
+/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./constants */ "./node_modules/@supabase/postgrest-js/dist/module/constants.js");
+
+
+
+/**
+ * PostgREST client.
+ *
+ * @typeParam Database - Types for the schema from the [type
+ * generator](https://supabase.com/docs/reference/javascript/next/typescript-support)
+ *
+ * @typeParam SchemaName - Postgres schema to switch to. Must be a string
+ * literal, the same one passed to the constructor. If the schema is not
+ * `"public"`, this must be supplied manually.
+ */
+class PostgrestClient {
+    // TODO: Add back shouldThrowOnError once we figure out the typings
+    /**
+     * Creates a PostgREST client.
+     *
+     * @param url - URL of the PostgREST endpoint
+     * @param options - Named parameters
+     * @param options.headers - Custom headers
+     * @param options.schema - Postgres schema to switch to
+     * @param options.fetch - Custom fetch
+     */
+    constructor(url, { headers = {}, schema, fetch, } = {}) {
+        this.url = url;
+        this.headers = Object.assign(Object.assign({}, _constants__WEBPACK_IMPORTED_MODULE_2__.DEFAULT_HEADERS), headers);
+        this.schema = schema;
+        this.fetch = fetch;
+    }
+    /**
+     * Perform a query on a table or a view.
+     *
+     * @param relation - The table or view name to query
+     */
+    from(relation) {
+        const url = new URL(`${this.url}/${relation}`);
+        return new _PostgrestQueryBuilder__WEBPACK_IMPORTED_MODULE_0__["default"](url, {
+            headers: Object.assign({}, this.headers),
+            schema: this.schema,
+            fetch: this.fetch,
+        });
+    }
+    /**
+     * Perform a function call.
+     *
+     * @param fn - The function name to call
+     * @param args - The arguments to pass to the function call
+     * @param options - Named parameters
+     * @param options.head - When set to `true`, `data` will not be returned.
+     * Useful if you only need the count.
+     * @param options.count - Count algorithm to use to count rows returned by the
+     * function. Only applicable for [set-returning
+     * functions](https://www.postgresql.org/docs/current/functions-srf.html).
+     *
+     * `"exact"`: Exact but slow count algorithm. Performs a `COUNT(*)` under the
+     * hood.
+     *
+     * `"planned"`: Approximated but fast count algorithm. Uses the Postgres
+     * statistics under the hood.
+     *
+     * `"estimated"`: Uses exact count for low numbers and planned count for high
+     * numbers.
+     */
+    rpc(fn, args = {}, { head = false, count, } = {}) {
+        let method;
+        const url = new URL(`${this.url}/rpc/${fn}`);
+        let body;
+        if (head) {
+            method = 'HEAD';
+            Object.entries(args).forEach(([name, value]) => {
+                url.searchParams.append(name, `${value}`);
+            });
+        }
+        else {
+            method = 'POST';
+            body = args;
+        }
+        const headers = Object.assign({}, this.headers);
+        if (count) {
+            headers['Prefer'] = `count=${count}`;
+        }
+        return new _PostgrestFilterBuilder__WEBPACK_IMPORTED_MODULE_1__["default"]({
+            method,
+            url,
+            headers,
+            schema: this.schema,
+            body,
+            fetch: this.fetch,
+            allowEmpty: false,
+        });
+    }
+}
+//# sourceMappingURL=PostgrestClient.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@supabase/postgrest-js/dist/module/PostgrestFilterBuilder.js":
+/*!***********************************************************************************!*\
+  !*** ./node_modules/@supabase/postgrest-js/dist/module/PostgrestFilterBuilder.js ***!
+  \***********************************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": function() { return /* binding */ PostgrestFilterBuilder; }
+/* harmony export */ });
+/* harmony import */ var _PostgrestTransformBuilder__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./PostgrestTransformBuilder */ "./node_modules/@supabase/postgrest-js/dist/module/PostgrestTransformBuilder.js");
+
+class PostgrestFilterBuilder extends _PostgrestTransformBuilder__WEBPACK_IMPORTED_MODULE_0__["default"] {
+    /**
+     * Match only rows where `column` is equal to `value`.
+     *
+     * To check if the value of `column` is NULL, you should use `.is()` instead.
+     *
+     * @param column - The column to filter on
+     * @param value - The value to filter with
+     */
+    eq(column, value) {
+        this.url.searchParams.append(column, `eq.${value}`);
+        return this;
+    }
+    /**
+     * Match only rows where `column` is not equal to `value`.
+     *
+     * @param column - The column to filter on
+     * @param value - The value to filter with
+     */
+    neq(column, value) {
+        this.url.searchParams.append(column, `neq.${value}`);
+        return this;
+    }
+    /**
+     * Match only rows where `column` is greater than `value`.
+     *
+     * @param column - The column to filter on
+     * @param value - The value to filter with
+     */
+    gt(column, value) {
+        this.url.searchParams.append(column, `gt.${value}`);
+        return this;
+    }
+    /**
+     * Match only rows where `column` is greater than or equal to `value`.
+     *
+     * @param column - The column to filter on
+     * @param value - The value to filter with
+     */
+    gte(column, value) {
+        this.url.searchParams.append(column, `gte.${value}`);
+        return this;
+    }
+    /**
+     * Match only rows where `column` is less than `value`.
+     *
+     * @param column - The column to filter on
+     * @param value - The value to filter with
+     */
+    lt(column, value) {
+        this.url.searchParams.append(column, `lt.${value}`);
+        return this;
+    }
+    /**
+     * Match only rows where `column` is less than or equal to `value`.
+     *
+     * @param column - The column to filter on
+     * @param value - The value to filter with
+     */
+    lte(column, value) {
+        this.url.searchParams.append(column, `lte.${value}`);
+        return this;
+    }
+    /**
+     * Match only rows where `column` matches `pattern` case-sensitively.
+     *
+     * @param column - The column to filter on
+     * @param pattern - The pattern to match with
+     */
+    like(column, pattern) {
+        this.url.searchParams.append(column, `like.${pattern}`);
+        return this;
+    }
+    /**
+     * Match only rows where `column` matches `pattern` case-insensitively.
+     *
+     * @param column - The column to filter on
+     * @param pattern - The pattern to match with
+     */
+    ilike(column, pattern) {
+        this.url.searchParams.append(column, `ilike.${pattern}`);
+        return this;
+    }
+    /**
+     * Match only rows where `column` IS `value`.
+     *
+     * For non-boolean columns, this is only relevant for checking if the value of
+     * `column` is NULL by setting `value` to `null`.
+     *
+     * For boolean columns, you can also set `value` to `true` or `false` and it
+     * will behave the same way as `.eq()`.
+     *
+     * @param column - The column to filter on
+     * @param value - The value to filter with
+     */
+    is(column, value) {
+        this.url.searchParams.append(column, `is.${value}`);
+        return this;
+    }
+    /**
+     * Match only rows where `column` is included in the `values` array.
+     *
+     * @param column - The column to filter on
+     * @param values - The values array to filter with
+     */
+    in(column, values) {
+        const cleanedValues = values
+            .map((s) => {
+            // handle postgrest reserved characters
+            // https://postgrest.org/en/v7.0.0/api.html#reserved-characters
+            if (typeof s === 'string' && new RegExp('[,()]').test(s))
+                return `"${s}"`;
+            else
+                return `${s}`;
+        })
+            .join(',');
+        this.url.searchParams.append(column, `in.(${cleanedValues})`);
+        return this;
+    }
+    /**
+     * Only relevant for jsonb, array, and range columns. Match only rows where
+     * `column` contains every element appearing in `value`.
+     *
+     * @param column - The jsonb, array, or range column to filter on
+     * @param value - The jsonb, array, or range value to filter with
+     */
+    contains(column, value) {
+        if (typeof value === 'string') {
+            // range types can be inclusive '[', ']' or exclusive '(', ')' so just
+            // keep it simple and accept a string
+            this.url.searchParams.append(column, `cs.${value}`);
+        }
+        else if (Array.isArray(value)) {
+            // array
+            this.url.searchParams.append(column, `cs.{${value.join(',')}}`);
+        }
+        else {
+            // json
+            this.url.searchParams.append(column, `cs.${JSON.stringify(value)}`);
+        }
+        return this;
+    }
+    /**
+     * Only relevant for jsonb, array, and range columns. Match only rows where
+     * every element appearing in `column` is contained by `value`.
+     *
+     * @param column - The jsonb, array, or range column to filter on
+     * @param value - The jsonb, array, or range value to filter with
+     */
+    containedBy(column, value) {
+        if (typeof value === 'string') {
+            // range
+            this.url.searchParams.append(column, `cd.${value}`);
+        }
+        else if (Array.isArray(value)) {
+            // array
+            this.url.searchParams.append(column, `cd.{${value.join(',')}}`);
+        }
+        else {
+            // json
+            this.url.searchParams.append(column, `cd.${JSON.stringify(value)}`);
+        }
+        return this;
+    }
+    /**
+     * Only relevant for range columns. Match only rows where every element in
+     * `column` is greater than any element in `range`.
+     *
+     * @param column - The range column to filter on
+     * @param range - The range to filter with
+     */
+    rangeGt(column, range) {
+        this.url.searchParams.append(column, `sr.${range}`);
+        return this;
+    }
+    /**
+     * Only relevant for range columns. Match only rows where every element in
+     * `column` is either contained in `range` or greater than any element in
+     * `range`.
+     *
+     * @param column - The range column to filter on
+     * @param range - The range to filter with
+     */
+    rangeGte(column, range) {
+        this.url.searchParams.append(column, `nxl.${range}`);
+        return this;
+    }
+    /**
+     * Only relevant for range columns. Match only rows where every element in
+     * `column` is less than any element in `range`.
+     *
+     * @param column - The range column to filter on
+     * @param range - The range to filter with
+     */
+    rangeLt(column, range) {
+        this.url.searchParams.append(column, `sl.${range}`);
+        return this;
+    }
+    /**
+     * Only relevant for range columns. Match only rows where every element in
+     * `column` is either contained in `range` or less than any element in
+     * `range`.
+     *
+     * @param column - The range column to filter on
+     * @param range - The range to filter with
+     */
+    rangeLte(column, range) {
+        this.url.searchParams.append(column, `nxr.${range}`);
+        return this;
+    }
+    /**
+     * Only relevant for range columns. Match only rows where `column` is
+     * mutually exclusive to `range` and there can be no element between the two
+     * ranges.
+     *
+     * @param column - The range column to filter on
+     * @param range - The range to filter with
+     */
+    rangeAdjacent(column, range) {
+        this.url.searchParams.append(column, `adj.${range}`);
+        return this;
+    }
+    /**
+     * Only relevant for array and range columns. Match only rows where
+     * `column` and `value` have an element in common.
+     *
+     * @param column - The array or range column to filter on
+     * @param value - The array or range value to filter with
+     */
+    overlaps(column, value) {
+        if (typeof value === 'string') {
+            // range
+            this.url.searchParams.append(column, `ov.${value}`);
+        }
+        else {
+            // array
+            this.url.searchParams.append(column, `ov.{${value.join(',')}}`);
+        }
+        return this;
+    }
+    /**
+     * Only relevant for text and tsvector columns. Match only rows where
+     * `column` matches the query string in `query`.
+     *
+     * @param column - The text or tsvector column to filter on
+     * @param query - The query text to match with
+     * @param options - Named parameters
+     * @param options.config - The text search configuration to use
+     * @param options.type - Change how the `query` text is interpreted
+     */
+    textSearch(column, query, { config, type } = {}) {
+        let typePart = '';
+        if (type === 'plain') {
+            typePart = 'pl';
+        }
+        else if (type === 'phrase') {
+            typePart = 'ph';
+        }
+        else if (type === 'websearch') {
+            typePart = 'w';
+        }
+        const configPart = config === undefined ? '' : `(${config})`;
+        this.url.searchParams.append(column, `${typePart}fts${configPart}.${query}`);
+        return this;
+    }
+    /**
+     * Match only rows where each column in `query` keys is equal to its
+     * associated value. Shorthand for multiple `.eq()`s.
+     *
+     * @param query - The object to filter with, with column names as keys mapped
+     * to their filter values
+     */
+    match(query) {
+        Object.entries(query).forEach(([column, value]) => {
+            this.url.searchParams.append(column, `eq.${value}`);
+        });
+        return this;
+    }
+    /**
+     * Match only rows which doesn't satisfy the filter.
+     *
+     * Unlike most filters, `opearator` and `value` are used as-is and need to
+     * follow [PostgREST
+     * syntax](https://postgrest.org/en/stable/api.html#operators). You also need
+     * to make sure they are properly sanitized.
+     *
+     * @param column - The column to filter on
+     * @param operator - The operator to be negated to filter with, following
+     * PostgREST syntax
+     * @param value - The value to filter with, following PostgREST syntax
+     */
+    not(column, operator, value) {
+        this.url.searchParams.append(column, `not.${operator}.${value}`);
+        return this;
+    }
+    /**
+     * Match only rows which satisfy at least one of the filters.
+     *
+     * Unlike most filters, `filters` is used as-is and needs to follow [PostgREST
+     * syntax](https://postgrest.org/en/stable/api.html#operators). You also need
+     * to make sure it's properly sanitized.
+     *
+     * It's currently not possible to do an `.or()` filter across multiple tables.
+     *
+     * @param filters - The filters to use, following PostgREST syntax
+     * @param foreignTable - Set this to filter on foreign tables instead of the
+     * current table
+     */
+    or(filters, { foreignTable } = {}) {
+        const key = foreignTable ? `${foreignTable}.or` : 'or';
+        this.url.searchParams.append(key, `(${filters})`);
+        return this;
+    }
+    /**
+     * Match only rows which satisfy the filter. This is an escape hatch - you
+     * should use the specific filter methods wherever possible.
+     *
+     * Unlike most filters, `opearator` and `value` are used as-is and need to
+     * follow [PostgREST
+     * syntax](https://postgrest.org/en/stable/api.html#operators). You also need
+     * to make sure they are properly sanitized.
+     *
+     * @param column - The column to filter on
+     * @param operator - The operator to filter with, following PostgREST syntax
+     * @param value - The value to filter with, following PostgREST syntax
+     */
+    filter(column, operator, value) {
+        this.url.searchParams.append(column, `${operator}.${value}`);
+        return this;
+    }
+}
+//# sourceMappingURL=PostgrestFilterBuilder.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@supabase/postgrest-js/dist/module/PostgrestQueryBuilder.js":
+/*!**********************************************************************************!*\
+  !*** ./node_modules/@supabase/postgrest-js/dist/module/PostgrestQueryBuilder.js ***!
+  \**********************************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": function() { return /* binding */ PostgrestQueryBuilder; }
+/* harmony export */ });
+/* harmony import */ var _PostgrestFilterBuilder__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./PostgrestFilterBuilder */ "./node_modules/@supabase/postgrest-js/dist/module/PostgrestFilterBuilder.js");
+
+class PostgrestQueryBuilder {
+    constructor(url, { headers = {}, schema, fetch, }) {
+        this.url = url;
+        this.headers = headers;
+        this.schema = schema;
+        this.fetch = fetch;
+    }
+    /**
+     * Perform a SELECT query on the table or view.
+     *
+     * @param columns - The columns to retrieve, separated by commas
+     *
+     * @param options - Named parameters
+     *
+     * @param options.head - When set to `true`, `data` will not be returned.
+     * Useful if you only need the count.
+     *
+     * @param options.count - Count algorithm to use to count rows in the table or view.
+     *
+     * `"exact"`: Exact but slow count algorithm. Performs a `COUNT(*)` under the
+     * hood.
+     *
+     * `"planned"`: Approximated but fast count algorithm. Uses the Postgres
+     * statistics under the hood.
+     *
+     * `"estimated"`: Uses exact count for low numbers and planned count for high
+     * numbers.
+     */
+    select(columns, { head = false, count, } = {}) {
+        const method = head ? 'HEAD' : 'GET';
+        // Remove whitespaces except when quoted
+        let quoted = false;
+        const cleanedColumns = (columns !== null && columns !== void 0 ? columns : '*')
+            .split('')
+            .map((c) => {
+            if (/\s/.test(c) && !quoted) {
+                return '';
+            }
+            if (c === '"') {
+                quoted = !quoted;
+            }
+            return c;
+        })
+            .join('');
+        this.url.searchParams.set('select', cleanedColumns);
+        if (count) {
+            this.headers['Prefer'] = `count=${count}`;
+        }
+        return new _PostgrestFilterBuilder__WEBPACK_IMPORTED_MODULE_0__["default"]({
+            method,
+            url: this.url,
+            headers: this.headers,
+            schema: this.schema,
+            fetch: this.fetch,
+            allowEmpty: false,
+        });
+    }
+    /**
+     * Perform an INSERT into the table or view.
+     *
+     * By default, inserted rows are not returned. To return it, chain the call
+     * with `.select()`.
+     *
+     * @param values - The values to insert. Pass an object to insert a single row
+     * or an array to insert multiple rows.
+     *
+     * @param options - Named parameters
+     *
+     * @param options.count - Count algorithm to use to count inserted rows.
+     *
+     * `"exact"`: Exact but slow count algorithm. Performs a `COUNT(*)` under the
+     * hood.
+     *
+     * `"planned"`: Approximated but fast count algorithm. Uses the Postgres
+     * statistics under the hood.
+     *
+     * `"estimated"`: Uses exact count for low numbers and planned count for high
+     * numbers.
+     */
+    insert(values, { count, } = {}) {
+        const method = 'POST';
+        const prefersHeaders = [];
+        const body = values;
+        if (count) {
+            prefersHeaders.push(`count=${count}`);
+        }
+        if (this.headers['Prefer']) {
+            prefersHeaders.unshift(this.headers['Prefer']);
+        }
+        this.headers['Prefer'] = prefersHeaders.join(',');
+        if (Array.isArray(values)) {
+            const columns = values.reduce((acc, x) => acc.concat(Object.keys(x)), []);
+            if (columns.length > 0) {
+                const uniqueColumns = [...new Set(columns)].map((column) => `"${column}"`);
+                this.url.searchParams.set('columns', uniqueColumns.join(','));
+            }
+        }
+        return new _PostgrestFilterBuilder__WEBPACK_IMPORTED_MODULE_0__["default"]({
+            method,
+            url: this.url,
+            headers: this.headers,
+            schema: this.schema,
+            body,
+            fetch: this.fetch,
+            allowEmpty: false,
+        });
+    }
+    /**
+     * Perform an UPSERT on the table or view. Depending on the column(s) passed
+     * to `onConflict`, `.upsert()` allows you to perform the equivalent of
+     * `.insert()` if a row with the corresponding `onConflict` columns doesn't
+     * exist, or if it does exist, perform an alternative action depending on
+     * `ignoreDuplicates`.
+     *
+     * By default, upserted rows are not returned. To return it, chain the call
+     * with `.select()`.
+     *
+     * @param values - The values to upsert with. Pass an object to upsert a
+     * single row or an array to upsert multiple rows.
+     *
+     * @param options - Named parameters
+     *
+     * @param options.onConflict - Comma-separated UNIQUE column(s) to specify how
+     * duplicate rows are determined. Two rows are duplicates if all the
+     * `onConflict` columns are equal.
+     *
+     * @param options.ignoreDuplicates - If `true`, duplicate rows are ignored. If
+     * `false`, duplicate rows are merged with existing rows.
+     *
+     * @param options.count - Count algorithm to use to count upserted rows.
+     *
+     * `"exact"`: Exact but slow count algorithm. Performs a `COUNT(*)` under the
+     * hood.
+     *
+     * `"planned"`: Approximated but fast count algorithm. Uses the Postgres
+     * statistics under the hood.
+     *
+     * `"estimated"`: Uses exact count for low numbers and planned count for high
+     * numbers.
+     */
+    upsert(values, { onConflict, ignoreDuplicates = false, count, } = {}) {
+        const method = 'POST';
+        const prefersHeaders = [`resolution=${ignoreDuplicates ? 'ignore' : 'merge'}-duplicates`];
+        if (onConflict !== undefined)
+            this.url.searchParams.set('on_conflict', onConflict);
+        const body = values;
+        if (count) {
+            prefersHeaders.push(`count=${count}`);
+        }
+        if (this.headers['Prefer']) {
+            prefersHeaders.unshift(this.headers['Prefer']);
+        }
+        this.headers['Prefer'] = prefersHeaders.join(',');
+        return new _PostgrestFilterBuilder__WEBPACK_IMPORTED_MODULE_0__["default"]({
+            method,
+            url: this.url,
+            headers: this.headers,
+            schema: this.schema,
+            body,
+            fetch: this.fetch,
+            allowEmpty: false,
+        });
+    }
+    /**
+     * Perform an UPDATE on the table or view.
+     *
+     * By default, updated rows are not returned. To return it, chain the call
+     * with `.select()` after filters.
+     *
+     * @param values - The values to update with
+     *
+     * @param options - Named parameters
+     *
+     * @param options.count - Count algorithm to use to count updated rows.
+     *
+     * `"exact"`: Exact but slow count algorithm. Performs a `COUNT(*)` under the
+     * hood.
+     *
+     * `"planned"`: Approximated but fast count algorithm. Uses the Postgres
+     * statistics under the hood.
+     *
+     * `"estimated"`: Uses exact count for low numbers and planned count for high
+     * numbers.
+     */
+    update(values, { count, } = {}) {
+        const method = 'PATCH';
+        const prefersHeaders = [];
+        const body = values;
+        if (count) {
+            prefersHeaders.push(`count=${count}`);
+        }
+        if (this.headers['Prefer']) {
+            prefersHeaders.unshift(this.headers['Prefer']);
+        }
+        this.headers['Prefer'] = prefersHeaders.join(',');
+        return new _PostgrestFilterBuilder__WEBPACK_IMPORTED_MODULE_0__["default"]({
+            method,
+            url: this.url,
+            headers: this.headers,
+            schema: this.schema,
+            body,
+            fetch: this.fetch,
+            allowEmpty: false,
+        });
+    }
+    /**
+     * Perform a DELETE on the table or view.
+     *
+     * By default, deleted rows are not returned. To return it, chain the call
+     * with `.select()` after filters.
+     *
+     * @param options - Named parameters
+     *
+     * @param options.count - Count algorithm to use to count deleted rows.
+     *
+     * `"exact"`: Exact but slow count algorithm. Performs a `COUNT(*)` under the
+     * hood.
+     *
+     * `"planned"`: Approximated but fast count algorithm. Uses the Postgres
+     * statistics under the hood.
+     *
+     * `"estimated"`: Uses exact count for low numbers and planned count for high
+     * numbers.
+     */
+    delete({ count, } = {}) {
+        const method = 'DELETE';
+        const prefersHeaders = [];
+        if (count) {
+            prefersHeaders.push(`count=${count}`);
+        }
+        if (this.headers['Prefer']) {
+            prefersHeaders.unshift(this.headers['Prefer']);
+        }
+        this.headers['Prefer'] = prefersHeaders.join(',');
+        return new _PostgrestFilterBuilder__WEBPACK_IMPORTED_MODULE_0__["default"]({
+            method,
+            url: this.url,
+            headers: this.headers,
+            schema: this.schema,
+            fetch: this.fetch,
+            allowEmpty: false,
+        });
+    }
+}
+//# sourceMappingURL=PostgrestQueryBuilder.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@supabase/postgrest-js/dist/module/PostgrestTransformBuilder.js":
+/*!**************************************************************************************!*\
+  !*** ./node_modules/@supabase/postgrest-js/dist/module/PostgrestTransformBuilder.js ***!
+  \**************************************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": function() { return /* binding */ PostgrestTransformBuilder; }
+/* harmony export */ });
+/* harmony import */ var _PostgrestBuilder__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./PostgrestBuilder */ "./node_modules/@supabase/postgrest-js/dist/module/PostgrestBuilder.js");
+
+class PostgrestTransformBuilder extends _PostgrestBuilder__WEBPACK_IMPORTED_MODULE_0__["default"] {
+    /**
+     * Perform a SELECT on the query result.
+     *
+     * By default, `.insert()`, `.update()`, `.upsert()`, and `.delete()` do not
+     * return modified rows. By calling this method, modified rows are returned in
+     * `data`.
+     *
+     * @param columns - The columns to retrieve, separated by commas
+     */
+    select(columns) {
+        // Remove whitespaces except when quoted
+        let quoted = false;
+        const cleanedColumns = (columns !== null && columns !== void 0 ? columns : '*')
+            .split('')
+            .map((c) => {
+            if (/\s/.test(c) && !quoted) {
+                return '';
+            }
+            if (c === '"') {
+                quoted = !quoted;
+            }
+            return c;
+        })
+            .join('');
+        this.url.searchParams.set('select', cleanedColumns);
+        if (this.headers['Prefer']) {
+            this.headers['Prefer'] += ',';
+        }
+        this.headers['Prefer'] += 'return=representation';
+        return this;
+    }
+    /**
+     * Order the query result by `column`.
+     *
+     * You can call this method multiple times to order by multiple columns.
+     *
+     * You can order foreign tables, but it doesn't affect the ordering of the
+     * current table.
+     *
+     * @param column - The column to order by
+     * @param options - Named parameters
+     * @param options.ascending - If `true`, the result will be in ascending order
+     * @param options.nullsFirst - If `true`, `null`s appear first. If `false`,
+     * `null`s appear last.
+     * @param options.foreignTable - Set this to order a foreign table by foreign
+     * columns
+     */
+    order(column, { ascending = true, nullsFirst, foreignTable, } = {}) {
+        const key = foreignTable ? `${foreignTable}.order` : 'order';
+        const existingOrder = this.url.searchParams.get(key);
+        this.url.searchParams.set(key, `${existingOrder ? `${existingOrder},` : ''}${column}.${ascending ? 'asc' : 'desc'}${nullsFirst === undefined ? '' : nullsFirst ? '.nullsfirst' : '.nullslast'}`);
+        return this;
+    }
+    /**
+     * Limit the query result by `count`.
+     *
+     * @param count - The maximum number of rows to return
+     * @param options - Named parameters
+     * @param options.foreignTable - Set this to limit rows of foreign tables
+     * instead of the current table
+     */
+    limit(count, { foreignTable } = {}) {
+        const key = typeof foreignTable === 'undefined' ? 'limit' : `${foreignTable}.limit`;
+        this.url.searchParams.set(key, `${count}`);
+        return this;
+    }
+    /**
+     * Limit the query result by `from` and `to` inclusively.
+     *
+     * @param from - The starting index from which to limit the result
+     * @param to - The last index to which to limit the result
+     * @param options - Named parameters
+     * @param options.foreignTable - Set this to limit rows of foreign tables
+     * instead of the current table
+     */
+    range(from, to, { foreignTable } = {}) {
+        const keyOffset = typeof foreignTable === 'undefined' ? 'offset' : `${foreignTable}.offset`;
+        const keyLimit = typeof foreignTable === 'undefined' ? 'limit' : `${foreignTable}.limit`;
+        this.url.searchParams.set(keyOffset, `${from}`);
+        // Range is inclusive, so add 1
+        this.url.searchParams.set(keyLimit, `${to - from + 1}`);
+        return this;
+    }
+    /**
+     * Set the AbortSignal for the fetch request.
+     *
+     * @param signal - The AbortSignal to use for the fetch request
+     */
+    abortSignal(signal) {
+        this.signal = signal;
+        return this;
+    }
+    /**
+     * Return `data` as a single object instead of an array of objects.
+     *
+     * Query result must be one row (e.g. using `.limit(1)`), otherwise this
+     * returns an error.
+     */
+    single() {
+        this.headers['Accept'] = 'application/vnd.pgrst.object+json';
+        return this;
+    }
+    /**
+     * Return `data` as a single object instead of an array of objects.
+     *
+     * Query result must be zero or one row (e.g. using `.limit(1)`), otherwise
+     * this returns an error.
+     */
+    maybeSingle() {
+        this.headers['Accept'] = 'application/vnd.pgrst.object+json';
+        this.allowEmpty = true;
+        return this;
+    }
+    /**
+     * Return `data` as a string in CSV format.
+     */
+    csv() {
+        this.headers['Accept'] = 'text/csv';
+        return this;
+    }
+    /**
+     * Return `data` as an object in [GeoJSON](https://geojson.org) format.
+     */
+    geojson() {
+        this.headers['Accept'] = 'application/geo+json';
+        return this;
+    }
+    /**
+     * Return `data` as the EXPLAIN plan for the query.
+     *
+     * @param options - Named parameters
+     *
+     * @param options.analyze - If `true`, the query will be executed and the
+     * actual run time will be returned
+     *
+     * @param options.verbose - If `true`, the query identifier will be returned
+     * and `data` will include the output columns of the query
+     *
+     * @param options.settings - If `true`, include information on configuration
+     * parameters that affect query planning
+     *
+     * @param options.buffers - If `true`, include information on buffer usage
+     *
+     * @param options.wal - If `true`, include information on WAL record generation
+     *
+     * @param options.format - The format of the output, can be `"text"` (default)
+     * or `"json"`
+     */
+    explain({ analyze = false, verbose = false, settings = false, buffers = false, wal = false, format = 'text', } = {}) {
+        const options = [
+            analyze ? 'analyze' : null,
+            verbose ? 'verbose' : null,
+            settings ? 'settings' : null,
+            buffers ? 'buffers' : null,
+            wal ? 'wal' : null,
+        ]
+            .filter(Boolean)
+            .join('|');
+        // An Accept header can carry multiple media types but postgrest-js always sends one
+        const forMediatype = this.headers['Accept'];
+        this.headers['Accept'] = `application/vnd.pgrst.plan+${format}; for="${forMediatype}"; options=${options};`;
+        if (format === 'json')
+            return this;
+        else
+            return this;
+    }
+    /**
+     * Rollback the query.
+     *
+     * `data` will still be returned, but the query is not committed.
+     */
+    rollback() {
+        var _a;
+        if (((_a = this.headers['Prefer']) !== null && _a !== void 0 ? _a : '').trim().length > 0) {
+            this.headers['Prefer'] += ',tx=rollback';
+        }
+        else {
+            this.headers['Prefer'] = 'tx=rollback';
+        }
+        return this;
+    }
+    /**
+     * Override the type of the returned `data`.
+     *
+     * @typeParam NewResult - The new result type to override with
+     */
+    returns() {
+        return this;
+    }
+}
+//# sourceMappingURL=PostgrestTransformBuilder.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@supabase/postgrest-js/dist/module/constants.js":
+/*!**********************************************************************!*\
+  !*** ./node_modules/@supabase/postgrest-js/dist/module/constants.js ***!
+  \**********************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "DEFAULT_HEADERS": function() { return /* binding */ DEFAULT_HEADERS; }
+/* harmony export */ });
+/* harmony import */ var _version__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./version */ "./node_modules/@supabase/postgrest-js/dist/module/version.js");
+
+const DEFAULT_HEADERS = { 'X-Client-Info': `postgrest-js/${_version__WEBPACK_IMPORTED_MODULE_0__.version}` };
+//# sourceMappingURL=constants.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@supabase/postgrest-js/dist/module/index.js":
+/*!******************************************************************!*\
+  !*** ./node_modules/@supabase/postgrest-js/dist/module/index.js ***!
+  \******************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "PostgrestBuilder": function() { return /* reexport safe */ _PostgrestBuilder__WEBPACK_IMPORTED_MODULE_4__["default"]; },
+/* harmony export */   "PostgrestClient": function() { return /* reexport safe */ _PostgrestClient__WEBPACK_IMPORTED_MODULE_0__["default"]; },
+/* harmony export */   "PostgrestFilterBuilder": function() { return /* reexport safe */ _PostgrestFilterBuilder__WEBPACK_IMPORTED_MODULE_2__["default"]; },
+/* harmony export */   "PostgrestQueryBuilder": function() { return /* reexport safe */ _PostgrestQueryBuilder__WEBPACK_IMPORTED_MODULE_1__["default"]; },
+/* harmony export */   "PostgrestTransformBuilder": function() { return /* reexport safe */ _PostgrestTransformBuilder__WEBPACK_IMPORTED_MODULE_3__["default"]; }
+/* harmony export */ });
+/* harmony import */ var _PostgrestClient__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./PostgrestClient */ "./node_modules/@supabase/postgrest-js/dist/module/PostgrestClient.js");
+/* harmony import */ var _PostgrestQueryBuilder__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./PostgrestQueryBuilder */ "./node_modules/@supabase/postgrest-js/dist/module/PostgrestQueryBuilder.js");
+/* harmony import */ var _PostgrestFilterBuilder__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./PostgrestFilterBuilder */ "./node_modules/@supabase/postgrest-js/dist/module/PostgrestFilterBuilder.js");
+/* harmony import */ var _PostgrestTransformBuilder__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./PostgrestTransformBuilder */ "./node_modules/@supabase/postgrest-js/dist/module/PostgrestTransformBuilder.js");
+/* harmony import */ var _PostgrestBuilder__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./PostgrestBuilder */ "./node_modules/@supabase/postgrest-js/dist/module/PostgrestBuilder.js");
+
+
+
+
+
+//# sourceMappingURL=index.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@supabase/postgrest-js/dist/module/version.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/@supabase/postgrest-js/dist/module/version.js ***!
+  \********************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "version": function() { return /* binding */ version; }
+/* harmony export */ });
+const version = '1.1.1';
+//# sourceMappingURL=version.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@supabase/realtime-js/dist/module/RealtimeChannel.js":
+/*!***************************************************************************!*\
+  !*** ./node_modules/@supabase/realtime-js/dist/module/RealtimeChannel.js ***!
+  \***************************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "REALTIME_LISTEN_TYPES": function() { return /* binding */ REALTIME_LISTEN_TYPES; },
+/* harmony export */   "REALTIME_POSTGRES_CHANGES_LISTEN_EVENT": function() { return /* binding */ REALTIME_POSTGRES_CHANGES_LISTEN_EVENT; },
+/* harmony export */   "REALTIME_SUBSCRIBE_STATES": function() { return /* binding */ REALTIME_SUBSCRIBE_STATES; },
+/* harmony export */   "default": function() { return /* binding */ RealtimeChannel; }
+/* harmony export */ });
+/* harmony import */ var _lib_constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./lib/constants */ "./node_modules/@supabase/realtime-js/dist/module/lib/constants.js");
+/* harmony import */ var _lib_push__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./lib/push */ "./node_modules/@supabase/realtime-js/dist/module/lib/push.js");
+/* harmony import */ var _lib_timer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./lib/timer */ "./node_modules/@supabase/realtime-js/dist/module/lib/timer.js");
+/* harmony import */ var _RealtimePresence__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./RealtimePresence */ "./node_modules/@supabase/realtime-js/dist/module/RealtimePresence.js");
+/* harmony import */ var _lib_transformers__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./lib/transformers */ "./node_modules/@supabase/realtime-js/dist/module/lib/transformers.js");
+var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+
+
+
+
+
+var REALTIME_POSTGRES_CHANGES_LISTEN_EVENT;
+(function (REALTIME_POSTGRES_CHANGES_LISTEN_EVENT) {
+    REALTIME_POSTGRES_CHANGES_LISTEN_EVENT["ALL"] = "*";
+    REALTIME_POSTGRES_CHANGES_LISTEN_EVENT["INSERT"] = "INSERT";
+    REALTIME_POSTGRES_CHANGES_LISTEN_EVENT["UPDATE"] = "UPDATE";
+    REALTIME_POSTGRES_CHANGES_LISTEN_EVENT["DELETE"] = "DELETE";
+})(REALTIME_POSTGRES_CHANGES_LISTEN_EVENT || (REALTIME_POSTGRES_CHANGES_LISTEN_EVENT = {}));
+var REALTIME_LISTEN_TYPES;
+(function (REALTIME_LISTEN_TYPES) {
+    REALTIME_LISTEN_TYPES["BROADCAST"] = "broadcast";
+    REALTIME_LISTEN_TYPES["PRESENCE"] = "presence";
+    REALTIME_LISTEN_TYPES["POSTGRES_CHANGES"] = "postgres_changes";
+})(REALTIME_LISTEN_TYPES || (REALTIME_LISTEN_TYPES = {}));
+var REALTIME_SUBSCRIBE_STATES;
+(function (REALTIME_SUBSCRIBE_STATES) {
+    REALTIME_SUBSCRIBE_STATES["SUBSCRIBED"] = "SUBSCRIBED";
+    REALTIME_SUBSCRIBE_STATES["TIMED_OUT"] = "TIMED_OUT";
+    REALTIME_SUBSCRIBE_STATES["CLOSED"] = "CLOSED";
+    REALTIME_SUBSCRIBE_STATES["CHANNEL_ERROR"] = "CHANNEL_ERROR";
+})(REALTIME_SUBSCRIBE_STATES || (REALTIME_SUBSCRIBE_STATES = {}));
+/** A channel is the basic building block of Realtime
+ * and narrows the scope of data flow to subscribed clients.
+ * You can think of a channel as a chatroom where participants are able to see who's online
+ * and send and receive messages.
+ **/
+class RealtimeChannel {
+    constructor(
+    /** Topic name can be any string. */
+    topic, params = { config: {} }, socket) {
+        this.topic = topic;
+        this.params = params;
+        this.socket = socket;
+        this.bindings = {};
+        this.state = _lib_constants__WEBPACK_IMPORTED_MODULE_0__.CHANNEL_STATES.closed;
+        this.joinedOnce = false;
+        this.pushBuffer = [];
+        this.params.config = Object.assign({
+            broadcast: { ack: false, self: false },
+            presence: { key: '' },
+        }, params.config);
+        this.timeout = this.socket.timeout;
+        this.joinPush = new _lib_push__WEBPACK_IMPORTED_MODULE_1__["default"](this, _lib_constants__WEBPACK_IMPORTED_MODULE_0__.CHANNEL_EVENTS.join, this.params, this.timeout);
+        this.rejoinTimer = new _lib_timer__WEBPACK_IMPORTED_MODULE_2__["default"](() => this._rejoinUntilConnected(), this.socket.reconnectAfterMs);
+        this.joinPush.receive('ok', () => {
+            this.state = _lib_constants__WEBPACK_IMPORTED_MODULE_0__.CHANNEL_STATES.joined;
+            this.rejoinTimer.reset();
+            this.pushBuffer.forEach((pushEvent) => pushEvent.send());
+            this.pushBuffer = [];
+        });
+        this._onClose(() => {
+            this.rejoinTimer.reset();
+            this.socket.log('channel', `close ${this.topic} ${this._joinRef()}`);
+            this.state = _lib_constants__WEBPACK_IMPORTED_MODULE_0__.CHANNEL_STATES.closed;
+            this.socket._remove(this);
+        });
+        this._onError((reason) => {
+            if (this._isLeaving() || this._isClosed()) {
+                return;
+            }
+            this.socket.log('channel', `error ${this.topic}`, reason);
+            this.state = _lib_constants__WEBPACK_IMPORTED_MODULE_0__.CHANNEL_STATES.errored;
+            this.rejoinTimer.scheduleTimeout();
+        });
+        this.joinPush.receive('timeout', () => {
+            if (!this._isJoining()) {
+                return;
+            }
+            this.socket.log('channel', `timeout ${this.topic}`, this.joinPush.timeout);
+            this.state = _lib_constants__WEBPACK_IMPORTED_MODULE_0__.CHANNEL_STATES.errored;
+            this.rejoinTimer.scheduleTimeout();
+        });
+        this._on(_lib_constants__WEBPACK_IMPORTED_MODULE_0__.CHANNEL_EVENTS.reply, {}, (payload, ref) => {
+            this._trigger(this._replyEventName(ref), payload);
+        });
+        this.presence = new _RealtimePresence__WEBPACK_IMPORTED_MODULE_3__["default"](this);
+    }
+    /** Subscribe registers your client with the server */
+    subscribe(callback, timeout = this.timeout) {
+        var _a, _b;
+        if (this.joinedOnce) {
+            throw `tried to subscribe multiple times. 'subscribe' can only be called a single time per channel instance`;
+        }
+        else {
+            const { config: { broadcast, presence }, } = this.params;
+            this._onError((e) => callback && callback('CHANNEL_ERROR', e));
+            this._onClose(() => callback && callback('CLOSED'));
+            const accessTokenPayload = {};
+            const config = {
+                broadcast,
+                presence,
+                postgres_changes: (_b = (_a = this.bindings.postgres_changes) === null || _a === void 0 ? void 0 : _a.map((r) => r.filter)) !== null && _b !== void 0 ? _b : [],
+            };
+            if (this.socket.accessToken) {
+                accessTokenPayload.access_token = this.socket.accessToken;
+            }
+            this.updateJoinPayload(Object.assign({ config }, accessTokenPayload));
+            this.joinedOnce = true;
+            this._rejoin(timeout);
+            this.joinPush
+                .receive('ok', ({ postgres_changes: serverPostgresFilters, }) => {
+                var _a;
+                this.socket.accessToken &&
+                    this.socket.setAuth(this.socket.accessToken);
+                if (serverPostgresFilters === undefined) {
+                    callback && callback('SUBSCRIBED');
+                    return;
+                }
+                else {
+                    const clientPostgresBindings = this.bindings.postgres_changes;
+                    const bindingsLen = (_a = clientPostgresBindings === null || clientPostgresBindings === void 0 ? void 0 : clientPostgresBindings.length) !== null && _a !== void 0 ? _a : 0;
+                    const newPostgresBindings = [];
+                    for (let i = 0; i < bindingsLen; i++) {
+                        const clientPostgresBinding = clientPostgresBindings[i];
+                        const { filter: { event, schema, table, filter }, } = clientPostgresBinding;
+                        const serverPostgresFilter = serverPostgresFilters && serverPostgresFilters[i];
+                        if (serverPostgresFilter &&
+                            serverPostgresFilter.event === event &&
+                            serverPostgresFilter.schema === schema &&
+                            serverPostgresFilter.table === table &&
+                            serverPostgresFilter.filter === filter) {
+                            newPostgresBindings.push(Object.assign(Object.assign({}, clientPostgresBinding), { id: serverPostgresFilter.id }));
+                        }
+                        else {
+                            this.unsubscribe();
+                            callback &&
+                                callback('CHANNEL_ERROR', new Error('mismatch between server and client bindings for postgres changes'));
+                            return;
+                        }
+                    }
+                    this.bindings.postgres_changes = newPostgresBindings;
+                    callback && callback('SUBSCRIBED');
+                    return;
+                }
+            })
+                .receive('error', (error) => {
+                callback &&
+                    callback('CHANNEL_ERROR', new Error(JSON.stringify(Object.values(error).join(', ') || 'error')));
+                return;
+            })
+                .receive('timeout', () => {
+                callback && callback('TIMED_OUT');
+                return;
+            });
+        }
+        return this;
+    }
+    presenceState() {
+        return this.presence.state;
+    }
+    track(payload, opts = {}) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return yield this.send({
+                type: 'presence',
+                event: 'track',
+                payload,
+            }, opts.timeout || this.timeout);
+        });
+    }
+    untrack(opts = {}) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return yield this.send({
+                type: 'presence',
+                event: 'untrack',
+            }, opts);
+        });
+    }
+    on(type, filter, callback) {
+        return this._on(type, filter, callback);
+    }
+    send(payload, opts = {}) {
+        return new Promise((resolve) => {
+            var _a, _b, _c;
+            const push = this._push(payload.type, payload, opts.timeout || this.timeout);
+            if (push.rateLimited) {
+                resolve('rate limited');
+            }
+            if (payload.type === 'broadcast' &&
+                !((_c = (_b = (_a = this.params) === null || _a === void 0 ? void 0 : _a.config) === null || _b === void 0 ? void 0 : _b.broadcast) === null || _c === void 0 ? void 0 : _c.ack)) {
+                resolve('ok');
+            }
+            push.receive('ok', () => resolve('ok'));
+            push.receive('timeout', () => resolve('timed out'));
+        });
+    }
+    updateJoinPayload(payload) {
+        this.joinPush.updatePayload(payload);
+    }
+    /**
+     * Leaves the channel.
+     *
+     * Unsubscribes from server events, and instructs channel to terminate on server.
+     * Triggers onClose() hooks.
+     *
+     * To receive leave acknowledgements, use the a `receive` hook to bind to the server ack, ie:
+     * channel.unsubscribe().receive("ok", () => alert("left!") )
+     */
+    unsubscribe(timeout = this.timeout) {
+        this.state = _lib_constants__WEBPACK_IMPORTED_MODULE_0__.CHANNEL_STATES.leaving;
+        const onClose = () => {
+            this.socket.log('channel', `leave ${this.topic}`);
+            this._trigger(_lib_constants__WEBPACK_IMPORTED_MODULE_0__.CHANNEL_EVENTS.close, 'leave', this._joinRef());
+        };
+        this.rejoinTimer.reset();
+        // Destroy joinPush to avoid connection timeouts during unscription phase
+        this.joinPush.destroy();
+        return new Promise((resolve) => {
+            const leavePush = new _lib_push__WEBPACK_IMPORTED_MODULE_1__["default"](this, _lib_constants__WEBPACK_IMPORTED_MODULE_0__.CHANNEL_EVENTS.leave, {}, timeout);
+            leavePush
+                .receive('ok', () => {
+                onClose();
+                resolve('ok');
+            })
+                .receive('timeout', () => {
+                onClose();
+                resolve('timed out');
+            })
+                .receive('error', () => {
+                resolve('error');
+            });
+            leavePush.send();
+            if (!this._canPush()) {
+                leavePush.trigger('ok', {});
+            }
+        });
+    }
+    /** @internal */
+    _push(event, payload, timeout = this.timeout) {
+        if (!this.joinedOnce) {
+            throw `tried to push '${event}' to '${this.topic}' before joining. Use channel.subscribe() before pushing events`;
+        }
+        let pushEvent = new _lib_push__WEBPACK_IMPORTED_MODULE_1__["default"](this, event, payload, timeout);
+        if (this._canPush()) {
+            pushEvent.send();
+        }
+        else {
+            pushEvent.startTimeout();
+            this.pushBuffer.push(pushEvent);
+        }
+        return pushEvent;
+    }
+    /**
+     * Overridable message hook
+     *
+     * Receives all events for specialized message handling before dispatching to the channel callbacks.
+     * Must return the payload, modified or unmodified.
+     *
+     * @internal
+     */
+    _onMessage(_event, payload, _ref) {
+        return payload;
+    }
+    /** @internal */
+    _isMember(topic) {
+        return this.topic === topic;
+    }
+    /** @internal */
+    _joinRef() {
+        return this.joinPush.ref;
+    }
+    /** @internal */
+    _trigger(type, payload, ref) {
+        var _a, _b;
+        const typeLower = type.toLocaleLowerCase();
+        const { close, error, leave, join } = _lib_constants__WEBPACK_IMPORTED_MODULE_0__.CHANNEL_EVENTS;
+        const events = [close, error, leave, join];
+        if (ref && events.indexOf(typeLower) >= 0 && ref !== this._joinRef()) {
+            return;
+        }
+        let handledPayload = this._onMessage(typeLower, payload, ref);
+        if (payload && !handledPayload) {
+            throw 'channel onMessage callbacks must return the payload, modified or unmodified';
+        }
+        if (['insert', 'update', 'delete'].includes(typeLower)) {
+            (_a = this.bindings.postgres_changes) === null || _a === void 0 ? void 0 : _a.filter((bind) => {
+                var _a, _b, _c;
+                return (((_a = bind.filter) === null || _a === void 0 ? void 0 : _a.event) === '*' ||
+                    ((_c = (_b = bind.filter) === null || _b === void 0 ? void 0 : _b.event) === null || _c === void 0 ? void 0 : _c.toLocaleLowerCase()) === typeLower);
+            }).map((bind) => bind.callback(handledPayload, ref));
+        }
+        else {
+            (_b = this.bindings[typeLower]) === null || _b === void 0 ? void 0 : _b.filter((bind) => {
+                var _a, _b, _c, _d, _e, _f;
+                if (['broadcast', 'presence', 'postgres_changes'].includes(typeLower)) {
+                    if ('id' in bind) {
+                        const bindId = bind.id;
+                        const bindEvent = (_a = bind.filter) === null || _a === void 0 ? void 0 : _a.event;
+                        return (bindId &&
+                            ((_b = payload.ids) === null || _b === void 0 ? void 0 : _b.includes(bindId)) &&
+                            (bindEvent === '*' ||
+                                (bindEvent === null || bindEvent === void 0 ? void 0 : bindEvent.toLocaleLowerCase()) ===
+                                    ((_c = payload.data) === null || _c === void 0 ? void 0 : _c.type.toLocaleLowerCase())));
+                    }
+                    else {
+                        const bindEvent = (_e = (_d = bind === null || bind === void 0 ? void 0 : bind.filter) === null || _d === void 0 ? void 0 : _d.event) === null || _e === void 0 ? void 0 : _e.toLocaleLowerCase();
+                        return (bindEvent === '*' ||
+                            bindEvent === ((_f = payload === null || payload === void 0 ? void 0 : payload.event) === null || _f === void 0 ? void 0 : _f.toLocaleLowerCase()));
+                    }
+                }
+                else {
+                    return bind.type.toLocaleLowerCase() === typeLower;
+                }
+            }).map((bind) => {
+                if (typeof handledPayload === 'object' && 'ids' in handledPayload) {
+                    const postgresChanges = handledPayload.data;
+                    const { schema, table, commit_timestamp, type, errors } = postgresChanges;
+                    const enrichedPayload = {
+                        schema: schema,
+                        table: table,
+                        commit_timestamp: commit_timestamp,
+                        eventType: type,
+                        new: {},
+                        old: {},
+                        errors: errors,
+                    };
+                    handledPayload = Object.assign(Object.assign({}, enrichedPayload), this._getPayloadRecords(postgresChanges));
+                }
+                bind.callback(handledPayload, ref);
+            });
+        }
+    }
+    /** @internal */
+    _isClosed() {
+        return this.state === _lib_constants__WEBPACK_IMPORTED_MODULE_0__.CHANNEL_STATES.closed;
+    }
+    /** @internal */
+    _isJoined() {
+        return this.state === _lib_constants__WEBPACK_IMPORTED_MODULE_0__.CHANNEL_STATES.joined;
+    }
+    /** @internal */
+    _isJoining() {
+        return this.state === _lib_constants__WEBPACK_IMPORTED_MODULE_0__.CHANNEL_STATES.joining;
+    }
+    /** @internal */
+    _isLeaving() {
+        return this.state === _lib_constants__WEBPACK_IMPORTED_MODULE_0__.CHANNEL_STATES.leaving;
+    }
+    /** @internal */
+    _replyEventName(ref) {
+        return `chan_reply_${ref}`;
+    }
+    /** @internal */
+    _on(type, filter, callback) {
+        const typeLower = type.toLocaleLowerCase();
+        const binding = {
+            type: typeLower,
+            filter: filter,
+            callback: callback,
+        };
+        if (this.bindings[typeLower]) {
+            this.bindings[typeLower].push(binding);
+        }
+        else {
+            this.bindings[typeLower] = [binding];
+        }
+        return this;
+    }
+    /** @internal */
+    _off(type, filter) {
+        const typeLower = type.toLocaleLowerCase();
+        this.bindings[typeLower] = this.bindings[typeLower].filter((bind) => {
+            var _a;
+            return !(((_a = bind.type) === null || _a === void 0 ? void 0 : _a.toLocaleLowerCase()) === typeLower &&
+                RealtimeChannel.isEqual(bind.filter, filter));
+        });
+        return this;
+    }
+    /** @internal */
+    static isEqual(obj1, obj2) {
+        if (Object.keys(obj1).length !== Object.keys(obj2).length) {
+            return false;
+        }
+        for (const k in obj1) {
+            if (obj1[k] !== obj2[k]) {
+                return false;
+            }
+        }
+        return true;
+    }
+    /** @internal */
+    _rejoinUntilConnected() {
+        this.rejoinTimer.scheduleTimeout();
+        if (this.socket.isConnected()) {
+            this._rejoin();
+        }
+    }
+    /**
+     * Registers a callback that will be executed when the channel closes.
+     *
+     * @internal
+     */
+    _onClose(callback) {
+        this._on(_lib_constants__WEBPACK_IMPORTED_MODULE_0__.CHANNEL_EVENTS.close, {}, callback);
+    }
+    /**
+     * Registers a callback that will be executed when the channel encounteres an error.
+     *
+     * @internal
+     */
+    _onError(callback) {
+        this._on(_lib_constants__WEBPACK_IMPORTED_MODULE_0__.CHANNEL_EVENTS.error, {}, (reason) => callback(reason));
+    }
+    /**
+     * Returns `true` if the socket is connected and the channel has been joined.
+     *
+     * @internal
+     */
+    _canPush() {
+        return this.socket.isConnected() && this._isJoined();
+    }
+    /** @internal */
+    _rejoin(timeout = this.timeout) {
+        if (this._isLeaving()) {
+            return;
+        }
+        this.socket._leaveOpenTopic(this.topic);
+        this.state = _lib_constants__WEBPACK_IMPORTED_MODULE_0__.CHANNEL_STATES.joining;
+        this.joinPush.resend(timeout);
+    }
+    /** @internal */
+    _getPayloadRecords(payload) {
+        const records = {
+            new: {},
+            old: {},
+        };
+        if (payload.type === 'INSERT' || payload.type === 'UPDATE') {
+            records.new = _lib_transformers__WEBPACK_IMPORTED_MODULE_4__.convertChangeData(payload.columns, payload.record);
+        }
+        if (payload.type === 'UPDATE' || payload.type === 'DELETE') {
+            records.old = _lib_transformers__WEBPACK_IMPORTED_MODULE_4__.convertChangeData(payload.columns, payload.old_record);
+        }
+        return records;
+    }
+}
+//# sourceMappingURL=RealtimeChannel.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@supabase/realtime-js/dist/module/RealtimeClient.js":
+/*!**************************************************************************!*\
+  !*** ./node_modules/@supabase/realtime-js/dist/module/RealtimeClient.js ***!
+  \**************************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": function() { return /* binding */ RealtimeClient; }
+/* harmony export */ });
+/* harmony import */ var websocket__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! websocket */ "./node_modules/websocket/lib/browser.js");
+/* harmony import */ var websocket__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(websocket__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _lib_constants__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./lib/constants */ "./node_modules/@supabase/realtime-js/dist/module/lib/constants.js");
+/* harmony import */ var _lib_timer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./lib/timer */ "./node_modules/@supabase/realtime-js/dist/module/lib/timer.js");
+/* harmony import */ var _lib_serializer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./lib/serializer */ "./node_modules/@supabase/realtime-js/dist/module/lib/serializer.js");
+/* harmony import */ var _RealtimeChannel__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./RealtimeChannel */ "./node_modules/@supabase/realtime-js/dist/module/RealtimeChannel.js");
+var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+
+
+
+
+
+const noop = () => { };
+class RealtimeClient {
+    /**
+     * Initializes the Socket.
+     *
+     * @param endPoint The string WebSocket endpoint, ie, "ws://example.com/socket", "wss://example.com", "/socket" (inherited host & protocol)
+     * @param options.transport The Websocket Transport, for example WebSocket.
+     * @param options.timeout The default timeout in milliseconds to trigger push timeouts.
+     * @param options.params The optional params to pass when connecting.
+     * @param options.headers The optional headers to pass when connecting.
+     * @param options.heartbeatIntervalMs The millisec interval to send a heartbeat message.
+     * @param options.logger The optional function for specialized logging, ie: logger: (kind, msg, data) => { console.log(`${kind}: ${msg}`, data) }
+     * @param options.encode The function to encode outgoing messages. Defaults to JSON: (payload, callback) => callback(JSON.stringify(payload))
+     * @param options.decode The function to decode incoming messages. Defaults to Serializer's decode.
+     * @param options.reconnectAfterMs he optional function that returns the millsec reconnect interval. Defaults to stepped backoff off.
+     */
+    constructor(endPoint, options) {
+        var _a;
+        this.accessToken = null;
+        this.channels = [];
+        this.endPoint = '';
+        this.headers = _lib_constants__WEBPACK_IMPORTED_MODULE_1__.DEFAULT_HEADERS;
+        this.params = {};
+        this.timeout = _lib_constants__WEBPACK_IMPORTED_MODULE_1__.DEFAULT_TIMEOUT;
+        this.transport = websocket__WEBPACK_IMPORTED_MODULE_0__.w3cwebsocket;
+        this.heartbeatIntervalMs = 30000;
+        this.heartbeatTimer = undefined;
+        this.pendingHeartbeatRef = null;
+        this.ref = 0;
+        this.logger = noop;
+        this.conn = null;
+        this.sendBuffer = [];
+        this.serializer = new _lib_serializer__WEBPACK_IMPORTED_MODULE_3__["default"]();
+        this.stateChangeCallbacks = {
+            open: [],
+            close: [],
+            error: [],
+            message: [],
+        };
+        this.eventsPerSecondLimitMs = 100;
+        this.inThrottle = false;
+        this.endPoint = `${endPoint}/${_lib_constants__WEBPACK_IMPORTED_MODULE_1__.TRANSPORTS.websocket}`;
+        if (options === null || options === void 0 ? void 0 : options.params)
+            this.params = options.params;
+        if (options === null || options === void 0 ? void 0 : options.headers)
+            this.headers = Object.assign(Object.assign({}, this.headers), options.headers);
+        if (options === null || options === void 0 ? void 0 : options.timeout)
+            this.timeout = options.timeout;
+        if (options === null || options === void 0 ? void 0 : options.logger)
+            this.logger = options.logger;
+        if (options === null || options === void 0 ? void 0 : options.transport)
+            this.transport = options.transport;
+        if (options === null || options === void 0 ? void 0 : options.heartbeatIntervalMs)
+            this.heartbeatIntervalMs = options.heartbeatIntervalMs;
+        const eventsPerSecond = (_a = options === null || options === void 0 ? void 0 : options.params) === null || _a === void 0 ? void 0 : _a.eventsPerSecond;
+        if (eventsPerSecond)
+            this.eventsPerSecondLimitMs = Math.floor(1000 / eventsPerSecond);
+        this.reconnectAfterMs = (options === null || options === void 0 ? void 0 : options.reconnectAfterMs)
+            ? options.reconnectAfterMs
+            : (tries) => {
+                return [1000, 2000, 5000, 10000][tries - 1] || 10000;
+            };
+        this.encode = (options === null || options === void 0 ? void 0 : options.encode)
+            ? options.encode
+            : (payload, callback) => {
+                return callback(JSON.stringify(payload));
+            };
+        this.decode = (options === null || options === void 0 ? void 0 : options.decode)
+            ? options.decode
+            : this.serializer.decode.bind(this.serializer);
+        this.reconnectTimer = new _lib_timer__WEBPACK_IMPORTED_MODULE_2__["default"](() => __awaiter(this, void 0, void 0, function* () {
+            this.disconnect();
+            this.connect();
+        }), this.reconnectAfterMs);
+    }
+    /**
+     * Connects the socket, unless already connected.
+     */
+    connect() {
+        if (this.conn) {
+            return;
+        }
+        this.conn = new this.transport(this._endPointURL(), [], null, this.headers);
+        if (this.conn) {
+            this.conn.binaryType = 'arraybuffer';
+            this.conn.onopen = () => this._onConnOpen();
+            this.conn.onerror = (error) => this._onConnError(error);
+            this.conn.onmessage = (event) => this._onConnMessage(event);
+            this.conn.onclose = (event) => this._onConnClose(event);
+        }
+    }
+    /**
+     * Disconnects the socket.
+     *
+     * @param code A numeric status code to send on disconnect.
+     * @param reason A custom reason for the disconnect.
+     */
+    disconnect(code, reason) {
+        if (this.conn) {
+            this.conn.onclose = function () { }; // noop
+            if (code) {
+                this.conn.close(code, reason !== null && reason !== void 0 ? reason : '');
+            }
+            else {
+                this.conn.close();
+            }
+            this.conn = null;
+            // remove open handles
+            this.heartbeatTimer && clearInterval(this.heartbeatTimer);
+            this.reconnectTimer.reset();
+        }
+    }
+    getChannels() {
+        return this.channels;
+    }
+    removeChannel(channel) {
+        return channel.unsubscribe().then((status) => {
+            if (this.channels.length === 0) {
+                this.disconnect();
+            }
+            return status;
+        });
+    }
+    removeAllChannels() {
+        return Promise.all(this.channels.map((channel) => channel.unsubscribe())).then((values) => {
+            this.disconnect();
+            return values;
+        });
+    }
+    /**
+     * Logs the message.
+     *
+     * For customized logging, `this.logger` can be overriden.
+     */
+    log(kind, msg, data) {
+        this.logger(kind, msg, data);
+    }
+    /**
+     * Returns the current state of the socket.
+     */
+    connectionState() {
+        switch (this.conn && this.conn.readyState) {
+            case _lib_constants__WEBPACK_IMPORTED_MODULE_1__.SOCKET_STATES.connecting:
+                return _lib_constants__WEBPACK_IMPORTED_MODULE_1__.CONNECTION_STATE.Connecting;
+            case _lib_constants__WEBPACK_IMPORTED_MODULE_1__.SOCKET_STATES.open:
+                return _lib_constants__WEBPACK_IMPORTED_MODULE_1__.CONNECTION_STATE.Open;
+            case _lib_constants__WEBPACK_IMPORTED_MODULE_1__.SOCKET_STATES.closing:
+                return _lib_constants__WEBPACK_IMPORTED_MODULE_1__.CONNECTION_STATE.Closing;
+            default:
+                return _lib_constants__WEBPACK_IMPORTED_MODULE_1__.CONNECTION_STATE.Closed;
+        }
+    }
+    /**
+     * Retuns `true` is the connection is open.
+     */
+    isConnected() {
+        return this.connectionState() === _lib_constants__WEBPACK_IMPORTED_MODULE_1__.CONNECTION_STATE.Open;
+    }
+    channel(topic, params = { config: {} }) {
+        if (!this.isConnected()) {
+            this.connect();
+        }
+        const chan = new _RealtimeChannel__WEBPACK_IMPORTED_MODULE_4__["default"](`realtime:${topic}`, params, this);
+        this.channels.push(chan);
+        return chan;
+    }
+    /**
+     * Push out a message if the socket is connected.
+     *
+     * If the socket is not connected, the message gets enqueued within a local buffer, and sent out when a connection is next established.
+     */
+    push(data) {
+        const { topic, event, payload, ref } = data;
+        let callback = () => {
+            this.encode(data, (result) => {
+                var _a;
+                (_a = this.conn) === null || _a === void 0 ? void 0 : _a.send(result);
+            });
+        };
+        this.log('push', `${topic} ${event} (${ref})`, payload);
+        if (this.isConnected()) {
+            if (['broadcast', 'presence', 'postgres_changes'].includes(event)) {
+                const isThrottled = this._throttle(callback)();
+                if (isThrottled) {
+                    return 'rate limited';
+                }
+            }
+            else {
+                callback();
+            }
+        }
+        else {
+            this.sendBuffer.push(callback);
+        }
+    }
+    /**
+     * Sets the JWT access token used for channel subscription authorization and Realtime RLS.
+     *
+     * @param token A JWT string.
+     */
+    setAuth(token) {
+        this.accessToken = token;
+        this.channels.forEach((channel) => {
+            token && channel.updateJoinPayload({ access_token: token });
+            if (channel.joinedOnce && channel._isJoined()) {
+                channel._push(_lib_constants__WEBPACK_IMPORTED_MODULE_1__.CHANNEL_EVENTS.access_token, { access_token: token });
+            }
+        });
+    }
+    /**
+     * Return the next message ref, accounting for overflows
+     *
+     * @internal
+     */
+    _makeRef() {
+        let newRef = this.ref + 1;
+        if (newRef === this.ref) {
+            this.ref = 0;
+        }
+        else {
+            this.ref = newRef;
+        }
+        return this.ref.toString();
+    }
+    /**
+     * Unsubscribe from channels with the specified topic.
+     *
+     * @internal
+     */
+    _leaveOpenTopic(topic) {
+        let dupChannel = this.channels.find((c) => c.topic === topic && (c._isJoined() || c._isJoining()));
+        if (dupChannel) {
+            this.log('transport', `leaving duplicate topic "${topic}"`);
+            dupChannel.unsubscribe();
+        }
+    }
+    /**
+     * Removes a subscription from the socket.
+     *
+     * @param channel An open subscription.
+     *
+     * @internal
+     */
+    _remove(channel) {
+        this.channels = this.channels.filter((c) => c._joinRef() !== channel._joinRef());
+    }
+    /**
+     * Returns the URL of the websocket.
+     *
+     * @internal
+     */
+    _endPointURL() {
+        return this._appendParams(this.endPoint, Object.assign({}, this.params, { vsn: _lib_constants__WEBPACK_IMPORTED_MODULE_1__.VSN }));
+    }
+    /** @internal */
+    _onConnMessage(rawMessage) {
+        this.decode(rawMessage.data, (msg) => {
+            let { topic, event, payload, ref } = msg;
+            if ((ref && ref === this.pendingHeartbeatRef) ||
+                event === (payload === null || payload === void 0 ? void 0 : payload.type)) {
+                this.pendingHeartbeatRef = null;
+            }
+            this.log('receive', `${payload.status || ''} ${topic} ${event} ${(ref && '(' + ref + ')') || ''}`, payload);
+            this.channels
+                .filter((channel) => channel._isMember(topic))
+                .forEach((channel) => channel._trigger(event, payload, ref));
+            this.stateChangeCallbacks.message.forEach((callback) => callback(msg));
+        });
+    }
+    /** @internal */
+    _onConnOpen() {
+        this.log('transport', `connected to ${this._endPointURL()}`);
+        this._flushSendBuffer();
+        this.reconnectTimer.reset();
+        this.heartbeatTimer && clearInterval(this.heartbeatTimer);
+        this.heartbeatTimer = setInterval(() => this._sendHeartbeat(), this.heartbeatIntervalMs);
+        this.stateChangeCallbacks.open.forEach((callback) => callback());
+    }
+    /** @internal */
+    _onConnClose(event) {
+        this.log('transport', 'close', event);
+        this._triggerChanError();
+        this.heartbeatTimer && clearInterval(this.heartbeatTimer);
+        this.reconnectTimer.scheduleTimeout();
+        this.stateChangeCallbacks.close.forEach((callback) => callback(event));
+    }
+    /** @internal */
+    _onConnError(error) {
+        this.log('transport', error.message);
+        this._triggerChanError();
+        this.stateChangeCallbacks.error.forEach((callback) => callback(error));
+    }
+    /** @internal */
+    _triggerChanError() {
+        this.channels.forEach((channel) => channel._trigger(_lib_constants__WEBPACK_IMPORTED_MODULE_1__.CHANNEL_EVENTS.error));
+    }
+    /** @internal */
+    _appendParams(url, params) {
+        if (Object.keys(params).length === 0) {
+            return url;
+        }
+        const prefix = url.match(/\?/) ? '&' : '?';
+        const query = new URLSearchParams(params);
+        return `${url}${prefix}${query}`;
+    }
+    /** @internal */
+    _flushSendBuffer() {
+        if (this.isConnected() && this.sendBuffer.length > 0) {
+            this.sendBuffer.forEach((callback) => callback());
+            this.sendBuffer = [];
+        }
+    }
+    /** @internal */
+    _sendHeartbeat() {
+        var _a;
+        if (!this.isConnected()) {
+            return;
+        }
+        if (this.pendingHeartbeatRef) {
+            this.pendingHeartbeatRef = null;
+            this.log('transport', 'heartbeat timeout. Attempting to re-establish connection');
+            (_a = this.conn) === null || _a === void 0 ? void 0 : _a.close(_lib_constants__WEBPACK_IMPORTED_MODULE_1__.WS_CLOSE_NORMAL, 'hearbeat timeout');
+            return;
+        }
+        this.pendingHeartbeatRef = this._makeRef();
+        this.push({
+            topic: 'phoenix',
+            event: 'heartbeat',
+            payload: {},
+            ref: this.pendingHeartbeatRef,
+        });
+        this.setAuth(this.accessToken);
+    }
+    /** @internal */
+    _throttle(callback, eventsPerSecondLimit = this.eventsPerSecondLimitMs) {
+        return () => {
+            if (this.inThrottle)
+                return true;
+            callback();
+            this.inThrottle = true;
+            setTimeout(() => {
+                this.inThrottle = false;
+            }, eventsPerSecondLimit);
+            return false;
+        };
+    }
+}
+//# sourceMappingURL=RealtimeClient.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@supabase/realtime-js/dist/module/RealtimePresence.js":
+/*!****************************************************************************!*\
+  !*** ./node_modules/@supabase/realtime-js/dist/module/RealtimePresence.js ***!
+  \****************************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "REALTIME_PRESENCE_LISTEN_EVENTS": function() { return /* binding */ REALTIME_PRESENCE_LISTEN_EVENTS; },
+/* harmony export */   "default": function() { return /* binding */ RealtimePresence; }
+/* harmony export */ });
+/*
+  This file draws heavily from https://github.com/phoenixframework/phoenix/blob/d344ec0a732ab4ee204215b31de69cf4be72e3bf/assets/js/phoenix/presence.js
+  License: https://github.com/phoenixframework/phoenix/blob/d344ec0a732ab4ee204215b31de69cf4be72e3bf/LICENSE.md
+*/
+var REALTIME_PRESENCE_LISTEN_EVENTS;
+(function (REALTIME_PRESENCE_LISTEN_EVENTS) {
+    REALTIME_PRESENCE_LISTEN_EVENTS["SYNC"] = "sync";
+    REALTIME_PRESENCE_LISTEN_EVENTS["JOIN"] = "join";
+    REALTIME_PRESENCE_LISTEN_EVENTS["LEAVE"] = "leave";
+})(REALTIME_PRESENCE_LISTEN_EVENTS || (REALTIME_PRESENCE_LISTEN_EVENTS = {}));
+class RealtimePresence {
+    /**
+     * Initializes the Presence.
+     *
+     * @param channel - The RealtimeChannel
+     * @param opts - The options,
+     *        for example `{events: {state: 'state', diff: 'diff'}}`
+     */
+    constructor(channel, opts) {
+        this.channel = channel;
+        this.state = {};
+        this.pendingDiffs = [];
+        this.joinRef = null;
+        this.caller = {
+            onJoin: () => { },
+            onLeave: () => { },
+            onSync: () => { },
+        };
+        const events = (opts === null || opts === void 0 ? void 0 : opts.events) || {
+            state: 'presence_state',
+            diff: 'presence_diff',
+        };
+        this.channel._on(events.state, {}, (newState) => {
+            const { onJoin, onLeave, onSync } = this.caller;
+            this.joinRef = this.channel._joinRef();
+            this.state = RealtimePresence.syncState(this.state, newState, onJoin, onLeave);
+            this.pendingDiffs.forEach((diff) => {
+                this.state = RealtimePresence.syncDiff(this.state, diff, onJoin, onLeave);
+            });
+            this.pendingDiffs = [];
+            onSync();
+        });
+        this.channel._on(events.diff, {}, (diff) => {
+            const { onJoin, onLeave, onSync } = this.caller;
+            if (this.inPendingSyncState()) {
+                this.pendingDiffs.push(diff);
+            }
+            else {
+                this.state = RealtimePresence.syncDiff(this.state, diff, onJoin, onLeave);
+                onSync();
+            }
+        });
+        this.onJoin((key, currentPresences, newPresences) => {
+            this.channel._trigger('presence', {
+                event: 'join',
+                key,
+                currentPresences,
+                newPresences,
+            });
+        });
+        this.onLeave((key, currentPresences, leftPresences) => {
+            this.channel._trigger('presence', {
+                event: 'leave',
+                key,
+                currentPresences,
+                leftPresences,
+            });
+        });
+        this.onSync(() => {
+            this.channel._trigger('presence', { event: 'sync' });
+        });
+    }
+    /**
+     * Used to sync the list of presences on the server with the
+     * client's state.
+     *
+     * An optional `onJoin` and `onLeave` callback can be provided to
+     * react to changes in the client's local presences across
+     * disconnects and reconnects with the server.
+     *
+     * @internal
+     */
+    static syncState(currentState, newState, onJoin, onLeave) {
+        const state = this.cloneDeep(currentState);
+        const transformedState = this.transformState(newState);
+        const joins = {};
+        const leaves = {};
+        this.map(state, (key, presences) => {
+            if (!transformedState[key]) {
+                leaves[key] = presences;
+            }
+        });
+        this.map(transformedState, (key, newPresences) => {
+            const currentPresences = state[key];
+            if (currentPresences) {
+                const newPresenceRefs = newPresences.map((m) => m.presence_ref);
+                const curPresenceRefs = currentPresences.map((m) => m.presence_ref);
+                const joinedPresences = newPresences.filter((m) => curPresenceRefs.indexOf(m.presence_ref) < 0);
+                const leftPresences = currentPresences.filter((m) => newPresenceRefs.indexOf(m.presence_ref) < 0);
+                if (joinedPresences.length > 0) {
+                    joins[key] = joinedPresences;
+                }
+                if (leftPresences.length > 0) {
+                    leaves[key] = leftPresences;
+                }
+            }
+            else {
+                joins[key] = newPresences;
+            }
+        });
+        return this.syncDiff(state, { joins, leaves }, onJoin, onLeave);
+    }
+    /**
+     * Used to sync a diff of presence join and leave events from the
+     * server, as they happen.
+     *
+     * Like `syncState`, `syncDiff` accepts optional `onJoin` and
+     * `onLeave` callbacks to react to a user joining or leaving from a
+     * device.
+     *
+     * @internal
+     */
+    static syncDiff(state, diff, onJoin, onLeave) {
+        const { joins, leaves } = {
+            joins: this.transformState(diff.joins),
+            leaves: this.transformState(diff.leaves),
+        };
+        if (!onJoin) {
+            onJoin = () => { };
+        }
+        if (!onLeave) {
+            onLeave = () => { };
+        }
+        this.map(joins, (key, newPresences) => {
+            var _a;
+            const currentPresences = (_a = state[key]) !== null && _a !== void 0 ? _a : [];
+            state[key] = this.cloneDeep(newPresences);
+            if (currentPresences.length > 0) {
+                const joinedPresenceRefs = state[key].map((m) => m.presence_ref);
+                const curPresences = currentPresences.filter((m) => joinedPresenceRefs.indexOf(m.presence_ref) < 0);
+                state[key].unshift(...curPresences);
+            }
+            onJoin(key, currentPresences, newPresences);
+        });
+        this.map(leaves, (key, leftPresences) => {
+            let currentPresences = state[key];
+            if (!currentPresences)
+                return;
+            const presenceRefsToRemove = leftPresences.map((m) => m.presence_ref);
+            currentPresences = currentPresences.filter((m) => presenceRefsToRemove.indexOf(m.presence_ref) < 0);
+            state[key] = currentPresences;
+            onLeave(key, currentPresences, leftPresences);
+            if (currentPresences.length === 0)
+                delete state[key];
+        });
+        return state;
+    }
+    /** @internal */
+    static map(obj, func) {
+        return Object.getOwnPropertyNames(obj).map((key) => func(key, obj[key]));
+    }
+    /**
+     * Remove 'metas' key
+     * Change 'phx_ref' to 'presence_ref'
+     * Remove 'phx_ref' and 'phx_ref_prev'
+     *
+     * @example
+     * // returns {
+     *  abc123: [
+     *    { presence_ref: '2', user_id: 1 },
+     *    { presence_ref: '3', user_id: 2 }
+     *  ]
+     * }
+     * RealtimePresence.transformState({
+     *  abc123: {
+     *    metas: [
+     *      { phx_ref: '2', phx_ref_prev: '1' user_id: 1 },
+     *      { phx_ref: '3', user_id: 2 }
+     *    ]
+     *  }
+     * })
+     *
+     * @internal
+     */
+    static transformState(state) {
+        state = this.cloneDeep(state);
+        return Object.getOwnPropertyNames(state).reduce((newState, key) => {
+            const presences = state[key];
+            if ('metas' in presences) {
+                newState[key] = presences.metas.map((presence) => {
+                    presence['presence_ref'] = presence['phx_ref'];
+                    delete presence['phx_ref'];
+                    delete presence['phx_ref_prev'];
+                    return presence;
+                });
+            }
+            else {
+                newState[key] = presences;
+            }
+            return newState;
+        }, {});
+    }
+    /** @internal */
+    static cloneDeep(obj) {
+        return JSON.parse(JSON.stringify(obj));
+    }
+    /** @internal */
+    onJoin(callback) {
+        this.caller.onJoin = callback;
+    }
+    /** @internal */
+    onLeave(callback) {
+        this.caller.onLeave = callback;
+    }
+    /** @internal */
+    onSync(callback) {
+        this.caller.onSync = callback;
+    }
+    /** @internal */
+    inPendingSyncState() {
+        return !this.joinRef || this.joinRef !== this.channel._joinRef();
+    }
+}
+//# sourceMappingURL=RealtimePresence.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@supabase/realtime-js/dist/module/index.js":
+/*!*****************************************************************!*\
+  !*** ./node_modules/@supabase/realtime-js/dist/module/index.js ***!
+  \*****************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "REALTIME_LISTEN_TYPES": function() { return /* reexport safe */ _RealtimeChannel__WEBPACK_IMPORTED_MODULE_1__.REALTIME_LISTEN_TYPES; },
+/* harmony export */   "REALTIME_POSTGRES_CHANGES_LISTEN_EVENT": function() { return /* reexport safe */ _RealtimeChannel__WEBPACK_IMPORTED_MODULE_1__.REALTIME_POSTGRES_CHANGES_LISTEN_EVENT; },
+/* harmony export */   "REALTIME_PRESENCE_LISTEN_EVENTS": function() { return /* reexport safe */ _RealtimePresence__WEBPACK_IMPORTED_MODULE_2__.REALTIME_PRESENCE_LISTEN_EVENTS; },
+/* harmony export */   "REALTIME_SUBSCRIBE_STATES": function() { return /* reexport safe */ _RealtimeChannel__WEBPACK_IMPORTED_MODULE_1__.REALTIME_SUBSCRIBE_STATES; },
+/* harmony export */   "RealtimeChannel": function() { return /* reexport safe */ _RealtimeChannel__WEBPACK_IMPORTED_MODULE_1__["default"]; },
+/* harmony export */   "RealtimeClient": function() { return /* reexport safe */ _RealtimeClient__WEBPACK_IMPORTED_MODULE_0__["default"]; },
+/* harmony export */   "RealtimePresence": function() { return /* reexport safe */ _RealtimePresence__WEBPACK_IMPORTED_MODULE_2__["default"]; }
+/* harmony export */ });
+/* harmony import */ var _RealtimeClient__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./RealtimeClient */ "./node_modules/@supabase/realtime-js/dist/module/RealtimeClient.js");
+/* harmony import */ var _RealtimeChannel__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./RealtimeChannel */ "./node_modules/@supabase/realtime-js/dist/module/RealtimeChannel.js");
+/* harmony import */ var _RealtimePresence__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./RealtimePresence */ "./node_modules/@supabase/realtime-js/dist/module/RealtimePresence.js");
+
+
+
+
+//# sourceMappingURL=index.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@supabase/realtime-js/dist/module/lib/constants.js":
+/*!*************************************************************************!*\
+  !*** ./node_modules/@supabase/realtime-js/dist/module/lib/constants.js ***!
+  \*************************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "CHANNEL_EVENTS": function() { return /* binding */ CHANNEL_EVENTS; },
+/* harmony export */   "CHANNEL_STATES": function() { return /* binding */ CHANNEL_STATES; },
+/* harmony export */   "CONNECTION_STATE": function() { return /* binding */ CONNECTION_STATE; },
+/* harmony export */   "DEFAULT_HEADERS": function() { return /* binding */ DEFAULT_HEADERS; },
+/* harmony export */   "DEFAULT_TIMEOUT": function() { return /* binding */ DEFAULT_TIMEOUT; },
+/* harmony export */   "SOCKET_STATES": function() { return /* binding */ SOCKET_STATES; },
+/* harmony export */   "TRANSPORTS": function() { return /* binding */ TRANSPORTS; },
+/* harmony export */   "VSN": function() { return /* binding */ VSN; },
+/* harmony export */   "WS_CLOSE_NORMAL": function() { return /* binding */ WS_CLOSE_NORMAL; }
+/* harmony export */ });
+/* harmony import */ var _version__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./version */ "./node_modules/@supabase/realtime-js/dist/module/lib/version.js");
+
+const DEFAULT_HEADERS = { 'X-Client-Info': `realtime-js/${_version__WEBPACK_IMPORTED_MODULE_0__.version}` };
+const VSN = '1.0.0';
+const DEFAULT_TIMEOUT = 10000;
+const WS_CLOSE_NORMAL = 1000;
+var SOCKET_STATES;
+(function (SOCKET_STATES) {
+    SOCKET_STATES[SOCKET_STATES["connecting"] = 0] = "connecting";
+    SOCKET_STATES[SOCKET_STATES["open"] = 1] = "open";
+    SOCKET_STATES[SOCKET_STATES["closing"] = 2] = "closing";
+    SOCKET_STATES[SOCKET_STATES["closed"] = 3] = "closed";
+})(SOCKET_STATES || (SOCKET_STATES = {}));
+var CHANNEL_STATES;
+(function (CHANNEL_STATES) {
+    CHANNEL_STATES["closed"] = "closed";
+    CHANNEL_STATES["errored"] = "errored";
+    CHANNEL_STATES["joined"] = "joined";
+    CHANNEL_STATES["joining"] = "joining";
+    CHANNEL_STATES["leaving"] = "leaving";
+})(CHANNEL_STATES || (CHANNEL_STATES = {}));
+var CHANNEL_EVENTS;
+(function (CHANNEL_EVENTS) {
+    CHANNEL_EVENTS["close"] = "phx_close";
+    CHANNEL_EVENTS["error"] = "phx_error";
+    CHANNEL_EVENTS["join"] = "phx_join";
+    CHANNEL_EVENTS["reply"] = "phx_reply";
+    CHANNEL_EVENTS["leave"] = "phx_leave";
+    CHANNEL_EVENTS["access_token"] = "access_token";
+})(CHANNEL_EVENTS || (CHANNEL_EVENTS = {}));
+var TRANSPORTS;
+(function (TRANSPORTS) {
+    TRANSPORTS["websocket"] = "websocket";
+})(TRANSPORTS || (TRANSPORTS = {}));
+var CONNECTION_STATE;
+(function (CONNECTION_STATE) {
+    CONNECTION_STATE["Connecting"] = "connecting";
+    CONNECTION_STATE["Open"] = "open";
+    CONNECTION_STATE["Closing"] = "closing";
+    CONNECTION_STATE["Closed"] = "closed";
+})(CONNECTION_STATE || (CONNECTION_STATE = {}));
+//# sourceMappingURL=constants.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@supabase/realtime-js/dist/module/lib/push.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/@supabase/realtime-js/dist/module/lib/push.js ***!
+  \********************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": function() { return /* binding */ Push; }
+/* harmony export */ });
+/* harmony import */ var _lib_constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../lib/constants */ "./node_modules/@supabase/realtime-js/dist/module/lib/constants.js");
+
+class Push {
+    /**
+     * Initializes the Push
+     *
+     * @param channel The Channel
+     * @param event The event, for example `"phx_join"`
+     * @param payload The payload, for example `{user_id: 123}`
+     * @param timeout The push timeout in milliseconds
+     */
+    constructor(channel, event, payload = {}, timeout = _lib_constants__WEBPACK_IMPORTED_MODULE_0__.DEFAULT_TIMEOUT) {
+        this.channel = channel;
+        this.event = event;
+        this.payload = payload;
+        this.timeout = timeout;
+        this.sent = false;
+        this.timeoutTimer = undefined;
+        this.ref = '';
+        this.receivedResp = null;
+        this.recHooks = [];
+        this.refEvent = null;
+        this.rateLimited = false;
+    }
+    resend(timeout) {
+        this.timeout = timeout;
+        this._cancelRefEvent();
+        this.ref = '';
+        this.refEvent = null;
+        this.receivedResp = null;
+        this.sent = false;
+        this.send();
+    }
+    send() {
+        if (this._hasReceived('timeout')) {
+            return;
+        }
+        this.startTimeout();
+        this.sent = true;
+        const status = this.channel.socket.push({
+            topic: this.channel.topic,
+            event: this.event,
+            payload: this.payload,
+            ref: this.ref,
+            join_ref: this.channel._joinRef(),
+        });
+        if (status === 'rate limited') {
+            this.rateLimited = true;
+        }
+    }
+    updatePayload(payload) {
+        this.payload = Object.assign(Object.assign({}, this.payload), payload);
+    }
+    receive(status, callback) {
+        var _a;
+        if (this._hasReceived(status)) {
+            callback((_a = this.receivedResp) === null || _a === void 0 ? void 0 : _a.response);
+        }
+        this.recHooks.push({ status, callback });
+        return this;
+    }
+    startTimeout() {
+        if (this.timeoutTimer) {
+            return;
+        }
+        this.ref = this.channel.socket._makeRef();
+        this.refEvent = this.channel._replyEventName(this.ref);
+        const callback = (payload) => {
+            this._cancelRefEvent();
+            this._cancelTimeout();
+            this.receivedResp = payload;
+            this._matchReceive(payload);
+        };
+        this.channel._on(this.refEvent, {}, callback);
+        this.timeoutTimer = setTimeout(() => {
+            this.trigger('timeout', {});
+        }, this.timeout);
+    }
+    trigger(status, response) {
+        if (this.refEvent)
+            this.channel._trigger(this.refEvent, { status, response });
+    }
+    destroy() {
+        this._cancelRefEvent();
+        this._cancelTimeout();
+    }
+    _cancelRefEvent() {
+        if (!this.refEvent) {
+            return;
+        }
+        this.channel._off(this.refEvent, {});
+    }
+    _cancelTimeout() {
+        clearTimeout(this.timeoutTimer);
+        this.timeoutTimer = undefined;
+    }
+    _matchReceive({ status, response, }) {
+        this.recHooks
+            .filter((h) => h.status === status)
+            .forEach((h) => h.callback(response));
+    }
+    _hasReceived(status) {
+        return this.receivedResp && this.receivedResp.status === status;
+    }
+}
+//# sourceMappingURL=push.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@supabase/realtime-js/dist/module/lib/serializer.js":
+/*!**************************************************************************!*\
+  !*** ./node_modules/@supabase/realtime-js/dist/module/lib/serializer.js ***!
+  \**************************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": function() { return /* binding */ Serializer; }
+/* harmony export */ });
+// This file draws heavily from https://github.com/phoenixframework/phoenix/commit/cf098e9cf7a44ee6479d31d911a97d3c7430c6fe
+// License: https://github.com/phoenixframework/phoenix/blob/master/LICENSE.md
+class Serializer {
+    constructor() {
+        this.HEADER_LENGTH = 1;
+    }
+    decode(rawPayload, callback) {
+        if (rawPayload.constructor === ArrayBuffer) {
+            return callback(this._binaryDecode(rawPayload));
+        }
+        if (typeof rawPayload === 'string') {
+            return callback(JSON.parse(rawPayload));
+        }
+        return callback({});
+    }
+    _binaryDecode(buffer) {
+        const view = new DataView(buffer);
+        const decoder = new TextDecoder();
+        return this._decodeBroadcast(buffer, view, decoder);
+    }
+    _decodeBroadcast(buffer, view, decoder) {
+        const topicSize = view.getUint8(1);
+        const eventSize = view.getUint8(2);
+        let offset = this.HEADER_LENGTH + 2;
+        const topic = decoder.decode(buffer.slice(offset, offset + topicSize));
+        offset = offset + topicSize;
+        const event = decoder.decode(buffer.slice(offset, offset + eventSize));
+        offset = offset + eventSize;
+        const data = JSON.parse(decoder.decode(buffer.slice(offset, buffer.byteLength)));
+        return { ref: null, topic: topic, event: event, payload: data };
+    }
+}
+//# sourceMappingURL=serializer.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@supabase/realtime-js/dist/module/lib/timer.js":
+/*!*********************************************************************!*\
+  !*** ./node_modules/@supabase/realtime-js/dist/module/lib/timer.js ***!
+  \*********************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": function() { return /* binding */ Timer; }
+/* harmony export */ });
+/**
+ * Creates a timer that accepts a `timerCalc` function to perform calculated timeout retries, such as exponential backoff.
+ *
+ * @example
+ *    let reconnectTimer = new Timer(() => this.connect(), function(tries){
+ *      return [1000, 5000, 10000][tries - 1] || 10000
+ *    })
+ *    reconnectTimer.scheduleTimeout() // fires after 1000
+ *    reconnectTimer.scheduleTimeout() // fires after 5000
+ *    reconnectTimer.reset()
+ *    reconnectTimer.scheduleTimeout() // fires after 1000
+ */
+class Timer {
+    constructor(callback, timerCalc) {
+        this.callback = callback;
+        this.timerCalc = timerCalc;
+        this.timer = undefined;
+        this.tries = 0;
+        this.callback = callback;
+        this.timerCalc = timerCalc;
+    }
+    reset() {
+        this.tries = 0;
+        clearTimeout(this.timer);
+    }
+    // Cancels any previous scheduleTimeout and schedules callback
+    scheduleTimeout() {
+        clearTimeout(this.timer);
+        this.timer = setTimeout(() => {
+            this.tries = this.tries + 1;
+            this.callback();
+        }, this.timerCalc(this.tries + 1));
+    }
+}
+//# sourceMappingURL=timer.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@supabase/realtime-js/dist/module/lib/transformers.js":
+/*!****************************************************************************!*\
+  !*** ./node_modules/@supabase/realtime-js/dist/module/lib/transformers.js ***!
+  \****************************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "PostgresTypes": function() { return /* binding */ PostgresTypes; },
+/* harmony export */   "convertCell": function() { return /* binding */ convertCell; },
+/* harmony export */   "convertChangeData": function() { return /* binding */ convertChangeData; },
+/* harmony export */   "convertColumn": function() { return /* binding */ convertColumn; },
+/* harmony export */   "toArray": function() { return /* binding */ toArray; },
+/* harmony export */   "toBoolean": function() { return /* binding */ toBoolean; },
+/* harmony export */   "toJson": function() { return /* binding */ toJson; },
+/* harmony export */   "toNumber": function() { return /* binding */ toNumber; },
+/* harmony export */   "toTimestampString": function() { return /* binding */ toTimestampString; }
+/* harmony export */ });
+/**
+ * Helpers to convert the change Payload into native JS types.
+ */
+// Adapted from epgsql (src/epgsql_binary.erl), this module licensed under
+// 3-clause BSD found here: https://raw.githubusercontent.com/epgsql/epgsql/devel/LICENSE
+var PostgresTypes;
+(function (PostgresTypes) {
+    PostgresTypes["abstime"] = "abstime";
+    PostgresTypes["bool"] = "bool";
+    PostgresTypes["date"] = "date";
+    PostgresTypes["daterange"] = "daterange";
+    PostgresTypes["float4"] = "float4";
+    PostgresTypes["float8"] = "float8";
+    PostgresTypes["int2"] = "int2";
+    PostgresTypes["int4"] = "int4";
+    PostgresTypes["int4range"] = "int4range";
+    PostgresTypes["int8"] = "int8";
+    PostgresTypes["int8range"] = "int8range";
+    PostgresTypes["json"] = "json";
+    PostgresTypes["jsonb"] = "jsonb";
+    PostgresTypes["money"] = "money";
+    PostgresTypes["numeric"] = "numeric";
+    PostgresTypes["oid"] = "oid";
+    PostgresTypes["reltime"] = "reltime";
+    PostgresTypes["text"] = "text";
+    PostgresTypes["time"] = "time";
+    PostgresTypes["timestamp"] = "timestamp";
+    PostgresTypes["timestamptz"] = "timestamptz";
+    PostgresTypes["timetz"] = "timetz";
+    PostgresTypes["tsrange"] = "tsrange";
+    PostgresTypes["tstzrange"] = "tstzrange";
+})(PostgresTypes || (PostgresTypes = {}));
+/**
+ * Takes an array of columns and an object of string values then converts each string value
+ * to its mapped type.
+ *
+ * @param {{name: String, type: String}[]} columns
+ * @param {Object} record
+ * @param {Object} options The map of various options that can be applied to the mapper
+ * @param {Array} options.skipTypes The array of types that should not be converted
+ *
+ * @example convertChangeData([{name: 'first_name', type: 'text'}, {name: 'age', type: 'int4'}], {first_name: 'Paul', age:'33'}, {})
+ * //=>{ first_name: 'Paul', age: 33 }
+ */
+const convertChangeData = (columns, record, options = {}) => {
+    var _a;
+    const skipTypes = (_a = options.skipTypes) !== null && _a !== void 0 ? _a : [];
+    return Object.keys(record).reduce((acc, rec_key) => {
+        acc[rec_key] = convertColumn(rec_key, columns, record, skipTypes);
+        return acc;
+    }, {});
+};
+/**
+ * Converts the value of an individual column.
+ *
+ * @param {String} columnName The column that you want to convert
+ * @param {{name: String, type: String}[]} columns All of the columns
+ * @param {Object} record The map of string values
+ * @param {Array} skipTypes An array of types that should not be converted
+ * @return {object} Useless information
+ *
+ * @example convertColumn('age', [{name: 'first_name', type: 'text'}, {name: 'age', type: 'int4'}], {first_name: 'Paul', age: '33'}, [])
+ * //=> 33
+ * @example convertColumn('age', [{name: 'first_name', type: 'text'}, {name: 'age', type: 'int4'}], {first_name: 'Paul', age: '33'}, ['int4'])
+ * //=> "33"
+ */
+const convertColumn = (columnName, columns, record, skipTypes) => {
+    const column = columns.find((x) => x.name === columnName);
+    const colType = column === null || column === void 0 ? void 0 : column.type;
+    const value = record[columnName];
+    if (colType && !skipTypes.includes(colType)) {
+        return convertCell(colType, value);
+    }
+    return noop(value);
+};
+/**
+ * If the value of the cell is `null`, returns null.
+ * Otherwise converts the string value to the correct type.
+ * @param {String} type A postgres column type
+ * @param {String} stringValue The cell value
+ *
+ * @example convertCell('bool', 't')
+ * //=> true
+ * @example convertCell('int8', '10')
+ * //=> 10
+ * @example convertCell('_int4', '{1,2,3,4}')
+ * //=> [1,2,3,4]
+ */
+const convertCell = (type, value) => {
+    // if data type is an array
+    if (type.charAt(0) === '_') {
+        const dataType = type.slice(1, type.length);
+        return toArray(value, dataType);
+    }
+    // If not null, convert to correct type.
+    switch (type) {
+        case PostgresTypes.bool:
+            return toBoolean(value);
+        case PostgresTypes.float4:
+        case PostgresTypes.float8:
+        case PostgresTypes.int2:
+        case PostgresTypes.int4:
+        case PostgresTypes.int8:
+        case PostgresTypes.numeric:
+        case PostgresTypes.oid:
+            return toNumber(value);
+        case PostgresTypes.json:
+        case PostgresTypes.jsonb:
+            return toJson(value);
+        case PostgresTypes.timestamp:
+            return toTimestampString(value); // Format to be consistent with PostgREST
+        case PostgresTypes.abstime: // To allow users to cast it based on Timezone
+        case PostgresTypes.date: // To allow users to cast it based on Timezone
+        case PostgresTypes.daterange:
+        case PostgresTypes.int4range:
+        case PostgresTypes.int8range:
+        case PostgresTypes.money:
+        case PostgresTypes.reltime: // To allow users to cast it based on Timezone
+        case PostgresTypes.text:
+        case PostgresTypes.time: // To allow users to cast it based on Timezone
+        case PostgresTypes.timestamptz: // To allow users to cast it based on Timezone
+        case PostgresTypes.timetz: // To allow users to cast it based on Timezone
+        case PostgresTypes.tsrange:
+        case PostgresTypes.tstzrange:
+            return noop(value);
+        default:
+            // Return the value for remaining types
+            return noop(value);
+    }
+};
+const noop = (value) => {
+    return value;
+};
+const toBoolean = (value) => {
+    switch (value) {
+        case 't':
+            return true;
+        case 'f':
+            return false;
+        default:
+            return value;
+    }
+};
+const toNumber = (value) => {
+    if (typeof value === 'string') {
+        const parsedValue = parseFloat(value);
+        if (!Number.isNaN(parsedValue)) {
+            return parsedValue;
+        }
+    }
+    return value;
+};
+const toJson = (value) => {
+    if (typeof value === 'string') {
+        try {
+            return JSON.parse(value);
+        }
+        catch (error) {
+            console.log(`JSON parse error: ${error}`);
+            return value;
+        }
+    }
+    return value;
+};
+/**
+ * Converts a Postgres Array into a native JS array
+ *
+ * @example toArray('{}', 'int4')
+ * //=> []
+ * @example toArray('{"[2021-01-01,2021-12-31)","(2021-01-01,2021-12-32]"}', 'daterange')
+ * //=> ['[2021-01-01,2021-12-31)', '(2021-01-01,2021-12-32]']
+ * @example toArray([1,2,3,4], 'int4')
+ * //=> [1,2,3,4]
+ */
+const toArray = (value, type) => {
+    if (typeof value !== 'string') {
+        return value;
+    }
+    const lastIdx = value.length - 1;
+    const closeBrace = value[lastIdx];
+    const openBrace = value[0];
+    // Confirm value is a Postgres array by checking curly brackets
+    if (openBrace === '{' && closeBrace === '}') {
+        let arr;
+        const valTrim = value.slice(1, lastIdx);
+        // TODO: find a better solution to separate Postgres array data
+        try {
+            arr = JSON.parse('[' + valTrim + ']');
+        }
+        catch (_) {
+            // WARNING: splitting on comma does not cover all edge cases
+            arr = valTrim ? valTrim.split(',') : [];
+        }
+        return arr.map((val) => convertCell(type, val));
+    }
+    return value;
+};
+/**
+ * Fixes timestamp to be ISO-8601. Swaps the space between the date and time for a 'T'
+ * See https://github.com/supabase/supabase/issues/18
+ *
+ * @example toTimestampString('2019-09-10 00:00:00')
+ * //=> '2019-09-10T00:00:00'
+ */
+const toTimestampString = (value) => {
+    if (typeof value === 'string') {
+        return value.replace(' ', 'T');
+    }
+    return value;
+};
+//# sourceMappingURL=transformers.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@supabase/realtime-js/dist/module/lib/version.js":
+/*!***********************************************************************!*\
+  !*** ./node_modules/@supabase/realtime-js/dist/module/lib/version.js ***!
+  \***********************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "version": function() { return /* binding */ version; }
+/* harmony export */ });
+const version = '2.1.0';
+//# sourceMappingURL=version.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@supabase/storage-js/dist/module/StorageClient.js":
+/*!************************************************************************!*\
+  !*** ./node_modules/@supabase/storage-js/dist/module/StorageClient.js ***!
+  \************************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "StorageClient": function() { return /* binding */ StorageClient; }
+/* harmony export */ });
+/* harmony import */ var _packages_StorageFileApi__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./packages/StorageFileApi */ "./node_modules/@supabase/storage-js/dist/module/packages/StorageFileApi.js");
+/* harmony import */ var _packages_StorageBucketApi__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./packages/StorageBucketApi */ "./node_modules/@supabase/storage-js/dist/module/packages/StorageBucketApi.js");
+
+
+class StorageClient extends _packages_StorageBucketApi__WEBPACK_IMPORTED_MODULE_0__["default"] {
+    constructor(url, headers = {}, fetch) {
+        super(url, headers, fetch);
+    }
+    /**
+     * Perform file operation in a bucket.
+     *
+     * @param id The bucket id to operate on.
+     */
+    from(id) {
+        return new _packages_StorageFileApi__WEBPACK_IMPORTED_MODULE_1__["default"](this.url, this.headers, id, this.fetch);
+    }
+}
+//# sourceMappingURL=StorageClient.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@supabase/storage-js/dist/module/lib/constants.js":
+/*!************************************************************************!*\
+  !*** ./node_modules/@supabase/storage-js/dist/module/lib/constants.js ***!
+  \************************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "DEFAULT_HEADERS": function() { return /* binding */ DEFAULT_HEADERS; }
+/* harmony export */ });
+/* harmony import */ var _version__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./version */ "./node_modules/@supabase/storage-js/dist/module/lib/version.js");
+
+const DEFAULT_HEADERS = { 'X-Client-Info': `storage-js/${_version__WEBPACK_IMPORTED_MODULE_0__.version}` };
+//# sourceMappingURL=constants.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@supabase/storage-js/dist/module/lib/errors.js":
+/*!*********************************************************************!*\
+  !*** ./node_modules/@supabase/storage-js/dist/module/lib/errors.js ***!
+  \*********************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "StorageApiError": function() { return /* binding */ StorageApiError; },
+/* harmony export */   "StorageError": function() { return /* binding */ StorageError; },
+/* harmony export */   "StorageUnknownError": function() { return /* binding */ StorageUnknownError; },
+/* harmony export */   "isStorageError": function() { return /* binding */ isStorageError; }
+/* harmony export */ });
+class StorageError extends Error {
+    constructor(message) {
+        super(message);
+        this.__isStorageError = true;
+        this.name = 'StorageError';
+    }
+}
+function isStorageError(error) {
+    return typeof error === 'object' && error !== null && '__isStorageError' in error;
+}
+class StorageApiError extends StorageError {
+    constructor(message, status) {
+        super(message);
+        this.name = 'StorageApiError';
+        this.status = status;
+    }
+    toJSON() {
+        return {
+            name: this.name,
+            message: this.message,
+            status: this.status,
+        };
+    }
+}
+class StorageUnknownError extends StorageError {
+    constructor(message, originalError) {
+        super(message);
+        this.name = 'StorageUnknownError';
+        this.originalError = originalError;
+    }
+}
+//# sourceMappingURL=errors.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@supabase/storage-js/dist/module/lib/fetch.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/@supabase/storage-js/dist/module/lib/fetch.js ***!
+  \********************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "get": function() { return /* binding */ get; },
+/* harmony export */   "post": function() { return /* binding */ post; },
+/* harmony export */   "put": function() { return /* binding */ put; },
+/* harmony export */   "remove": function() { return /* binding */ remove; }
+/* harmony export */ });
+/* harmony import */ var _errors__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./errors */ "./node_modules/@supabase/storage-js/dist/module/lib/errors.js");
+/* harmony import */ var _helpers__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./helpers */ "./node_modules/@supabase/storage-js/dist/module/lib/helpers.js");
+var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+
+
+const _getErrorMessage = (err) => err.msg || err.message || err.error_description || err.error || JSON.stringify(err);
+const handleError = (error, reject) => __awaiter(void 0, void 0, void 0, function* () {
+    const Res = yield (0,_helpers__WEBPACK_IMPORTED_MODULE_0__.resolveResponse)();
+    if (error instanceof Res) {
+        error.json().then((err) => {
+            reject(new _errors__WEBPACK_IMPORTED_MODULE_1__.StorageApiError(_getErrorMessage(err), error.status || 500));
+        });
+    }
+    else {
+        reject(new _errors__WEBPACK_IMPORTED_MODULE_1__.StorageUnknownError(_getErrorMessage(error), error));
+    }
+});
+const _getRequestParams = (method, options, parameters, body) => {
+    const params = { method, headers: (options === null || options === void 0 ? void 0 : options.headers) || {} };
+    if (method === 'GET') {
+        return params;
+    }
+    params.headers = Object.assign({ 'Content-Type': 'application/json' }, options === null || options === void 0 ? void 0 : options.headers);
+    params.body = JSON.stringify(body);
+    return Object.assign(Object.assign({}, params), parameters);
+};
+function _handleRequest(fetcher, method, url, options, parameters, body) {
+    return __awaiter(this, void 0, void 0, function* () {
+        return new Promise((resolve, reject) => {
+            fetcher(url, _getRequestParams(method, options, parameters, body))
+                .then((result) => {
+                if (!result.ok)
+                    throw result;
+                if (options === null || options === void 0 ? void 0 : options.noResolveJson)
+                    return result;
+                return result.json();
+            })
+                .then((data) => resolve(data))
+                .catch((error) => handleError(error, reject));
+        });
+    });
+}
+function get(fetcher, url, options, parameters) {
+    return __awaiter(this, void 0, void 0, function* () {
+        return _handleRequest(fetcher, 'GET', url, options, parameters);
+    });
+}
+function post(fetcher, url, body, options, parameters) {
+    return __awaiter(this, void 0, void 0, function* () {
+        return _handleRequest(fetcher, 'POST', url, options, parameters, body);
+    });
+}
+function put(fetcher, url, body, options, parameters) {
+    return __awaiter(this, void 0, void 0, function* () {
+        return _handleRequest(fetcher, 'PUT', url, options, parameters, body);
+    });
+}
+function remove(fetcher, url, body, options, parameters) {
+    return __awaiter(this, void 0, void 0, function* () {
+        return _handleRequest(fetcher, 'DELETE', url, options, parameters, body);
+    });
+}
+//# sourceMappingURL=fetch.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@supabase/storage-js/dist/module/lib/helpers.js":
+/*!**********************************************************************!*\
+  !*** ./node_modules/@supabase/storage-js/dist/module/lib/helpers.js ***!
+  \**********************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "resolveFetch": function() { return /* binding */ resolveFetch; },
+/* harmony export */   "resolveResponse": function() { return /* binding */ resolveResponse; }
+/* harmony export */ });
+var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+const resolveFetch = (customFetch) => {
+    let _fetch;
+    if (customFetch) {
+        _fetch = customFetch;
+    }
+    else if (typeof fetch === 'undefined') {
+        _fetch = (...args) => __awaiter(void 0, void 0, void 0, function* () { return yield (yield Promise.resolve(/*! import() */).then(__webpack_require__.t.bind(__webpack_require__, /*! cross-fetch */ "./node_modules/cross-fetch/dist/browser-ponyfill.js", 23))).fetch(...args); });
+    }
+    else {
+        _fetch = fetch;
+    }
+    return (...args) => _fetch(...args);
+};
+const resolveResponse = () => __awaiter(void 0, void 0, void 0, function* () {
+    if (typeof Response === 'undefined') {
+        return (yield Promise.resolve(/*! import() */).then(__webpack_require__.t.bind(__webpack_require__, /*! cross-fetch */ "./node_modules/cross-fetch/dist/browser-ponyfill.js", 23))).Response;
+    }
+    return Response;
+});
+//# sourceMappingURL=helpers.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@supabase/storage-js/dist/module/lib/version.js":
+/*!**********************************************************************!*\
+  !*** ./node_modules/@supabase/storage-js/dist/module/lib/version.js ***!
+  \**********************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "version": function() { return /* binding */ version; }
+/* harmony export */ });
+// generated by genversion
+const version = '2.1.0';
+//# sourceMappingURL=version.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@supabase/storage-js/dist/module/packages/StorageBucketApi.js":
+/*!************************************************************************************!*\
+  !*** ./node_modules/@supabase/storage-js/dist/module/packages/StorageBucketApi.js ***!
+  \************************************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": function() { return /* binding */ StorageBucketApi; }
+/* harmony export */ });
+/* harmony import */ var _lib_constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../lib/constants */ "./node_modules/@supabase/storage-js/dist/module/lib/constants.js");
+/* harmony import */ var _lib_errors__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../lib/errors */ "./node_modules/@supabase/storage-js/dist/module/lib/errors.js");
+/* harmony import */ var _lib_fetch__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../lib/fetch */ "./node_modules/@supabase/storage-js/dist/module/lib/fetch.js");
+/* harmony import */ var _lib_helpers__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../lib/helpers */ "./node_modules/@supabase/storage-js/dist/module/lib/helpers.js");
+var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+
+
+
+
+class StorageBucketApi {
+    constructor(url, headers = {}, fetch) {
+        this.url = url;
+        this.headers = Object.assign(Object.assign({}, _lib_constants__WEBPACK_IMPORTED_MODULE_0__.DEFAULT_HEADERS), headers);
+        this.fetch = (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_1__.resolveFetch)(fetch);
+    }
+    /**
+     * Retrieves the details of all Storage buckets within an existing project.
+     */
+    listBuckets() {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const data = yield (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_2__.get)(this.fetch, `${this.url}/bucket`, { headers: this.headers });
+                return { data, error: null };
+            }
+            catch (error) {
+                if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_3__.isStorageError)(error)) {
+                    return { data: null, error };
+                }
+                throw error;
+            }
+        });
+    }
+    /**
+     * Retrieves the details of an existing Storage bucket.
+     *
+     * @param id The unique identifier of the bucket you would like to retrieve.
+     */
+    getBucket(id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const data = yield (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_2__.get)(this.fetch, `${this.url}/bucket/${id}`, { headers: this.headers });
+                return { data, error: null };
+            }
+            catch (error) {
+                if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_3__.isStorageError)(error)) {
+                    return { data: null, error };
+                }
+                throw error;
+            }
+        });
+    }
+    /**
+     * Creates a new Storage bucket
+     *
+     * @param id A unique identifier for the bucket you are creating.
+     * @param options.public The visibility of the bucket. Public buckets don't require an authorization token to download objects, but still require a valid token for all other operations. By default, buckets are private.
+     * @returns newly created bucket id
+     */
+    createBucket(id, options = { public: false }) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const data = yield (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_2__.post)(this.fetch, `${this.url}/bucket`, { id, name: id, public: options.public }, { headers: this.headers });
+                return { data, error: null };
+            }
+            catch (error) {
+                if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_3__.isStorageError)(error)) {
+                    return { data: null, error };
+                }
+                throw error;
+            }
+        });
+    }
+    /**
+     * Updates a Storage bucket
+     *
+     * @param id A unique identifier for the bucket you are updating.
+     * @param options.public The visibility of the bucket. Public buckets don't require an authorization token to download objects, but still require a valid token for all other operations.
+     */
+    updateBucket(id, options) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const data = yield (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_2__.put)(this.fetch, `${this.url}/bucket/${id}`, { id, name: id, public: options.public }, { headers: this.headers });
+                return { data, error: null };
+            }
+            catch (error) {
+                if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_3__.isStorageError)(error)) {
+                    return { data: null, error };
+                }
+                throw error;
+            }
+        });
+    }
+    /**
+     * Removes all objects inside a single bucket.
+     *
+     * @param id The unique identifier of the bucket you would like to empty.
+     */
+    emptyBucket(id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const data = yield (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_2__.post)(this.fetch, `${this.url}/bucket/${id}/empty`, {}, { headers: this.headers });
+                return { data, error: null };
+            }
+            catch (error) {
+                if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_3__.isStorageError)(error)) {
+                    return { data: null, error };
+                }
+                throw error;
+            }
+        });
+    }
+    /**
+     * Deletes an existing bucket. A bucket can't be deleted with existing objects inside it.
+     * You must first `empty()` the bucket.
+     *
+     * @param id The unique identifier of the bucket you would like to delete.
+     */
+    deleteBucket(id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const data = yield (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_2__.remove)(this.fetch, `${this.url}/bucket/${id}`, {}, { headers: this.headers });
+                return { data, error: null };
+            }
+            catch (error) {
+                if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_3__.isStorageError)(error)) {
+                    return { data: null, error };
+                }
+                throw error;
+            }
+        });
+    }
+}
+//# sourceMappingURL=StorageBucketApi.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@supabase/storage-js/dist/module/packages/StorageFileApi.js":
+/*!**********************************************************************************!*\
+  !*** ./node_modules/@supabase/storage-js/dist/module/packages/StorageFileApi.js ***!
+  \**********************************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": function() { return /* binding */ StorageFileApi; }
+/* harmony export */ });
+/* harmony import */ var _lib_errors__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../lib/errors */ "./node_modules/@supabase/storage-js/dist/module/lib/errors.js");
+/* harmony import */ var _lib_fetch__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../lib/fetch */ "./node_modules/@supabase/storage-js/dist/module/lib/fetch.js");
+/* harmony import */ var _lib_helpers__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../lib/helpers */ "./node_modules/@supabase/storage-js/dist/module/lib/helpers.js");
+var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+
+
+
+const DEFAULT_SEARCH_OPTIONS = {
+    limit: 100,
+    offset: 0,
+    sortBy: {
+        column: 'name',
+        order: 'asc',
+    },
+};
+const DEFAULT_FILE_OPTIONS = {
+    cacheControl: '3600',
+    contentType: 'text/plain;charset=UTF-8',
+    upsert: false,
+};
+class StorageFileApi {
+    constructor(url, headers = {}, bucketId, fetch) {
+        this.url = url;
+        this.headers = headers;
+        this.bucketId = bucketId;
+        this.fetch = (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_0__.resolveFetch)(fetch);
+    }
+    /**
+     * Uploads a file to an existing bucket or replaces an existing file at the specified path with a new one.
+     *
+     * @param method HTTP method.
+     * @param path The relative file path. Should be of the format `folder/subfolder/filename.png`. The bucket must already exist before attempting to upload.
+     * @param fileBody The body of the file to be stored in the bucket.
+     */
+    uploadOrUpdate(method, path, fileBody, fileOptions) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                let body;
+                const options = Object.assign(Object.assign({}, DEFAULT_FILE_OPTIONS), fileOptions);
+                const headers = Object.assign(Object.assign({}, this.headers), (method === 'POST' && { 'x-upsert': String(options.upsert) }));
+                if (typeof Blob !== 'undefined' && fileBody instanceof Blob) {
+                    body = new FormData();
+                    body.append('cacheControl', options.cacheControl);
+                    body.append('', fileBody);
+                }
+                else if (typeof FormData !== 'undefined' && fileBody instanceof FormData) {
+                    body = fileBody;
+                    body.append('cacheControl', options.cacheControl);
+                }
+                else {
+                    body = fileBody;
+                    headers['cache-control'] = `max-age=${options.cacheControl}`;
+                    headers['content-type'] = options.contentType;
+                }
+                const cleanPath = this._removeEmptyFolders(path);
+                const _path = this._getFinalPath(cleanPath);
+                const res = yield this.fetch(`${this.url}/object/${_path}`, {
+                    method,
+                    body: body,
+                    headers,
+                });
+                if (res.ok) {
+                    return {
+                        data: { path: cleanPath },
+                        error: null,
+                    };
+                }
+                else {
+                    const error = yield res.json();
+                    return { data: null, error };
+                }
+            }
+            catch (error) {
+                if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_1__.isStorageError)(error)) {
+                    return { data: null, error };
+                }
+                throw error;
+            }
+        });
+    }
+    /**
+     * Uploads a file to an existing bucket.
+     *
+     * @param path The file path, including the file name. Should be of the format `folder/subfolder/filename.png`. The bucket must already exist before attempting to upload.
+     * @param fileBody The body of the file to be stored in the bucket.
+     */
+    upload(path, fileBody, fileOptions) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return this.uploadOrUpdate('POST', path, fileBody, fileOptions);
+        });
+    }
+    /**
+     * Replaces an existing file at the specified path with a new one.
+     *
+     * @param path The relative file path. Should be of the format `folder/subfolder/filename.png`. The bucket must already exist before attempting to update.
+     * @param fileBody The body of the file to be stored in the bucket.
+     */
+    update(path, fileBody, fileOptions) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return this.uploadOrUpdate('PUT', path, fileBody, fileOptions);
+        });
+    }
+    /**
+     * Moves an existing file to a new path in the same bucket.
+     *
+     * @param fromPath The original file path, including the current file name. For example `folder/image.png`.
+     * @param toPath The new file path, including the new file name. For example `folder/image-new.png`.
+     */
+    move(fromPath, toPath) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const data = yield (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_2__.post)(this.fetch, `${this.url}/object/move`, { bucketId: this.bucketId, sourceKey: fromPath, destinationKey: toPath }, { headers: this.headers });
+                return { data, error: null };
+            }
+            catch (error) {
+                if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_1__.isStorageError)(error)) {
+                    return { data: null, error };
+                }
+                throw error;
+            }
+        });
+    }
+    /**
+     * Copies an existing file to a new path in the same bucket.
+     *
+     * @param fromPath The original file path, including the current file name. For example `folder/image.png`.
+     * @param toPath The new file path, including the new file name. For example `folder/image-copy.png`.
+     */
+    copy(fromPath, toPath) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const data = yield (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_2__.post)(this.fetch, `${this.url}/object/copy`, { bucketId: this.bucketId, sourceKey: fromPath, destinationKey: toPath }, { headers: this.headers });
+                return { data: { path: data.Key }, error: null };
+            }
+            catch (error) {
+                if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_1__.isStorageError)(error)) {
+                    return { data: null, error };
+                }
+                throw error;
+            }
+        });
+    }
+    /**
+     * Creates a signed URL. Use a signed URL to share a file for a fixed amount of time.
+     *
+     * @param path The file path, including the current file name. For example `folder/image.png`.
+     * @param expiresIn The number of seconds until the signed URL expires. For example, `60` for a URL which is valid for one minute.
+     * @param options.download triggers the file as a download if set to true. Set this parameter as the name of the file if you want to trigger the download with a different filename.
+     * @param options.transform Transform the asset before serving it to the client.
+     */
+    createSignedUrl(path, expiresIn, options) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                let _path = this._getFinalPath(path);
+                let data = yield (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_2__.post)(this.fetch, `${this.url}/object/sign/${_path}`, Object.assign({ expiresIn }, ((options === null || options === void 0 ? void 0 : options.transform) ? { transform: options.transform } : {})), { headers: this.headers });
+                const downloadQueryParam = (options === null || options === void 0 ? void 0 : options.download)
+                    ? `&download=${options.download === true ? '' : options.download}`
+                    : '';
+                const signedUrl = encodeURI(`${this.url}${data.signedURL}${downloadQueryParam}`);
+                data = { signedUrl };
+                return { data, error: null };
+            }
+            catch (error) {
+                if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_1__.isStorageError)(error)) {
+                    return { data: null, error };
+                }
+                throw error;
+            }
+        });
+    }
+    /**
+     * Creates multiple signed URLs. Use a signed URL to share a file for a fixed amount of time.
+     *
+     * @param paths The file paths to be downloaded, including the current file names. For example `['folder/image.png', 'folder2/image2.png']`.
+     * @param expiresIn The number of seconds until the signed URLs expire. For example, `60` for URLs which are valid for one minute.
+     * @param options.download triggers the file as a download if set to true. Set this parameter as the name of the file if you want to trigger the download with a different filename.
+     */
+    createSignedUrls(paths, expiresIn, options) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const data = yield (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_2__.post)(this.fetch, `${this.url}/object/sign/${this.bucketId}`, { expiresIn, paths }, { headers: this.headers });
+                const downloadQueryParam = (options === null || options === void 0 ? void 0 : options.download)
+                    ? `&download=${options.download === true ? '' : options.download}`
+                    : '';
+                return {
+                    data: data.map((datum) => (Object.assign(Object.assign({}, datum), { signedUrl: datum.signedURL
+                            ? encodeURI(`${this.url}${datum.signedURL}${downloadQueryParam}`)
+                            : null }))),
+                    error: null,
+                };
+            }
+            catch (error) {
+                if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_1__.isStorageError)(error)) {
+                    return { data: null, error };
+                }
+                throw error;
+            }
+        });
+    }
+    /**
+     * Downloads a file.
+     *
+     * @param path The full path and file name of the file to be downloaded. For example `folder/image.png`.
+     * @param options.transform Transform the asset before serving it to the client.
+     */
+    download(path, options) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const wantsTransformation = typeof (options === null || options === void 0 ? void 0 : options.transform) !== 'undefined';
+            const renderPath = wantsTransformation ? 'render/image/authenticated' : 'object';
+            const transformationQuery = this.transformOptsToQueryString((options === null || options === void 0 ? void 0 : options.transform) || {});
+            const queryString = transformationQuery ? `?${transformationQuery}` : '';
+            try {
+                const _path = this._getFinalPath(path);
+                const res = yield (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_2__.get)(this.fetch, `${this.url}/${renderPath}/${_path}${queryString}`, {
+                    headers: this.headers,
+                    noResolveJson: true,
+                });
+                const data = yield res.blob();
+                return { data, error: null };
+            }
+            catch (error) {
+                if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_1__.isStorageError)(error)) {
+                    return { data: null, error };
+                }
+                throw error;
+            }
+        });
+    }
+    /**
+     * Retrieves the URL for an asset in a public bucket.
+     * This function does not verify if the bucket is public. If a public URL is created for a bucket which is not public, you will not be able to download the asset.
+     *
+     * @param path The path and name of the file to generate the public URL for. For example `folder/image.png`.
+     * @param options.download Triggers the file as a download if set to true. Set this parameter as the name of the file if you want to trigger the download with a different filename.
+     * @param options.transform Transform the asset before serving it to the client.
+     */
+    getPublicUrl(path, options) {
+        const _path = this._getFinalPath(path);
+        const _queryString = [];
+        const downloadQueryParam = (options === null || options === void 0 ? void 0 : options.download)
+            ? `download=${options.download === true ? '' : options.download}`
+            : '';
+        if (downloadQueryParam !== '') {
+            _queryString.push(downloadQueryParam);
+        }
+        const wantsTransformation = typeof (options === null || options === void 0 ? void 0 : options.transform) !== 'undefined';
+        const renderPath = wantsTransformation ? 'render/image' : 'object';
+        const transformationQuery = this.transformOptsToQueryString((options === null || options === void 0 ? void 0 : options.transform) || {});
+        if (transformationQuery !== '') {
+            _queryString.push(transformationQuery);
+        }
+        let queryString = _queryString.join('&');
+        if (queryString !== '') {
+            queryString = `?${queryString}`;
+        }
+        return {
+            data: { publicUrl: encodeURI(`${this.url}/${renderPath}/public/${_path}${queryString}`) },
+        };
+    }
+    /**
+     * Deletes files within the same bucket
+     *
+     * @param paths An array of files to delete, including the path and file name. For example [`'folder/image.png'`].
+     */
+    remove(paths) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const data = yield (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_2__.remove)(this.fetch, `${this.url}/object/${this.bucketId}`, { prefixes: paths }, { headers: this.headers });
+                return { data, error: null };
+            }
+            catch (error) {
+                if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_1__.isStorageError)(error)) {
+                    return { data: null, error };
+                }
+                throw error;
+            }
+        });
+    }
+    /**
+     * Get file metadata
+     * @param id the file id to retrieve metadata
+     */
+    // async getMetadata(
+    //   id: string
+    // ): Promise<
+    //   | {
+    //       data: Metadata
+    //       error: null
+    //     }
+    //   | {
+    //       data: null
+    //       error: StorageError
+    //     }
+    // > {
+    //   try {
+    //     const data = await get(this.fetch, `${this.url}/metadata/${id}`, { headers: this.headers })
+    //     return { data, error: null }
+    //   } catch (error) {
+    //     if (isStorageError(error)) {
+    //       return { data: null, error }
+    //     }
+    //     throw error
+    //   }
+    // }
+    /**
+     * Update file metadata
+     * @param id the file id to update metadata
+     * @param meta the new file metadata
+     */
+    // async updateMetadata(
+    //   id: string,
+    //   meta: Metadata
+    // ): Promise<
+    //   | {
+    //       data: Metadata
+    //       error: null
+    //     }
+    //   | {
+    //       data: null
+    //       error: StorageError
+    //     }
+    // > {
+    //   try {
+    //     const data = await post(
+    //       this.fetch,
+    //       `${this.url}/metadata/${id}`,
+    //       { ...meta },
+    //       { headers: this.headers }
+    //     )
+    //     return { data, error: null }
+    //   } catch (error) {
+    //     if (isStorageError(error)) {
+    //       return { data: null, error }
+    //     }
+    //     throw error
+    //   }
+    // }
+    /**
+     * Lists all the files within a bucket.
+     * @param path The folder path.
+     */
+    list(path, options, parameters) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const body = Object.assign(Object.assign(Object.assign({}, DEFAULT_SEARCH_OPTIONS), options), { prefix: path || '' });
+                const data = yield (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_2__.post)(this.fetch, `${this.url}/object/list/${this.bucketId}`, body, { headers: this.headers }, parameters);
+                return { data, error: null };
+            }
+            catch (error) {
+                if ((0,_lib_errors__WEBPACK_IMPORTED_MODULE_1__.isStorageError)(error)) {
+                    return { data: null, error };
+                }
+                throw error;
+            }
+        });
+    }
+    _getFinalPath(path) {
+        return `${this.bucketId}/${path}`;
+    }
+    _removeEmptyFolders(path) {
+        return path.replace(/^\/|\/$/g, '').replace(/\/+/g, '/');
+    }
+    transformOptsToQueryString(transform) {
+        const params = [];
+        if (transform.width) {
+            params.push(`width=${transform.width}`);
+        }
+        if (transform.height) {
+            params.push(`height=${transform.height}`);
+        }
+        if (transform.resize) {
+            params.push(`resize=${transform.resize}`);
+        }
+        return params.join('&');
+    }
+}
+//# sourceMappingURL=StorageFileApi.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@supabase/supabase-js/dist/module/SupabaseClient.js":
+/*!**************************************************************************!*\
+  !*** ./node_modules/@supabase/supabase-js/dist/module/SupabaseClient.js ***!
+  \**************************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": function() { return /* binding */ SupabaseClient; }
+/* harmony export */ });
+/* harmony import */ var _supabase_functions_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @supabase/functions-js */ "./node_modules/@supabase/functions-js/dist/module/FunctionsClient.js");
+/* harmony import */ var _supabase_postgrest_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @supabase/postgrest-js */ "./node_modules/@supabase/postgrest-js/dist/module/index.js");
+/* harmony import */ var _supabase_realtime_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @supabase/realtime-js */ "./node_modules/@supabase/realtime-js/dist/module/index.js");
+/* harmony import */ var _supabase_storage_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @supabase/storage-js */ "./node_modules/@supabase/storage-js/dist/module/StorageClient.js");
+/* harmony import */ var _lib_constants__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./lib/constants */ "./node_modules/@supabase/supabase-js/dist/module/lib/constants.js");
+/* harmony import */ var _lib_fetch__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./lib/fetch */ "./node_modules/@supabase/supabase-js/dist/module/lib/fetch.js");
+/* harmony import */ var _lib_helpers__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./lib/helpers */ "./node_modules/@supabase/supabase-js/dist/module/lib/helpers.js");
+/* harmony import */ var _lib_SupabaseAuthClient__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./lib/SupabaseAuthClient */ "./node_modules/@supabase/supabase-js/dist/module/lib/SupabaseAuthClient.js");
+var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+
+
+
+
+
+
+
+
+const DEFAULT_GLOBAL_OPTIONS = {
+    headers: _lib_constants__WEBPACK_IMPORTED_MODULE_2__.DEFAULT_HEADERS,
+};
+const DEFAULT_DB_OPTIONS = {
+    schema: 'public',
+};
+const DEFAULT_AUTH_OPTIONS = {
+    autoRefreshToken: true,
+    persistSession: true,
+    detectSessionInUrl: true,
+};
+const DEFAULT_REALTIME_OPTIONS = {};
+/**
+ * Supabase Client.
+ *
+ * An isomorphic Javascript client for interacting with Postgres.
+ */
+class SupabaseClient {
+    /**
+     * Create a new client for use in the browser.
+     * @param supabaseUrl The unique Supabase URL which is supplied when you create a new project in your project dashboard.
+     * @param supabaseKey The unique Supabase Key which is supplied when you create a new project in your project dashboard.
+     * @param options.db.schema You can switch in between schemas. The schema needs to be on the list of exposed schemas inside Supabase.
+     * @param options.auth.autoRefreshToken Set to "true" if you want to automatically refresh the token before expiring.
+     * @param options.auth.persistSession Set to "true" if you want to automatically save the user session into local storage.
+     * @param options.auth.detectSessionInUrl Set to "true" if you want to automatically detects OAuth grants in the URL and signs in the user.
+     * @param options.realtime Options passed along to realtime-js constructor.
+     * @param options.global.fetch A custom fetch implementation.
+     * @param options.global.headers Any additional headers to send with each network request.
+     */
+    constructor(supabaseUrl, supabaseKey, options) {
+        var _a, _b, _c, _d, _e, _f, _g, _h;
+        this.supabaseUrl = supabaseUrl;
+        this.supabaseKey = supabaseKey;
+        if (!supabaseUrl)
+            throw new Error('supabaseUrl is required.');
+        if (!supabaseKey)
+            throw new Error('supabaseKey is required.');
+        const _supabaseUrl = (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_3__.stripTrailingSlash)(supabaseUrl);
+        this.realtimeUrl = `${_supabaseUrl}/realtime/v1`.replace(/^http/i, 'ws');
+        this.authUrl = `${_supabaseUrl}/auth/v1`;
+        this.storageUrl = `${_supabaseUrl}/storage/v1`;
+        const isPlatform = _supabaseUrl.match(/(supabase\.co)|(supabase\.in)/);
+        if (isPlatform) {
+            const urlParts = _supabaseUrl.split('.');
+            this.functionsUrl = `${urlParts[0]}.functions.${urlParts[1]}.${urlParts[2]}`;
+        }
+        else {
+            this.functionsUrl = `${_supabaseUrl}/functions/v1`;
+        }
+        // default storage key uses the supabase project ref as a namespace
+        const defaultStorageKey = `sb-${new URL(this.authUrl).hostname.split('.')[0]}-auth-token`;
+        const DEFAULTS = {
+            db: DEFAULT_DB_OPTIONS,
+            realtime: DEFAULT_REALTIME_OPTIONS,
+            auth: Object.assign(Object.assign({}, DEFAULT_AUTH_OPTIONS), { storageKey: defaultStorageKey }),
+            global: DEFAULT_GLOBAL_OPTIONS,
+        };
+        const settings = (0,_lib_helpers__WEBPACK_IMPORTED_MODULE_3__.applySettingDefaults)(options !== null && options !== void 0 ? options : {}, DEFAULTS);
+        this.storageKey = (_b = (_a = settings.auth) === null || _a === void 0 ? void 0 : _a.storageKey) !== null && _b !== void 0 ? _b : '';
+        this.headers = (_d = (_c = settings.global) === null || _c === void 0 ? void 0 : _c.headers) !== null && _d !== void 0 ? _d : {};
+        this.auth = this._initSupabaseAuthClient((_e = settings.auth) !== null && _e !== void 0 ? _e : {}, this.headers, (_f = settings.global) === null || _f === void 0 ? void 0 : _f.fetch);
+        this.fetch = (0,_lib_fetch__WEBPACK_IMPORTED_MODULE_4__.fetchWithAuth)(supabaseKey, this._getAccessToken.bind(this), (_g = settings.global) === null || _g === void 0 ? void 0 : _g.fetch);
+        this.realtime = this._initRealtimeClient(Object.assign({ headers: this.headers }, settings.realtime));
+        this.rest = new _supabase_postgrest_js__WEBPACK_IMPORTED_MODULE_0__.PostgrestClient(`${_supabaseUrl}/rest/v1`, {
+            headers: this.headers,
+            schema: (_h = settings.db) === null || _h === void 0 ? void 0 : _h.schema,
+            fetch: this.fetch,
+        });
+        this._listenForAuthEvents();
+    }
+    /**
+     * Supabase Functions allows you to deploy and invoke edge functions.
+     */
+    get functions() {
+        return new _supabase_functions_js__WEBPACK_IMPORTED_MODULE_5__.FunctionsClient(this.functionsUrl, {
+            headers: this.headers,
+            customFetch: this.fetch,
+        });
+    }
+    /**
+     * Supabase Storage allows you to manage user-generated content, such as photos or videos.
+     */
+    get storage() {
+        return new _supabase_storage_js__WEBPACK_IMPORTED_MODULE_6__.StorageClient(this.storageUrl, this.headers, this.fetch);
+    }
+    from(relation) {
+        return this.rest.from(relation);
+    }
+    /**
+     * Perform a function call.
+     *
+     * @param fn  The function name to call.
+     * @param args  The parameters to pass to the function call.
+     * @param options.head   When set to true, no data will be returned.
+     * @param options.count  Count algorithm to use to count rows in a table.
+     *
+     */
+    rpc(fn, args = {}, options) {
+        return this.rest.rpc(fn, args, options);
+    }
+    /**
+     * Creates a Realtime channel with Broadcast, Presence, and Postgres Changes.
+     *
+     * @param {string} name - The name of the Realtime channel.
+     * @param {Object} opts - The options to pass to the Realtime channel.
+     *
+     */
+    channel(name, opts = { config: {} }) {
+        return this.realtime.channel(name, opts);
+    }
+    /**
+     * Returns all Realtime channels.
+     */
+    getChannels() {
+        return this.realtime.getChannels();
+    }
+    /**
+     * Unsubscribes and removes Realtime channel from Realtime client.
+     *
+     * @param {RealtimeChannel} channel - The name of the Realtime channel.
+     *
+     */
+    removeChannel(channel) {
+        return this.realtime.removeChannel(channel);
+    }
+    /**
+     * Unsubscribes and removes all Realtime channels from Realtime client.
+     */
+    removeAllChannels() {
+        return this.realtime.removeAllChannels();
+    }
+    _getAccessToken() {
+        var _a, _b;
+        return __awaiter(this, void 0, void 0, function* () {
+            const { data } = yield this.auth.getSession();
+            return (_b = (_a = data.session) === null || _a === void 0 ? void 0 : _a.access_token) !== null && _b !== void 0 ? _b : null;
+        });
+    }
+    _initSupabaseAuthClient({ autoRefreshToken, persistSession, detectSessionInUrl, storage, storageKey, }, headers, fetch) {
+        const authHeaders = {
+            Authorization: `Bearer ${this.supabaseKey}`,
+            apikey: `${this.supabaseKey}`,
+        };
+        return new _lib_SupabaseAuthClient__WEBPACK_IMPORTED_MODULE_7__.SupabaseAuthClient({
+            url: this.authUrl,
+            headers: Object.assign(Object.assign({}, authHeaders), headers),
+            storageKey: storageKey,
+            autoRefreshToken,
+            persistSession,
+            detectSessionInUrl,
+            storage,
+            fetch,
+        });
+    }
+    _initRealtimeClient(options) {
+        return new _supabase_realtime_js__WEBPACK_IMPORTED_MODULE_1__.RealtimeClient(this.realtimeUrl, Object.assign(Object.assign({}, options), { params: Object.assign({ apikey: this.supabaseKey }, options === null || options === void 0 ? void 0 : options.params) }));
+    }
+    _listenForAuthEvents() {
+        let data = this.auth.onAuthStateChange((event, session) => {
+            this._handleTokenChanged(event, session === null || session === void 0 ? void 0 : session.access_token, 'CLIENT');
+        });
+        return data;
+    }
+    _handleTokenChanged(event, token, source) {
+        if ((event === 'TOKEN_REFRESHED' || event === 'SIGNED_IN') &&
+            this.changedAccessToken !== token) {
+            // Token has changed
+            this.realtime.setAuth(token !== null && token !== void 0 ? token : null);
+            this.changedAccessToken = token;
+        }
+        else if (event === 'SIGNED_OUT' || event === 'USER_DELETED') {
+            // Token is removed
+            this.realtime.setAuth(this.supabaseKey);
+            if (source == 'STORAGE')
+                this.auth.signOut();
+        }
+    }
+}
+//# sourceMappingURL=SupabaseClient.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@supabase/supabase-js/dist/module/index.js":
+/*!*****************************************************************!*\
+  !*** ./node_modules/@supabase/supabase-js/dist/module/index.js ***!
+  \*****************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "AuthApiError": function() { return /* reexport safe */ _supabase_gotrue_js__WEBPACK_IMPORTED_MODULE_0__.AuthApiError; },
+/* harmony export */   "AuthError": function() { return /* reexport safe */ _supabase_gotrue_js__WEBPACK_IMPORTED_MODULE_0__.AuthError; },
+/* harmony export */   "AuthImplicitGrantRedirectError": function() { return /* reexport safe */ _supabase_gotrue_js__WEBPACK_IMPORTED_MODULE_0__.AuthImplicitGrantRedirectError; },
+/* harmony export */   "AuthInvalidCredentialsError": function() { return /* reexport safe */ _supabase_gotrue_js__WEBPACK_IMPORTED_MODULE_0__.AuthInvalidCredentialsError; },
+/* harmony export */   "AuthRetryableFetchError": function() { return /* reexport safe */ _supabase_gotrue_js__WEBPACK_IMPORTED_MODULE_0__.AuthRetryableFetchError; },
+/* harmony export */   "AuthSessionMissingError": function() { return /* reexport safe */ _supabase_gotrue_js__WEBPACK_IMPORTED_MODULE_0__.AuthSessionMissingError; },
+/* harmony export */   "AuthUnknownError": function() { return /* reexport safe */ _supabase_gotrue_js__WEBPACK_IMPORTED_MODULE_0__.AuthUnknownError; },
+/* harmony export */   "CustomAuthError": function() { return /* reexport safe */ _supabase_gotrue_js__WEBPACK_IMPORTED_MODULE_0__.CustomAuthError; },
+/* harmony export */   "FunctionsError": function() { return /* reexport safe */ _supabase_functions_js__WEBPACK_IMPORTED_MODULE_1__.FunctionsError; },
+/* harmony export */   "FunctionsFetchError": function() { return /* reexport safe */ _supabase_functions_js__WEBPACK_IMPORTED_MODULE_1__.FunctionsFetchError; },
+/* harmony export */   "FunctionsHttpError": function() { return /* reexport safe */ _supabase_functions_js__WEBPACK_IMPORTED_MODULE_1__.FunctionsHttpError; },
+/* harmony export */   "FunctionsRelayError": function() { return /* reexport safe */ _supabase_functions_js__WEBPACK_IMPORTED_MODULE_1__.FunctionsRelayError; },
+/* harmony export */   "GoTrueAdminApi": function() { return /* reexport safe */ _supabase_gotrue_js__WEBPACK_IMPORTED_MODULE_0__.GoTrueAdminApi; },
+/* harmony export */   "GoTrueClient": function() { return /* reexport safe */ _supabase_gotrue_js__WEBPACK_IMPORTED_MODULE_0__.GoTrueClient; },
+/* harmony export */   "REALTIME_LISTEN_TYPES": function() { return /* reexport safe */ _supabase_realtime_js__WEBPACK_IMPORTED_MODULE_2__.REALTIME_LISTEN_TYPES; },
+/* harmony export */   "REALTIME_POSTGRES_CHANGES_LISTEN_EVENT": function() { return /* reexport safe */ _supabase_realtime_js__WEBPACK_IMPORTED_MODULE_2__.REALTIME_POSTGRES_CHANGES_LISTEN_EVENT; },
+/* harmony export */   "REALTIME_PRESENCE_LISTEN_EVENTS": function() { return /* reexport safe */ _supabase_realtime_js__WEBPACK_IMPORTED_MODULE_2__.REALTIME_PRESENCE_LISTEN_EVENTS; },
+/* harmony export */   "REALTIME_SUBSCRIBE_STATES": function() { return /* reexport safe */ _supabase_realtime_js__WEBPACK_IMPORTED_MODULE_2__.REALTIME_SUBSCRIBE_STATES; },
+/* harmony export */   "RealtimeChannel": function() { return /* reexport safe */ _supabase_realtime_js__WEBPACK_IMPORTED_MODULE_2__.RealtimeChannel; },
+/* harmony export */   "RealtimeClient": function() { return /* reexport safe */ _supabase_realtime_js__WEBPACK_IMPORTED_MODULE_2__.RealtimeClient; },
+/* harmony export */   "RealtimePresence": function() { return /* reexport safe */ _supabase_realtime_js__WEBPACK_IMPORTED_MODULE_2__.RealtimePresence; },
+/* harmony export */   "SupabaseClient": function() { return /* reexport safe */ _SupabaseClient__WEBPACK_IMPORTED_MODULE_3__["default"]; },
+/* harmony export */   "createClient": function() { return /* binding */ createClient; },
+/* harmony export */   "isAuthApiError": function() { return /* reexport safe */ _supabase_gotrue_js__WEBPACK_IMPORTED_MODULE_0__.isAuthApiError; },
+/* harmony export */   "isAuthError": function() { return /* reexport safe */ _supabase_gotrue_js__WEBPACK_IMPORTED_MODULE_0__.isAuthError; }
+/* harmony export */ });
+/* harmony import */ var _SupabaseClient__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./SupabaseClient */ "./node_modules/@supabase/supabase-js/dist/module/SupabaseClient.js");
+/* harmony import */ var _supabase_gotrue_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @supabase/gotrue-js */ "./node_modules/@supabase/gotrue-js/dist/module/index.js");
+/* harmony import */ var _supabase_functions_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @supabase/functions-js */ "./node_modules/@supabase/functions-js/dist/module/types.js");
+/* harmony import */ var _supabase_realtime_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @supabase/realtime-js */ "./node_modules/@supabase/realtime-js/dist/module/index.js");
+
+
+
+
+
+/**
+ * Creates a new Supabase Client.
+ */
+const createClient = (supabaseUrl, supabaseKey, options) => {
+    return new _SupabaseClient__WEBPACK_IMPORTED_MODULE_3__["default"](supabaseUrl, supabaseKey, options);
+};
+//# sourceMappingURL=index.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@supabase/supabase-js/dist/module/lib/SupabaseAuthClient.js":
+/*!**********************************************************************************!*\
+  !*** ./node_modules/@supabase/supabase-js/dist/module/lib/SupabaseAuthClient.js ***!
+  \**********************************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "SupabaseAuthClient": function() { return /* binding */ SupabaseAuthClient; }
+/* harmony export */ });
+/* harmony import */ var _supabase_gotrue_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @supabase/gotrue-js */ "./node_modules/@supabase/gotrue-js/dist/module/index.js");
+
+class SupabaseAuthClient extends _supabase_gotrue_js__WEBPACK_IMPORTED_MODULE_0__.GoTrueClient {
+    constructor(options) {
+        super(options);
+    }
+}
+//# sourceMappingURL=SupabaseAuthClient.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@supabase/supabase-js/dist/module/lib/constants.js":
+/*!*************************************************************************!*\
+  !*** ./node_modules/@supabase/supabase-js/dist/module/lib/constants.js ***!
+  \*************************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "DEFAULT_HEADERS": function() { return /* binding */ DEFAULT_HEADERS; }
+/* harmony export */ });
+/* harmony import */ var _version__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./version */ "./node_modules/@supabase/supabase-js/dist/module/lib/version.js");
+// constants.ts
+
+const DEFAULT_HEADERS = { 'X-Client-Info': `supabase-js/${_version__WEBPACK_IMPORTED_MODULE_0__.version}` };
+//# sourceMappingURL=constants.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@supabase/supabase-js/dist/module/lib/fetch.js":
+/*!*********************************************************************!*\
+  !*** ./node_modules/@supabase/supabase-js/dist/module/lib/fetch.js ***!
+  \*********************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "fetchWithAuth": function() { return /* binding */ fetchWithAuth; },
+/* harmony export */   "resolveFetch": function() { return /* binding */ resolveFetch; },
+/* harmony export */   "resolveHeadersConstructor": function() { return /* binding */ resolveHeadersConstructor; }
+/* harmony export */ });
+/* harmony import */ var cross_fetch__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! cross-fetch */ "./node_modules/cross-fetch/dist/browser-ponyfill.js");
+/* harmony import */ var cross_fetch__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(cross_fetch__WEBPACK_IMPORTED_MODULE_0__);
+var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+
+const resolveFetch = (customFetch) => {
+    let _fetch;
+    if (customFetch) {
+        _fetch = customFetch;
+    }
+    else if (typeof fetch === 'undefined') {
+        _fetch = (cross_fetch__WEBPACK_IMPORTED_MODULE_0___default());
+    }
+    else {
+        _fetch = fetch;
+    }
+    return (...args) => _fetch(...args);
+};
+const resolveHeadersConstructor = () => {
+    if (typeof Headers === 'undefined') {
+        return cross_fetch__WEBPACK_IMPORTED_MODULE_0__.Headers;
+    }
+    return Headers;
+};
+const fetchWithAuth = (supabaseKey, getAccessToken, customFetch) => {
+    const fetch = resolveFetch(customFetch);
+    const HeadersConstructor = resolveHeadersConstructor();
+    return (input, init) => __awaiter(void 0, void 0, void 0, function* () {
+        var _a;
+        const accessToken = (_a = (yield getAccessToken())) !== null && _a !== void 0 ? _a : supabaseKey;
+        let headers = new HeadersConstructor(init === null || init === void 0 ? void 0 : init.headers);
+        if (!headers.has('apikey')) {
+            headers.set('apikey', supabaseKey);
+        }
+        if (!headers.has('Authorization')) {
+            headers.set('Authorization', `Bearer ${accessToken}`);
+        }
+        return fetch(input, Object.assign(Object.assign({}, init), { headers }));
+    });
+};
+//# sourceMappingURL=fetch.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@supabase/supabase-js/dist/module/lib/helpers.js":
+/*!***********************************************************************!*\
+  !*** ./node_modules/@supabase/supabase-js/dist/module/lib/helpers.js ***!
+  \***********************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "applySettingDefaults": function() { return /* binding */ applySettingDefaults; },
+/* harmony export */   "isBrowser": function() { return /* binding */ isBrowser; },
+/* harmony export */   "stripTrailingSlash": function() { return /* binding */ stripTrailingSlash; },
+/* harmony export */   "uuid": function() { return /* binding */ uuid; }
+/* harmony export */ });
+function uuid() {
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+        var r = (Math.random() * 16) | 0, v = c == 'x' ? r : (r & 0x3) | 0x8;
+        return v.toString(16);
+    });
+}
+function stripTrailingSlash(url) {
+    return url.replace(/\/$/, '');
+}
+const isBrowser = () => typeof window !== 'undefined';
+function applySettingDefaults(options, defaults) {
+    const { db: dbOptions, auth: authOptions, realtime: realtimeOptions, global: globalOptions, } = options;
+    const { db: DEFAULT_DB_OPTIONS, auth: DEFAULT_AUTH_OPTIONS, realtime: DEFAULT_REALTIME_OPTIONS, global: DEFAULT_GLOBAL_OPTIONS, } = defaults;
+    return {
+        db: Object.assign(Object.assign({}, DEFAULT_DB_OPTIONS), dbOptions),
+        auth: Object.assign(Object.assign({}, DEFAULT_AUTH_OPTIONS), authOptions),
+        realtime: Object.assign(Object.assign({}, DEFAULT_REALTIME_OPTIONS), realtimeOptions),
+        global: Object.assign(Object.assign({}, DEFAULT_GLOBAL_OPTIONS), globalOptions),
+    };
+}
+//# sourceMappingURL=helpers.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@supabase/supabase-js/dist/module/lib/version.js":
+/*!***********************************************************************!*\
+  !*** ./node_modules/@supabase/supabase-js/dist/module/lib/version.js ***!
+  \***********************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "version": function() { return /* binding */ version; }
+/* harmony export */ });
+const version = '2.2.1';
+//# sourceMappingURL=version.js.map
+
+/***/ }),
+
 /***/ "./node_modules/axios/index.js":
 /*!*************************************!*\
   !*** ./node_modules/axios/index.js ***!
@@ -2645,7 +11660,7 @@ const AdminRoutes = () => {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/index.js");
 /* harmony import */ var _components_Home__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/Home */ "./client/components/Home.js");
 /* harmony import */ var _components_AvailableKittens__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/AvailableKittens */ "./client/components/AvailableKittens.js");
 /* harmony import */ var _components_ClientQuestionnaire__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/ClientQuestionnaire */ "./client/components/ClientQuestionnaire.js");
@@ -2659,6 +11674,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_CatDetailedView__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./components/CatDetailedView */ "./client/components/CatDetailedView.js");
 /* harmony import */ var _components_QuestionnaireConfirmation__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./components/QuestionnaireConfirmation */ "./client/components/QuestionnaireConfirmation.js");
 /* harmony import */ var _components_reviews_Reviews2__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./components/reviews/Reviews2 */ "./client/components/reviews/Reviews2.js");
+/* harmony import */ var _components_supabase_AuthUi__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./components/supabase/AuthUi */ "./client/components/supabase/AuthUi.js");
+
 
 
 
@@ -2681,58 +11698,61 @@ const FrontEndRoutes = ({
   return (
     /*#__PURE__*/
     // public routes
-    react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_14__.Routes, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_14__.Route, {
+    react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_15__.Routes, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_15__.Route, {
       path: "/",
       element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_Home__WEBPACK_IMPORTED_MODULE_1__["default"], null)
-    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_14__.Route, {
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_15__.Route, {
       path: "/login",
       element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_AuthForm__WEBPACK_IMPORTED_MODULE_6__["default"], null)
-    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_14__.Route, {
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_15__.Route, {
       path: "/home",
       element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_Home__WEBPACK_IMPORTED_MODULE_1__["default"], {
         setModalOpen: setModalOpen
       })
-    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_14__.Route, {
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_15__.Route, {
       path: "/availableKittens",
       element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_AvailableKittens__WEBPACK_IMPORTED_MODULE_2__["default"], null)
-    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_14__.Route, {
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_15__.Route, {
       path: "/kittenDetailed/:model/:id",
       element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_KittenDetailedView__WEBPACK_IMPORTED_MODULE_8__["default"], null)
-    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_14__.Route, {
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_15__.Route, {
       path: "/viewCats",
       element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_ViewCats2__WEBPACK_IMPORTED_MODULE_10__["default"], null)
-    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_14__.Route, {
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_15__.Route, {
       path: "/catDetailedView/:MOTHERorFATHER/:id",
       element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_CatDetailedView__WEBPACK_IMPORTED_MODULE_11__["default"], null)
-    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_14__.Route, {
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_15__.Route, {
       path: "/reviews",
       element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_reviews_Reviews2__WEBPACK_IMPORTED_MODULE_13__["default"], null)
-    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_14__.Route, {
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_15__.Route, {
       path: "/waitingListForm",
       element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_ClientQuestionnaire__WEBPACK_IMPORTED_MODULE_3__["default"], null)
-    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_14__.Route, {
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_15__.Route, {
       path: "/confirmClientQuestionnaire",
       element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_ConfirmClientQuestionnaire__WEBPACK_IMPORTED_MODULE_5__["default"], null)
-    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_14__.Route, {
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_15__.Route, {
       path: "/contact",
       element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_ContactRequestForm__WEBPACK_IMPORTED_MODULE_4__["default"], null)
-    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_14__.Route, {
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_15__.Route, {
       path: "/404",
       element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_My404__WEBPACK_IMPORTED_MODULE_7__["default"], null)
-    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_14__.Route, {
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_15__.Route, {
       path: "/QConfirmation",
       element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_QuestionnaireConfirmation__WEBPACK_IMPORTED_MODULE_12__["default"], null)
-    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_14__.Route, {
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_15__.Route, {
       path: "/logout",
       element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_Logout__WEBPACK_IMPORTED_MODULE_9__["default"], null)
-    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_14__.Route, {
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_15__.Route, {
+      path: "/supaAuth",
+      element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_supabase_AuthUi__WEBPACK_IMPORTED_MODULE_14__["default"], null)
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_15__.Route, {
       path: "/catDetailed",
-      element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_14__.Navigate, {
+      element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_15__.Navigate, {
         to: "mother"
       })
-    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_14__.Route, {
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_15__.Route, {
       path: "/catDetailed/mother",
-      element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_14__.Navigate, {
+      element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_15__.Navigate, {
         to: "1"
       })
     }))
@@ -2842,7 +11862,7 @@ const AdminBar = ({
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/index.js");
 /* harmony import */ var react_helmet__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-helmet */ "./node_modules/react-helmet/es/Helmet.js");
 /* harmony import */ var _FrontEndRoutes__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../FrontEndRoutes */ "./client/FrontEndRoutes.js");
 /* harmony import */ var _AdminRoutes__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../AdminRoutes */ "./client/AdminRoutes.js");
@@ -2858,9 +11878,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _AttentionModal__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./AttentionModal */ "./client/components/AttentionModal.js");
 /* harmony import */ var _customHooks_useLocalStorage__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../customHooks/useLocalStorage */ "./client/customHooks/useLocalStorage.js");
 /* harmony import */ var _MessageBox__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./MessageBox */ "./client/components/MessageBox.js");
+/* harmony import */ var _supabase_auth_helpers_react__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! @supabase/auth-helpers-react */ "./node_modules/@supabase/auth-helpers-react/dist/index.js");
+/* harmony import */ var _supabase_auth_helpers_react__WEBPACK_IMPORTED_MODULE_15___default = /*#__PURE__*/__webpack_require__.n(_supabase_auth_helpers_react__WEBPACK_IMPORTED_MODULE_15__);
 
 
  // react Head component
+
 
 
 
@@ -2887,7 +11910,7 @@ const App = () => {
   const [showMobileNav, setShowMobileNav] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
   const [modalOpen, setModalOpen] = (0,_customHooks_useLocalStorage__WEBPACK_IMPORTED_MODULE_13__["default"])('modalOpen', localStorage.hasOwnProperty('modalOpen') ? localStorage.getItem('modalOpen') : false); //  Inline style was necessary for mainContentContainer to account for dynamic conditional rendering of footer on Mobile Nav Open Screen
 
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_15__.unstable_HistoryRouter, {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_16__.unstable_HistoryRouter, {
     history: _history__WEBPACK_IMPORTED_MODULE_6__["default"]
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_helmet__WEBPACK_IMPORTED_MODULE_1__.Helmet, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("title", null, "Planet Scottish Fold | Scottish Fold Cattery"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("meta", {
     name: "Planet Scottish Fold",
@@ -6499,6 +15522,39 @@ const Reviews2 = () => {
 
 /***/ }),
 
+/***/ "./client/components/supabase/AuthUi.js":
+/*!**********************************************!*\
+  !*** ./client/components/supabase/AuthUi.js ***!
+  \**********************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _supabase_supabase_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @supabase/supabase-js */ "./node_modules/@supabase/supabase-js/dist/module/index.js");
+/* harmony import */ var _supabase_auth_ui_react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @supabase/auth-ui-react */ "./node_modules/@supabase/auth-ui-react/dist/esm/src/components/Auth/Auth.js");
+/* harmony import */ var _supabase_auth_ui_react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @supabase/auth-ui-react */ "./node_modules/@supabase/auth-ui-react/dist/esm/common/theming/defaultThemes.js");
+
+
+
+const supabaseURL = "https://jfbyqhzzothodtxblxdi.supabase.co";
+const supabasePublicKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpmYnlxaHp6b3Rob2R0eGJseGRpIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NzEzOTQ3MjQsImV4cCI6MTk4Njk3MDcyNH0.YzAavCV038eiG4271h1G1sNYqGflr240hb88j-_MLcI";
+const supabase = (0,_supabase_supabase_js__WEBPACK_IMPORTED_MODULE_1__.createClient)(supabaseURL, supabasePublicKey);
+
+const AuthUI = () => {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_supabase_auth_ui_react__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    supabaseClient: supabase,
+    appearance: {
+      theme: _supabase_auth_ui_react__WEBPACK_IMPORTED_MODULE_3__.ThemeSupa
+    }
+  });
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (AuthUI);
+
+/***/ }),
+
 /***/ "./client/components/textComponents/AboutUs.js":
 /*!*****************************************************!*\
   !*** ./client/components/textComponents/AboutUs.js ***!
@@ -6855,7 +15911,7 @@ const socialMediaInfo = [{
   iconSrc: '/socialMediaIcons/instagram.png'
 }, {
   site: 'facebook',
-  href: 'https://www.facebook.com/PlanetScottishFoldKittens',
+  href: 'https://www.facebook.com/profile.php?id=100086918329822',
   iconSrc: '/socialMediaIcons/facebook.png'
 }, {
   site: 'tiktok',
@@ -7052,6 +16108,615 @@ defaultReviews.push(new CustomerReview(image1, text1, name1));
 defaultReviews.push(new CustomerReview(image2, text2, name2));
 defaultReviews.push(new CustomerReview(image3, text3, name3));
 module.exports = defaultReviews;
+
+/***/ }),
+
+/***/ "./node_modules/cross-fetch/dist/browser-ponyfill.js":
+/*!***********************************************************!*\
+  !*** ./node_modules/cross-fetch/dist/browser-ponyfill.js ***!
+  \***********************************************************/
+/***/ (function(module, exports) {
+
+var global = typeof self !== 'undefined' ? self : this;
+var __self__ = (function () {
+function F() {
+this.fetch = false;
+this.DOMException = global.DOMException
+}
+F.prototype = global;
+return new F();
+})();
+(function(self) {
+
+var irrelevant = (function (exports) {
+
+  var support = {
+    searchParams: 'URLSearchParams' in self,
+    iterable: 'Symbol' in self && 'iterator' in Symbol,
+    blob:
+      'FileReader' in self &&
+      'Blob' in self &&
+      (function() {
+        try {
+          new Blob();
+          return true
+        } catch (e) {
+          return false
+        }
+      })(),
+    formData: 'FormData' in self,
+    arrayBuffer: 'ArrayBuffer' in self
+  };
+
+  function isDataView(obj) {
+    return obj && DataView.prototype.isPrototypeOf(obj)
+  }
+
+  if (support.arrayBuffer) {
+    var viewClasses = [
+      '[object Int8Array]',
+      '[object Uint8Array]',
+      '[object Uint8ClampedArray]',
+      '[object Int16Array]',
+      '[object Uint16Array]',
+      '[object Int32Array]',
+      '[object Uint32Array]',
+      '[object Float32Array]',
+      '[object Float64Array]'
+    ];
+
+    var isArrayBufferView =
+      ArrayBuffer.isView ||
+      function(obj) {
+        return obj && viewClasses.indexOf(Object.prototype.toString.call(obj)) > -1
+      };
+  }
+
+  function normalizeName(name) {
+    if (typeof name !== 'string') {
+      name = String(name);
+    }
+    if (/[^a-z0-9\-#$%&'*+.^_`|~]/i.test(name)) {
+      throw new TypeError('Invalid character in header field name')
+    }
+    return name.toLowerCase()
+  }
+
+  function normalizeValue(value) {
+    if (typeof value !== 'string') {
+      value = String(value);
+    }
+    return value
+  }
+
+  // Build a destructive iterator for the value list
+  function iteratorFor(items) {
+    var iterator = {
+      next: function() {
+        var value = items.shift();
+        return {done: value === undefined, value: value}
+      }
+    };
+
+    if (support.iterable) {
+      iterator[Symbol.iterator] = function() {
+        return iterator
+      };
+    }
+
+    return iterator
+  }
+
+  function Headers(headers) {
+    this.map = {};
+
+    if (headers instanceof Headers) {
+      headers.forEach(function(value, name) {
+        this.append(name, value);
+      }, this);
+    } else if (Array.isArray(headers)) {
+      headers.forEach(function(header) {
+        this.append(header[0], header[1]);
+      }, this);
+    } else if (headers) {
+      Object.getOwnPropertyNames(headers).forEach(function(name) {
+        this.append(name, headers[name]);
+      }, this);
+    }
+  }
+
+  Headers.prototype.append = function(name, value) {
+    name = normalizeName(name);
+    value = normalizeValue(value);
+    var oldValue = this.map[name];
+    this.map[name] = oldValue ? oldValue + ', ' + value : value;
+  };
+
+  Headers.prototype['delete'] = function(name) {
+    delete this.map[normalizeName(name)];
+  };
+
+  Headers.prototype.get = function(name) {
+    name = normalizeName(name);
+    return this.has(name) ? this.map[name] : null
+  };
+
+  Headers.prototype.has = function(name) {
+    return this.map.hasOwnProperty(normalizeName(name))
+  };
+
+  Headers.prototype.set = function(name, value) {
+    this.map[normalizeName(name)] = normalizeValue(value);
+  };
+
+  Headers.prototype.forEach = function(callback, thisArg) {
+    for (var name in this.map) {
+      if (this.map.hasOwnProperty(name)) {
+        callback.call(thisArg, this.map[name], name, this);
+      }
+    }
+  };
+
+  Headers.prototype.keys = function() {
+    var items = [];
+    this.forEach(function(value, name) {
+      items.push(name);
+    });
+    return iteratorFor(items)
+  };
+
+  Headers.prototype.values = function() {
+    var items = [];
+    this.forEach(function(value) {
+      items.push(value);
+    });
+    return iteratorFor(items)
+  };
+
+  Headers.prototype.entries = function() {
+    var items = [];
+    this.forEach(function(value, name) {
+      items.push([name, value]);
+    });
+    return iteratorFor(items)
+  };
+
+  if (support.iterable) {
+    Headers.prototype[Symbol.iterator] = Headers.prototype.entries;
+  }
+
+  function consumed(body) {
+    if (body.bodyUsed) {
+      return Promise.reject(new TypeError('Already read'))
+    }
+    body.bodyUsed = true;
+  }
+
+  function fileReaderReady(reader) {
+    return new Promise(function(resolve, reject) {
+      reader.onload = function() {
+        resolve(reader.result);
+      };
+      reader.onerror = function() {
+        reject(reader.error);
+      };
+    })
+  }
+
+  function readBlobAsArrayBuffer(blob) {
+    var reader = new FileReader();
+    var promise = fileReaderReady(reader);
+    reader.readAsArrayBuffer(blob);
+    return promise
+  }
+
+  function readBlobAsText(blob) {
+    var reader = new FileReader();
+    var promise = fileReaderReady(reader);
+    reader.readAsText(blob);
+    return promise
+  }
+
+  function readArrayBufferAsText(buf) {
+    var view = new Uint8Array(buf);
+    var chars = new Array(view.length);
+
+    for (var i = 0; i < view.length; i++) {
+      chars[i] = String.fromCharCode(view[i]);
+    }
+    return chars.join('')
+  }
+
+  function bufferClone(buf) {
+    if (buf.slice) {
+      return buf.slice(0)
+    } else {
+      var view = new Uint8Array(buf.byteLength);
+      view.set(new Uint8Array(buf));
+      return view.buffer
+    }
+  }
+
+  function Body() {
+    this.bodyUsed = false;
+
+    this._initBody = function(body) {
+      this._bodyInit = body;
+      if (!body) {
+        this._bodyText = '';
+      } else if (typeof body === 'string') {
+        this._bodyText = body;
+      } else if (support.blob && Blob.prototype.isPrototypeOf(body)) {
+        this._bodyBlob = body;
+      } else if (support.formData && FormData.prototype.isPrototypeOf(body)) {
+        this._bodyFormData = body;
+      } else if (support.searchParams && URLSearchParams.prototype.isPrototypeOf(body)) {
+        this._bodyText = body.toString();
+      } else if (support.arrayBuffer && support.blob && isDataView(body)) {
+        this._bodyArrayBuffer = bufferClone(body.buffer);
+        // IE 10-11 can't handle a DataView body.
+        this._bodyInit = new Blob([this._bodyArrayBuffer]);
+      } else if (support.arrayBuffer && (ArrayBuffer.prototype.isPrototypeOf(body) || isArrayBufferView(body))) {
+        this._bodyArrayBuffer = bufferClone(body);
+      } else {
+        this._bodyText = body = Object.prototype.toString.call(body);
+      }
+
+      if (!this.headers.get('content-type')) {
+        if (typeof body === 'string') {
+          this.headers.set('content-type', 'text/plain;charset=UTF-8');
+        } else if (this._bodyBlob && this._bodyBlob.type) {
+          this.headers.set('content-type', this._bodyBlob.type);
+        } else if (support.searchParams && URLSearchParams.prototype.isPrototypeOf(body)) {
+          this.headers.set('content-type', 'application/x-www-form-urlencoded;charset=UTF-8');
+        }
+      }
+    };
+
+    if (support.blob) {
+      this.blob = function() {
+        var rejected = consumed(this);
+        if (rejected) {
+          return rejected
+        }
+
+        if (this._bodyBlob) {
+          return Promise.resolve(this._bodyBlob)
+        } else if (this._bodyArrayBuffer) {
+          return Promise.resolve(new Blob([this._bodyArrayBuffer]))
+        } else if (this._bodyFormData) {
+          throw new Error('could not read FormData body as blob')
+        } else {
+          return Promise.resolve(new Blob([this._bodyText]))
+        }
+      };
+
+      this.arrayBuffer = function() {
+        if (this._bodyArrayBuffer) {
+          return consumed(this) || Promise.resolve(this._bodyArrayBuffer)
+        } else {
+          return this.blob().then(readBlobAsArrayBuffer)
+        }
+      };
+    }
+
+    this.text = function() {
+      var rejected = consumed(this);
+      if (rejected) {
+        return rejected
+      }
+
+      if (this._bodyBlob) {
+        return readBlobAsText(this._bodyBlob)
+      } else if (this._bodyArrayBuffer) {
+        return Promise.resolve(readArrayBufferAsText(this._bodyArrayBuffer))
+      } else if (this._bodyFormData) {
+        throw new Error('could not read FormData body as text')
+      } else {
+        return Promise.resolve(this._bodyText)
+      }
+    };
+
+    if (support.formData) {
+      this.formData = function() {
+        return this.text().then(decode)
+      };
+    }
+
+    this.json = function() {
+      return this.text().then(JSON.parse)
+    };
+
+    return this
+  }
+
+  // HTTP methods whose capitalization should be normalized
+  var methods = ['DELETE', 'GET', 'HEAD', 'OPTIONS', 'POST', 'PUT'];
+
+  function normalizeMethod(method) {
+    var upcased = method.toUpperCase();
+    return methods.indexOf(upcased) > -1 ? upcased : method
+  }
+
+  function Request(input, options) {
+    options = options || {};
+    var body = options.body;
+
+    if (input instanceof Request) {
+      if (input.bodyUsed) {
+        throw new TypeError('Already read')
+      }
+      this.url = input.url;
+      this.credentials = input.credentials;
+      if (!options.headers) {
+        this.headers = new Headers(input.headers);
+      }
+      this.method = input.method;
+      this.mode = input.mode;
+      this.signal = input.signal;
+      if (!body && input._bodyInit != null) {
+        body = input._bodyInit;
+        input.bodyUsed = true;
+      }
+    } else {
+      this.url = String(input);
+    }
+
+    this.credentials = options.credentials || this.credentials || 'same-origin';
+    if (options.headers || !this.headers) {
+      this.headers = new Headers(options.headers);
+    }
+    this.method = normalizeMethod(options.method || this.method || 'GET');
+    this.mode = options.mode || this.mode || null;
+    this.signal = options.signal || this.signal;
+    this.referrer = null;
+
+    if ((this.method === 'GET' || this.method === 'HEAD') && body) {
+      throw new TypeError('Body not allowed for GET or HEAD requests')
+    }
+    this._initBody(body);
+  }
+
+  Request.prototype.clone = function() {
+    return new Request(this, {body: this._bodyInit})
+  };
+
+  function decode(body) {
+    var form = new FormData();
+    body
+      .trim()
+      .split('&')
+      .forEach(function(bytes) {
+        if (bytes) {
+          var split = bytes.split('=');
+          var name = split.shift().replace(/\+/g, ' ');
+          var value = split.join('=').replace(/\+/g, ' ');
+          form.append(decodeURIComponent(name), decodeURIComponent(value));
+        }
+      });
+    return form
+  }
+
+  function parseHeaders(rawHeaders) {
+    var headers = new Headers();
+    // Replace instances of \r\n and \n followed by at least one space or horizontal tab with a space
+    // https://tools.ietf.org/html/rfc7230#section-3.2
+    var preProcessedHeaders = rawHeaders.replace(/\r?\n[\t ]+/g, ' ');
+    preProcessedHeaders.split(/\r?\n/).forEach(function(line) {
+      var parts = line.split(':');
+      var key = parts.shift().trim();
+      if (key) {
+        var value = parts.join(':').trim();
+        headers.append(key, value);
+      }
+    });
+    return headers
+  }
+
+  Body.call(Request.prototype);
+
+  function Response(bodyInit, options) {
+    if (!options) {
+      options = {};
+    }
+
+    this.type = 'default';
+    this.status = options.status === undefined ? 200 : options.status;
+    this.ok = this.status >= 200 && this.status < 300;
+    this.statusText = 'statusText' in options ? options.statusText : 'OK';
+    this.headers = new Headers(options.headers);
+    this.url = options.url || '';
+    this._initBody(bodyInit);
+  }
+
+  Body.call(Response.prototype);
+
+  Response.prototype.clone = function() {
+    return new Response(this._bodyInit, {
+      status: this.status,
+      statusText: this.statusText,
+      headers: new Headers(this.headers),
+      url: this.url
+    })
+  };
+
+  Response.error = function() {
+    var response = new Response(null, {status: 0, statusText: ''});
+    response.type = 'error';
+    return response
+  };
+
+  var redirectStatuses = [301, 302, 303, 307, 308];
+
+  Response.redirect = function(url, status) {
+    if (redirectStatuses.indexOf(status) === -1) {
+      throw new RangeError('Invalid status code')
+    }
+
+    return new Response(null, {status: status, headers: {location: url}})
+  };
+
+  exports.DOMException = self.DOMException;
+  try {
+    new exports.DOMException();
+  } catch (err) {
+    exports.DOMException = function(message, name) {
+      this.message = message;
+      this.name = name;
+      var error = Error(message);
+      this.stack = error.stack;
+    };
+    exports.DOMException.prototype = Object.create(Error.prototype);
+    exports.DOMException.prototype.constructor = exports.DOMException;
+  }
+
+  function fetch(input, init) {
+    return new Promise(function(resolve, reject) {
+      var request = new Request(input, init);
+
+      if (request.signal && request.signal.aborted) {
+        return reject(new exports.DOMException('Aborted', 'AbortError'))
+      }
+
+      var xhr = new XMLHttpRequest();
+
+      function abortXhr() {
+        xhr.abort();
+      }
+
+      xhr.onload = function() {
+        var options = {
+          status: xhr.status,
+          statusText: xhr.statusText,
+          headers: parseHeaders(xhr.getAllResponseHeaders() || '')
+        };
+        options.url = 'responseURL' in xhr ? xhr.responseURL : options.headers.get('X-Request-URL');
+        var body = 'response' in xhr ? xhr.response : xhr.responseText;
+        resolve(new Response(body, options));
+      };
+
+      xhr.onerror = function() {
+        reject(new TypeError('Network request failed'));
+      };
+
+      xhr.ontimeout = function() {
+        reject(new TypeError('Network request failed'));
+      };
+
+      xhr.onabort = function() {
+        reject(new exports.DOMException('Aborted', 'AbortError'));
+      };
+
+      xhr.open(request.method, request.url, true);
+
+      if (request.credentials === 'include') {
+        xhr.withCredentials = true;
+      } else if (request.credentials === 'omit') {
+        xhr.withCredentials = false;
+      }
+
+      if ('responseType' in xhr && support.blob) {
+        xhr.responseType = 'blob';
+      }
+
+      request.headers.forEach(function(value, name) {
+        xhr.setRequestHeader(name, value);
+      });
+
+      if (request.signal) {
+        request.signal.addEventListener('abort', abortXhr);
+
+        xhr.onreadystatechange = function() {
+          // DONE (success or failure)
+          if (xhr.readyState === 4) {
+            request.signal.removeEventListener('abort', abortXhr);
+          }
+        };
+      }
+
+      xhr.send(typeof request._bodyInit === 'undefined' ? null : request._bodyInit);
+    })
+  }
+
+  fetch.polyfill = true;
+
+  if (!self.fetch) {
+    self.fetch = fetch;
+    self.Headers = Headers;
+    self.Request = Request;
+    self.Response = Response;
+  }
+
+  exports.Headers = Headers;
+  exports.Request = Request;
+  exports.Response = Response;
+  exports.fetch = fetch;
+
+  Object.defineProperty(exports, '__esModule', { value: true });
+
+  return exports;
+
+})({});
+})(__self__);
+__self__.fetch.ponyfill = true;
+// Remove "polyfill" property added by whatwg-fetch
+delete __self__.fetch.polyfill;
+// Choose between native implementation (global) or custom implementation (__self__)
+// var ctx = global.fetch ? global : __self__;
+var ctx = __self__; // this line disable service worker support temporarily
+exports = ctx.fetch // To enable: import fetch from 'cross-fetch'
+exports["default"] = ctx.fetch // For TypeScript consumers without esModuleInterop.
+exports.fetch = ctx.fetch // To enable: import {fetch} from 'cross-fetch'
+exports.Headers = ctx.Headers
+exports.Request = ctx.Request
+exports.Response = ctx.Response
+module.exports = exports
+
+
+/***/ }),
+
+/***/ "./node_modules/es5-ext/global.js":
+/*!****************************************!*\
+  !*** ./node_modules/es5-ext/global.js ***!
+  \****************************************/
+/***/ (function(module) {
+
+var naiveFallback = function () {
+	if (typeof self === "object" && self) return self;
+	if (typeof window === "object" && window) return window;
+	throw new Error("Unable to resolve global `this`");
+};
+
+module.exports = (function () {
+	if (this) return this;
+
+	// Unexpected strict mode (may happen if e.g. bundled into ESM module)
+
+	// Fallback to standard globalThis if available
+	if (typeof globalThis === "object" && globalThis) return globalThis;
+
+	// Thanks @mathiasbynens -> https://mathiasbynens.be/notes/globalthis
+	// In all ES5+ engines global object inherits from Object.prototype
+	// (if you approached one that doesn't please report)
+	try {
+		Object.defineProperty(Object.prototype, "__global__", {
+			get: function () { return this; },
+			configurable: true
+		});
+	} catch (error) {
+		// Unfortunate case of updates to Object.prototype being restricted
+		// via preventExtensions, seal or freeze
+		return naiveFallback();
+	}
+	try {
+		// Safari case (window.__global__ works, but __global__ does not)
+		if (!__global__) return naiveFallback();
+		return __global__;
+	} finally {
+		delete Object.prototype.__global__;
+	}
+})();
+
 
 /***/ }),
 
@@ -41557,6 +51222,1331 @@ module.exports = withSideEffect;
 
 /***/ }),
 
+/***/ "./node_modules/react/cjs/react-jsx-runtime.development.js":
+/*!*****************************************************************!*\
+  !*** ./node_modules/react/cjs/react-jsx-runtime.development.js ***!
+  \*****************************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+"use strict";
+/**
+ * @license React
+ * react-jsx-runtime.development.js
+ *
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+
+
+if (true) {
+  (function() {
+'use strict';
+
+var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+// ATTENTION
+// When adding new symbols to this file,
+// Please consider also adding to 'react-devtools-shared/src/backend/ReactSymbols'
+// The Symbol used to tag the ReactElement-like types.
+var REACT_ELEMENT_TYPE = Symbol.for('react.element');
+var REACT_PORTAL_TYPE = Symbol.for('react.portal');
+var REACT_FRAGMENT_TYPE = Symbol.for('react.fragment');
+var REACT_STRICT_MODE_TYPE = Symbol.for('react.strict_mode');
+var REACT_PROFILER_TYPE = Symbol.for('react.profiler');
+var REACT_PROVIDER_TYPE = Symbol.for('react.provider');
+var REACT_CONTEXT_TYPE = Symbol.for('react.context');
+var REACT_FORWARD_REF_TYPE = Symbol.for('react.forward_ref');
+var REACT_SUSPENSE_TYPE = Symbol.for('react.suspense');
+var REACT_SUSPENSE_LIST_TYPE = Symbol.for('react.suspense_list');
+var REACT_MEMO_TYPE = Symbol.for('react.memo');
+var REACT_LAZY_TYPE = Symbol.for('react.lazy');
+var REACT_OFFSCREEN_TYPE = Symbol.for('react.offscreen');
+var MAYBE_ITERATOR_SYMBOL = Symbol.iterator;
+var FAUX_ITERATOR_SYMBOL = '@@iterator';
+function getIteratorFn(maybeIterable) {
+  if (maybeIterable === null || typeof maybeIterable !== 'object') {
+    return null;
+  }
+
+  var maybeIterator = MAYBE_ITERATOR_SYMBOL && maybeIterable[MAYBE_ITERATOR_SYMBOL] || maybeIterable[FAUX_ITERATOR_SYMBOL];
+
+  if (typeof maybeIterator === 'function') {
+    return maybeIterator;
+  }
+
+  return null;
+}
+
+var ReactSharedInternals = React.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
+
+function error(format) {
+  {
+    {
+      for (var _len2 = arguments.length, args = new Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
+        args[_key2 - 1] = arguments[_key2];
+      }
+
+      printWarning('error', format, args);
+    }
+  }
+}
+
+function printWarning(level, format, args) {
+  // When changing this logic, you might want to also
+  // update consoleWithStackDev.www.js as well.
+  {
+    var ReactDebugCurrentFrame = ReactSharedInternals.ReactDebugCurrentFrame;
+    var stack = ReactDebugCurrentFrame.getStackAddendum();
+
+    if (stack !== '') {
+      format += '%s';
+      args = args.concat([stack]);
+    } // eslint-disable-next-line react-internal/safe-string-coercion
+
+
+    var argsWithFormat = args.map(function (item) {
+      return String(item);
+    }); // Careful: RN currently depends on this prefix
+
+    argsWithFormat.unshift('Warning: ' + format); // We intentionally don't use spread (or .apply) directly because it
+    // breaks IE9: https://github.com/facebook/react/issues/13610
+    // eslint-disable-next-line react-internal/no-production-logging
+
+    Function.prototype.apply.call(console[level], console, argsWithFormat);
+  }
+}
+
+// -----------------------------------------------------------------------------
+
+var enableScopeAPI = false; // Experimental Create Event Handle API.
+var enableCacheElement = false;
+var enableTransitionTracing = false; // No known bugs, but needs performance testing
+
+var enableLegacyHidden = false; // Enables unstable_avoidThisFallback feature in Fiber
+// stuff. Intended to enable React core members to more easily debug scheduling
+// issues in DEV builds.
+
+var enableDebugTracing = false; // Track which Fiber(s) schedule render work.
+
+var REACT_MODULE_REFERENCE;
+
+{
+  REACT_MODULE_REFERENCE = Symbol.for('react.module.reference');
+}
+
+function isValidElementType(type) {
+  if (typeof type === 'string' || typeof type === 'function') {
+    return true;
+  } // Note: typeof might be other than 'symbol' or 'number' (e.g. if it's a polyfill).
+
+
+  if (type === REACT_FRAGMENT_TYPE || type === REACT_PROFILER_TYPE || enableDebugTracing  || type === REACT_STRICT_MODE_TYPE || type === REACT_SUSPENSE_TYPE || type === REACT_SUSPENSE_LIST_TYPE || enableLegacyHidden  || type === REACT_OFFSCREEN_TYPE || enableScopeAPI  || enableCacheElement  || enableTransitionTracing ) {
+    return true;
+  }
+
+  if (typeof type === 'object' && type !== null) {
+    if (type.$$typeof === REACT_LAZY_TYPE || type.$$typeof === REACT_MEMO_TYPE || type.$$typeof === REACT_PROVIDER_TYPE || type.$$typeof === REACT_CONTEXT_TYPE || type.$$typeof === REACT_FORWARD_REF_TYPE || // This needs to include all possible module reference object
+    // types supported by any Flight configuration anywhere since
+    // we don't know which Flight build this will end up being used
+    // with.
+    type.$$typeof === REACT_MODULE_REFERENCE || type.getModuleId !== undefined) {
+      return true;
+    }
+  }
+
+  return false;
+}
+
+function getWrappedName(outerType, innerType, wrapperName) {
+  var displayName = outerType.displayName;
+
+  if (displayName) {
+    return displayName;
+  }
+
+  var functionName = innerType.displayName || innerType.name || '';
+  return functionName !== '' ? wrapperName + "(" + functionName + ")" : wrapperName;
+} // Keep in sync with react-reconciler/getComponentNameFromFiber
+
+
+function getContextName(type) {
+  return type.displayName || 'Context';
+} // Note that the reconciler package should generally prefer to use getComponentNameFromFiber() instead.
+
+
+function getComponentNameFromType(type) {
+  if (type == null) {
+    // Host root, text node or just invalid type.
+    return null;
+  }
+
+  {
+    if (typeof type.tag === 'number') {
+      error('Received an unexpected object in getComponentNameFromType(). ' + 'This is likely a bug in React. Please file an issue.');
+    }
+  }
+
+  if (typeof type === 'function') {
+    return type.displayName || type.name || null;
+  }
+
+  if (typeof type === 'string') {
+    return type;
+  }
+
+  switch (type) {
+    case REACT_FRAGMENT_TYPE:
+      return 'Fragment';
+
+    case REACT_PORTAL_TYPE:
+      return 'Portal';
+
+    case REACT_PROFILER_TYPE:
+      return 'Profiler';
+
+    case REACT_STRICT_MODE_TYPE:
+      return 'StrictMode';
+
+    case REACT_SUSPENSE_TYPE:
+      return 'Suspense';
+
+    case REACT_SUSPENSE_LIST_TYPE:
+      return 'SuspenseList';
+
+  }
+
+  if (typeof type === 'object') {
+    switch (type.$$typeof) {
+      case REACT_CONTEXT_TYPE:
+        var context = type;
+        return getContextName(context) + '.Consumer';
+
+      case REACT_PROVIDER_TYPE:
+        var provider = type;
+        return getContextName(provider._context) + '.Provider';
+
+      case REACT_FORWARD_REF_TYPE:
+        return getWrappedName(type, type.render, 'ForwardRef');
+
+      case REACT_MEMO_TYPE:
+        var outerName = type.displayName || null;
+
+        if (outerName !== null) {
+          return outerName;
+        }
+
+        return getComponentNameFromType(type.type) || 'Memo';
+
+      case REACT_LAZY_TYPE:
+        {
+          var lazyComponent = type;
+          var payload = lazyComponent._payload;
+          var init = lazyComponent._init;
+
+          try {
+            return getComponentNameFromType(init(payload));
+          } catch (x) {
+            return null;
+          }
+        }
+
+      // eslint-disable-next-line no-fallthrough
+    }
+  }
+
+  return null;
+}
+
+var assign = Object.assign;
+
+// Helpers to patch console.logs to avoid logging during side-effect free
+// replaying on render function. This currently only patches the object
+// lazily which won't cover if the log function was extracted eagerly.
+// We could also eagerly patch the method.
+var disabledDepth = 0;
+var prevLog;
+var prevInfo;
+var prevWarn;
+var prevError;
+var prevGroup;
+var prevGroupCollapsed;
+var prevGroupEnd;
+
+function disabledLog() {}
+
+disabledLog.__reactDisabledLog = true;
+function disableLogs() {
+  {
+    if (disabledDepth === 0) {
+      /* eslint-disable react-internal/no-production-logging */
+      prevLog = console.log;
+      prevInfo = console.info;
+      prevWarn = console.warn;
+      prevError = console.error;
+      prevGroup = console.group;
+      prevGroupCollapsed = console.groupCollapsed;
+      prevGroupEnd = console.groupEnd; // https://github.com/facebook/react/issues/19099
+
+      var props = {
+        configurable: true,
+        enumerable: true,
+        value: disabledLog,
+        writable: true
+      }; // $FlowFixMe Flow thinks console is immutable.
+
+      Object.defineProperties(console, {
+        info: props,
+        log: props,
+        warn: props,
+        error: props,
+        group: props,
+        groupCollapsed: props,
+        groupEnd: props
+      });
+      /* eslint-enable react-internal/no-production-logging */
+    }
+
+    disabledDepth++;
+  }
+}
+function reenableLogs() {
+  {
+    disabledDepth--;
+
+    if (disabledDepth === 0) {
+      /* eslint-disable react-internal/no-production-logging */
+      var props = {
+        configurable: true,
+        enumerable: true,
+        writable: true
+      }; // $FlowFixMe Flow thinks console is immutable.
+
+      Object.defineProperties(console, {
+        log: assign({}, props, {
+          value: prevLog
+        }),
+        info: assign({}, props, {
+          value: prevInfo
+        }),
+        warn: assign({}, props, {
+          value: prevWarn
+        }),
+        error: assign({}, props, {
+          value: prevError
+        }),
+        group: assign({}, props, {
+          value: prevGroup
+        }),
+        groupCollapsed: assign({}, props, {
+          value: prevGroupCollapsed
+        }),
+        groupEnd: assign({}, props, {
+          value: prevGroupEnd
+        })
+      });
+      /* eslint-enable react-internal/no-production-logging */
+    }
+
+    if (disabledDepth < 0) {
+      error('disabledDepth fell below zero. ' + 'This is a bug in React. Please file an issue.');
+    }
+  }
+}
+
+var ReactCurrentDispatcher = ReactSharedInternals.ReactCurrentDispatcher;
+var prefix;
+function describeBuiltInComponentFrame(name, source, ownerFn) {
+  {
+    if (prefix === undefined) {
+      // Extract the VM specific prefix used by each line.
+      try {
+        throw Error();
+      } catch (x) {
+        var match = x.stack.trim().match(/\n( *(at )?)/);
+        prefix = match && match[1] || '';
+      }
+    } // We use the prefix to ensure our stacks line up with native stack frames.
+
+
+    return '\n' + prefix + name;
+  }
+}
+var reentry = false;
+var componentFrameCache;
+
+{
+  var PossiblyWeakMap = typeof WeakMap === 'function' ? WeakMap : Map;
+  componentFrameCache = new PossiblyWeakMap();
+}
+
+function describeNativeComponentFrame(fn, construct) {
+  // If something asked for a stack inside a fake render, it should get ignored.
+  if ( !fn || reentry) {
+    return '';
+  }
+
+  {
+    var frame = componentFrameCache.get(fn);
+
+    if (frame !== undefined) {
+      return frame;
+    }
+  }
+
+  var control;
+  reentry = true;
+  var previousPrepareStackTrace = Error.prepareStackTrace; // $FlowFixMe It does accept undefined.
+
+  Error.prepareStackTrace = undefined;
+  var previousDispatcher;
+
+  {
+    previousDispatcher = ReactCurrentDispatcher.current; // Set the dispatcher in DEV because this might be call in the render function
+    // for warnings.
+
+    ReactCurrentDispatcher.current = null;
+    disableLogs();
+  }
+
+  try {
+    // This should throw.
+    if (construct) {
+      // Something should be setting the props in the constructor.
+      var Fake = function () {
+        throw Error();
+      }; // $FlowFixMe
+
+
+      Object.defineProperty(Fake.prototype, 'props', {
+        set: function () {
+          // We use a throwing setter instead of frozen or non-writable props
+          // because that won't throw in a non-strict mode function.
+          throw Error();
+        }
+      });
+
+      if (typeof Reflect === 'object' && Reflect.construct) {
+        // We construct a different control for this case to include any extra
+        // frames added by the construct call.
+        try {
+          Reflect.construct(Fake, []);
+        } catch (x) {
+          control = x;
+        }
+
+        Reflect.construct(fn, [], Fake);
+      } else {
+        try {
+          Fake.call();
+        } catch (x) {
+          control = x;
+        }
+
+        fn.call(Fake.prototype);
+      }
+    } else {
+      try {
+        throw Error();
+      } catch (x) {
+        control = x;
+      }
+
+      fn();
+    }
+  } catch (sample) {
+    // This is inlined manually because closure doesn't do it for us.
+    if (sample && control && typeof sample.stack === 'string') {
+      // This extracts the first frame from the sample that isn't also in the control.
+      // Skipping one frame that we assume is the frame that calls the two.
+      var sampleLines = sample.stack.split('\n');
+      var controlLines = control.stack.split('\n');
+      var s = sampleLines.length - 1;
+      var c = controlLines.length - 1;
+
+      while (s >= 1 && c >= 0 && sampleLines[s] !== controlLines[c]) {
+        // We expect at least one stack frame to be shared.
+        // Typically this will be the root most one. However, stack frames may be
+        // cut off due to maximum stack limits. In this case, one maybe cut off
+        // earlier than the other. We assume that the sample is longer or the same
+        // and there for cut off earlier. So we should find the root most frame in
+        // the sample somewhere in the control.
+        c--;
+      }
+
+      for (; s >= 1 && c >= 0; s--, c--) {
+        // Next we find the first one that isn't the same which should be the
+        // frame that called our sample function and the control.
+        if (sampleLines[s] !== controlLines[c]) {
+          // In V8, the first line is describing the message but other VMs don't.
+          // If we're about to return the first line, and the control is also on the same
+          // line, that's a pretty good indicator that our sample threw at same line as
+          // the control. I.e. before we entered the sample frame. So we ignore this result.
+          // This can happen if you passed a class to function component, or non-function.
+          if (s !== 1 || c !== 1) {
+            do {
+              s--;
+              c--; // We may still have similar intermediate frames from the construct call.
+              // The next one that isn't the same should be our match though.
+
+              if (c < 0 || sampleLines[s] !== controlLines[c]) {
+                // V8 adds a "new" prefix for native classes. Let's remove it to make it prettier.
+                var _frame = '\n' + sampleLines[s].replace(' at new ', ' at '); // If our component frame is labeled "<anonymous>"
+                // but we have a user-provided "displayName"
+                // splice it in to make the stack more readable.
+
+
+                if (fn.displayName && _frame.includes('<anonymous>')) {
+                  _frame = _frame.replace('<anonymous>', fn.displayName);
+                }
+
+                {
+                  if (typeof fn === 'function') {
+                    componentFrameCache.set(fn, _frame);
+                  }
+                } // Return the line we found.
+
+
+                return _frame;
+              }
+            } while (s >= 1 && c >= 0);
+          }
+
+          break;
+        }
+      }
+    }
+  } finally {
+    reentry = false;
+
+    {
+      ReactCurrentDispatcher.current = previousDispatcher;
+      reenableLogs();
+    }
+
+    Error.prepareStackTrace = previousPrepareStackTrace;
+  } // Fallback to just using the name if we couldn't make it throw.
+
+
+  var name = fn ? fn.displayName || fn.name : '';
+  var syntheticFrame = name ? describeBuiltInComponentFrame(name) : '';
+
+  {
+    if (typeof fn === 'function') {
+      componentFrameCache.set(fn, syntheticFrame);
+    }
+  }
+
+  return syntheticFrame;
+}
+function describeFunctionComponentFrame(fn, source, ownerFn) {
+  {
+    return describeNativeComponentFrame(fn, false);
+  }
+}
+
+function shouldConstruct(Component) {
+  var prototype = Component.prototype;
+  return !!(prototype && prototype.isReactComponent);
+}
+
+function describeUnknownElementTypeFrameInDEV(type, source, ownerFn) {
+
+  if (type == null) {
+    return '';
+  }
+
+  if (typeof type === 'function') {
+    {
+      return describeNativeComponentFrame(type, shouldConstruct(type));
+    }
+  }
+
+  if (typeof type === 'string') {
+    return describeBuiltInComponentFrame(type);
+  }
+
+  switch (type) {
+    case REACT_SUSPENSE_TYPE:
+      return describeBuiltInComponentFrame('Suspense');
+
+    case REACT_SUSPENSE_LIST_TYPE:
+      return describeBuiltInComponentFrame('SuspenseList');
+  }
+
+  if (typeof type === 'object') {
+    switch (type.$$typeof) {
+      case REACT_FORWARD_REF_TYPE:
+        return describeFunctionComponentFrame(type.render);
+
+      case REACT_MEMO_TYPE:
+        // Memo may contain any component type so we recursively resolve it.
+        return describeUnknownElementTypeFrameInDEV(type.type, source, ownerFn);
+
+      case REACT_LAZY_TYPE:
+        {
+          var lazyComponent = type;
+          var payload = lazyComponent._payload;
+          var init = lazyComponent._init;
+
+          try {
+            // Lazy may contain any component type so we recursively resolve it.
+            return describeUnknownElementTypeFrameInDEV(init(payload), source, ownerFn);
+          } catch (x) {}
+        }
+    }
+  }
+
+  return '';
+}
+
+var hasOwnProperty = Object.prototype.hasOwnProperty;
+
+var loggedTypeFailures = {};
+var ReactDebugCurrentFrame = ReactSharedInternals.ReactDebugCurrentFrame;
+
+function setCurrentlyValidatingElement(element) {
+  {
+    if (element) {
+      var owner = element._owner;
+      var stack = describeUnknownElementTypeFrameInDEV(element.type, element._source, owner ? owner.type : null);
+      ReactDebugCurrentFrame.setExtraStackFrame(stack);
+    } else {
+      ReactDebugCurrentFrame.setExtraStackFrame(null);
+    }
+  }
+}
+
+function checkPropTypes(typeSpecs, values, location, componentName, element) {
+  {
+    // $FlowFixMe This is okay but Flow doesn't know it.
+    var has = Function.call.bind(hasOwnProperty);
+
+    for (var typeSpecName in typeSpecs) {
+      if (has(typeSpecs, typeSpecName)) {
+        var error$1 = void 0; // Prop type validation may throw. In case they do, we don't want to
+        // fail the render phase where it didn't fail before. So we log it.
+        // After these have been cleaned up, we'll let them throw.
+
+        try {
+          // This is intentionally an invariant that gets caught. It's the same
+          // behavior as without this statement except with a better message.
+          if (typeof typeSpecs[typeSpecName] !== 'function') {
+            // eslint-disable-next-line react-internal/prod-error-codes
+            var err = Error((componentName || 'React class') + ': ' + location + ' type `' + typeSpecName + '` is invalid; ' + 'it must be a function, usually from the `prop-types` package, but received `' + typeof typeSpecs[typeSpecName] + '`.' + 'This often happens because of typos such as `PropTypes.function` instead of `PropTypes.func`.');
+            err.name = 'Invariant Violation';
+            throw err;
+          }
+
+          error$1 = typeSpecs[typeSpecName](values, typeSpecName, componentName, location, null, 'SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED');
+        } catch (ex) {
+          error$1 = ex;
+        }
+
+        if (error$1 && !(error$1 instanceof Error)) {
+          setCurrentlyValidatingElement(element);
+
+          error('%s: type specification of %s' + ' `%s` is invalid; the type checker ' + 'function must return `null` or an `Error` but returned a %s. ' + 'You may have forgotten to pass an argument to the type checker ' + 'creator (arrayOf, instanceOf, objectOf, oneOf, oneOfType, and ' + 'shape all require an argument).', componentName || 'React class', location, typeSpecName, typeof error$1);
+
+          setCurrentlyValidatingElement(null);
+        }
+
+        if (error$1 instanceof Error && !(error$1.message in loggedTypeFailures)) {
+          // Only monitor this failure once because there tends to be a lot of the
+          // same error.
+          loggedTypeFailures[error$1.message] = true;
+          setCurrentlyValidatingElement(element);
+
+          error('Failed %s type: %s', location, error$1.message);
+
+          setCurrentlyValidatingElement(null);
+        }
+      }
+    }
+  }
+}
+
+var isArrayImpl = Array.isArray; // eslint-disable-next-line no-redeclare
+
+function isArray(a) {
+  return isArrayImpl(a);
+}
+
+/*
+ * The `'' + value` pattern (used in in perf-sensitive code) throws for Symbol
+ * and Temporal.* types. See https://github.com/facebook/react/pull/22064.
+ *
+ * The functions in this module will throw an easier-to-understand,
+ * easier-to-debug exception with a clear errors message message explaining the
+ * problem. (Instead of a confusing exception thrown inside the implementation
+ * of the `value` object).
+ */
+// $FlowFixMe only called in DEV, so void return is not possible.
+function typeName(value) {
+  {
+    // toStringTag is needed for namespaced types like Temporal.Instant
+    var hasToStringTag = typeof Symbol === 'function' && Symbol.toStringTag;
+    var type = hasToStringTag && value[Symbol.toStringTag] || value.constructor.name || 'Object';
+    return type;
+  }
+} // $FlowFixMe only called in DEV, so void return is not possible.
+
+
+function willCoercionThrow(value) {
+  {
+    try {
+      testStringCoercion(value);
+      return false;
+    } catch (e) {
+      return true;
+    }
+  }
+}
+
+function testStringCoercion(value) {
+  // If you ended up here by following an exception call stack, here's what's
+  // happened: you supplied an object or symbol value to React (as a prop, key,
+  // DOM attribute, CSS property, string ref, etc.) and when React tried to
+  // coerce it to a string using `'' + value`, an exception was thrown.
+  //
+  // The most common types that will cause this exception are `Symbol` instances
+  // and Temporal objects like `Temporal.Instant`. But any object that has a
+  // `valueOf` or `[Symbol.toPrimitive]` method that throws will also cause this
+  // exception. (Library authors do this to prevent users from using built-in
+  // numeric operators like `+` or comparison operators like `>=` because custom
+  // methods are needed to perform accurate arithmetic or comparison.)
+  //
+  // To fix the problem, coerce this object or symbol value to a string before
+  // passing it to React. The most reliable way is usually `String(value)`.
+  //
+  // To find which value is throwing, check the browser or debugger console.
+  // Before this exception was thrown, there should be `console.error` output
+  // that shows the type (Symbol, Temporal.PlainDate, etc.) that caused the
+  // problem and how that type was used: key, atrribute, input value prop, etc.
+  // In most cases, this console output also shows the component and its
+  // ancestor components where the exception happened.
+  //
+  // eslint-disable-next-line react-internal/safe-string-coercion
+  return '' + value;
+}
+function checkKeyStringCoercion(value) {
+  {
+    if (willCoercionThrow(value)) {
+      error('The provided key is an unsupported type %s.' + ' This value must be coerced to a string before before using it here.', typeName(value));
+
+      return testStringCoercion(value); // throw (to help callers find troubleshooting comments)
+    }
+  }
+}
+
+var ReactCurrentOwner = ReactSharedInternals.ReactCurrentOwner;
+var RESERVED_PROPS = {
+  key: true,
+  ref: true,
+  __self: true,
+  __source: true
+};
+var specialPropKeyWarningShown;
+var specialPropRefWarningShown;
+var didWarnAboutStringRefs;
+
+{
+  didWarnAboutStringRefs = {};
+}
+
+function hasValidRef(config) {
+  {
+    if (hasOwnProperty.call(config, 'ref')) {
+      var getter = Object.getOwnPropertyDescriptor(config, 'ref').get;
+
+      if (getter && getter.isReactWarning) {
+        return false;
+      }
+    }
+  }
+
+  return config.ref !== undefined;
+}
+
+function hasValidKey(config) {
+  {
+    if (hasOwnProperty.call(config, 'key')) {
+      var getter = Object.getOwnPropertyDescriptor(config, 'key').get;
+
+      if (getter && getter.isReactWarning) {
+        return false;
+      }
+    }
+  }
+
+  return config.key !== undefined;
+}
+
+function warnIfStringRefCannotBeAutoConverted(config, self) {
+  {
+    if (typeof config.ref === 'string' && ReactCurrentOwner.current && self && ReactCurrentOwner.current.stateNode !== self) {
+      var componentName = getComponentNameFromType(ReactCurrentOwner.current.type);
+
+      if (!didWarnAboutStringRefs[componentName]) {
+        error('Component "%s" contains the string ref "%s". ' + 'Support for string refs will be removed in a future major release. ' + 'This case cannot be automatically converted to an arrow function. ' + 'We ask you to manually fix this case by using useRef() or createRef() instead. ' + 'Learn more about using refs safely here: ' + 'https://reactjs.org/link/strict-mode-string-ref', getComponentNameFromType(ReactCurrentOwner.current.type), config.ref);
+
+        didWarnAboutStringRefs[componentName] = true;
+      }
+    }
+  }
+}
+
+function defineKeyPropWarningGetter(props, displayName) {
+  {
+    var warnAboutAccessingKey = function () {
+      if (!specialPropKeyWarningShown) {
+        specialPropKeyWarningShown = true;
+
+        error('%s: `key` is not a prop. Trying to access it will result ' + 'in `undefined` being returned. If you need to access the same ' + 'value within the child component, you should pass it as a different ' + 'prop. (https://reactjs.org/link/special-props)', displayName);
+      }
+    };
+
+    warnAboutAccessingKey.isReactWarning = true;
+    Object.defineProperty(props, 'key', {
+      get: warnAboutAccessingKey,
+      configurable: true
+    });
+  }
+}
+
+function defineRefPropWarningGetter(props, displayName) {
+  {
+    var warnAboutAccessingRef = function () {
+      if (!specialPropRefWarningShown) {
+        specialPropRefWarningShown = true;
+
+        error('%s: `ref` is not a prop. Trying to access it will result ' + 'in `undefined` being returned. If you need to access the same ' + 'value within the child component, you should pass it as a different ' + 'prop. (https://reactjs.org/link/special-props)', displayName);
+      }
+    };
+
+    warnAboutAccessingRef.isReactWarning = true;
+    Object.defineProperty(props, 'ref', {
+      get: warnAboutAccessingRef,
+      configurable: true
+    });
+  }
+}
+/**
+ * Factory method to create a new React element. This no longer adheres to
+ * the class pattern, so do not use new to call it. Also, instanceof check
+ * will not work. Instead test $$typeof field against Symbol.for('react.element') to check
+ * if something is a React Element.
+ *
+ * @param {*} type
+ * @param {*} props
+ * @param {*} key
+ * @param {string|object} ref
+ * @param {*} owner
+ * @param {*} self A *temporary* helper to detect places where `this` is
+ * different from the `owner` when React.createElement is called, so that we
+ * can warn. We want to get rid of owner and replace string `ref`s with arrow
+ * functions, and as long as `this` and owner are the same, there will be no
+ * change in behavior.
+ * @param {*} source An annotation object (added by a transpiler or otherwise)
+ * indicating filename, line number, and/or other information.
+ * @internal
+ */
+
+
+var ReactElement = function (type, key, ref, self, source, owner, props) {
+  var element = {
+    // This tag allows us to uniquely identify this as a React Element
+    $$typeof: REACT_ELEMENT_TYPE,
+    // Built-in properties that belong on the element
+    type: type,
+    key: key,
+    ref: ref,
+    props: props,
+    // Record the component responsible for creating this element.
+    _owner: owner
+  };
+
+  {
+    // The validation flag is currently mutative. We put it on
+    // an external backing store so that we can freeze the whole object.
+    // This can be replaced with a WeakMap once they are implemented in
+    // commonly used development environments.
+    element._store = {}; // To make comparing ReactElements easier for testing purposes, we make
+    // the validation flag non-enumerable (where possible, which should
+    // include every environment we run tests in), so the test framework
+    // ignores it.
+
+    Object.defineProperty(element._store, 'validated', {
+      configurable: false,
+      enumerable: false,
+      writable: true,
+      value: false
+    }); // self and source are DEV only properties.
+
+    Object.defineProperty(element, '_self', {
+      configurable: false,
+      enumerable: false,
+      writable: false,
+      value: self
+    }); // Two elements created in two different places should be considered
+    // equal for testing purposes and therefore we hide it from enumeration.
+
+    Object.defineProperty(element, '_source', {
+      configurable: false,
+      enumerable: false,
+      writable: false,
+      value: source
+    });
+
+    if (Object.freeze) {
+      Object.freeze(element.props);
+      Object.freeze(element);
+    }
+  }
+
+  return element;
+};
+/**
+ * https://github.com/reactjs/rfcs/pull/107
+ * @param {*} type
+ * @param {object} props
+ * @param {string} key
+ */
+
+function jsxDEV(type, config, maybeKey, source, self) {
+  {
+    var propName; // Reserved names are extracted
+
+    var props = {};
+    var key = null;
+    var ref = null; // Currently, key can be spread in as a prop. This causes a potential
+    // issue if key is also explicitly declared (ie. <div {...props} key="Hi" />
+    // or <div key="Hi" {...props} /> ). We want to deprecate key spread,
+    // but as an intermediary step, we will use jsxDEV for everything except
+    // <div {...props} key="Hi" />, because we aren't currently able to tell if
+    // key is explicitly declared to be undefined or not.
+
+    if (maybeKey !== undefined) {
+      {
+        checkKeyStringCoercion(maybeKey);
+      }
+
+      key = '' + maybeKey;
+    }
+
+    if (hasValidKey(config)) {
+      {
+        checkKeyStringCoercion(config.key);
+      }
+
+      key = '' + config.key;
+    }
+
+    if (hasValidRef(config)) {
+      ref = config.ref;
+      warnIfStringRefCannotBeAutoConverted(config, self);
+    } // Remaining properties are added to a new props object
+
+
+    for (propName in config) {
+      if (hasOwnProperty.call(config, propName) && !RESERVED_PROPS.hasOwnProperty(propName)) {
+        props[propName] = config[propName];
+      }
+    } // Resolve default props
+
+
+    if (type && type.defaultProps) {
+      var defaultProps = type.defaultProps;
+
+      for (propName in defaultProps) {
+        if (props[propName] === undefined) {
+          props[propName] = defaultProps[propName];
+        }
+      }
+    }
+
+    if (key || ref) {
+      var displayName = typeof type === 'function' ? type.displayName || type.name || 'Unknown' : type;
+
+      if (key) {
+        defineKeyPropWarningGetter(props, displayName);
+      }
+
+      if (ref) {
+        defineRefPropWarningGetter(props, displayName);
+      }
+    }
+
+    return ReactElement(type, key, ref, self, source, ReactCurrentOwner.current, props);
+  }
+}
+
+var ReactCurrentOwner$1 = ReactSharedInternals.ReactCurrentOwner;
+var ReactDebugCurrentFrame$1 = ReactSharedInternals.ReactDebugCurrentFrame;
+
+function setCurrentlyValidatingElement$1(element) {
+  {
+    if (element) {
+      var owner = element._owner;
+      var stack = describeUnknownElementTypeFrameInDEV(element.type, element._source, owner ? owner.type : null);
+      ReactDebugCurrentFrame$1.setExtraStackFrame(stack);
+    } else {
+      ReactDebugCurrentFrame$1.setExtraStackFrame(null);
+    }
+  }
+}
+
+var propTypesMisspellWarningShown;
+
+{
+  propTypesMisspellWarningShown = false;
+}
+/**
+ * Verifies the object is a ReactElement.
+ * See https://reactjs.org/docs/react-api.html#isvalidelement
+ * @param {?object} object
+ * @return {boolean} True if `object` is a ReactElement.
+ * @final
+ */
+
+
+function isValidElement(object) {
+  {
+    return typeof object === 'object' && object !== null && object.$$typeof === REACT_ELEMENT_TYPE;
+  }
+}
+
+function getDeclarationErrorAddendum() {
+  {
+    if (ReactCurrentOwner$1.current) {
+      var name = getComponentNameFromType(ReactCurrentOwner$1.current.type);
+
+      if (name) {
+        return '\n\nCheck the render method of `' + name + '`.';
+      }
+    }
+
+    return '';
+  }
+}
+
+function getSourceInfoErrorAddendum(source) {
+  {
+    if (source !== undefined) {
+      var fileName = source.fileName.replace(/^.*[\\\/]/, '');
+      var lineNumber = source.lineNumber;
+      return '\n\nCheck your code at ' + fileName + ':' + lineNumber + '.';
+    }
+
+    return '';
+  }
+}
+/**
+ * Warn if there's no key explicitly set on dynamic arrays of children or
+ * object keys are not valid. This allows us to keep track of children between
+ * updates.
+ */
+
+
+var ownerHasKeyUseWarning = {};
+
+function getCurrentComponentErrorInfo(parentType) {
+  {
+    var info = getDeclarationErrorAddendum();
+
+    if (!info) {
+      var parentName = typeof parentType === 'string' ? parentType : parentType.displayName || parentType.name;
+
+      if (parentName) {
+        info = "\n\nCheck the top-level render call using <" + parentName + ">.";
+      }
+    }
+
+    return info;
+  }
+}
+/**
+ * Warn if the element doesn't have an explicit key assigned to it.
+ * This element is in an array. The array could grow and shrink or be
+ * reordered. All children that haven't already been validated are required to
+ * have a "key" property assigned to it. Error statuses are cached so a warning
+ * will only be shown once.
+ *
+ * @internal
+ * @param {ReactElement} element Element that requires a key.
+ * @param {*} parentType element's parent's type.
+ */
+
+
+function validateExplicitKey(element, parentType) {
+  {
+    if (!element._store || element._store.validated || element.key != null) {
+      return;
+    }
+
+    element._store.validated = true;
+    var currentComponentErrorInfo = getCurrentComponentErrorInfo(parentType);
+
+    if (ownerHasKeyUseWarning[currentComponentErrorInfo]) {
+      return;
+    }
+
+    ownerHasKeyUseWarning[currentComponentErrorInfo] = true; // Usually the current owner is the offender, but if it accepts children as a
+    // property, it may be the creator of the child that's responsible for
+    // assigning it a key.
+
+    var childOwner = '';
+
+    if (element && element._owner && element._owner !== ReactCurrentOwner$1.current) {
+      // Give the component that originally created this child.
+      childOwner = " It was passed a child from " + getComponentNameFromType(element._owner.type) + ".";
+    }
+
+    setCurrentlyValidatingElement$1(element);
+
+    error('Each child in a list should have a unique "key" prop.' + '%s%s See https://reactjs.org/link/warning-keys for more information.', currentComponentErrorInfo, childOwner);
+
+    setCurrentlyValidatingElement$1(null);
+  }
+}
+/**
+ * Ensure that every element either is passed in a static location, in an
+ * array with an explicit keys property defined, or in an object literal
+ * with valid key property.
+ *
+ * @internal
+ * @param {ReactNode} node Statically passed child of any type.
+ * @param {*} parentType node's parent's type.
+ */
+
+
+function validateChildKeys(node, parentType) {
+  {
+    if (typeof node !== 'object') {
+      return;
+    }
+
+    if (isArray(node)) {
+      for (var i = 0; i < node.length; i++) {
+        var child = node[i];
+
+        if (isValidElement(child)) {
+          validateExplicitKey(child, parentType);
+        }
+      }
+    } else if (isValidElement(node)) {
+      // This element was passed in a valid location.
+      if (node._store) {
+        node._store.validated = true;
+      }
+    } else if (node) {
+      var iteratorFn = getIteratorFn(node);
+
+      if (typeof iteratorFn === 'function') {
+        // Entry iterators used to provide implicit keys,
+        // but now we print a separate warning for them later.
+        if (iteratorFn !== node.entries) {
+          var iterator = iteratorFn.call(node);
+          var step;
+
+          while (!(step = iterator.next()).done) {
+            if (isValidElement(step.value)) {
+              validateExplicitKey(step.value, parentType);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+/**
+ * Given an element, validate that its props follow the propTypes definition,
+ * provided by the type.
+ *
+ * @param {ReactElement} element
+ */
+
+
+function validatePropTypes(element) {
+  {
+    var type = element.type;
+
+    if (type === null || type === undefined || typeof type === 'string') {
+      return;
+    }
+
+    var propTypes;
+
+    if (typeof type === 'function') {
+      propTypes = type.propTypes;
+    } else if (typeof type === 'object' && (type.$$typeof === REACT_FORWARD_REF_TYPE || // Note: Memo only checks outer props here.
+    // Inner props are checked in the reconciler.
+    type.$$typeof === REACT_MEMO_TYPE)) {
+      propTypes = type.propTypes;
+    } else {
+      return;
+    }
+
+    if (propTypes) {
+      // Intentionally inside to avoid triggering lazy initializers:
+      var name = getComponentNameFromType(type);
+      checkPropTypes(propTypes, element.props, 'prop', name, element);
+    } else if (type.PropTypes !== undefined && !propTypesMisspellWarningShown) {
+      propTypesMisspellWarningShown = true; // Intentionally inside to avoid triggering lazy initializers:
+
+      var _name = getComponentNameFromType(type);
+
+      error('Component %s declared `PropTypes` instead of `propTypes`. Did you misspell the property assignment?', _name || 'Unknown');
+    }
+
+    if (typeof type.getDefaultProps === 'function' && !type.getDefaultProps.isReactClassApproved) {
+      error('getDefaultProps is only used on classic React.createClass ' + 'definitions. Use a static property named `defaultProps` instead.');
+    }
+  }
+}
+/**
+ * Given a fragment, validate that it can only be provided with fragment props
+ * @param {ReactElement} fragment
+ */
+
+
+function validateFragmentProps(fragment) {
+  {
+    var keys = Object.keys(fragment.props);
+
+    for (var i = 0; i < keys.length; i++) {
+      var key = keys[i];
+
+      if (key !== 'children' && key !== 'key') {
+        setCurrentlyValidatingElement$1(fragment);
+
+        error('Invalid prop `%s` supplied to `React.Fragment`. ' + 'React.Fragment can only have `key` and `children` props.', key);
+
+        setCurrentlyValidatingElement$1(null);
+        break;
+      }
+    }
+
+    if (fragment.ref !== null) {
+      setCurrentlyValidatingElement$1(fragment);
+
+      error('Invalid attribute `ref` supplied to `React.Fragment`.');
+
+      setCurrentlyValidatingElement$1(null);
+    }
+  }
+}
+
+function jsxWithValidation(type, props, key, isStaticChildren, source, self) {
+  {
+    var validType = isValidElementType(type); // We warn in this case but don't throw. We expect the element creation to
+    // succeed and there will likely be errors in render.
+
+    if (!validType) {
+      var info = '';
+
+      if (type === undefined || typeof type === 'object' && type !== null && Object.keys(type).length === 0) {
+        info += ' You likely forgot to export your component from the file ' + "it's defined in, or you might have mixed up default and named imports.";
+      }
+
+      var sourceInfo = getSourceInfoErrorAddendum(source);
+
+      if (sourceInfo) {
+        info += sourceInfo;
+      } else {
+        info += getDeclarationErrorAddendum();
+      }
+
+      var typeString;
+
+      if (type === null) {
+        typeString = 'null';
+      } else if (isArray(type)) {
+        typeString = 'array';
+      } else if (type !== undefined && type.$$typeof === REACT_ELEMENT_TYPE) {
+        typeString = "<" + (getComponentNameFromType(type.type) || 'Unknown') + " />";
+        info = ' Did you accidentally export a JSX literal instead of a component?';
+      } else {
+        typeString = typeof type;
+      }
+
+      error('React.jsx: type is invalid -- expected a string (for ' + 'built-in components) or a class/function (for composite ' + 'components) but got: %s.%s', typeString, info);
+    }
+
+    var element = jsxDEV(type, props, key, source, self); // The result can be nullish if a mock or a custom function is used.
+    // TODO: Drop this when these are no longer allowed as the type argument.
+
+    if (element == null) {
+      return element;
+    } // Skip key warning if the type isn't valid since our key validation logic
+    // doesn't expect a non-string/function type and can throw confusing errors.
+    // We don't want exception behavior to differ between dev and prod.
+    // (Rendering will throw with a helpful message and as soon as the type is
+    // fixed, the key warnings will appear.)
+
+
+    if (validType) {
+      var children = props.children;
+
+      if (children !== undefined) {
+        if (isStaticChildren) {
+          if (isArray(children)) {
+            for (var i = 0; i < children.length; i++) {
+              validateChildKeys(children[i], type);
+            }
+
+            if (Object.freeze) {
+              Object.freeze(children);
+            }
+          } else {
+            error('React.jsx: Static children should always be an array. ' + 'You are likely explicitly calling React.jsxs or React.jsxDEV. ' + 'Use the Babel transform instead.');
+          }
+        } else {
+          validateChildKeys(children, type);
+        }
+      }
+    }
+
+    if (type === REACT_FRAGMENT_TYPE) {
+      validateFragmentProps(element);
+    } else {
+      validatePropTypes(element);
+    }
+
+    return element;
+  }
+} // These two functions exist to still get child warnings in dev
+// even with the prod transform. This means that jsxDEV is purely
+// opt-in behavior for better messages but that we won't stop
+// giving you warnings if you use production apis.
+
+function jsxWithValidationStatic(type, props, key) {
+  {
+    return jsxWithValidation(type, props, key, true);
+  }
+}
+function jsxWithValidationDynamic(type, props, key) {
+  {
+    return jsxWithValidation(type, props, key, false);
+  }
+}
+
+var jsx =  jsxWithValidationDynamic ; // we may want to special case jsxs internally to take advantage of static children.
+// for now we can ship identical prod functions
+
+var jsxs =  jsxWithValidationStatic ;
+
+exports.Fragment = REACT_FRAGMENT_TYPE;
+exports.jsx = jsx;
+exports.jsxs = jsxs;
+  })();
+}
+
+
+/***/ }),
+
 /***/ "./node_modules/react/cjs/react.development.js":
 /*!*****************************************************!*\
   !*** ./node_modules/react/cjs/react.development.js ***!
@@ -44324,6 +55314,22 @@ if (false) {} else {
 
 /***/ }),
 
+/***/ "./node_modules/react/jsx-runtime.js":
+/*!*******************************************!*\
+  !*** ./node_modules/react/jsx-runtime.js ***!
+  \*******************************************/
+/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+
+"use strict";
+
+
+if (false) {} else {
+  module.exports = __webpack_require__(/*! ./cjs/react-jsx-runtime.development.js */ "./node_modules/react/cjs/react-jsx-runtime.development.js");
+}
+
+
+/***/ }),
+
 /***/ "./node_modules/scheduler/cjs/scheduler.development.js":
 /*!*************************************************************!*\
   !*** ./node_modules/scheduler/cjs/scheduler.development.js ***!
@@ -45010,6 +56016,81 @@ const a=a=>{a=1831565813+(a|=0)|0;let e=Math.imul(a^a>>>15,1|a);return e=e+Math.
 
 /***/ }),
 
+/***/ "./node_modules/websocket/lib/browser.js":
+/*!***********************************************!*\
+  !*** ./node_modules/websocket/lib/browser.js ***!
+  \***********************************************/
+/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+
+var _globalThis;
+if (typeof globalThis === 'object') {
+	_globalThis = globalThis;
+} else {
+	try {
+		_globalThis = __webpack_require__(/*! es5-ext/global */ "./node_modules/es5-ext/global.js");
+	} catch (error) {
+	} finally {
+		if (!_globalThis && typeof window !== 'undefined') { _globalThis = window; }
+		if (!_globalThis) { throw new Error('Could not determine global this'); }
+	}
+}
+
+var NativeWebSocket = _globalThis.WebSocket || _globalThis.MozWebSocket;
+var websocket_version = __webpack_require__(/*! ./version */ "./node_modules/websocket/lib/version.js");
+
+
+/**
+ * Expose a W3C WebSocket class with just one or two arguments.
+ */
+function W3CWebSocket(uri, protocols) {
+	var native_instance;
+
+	if (protocols) {
+		native_instance = new NativeWebSocket(uri, protocols);
+	}
+	else {
+		native_instance = new NativeWebSocket(uri);
+	}
+
+	/**
+	 * 'native_instance' is an instance of nativeWebSocket (the browser's WebSocket
+	 * class). Since it is an Object it will be returned as it is when creating an
+	 * instance of W3CWebSocket via 'new W3CWebSocket()'.
+	 *
+	 * ECMAScript 5: http://bclary.com/2004/11/07/#a-13.2.2
+	 */
+	return native_instance;
+}
+if (NativeWebSocket) {
+	['CONNECTING', 'OPEN', 'CLOSING', 'CLOSED'].forEach(function(prop) {
+		Object.defineProperty(W3CWebSocket, prop, {
+			get: function() { return NativeWebSocket[prop]; }
+		});
+	});
+}
+
+/**
+ * Module exports.
+ */
+module.exports = {
+    'w3cwebsocket' : NativeWebSocket ? W3CWebSocket : null,
+    'version'      : websocket_version
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/websocket/lib/version.js":
+/*!***********************************************!*\
+  !*** ./node_modules/websocket/lib/version.js ***!
+  \***********************************************/
+/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+
+module.exports = __webpack_require__(/*! ../package.json */ "./node_modules/websocket/package.json").version;
+
+
+/***/ }),
+
 /***/ "./node_modules/@babel/runtime/helpers/esm/extends.js":
 /*!************************************************************!*\
   !*** ./node_modules/@babel/runtime/helpers/esm/extends.js ***!
@@ -45038,6 +56119,38 @@ function _extends() {
   return _extends.apply(this, arguments);
 }
 
+/***/ }),
+
+/***/ "./node_modules/@stitches/core/dist/index.mjs":
+/*!****************************************************!*\
+  !*** ./node_modules/@stitches/core/dist/index.mjs ***!
+  \****************************************************/
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "createStitches": function() { return /* binding */ X; },
+/* harmony export */   "createTheme": function() { return /* binding */ q; },
+/* harmony export */   "css": function() { return /* binding */ _; },
+/* harmony export */   "defaultThemeMap": function() { return /* binding */ i; },
+/* harmony export */   "globalCss": function() { return /* binding */ K; },
+/* harmony export */   "keyframes": function() { return /* binding */ Q; }
+/* harmony export */ });
+var e,t="colors",n="sizes",r="space",i={gap:r,gridGap:r,columnGap:r,gridColumnGap:r,rowGap:r,gridRowGap:r,inset:r,insetBlock:r,insetBlockEnd:r,insetBlockStart:r,insetInline:r,insetInlineEnd:r,insetInlineStart:r,margin:r,marginTop:r,marginRight:r,marginBottom:r,marginLeft:r,marginBlock:r,marginBlockEnd:r,marginBlockStart:r,marginInline:r,marginInlineEnd:r,marginInlineStart:r,padding:r,paddingTop:r,paddingRight:r,paddingBottom:r,paddingLeft:r,paddingBlock:r,paddingBlockEnd:r,paddingBlockStart:r,paddingInline:r,paddingInlineEnd:r,paddingInlineStart:r,top:r,right:r,bottom:r,left:r,scrollMargin:r,scrollMarginTop:r,scrollMarginRight:r,scrollMarginBottom:r,scrollMarginLeft:r,scrollMarginX:r,scrollMarginY:r,scrollMarginBlock:r,scrollMarginBlockEnd:r,scrollMarginBlockStart:r,scrollMarginInline:r,scrollMarginInlineEnd:r,scrollMarginInlineStart:r,scrollPadding:r,scrollPaddingTop:r,scrollPaddingRight:r,scrollPaddingBottom:r,scrollPaddingLeft:r,scrollPaddingX:r,scrollPaddingY:r,scrollPaddingBlock:r,scrollPaddingBlockEnd:r,scrollPaddingBlockStart:r,scrollPaddingInline:r,scrollPaddingInlineEnd:r,scrollPaddingInlineStart:r,fontSize:"fontSizes",background:t,backgroundColor:t,backgroundImage:t,borderImage:t,border:t,borderBlock:t,borderBlockEnd:t,borderBlockStart:t,borderBottom:t,borderBottomColor:t,borderColor:t,borderInline:t,borderInlineEnd:t,borderInlineStart:t,borderLeft:t,borderLeftColor:t,borderRight:t,borderRightColor:t,borderTop:t,borderTopColor:t,caretColor:t,color:t,columnRuleColor:t,fill:t,outline:t,outlineColor:t,stroke:t,textDecorationColor:t,fontFamily:"fonts",fontWeight:"fontWeights",lineHeight:"lineHeights",letterSpacing:"letterSpacings",blockSize:n,minBlockSize:n,maxBlockSize:n,inlineSize:n,minInlineSize:n,maxInlineSize:n,width:n,minWidth:n,maxWidth:n,height:n,minHeight:n,maxHeight:n,flexBasis:n,gridTemplateColumns:n,gridTemplateRows:n,borderWidth:"borderWidths",borderTopWidth:"borderWidths",borderRightWidth:"borderWidths",borderBottomWidth:"borderWidths",borderLeftWidth:"borderWidths",borderStyle:"borderStyles",borderTopStyle:"borderStyles",borderRightStyle:"borderStyles",borderBottomStyle:"borderStyles",borderLeftStyle:"borderStyles",borderRadius:"radii",borderTopLeftRadius:"radii",borderTopRightRadius:"radii",borderBottomRightRadius:"radii",borderBottomLeftRadius:"radii",boxShadow:"shadows",textShadow:"shadows",transition:"transitions",zIndex:"zIndices"},o=(e,t)=>"function"==typeof t?{"()":Function.prototype.toString.call(t)}:t,l=()=>{const e=Object.create(null);return(t,n,...r)=>{const i=(e=>JSON.stringify(e,o))(t);return i in e?e[i]:e[i]=n(t,...r)}},s=Symbol.for("sxs.internal"),a=(e,t)=>Object.defineProperties(e,Object.getOwnPropertyDescriptors(t)),c=e=>{for(const t in e)return!0;return!1},{hasOwnProperty:d}=Object.prototype,g=e=>e.includes("-")?e:e.replace(/[A-Z]/g,(e=>"-"+e.toLowerCase())),p=/\s+(?![^()]*\))/,u=e=>t=>e(..."string"==typeof t?String(t).split(p):[t]),h={appearance:e=>({WebkitAppearance:e,appearance:e}),backfaceVisibility:e=>({WebkitBackfaceVisibility:e,backfaceVisibility:e}),backdropFilter:e=>({WebkitBackdropFilter:e,backdropFilter:e}),backgroundClip:e=>({WebkitBackgroundClip:e,backgroundClip:e}),boxDecorationBreak:e=>({WebkitBoxDecorationBreak:e,boxDecorationBreak:e}),clipPath:e=>({WebkitClipPath:e,clipPath:e}),content:e=>({content:e.includes('"')||e.includes("'")||/^([A-Za-z]+\([^]*|[^]*-quote|inherit|initial|none|normal|revert|unset)$/.test(e)?e:`"${e}"`}),hyphens:e=>({WebkitHyphens:e,hyphens:e}),maskImage:e=>({WebkitMaskImage:e,maskImage:e}),maskSize:e=>({WebkitMaskSize:e,maskSize:e}),tabSize:e=>({MozTabSize:e,tabSize:e}),textSizeAdjust:e=>({WebkitTextSizeAdjust:e,textSizeAdjust:e}),userSelect:e=>({WebkitUserSelect:e,userSelect:e}),marginBlock:u(((e,t)=>({marginBlockStart:e,marginBlockEnd:t||e}))),marginInline:u(((e,t)=>({marginInlineStart:e,marginInlineEnd:t||e}))),maxSize:u(((e,t)=>({maxBlockSize:e,maxInlineSize:t||e}))),minSize:u(((e,t)=>({minBlockSize:e,minInlineSize:t||e}))),paddingBlock:u(((e,t)=>({paddingBlockStart:e,paddingBlockEnd:t||e}))),paddingInline:u(((e,t)=>({paddingInlineStart:e,paddingInlineEnd:t||e})))},f=/([\d.]+)([^]*)/,m=(e,t)=>e.length?e.reduce(((e,n)=>(e.push(...t.map((e=>e.includes("&")?e.replace(/&/g,/[ +>|~]/.test(n)&&/&.*&/.test(e)?`:is(${n})`:n):n+" "+e))),e)),[]):t,b=(e,t)=>e in S&&"string"==typeof t?t.replace(/^((?:[^]*[^\w-])?)(fit-content|stretch)((?:[^\w-][^]*)?)$/,((t,n,r,i)=>n+("stretch"===r?`-moz-available${i};${g(e)}:${n}-webkit-fill-available`:`-moz-fit-content${i};${g(e)}:${n}fit-content`)+i)):String(t),S={blockSize:1,height:1,inlineSize:1,maxBlockSize:1,maxHeight:1,maxInlineSize:1,maxWidth:1,minBlockSize:1,minHeight:1,minInlineSize:1,minWidth:1,width:1},k=e=>e?e+"-":"",y=(e,t,n)=>e.replace(/([+-])?((?:\d+(?:\.\d*)?|\.\d+)(?:[Ee][+-]?\d+)?)?(\$|--)([$\w-]+)/g,((e,r,i,o,l)=>"$"==o==!!i?e:(r||"--"==o?"calc(":"")+"var(--"+("$"===o?k(t)+(l.includes("$")?"":k(n))+l.replace(/\$/g,"-"):l)+")"+(r||"--"==o?"*"+(r||"")+(i||"1")+")":""))),B=/\s*,\s*(?![^()]*\))/,$=Object.prototype.toString,x=(e,t,n,r,i)=>{let o,l,s;const a=(e,t,n)=>{let c,d;const p=e=>{for(c in e){const x=64===c.charCodeAt(0),z=x&&Array.isArray(e[c])?e[c]:[e[c]];for(d of z){const e=/[A-Z]/.test(S=c)?S:S.replace(/-[^]/g,(e=>e[1].toUpperCase())),z="object"==typeof d&&d&&d.toString===$&&(!r.utils[e]||!t.length);if(e in r.utils&&!z){const t=r.utils[e];if(t!==l){l=t,p(t(d)),l=null;continue}}else if(e in h){const t=h[e];if(t!==s){s=t,p(t(d)),s=null;continue}}if(x&&(u=c.slice(1)in r.media?"@media "+r.media[c.slice(1)]:c,c=u.replace(/\(\s*([\w-]+)\s*(=|<|<=|>|>=)\s*([\w-]+)\s*(?:(<|<=|>|>=)\s*([\w-]+)\s*)?\)/g,((e,t,n,r,i,o)=>{const l=f.test(t),s=.0625*(l?-1:1),[a,c]=l?[r,t]:[t,r];return"("+("="===n[0]?"":">"===n[0]===l?"max-":"min-")+a+":"+("="!==n[0]&&1===n.length?c.replace(f,((e,t,r)=>Number(t)+s*(">"===n?1:-1)+r)):c)+(i?") and ("+(">"===i[0]?"min-":"max-")+a+":"+(1===i.length?o.replace(f,((e,t,n)=>Number(t)+s*(">"===i?-1:1)+n)):o):"")+")"}))),z){const e=x?n.concat(c):[...n],r=x?[...t]:m(t,c.split(B));void 0!==o&&i(I(...o)),o=void 0,a(d,r,e)}else void 0===o&&(o=[[],t,n]),c=x||36!==c.charCodeAt(0)?c:`--${k(r.prefix)}${c.slice(1).replace(/\$/g,"-")}`,d=z?d:"number"==typeof d?d&&e in R?String(d)+"px":String(d):y(b(e,null==d?"":d),r.prefix,r.themeMap[e]),o[0].push(`${x?`${c} `:`${g(c)}:`}${d}`)}}var u,S};p(e),void 0!==o&&i(I(...o)),o=void 0};a(e,t,n)},I=(e,t,n)=>`${n.map((e=>`${e}{`)).join("")}${t.length?`${t.join(",")}{`:""}${e.join(";")}${t.length?"}":""}${Array(n.length?n.length+1:0).join("}")}`,R={animationDelay:1,animationDuration:1,backgroundSize:1,blockSize:1,border:1,borderBlock:1,borderBlockEnd:1,borderBlockEndWidth:1,borderBlockStart:1,borderBlockStartWidth:1,borderBlockWidth:1,borderBottom:1,borderBottomLeftRadius:1,borderBottomRightRadius:1,borderBottomWidth:1,borderEndEndRadius:1,borderEndStartRadius:1,borderInlineEnd:1,borderInlineEndWidth:1,borderInlineStart:1,borderInlineStartWidth:1,borderInlineWidth:1,borderLeft:1,borderLeftWidth:1,borderRadius:1,borderRight:1,borderRightWidth:1,borderSpacing:1,borderStartEndRadius:1,borderStartStartRadius:1,borderTop:1,borderTopLeftRadius:1,borderTopRightRadius:1,borderTopWidth:1,borderWidth:1,bottom:1,columnGap:1,columnRule:1,columnRuleWidth:1,columnWidth:1,containIntrinsicSize:1,flexBasis:1,fontSize:1,gap:1,gridAutoColumns:1,gridAutoRows:1,gridTemplateColumns:1,gridTemplateRows:1,height:1,inlineSize:1,inset:1,insetBlock:1,insetBlockEnd:1,insetBlockStart:1,insetInline:1,insetInlineEnd:1,insetInlineStart:1,left:1,letterSpacing:1,margin:1,marginBlock:1,marginBlockEnd:1,marginBlockStart:1,marginBottom:1,marginInline:1,marginInlineEnd:1,marginInlineStart:1,marginLeft:1,marginRight:1,marginTop:1,maxBlockSize:1,maxHeight:1,maxInlineSize:1,maxWidth:1,minBlockSize:1,minHeight:1,minInlineSize:1,minWidth:1,offsetDistance:1,offsetRotate:1,outline:1,outlineOffset:1,outlineWidth:1,overflowClipMargin:1,padding:1,paddingBlock:1,paddingBlockEnd:1,paddingBlockStart:1,paddingBottom:1,paddingInline:1,paddingInlineEnd:1,paddingInlineStart:1,paddingLeft:1,paddingRight:1,paddingTop:1,perspective:1,right:1,rowGap:1,scrollMargin:1,scrollMarginBlock:1,scrollMarginBlockEnd:1,scrollMarginBlockStart:1,scrollMarginBottom:1,scrollMarginInline:1,scrollMarginInlineEnd:1,scrollMarginInlineStart:1,scrollMarginLeft:1,scrollMarginRight:1,scrollMarginTop:1,scrollPadding:1,scrollPaddingBlock:1,scrollPaddingBlockEnd:1,scrollPaddingBlockStart:1,scrollPaddingBottom:1,scrollPaddingInline:1,scrollPaddingInlineEnd:1,scrollPaddingInlineStart:1,scrollPaddingLeft:1,scrollPaddingRight:1,scrollPaddingTop:1,shapeMargin:1,textDecoration:1,textDecorationThickness:1,textIndent:1,textUnderlineOffset:1,top:1,transitionDelay:1,transitionDuration:1,verticalAlign:1,width:1,wordSpacing:1},z=e=>String.fromCharCode(e+(e>25?39:97)),W=e=>(e=>{let t,n="";for(t=Math.abs(e);t>52;t=t/52|0)n=z(t%52)+n;return z(t%52)+n})(((e,t)=>{let n=t.length;for(;n;)e=33*e^t.charCodeAt(--n);return e})(5381,JSON.stringify(e))>>>0),j=["themed","global","styled","onevar","resonevar","allvar","inline"],E=e=>{if(e.href&&!e.href.startsWith(location.origin))return!1;try{return!!e.cssRules}catch(e){return!1}},T=e=>{let t;const n=()=>{const{cssRules:e}=t.sheet;return[].map.call(e,((n,r)=>{const{cssText:i}=n;let o="";if(i.startsWith("--sxs"))return"";if(e[r-1]&&(o=e[r-1].cssText).startsWith("--sxs")){if(!n.cssRules.length)return"";for(const e in t.rules)if(t.rules[e].group===n)return`--sxs{--sxs:${[...t.rules[e].cache].join(" ")}}${i}`;return n.cssRules.length?`${o}${i}`:""}return i})).join("")},r=()=>{if(t){const{rules:e,sheet:n}=t;if(!n.deleteRule){for(;3===Object(Object(n.cssRules)[0]).type;)n.cssRules.splice(0,1);n.cssRules=[]}for(const t in e)delete e[t]}const i=Object(e).styleSheets||[];for(const e of i)if(E(e)){for(let i=0,o=e.cssRules;o[i];++i){const l=Object(o[i]);if(1!==l.type)continue;const s=Object(o[i+1]);if(4!==s.type)continue;++i;const{cssText:a}=l;if(!a.startsWith("--sxs"))continue;const c=a.slice(14,-3).trim().split(/\s+/),d=j[c[0]];d&&(t||(t={sheet:e,reset:r,rules:{},toString:n}),t.rules[d]={group:s,index:i,cache:new Set(c)})}if(t)break}if(!t){const i=(e,t)=>({type:t,cssRules:[],insertRule(e,t){this.cssRules.splice(t,0,i(e,{import:3,undefined:1}[(e.toLowerCase().match(/^@([a-z]+)/)||[])[1]]||4))},get cssText(){return"@media{}"===e?`@media{${[].map.call(this.cssRules,(e=>e.cssText)).join("")}}`:e}});t={sheet:e?(e.head||e).appendChild(document.createElement("style")).sheet:i("","text/css"),rules:{},reset:r,toString:n}}const{sheet:o,rules:l}=t;for(let e=j.length-1;e>=0;--e){const t=j[e];if(!l[t]){const n=j[e+1],r=l[n]?l[n].index:o.cssRules.length;o.insertRule("@media{}",r),o.insertRule(`--sxs{--sxs:${e}}`,r),l[t]={group:o.cssRules[r+1],index:r,cache:new Set([e])}}v(l[t])}};return r(),t},v=e=>{const t=e.group;let n=t.cssRules.length;e.apply=e=>{try{t.insertRule(e,n),++n}catch(e){}}},M=Symbol(),w=l(),C=(e,t)=>w(e,(()=>(...n)=>{let r={type:null,composers:new Set};for(const t of n)if(null!=t)if(t[s]){null==r.type&&(r.type=t[s].type);for(const e of t[s].composers)r.composers.add(e)}else t.constructor!==Object||t.$$typeof?null==r.type&&(r.type=t):r.composers.add(P(t,e));return null==r.type&&(r.type="span"),r.composers.size||r.composers.add(["PJLV",{},[],[],{},[]]),L(e,r,t)})),P=({variants:e,compoundVariants:t,defaultVariants:n,...r},i)=>{const o=`${k(i.prefix)}c-${W(r)}`,l=[],s=[],a=Object.create(null),g=[];for(const e in n)a[e]=String(n[e]);if("object"==typeof e&&e)for(const t in e){p=a,u=t,d.call(p,u)||(a[t]="undefined");const n=e[t];for(const e in n){const r={[t]:String(e)};"undefined"===String(e)&&g.push(t);const i=n[e],o=[r,i,!c(i)];l.push(o)}}var p,u;if("object"==typeof t&&t)for(const e of t){let{css:t,...n}=e;t="object"==typeof t&&t||{};for(const e in n)n[e]=String(n[e]);const r=[n,t,!c(t)];s.push(r)}return[o,r,l,s,a,g]},L=(e,t,n)=>{const[r,i,o,l]=O(t.composers),c="function"==typeof t.type||t.type.$$typeof?(e=>{function t(){for(let n=0;n<t[M].length;n++){const[r,i]=t[M][n];e.rules[r].apply(i)}return t[M]=[],null}return t[M]=[],t.rules={},j.forEach((e=>t.rules[e]={apply:n=>t[M].push([e,n])})),t})(n):null,d=(c||n).rules,g=`.${r}${i.length>1?`:where(.${i.slice(1).join(".")})`:""}`,p=s=>{s="object"==typeof s&&s||D;const{css:a,...p}=s,u={};for(const e in o)if(delete p[e],e in s){let t=s[e];"object"==typeof t&&t?u[e]={"@initial":o[e],...t}:(t=String(t),u[e]="undefined"!==t||l.has(e)?t:o[e])}else u[e]=o[e];const h=new Set([...i]);for(const[r,i,o,l]of t.composers){n.rules.styled.cache.has(r)||(n.rules.styled.cache.add(r),x(i,[`.${r}`],[],e,(e=>{d.styled.apply(e)})));const t=A(o,u,e.media),s=A(l,u,e.media,!0);for(const i of t)if(void 0!==i)for(const[t,o,l]of i){const i=`${r}-${W(o)}-${t}`;h.add(i);const s=(l?n.rules.resonevar:n.rules.onevar).cache,a=l?d.resonevar:d.onevar;s.has(i)||(s.add(i),x(o,[`.${i}`],[],e,(e=>{a.apply(e)})))}for(const t of s)if(void 0!==t)for(const[i,o]of t){const t=`${r}-${W(o)}-${i}`;h.add(t),n.rules.allvar.cache.has(t)||(n.rules.allvar.cache.add(t),x(o,[`.${t}`],[],e,(e=>{d.allvar.apply(e)})))}}if("object"==typeof a&&a){const t=`${r}-i${W(a)}-css`;h.add(t),n.rules.inline.cache.has(t)||(n.rules.inline.cache.add(t),x(a,[`.${t}`],[],e,(e=>{d.inline.apply(e)})))}for(const e of String(s.className||"").trim().split(/\s+/))e&&h.add(e);const f=p.className=[...h].join(" ");return{type:t.type,className:f,selector:g,props:p,toString:()=>f,deferredInjector:c}};return a(p,{className:r,selector:g,[s]:t,toString:()=>(n.rules.styled.cache.has(r)||p(),r)})},O=e=>{let t="";const n=[],r={},i=[];for(const[o,,,,l,s]of e){""===t&&(t=o),n.push(o),i.push(...s);for(const e in l){const t=l[e];(void 0===r[e]||"undefined"!==t||s.includes(t))&&(r[e]=t)}}return[t,n,r,new Set(i)]},A=(e,t,n,r)=>{const i=[];e:for(let[o,l,s]of e){if(s)continue;let e,a=0,c=!1;for(e in o){const r=o[e];let i=t[e];if(i!==r){if("object"!=typeof i||!i)continue e;{let e,t,o=0;for(const l in i){if(r===String(i[l])){if("@initial"!==l){const e=l.slice(1);(t=t||[]).push(e in n?n[e]:l.replace(/^@media ?/,"")),c=!0}a+=o,e=!0}++o}if(t&&t.length&&(l={["@media "+t.join(", ")]:l}),!e)continue e}}}(i[a]=i[a]||[]).push([r?"cv":`${e}-${o[e]}`,l,c])}return i},D={},H=l(),N=(e,t)=>H(e,(()=>(...n)=>{const r=()=>{for(let r of n){r="object"==typeof r&&r||{};let n=W(r);if(!t.rules.global.cache.has(n)){if(t.rules.global.cache.add(n),"@import"in r){let e=[].indexOf.call(t.sheet.cssRules,t.rules.themed.group)-1;for(let n of[].concat(r["@import"]))n=n.includes('"')||n.includes("'")?n:`"${n}"`,t.sheet.insertRule(`@import ${n};`,e++);delete r["@import"]}x(r,[],[],e,(e=>{t.rules.global.apply(e)}))}}return""};return a(r,{toString:r})})),V=l(),G=(e,t)=>V(e,(()=>n=>{const r=`${k(e.prefix)}k-${W(n)}`,i=()=>{if(!t.rules.global.cache.has(r)){t.rules.global.cache.add(r);const i=[];x(n,[],[],e,(e=>i.push(e)));const o=`@keyframes ${r}{${i.join("")}}`;t.rules.global.apply(o)}return r};return a(i,{get name(){return i()},toString:i})})),F=class{constructor(e,t,n,r){this.token=null==e?"":String(e),this.value=null==t?"":String(t),this.scale=null==n?"":String(n),this.prefix=null==r?"":String(r)}get computedValue(){return"var("+this.variable+")"}get variable(){return"--"+k(this.prefix)+k(this.scale)+this.token}toString(){return this.computedValue}},J=l(),U=(e,t)=>J(e,(()=>(n,r)=>{r="object"==typeof n&&n||Object(r);const i=`.${n=(n="string"==typeof n?n:"")||`${k(e.prefix)}t-${W(r)}`}`,o={},l=[];for(const t in r){o[t]={};for(const n in r[t]){const i=`--${k(e.prefix)}${t}-${n}`,s=y(String(r[t][n]),e.prefix,t);o[t][n]=new F(n,s,t,e.prefix),l.push(`${i}:${s}`)}}const s=()=>{if(l.length&&!t.rules.themed.cache.has(n)){t.rules.themed.cache.add(n);const i=`${r===e.theme?":root,":""}.${n}{${l.join(";")}}`;t.rules.themed.apply(i)}return n};return{...o,get className(){return s()},selector:i,toString:s}})),Z=l(),X=e=>{let t=!1;const n=Z(e,(e=>{t=!0;const n="prefix"in(e="object"==typeof e&&e||{})?String(e.prefix):"",r="object"==typeof e.media&&e.media||{},o="object"==typeof e.root?e.root||null:globalThis.document||null,l="object"==typeof e.theme&&e.theme||{},s={prefix:n,media:r,theme:l,themeMap:"object"==typeof e.themeMap&&e.themeMap||{...i},utils:"object"==typeof e.utils&&e.utils||{}},a=T(o),c={css:C(s,a),globalCss:N(s,a),keyframes:G(s,a),createTheme:U(s,a),reset(){a.reset(),c.theme.toString()},theme:{},sheet:a,config:s,prefix:n,getCssText:a.toString,toString:a.toString};return String(c.theme=c.createTheme(l)),c}));return t||n.reset(),n},Y=()=>e||(e=X()),q=(...e)=>Y().createTheme(...e),K=(...e)=>Y().globalCss(...e),Q=(...e)=>Y().keyframes(...e),_=(...e)=>Y().css(...e);
+//# sourceMappingUrl=index.map
+
+/***/ }),
+
+/***/ "./node_modules/websocket/package.json":
+/*!*********************************************!*\
+  !*** ./node_modules/websocket/package.json ***!
+  \*********************************************/
+/***/ (function(module) {
+
+"use strict";
+module.exports = JSON.parse('{"name":"websocket","description":"Websocket Client & Server Library implementing the WebSocket protocol as specified in RFC 6455.","keywords":["websocket","websockets","socket","networking","comet","push","RFC-6455","realtime","server","client"],"author":"Brian McKelvey <theturtle32@gmail.com> (https://github.com/theturtle32)","contributors":["Iñaki Baz Castillo <ibc@aliax.net> (http://dev.sipdoc.net)"],"version":"1.0.34","repository":{"type":"git","url":"https://github.com/theturtle32/WebSocket-Node.git"},"homepage":"https://github.com/theturtle32/WebSocket-Node","engines":{"node":">=4.0.0"},"dependencies":{"bufferutil":"^4.0.1","debug":"^2.2.0","es5-ext":"^0.10.50","typedarray-to-buffer":"^3.1.5","utf-8-validate":"^5.0.2","yaeti":"^0.0.6"},"devDependencies":{"buffer-equal":"^1.0.0","gulp":"^4.0.2","gulp-jshint":"^2.0.4","jshint-stylish":"^2.2.1","jshint":"^2.0.0","tape":"^4.9.1"},"config":{"verbose":false},"scripts":{"test":"tape test/unit/*.js","gulp":"gulp"},"main":"index","directories":{"lib":"./lib"},"browser":"lib/browser.js","license":"Apache-2.0"}');
+
 /***/ })
 
 /******/ 	});
@@ -45060,7 +56173,7 @@ function _extends() {
 /******/ 		};
 /******/ 	
 /******/ 		// Execute the module function
-/******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
+/******/ 		__webpack_modules__[moduleId].call(module.exports, module, module.exports, __webpack_require__);
 /******/ 	
 /******/ 		// Flag the module as loaded
 /******/ 		module.loaded = true;
@@ -45079,6 +56192,36 @@ function _extends() {
 /******/ 				function() { return module; };
 /******/ 			__webpack_require__.d(getter, { a: getter });
 /******/ 			return getter;
+/******/ 		};
+/******/ 	}();
+/******/ 	
+/******/ 	/* webpack/runtime/create fake namespace object */
+/******/ 	!function() {
+/******/ 		var getProto = Object.getPrototypeOf ? function(obj) { return Object.getPrototypeOf(obj); } : function(obj) { return obj.__proto__; };
+/******/ 		var leafPrototypes;
+/******/ 		// create a fake namespace object
+/******/ 		// mode & 1: value is a module id, require it
+/******/ 		// mode & 2: merge all properties of value into the ns
+/******/ 		// mode & 4: return value when already ns object
+/******/ 		// mode & 16: return value when it's Promise-like
+/******/ 		// mode & 8|1: behave like require
+/******/ 		__webpack_require__.t = function(value, mode) {
+/******/ 			if(mode & 1) value = this(value);
+/******/ 			if(mode & 8) return value;
+/******/ 			if(typeof value === 'object' && value) {
+/******/ 				if((mode & 4) && value.__esModule) return value;
+/******/ 				if((mode & 16) && typeof value.then === 'function') return value;
+/******/ 			}
+/******/ 			var ns = Object.create(null);
+/******/ 			__webpack_require__.r(ns);
+/******/ 			var def = {};
+/******/ 			leafPrototypes = leafPrototypes || [null, getProto({}), getProto([]), getProto(getProto)];
+/******/ 			for(var current = mode & 2 && value; typeof current == 'object' && !~leafPrototypes.indexOf(current); current = getProto(current)) {
+/******/ 				Object.getOwnPropertyNames(current).forEach(function(key) { def[key] = function() { return value[key]; }; });
+/******/ 			}
+/******/ 			def['default'] = function() { return value; };
+/******/ 			__webpack_require__.d(ns, def);
+/******/ 			return ns;
 /******/ 		};
 /******/ 	}();
 /******/ 	
@@ -45148,7 +56291,12 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
- //  This is the User Object on the frontEnd. The getMe function sets the context from the login page.
+ // import SessionContextProvider from '@supabase/auth-helpers-react'
+// import { createClient } from  '@supabase/supabase-js'
+// const supabaseURL = "https://jfbyqhzzothodtxblxdi.supabase.co"
+// const supabasePublicKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpmYnlxaHp6b3Rob2R0eGJseGRpIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NzEzOTQ3MjQsImV4cCI6MTk4Njk3MDcyNH0.YzAavCV038eiG4271h1G1sNYqGflr240hb88j-_MLcI"
+// const supabaseClient = createClient(supabaseURL, supabasePublicKey)
+//  This is the User Object on the frontEnd. The getMe function sets the context from the login page.
 
 const root = react_dom_client__WEBPACK_IMPORTED_MODULE_1__.createRoot(document.getElementById('root'));
 root.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().StrictMode), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_MeContextPro__WEBPACK_IMPORTED_MODULE_3__.MeProvider, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_App__WEBPACK_IMPORTED_MODULE_2__["default"], {

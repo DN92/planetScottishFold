@@ -14,6 +14,7 @@ import NavMobile from './NavMobile'
 import AttentionModal from './AttentionModal'
 import useLocalStorage from '../customHooks/useLocalStorage'
 import MessageBox from './MessageBox'
+import { useUser, useSupabase } from '@supabase/auth-helpers-react'
 
 const messageArray = [
   "Price negotiable for Lorenzo and Jasmine ONLY until 11/17/22",
@@ -42,31 +43,31 @@ const App = () => {
           <title>Planet Scottish Fold | Scottish Fold Cattery</title>
           <meta name='Planet Scottish Fold' contents='Proud Breeders of Scottish Fold Kittens' />
         </Helmet>
-          <div className='header'>
-            <TopLineMenuBar setViewNav={setViewNav} setShowMobileNav={setShowMobileNav}/>
-            {isPrivileged(type) ? <AdminBar /> :  <NavBar />}
-            {isPrivileged(type) && viewNav && <NavBar />}
-          </div>
-          {/* inline styling present here */}
-          <div className='mainContentContainer' style={showMobileNav ? {marginBottom: '0'} : {}}>
-            {modalOpen && <AttentionModal setModalOpen={setModalOpen} /> }
-            {showMessageBox &&
-              <MessageBox
-                messageArray={messageArray}
-                options={{
-                  closeOnClick: true,
-                  onCloseText: 'Show Announcements'
-                }}
-              />
-            }
-            {showMobileNav && <NavMobile setShowMobileNav={setShowMobileNav} />}
-            {!showMobileNav &&
-              <>
-                {isPrivileged(type) ? <AdminRoutes /> : <FrontEndRoutes setModalOpen={setModalOpen} />}
-              </>
-            }
-          </div>
-          {!showMobileNav && <Footer /> }
+        <div className='header'>
+          <TopLineMenuBar setViewNav={setViewNav} setShowMobileNav={setShowMobileNav}/>
+          {isPrivileged(type) ? <AdminBar /> :  <NavBar />}
+          {isPrivileged(type) && viewNav && <NavBar />}
+        </div>
+        {/* inline styling present here */}
+        <div className='mainContentContainer' style={showMobileNav ? {marginBottom: '0'} : {}}>
+          {modalOpen && <AttentionModal setModalOpen={setModalOpen} /> }
+          {showMessageBox &&
+            <MessageBox
+              messageArray={messageArray}
+              options={{
+                closeOnClick: true,
+                onCloseText: 'Show Announcements'
+              }}
+            />
+          }
+          {showMobileNav && <NavMobile setShowMobileNav={setShowMobileNav} />}
+          {!showMobileNav &&
+            <>
+              {isPrivileged(type) ? <AdminRoutes /> : <FrontEndRoutes setModalOpen={setModalOpen} />}
+            </>
+          }
+        </div>
+        {!showMobileNav && <Footer /> }
       </HistoryRouter>
     </>
   )

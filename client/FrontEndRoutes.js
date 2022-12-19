@@ -13,7 +13,7 @@ import ViewCats from './components/ViewCats2'
 import CatDetailedView from './components/CatDetailedView';
 import QuestionnaireConfirmation from './components/QuestionnaireConfirmation'
 import Reviews2 from './components/reviews/Reviews2';
-
+import AuthUI from './components/supabase/AuthUi';
 
 const FrontEndRoutes = ({setModalOpen}) => {
 
@@ -35,6 +35,8 @@ const FrontEndRoutes = ({setModalOpen}) => {
       <Route path='/404' element={<My404 />} />
       <Route path='/QConfirmation' element={<QuestionnaireConfirmation />} />
       <Route path='/logout' element={<Logout />} />
+      <Route path='/supaAuth' element={<AuthUI />} />
+
 
 {/* Redirects */}
       <Route path='/catDetailed' element={<Navigate to='mother' />} />
