@@ -36,8 +36,6 @@ const ConfirmClientQuestionnaire = () => {
     }
   },[infoPosted])
 
-  console.log('INFO:: ', clientInfo)
-
   return (
     <>
     {clientInfo &&

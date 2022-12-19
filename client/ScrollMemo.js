@@ -9,10 +9,6 @@ const ScrollMemo = ({children}) => {
   const scrollPosition = useScrollPosition()
 
   useEffect(() => {
-    // window.scroll(0, 0)
-    console.log('pathname', pathname)
-    console.log('scrollPosition', scrollMemory.pathname ?? 0)
-    console.log('scrollMemory', scrollMemory)
 
     return () => {
       setScrollMemory(prev => ({

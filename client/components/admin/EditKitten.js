@@ -90,6 +90,15 @@ const EditKitten = () => {
         <>
           <h2>EDIT SELECTED KITTEN</h2>
           <div>
+            <button
+              onClick={() => {navigate('/imageDash', {state: {
+                class: 'kitten',
+                kittenToEdit,
+
+              }})}}
+            >
+              Go To Image Gallery
+            </button>
             <img src={kittenToEdit.mainImageSrcValue} alt="kitten to edit" style={imgInLine} />
             <form onKeyDown={handleKeyPress} onSubmit={handleSubmit}>
               <>

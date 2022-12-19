@@ -50,15 +50,12 @@ const UploadPane = ({prime, category, setFileChangeOccurred}) => {
       formData.append('id', prime?.id ?? 0)
       formData.append('filename', customFilename || selectedFile.name)
 
-      console.log('here!!')
-
       const response = await fetch('/api/createFiles/upimage', {
         method: 'post',
         body: formData,
       })
       if(response.status > 199 && response.status < 300) {
         const json = await response.json()
-        console.log('JSON :: ', json)
         setResponseCode(response?.status ?? 600)
         setResponseMsg(json?.msg ?? '')
         resetState()

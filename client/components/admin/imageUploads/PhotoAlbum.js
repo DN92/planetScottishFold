@@ -28,9 +28,7 @@ const PhotoAlbum = ({cat, type, fileChangeOccurred, setFileChangeOccurred}) => {
   }
 
   async function handleDeleteAll() {
-    console.log('fire delete all')
     setReadyDeleteAll(false)
-    console.log('pathsToDelete: ', pathsToDelete)
     await Promise.all(pathsToDelete.map(path => {
       return fetch(`/api/createFiles/images?path=${path}`, {
         method: 'delete',
@@ -46,10 +44,6 @@ const PhotoAlbum = ({cat, type, fileChangeOccurred, setFileChangeOccurred}) => {
   }
 
   useEffect(() => {
-    console.log('PATHS TO DELETE:: ', pathsToDelete)
-  }, [pathsToDelete])
-
-  useEffect(() => {
     if ((cat && type) || fileChangeOccurred) {
       setFileChangeOccurred(false)
       fetchEffect(
@@ -59,10 +53,6 @@ const PhotoAlbum = ({cat, type, fileChangeOccurred, setFileChangeOccurred}) => {
       )
     }
   }, [cat, type, fileChangeOccurred, setFileChangeOccurred])
-
-  // useEffect(() => {
-  //   console.log('paths:: ', imagePaths)
-  // }, [imagePaths])
 
   return (
     <div>
