@@ -125,11 +125,9 @@ const Carousel = ({
     metas.forEach(meta => {
       if(meta.index >= leftPointer && meta.index <= rightPointer) {
         meta.classList = meta.classList.filter(ele => ele !== DISPLAYNONE)
-        console.log('true')
       } else {
         if(!meta.classList.includes(DISPLAYNONE)) {
           meta.classList.push(DISPLAYNONE)
-          console.log('false')
         }
       }
     })

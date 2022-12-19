@@ -34,11 +34,6 @@ const KittenDetailedView = () => {
     }
   }, [])
 
-  // useEffect(() => {
-  //   if(albumPaths) console.log(`paths for ${kitten?.name}:: `, albumPaths)
-  //   console.log('main image src:: ', kitten?.mainImageSrcValue)
-  // },[albumPaths])
-
   return (
     <div key={id}>
       {error && <ErrorFill msg={error} />}

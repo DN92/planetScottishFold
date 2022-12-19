@@ -13047,7 +13047,6 @@ const ConfirmClientQuestionnaire = () => {
       });
     }
   }, [infoPosted]);
-  console.log('INFO:: ', clientInfo);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, clientInfo && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "client-confirmation"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h4", null, "Please Review Your Answers Before Submitting"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
@@ -13403,12 +13402,6 @@ const KittenDetailedView = () => {
       (0,_axiosHandlers_fetchEffect__WEBPACK_IMPORTED_MODULE_5__.fetchEffect)([setAlbumPaths, setError], 'get', `/api/albums?id=${id}&type=${`kitten`}`);
     }
   }, []);
-
-  // useEffect(() => {
-  //   if(albumPaths) console.log(`paths for ${kitten?.name}:: `, albumPaths)
-  //   console.log('main image src:: ', kitten?.mainImageSrcValue)
-  // },[albumPaths])
-
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     key: id
   }, error && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ErrorFill__WEBPACK_IMPORTED_MODULE_1__["default"], {
@@ -14979,7 +14972,16 @@ const EditKitten = () => {
     msg: error
   }), !error && !(0,_myModelsConfig__WEBPACK_IMPORTED_MODULE_2__.isPrivileged)(type) && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "You don't have the privileges to view this page"), !error && !kittenToEdit && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ErrorFill__WEBPACK_IMPORTED_MODULE_3__["default"], {
     msg: "No Kitten Loaded. Report this issue to System Admin"
-  }), !error && (0,_myModelsConfig__WEBPACK_IMPORTED_MODULE_2__.isPrivileged)(type) && kittenToEdit && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "EDIT SELECTED KITTEN"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
+  }), !error && (0,_myModelsConfig__WEBPACK_IMPORTED_MODULE_2__.isPrivileged)(type) && kittenToEdit && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "EDIT SELECTED KITTEN"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    onClick: () => {
+      navigate('/imageDash', {
+        state: {
+          class: 'kitten',
+          kittenToEdit
+        }
+      });
+    }
+  }, "Go To Image Gallery"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
     src: kittenToEdit.mainImageSrcValue,
     alt: "kitten to edit",
     style: imgInLine
@@ -15427,17 +15429,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _axiosHandlers_fetchEffect__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../axiosHandlers/fetchEffect */ "./client/components/axiosHandlers/fetchEffect.js");
 /* harmony import */ var _PhotoAlbum__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./PhotoAlbum */ "./client/components/admin/imageUploads/PhotoAlbum.js");
 /* harmony import */ var _UploadPane__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./UploadPane */ "./client/components/admin/imageUploads/UploadPane.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
+
 
 
 
 
 const types = ['none', 'kitten', 'sire', 'dam'];
 const imageDash = () => {
+  const location = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.useLocation)();
+  const importedState = location?.state ?? null;
   const [kittens, setKittens] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]);
   const [dams, setDams] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]);
   const [sires, setSires] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]);
   const [error, setError] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('');
-  const [selectedType, setSelectedType] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('none');
+  const [selectedType, setSelectedType] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(importedState.class ?? 'none');
   const [selectedKitten, setSelectedKitten] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null);
   const [selectedDam, setSelectedDam] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null);
   const [selectedSire, setSelectedSire] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null);
@@ -15472,12 +15478,34 @@ const imageDash = () => {
     (0,_axiosHandlers_fetchEffect__WEBPACK_IMPORTED_MODULE_1__.fetchEffect)([setDams, setError], 'get', `/api/mothers`);
     (0,_axiosHandlers_fetchEffect__WEBPACK_IMPORTED_MODULE_1__.fetchEffect)([setSires, setError], 'get', `/api/fathers`);
     (0,_axiosHandlers_fetchEffect__WEBPACK_IMPORTED_MODULE_1__.fetchEffect)([setKittens, setError], 'get', `/api/kittens`);
+    if (importedState) {
+      switch (importedState.class) {
+        case 'kitten':
+          {
+            setSelectedKitten(importedState.kittenToEdit);
+            return;
+          }
+        case 'dam':
+          {
+            setSelectedDam(importedState.catToEdit);
+            return;
+          }
+        case 'sire':
+          {
+            setSelectedSire(importedState.catToEdit);
+            return;
+          }
+        default:
+          return;
+      }
+    }
   }, []);
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "IMAGE DASH"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "IMAGE DASHBOARD"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
     htmlFor: "image-dash-type-selector"
   }, "Select Cat Category"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("select", {
     id: "image-dash-type-selector",
     name: "typeSelector",
+    value: selectedType,
     onChange: e => {
       validateSetType(e);
     }
@@ -15490,36 +15518,43 @@ const imageDash = () => {
         return null;
       case 'kitten':
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("select", {
+          value: selectedKitten?.name ?? '',
           onChange: e => {
-            setSelectedKitten(kittens[e.target.value]);
+            setSelectedKitten(kittens[e.target.selectedOptions[0].getAttribute('number')] || null);
           }
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
-          value: null
+          value: '',
+          number: null
         }, ''), kittens.map((pet, idx) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
           key: pet.name + idx,
-          value: idx
+          value: pet.name,
+          number: idx
         }, pet.name)));
       case 'sire':
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("select", {
           onChange: e => {
-            setSelectedSire(sires[e.target.value]);
+            setSelectedSire(sires[e.target.selectedOptions[0].getAttribute('number')] || null);
           }
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
-          value: null
+          value: '',
+          number: null
         }, ''), sires.map((pet, idx) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
           key: pet.name + idx,
-          value: idx
+          value: pet.name,
+          number: index
         }, pet.name)));
       case 'dam':
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("select", {
           onChange: e => {
-            setSelectedDam(dams[e.target.value]);
+            setSelectedDam(dams[e.target.selectedOptions[0].getAttribute('number')] || null);
           }
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
-          value: null
-        }), dams.map((pet, idx) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+          value: '',
+          number: null
+        }, ''), dams.map((pet, idx) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
           key: pet.name + idx,
-          value: idx
+          value: pet.name,
+          number: index
         }, pet.name)));
       default:
         return null;
@@ -15592,9 +15627,7 @@ const PhotoAlbum = ({
     setPathsToDelete([]);
   }
   async function handleDeleteAll() {
-    console.log('fire delete all');
     setReadyDeleteAll(false);
-    console.log('pathsToDelete: ', pathsToDelete);
     await Promise.all(pathsToDelete.map(path => {
       return fetch(`/api/createFiles/images?path=${path}`, {
         method: 'delete'
@@ -15608,19 +15641,11 @@ const PhotoAlbum = ({
     setSelectedPath('');
   }
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
-    console.log('PATHS TO DELETE:: ', pathsToDelete);
-  }, [pathsToDelete]);
-  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
     if (cat && type || fileChangeOccurred) {
       setFileChangeOccurred(false);
       (0,_axiosHandlers_fetchEffect__WEBPACK_IMPORTED_MODULE_1__.fetchEffect)([setImagePaths, setError], 'get', `/api/albums?type=${type}&id=${cat.id}`);
     }
   }, [cat, type, fileChangeOccurred, setFileChangeOccurred]);
-
-  // useEffect(() => {
-  //   console.log('paths:: ', imagePaths)
-  // }, [imagePaths])
-
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h3", null, "Photo Album"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "album-container",
     style: {
@@ -15760,14 +15785,12 @@ const UploadPane = ({
       formData.append('category', category);
       formData.append('id', prime?.id ?? 0);
       formData.append('filename', customFilename || selectedFile.name);
-      console.log('here!!');
       const response = await fetch('/api/createFiles/upimage', {
         method: 'post',
         body: formData
       });
       if (response.status > 199 && response.status < 300) {
         const json = await response.json();
-        console.log('JSON :: ', json);
         setResponseCode(response?.status ?? 600);
         setResponseMsg(json?.msg ?? '');
         resetState();
@@ -15882,7 +15905,7 @@ const fetchEffect = async (setterFuncArray, method, path, body) => {
     }
   } catch (err) {
     console.error(err.message);
-    if (err.stack) console.log(err.stack);
+    if (err.stack) console.log(err);
     if (setterFuncArray.length > 1) {
       setterFuncArray[1](err.message);
     }
@@ -16195,11 +16218,9 @@ const Carousel = ({
     metas.forEach(meta => {
       if (meta.index >= leftPointer && meta.index <= rightPointer) {
         meta.classList = meta.classList.filter(ele => ele !== DISPLAYNONE);
-        console.log('true');
       } else {
         if (!meta.classList.includes(DISPLAYNONE)) {
           meta.classList.push(DISPLAYNONE);
-          console.log('false');
         }
       }
     });
