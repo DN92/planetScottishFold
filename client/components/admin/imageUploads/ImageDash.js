@@ -14,7 +14,7 @@ const imageDash = () => {
   const [dams, setDams] = useState([])
   const [sires, setSires] = useState([])
   const [error, setError] = useState('')
-  const [selectedType, setSelectedType] = useState(importedState.class ?? 'none')
+  const [selectedType, setSelectedType] = useState(importedState?.class ?? 'none')
   const [selectedKitten, setSelectedKitten] = useState(null)
   const [selectedDam, setSelectedDam] = useState(null)
   const [selectedSire, setSelectedSire] = useState(null)
