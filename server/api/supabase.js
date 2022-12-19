@@ -1,5 +1,7 @@
 const router = require('express').Router()
 const includeSupabase = require('../expressMiddleware/includeSupabase')
+const fileUpload = require('express-fileupload')
+const fileExtensionValidator = require('../expressMiddleware/fileExtensionValidator')
 
 router.get('/', includeSupabase, async (req,res,next) => {
   res.send({msg: 'successful endpoint', db: req.supabase})
@@ -65,5 +67,70 @@ router.get('/urlsByBucket', includeSupabase, async(req, res, next ) => {
     next(err)
   }
 })
+
+router.get('/testBucketCreator', includeSupabase, async (req, res, next) => {
+  try{
+    await req.supabase.storage.createBucket('testerBucket', {public: true})
+    res.send({msg:'success?'})
+  } catch(err) {
+    next(err)
+  }
+
+})
+
+router.post(
+  '/imageUpload',
+  includeSupabase,
+  fileUpload({createParentPath: true}),
+  fileExtensionValidator(['image', 'png', 'jpg', 'jpeg']),
+  async (req, res, next) =>
+  {
+    try {
+      const sizeLimit = 8 * 1000000;
+      const files = Object.values(req.files)
+      const {filename, catName, category, id} = req.body
+      const supabase = req.supabase
+
+      if (!(filename && catName && category && id)) {
+        res.send({msg: 'missing required fields'})
+        return
+      }
+
+      if (!files.length) {
+        throw Error('no files received')
+      }
+
+      if (files.some(file => file.size > sizeLimit)) {
+        throw Error(`file exceeds size limit of ${sizeLimit/1000000} megabytes`)
+      }
+
+      await supabase.storage.createBucket(`${category}${id}`, {public: true})
+
+      await Promise.all(files.map(file => {
+        const date = new Date()
+        const newFilename = date.toGMTString()
+          .split(',')[1]
+          .replaceAll(' ', '')
+          .replaceAll('GMT', '')
+          + '.'
+          + filename
+        const { data } = supabase.storage
+          .from(`${category}${id}`)
+          .upload(
+            `${newFilename}`,
+            file.data,
+            {
+              upsert: true,
+              contentType: 'image/png',
+            }
+          )
+        return data
+      }))
+      res.sendStatus(204)
+    } catch(err) {
+      next(err)
+    }
+  }
+)
 
 module.exports = router

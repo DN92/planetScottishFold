@@ -38,7 +38,7 @@ const UploadPane = ({prime, category, setFileChangeOccurred}) => {
     file && setSelectedFile(file)
   }
 
-  async function handlePushFile(e) {
+  async function handlePushFileOld(e) {
     e.preventDefault()
 
     if(!selectedFile) return
@@ -54,10 +54,41 @@ const UploadPane = ({prime, category, setFileChangeOccurred}) => {
         method: 'post',
         body: formData,
       })
-      if(response.status > 199 && response.status < 300) {
+      if(response.status >= 200 && response.status <= 299) {
         const json = await response.json()
         setResponseCode(response?.status ?? 600)
         setResponseMsg(json?.msg ?? '')
+        resetState()
+        setFileChangeOccurred(true)
+      } else {
+        console.log('ERROR RESPONSE:: ', response)
+        setUploadError(response.statusText || 'unknown error')
+      }
+
+    } else {
+      setValidationError('File type validation failed. Only .img .jpg .jpeg files are allowed')
+    }
+  }
+
+  async function handlePushFileNew(e) {
+    e.preventDefault()
+
+    if(!selectedFile) return
+    setValidationError('')
+    if (validateFile(selectedFile, 'image')) {
+      formData.append('image', selectedFile, selectedFile.name)
+      formData.append('catName', prime?.name || '')
+      formData.append('category', category)
+      formData.append('id', prime?.id ?? 0)
+      formData.append('filename', customFilename || selectedFile.name)
+
+      const response = await fetch('/api/supabase/imageUpload', {
+        method: 'post',
+        body: formData,
+      })
+
+      if(response.status >= 200 && response.status <= 299) {
+        setResponseCode(response?.status ?? 600)
         resetState()
         setFileChangeOccurred(true)
       } else {
@@ -79,7 +110,7 @@ const UploadPane = ({prime, category, setFileChangeOccurred}) => {
       <h3>UploadPane</h3>
 
       {prime ?
-      <form onSubmit={handlePushFile}>
+      <form onSubmit={handlePushFileNew}>
         {validationError && <p className='error'>{validationError}</p>}
         <input
           type="file"
