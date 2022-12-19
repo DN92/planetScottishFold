@@ -15443,7 +15443,7 @@ const imageDash = () => {
   const [dams, setDams] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]);
   const [sires, setSires] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]);
   const [error, setError] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('');
-  const [selectedType, setSelectedType] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(importedState.class ?? 'none');
+  const [selectedType, setSelectedType] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(importedState?.class ?? 'none');
   const [selectedKitten, setSelectedKitten] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null);
   const [selectedDam, setSelectedDam] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null);
   const [selectedSire, setSelectedSire] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null);

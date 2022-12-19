@@ -61,7 +61,7 @@ router.get('/urlsByBucket', includeSupabase, async(req, res, next ) => {
     const final = allURLs.map(ele => (
       ele.data?.publicUrl
     ))
-    res.send(final)
+    res.send(final ?? [])
   } catch(err) {
     next(err)
   }
