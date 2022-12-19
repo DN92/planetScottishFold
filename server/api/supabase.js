@@ -24,7 +24,6 @@ router.get('/byname', includeSupabase, async(req, res, next ) => {
           order: 'desc',
         }
       })
-    // const { data, error } = await supabase.storage.listBuckets()
     if (error) {
       throw Error(error)
     }
@@ -106,7 +105,7 @@ router.post(
 
       await supabase.storage.createBucket(`${category}${id}`, {public: true})
 
-      await Promise.all(files.map(file => {
+      await Promise.all(files.map(async file => {
         const date = new Date()
         const newFilename = date.toGMTString()
           .split(',')[1]
@@ -114,7 +113,7 @@ router.post(
           .replaceAll('GMT', '')
           + '.'
           + filename
-        const { data } = supabase.storage
+        const { data } = await supabase.storage
           .from(`${category}${id}`)
           .upload(
             `${newFilename}`,

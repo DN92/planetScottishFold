@@ -15640,10 +15640,22 @@ const PhotoAlbum = ({
   function clearSelected() {
     setSelectedPath('');
   }
+
+  // useEffect(() => {
+  //   if ((cat && type) || fileChangeOccurred) {
+  //     setFileChangeOccurred(false)
+  //     fetchEffect(
+  //       [setImagePaths, setError],
+  //       'get',
+  //       `/api/albums?type=${type}&id=${cat.id}`
+  //     )
+  //   }
+  // }, [cat, type, fileChangeOccurred, setFileChangeOccurred])
+
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
     if (cat && type || fileChangeOccurred) {
       setFileChangeOccurred(false);
-      (0,_axiosHandlers_fetchEffect__WEBPACK_IMPORTED_MODULE_1__.fetchEffect)([setImagePaths, setError], 'get', `/api/albums?type=${type}&id=${cat.id}`);
+      (0,_axiosHandlers_fetchEffect__WEBPACK_IMPORTED_MODULE_1__.fetchEffect)([setImagePaths, setError], 'get', `/api/supabase/urlsByBucket?bucket=${type}${cat.id}`);
     }
   }, [cat, type, fileChangeOccurred, setFileChangeOccurred]);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h3", null, "Photo Album"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {

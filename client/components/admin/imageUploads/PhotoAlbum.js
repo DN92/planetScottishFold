@@ -43,13 +43,24 @@ const PhotoAlbum = ({cat, type, fileChangeOccurred, setFileChangeOccurred}) => {
     setSelectedPath('')
   }
 
+  // useEffect(() => {
+  //   if ((cat && type) || fileChangeOccurred) {
+  //     setFileChangeOccurred(false)
+  //     fetchEffect(
+  //       [setImagePaths, setError],
+  //       'get',
+  //       `/api/albums?type=${type}&id=${cat.id}`
+  //     )
+  //   }
+  // }, [cat, type, fileChangeOccurred, setFileChangeOccurred])
+
   useEffect(() => {
     if ((cat && type) || fileChangeOccurred) {
       setFileChangeOccurred(false)
       fetchEffect(
         [setImagePaths, setError],
         'get',
-        `/api/albums?type=${type}&id=${cat.id}`
+        `/api/supabase/urlsByBucket?bucket=${type}${cat.id}`
       )
     }
   }, [cat, type, fileChangeOccurred, setFileChangeOccurred])
