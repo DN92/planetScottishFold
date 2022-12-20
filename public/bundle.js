@@ -13395,11 +13395,16 @@ const KittenDetailedView = () => {
   const [albumPaths, setAlbumPaths] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]);
   const [error, setError] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('');
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+    async function getPaths(id) {
+      const response = await fetch(`/api/supabase/urlsByBucket?bucket=kitten${id}&withToken=true`);
+      const result = await response.json();
+      setAlbumPaths(result);
+    }
     if (!kitten && id) {
       (0,_axiosHandlers_fetchEffect__WEBPACK_IMPORTED_MODULE_5__.fetchEffect)([setKitten, setError], 'get', `/api/kittens?id=${id}`);
     }
     if (id) {
-      (0,_axiosHandlers_fetchEffect__WEBPACK_IMPORTED_MODULE_5__.fetchEffect)([setAlbumPaths, setError], 'get', `/api/albums?id=${id}&type=${`kitten`}`);
+      getPaths(id);
     }
   }, []);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
@@ -13408,10 +13413,10 @@ const KittenDetailedView = () => {
     msg: error
   }), !error && kitten && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "detailed-view-wrapper"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_carousel_MyCarousel_js__WEBPACK_IMPORTED_MODULE_6__["default"], {
-    data: albumPaths,
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_carousel_MyCarousel_js__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    data: [kitten.mainImageSrcValue, ...albumPaths],
     placeHolderImagePath: "/otherPictures/photoComingSoon.png"
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "detailedView-text-wrapper"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "detailedView-text"
@@ -15608,6 +15613,7 @@ const PhotoAlbum = ({
 }) => {
   const [imagePaths, setImagePaths] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]);
   const [selectedPath, setSelectedPath] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('');
+  const [fileNamesToDelete, setFileNamesToDelete] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]);
   const [pathsToDelete, setPathsToDelete] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]);
   const [readyDeleteAll, setReadyDeleteAll] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
   const [error, setError] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('');
@@ -15616,7 +15622,9 @@ const PhotoAlbum = ({
   }
   function handleMarkForDeletion(e) {
     if (selectedPath) {
+      const filename = selectedPath.split(`${type}${cat.id}/`)[1];
       setPathsToDelete(pathsToDelete => [...pathsToDelete, selectedPath]);
+      setFileNamesToDelete(fileNamesToDelete => [...fileNamesToDelete, filename]);
     }
   }
   function handleUndoDeletion(e) {
@@ -15628,8 +15636,8 @@ const PhotoAlbum = ({
   }
   async function handleDeleteAll() {
     setReadyDeleteAll(false);
-    await Promise.all(pathsToDelete.map(path => {
-      return fetch(`/api/createFiles/images?path=${path}`, {
+    await Promise.all(fileNamesToDelete.map(path => {
+      return fetch(`/api/supabase/removeImage?pathToDelete=${path}&type=${type}&id=${cat.id}`, {
         method: 'delete'
       });
     }));
@@ -15640,18 +15648,6 @@ const PhotoAlbum = ({
   function clearSelected() {
     setSelectedPath('');
   }
-
-  // useEffect(() => {
-  //   if ((cat && type) || fileChangeOccurred) {
-  //     setFileChangeOccurred(false)
-  //     fetchEffect(
-  //       [setImagePaths, setError],
-  //       'get',
-  //       `/api/albums?type=${type}&id=${cat.id}`
-  //     )
-  //   }
-  // }, [cat, type, fileChangeOccurred, setFileChangeOccurred])
-
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
     if (cat && type || fileChangeOccurred) {
       setFileChangeOccurred(false);
@@ -16137,6 +16133,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Overlay__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Overlay */ "./client/components/carousel/Overlay.js");
 /* harmony import */ var _customHooks_useRerender__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../customHooks/useRerender */ "./client/customHooks/useRerender.js");
 /* harmony import */ var _util_emRemPix__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../util/emRemPix */ "./client/util/emRemPix.js");
+/* harmony import */ var _customHooks_useWindowSize__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../customHooks/useWindowSize */ "./client/customHooks/useWindowSize.js");
+
 
 
 
@@ -16153,6 +16151,9 @@ const Carousel = ({
   ratio = [88, 12],
   placeHolderImagePath = ''
 }) => {
+  const {
+    windowWidth
+  } = (0,_customHooks_useWindowSize__WEBPACK_IMPORTED_MODULE_6__["default"])();
   const [ratioMain, ratioBar] = ratio;
   const dimensions = (0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(() => {
     width = (0,_util_emRemPix__WEBPACK_IMPORTED_MODULE_5__["default"])(width > -1 ? (0,_util_emRemPix__WEBPACK_IMPORTED_MODULE_5__["default"])(width) : 'auto');
@@ -16162,7 +16163,7 @@ const Carousel = ({
     const denominator = ratioMain + ratioBar;
     return {
       MainImageDisplay: {
-        width: containerWidth,
+        width: Math.min(containerWidth, windowWidth),
         height: containerHeight * ratioMain / denominator
       },
       imageSlideBar: {

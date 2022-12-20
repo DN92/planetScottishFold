@@ -4,6 +4,7 @@ import { fetchEffect } from '../../axiosHandlers/fetchEffect'
 const PhotoAlbum = ({cat, type, fileChangeOccurred, setFileChangeOccurred}) => {
   const [imagePaths, setImagePaths] = useState([])
   const [selectedPath, setSelectedPath] = useState('')
+  const [fileNamesToDelete, setFileNamesToDelete] = useState([])
   const [pathsToDelete, setPathsToDelete] = useState([])
   const [readyDeleteAll, setReadyDeleteAll] = useState(false)
   const [error, setError] = useState('')
@@ -14,7 +15,9 @@ const PhotoAlbum = ({cat, type, fileChangeOccurred, setFileChangeOccurred}) => {
 
   function handleMarkForDeletion(e) {
     if(selectedPath) {
+      const filename = selectedPath.split(`${type}${cat.id}/`)[1]
       setPathsToDelete(pathsToDelete => [...pathsToDelete, selectedPath])
+      setFileNamesToDelete(fileNamesToDelete => [...fileNamesToDelete, filename])
     }
   }
 
@@ -29,8 +32,8 @@ const PhotoAlbum = ({cat, type, fileChangeOccurred, setFileChangeOccurred}) => {
 
   async function handleDeleteAll() {
     setReadyDeleteAll(false)
-    await Promise.all(pathsToDelete.map(path => {
-      return fetch(`/api/createFiles/images?path=${path}`, {
+    await Promise.all(fileNamesToDelete.map(path => {
+      return fetch(`/api/supabase/removeImage?pathToDelete=${path}&type=${type}&id=${cat.id}`, {
         method: 'delete',
       })
     }))
@@ -42,17 +45,6 @@ const PhotoAlbum = ({cat, type, fileChangeOccurred, setFileChangeOccurred}) => {
   function clearSelected() {
     setSelectedPath('')
   }
-
-  // useEffect(() => {
-  //   if ((cat && type) || fileChangeOccurred) {
-  //     setFileChangeOccurred(false)
-  //     fetchEffect(
-  //       [setImagePaths, setError],
-  //       'get',
-  //       `/api/albums?type=${type}&id=${cat.id}`
-  //     )
-  //   }
-  // }, [cat, type, fileChangeOccurred, setFileChangeOccurred])
 
   useEffect(() => {
     if ((cat && type) || fileChangeOccurred) {

@@ -61,7 +61,7 @@ router.get('/urlsByBucket', includeSupabase, async(req, res, next ) => {
     const final = allURLs.map(ele => (
       ele.data?.publicUrl
     ))
-    res.send(final ?? [])
+    res.send(final)
   } catch(err) {
     next(err)
   }
@@ -131,5 +131,30 @@ router.post(
     }
   }
 )
+
+router.delete('/removeImage', includeSupabase, async (req, res, next) => {
+  try {
+    console.log('pinged delete route')
+    const { supabase } = req
+    const { type, id, pathToDelete } = req.query
+    if(!(type && id && pathToDelete)) {
+      res.sendStatus(418)
+      return
+    }
+    const { data, error } = await supabase.storage
+      .from(`${type}${id}`)
+      .remove([pathToDelete])
+
+    if(error) {
+      next(err)
+      return
+    }
+    res.sendStatus(202)
+
+  } catch (err) {
+    next(err)
+  }
+
+})
 
 module.exports = router

@@ -4,6 +4,7 @@ import MainImageDisplay from './MainImageDisplay'
 import Overlay from './Overlay'
 import useRerender from '../../customHooks/useRerender'
 import emRemToPix from '../../util/emRemPix'
+import useWindowSize from '../../customHooks/useWindowSize'
 
 const Carousel = ({
   data = [],
@@ -15,6 +16,7 @@ const Carousel = ({
   ratio = [88, 12],
   placeHolderImagePath = ''
 }) => {
+  const { windowWidth } = useWindowSize()
   const [ratioMain, ratioBar] = ratio
   const dimensions = useMemo(() => {
     width = (emRemToPix(width > -1 ? emRemToPix(width): 'auto' ))
@@ -24,7 +26,7 @@ const Carousel = ({
     const denominator = ratioMain + ratioBar;
     return {
       MainImageDisplay: {
-        width: containerWidth,
+        width: Math.min(containerWidth, windowWidth),
         height: containerHeight * ratioMain / denominator,
       },
       imageSlideBar: {

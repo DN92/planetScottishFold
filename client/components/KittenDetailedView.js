@@ -19,19 +19,23 @@ const KittenDetailedView = () => {
   const [error, setError] = useState('')
 
   useEffect(() => {
+    async function getPaths(id) {
+      const response = await fetch(`/api/supabase/urlsByBucket?bucket=kitten${id}&withToken=true`)
+      const result =  await response.json()
+      setAlbumPaths(result)
+    }
+
     if(!kitten && id) {
       fetchEffect(
         [setKitten, setError],
         'get',
         `/api/kittens?id=${id}`)
     }
+
     if(id) {
-      fetchEffect(
-        [setAlbumPaths, setError],
-        'get',
-        `/api/albums?id=${id}&type=${`kitten`}`
-      )
+      getPaths(id)
     }
+
   }, [])
 
   return (
@@ -40,17 +44,10 @@ const KittenDetailedView = () => {
 
       {!error && kitten &&
          <div className='detailed-view-wrapper'>
-
-          {/* <img src={kitten.mainImageSrcValue} /> */}
-
-          {
-            <>
-              <MyCarousel
-                data={albumPaths}
-                placeHolderImagePath = '/otherPictures/photoComingSoon.png'
-              />
-            </>
-          }
+          <MyCarousel
+            data={[kitten.mainImageSrcValue, ...albumPaths]}
+            placeHolderImagePath = '/otherPictures/photoComingSoon.png'
+          />
           <div className='detailedView-text-wrapper'>
             <div className='detailedView-text'>
               <p>{kitten.name}</p>
