@@ -1,0 +1,12 @@
+.buttonStyle6 {
+  position: relative;
+  box-sizing: border-box;
+  overflow: hidden;
+  background-color: var(--clr-100);
+  color: var(--clr-500);
+  border-radius: 10px;
+  box-shadow: 0 0 0 0 rgba(143, 64, 248, 0.5), 0 0 0 0 rgba(39, 200, 255, 0.5);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: 10rem;
+  height: 2rem;
+}

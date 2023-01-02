@@ -3,6 +3,19 @@
   flex-direction: column;
 }
 
+.detailed-view-nav > ul {
+  display: flex;
+  flex-direction: column;
+  list-style-type: none;
+  justify-content: space-around;
+  align-items: center;
+  margin: 1.5rem 0 1.5rem 0;
+}
+
+.detailed-view-nav > ul > li {
+  margin: .75rem;
+}
+
 .detailedView-text-wrapper {
   padding: 1rem 0 1rem 0;
   display: flex;

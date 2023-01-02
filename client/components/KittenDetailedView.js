@@ -1,6 +1,6 @@
 import React, {useState, useEffect, useContext} from 'react'
 import ErrorFill from './ErrorFill'
-import { Link, useParams, useLocation } from 'react-router-dom'
+import { Link, useParams, useLocation, useNavigate } from 'react-router-dom'
 import My404 from './My404'
 import MeContext from '../MeContextPro'
 import { isPrivileged } from '../../myModelsConfig'
@@ -10,6 +10,7 @@ import MyCarousel from './carousel/MyCarousel.js'
 //  /kittenDetailed
 const KittenDetailedView = () => {
   const location = useLocation()
+  const navigate = useNavigate()
   const {type} =useContext(MeContext)
   const {id} = useParams()
 
@@ -39,11 +40,13 @@ const KittenDetailedView = () => {
   }, [])
 
   return (
-    <div key={id}>
+    <div>
       {error && <ErrorFill msg={error} />}
 
       {!error && kitten &&
-         <div className='detailed-view-wrapper'>
+      <>
+
+        <div className='detailed-view-wrapper'>
           <MyCarousel
             data={[kitten.mainImageSrcValue, ...albumPaths]}
             placeHolderImagePath = '/otherPictures/photoComingSoon.png'
@@ -66,8 +69,16 @@ const KittenDetailedView = () => {
               <p>{kitten.regNum ? ('Registration Number: ' + kitten.regNum) : ''}</p>
               <p>{kitten.description ?  ('Description: ' + kitten.description) : ''}</p>
             </div>
+            <nav className='detailed-view-nav'>
+          <ul>
+            <li><button className='buttonStyle6' onClick={() => navigate(-1)}>Back</button></li>
+            <li><button className='buttonStyle6' onClick={() => navigate('/waitingListForm')}>Apply for {kitten.name}</button></li>
+            <li><button className='buttonStyle6' onClick={() => navigate('/contact')}>Contact Us</button></li>
+          </ul>
+        </nav>
           </div>
-         </div>
+        </div>
+      </>
       }
       {isPrivileged(type) && !fromEdit &&
         <Link to='/createKitten'>
