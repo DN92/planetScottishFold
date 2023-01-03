@@ -24,7 +24,6 @@ const Carousel = ({
     containerWidth = emRemToPix(containerWidth > -1 ? containerWidth : 'auto' )
     containerHeight = emRemToPix(containerHeight > -1 ? containerHeight : 'auto' )
     const denominator = ratioMain + ratioBar;
-    console.log('here: ', windowSize.width)
     return {
       MainImageDisplay: {
         width: Math.min(containerWidth, windowSize.width),
