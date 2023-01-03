@@ -15976,6 +15976,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+const buttonStyles = {
+  alignSelf: 'center',
+  transform: 'scale(1, 1.25)'
+};
 function ImageSlideBar({
   metas = [],
   setSelected,
@@ -15984,10 +15988,6 @@ function ImageSlideBar({
   moveLeft,
   moveRight
 }) {
-  const buttonStyles = {
-    alignSelf: 'center',
-    transform: 'scale(1, 1.25)'
-  };
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "image-slide-bar-container",
     style: {
@@ -16161,19 +16161,18 @@ const Carousel = ({
   ratio = [88, 12],
   placeHolderImagePath = ''
 }) => {
-  const {
-    windowWidth
-  } = (0,_customHooks_useWindowSize__WEBPACK_IMPORTED_MODULE_6__["default"])();
+  const windowSize = (0,_customHooks_useWindowSize__WEBPACK_IMPORTED_MODULE_6__["default"])();
   const [ratioMain, ratioBar] = ratio;
   const dimensions = (0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(() => {
     width = (0,_util_emRemPix__WEBPACK_IMPORTED_MODULE_5__["default"])(width > -1 ? (0,_util_emRemPix__WEBPACK_IMPORTED_MODULE_5__["default"])(width) : 'auto');
     height = (0,_util_emRemPix__WEBPACK_IMPORTED_MODULE_5__["default"])(height > -1 ? (0,_util_emRemPix__WEBPACK_IMPORTED_MODULE_5__["default"])(height) : 'auto');
-    containerWidth = (0,_util_emRemPix__WEBPACK_IMPORTED_MODULE_5__["default"])(containerWidth > -1 ? (0,_util_emRemPix__WEBPACK_IMPORTED_MODULE_5__["default"])(containerWidth) : 'auto');
-    containerHeight = (0,_util_emRemPix__WEBPACK_IMPORTED_MODULE_5__["default"])(containerHeight > -1 ? (0,_util_emRemPix__WEBPACK_IMPORTED_MODULE_5__["default"])(containerHeight) : 'auto');
+    containerWidth = (0,_util_emRemPix__WEBPACK_IMPORTED_MODULE_5__["default"])(containerWidth > -1 ? containerWidth : 'auto');
+    containerHeight = (0,_util_emRemPix__WEBPACK_IMPORTED_MODULE_5__["default"])(containerHeight > -1 ? containerHeight : 'auto');
     const denominator = ratioMain + ratioBar;
+    console.log('here: ', windowSize.width);
     return {
       MainImageDisplay: {
-        width: Math.min(containerWidth, windowWidth),
+        width: Math.min(containerWidth, windowSize.width),
         height: containerHeight * ratioMain / denominator
       },
       imageSlideBar: {
@@ -16181,12 +16180,13 @@ const Carousel = ({
         height: containerHeight * ratioBar / denominator
       }
     };
-  }, [width, height, containerWidth, containerHeight, ratioMain, ratioBar]);
+  }, [width, height, containerWidth, containerHeight, windowSize, ratioMain, ratioBar]);
   const [selected, setSelected] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0);
-  const maxLength = Math.max(initMaxLength, 0);
   const [showOverlay, setShowOverlay] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
-  const viewLength = maxLength > 0 ? maxLength : 1;
-  const imagesToEachSide = Math.max(Math.floor((viewLength - 1) / 2), 0);
+  const [viewLength, setViewLength] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(Math.max(1, windowSize.width < 540 ? 3 : Math.max(initMaxLength, 0)));
+  const imagesToEachSide = (0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(() => {
+    return Math.max(Math.floor((viewLength - 1) / 2), 0);
+  }, [viewLength]);
   const [metas, setMetas] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]);
   const [leftPointer, setLeftPointer] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(Math.max(selected - imagesToEachSide, 0));
   const [rightPointer, setRightPointer] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(Math.min(selected + imagesToEachSide, Math.max(0, metas.length - 1)));
@@ -16217,6 +16217,9 @@ const Carousel = ({
     }
   }
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+    setViewLength(Math.max(1, windowSize.width < 540 ? 3 : Math.max(initMaxLength, 0)));
+  }, [windowSize.width]);
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
     setMetas(data.map((path, idx) => ({
       path,
       selected: false,
@@ -16242,12 +16245,12 @@ const Carousel = ({
     setFixPointers(false);
   }, [fixPointers]);
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useLayoutEffect)(() => {
-    const CAROUSELSELECTEDIMAGE = 'carousel-selected-image';
+    const CAROUSEL_SELECTED_IMAGE = 'carousel-selected-image';
     metas.forEach(meta => {
-      if (meta.index === selected && !meta.classList.includes(CAROUSELSELECTEDIMAGE)) {
-        meta.classList.push(CAROUSELSELECTEDIMAGE);
+      if (meta.index === selected && !meta.classList.includes(CAROUSEL_SELECTED_IMAGE)) {
+        meta.classList.push(CAROUSEL_SELECTED_IMAGE);
       } else if (meta.index !== selected) {
-        meta.classList = meta.classList.filter(ele => ele !== CAROUSELSELECTEDIMAGE);
+        meta.classList = meta.classList.filter(ele => ele !== CAROUSEL_SELECTED_IMAGE);
       }
     });
     // refresh()
@@ -16274,11 +16277,11 @@ const Carousel = ({
       }
     });
     refresh();
-  }, [selected, maxLength]);
+  }, [selected, viewLength]);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "carousel-container",
     style: {
-      width: containerWidth,
+      width: dimensions.MainImageDisplay.width,
       maxWidth: containerWidth,
       height: containerHeight,
       maxHeight: containerHeight,
@@ -16841,8 +16844,7 @@ function useWindowSize() {
     handleResize();
     // Remove event listener on cleanup
     return () => window.removeEventListener("resize", handleResize);
-  }, []); //
-
+  }, []);
   return windowSize;
 }
 /* harmony default export */ __webpack_exports__["default"] = (useWindowSize);
@@ -16898,7 +16900,7 @@ __webpack_require__.r(__webpack_exports__);
 function emRemToPix(input, base = 16) {
   if (typeof input === 'number') return input;
   if (input.length < 2) {
-    console.warn('emRemToPix received bad args');
+    console.log('emRemToPix received bad args');
     return input;
   }
   const postSplit = input.split('');
@@ -16920,7 +16922,7 @@ function emRemToPix(input, base = 16) {
     }
   }
   if (!['em', 'rem'].includes(suffix) || prefix.length === 0) {
-    console.warn('emRemToPix received bad args');
+    console.log('emRemToPix received bad args');
     return input;
   }
   return parseInt(prefix) * base;

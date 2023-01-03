@@ -1,6 +1,12 @@
 import React from 'react'
 import ImageWrapper from "./ImageWrapper";
 import { Button } from '@mantine/core';
+
+const buttonStyles = {
+  alignSelf: 'center',
+  transform: 'scale(1, 1.25)'
+}
+
 export default function ImageSlideBar ({
   metas = [],
   setSelected,
@@ -9,11 +15,6 @@ export default function ImageSlideBar ({
   moveLeft,
   moveRight,
 }) {
-
-  const buttonStyles = {
-    alignSelf: 'center',
-    transform: 'scale(1, 1.25)'
-  }
 
   return (
     <div
@@ -35,15 +36,19 @@ export default function ImageSlideBar ({
       >
         {'<'}
       </Button>
+
       <div
-      className="image-slide-bar"
-      style={{
-        display: 'flex',
-        gap: '1rem',
-        height: maxHeight,
-          overflow: 'hidden',
-        }}
-        >
+        className="image-slide-bar"
+        style={
+          {
+            display: 'flex',
+            gap: '1rem',
+            height: maxHeight,
+            overflow: 'hidden',
+          }
+        }
+      >
+
       {metas.map((meta, idx) => (
         <ImageWrapper
           key={idx}
@@ -54,7 +59,9 @@ export default function ImageSlideBar ({
           value={meta.index}
         />
         ))}
+
       </div>
+
       <Button
         className='image-slide-bar-button'
         variant="light"

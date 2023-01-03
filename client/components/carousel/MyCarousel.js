@@ -16,17 +16,18 @@ const Carousel = ({
   ratio = [88, 12],
   placeHolderImagePath = ''
 }) => {
-  const { windowWidth } = useWindowSize()
+  const windowSize = useWindowSize()
   const [ratioMain, ratioBar] = ratio
   const dimensions = useMemo(() => {
     width = (emRemToPix(width > -1 ? emRemToPix(width): 'auto' ))
     height= (emRemToPix(height > -1 ? emRemToPix(height): 'auto' ))
-    containerWidth = (emRemToPix(containerWidth > -1 ? emRemToPix(containerWidth) : 'auto' ))
-    containerHeight = (emRemToPix(containerHeight > -1 ? emRemToPix(containerHeight) : 'auto' ))
+    containerWidth = emRemToPix(containerWidth > -1 ? containerWidth : 'auto' )
+    containerHeight = emRemToPix(containerHeight > -1 ? containerHeight : 'auto' )
     const denominator = ratioMain + ratioBar;
+    console.log('here: ', windowSize.width)
     return {
       MainImageDisplay: {
-        width: Math.min(containerWidth, windowWidth),
+        width: Math.min(containerWidth, windowSize.width),
         height: containerHeight * ratioMain / denominator,
       },
       imageSlideBar: {
@@ -34,14 +35,14 @@ const Carousel = ({
         height: containerHeight * ratioBar / denominator,
       },
     }
-  },[width, height, containerWidth, containerHeight, ratioMain, ratioBar])
+  },[width, height, containerWidth, containerHeight, windowSize, ratioMain, ratioBar])
 
   const [selected, setSelected] = useState(0);
-  const maxLength = Math.max(initMaxLength, 0);
   const [showOverlay, setShowOverlay] = useState(false)
-  const viewLength = maxLength > 0 ? maxLength : 1
-  const imagesToEachSide = Math.max(Math.floor((viewLength - 1) / 2), 0)
-
+  const [viewLength, setViewLength] = useState( Math.max( 1, windowSize.width < 540 ? 3 : Math.max(initMaxLength, 0)))
+  const imagesToEachSide = useMemo(() => {
+    return Math.max(Math.floor((viewLength - 1) / 2), 0)
+  }, [viewLength])
   const [metas, setMetas] = useState([])
   const [leftPointer, setLeftPointer] = useState(Math.max(selected - imagesToEachSide, 0))
   const [rightPointer, setRightPointer] = useState(Math.min(selected + imagesToEachSide, Math.max(0, metas.length - 1))  );
@@ -74,6 +75,10 @@ const Carousel = ({
   }
 
   useEffect(() => {
+    setViewLength(Math.max( 1, windowSize.width < 540 ? 3 : Math.max(initMaxLength, 0)))
+  }, [windowSize.width])
+
+  useEffect(() => {
     setMetas(data.map((path, idx) => ({
       path,
       selected: false,
@@ -101,12 +106,12 @@ const Carousel = ({
   }, [fixPointers])
 
   useLayoutEffect(() => {
-    const CAROUSELSELECTEDIMAGE = 'carousel-selected-image'
+    const CAROUSEL_SELECTED_IMAGE = 'carousel-selected-image'
     metas.forEach(meta => {
-      if (meta.index === selected && !meta.classList.includes(CAROUSELSELECTEDIMAGE)) {
-        meta.classList.push(CAROUSELSELECTEDIMAGE)
+      if (meta.index === selected && !meta.classList.includes(CAROUSEL_SELECTED_IMAGE)) {
+        meta.classList.push(CAROUSEL_SELECTED_IMAGE)
       } else if (meta.index !== selected) {
-        meta.classList = meta.classList.filter(ele => ele !== CAROUSELSELECTEDIMAGE)
+        meta.classList = meta.classList.filter(ele => ele !== CAROUSEL_SELECTED_IMAGE)
       }
     })
     // refresh()
@@ -134,13 +139,13 @@ const Carousel = ({
       }
     })
     refresh()
-  }, [selected, maxLength])
+  }, [selected, viewLength])
 
   return (
     <div
       className='carousel-container'
       style={{
-        width: containerWidth,
+        width: dimensions.MainImageDisplay.width,
         maxWidth: containerWidth,
         height: containerHeight,
         maxHeight: containerHeight,
