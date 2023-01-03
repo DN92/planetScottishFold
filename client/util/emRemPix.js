@@ -3,7 +3,7 @@
 export default function emRemToPix(input, base = 16) {
   if (typeof input === 'number') return input
   if (input.length < 2) {
-    console.log('emRemToPix received bad args')
+    console.warn('emRemToPix received bad args')
     return input
   }
   const postSplit = input.split('')
@@ -26,7 +26,7 @@ export default function emRemToPix(input, base = 16) {
     }
   }
   if(!['em', 'rem'].includes(suffix) || prefix.length === 0) {
-    console.log('emRemToPix received bad args')
+    console.warn('emRemToPix received bad args')
     return input
   }
 
