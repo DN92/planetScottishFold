@@ -111,11 +111,13 @@ const myConfig = {
   ],
   foundUsByOptions: [
     'Google',
-    'Facebook',
+    'Facebook Page',
+    'Facebook Group',
     'Instagram',
     'Pinterest',
     'TikTok',
     'Youtube',
+    'Classifieds',
     'Referral',
     'Other',
   ],
@@ -133,6 +135,12 @@ const myConfig = {
   ],
 
   emailsFrom: '"Planet Scottish Fold" <planetscottishfold@outlook.com>',
+  locationOptions: [
+    "",
+    "Bergenfield, New Jersey",
+    "High Point, North Carolina",
+    "Fort Lauderdale, Florida",
+  ]
 }
 
 myConfig.isPrivileged = (type) => (myConfig.userTypes.slice(2).includes(type))

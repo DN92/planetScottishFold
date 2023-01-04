@@ -128,7 +128,7 @@ const ClientQuestionnaire = () => {
             Please fill out this questionnaire to apply for a Planet Scottish Fold Kitten. Once your application is reviewed, you will be contacted. We require a $300 deposit to be on the waiting list for the future litters and a $500 non-refundable deposit to reserve a kitten from current litters. Remaining balance is due during pick up.
           </p>
           <div className='buttonsWrapper2'>
-            <button className='buttonStyle4' onClick={handleViewIncluded}>What you're getting with your Kitten</button>
+            <button className='buttonStyle4' onClick={handleViewIncluded}>Whats Included</button>
           </div>
           {showIncluded &&
             <div className='waitingList-info'>

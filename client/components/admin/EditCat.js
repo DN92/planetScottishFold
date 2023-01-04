@@ -2,7 +2,7 @@ import React, {useState, useEffect, useContext} from 'react'
 import MeContext from '../../MeContextPro'
 import { isPrivileged } from '../../../myModelsConfig'
 import ErrorFill from '../ErrorFill'
-import { eyeColors, earOptions } from '../../../myModelsConfig'
+import { eyeColors, earOptions, locationOptions } from '../../../myModelsConfig'
 import handleControlledValueFieldToState from '../../customHandlers/handleFormChange'
 import { useParams, useNavigate, useLocation } from 'react-router-dom'
 import { fetchEffect } from '../axiosHandlers/fetchEffect'
@@ -129,7 +129,8 @@ const EditCat = () => {
           </>
           <>
             <label htmlFor="catToEditFurColor">Fur Color</label>
-            <input id="catToEditFurColor"
+            <input
+              id="catToEditFurColor"
               type="text"
               name='furColor'
               placeholder='Fur Color'
@@ -148,13 +149,18 @@ const EditCat = () => {
           </>
           <>
             <label htmlFor="catToEditLocation">Location</label>
-            <input id='catToEditLocation'
+            <select
+              id='catToEditLocation'
               type='text'
               name='location'
               placeholder='Location'
               value={catToEdit.location}
               onChange={handleChange}
-            />
+            >
+              {locationOptions.map((loc, idx) => (
+                <option key={idx+loc} value={loc}>{loc}</option>
+              ))}
+            </select>
           </>
           <>
             <label htmlFor="catToEditDescription">Description</label>

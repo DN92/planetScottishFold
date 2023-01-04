@@ -88,6 +88,15 @@
   padding: 1rem;
 }
 
+.waitingList-info {
+  margin: 1rem auto 1rem auto;
+  text-align: center;
+}
+
+.waitingList-info > ul {
+  list-style: none  ;
+}
+
 @media (min-width: 50em) {
 
 }

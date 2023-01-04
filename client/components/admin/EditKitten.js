@@ -2,7 +2,7 @@ import React, {useState, useEffect, useContext} from 'react'
 import MeContext from '../../MeContextPro'
 import { isPrivileged } from '../../../myModelsConfig'
 import ErrorFill from '../ErrorFill'
-import { furColorsAdmin, eyeColors, genderOptions, earOptions, statusOptionsKitten} from '../../../myModelsConfig'
+import { locationOptions, eyeColors, genderOptions, earOptions, statusOptionsKitten} from '../../../myModelsConfig'
 import handleControlledValueFieldToState from '../../customHandlers/handleFormChange'
 import { fetchEffect } from '../axiosHandlers/fetchEffect'
 import { useParams, useNavigate, useLocation } from 'react-router-dom'
@@ -155,8 +155,21 @@ const EditKitten = () => {
                     ))}
                 </select> <br />
               </>
+
               <>
                 <label htmlFor="editKittenFur">Fur Color</label>
+                <input
+                  id='editKittenFur'
+                  type="text"
+                  name="furColor"
+                  placeholder="fur color"
+                  value={kittenToEdit.furColor}
+                  onChange={handleChange}
+
+                />
+              </>
+
+              {/* <>
                 <select id="editKittenFur"
                   name="furColor"
                   value={kittenToEdit.furColor}
@@ -166,9 +179,8 @@ const EditKitten = () => {
                     <option key={index} value={color}>{color}</option>
                   ))}
                 </select> <br />
-              </>
-              <>
-              </>
+              </> */}
+
               <>
                 <label htmlFor="editKittenEyes">Eye Color</label>
                 <select id="editKittenEyes"
@@ -240,13 +252,18 @@ const EditKitten = () => {
               </>
               <>
                 <label htmlFor="kittenToEditLocation">Location</label>
-                <input id='kittenToEditLocation'
+                <select
+                  id='kittenToEditLocation'
                   type='text'
                   name='location'
                   placeholder='Location'
                   value={kittenToEdit.location}
                   onChange={handleChange}
-                />
+                >
+                  {locationOptions.map((loc, idx) => (
+                    <option key={idx+loc} value={loc}>{loc}</option>
+                  ))}
+                </select>
               </>
               <label htmlFor='editKittenDob'>
                 Date of Birth

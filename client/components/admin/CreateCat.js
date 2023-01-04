@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import {eyeColors, earOptions} from "../../../myModelsConfig"
+import { eyeColors, earOptions, locationOptions } from "../../../myModelsConfig"
 import { useParams, useNavigate } from 'react-router-dom'
 import handleControlledValueFieldToState from '../../customHandlers/handleFormChange'
 import { fetchEffect } from '../axiosHandlers/fetchEffect'
@@ -28,7 +28,6 @@ const CreateCat = () => {
   const [error, setError] = useState('')
   const [randomName, getNewRandomName] = useNameGenerator()
 
-
   const handleChange = (event) => {
     handleControlledValueFieldToState(event, setCatToCreate)
   }
@@ -36,8 +35,6 @@ const CreateCat = () => {
   const handleKeyPress = (event) => {
     event.code === 'Enter' && event.target.localName !== 'textarea' && event.preventDefault();
   }
-
-
 
   const handleSubmit = async (event) => {
       event.preventDefault()
@@ -133,14 +130,28 @@ const CreateCat = () => {
       </>
       <>
         <label htmlFor="catToCreateLocation">Location</label>
-        <input id='catToCreateLocation'
+        <select
+          id='catToCreateLocation'
           type='text'
           name='location'
           placeholder='Location'
           value={catToCreate.location}
           onChange={handleChange}
-        />
+        >
+          {locationOptions.map((loc, idx) => (
+            <option key={idx+loc} value={loc}>{loc}</option>
+          ))}
+        </select>
       </>
+
+        {/* <input id='catToCreateLocation'
+          type='text'
+          name='location'
+          placeholder='Location'
+          value={catToCreate.location}
+          onChange={handleChange}
+        /> */}
+
       <>
         <label htmlFor="catToCreateDescription">Description</label>
         <textarea id="catToCreateDescription" name="description" cols="50" rows="8" placeholder='description'></textarea>

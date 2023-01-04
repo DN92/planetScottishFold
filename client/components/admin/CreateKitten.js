@@ -1,6 +1,6 @@
-import React, {useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import handleControlledValueFieldToState from '../../customHandlers/handleFormChange'
-import {furColorsAdmin, eyeColorsAdmin, earOptions, genderOptions} from "../../../myModelsConfig"
+import { locationOptions, eyeColorsAdmin, earOptions, genderOptions } from "../../../myModelsConfig"
 import { fetchEffect } from '../axiosHandlers/fetchEffect'
 import ErrorFill from '../ErrorFill'
 import useNameGenerator from '../../customHooks/useNameGenerator'
@@ -17,7 +17,7 @@ const CreateKitten = () => {
     regNum: '',
     gender: genderOptions[0],
     ears: earOptions[0],
-    furColor: furColorsAdmin[0],
+    furColor: '',
     eyeColor: eyeColorsAdmin[0],
     mother: '',
     father:'',
@@ -139,15 +139,27 @@ const CreateKitten = () => {
               ))}
             </select> <br />
           </>
+
           <>
             <label htmlFor="kittenToCreateFur">Fur Color</label>
+            <input
+              id="kittenToCreateFur"
+              type="text"
+              name='furColor'
+              placeholder='Fur Color'
+              value={kittenToCreate.furColor}
+              onChange={handleChange}
+            />
+          </>
+
+          {/* <>
             <select id="kittenToCreateFur" name="furColor" value={kittenToCreate.furColor} onChange={handleChange}>
               <option value={furColorsAdmin[0]}>Fur Color</option>
               {furColorsAdmin.map((color, index) => (
                 <option key={index} value={color}>{color}</option>
               ))}
             </select> <br />
-          </>
+          </> */}
           <>
             <label htmlFor="kittenToCreateEyes">Eye Color</label>
             <select id="kittenToCreateEyes" name="eyeColor" value={kittenToCreate.eyeColor} onChange={handleChange}>
@@ -186,14 +198,21 @@ const CreateKitten = () => {
             /> <br />
           </>
           <>
-            <label htmlFor="kittenToCreateLocation">Location</label>
-            <input id='kittenToCreateLocation'
+
+            <label htmlFor="catToCreateLocation">Location</label>
+            <select
+              id='kittenToCreateLocation'
               type='text'
               name='location'
               placeholder='Location'
               value={kittenToCreate.location}
               onChange={handleChange}
-            />
+            >
+              {locationOptions.map((loc, idx) => (
+                <option key={idx+loc} value={loc}>{loc}</option>
+              ))}
+            </select>
+
           </>
           <>
             <label htmlFor='createKittenDob'>

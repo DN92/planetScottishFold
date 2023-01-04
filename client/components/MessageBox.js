@@ -28,7 +28,7 @@ const MessageBox = ({messageArray, image, options={}, style={
 
           <div className='messagebox-message'>
             {messageArray.map((msg, idx) => (
-              <p key={msg+idx}>{msg}</p>
+              <p key={msg+idx} style={{margin:'.5rem 0 .5rem 0'}}>{msg}</p>
             ))}
           </div>
         </div>

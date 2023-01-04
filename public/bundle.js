@@ -12328,6 +12328,7 @@ const AvailableKittens = () => {
   const [kittens, setKittens] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]);
   const [availableAdults, setAvailableAdults] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]);
   const [initAvailKittens, setInitAvailKittens] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
+  const [showIncluded, setShowIncluded] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(true);
   const [showSearch, setShowSearch] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
   const [filterState, dispatchFilterState] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useReducer)((state, action) => {
     switch (action.type) {
@@ -12392,6 +12393,9 @@ const AvailableKittens = () => {
       type: 'applyFilter'
     });
   };
+  const handleViewIncluded = () => {
+    setShowIncluded(prev => !prev);
+  };
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
     (0,_axiosHandlers_fetchEffect__WEBPACK_IMPORTED_MODULE_3__.fetchEffect)([setKittens, setError], 'get', `/api/kittens`);
     (0,_axiosHandlers_fetchEffect__WEBPACK_IMPORTED_MODULE_3__.fetchEffect)([setAvailableAdults, setError], `get`, `/api/catAsKitten`);
@@ -12407,13 +12411,28 @@ const AvailableKittens = () => {
   }, [initAvailKittens, kittens]);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "kittens"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "Our Available Kittens"), error && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ErrorFill__WEBPACK_IMPORTED_MODULE_2__["default"], {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", {
+    style: {
+      margin: 'auto'
+    }
+  }, "Available Kittens"), error && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ErrorFill__WEBPACK_IMPORTED_MODULE_2__["default"], {
     msg: error
   }), !error && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "buttonsWrapper2"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    className: "buttonStyle4",
+    onClick: handleViewIncluded
+  }, "Whats Included")), showIncluded && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "waitingList-info"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("ul", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "1 year health guarantee (covers hereditary defects and offers a replacement kitten)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "age appropriate vaccinations and deworming "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "spay/neuter once kitten is at least 12 weeks old (only NC kittens)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "microchip"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "well socialized kitten raised at home in warm and loving environment with other pets and children"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "weaned off and litter box trained kitten"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "weekly updates with photos and/or videos"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "lifetime breeder support"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "30 days FREE pet insurance (NY and FL excluded) "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "FaceTime is available before or after the reservation. "))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "adv-search-wrapper"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
     id: "adv-search-checkbox",
     className: "adv-search-button buttonStyle2",
+    style: {
+      transform: 'translateX(32px)',
+      borderRadius: '90px'
+    },
     type: "button",
     onClick: handleShowSearch
   }, showSearch ? 'Hide' : 'Sort By')), showSearch && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_KittensFilter__WEBPACK_IMPORTED_MODULE_4__["default"], {
@@ -12731,7 +12750,7 @@ const ClientQuestionnaire = () => {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
     className: "buttonStyle4",
     onClick: handleViewIncluded
-  }, "What you're getting with your Kitten")), showIncluded && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+  }, "Whats Included")), showIncluded && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "waitingList-info"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("ul", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "1 year health guarantee (covers hereditary defects and offers a replacement kitten)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "age appropriate vaccinations and deworming "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "spay/neuter once kitten is at least 12 weeks old (only NC kittens)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "microchip"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "well socialized kitten raised at home in warm and loving environment with other pets and children"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "weaned off and litter box trained kitten"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "weekly updates with photos and/or videos"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "lifetime breeder support"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "30 days FREE pet insurance (NY and FL excluded) "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, "FaceTime is available before or after the reservation. "))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("form", {
     id: "clientQuestionnaire",
@@ -13311,9 +13330,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+const showMessageBox = true;
 const homeComponent = () => {
-  const [showMessageBox, setShowMessageBox] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
-  const messageArray = ['We have four new kittens that have just joined our wonderfur family!', 'Breed: British Shorthair', 'Location: High Point, NC', /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+  const messageArray = ["Last FREE delivery to NJ/NY 1/14/23-1/15/23", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
     style: {
       color: 'var(--clr-500)'
     },
@@ -13323,10 +13342,6 @@ const homeComponent = () => {
     className: "home"
   }, showMessageBox && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_MessageBox__WEBPACK_IMPORTED_MODULE_2__["default"], {
     messageArray: messageArray,
-    image: {
-      src: "/otherPictures/homepagebanner.jpg",
-      alt: "home page banner"
-    },
     options: {
       closeOnClick: true,
       onCloseText: 'Show Announcements'
@@ -13593,7 +13608,10 @@ const MessageBox = ({
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "messagebox-message"
   }, messageArray.map((msg, idx) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
-    key: msg + idx
+    key: msg + idx,
+    style: {
+      margin: '.5rem 0 .5rem 0'
+    }
   }, msg)))), !showBox && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     onClick: handleClick,
     className: "messagebox-closed"
@@ -13885,7 +13903,7 @@ const SingleKitten = props => {
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
     className: "btnS1"
-  }, (0,_myModelsConfig__WEBPACK_IMPORTED_MODULE_2__.isPrivileged)(type) ? 'Edit' : 'View'))));
+  }, (0,_myModelsConfig__WEBPACK_IMPORTED_MODULE_2__.isPrivileged)(type) ? 'Edit' : 'Price + Details'))));
 };
 /* harmony default export */ __webpack_exports__["default"] = (SingleKitten);
 
@@ -14366,14 +14384,17 @@ const CreateCat = () => {
     value: color
   }, color))), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
     htmlFor: "catToCreateLocation"
-  }, "Location"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+  }, "Location"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("select", {
     id: "catToCreateLocation",
     type: "text",
     name: "location",
     placeholder: "Location",
     value: catToCreate.location,
     onChange: handleChange
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+  }, _myModelsConfig__WEBPACK_IMPORTED_MODULE_1__.locationOptions.map((loc, idx) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+    key: idx + loc,
+    value: loc
+  }, loc)))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
     htmlFor: "catToCreateDescription"
   }, "Description"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("textarea", {
     id: "catToCreateDescription",
@@ -14426,7 +14447,7 @@ const CreateKitten = () => {
     regNum: '',
     gender: _myModelsConfig__WEBPACK_IMPORTED_MODULE_2__.genderOptions[0],
     ears: _myModelsConfig__WEBPACK_IMPORTED_MODULE_2__.earOptions[0],
-    furColor: _myModelsConfig__WEBPACK_IMPORTED_MODULE_2__.furColorsAdmin[0],
+    furColor: '',
     eyeColor: _myModelsConfig__WEBPACK_IMPORTED_MODULE_2__.eyeColorsAdmin[0],
     mother: '',
     father: '',
@@ -14534,17 +14555,14 @@ const CreateKitten = () => {
     value: ear
   }, ear))), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
     htmlFor: "kittenToCreateFur"
-  }, "Fur Color"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("select", {
+  }, "Fur Color"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
     id: "kittenToCreateFur",
+    type: "text",
     name: "furColor",
+    placeholder: "Fur Color",
     value: kittenToCreate.furColor,
     onChange: handleChange
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
-    value: _myModelsConfig__WEBPACK_IMPORTED_MODULE_2__.furColorsAdmin[0]
-  }, "Fur Color"), _myModelsConfig__WEBPACK_IMPORTED_MODULE_2__.furColorsAdmin.map((color, index) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
-    key: index,
-    value: color
-  }, color))), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
     htmlFor: "kittenToCreateEyes"
   }, "Eye Color"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("select", {
     id: "kittenToCreateEyes",
@@ -14589,15 +14607,18 @@ const CreateKitten = () => {
     value: kittenToCreate.price,
     onChange: handleChange
   }), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
-    htmlFor: "kittenToCreateLocation"
-  }, "Location"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    htmlFor: "catToCreateLocation"
+  }, "Location"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("select", {
     id: "kittenToCreateLocation",
     type: "text",
     name: "location",
     placeholder: "Location",
     value: kittenToCreate.location,
     onChange: handleChange
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+  }, _myModelsConfig__WEBPACK_IMPORTED_MODULE_2__.locationOptions.map((loc, idx) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+    key: idx + loc,
+    value: loc
+  }, loc)))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
     htmlFor: "createKittenDob"
   }, "Date of Birth"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
     type: "text",
@@ -14879,14 +14900,17 @@ const EditCat = () => {
     value: color
   }, color))), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
     htmlFor: "catToEditLocation"
-  }, "Location"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+  }, "Location"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("select", {
     id: "catToEditLocation",
     type: "text",
     name: "location",
     placeholder: "Location",
     value: catToEdit.location,
     onChange: handleChange
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+  }, _myModelsConfig__WEBPACK_IMPORTED_MODULE_2__.locationOptions.map((loc, idx) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+    key: idx + loc,
+    value: loc
+  }, loc)))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
     htmlFor: "catToEditDescription"
   }, "Description"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("textarea", {
     id: "catToEditDescription",
@@ -15052,15 +15076,14 @@ const EditKitten = () => {
     value: ear
   }, ear))), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
     htmlFor: "editKittenFur"
-  }, "Fur Color"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("select", {
+  }, "Fur Color"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
     id: "editKittenFur",
+    type: "text",
     name: "furColor",
+    placeholder: "fur color",
     value: kittenToEdit.furColor,
     onChange: handleChange
-  }, _myModelsConfig__WEBPACK_IMPORTED_MODULE_2__.furColorsAdmin.map((color, index) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
-    key: index,
-    value: color
-  }, color))), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
     htmlFor: "editKittenEyes"
   }, "Eye Color"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("select", {
     id: "editKittenEyes",
@@ -15123,14 +15146,17 @@ const EditKitten = () => {
     placeholder: "description"
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
     htmlFor: "kittenToEditLocation"
-  }, "Location"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+  }, "Location"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("select", {
     id: "kittenToEditLocation",
     type: "text",
     name: "location",
     placeholder: "Location",
     value: kittenToEdit.location,
     onChange: handleChange
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+  }, _myModelsConfig__WEBPACK_IMPORTED_MODULE_2__.locationOptions.map((loc, idx) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+    key: idx + loc,
+    value: loc
+  }, loc)))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
     htmlFor: "editKittenDob"
   }, "Date of Birth"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
     type: "text",
@@ -16169,7 +16195,6 @@ const Carousel = ({
     containerWidth = (0,_util_emRemPix__WEBPACK_IMPORTED_MODULE_5__["default"])(containerWidth > -1 ? containerWidth : 'auto');
     containerHeight = (0,_util_emRemPix__WEBPACK_IMPORTED_MODULE_5__["default"])(containerHeight > -1 ? containerHeight : 'auto');
     const denominator = ratioMain + ratioBar;
-    console.log('here: ', windowSize.width);
     return {
       MainImageDisplay: {
         width: Math.min(containerWidth, windowSize.width),
@@ -16900,7 +16925,7 @@ __webpack_require__.r(__webpack_exports__);
 function emRemToPix(input, base = 16) {
   if (typeof input === 'number') return input;
   if (input.length < 2) {
-    console.log('emRemToPix received bad args');
+    console.warn('emRemToPix received bad args');
     return input;
   }
   const postSplit = input.split('');
@@ -16922,7 +16947,7 @@ function emRemToPix(input, base = 16) {
     }
   }
   if (!['em', 'rem'].includes(suffix) || prefix.length === 0) {
-    console.log('emRemToPix received bad args');
+    console.warn('emRemToPix received bad args');
     return input;
   }
   return parseInt(prefix) * base;
@@ -16962,10 +16987,11 @@ const myConfig = {
   genderOptions: ['No Preference', 'Boy', 'Girl'],
   willBreedOptions: ['Have Not Decided', 'Yes', 'No'],
   hasAllergiesOptions: ['Dont Know', 'Yes', 'No'],
-  foundUsByOptions: ['Google', 'Facebook', 'Instagram', 'Pinterest', 'TikTok', 'Youtube', 'Referral', 'Other'],
+  foundUsByOptions: ['Google', 'Facebook Page', 'Facebook Group', 'Instagram', 'Pinterest', 'TikTok', 'Youtube', 'Classifieds', 'Referral', 'Other'],
   applyStatusOptions: ['Pending', 'Denied', 'Approved'],
   userTypes: ['guest', 'registered', 'ghost', 'admin', 'master'],
-  emailsFrom: '"Planet Scottish Fold" <planetscottishfold@outlook.com>'
+  emailsFrom: '"Planet Scottish Fold" <planetscottishfold@outlook.com>',
+  locationOptions: ["", "Bergenfield, New Jersey", "High Point, North Carolina", "Fort Lauderdale, Florida"]
 };
 myConfig.isPrivileged = type => myConfig.userTypes.slice(2).includes(type);
 myConfig.getAuthGrade = type => myConfig.userTypes.indexOf(type);

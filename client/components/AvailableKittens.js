@@ -20,6 +20,7 @@ const AvailableKittens = () => {
   const [kittens, setKittens] = useState([]);
   const [availableAdults, setAvailableAdults] = useState([])
   const [initAvailKittens, setInitAvailKittens] = useState(false)
+  const [showIncluded, setShowIncluded] = useState(true)
   const [showSearch, setShowSearch] = useState(false)
   const [filterState, dispatchFilterState] = useReducer((state, action) => {
     switch (action.type) {
@@ -85,6 +86,10 @@ const AvailableKittens = () => {
     dispatchAvailableKittens({type: 'applyFilter'})
   }
 
+  const handleViewIncluded = () => {
+    setShowIncluded(prev => !prev)
+  }
+
   useEffect(() => {
     fetchEffect(
       [setKittens, setError],
@@ -108,12 +113,36 @@ const AvailableKittens = () => {
 
   return (
     <div className='kittens'>
-      <h2>Our Available Kittens</h2>
+      <h2 style={{margin: 'auto'}}>Available Kittens</h2>
       {error && <ErrorFill msg={error} />}
       {!error &&
         <>
+
+        <div className='buttonsWrapper2'>
+          <button className='buttonStyle4' onClick={handleViewIncluded}>Whats Included</button>
+        </div>
+        {showIncluded &&
+         <div className='waitingList-info'>
+            <ul>
+            <li>1 year health guarantee (covers hereditary defects and offers a replacement kitten)</li>
+            <li>age appropriate vaccinations and deworming </li>
+            <li>spay/neuter once kitten is at least 12 weeks old (only NC kittens)</li>
+            <li>microchip</li>
+            <li>well socialized kitten raised at home in warm and loving environment with other pets and children</li>
+            <li>weaned off and litter box trained kitten</li>
+            <li>weekly updates with photos and/or videos</li>
+            <li>lifetime breeder support</li>
+            <li>30 days FREE pet insurance (NY and FL excluded) </li>
+            <li>FaceTime is available before or after the reservation. </li>
+          </ul>
+        </div>
+        }
+
           <div className='adv-search-wrapper'>
-            <button id='adv-search-checkbox' className='adv-search-button buttonStyle2'
+            <button
+              id='adv-search-checkbox'
+              className='adv-search-button buttonStyle2'
+              style={{transform: 'translateX(32px)', borderRadius: '90px'}}
               type="button"
               onClick={handleShowSearch}
             >{showSearch ? 'Hide' : 'Sort By'}</button>
