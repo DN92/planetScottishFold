@@ -30,7 +30,8 @@ const KittenDetailedView = () => {
       fetchEffect(
         [setKitten, setError],
         'get',
-        `/api/kittens?id=${id}`)
+        `/api/kittens?id=${id}`
+      )
     }
 
     if(id) {
@@ -72,7 +73,7 @@ const KittenDetailedView = () => {
             <nav className='detailed-view-nav'>
           <ul>
             <li><button className='buttonStyle6' onClick={() => navigate(-1)}>Back</button></li>
-            <li><button className='buttonStyle6' onClick={() => navigate('/waitingListForm')}>Apply for {kitten.name}</button></li>
+            <li><button className='buttonStyle6' onClick={() => navigate('/waitingListForm')}>Adopt</button></li>
             <li><button className='buttonStyle6' onClick={() => navigate('/contact')}>Contact Us</button></li>
           </ul>
         </nav>

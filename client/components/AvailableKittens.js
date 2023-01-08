@@ -20,7 +20,7 @@ const AvailableKittens = () => {
   const [kittens, setKittens] = useState([]);
   const [availableAdults, setAvailableAdults] = useState([])
   const [initAvailKittens, setInitAvailKittens] = useState(false)
-  const [showIncluded, setShowIncluded] = useState(true)
+  const [showIncluded, setShowWhatsIncluded] = useState(false)
   const [showSearch, setShowSearch] = useState(false)
   const [filterState, dispatchFilterState] = useReducer((state, action) => {
     switch (action.type) {
@@ -87,7 +87,7 @@ const AvailableKittens = () => {
   }
 
   const handleViewIncluded = () => {
-    setShowIncluded(prev => !prev)
+    setShowWhatsIncluded(prev => !prev)
   }
 
   useEffect(() => {

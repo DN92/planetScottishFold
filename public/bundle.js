@@ -12471,13 +12471,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _ErrorFill__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ErrorFill */ "./client/components/ErrorFill.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/dist/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/dist/index.js");
 /* harmony import */ var _My404__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./My404 */ "./client/components/My404.js");
 /* harmony import */ var _MeContextPro__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../MeContextPro */ "./client/MeContextPro.js");
 /* harmony import */ var _myModelsConfig__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../myModelsConfig */ "./myModelsConfig.js");
 /* harmony import */ var _myModelsConfig__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_myModelsConfig__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var _axiosHandlers_fetchEffect__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./axiosHandlers/fetchEffect */ "./client/components/axiosHandlers/fetchEffect.js");
+/* harmony import */ var _carousel_MyCarousel_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./carousel/MyCarousel.js */ "./client/components/carousel/MyCarousel.js");
+
 
 
 
@@ -12488,7 +12490,7 @@ __webpack_require__.r(__webpack_exports__);
 
 //  /catDetailed
 const CatDetailedView = () => {
-  const location = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_6__.useLocation)();
+  const location = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_7__.useLocation)();
   console.log(location);
   const {
     type
@@ -12496,28 +12498,46 @@ const CatDetailedView = () => {
   const {
     MOTHERorFATHER,
     id
-  } = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_6__.useParams)();
+  } = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_7__.useParams)();
   const [cat, setCat] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(location.state?.cat ?? null);
+  const [albumPaths, setAlbumPaths] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]);
   const [error, setError] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(location.state?.error ?? null);
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
     !cat && id && (0,_axiosHandlers_fetchEffect__WEBPACK_IMPORTED_MODULE_5__.fetchEffect)([setCat, setError], 'get', `/api/${MOTHERorFATHER}s?id=${id}`);
+  }, []);
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+    async function getPaths(id) {
+      const response = await fetch(`/api/supabase/urlsByBucket?bucket=${MOTHERorFATHER.toLowerCase()}${id}&withToken=true`);
+      const result = await response.json();
+      setAlbumPaths(result);
+    }
+    if (!cat && id) {
+      (0,_axiosHandlers_fetchEffect__WEBPACK_IMPORTED_MODULE_5__.fetchEffect)([setCat, setError], 'get', `/api/kittens?id=${id}`);
+    }
+    if (id) {
+      getPaths(id);
+    }
   }, []);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     key: id.toString() + MOTHERorFATHER
   }, error && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ErrorFill__WEBPACK_IMPORTED_MODULE_1__["default"], {
     msg: error
-  }), !error && cat && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "detailedView-imgWrapper"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
-    src: cat.mainImageSrcValue,
-    alt: "Picture of Selected Cat"
-  }), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, cat.name), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, cat.breed), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, cat.regNum ? "Registration Number: " + cat.regNum : ""), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, " Ears: ", cat.ears), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, " FurColor: ", cat.furColor), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, " EyeColor: ", cat.eyeColor), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, " Date Of Birth: ", cat.dob), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, " Description: ", cat.description), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, cat.description ? "Description: " + cat.description : ""), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null)), (0,_myModelsConfig__WEBPACK_IMPORTED_MODULE_4__.isPrivileged)(type) && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+  }), !error && cat && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "detailed-view-wrapper"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_carousel_MyCarousel_js__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    data: [cat.mainImageSrcValue, ...albumPaths],
+    placeHolderImagePath: "/otherPictures/photoComingSoon.png"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "detailedView-text-wrapper"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "detailedView-text"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, cat.name), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, cat.breed), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, cat.regNum ? "Registration Number: " + cat.regNum : ""), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, " Ears: ", cat.ears), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, " FurColor: ", cat.furColor), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, " EyeColor: ", cat.eyeColor), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, " Date Of Birth: ", cat.dob), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, " Description: ", cat.description), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, cat.description ? "Description: " + cat.description : ""), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null))), (0,_myModelsConfig__WEBPACK_IMPORTED_MODULE_4__.isPrivileged)(type) && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "buttonsWrapper"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_7__.Link, {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Link, {
     to: `/createCat/${MOTHERorFATHER}`
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
     className: "buttonStyle2"
-  }, "Upload Another ", `${MOTHERorFATHER}`)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_7__.Link, {
+  }, "Upload Another ", `${MOTHERorFATHER}`)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Link, {
     to: `/viewCats/${MOTHERorFATHER}`
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
     className: "buttonStyle2"
@@ -13442,7 +13462,7 @@ const KittenDetailedView = () => {
   }, "Back")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
     className: "buttonStyle6",
     onClick: () => navigate('/waitingListForm')
-  }, "Apply for ", kitten.name)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+  }, "Adopt")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
     className: "buttonStyle6",
     onClick: () => navigate('/contact')
   }, "Contact Us"))))))), (0,_myModelsConfig__WEBPACK_IMPORTED_MODULE_4__.isPrivileged)(type) && !fromEdit && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Link, {

@@ -6,26 +6,15 @@ const contactRequests = require('./contactReqDummy')
 const studsActual = require('./studsActual')
 const damsActual = require('./damsActual')
 const kittensActual = require('./kittensActual')
-const initialUsers = require("./initTest")
 const catAsKittenArray = require('./catAsKittenActual')
 
-const { Kitten, Mother, Stud, User, ContactRequest, InitialUser, CatAsKitten } = models
-const modelsArray = [ ... Object.values(models) ]
+const { Kitten, Mother, Stud, User, ContactRequest, CatAsKitten } = models
 /**
  *  seed - this function clears the database, updates tables to
  *    match our models, and populates the database
  */
 
 async function seed() {
-  // await Promise.all([
-  //   Kitten.sync({force:true}),
-  //   Mother.sync({force:true}),
-  //   Stud.sync({force:true}),
-  //   User.sync({force:true}),
-  //   ContactRequest.sync({force:true}),
-  //   InitialUser.sync({force:true}),
-  //   CatAsKitten.sync({force:true}),
-  // ])
 
   await db.sync({force: true, alter: true})  //  clears the db and matches models to tables
   await Promise.all([

@@ -1,10 +1,11 @@
 import React, {useState, useEffect, useContext} from 'react'
 import ErrorFill from './ErrorFill'
-import { Link, useParams, useNavigate, useLocation } from 'react-router-dom'
+import { Link, useParams, useLocation } from 'react-router-dom'
 import My404 from './My404'
 import MeContext from '../MeContextPro'
 import { isPrivileged } from '../../myModelsConfig'
 import { fetchEffect } from './axiosHandlers/fetchEffect'
+import MyCarousel from './carousel/MyCarousel.js'
 
 //  /catDetailed
 const CatDetailedView = () => {
@@ -13,6 +14,7 @@ const CatDetailedView = () => {
   const {type} =useContext(MeContext)
   const {MOTHERorFATHER, id} = useParams()
   const [cat, setCat] = useState(location.state?.cat ?? null)
+  const [albumPaths, setAlbumPaths] = useState([])
   const [error, setError] = useState(location.state?.error ?? null)
 
   useEffect(() => {
@@ -23,24 +25,49 @@ const CatDetailedView = () => {
     )
   }, [])
 
+  useEffect(() => {
+    async function getPaths(id) {
+      const response = await fetch(`/api/supabase/urlsByBucket?bucket=${MOTHERorFATHER.toLowerCase()}${id}&withToken=true`)
+      const result =  await response.json()
+      setAlbumPaths(result)
+    }
+
+    if(!cat && id) {
+      fetchEffect(
+        [setCat, setError],
+        'get',
+        `/api/kittens?id=${id}`
+      )
+    }
+
+    if(id) {
+      getPaths(id)
+    }
+
+  }, [])
+
   return (
     <div key={id.toString() + MOTHERorFATHER}>
       {error && <ErrorFill msg={error} />}
       {!error && cat &&
-        <div>
-          <div>
-            <div className='detailedView-imgWrapper'>
-              <img src={cat.mainImageSrcValue} alt="Picture of Selected Cat"/> <br />
+        <div className='detailed-view-wrapper'>
+
+          <MyCarousel
+            data={[cat.mainImageSrcValue, ... albumPaths]}
+            placeHolderImagePath = '/otherPictures/photoComingSoon.png'
+          />
+          <div className='detailedView-text-wrapper'>
+            <div className='detailedView-text'>
+              <p>{cat.name}</p> <br />
+              <p>{cat.breed}</p> <br />
+              <p>{cat.regNum ? ("Registration Number: " + cat.regNum) : ""}</p><br />
+              <p> Ears: {cat.ears}</p> <br />
+              <p> FurColor: {cat.furColor}</p> <br />
+              <p> EyeColor: {cat.eyeColor}</p> <br />
+              <p> Date Of Birth: {cat.dob}</p> <br />
+              <p> Description: {cat.description}</p> <br />
+              <p>{cat.description ? ("Description: " + cat.description) : ""}</p><br />
             </div>
-            <span>{cat.name}</span> <br />
-            <span>{cat.breed}</span> <br />
-            <span>{cat.regNum ? ("Registration Number: " + cat.regNum) : ""}</span><br />
-            <span> Ears: {cat.ears}</span> <br />
-            <span> FurColor: {cat.furColor}</span> <br />
-            <span> EyeColor: {cat.eyeColor}</span> <br />
-            <span> Date Of Birth: {cat.dob}</span> <br />
-            <span> Description: {cat.description}</span> <br />
-            <span>{cat.description ? ("Description: " + cat.description) : ""}</span><br />
           </div>
             {isPrivileged(type) &&
               <div className='buttonsWrapper'>
