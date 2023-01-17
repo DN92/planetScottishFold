@@ -33,7 +33,7 @@
 }
 
 @media (min-width:40em) {
-  .detailed-view-wrapper {
+  .detailed-view-carousel-and-text-wrapper {
     display: flex;
     flex-direction: row;
   }

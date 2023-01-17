@@ -12328,7 +12328,7 @@ const AvailableKittens = () => {
   const [kittens, setKittens] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]);
   const [availableAdults, setAvailableAdults] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]);
   const [initAvailKittens, setInitAvailKittens] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
-  const [showIncluded, setShowIncluded] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(true);
+  const [showIncluded, setShowWhatsIncluded] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
   const [showSearch, setShowSearch] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
   const [filterState, dispatchFilterState] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useReducer)((state, action) => {
     switch (action.type) {
@@ -12394,7 +12394,7 @@ const AvailableKittens = () => {
     });
   };
   const handleViewIncluded = () => {
-    setShowIncluded(prev => !prev);
+    setShowWhatsIncluded(prev => !prev);
   };
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
     (0,_axiosHandlers_fetchEffect__WEBPACK_IMPORTED_MODULE_3__.fetchEffect)([setKittens, setError], 'get', `/api/kittens`);
@@ -13388,6 +13388,32 @@ const homeComponent = () => {
 
 /***/ }),
 
+/***/ "./client/components/Iframe1.js":
+/*!**************************************!*\
+  !*** ./client/components/Iframe1.js ***!
+  \**************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": function() { return /* binding */ Iframe1; }
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+function Iframe1() {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "iframe-1-wrapper"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("iframe", {
+    className: "iframe-1",
+    src: "https://www.youtube.com/embed/EnX8hKug198",
+    frameborder: "1"
+  }));
+}
+
+/***/ }),
+
 /***/ "./client/components/KittenDetailedView.js":
 /*!*************************************************!*\
   !*** ./client/components/KittenDetailedView.js ***!
@@ -13399,14 +13425,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _ErrorFill__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ErrorFill */ "./client/components/ErrorFill.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/dist/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/dist/index.js");
 /* harmony import */ var _My404__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./My404 */ "./client/components/My404.js");
 /* harmony import */ var _MeContextPro__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../MeContextPro */ "./client/MeContextPro.js");
 /* harmony import */ var _myModelsConfig__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../myModelsConfig */ "./myModelsConfig.js");
 /* harmony import */ var _myModelsConfig__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_myModelsConfig__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var _axiosHandlers_fetchEffect__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./axiosHandlers/fetchEffect */ "./client/components/axiosHandlers/fetchEffect.js");
 /* harmony import */ var _carousel_MyCarousel_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./carousel/MyCarousel.js */ "./client/components/carousel/MyCarousel.js");
+/* harmony import */ var _Iframe1__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./Iframe1 */ "./client/components/Iframe1.js");
+
 
 
 
@@ -13418,17 +13446,18 @@ __webpack_require__.r(__webpack_exports__);
 
 //  /kittenDetailed
 const KittenDetailedView = () => {
-  const location = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_7__.useLocation)();
-  const navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_7__.useNavigate)();
+  const location = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_8__.useLocation)();
+  const navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_8__.useNavigate)();
   const {
     type
   } = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_MeContextPro__WEBPACK_IMPORTED_MODULE_3__["default"]);
   const {
     id
-  } = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_7__.useParams)();
+  } = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_8__.useParams)();
   const fromEdit = location.state?.fromEdit;
   const [kitten, setKitten] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(location.state?.kitten ?? null);
   const [albumPaths, setAlbumPaths] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]);
+  const [showVideo, setShowVideo] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(true);
   const [error, setError] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('');
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
     async function getPaths(id) {
@@ -13447,6 +13476,8 @@ const KittenDetailedView = () => {
     msg: error
   }), !error && kitten && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "detailed-view-wrapper"
+  }, showVideo && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Iframe1__WEBPACK_IMPORTED_MODULE_7__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "detailed-view-carousel-and-text-wrapper"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_carousel_MyCarousel_js__WEBPACK_IMPORTED_MODULE_6__["default"], {
     data: [kitten.mainImageSrcValue, ...albumPaths],
     placeHolderImagePath: "/otherPictures/photoComingSoon.png"
@@ -13465,9 +13496,9 @@ const KittenDetailedView = () => {
   }, "Adopt")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
     className: "buttonStyle6",
     onClick: () => navigate('/contact')
-  }, "Contact Us"))))))), (0,_myModelsConfig__WEBPACK_IMPORTED_MODULE_4__.isPrivileged)(type) && !fromEdit && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Link, {
+  }, "Contact Us")))))))), (0,_myModelsConfig__WEBPACK_IMPORTED_MODULE_4__.isPrivileged)(type) && !fromEdit && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Link, {
     to: "/createKitten"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", null, "Upload Another Kitten")), (0,_myModelsConfig__WEBPACK_IMPORTED_MODULE_4__.isPrivileged)(type) && fromEdit && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Link, {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", null, "Upload Another Kitten")), (0,_myModelsConfig__WEBPACK_IMPORTED_MODULE_4__.isPrivileged)(type) && fromEdit && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Link, {
     to: "/availableKittens"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", null, "Back to All Kittens")), !error && !kitten && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_My404__WEBPACK_IMPORTED_MODULE_2__["default"], null));
 };

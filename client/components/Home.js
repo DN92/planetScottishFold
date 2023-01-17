@@ -1,9 +1,9 @@
-import React, { useState } from 'react'
+import React from 'react'
 import AboutUs from './textComponents/AboutUs'
 import MessageBox from './MessageBox'
 import { Link } from 'react-router-dom'
 
-const showMessageBox = true
+const showMessageBox = false
 
 const homeComponent = () => {
 

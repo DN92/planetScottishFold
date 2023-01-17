@@ -6,6 +6,7 @@ import MeContext from '../MeContextPro'
 import { isPrivileged } from '../../myModelsConfig'
 import { fetchEffect } from './axiosHandlers/fetchEffect'
 import MyCarousel from './carousel/MyCarousel.js'
+import Iframe1 from './Iframe1'
 
 //  /kittenDetailed
 const KittenDetailedView = () => {
@@ -17,6 +18,7 @@ const KittenDetailedView = () => {
   const fromEdit = location.state?.fromEdit
   const [kitten, setKitten] = useState(location.state?.kitten ?? null)
   const [albumPaths, setAlbumPaths] = useState([])
+  const [showVideo, setShowVideo] = useState(false)
   const [error, setError] = useState('')
 
   useEffect(() => {
@@ -41,42 +43,50 @@ const KittenDetailedView = () => {
   }, [])
 
   return (
-    <div>
+    <div >
       {error && <ErrorFill msg={error} />}
 
       {!error && kitten &&
       <>
 
         <div className='detailed-view-wrapper'>
-          <MyCarousel
-            data={[kitten.mainImageSrcValue, ...albumPaths]}
-            placeHolderImagePath = '/otherPictures/photoComingSoon.png'
-          />
-          <div className='detailedView-text-wrapper'>
-            <div className='detailedView-text'>
-              <p>{kitten.name}</p>
-              <p>Status: {kitten.status}</p>
-              <p>Location: {kitten.location}</p>
-              <p>Price: ${kitten.price}</p>
-              <br />
-              <p>{kitten.breed}</p>
-              <p>Gender: {kitten.gender}</p>
-              <p>Ears: {kitten.ears}</p>
-              <p>Fur color: {kitten.furColor}</p>
-              <p>Eye color: {kitten.eyeColor}</p>
-              <p>{kitten.dob ? ('Date of Birth: ' + kitten.dob) : ''}</p>
-              <p>{kitten.mother ? ('Dam: ' + kitten.mother) : ''}</p>
-              <p>{kitten.father ? ('Sire: ' + kitten.father) : ''}</p>
-              <p>{kitten.regNum ? ('Registration Number: ' + kitten.regNum) : ''}</p>
-              <p>{kitten.description ?  ('Description: ' + kitten.description) : ''}</p>
+
+        {
+          showVideo &&
+
+          <Iframe1 />
+        }
+          <div className='detailed-view-carousel-and-text-wrapper'>
+            <MyCarousel
+              data={[kitten.mainImageSrcValue, ...albumPaths]}
+              placeHolderImagePath = '/otherPictures/photoComingSoon.png'
+            />
+            <div className='detailedView-text-wrapper'>
+              <div className='detailedView-text'>
+                <p>{kitten.name}</p>
+                <p>Status: {kitten.status}</p>
+                <p>Location: {kitten.location}</p>
+                <p>Price: ${kitten.price}</p>
+                <br />
+                <p>{kitten.breed}</p>
+                <p>Gender: {kitten.gender}</p>
+                <p>Ears: {kitten.ears}</p>
+                <p>Fur color: {kitten.furColor}</p>
+                <p>Eye color: {kitten.eyeColor}</p>
+                <p>{kitten.dob ? ('Date of Birth: ' + kitten.dob) : ''}</p>
+                <p>{kitten.mother ? ('Dam: ' + kitten.mother) : ''}</p>
+                <p>{kitten.father ? ('Sire: ' + kitten.father) : ''}</p>
+                <p>{kitten.regNum ? ('Registration Number: ' + kitten.regNum) : ''}</p>
+                <p>{kitten.description ?  ('Description: ' + kitten.description) : ''}</p>
+              </div>
+              <nav className='detailed-view-nav'>
+                <ul>
+                  <li><button className='buttonStyle6' onClick={() => navigate(-1)}>Back</button></li>
+                  <li><button className='buttonStyle6' onClick={() => navigate('/waitingListForm')}>Adopt</button></li>
+                  <li><button className='buttonStyle6' onClick={() => navigate('/contact')}>Contact Us</button></li>
+                </ul>
+              </nav>
             </div>
-            <nav className='detailed-view-nav'>
-          <ul>
-            <li><button className='buttonStyle6' onClick={() => navigate(-1)}>Back</button></li>
-            <li><button className='buttonStyle6' onClick={() => navigate('/waitingListForm')}>Adopt</button></li>
-            <li><button className='buttonStyle6' onClick={() => navigate('/contact')}>Contact Us</button></li>
-          </ul>
-        </nav>
           </div>
         </div>
       </>

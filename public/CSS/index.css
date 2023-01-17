@@ -16,7 +16,7 @@
 @import "./buttonStyle6.css";
 @import "./buttonsWrapper.css";
 @import "./buttonsWrapper2.css";
-@import "messagebox.css";
+@import "./messagebox.css";
 
 /* mobile nav */
 @import "./navMobile.css";
@@ -40,6 +40,7 @@
 @import "./login.css";
 @import "./logout.css";
 @import "./awaitingApproval.css";
+@import "./iframe1.css";
 
 /* component targeted styles - public - admin */
 

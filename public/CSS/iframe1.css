@@ -1,0 +1,13 @@
+.iframe-1-wrapper {
+  background-color: var(--clr-300);
+  width: min( 55vw, 500px);
+  aspect-ratio: 16 / 9;
+  margin: 4rem auto 4rem auto;
+  padding: 1rem
+}
+
+.iframe-1 {
+  background-color: violet;
+  height: 100%;
+  width: 100%;
+}
