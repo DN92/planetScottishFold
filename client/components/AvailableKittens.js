@@ -154,13 +154,17 @@ const AvailableKittens = () => {
             ))}
           </div>
           <hr /><br />
-          <h4>Available Adults</h4>
-          <div className='kittensWrapper'>
-            {shownAdults.map((cat) => (
-              <SingleKitten key={cat.id} kitten={cat} />
-            ))}
-          </div>
-          <hr /><br />
+          {shownAdults.length > 0 &&
+          <>
+            <h4>Available Adults</h4>
+            <div className='kittensWrapper'>
+              {shownAdults.map((cat) => (
+                <SingleKitten key={cat.id} kitten={cat} />
+              ))}
+            </div>
+            <hr /><br />
+          </>
+          }
           <h4>Reserved and Sold</h4>
           <div className='kittensWrapper kittens-sold'>
             {unavailableKittens.map((kitten) => (
