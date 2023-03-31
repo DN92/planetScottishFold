@@ -66,7 +66,6 @@ const myConfig = {
     '$2500-$3000',
     '$2000-$2500',
     '$1500-$2000',
-    '$1000-$1500',
   ],
 
   // most important feature (of product - cat)
