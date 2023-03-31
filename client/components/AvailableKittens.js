@@ -55,9 +55,8 @@ const AvailableKittens = () => {
 
   const unavailableKittens = useMemo(() => {
     return kittens.filter(kitten => kitten.status !== "Available" )
-      .sort((a, b) => Number(b.price) - Number(a.price)
+      .sort((a, b) => Number(b.price) - Number(a.price))
       .filter(kitten => kitten.price > 1500)
-      )
   },[kittens]);
 
   const [availableKittens, dispatchAvailableKittens] = useReducer((state, action) => {
