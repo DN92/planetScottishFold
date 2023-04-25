@@ -49,6 +49,7 @@ const TopLineMenuBar = ({setViewNav, setShowMobileNav}) => {
                 <h1 id='h1TinyScreen'>PSF</h1>
               </Link>
             </div>
+              {/* this is where NORTH CAROLINA AND NEW JERSEY goes */}
             {meContext.id ?
               <div className='topMenu__links'>
                 {isPrivileged(type) &&

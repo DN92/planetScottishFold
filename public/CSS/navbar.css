@@ -17,7 +17,7 @@
     justify-content: center;
     background-color: var(--clr-700);
     align-items: center;
-    border-bottom:20px solid var(--clr-300);
+    border-bottom:20px solid var(--clr-350);
     overflow: hidden;
   }
 

@@ -12363,7 +12363,7 @@ const AvailableKittens = () => {
     return availableAdults.filter(adult => adult.isHidden === false || adult.isHidden === 'false');
   }, [availableAdults]);
   const unavailableKittens = (0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(() => {
-    return kittens.filter(kitten => kitten.status !== "Available").sort((a, b) => Number(b.price) - Number(a.price)).filter(kitten => kitten.price > 1500);
+    return kittens.filter(kitten => kitten.status !== "Available").sort((a, b) => Number(b.price) - Number(a.price)).filter(kitten => kitten.price > 1799);
   }, [kittens]);
   const [availableKittens, dispatchAvailableKittens] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useReducer)((state, action) => {
     switch (action.type) {
