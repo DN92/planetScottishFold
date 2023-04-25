@@ -5,8 +5,6 @@ import useWindowSize from '../../customHooks/useWindowSize'
 const AboutUs = () => {
   const { width } = useWindowSize()
 
-// const {fontSize, ref} = useFitText();
-
  return (
   <div className='home__about-us'>
     <div className='home__links-wrapper'>
@@ -59,33 +57,22 @@ const AboutUs = () => {
     Our kittens well-being is very important, thus choosing the right owners for our babies is another priority! If you’re ready for your perfect baby, please fill out the <Link to='/waitingListForm'>Questionnaire.</Link>
     </p>
     <p>
-      What you’re getting from Planet Scottish fold:
+      What’s Included with North Carolina kittens:
     </p>
     <ul>
-
-      <li>1 year health guarantee (covers hereditary defects and offers a replacement kitten)</li>
-      <li>2 rounds of vaccinations and deworming</li>
-      <li>spay/neuter once kitten is at least 12 weeks old (only NC kittens)</li>
-      <li>microchip</li>
-      <li>well socialized kitten raised at home in warm and loving environment with other pets and children</li>
-      <li>weaned off and litter box trained kitten</li>
-      <li>weekly updates with photos and/or videos</li>
-      <li>lifetime breeder support</li>
-      <li>30 days FREE pet insurance (NY and FL excluded)</li>
-      <li>complementary kitten kit</li>
-      <li>lowest rates for delivery to other states</li>
-      <li>FaceTime is available before or after the reservation</li>
-
-      {/* <li>1 year health guarantee (covers hereditary defects and offers a replacement kitten)</li>
-      <li>age appropriate vaccinations and deworming </li>
-      <li>spay/neuter once kitten is at least 12 weeks old (only NC kittens)</li>
-      <li>microchip</li>
-      <li>well socialized kitten raised at home in warm and loving environment with other pets and children</li>
-      <li>weaned off and litter box trained kitten</li>
-      <li>weekly updates with photos and/or videos</li>
-      <li>lifetime breeder support</li>
-      <li>30 days FREE pet insurance (NY and FL excluded) </li>
-      <li>FaceTime is available before or after the reservation. </li> */}
+      <li> most loyal and affectionate pawsonality well socialized kitten raised at home in warm and loving environment with other pets and children </li>
+      <li> 2 vaccinations and deworming </li>
+      <li> Spay/Neuter and e-collar </li>
+      <li> TICA slip </li>
+      <li> Nails clipped </li>
+      <li> Microchip with free registration </li>
+      <li> 1 month Trupanion insurance (NY & FL excluded) </li>
+      <li> 3 years health guarantee </li>
+      <li> 1 year FIP disease coverage </li>
+      <li> litter and scratch board trained kitten </li>
+      <li> lifetime breeder support weekly updates with photos and/or videos </li>
+      <li> mystery gift kit full of goodies FaceTime is available before or after the reservation </li>
+    
     </ul>
     <h5>How will you receive your kitten?</h5>
 
