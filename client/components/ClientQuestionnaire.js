@@ -6,6 +6,7 @@ import useLocalStorage from '../customHooks/useLocalStorage'
 import MeContext from '../MeContextPro'
 import axios from 'axios'
 import ErrorFill from './ErrorFill'
+import { convertToPhoneNumber } from '../../myUtilFuncs'
 
 
 const ClientQuestionnaire = () => {
@@ -46,6 +47,17 @@ const ClientQuestionnaire = () => {
     event.preventDefault()
     handleFormChange(event, setClientInfo)
     setDisplayBadEmail(false)
+  }
+
+  const handlePhoneNumberChange = (event) => {
+    const value = event.target.value
+    if (value.length < 1) {
+      setClientInfo(prev => ({...prev, phoneNumber: ''}))
+      return
+    }
+    console.log(value)
+    if(!/^[0-9- ]+$/.test(value)) return
+    setClientInfo(prev => ({...prev, phoneNumber: convertToPhoneNumber(event.target.value)}))
   }
 
   const handleViewIncluded = () => {
@@ -300,7 +312,7 @@ const ClientQuestionnaire = () => {
                   type="text"
                   name="phoneNumber"
                   value={clientInfo.phoneNumber}
-                  onChange={handleChange}
+                  onChange={handlePhoneNumberChange}
                   required
                 />
               </>

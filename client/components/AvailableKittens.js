@@ -3,6 +3,7 @@ import SingleKitten from './SingleKitten'
 import ErrorFill from './ErrorFill'
 import { fetchEffect } from './axiosHandlers/fetchEffect'
 import KittenFilter from './KittensFilter'
+import WhatsIncluded from './textComponents/WhatsIncluded'
 
 //  /available Kittens
 const AvailableKittens = () => {
@@ -125,18 +126,7 @@ const AvailableKittens = () => {
         </div>
         {showIncluded &&
          <div className='waitingList-info'>
-            <ul>
-            <li>1 year health guarantee (covers hereditary defects and offers a replacement kitten)</li>
-            <li>age appropriate vaccinations and deworming </li>
-            <li>spay/neuter once kitten is at least 12 weeks old (only NC kittens)</li>
-            <li>microchip</li>
-            <li>well socialized kitten raised at home in warm and loving environment with other pets and children</li>
-            <li>weaned off and litter box trained kitten</li>
-            <li>weekly updates with photos and/or videos</li>
-            <li>lifetime breeder support</li>
-            <li>30 days FREE pet insurance (NY and FL excluded) </li>
-            <li>FaceTime is available before or after the reservation. </li>
-          </ul>
+            <WhatsIncluded />
         </div>
         }
 

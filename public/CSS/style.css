@@ -54,10 +54,6 @@ svg {
   box-sizing: border-box;
 }
 
-img {
-  border: 5px solid var(--clr-100);
-}
-
 @media (prefers-reduced-motion) {
   html:focus-within {
     scroll-behavior: auto;

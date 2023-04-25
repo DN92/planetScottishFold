@@ -65,7 +65,6 @@ const CatDetailedView = () => {
               <p> FurColor: {cat.furColor}</p> <br />
               <p> EyeColor: {cat.eyeColor}</p> <br />
               <p> Date Of Birth: {cat.dob}</p> <br />
-              <p> Description: {cat.description}</p> <br />
               <p>{cat.description ? ("Description: " + cat.description) : ""}</p><br />
             </div>
           </div>

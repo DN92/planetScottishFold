@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import useWindowSize from '../../customHooks/useWindowSize'
+import WhatsIncluded from './WhatsIncluded'
 
 const AboutUs = () => {
   const { width } = useWindowSize()
@@ -59,21 +60,7 @@ const AboutUs = () => {
     <p>
       What’s Included with North Carolina kittens:
     </p>
-    <ul>
-      <li> most loyal and affectionate pawsonality well socialized kitten raised at home in warm and loving environment with other pets and children </li>
-      <li> 2 vaccinations and deworming </li>
-      <li> Spay/Neuter and e-collar </li>
-      <li> TICA slip </li>
-      <li> Nails clipped </li>
-      <li> Microchip with free registration </li>
-      <li> 1 month Trupanion insurance (NY & FL excluded) </li>
-      <li> 3 years health guarantee </li>
-      <li> 1 year FIP disease coverage </li>
-      <li> litter and scratch board trained kitten </li>
-      <li> lifetime breeder support weekly updates with photos and/or videos </li>
-      <li> mystery gift kit full of goodies FaceTime is available before or after the reservation </li>
-    
-    </ul>
+    <WhatsIncluded />
     <h5>How will you receive your kitten?</h5>
 
     <p>You have many options on how to get your new family member.

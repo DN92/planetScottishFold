@@ -6,6 +6,7 @@
   font-size: var(--fs-200);
   color: var(--clr-500);
   border-color: var(--clr-200);
+  border-radius: 100px;
 }
 
 .buttonStyle4:hover {
