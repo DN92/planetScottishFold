@@ -12363,7 +12363,7 @@ const AvailableKittens = () => {
     return availableAdults.filter(adult => adult.isHidden === false || adult.isHidden === 'false');
   }, [availableAdults]);
   const unavailableKittens = (0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(() => {
-    return kittens.filter(kitten => kitten.status !== "Available").sort((a, b) => Number(b.price) - Number(a.price));
+    return kittens.filter(kitten => kitten.status !== "Available").sort((a, b) => Number(b.price) - Number(a.price)).filter(kitten => kitten.price > 1500);
   }, [kittens]);
   const [availableKittens, dispatchAvailableKittens] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useReducer)((state, action) => {
     switch (action.type) {
@@ -12444,12 +12444,12 @@ const AvailableKittens = () => {
   }, availableKittens.map(kitten => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_SingleKitten__WEBPACK_IMPORTED_MODULE_1__["default"], {
     key: kitten.id,
     kitten: kitten
-  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("hr", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h4", null, "Available Adults"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("hr", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), shownAdults.length > 0 && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h4", null, "Available Adults"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "kittensWrapper"
   }, shownAdults.map(cat => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_SingleKitten__WEBPACK_IMPORTED_MODULE_1__["default"], {
     key: cat.id,
     kitten: cat
-  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("hr", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h4", null, "Reserved and Sold"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("hr", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h4", null, "Reserved and Sold"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "kittensWrapper kittens-sold"
   }, unavailableKittens.map(kitten => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_SingleKitten__WEBPACK_IMPORTED_MODULE_1__["default"], {
     key: kitten.id,
@@ -13350,7 +13350,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-const showMessageBox = true;
+const showMessageBox = false;
 const homeComponent = () => {
   const messageArray = ["Last FREE delivery to NJ/NY 1/14/23-1/15/23", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
     style: {
@@ -13457,7 +13457,7 @@ const KittenDetailedView = () => {
   const fromEdit = location.state?.fromEdit;
   const [kitten, setKitten] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(location.state?.kitten ?? null);
   const [albumPaths, setAlbumPaths] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]);
-  const [showVideo, setShowVideo] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(true);
+  const [showVideo, setShowVideo] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
   const [error, setError] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('');
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
     async function getPaths(id) {
@@ -17027,7 +17027,7 @@ const myConfig = {
 
   //  for public file serving
   defaultCatPictureSrc: '/catPictures/cat404.png',
-  budgetRanges: ['$4000+', '$3500-$4000', '$3000-$3500', '$2500-$3000', '$2000-$2500', '$1500-$2000', '$1000-$1500'],
+  budgetRanges: ['$4000+', '$3500-$4000', '$3000-$3500', '$2500-$3000', '$2000-$2500', '$1500-$2000'],
   // most important feature (of product - cat)
   mifOptions: ['No Preference', 'Health', 'Appearance', 'Show Quality', 'Personality', 'Price'],
   statusOptionsKitten: ['Available', 'Reserved', 'Sold'],
