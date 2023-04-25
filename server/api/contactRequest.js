@@ -2,6 +2,8 @@ const router = require('express').Router()
 const { Op } = require("sequelize");
 const { ContactRequest } = require("../db").models
 const passAuth = require('../expressMiddleware/checkValidAuthLevel')
+const transporter = require('../transporter')
+const templateContactDM = require('../emailTemplates/templateContactDM')
 
 // api/contactRequests
 
@@ -25,6 +27,7 @@ router.post('/', async (req, res, next) => {
     if(!contactRequest) {
       throw new Error('contactRequest creation failed')
     }
+    transporter.sendMail(templateContactDM(req.body))
     res.send(contactRequest)
   } catch (err) {
     next(err)

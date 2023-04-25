@@ -2,11 +2,6 @@ const { emailsFrom } = require('../../myModelsConfig')
 
 const templateNewApplicantNotification = (applicant) => {
 
-  // if(applicant.furColors) {
-  //   applicant.furColors = applicant.furColors.subString(1, applicant.furColors.length)
-  //     .join(' ')
-  // }
-
   const userInfoAsText = Object.entries(applicant).reduce((acc, [key, value]) => `${acc}${key}: ${value}\n`,"" )
 
   const link =  `<a
