@@ -13,7 +13,9 @@
     "start-server": "nodemon server -e html,js,scss --ignore public --ignore client",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "pingDB": "node server/scriptKitties/dbBackup"
+    "dbBackup": "node server/scriptKitties/dbBackup",
+    "getBackup": "node server/scriptKitties/getLatestBackup",
+    "clearOldBackups": "node server/scriptKitties/clearOldBackups "
   },
   "eslintConfig": {
     "extends": [
