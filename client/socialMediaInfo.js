@@ -6,7 +6,7 @@ const socialMediaInfo = [
   },
   {
     site: 'facebook',
-    href: 'https://www.facebook.com/PlanetScottishFoldKittens',
+    href: 'https://www.facebook.com/planetscottishfold?mibextid=LQQJ4d',
     iconSrc: '/socialMediaIcons/facebook.png'
   },
   {
