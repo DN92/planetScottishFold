@@ -1,4 +1,17 @@
-const { readdirSync } = require('fs')
+const { readdirSync, createReadStream, existsSync, writeFileSync } = require('fs')
+const fs = require('fs');
+const csv = require('csv-parser');
+
+function getCurrentDateTimeFormattedString() {
+  const currentDate = new Date();
+  const year = currentDate.getFullYear();
+  const month = (currentDate.getMonth() + 1).toString().padStart(2, '0');
+  const date = currentDate.getDate().toString().padStart(2, '0');
+  const hours = currentDate.getHours().toString().padStart(2, '0');
+  const minutes = currentDate.getMinutes().toString().padStart(2, '0');
+
+  return `${date}-${month}-${year}-${hours}-${minutes}`;
+}
 
 function getLastChronologicalFilename(filenames) {
   const regex = /^database_(\d{2})-(\d{2})-(\d{4})-(\d{2})-(\d{2}).csv$/;
@@ -18,8 +31,55 @@ function getLastChronologicalFilename(filenames) {
   return lastFilename;
 }
 
+function saveDBsnapshot(data) {
 
-const files = readdirSync('./server/db/backups') ?? []
+  const dateAndTime = getCurrentDateTimeFormattedString();
+  const dirpath = 'server/db/snapShot'
+  const filename = `shapshot_${dateAndTime}`
+  const filePath = `${dirpath}/${filename}.txt`;
+
+  // try {
+    if (!existsSync(dirpath)) throw Error('bad path while attempting to save snapshot')
+    
+    writeFileSync(filePath, JSON.stringify(data));
+    console.log(`Data written to file ${filePath}`);
+    return true;
+  // } catch (err) {
+  //   console.error(`Error writing data to file ${filePath}: ${err.message}`);
+  //   return false;
+  // }
+}
 
 
-console.log(getLastChronologicalFilename(files))
+async function parseAndSaveCsvFile(filePath) {
+  const results = [];
+  
+  if (!existsSync(filePath)) {
+    console.error(`File '${filePath}' does not exist.`);
+    return;
+  }
+  
+  await new Promise((resolve, reject) => {
+    createReadStream(filePath)
+      .pipe(csv())
+      .on('data', (data) => results.push(data))
+      .on('end', () => {
+        console.log('completed parsing of CSV file');
+        resolve(results);
+      })
+      .on('error', (err) => {
+        reject(err);
+      });
+  });
+
+  saveDBsnapshot(results);
+}
+
+const pathToBackups = './server/db/backups'
+
+const files = readdirSync(pathToBackups) ?? []
+
+const mostRecentFile = getLastChronologicalFilename(files)
+
+parseAndSaveCsvFile(`${pathToBackups}/${mostRecentFile}`)
+

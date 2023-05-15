@@ -15,7 +15,8 @@
     "eject": "react-scripts eject",
     "dbBackup": "node server/scriptKitties/dbBackup",
     "getBackup": "node server/scriptKitties/getLatestBackup",
-    "clearOldBackups": "node server/scriptKitties/clearOldBackups "
+    "clearOldBackups": "node server/scriptKitties/clearOldBackups ",
+    "txtFilesToJson": "node server/scriptKitties/txtFilesToJson --"
   },
   "eslintConfig": {
     "extends": [
@@ -49,6 +50,7 @@
     "axios": "^0.27.2",
     "bcryptjs": "^2.4.3",
     "compression": "^1.7.4",
+    "csv-parser": "^3.0.0",
     "dotenv": "^16.0.3",
     "embla-carousel-react": "^7.0.5",
     "express": "^4.18.1",
