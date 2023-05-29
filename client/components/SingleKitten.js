@@ -41,7 +41,7 @@ const SingleKitten = (props) => {
               <p>My color is </p>
               <p>{furColor}</p>
               <p>I have {eyeColor} eyes</p>
-              <p>${(Math.floor(parseInt(kitten.price) * globalPriceModifier ))}</p>
+              <p>$Price: ${(Math.round(((parseInt(kitten.price, 10) / 50) * globalPriceModifier ))) * 50}</p>
               {isPrivileged(type) &&
                 <>
                   <p>Mother: {mother}</p>
