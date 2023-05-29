@@ -140,7 +140,7 @@ const myConfig = {
     "High Point, North Carolina",
     "Fort Lauderdale, Florida",
   ],
-  globalPriceModifier: 125, // value as a percent
+  globalPriceModifier: 1.25, 
 }
 
 myConfig.isPrivileged = (type) => (myConfig.userTypes.slice(2).includes(type))
