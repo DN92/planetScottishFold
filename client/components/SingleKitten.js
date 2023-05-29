@@ -53,7 +53,7 @@ const SingleKitten = (props) => {
             <>
               <p>{name}</p>
               <p>{kitten.status}</p>
-              <p>${kitten.price}</p>
+              <p>${(Math.floor(parseInt(kitten.price) * 1.2 ))}</p>
             </>
           }
         </>

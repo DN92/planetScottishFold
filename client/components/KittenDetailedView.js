@@ -66,7 +66,7 @@ const KittenDetailedView = () => {
                 <p>{kitten.name}</p>
                 <p>Status: {kitten.status}</p>
                 <p>Location: {kitten.location}</p>
-                <p>Price: ${kitten.price}</p>
+                <p>Price: ${(Math.floor(parseInt(kitten.price) * 1.2 ))}</p>
                 <br />
                 <p>{kitten.breed}</p>
                 <p>Gender: {kitten.gender}</p>
