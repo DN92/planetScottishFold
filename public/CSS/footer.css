@@ -1,7 +1,6 @@
 .footer {
   position: absolute;
   bottom: 0px;
-  /* z-index: 2; */
   width: 100%;
   background-color: var(--clr-350);
   text-align: center;

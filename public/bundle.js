@@ -16975,11 +16975,11 @@ function useWindowSize() {
 __webpack_require__.r(__webpack_exports__);
 const socialMediaInfo = [{
   site: 'instagram',
-  href: 'https://www.instagram.com/planetscottishfold/',
+  href: 'https://www.instagram.com/floofylicious_cattery/',
   iconSrc: '/socialMediaIcons/instagram.png'
 }, {
   site: 'facebook',
-  href: 'https://www.facebook.com/PlanetScottishFoldKittens',
+  href: 'https://www.facebook.com/planetscottishfold?mibextid=LQQJ4d',
   iconSrc: '/socialMediaIcons/facebook.png'
 }, {
   site: 'tiktok',
