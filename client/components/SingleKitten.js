@@ -41,6 +41,7 @@ const SingleKitten = (props) => {
               <p>My color is </p>
               <p>{furColor}</p>
               <p>I have {eyeColor} eyes</p>
+              <p>${(Math.floor(parseInt(kitten.price) * 1.2 ))}</p>
               {isPrivileged(type) &&
                 <>
                   <p>Mother: {mother}</p>
