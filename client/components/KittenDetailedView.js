@@ -3,7 +3,7 @@ import ErrorFill from './ErrorFill'
 import { Link, useParams, useLocation, useNavigate } from 'react-router-dom'
 import My404 from './My404'
 import MeContext from '../MeContextPro'
-import { isPrivileged } from '../../myModelsConfig'
+import { isPrivileged, globalPriceModifier } from '../../myModelsConfig'
 import { fetchEffect } from './axiosHandlers/fetchEffect'
 import MyCarousel from './carousel/MyCarousel.js'
 import Iframe1 from './Iframe1'
@@ -66,7 +66,7 @@ const KittenDetailedView = () => {
                 <p>{kitten.name}</p>
                 <p>Status: {kitten.status}</p>
                 <p>Location: {kitten.location}</p>
-                <p>Price: ${(Math.floor(parseInt(kitten.price) * 1.2 ))}</p>
+                <p>Price: ${(Math.round((parseInt(kitten.price, 10) * globalPriceModifier / 100) * 100 ))}</p>
                 <br />
                 <p>{kitten.breed}</p>
                 <p>Gender: {kitten.gender}</p>

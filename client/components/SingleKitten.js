@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
 import MeContext from '../MeContextPro'
-import { isPrivileged } from '../../myModelsConfig'
+import { isPrivileged, globalPriceModifier } from '../../myModelsConfig'
 
 
 //  props from AvailableKitten || AdminAllView
@@ -41,7 +41,7 @@ const SingleKitten = (props) => {
               <p>My color is </p>
               <p>{furColor}</p>
               <p>I have {eyeColor} eyes</p>
-              <p>${(Math.floor(parseInt(kitten.price) * 1.2 ))}</p>
+              <p>${(Math.floor(parseInt(kitten.price) * globalPriceModifier ))}</p>
               {isPrivileged(type) &&
                 <>
                   <p>Mother: {mother}</p>
