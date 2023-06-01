@@ -8,7 +8,7 @@ const AboutUs = () => {
 
  return (
   <div className='home__about-us'>
-    <div className='home__links-wrapper'>
+    {/* <div className='home__links-wrapper'>
       <div className='home__link'>
         <Link to='/availableKittens' >View Available Kittens</Link>
       </div>
@@ -77,7 +77,7 @@ const AboutUs = () => {
       After your application is reviewed, you'll be notified. After that, you will be able to reserve any currently available kitten or reserve a spot for future litters.
     </p>
 
-   </article>
+   </article> */}
   </div>
  )
 }
