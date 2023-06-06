@@ -90,6 +90,9 @@ const AboutUs = () => {
       This breed does not fit the standard cat stereotype! They don’t want to be left alone in their lair, instead, they’ll want to sit on your lap, lie under your arm or on your pillow as close to your face
       If you get them a sibling you’ll enjoy watching them jump around and groom each other, but they wont forget about you! You’ll simply get double affection and love.
     </p>
+    <div className='aboutUs__card2'>
+      <img className='aboutUs__card2__img' src="/homepage2/breedCharacteristics.jpg" alt="characteristics" style={{maxHeight : '540px', width: 'auto'}} />
+    </div>
     <p>
       So if you’re looking for a mellow and loyal best furrend then this breed is for you!
     </p>
