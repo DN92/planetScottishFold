@@ -7,6 +7,7 @@ import { isPrivileged, globalPriceModifier } from '../../myModelsConfig'
 import { fetchEffect } from './axiosHandlers/fetchEffect'
 import MyCarousel from './carousel/MyCarousel.js'
 import Iframe1 from './Iframe1'
+import LineThroughPTagOverlay from './LineThroughPTagOverlay'
 
 //  /kittenDetailed
 const KittenDetailedView = () => {
@@ -20,6 +21,8 @@ const KittenDetailedView = () => {
   const [albumPaths, setAlbumPaths] = useState([])
   const [showVideo, setShowVideo] = useState(false)
   const [error, setError] = useState('')
+
+  const adjustedPrice = Math.round(((parseInt(kitten.price, 10) / 50) * globalPriceModifier)) * 50
 
   useEffect(() => {
     async function getPaths(id) {
@@ -66,7 +69,8 @@ const KittenDetailedView = () => {
                 <p>{kitten.name}</p>
                 <p>Status: {kitten.status}</p>
                 <p>Location: {kitten.location}</p>
-                <p>Price: ${(Math.round(((parseInt(kitten.price, 10) / 50) * globalPriceModifier ))) * 50}</p>
+                <p className='red' style={{textDecoration: 'line-through'}}>{`Price: $${adjustedPrice}`}</p>
+                <p className='bold-green font-1-rem'>Summer Sale: ${Math.floor(adjustedPrice * .8)}</p>
                 <br />
                 <p>{kitten.breed}</p>
                 <p>Gender: {kitten.gender}</p>

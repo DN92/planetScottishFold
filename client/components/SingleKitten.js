@@ -2,6 +2,7 @@ import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
 import MeContext from '../MeContextPro'
 import { isPrivileged, globalPriceModifier } from '../../myModelsConfig'
+import LineThroughPTagOverlay from './LineThroughPTagOverlay'
 
 
 //  props from AvailableKitten || AdminAllView
@@ -25,6 +26,8 @@ const SingleKitten = (props) => {
   const image = mainImageSrcValue ? mainImageSrcValue : "/catPictures/catError3.gif"
   const model = kitten?.isAdultCat ? 'catAsKitten' : 'kittens'
 
+  const adjustedPrice = Math.round(((parseInt(kitten.price, 10) / 50) * globalPriceModifier)) * 50
+
   return (
     <div className={kitten?.status === 'Available' ? 'singleKitten' : 'singleKitten kitten-sold'}>
       <div className='singleKitten__card'>
@@ -41,7 +44,11 @@ const SingleKitten = (props) => {
               <p>My color is </p>
               <p>{furColor}</p>
               <p>I have {eyeColor} eyes</p>
-              <p>Price: ${(Math.round(((parseInt(kitten.price, 10) / 50) * globalPriceModifier ))) * 50}</p>
+              <LineThroughPTagOverlay 
+                message={`Price: $${adjustedPrice}`}
+                classes={['red', ]}
+              />
+              <p className='bold-green font-1-rem'>Summer Sale: ${Math.floor(adjustedPrice * .8)}</p>
               {isPrivileged(type) &&
                 <>
                   <p>Mother: {mother}</p>

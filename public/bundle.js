@@ -13371,9 +13371,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-const showMessageBox = false;
+const showMessageBox = true;
 const homeComponent = () => {
-  const messageArray = ["Last FREE delivery to NJ/NY 1/14/23-1/15/23", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+  const messageArray = ["Furry Summer Sale! Get 20% off any of our kittens till the end of June!", " All kittens come with a health garuntee, video chats available on request!", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
     style: {
       color: 'var(--clr-500)'
     },
@@ -13446,8 +13446,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _ErrorFill__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ErrorFill */ "./client/components/ErrorFill.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/dist/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/dist/index.js");
 /* harmony import */ var _My404__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./My404 */ "./client/components/My404.js");
 /* harmony import */ var _MeContextPro__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../MeContextPro */ "./client/MeContextPro.js");
 /* harmony import */ var _myModelsConfig__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../myModelsConfig */ "./myModelsConfig.js");
@@ -13455,6 +13455,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _axiosHandlers_fetchEffect__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./axiosHandlers/fetchEffect */ "./client/components/axiosHandlers/fetchEffect.js");
 /* harmony import */ var _carousel_MyCarousel_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./carousel/MyCarousel.js */ "./client/components/carousel/MyCarousel.js");
 /* harmony import */ var _Iframe1__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./Iframe1 */ "./client/components/Iframe1.js");
+/* harmony import */ var _LineThroughPTagOverlay__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./LineThroughPTagOverlay */ "./client/components/LineThroughPTagOverlay.js");
+
 
 
 
@@ -13467,19 +13469,20 @@ __webpack_require__.r(__webpack_exports__);
 
 //  /kittenDetailed
 const KittenDetailedView = () => {
-  const location = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_8__.useLocation)();
-  const navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_8__.useNavigate)();
+  const location = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_9__.useLocation)();
+  const navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_9__.useNavigate)();
   const {
     type
   } = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_MeContextPro__WEBPACK_IMPORTED_MODULE_3__["default"]);
   const {
     id
-  } = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_8__.useParams)();
+  } = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_9__.useParams)();
   const fromEdit = location.state?.fromEdit;
   const [kitten, setKitten] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(location.state?.kitten ?? null);
   const [albumPaths, setAlbumPaths] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]);
   const [showVideo, setShowVideo] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
   const [error, setError] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('');
+  const adjustedPrice = Math.round(parseInt(kitten.price, 10) / 50 * _myModelsConfig__WEBPACK_IMPORTED_MODULE_4__.globalPriceModifier) * 50;
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
     async function getPaths(id) {
       const response = await fetch(`/api/supabase/urlsByBucket?bucket=kitten${id}&withToken=true`);
@@ -13506,7 +13509,14 @@ const KittenDetailedView = () => {
     className: "detailedView-text-wrapper"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "detailedView-text"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, kitten.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Status: ", kitten.status), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Location: ", kitten.location), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Price: $", Math.round(parseInt(kitten.price, 10) / 50 * _myModelsConfig__WEBPACK_IMPORTED_MODULE_4__.globalPriceModifier) * 50), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, kitten.breed), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Gender: ", kitten.gender), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Ears: ", kitten.ears), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Fur color: ", kitten.furColor), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Eye color: ", kitten.eyeColor), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, kitten.dob ? 'Date of Birth: ' + kitten.dob : ''), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, kitten.mother ? 'Dam: ' + kitten.mother : ''), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, kitten.father ? 'Sire: ' + kitten.father : ''), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, kitten.regNum ? 'Registration Number: ' + kitten.regNum : ''), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, kitten.description ? 'Description: ' + kitten.description : '')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("nav", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, kitten.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Status: ", kitten.status), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Location: ", kitten.location), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
+    className: "red",
+    style: {
+      textDecoration: 'line-through'
+    }
+  }, `Price: $${adjustedPrice}`), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
+    className: "bold-green font-1-rem"
+  }, "Summer Sale: $", Math.floor(adjustedPrice * .8)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, kitten.breed), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Gender: ", kitten.gender), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Ears: ", kitten.ears), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Fur color: ", kitten.furColor), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Eye color: ", kitten.eyeColor), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, kitten.dob ? 'Date of Birth: ' + kitten.dob : ''), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, kitten.mother ? 'Dam: ' + kitten.mother : ''), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, kitten.father ? 'Sire: ' + kitten.father : ''), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, kitten.regNum ? 'Registration Number: ' + kitten.regNum : ''), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, kitten.description ? 'Description: ' + kitten.description : '')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("nav", {
     className: "detailed-view-nav"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("ul", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
     className: "buttonStyle6",
@@ -13517,9 +13527,9 @@ const KittenDetailedView = () => {
   }, "Adopt")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
     className: "buttonStyle6",
     onClick: () => navigate('/contact')
-  }, "Contact Us")))))))), (0,_myModelsConfig__WEBPACK_IMPORTED_MODULE_4__.isPrivileged)(type) && !fromEdit && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Link, {
+  }, "Contact Us")))))))), (0,_myModelsConfig__WEBPACK_IMPORTED_MODULE_4__.isPrivileged)(type) && !fromEdit && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.Link, {
     to: "/createKitten"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", null, "Upload Another Kitten")), (0,_myModelsConfig__WEBPACK_IMPORTED_MODULE_4__.isPrivileged)(type) && fromEdit && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Link, {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", null, "Upload Another Kitten")), (0,_myModelsConfig__WEBPACK_IMPORTED_MODULE_4__.isPrivileged)(type) && fromEdit && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.Link, {
     to: "/availableKittens"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", null, "Back to All Kittens")), !error && !kitten && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_My404__WEBPACK_IMPORTED_MODULE_2__["default"], null));
 };
@@ -13596,6 +13606,32 @@ const KittenFilter = ({
   }, "Sort")));
 };
 /* harmony default export */ __webpack_exports__["default"] = (KittenFilter);
+
+/***/ }),
+
+/***/ "./client/components/LineThroughPTagOverlay.js":
+/*!*****************************************************!*\
+  !*** ./client/components/LineThroughPTagOverlay.js ***!
+  \*****************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+const LineThroughPTagOverlay = ({
+  message = '',
+  classes = []
+}) => {
+  const whitespace = Array(25).fill('\u00A0').join('');
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
+    className: `line-through-ptag-overlay ${classes.join(' ')}`
+  }, message, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
+    className: "line-through-overlay"
+  }, whitespace));
+};
+/* harmony default export */ __webpack_exports__["default"] = (LineThroughPTagOverlay);
 
 /***/ }),
 
@@ -13924,10 +13960,12 @@ const Reviews = () => {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/dist/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/dist/index.js");
 /* harmony import */ var _MeContextPro__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../MeContextPro */ "./client/MeContextPro.js");
 /* harmony import */ var _myModelsConfig__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../myModelsConfig */ "./myModelsConfig.js");
 /* harmony import */ var _myModelsConfig__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_myModelsConfig__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _LineThroughPTagOverlay__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./LineThroughPTagOverlay */ "./client/components/LineThroughPTagOverlay.js");
+
 
 
 
@@ -13955,6 +13993,7 @@ const SingleKitten = props => {
   } = kitten;
   const image = mainImageSrcValue ? mainImageSrcValue : "/catPictures/catError3.gif";
   const model = kitten?.isAdultCat ? 'catAsKitten' : 'kittens';
+  const adjustedPrice = Math.round(parseInt(kitten.price, 10) / 50 * _myModelsConfig__WEBPACK_IMPORTED_MODULE_2__.globalPriceModifier) * 50;
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: kitten?.status === 'Available' ? 'singleKitten' : 'singleKitten kitten-sold'
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
@@ -13966,9 +14005,14 @@ const SingleKitten = props => {
     kitten: kitten
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "singleKittenInfo"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, kitten?.status === "Available" ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Hi I'm ", name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "I am a ", breed, " ", gender), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "My color is "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, furColor), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "I have ", eyeColor, " eyes"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Price: $", Math.round(parseInt(kitten.price, 10) / 50 * _myModelsConfig__WEBPACK_IMPORTED_MODULE_2__.globalPriceModifier) * 50), (0,_myModelsConfig__WEBPACK_IMPORTED_MODULE_2__.isPrivileged)(type) && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Mother: ", mother), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Father: ", father), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Status: ", status))) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, kitten.status), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Price: $", Math.round(parseInt(kitten.price, 10) / 50 * _myModelsConfig__WEBPACK_IMPORTED_MODULE_2__.globalPriceModifier) * 50)))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, kitten?.status === "Available" ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Hi I'm ", name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "I am a ", breed, " ", gender), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "My color is "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, furColor), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "I have ", eyeColor, " eyes"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_LineThroughPTagOverlay__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    message: `Price: $${adjustedPrice}`,
+    classes: ['red']
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
+    className: "bold-green font-1-rem"
+  }, "Summer Sale: $", Math.floor(adjustedPrice * .8)), (0,_myModelsConfig__WEBPACK_IMPORTED_MODULE_2__.isPrivileged)(type) && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Mother: ", mother), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Father: ", father), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Status: ", status))) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, kitten.status), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Price: $", Math.round(parseInt(kitten.price, 10) / 50 * _myModelsConfig__WEBPACK_IMPORTED_MODULE_2__.globalPriceModifier) * 50)))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "singleKitten__button"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
     to: (0,_myModelsConfig__WEBPACK_IMPORTED_MODULE_2__.isPrivileged)(type) ? '/editKitten' : `/kittenDetailed/${model}/${id}`,
     state: {
       kitten: kitten

@@ -241,6 +241,36 @@ svg {
 }
 
 
+.line-through-ptag-overlay {
+  position: relative;
+}
+
+
+.line-through-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(2.5deg);
+  z-index: 100;
+  width: 40%;
+  height: 100%;
+  margin: auto;
+  text-decoration: line-through;
+}
+
+.bold-green {
+  font-weight: bold;
+  color: green
+}
+
+.font-1-rem {
+  font-size: 1rem;
+}
+
+.red {
+  color: red;
+}
+
 /* headers */
 
 h1, h2, h3, h4, h5, h6 {
