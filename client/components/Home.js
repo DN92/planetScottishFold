@@ -8,7 +8,7 @@ const showMessageBox = true
 const homeComponent = () => {
 
   const messageArray = [
-    "Furry Summer Sale! Get 20% off any of our kittens till the end of June!"," All kittens come with a health garuntee, video chats available on request!",
+    "Furry Summer Sale! Get 20% off any of our kittens till the end of June!"," All kittens come with a health guarantee, video chats available on request!",
     <Link style={{color: 'var(--clr-500)'}} to='/waitinglistForm'>If interested, please apply here</Link>
   ]
 
