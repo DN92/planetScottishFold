@@ -44,7 +44,7 @@ const AboutUs = () => {
       Hello, I'm Nataliya, the proud owner of Planet Scottish Fold Cattery. Let me share how my love for nature and animals guided me on this
       wonderful journey of breeding. Since I was a child, I've been captivated by the beauty of the natural world. Cats, in particular, hold a
       special place in my heart, even from a young age. Growing up, pets were always a cherished part of my family. We had a variety of 
-      companions, from our beloved childhood cat to parrots, turtles, fish, hamsters, and dogs. Life without a pet feels incomplete.
+      companions, from our beloved childhood cat to parrots, turtles, fish, hamsters, and dogs. To me, life without a pet would feel incomplete.
     </p>
     <div className='aboutUs__card2'>
       <img className='aboutUs__card2__img' src="/homepage2/Cert001.jpg" alt="cert1 pic" style={{maxHeight : '540px', width: 'auto'}} />
@@ -74,12 +74,17 @@ const AboutUs = () => {
     </div>
     <p>
       As a proud TICA registered breeder, I have completed a breeding course, expanding my knowledge and expertise in the field. I take
-      pride in upholding TICA's code of ethics, which ensures the highest standards of care and professionalism in our cattery. Client
-      satisfaction is paramount to us. We treasure the positive feedback we receive from our clients and maintain long-term connections, 
-      providing lifetime breeder support. Your happiness and the well-being of our kittens are always our top priorities. I genuinely 
-      care about the well-being of our clients and their furry companions. As a knowledgeable and approachable breeder, I take pride in
+      pride in upholding TICA's code of ethics, which ensures the highest standards of care and professionalism in our cattery. 
+    </p>
+    <p>
+      Client satisfaction is paramount to us. We treasure the positive feedback we receive from our clients and maintain long-term connections, 
+      providing lifetime breeder support. Your happiness and the well-being of our kittens are always our top priorities.
+      I genuinely care about the well-being of our clients and their furry companions. As a knowledgeable and approachable breeder, I take pride in
       offering guidance and support whenever needed. Building lasting relationships with our clients brings us immense joy, as we witness
-      the growth and happiness of the kittens we have raised. Thank you for visiting Planet Scottish Fold Cattery and taking the time 
+      the growth and happiness of the kittens we have raised. 
+    </p>
+    <p>
+      Thank you for visiting Planet Scottish Fold Cattery and taking the time 
       to read our story! We invite you to explore our website and discover the joy that our cats and kittens bring. Feel free to reach out
       to us through any social media platform or schedule a FaceTime call to find your perfect soulmate. We look forward to embarking on this
       exciting journey with you!
