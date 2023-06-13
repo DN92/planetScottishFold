@@ -41,6 +41,7 @@ const ClientQuestionnaire = () => {
   const [showIncluded, setShowIncluded] = useState(false)
   const [formValidated, setFormValidated] = useState(false)
   const [displayBadEmail, setDisplayBadEmail] = useState(false)
+  const [ssmAgreement, setSsmAgreement] = useState(true)
   const [error, setError] = useState('')
 
   const handleChange = (event) => {
@@ -403,6 +404,24 @@ const ClientQuestionnaire = () => {
               </>
             </div>
           </form>
+
+          <div className='questionnaire-ssm-agreement'>
+            <input 
+              type='checkbox' 
+              checked={ssmAgreement} 
+              onClick={()=>{setSsmAgreement(prev => !prev)}}>
+            </input>
+            <label>
+              <p> I agree to recieve text messages from Planet Scottish Fold. </p>
+              <p>
+                This allows us to announce new litters, notify you on sales, and provide general updates.
+              </p>
+              <p>
+                Cancel at any time by sending us a message through our <Link to="/contact" >Contact Page</Link> or by Replying 'stop' to any message.
+              </p>
+            </label>
+          </div>
+
           <div className='buttonsWrapper cq-form-buttons-bottom'>
             <button className='buttonStyle2' type="submit" form="clientQuestionnaire">Submit</button>
             <button className='buttonStyle2' type="reset" onClick={handleReset} >Reset</button>

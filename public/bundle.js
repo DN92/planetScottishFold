@@ -12683,6 +12683,7 @@ const ClientQuestionnaire = () => {
   const [showIncluded, setShowIncluded] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
   const [formValidated, setFormValidated] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
   const [displayBadEmail, setDisplayBadEmail] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
+  const [ssmAgreement, setSsmAgreement] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(true);
   const [error, setError] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('');
   const handleChange = event => {
     event.preventDefault();
@@ -13046,6 +13047,16 @@ const ClientQuestionnaire = () => {
     value: clientInfo.iG,
     onChange: handleChange
   })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "questionnaire-ssm-agreement"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    type: "checkbox",
+    checked: ssmAgreement,
+    onClick: () => {
+      setSsmAgreement(prev => !prev);
+    }
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, " I agree to recieve text messages from Planet Scottish Fold. "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "This allows us to announce new litters, notify you on sales, and provide general updates."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Cancel at any time by sending us a message through our ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Link, {
+    to: "/contact"
+  }, "Contact Page"), " or by Replying 'stop' to any message."))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "buttonsWrapper cq-form-buttons-bottom"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
     className: "buttonStyle2",
@@ -13373,7 +13384,7 @@ __webpack_require__.r(__webpack_exports__);
 
 const showMessageBox = true;
 const homeComponent = () => {
-  const messageArray = ["Furry Summer Sale! Get 20% off any of our kittens till the end of June!", " All kittens come with a health garuntee, video chats available on request!", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+  const messageArray = ["Furry Summer Sale! Get 20% off any of our kittens till the end of June!", " All kittens come with a health guarantee, video chats available on request!", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
     style: {
       color: 'var(--clr-500)'
     },

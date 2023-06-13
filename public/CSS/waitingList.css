@@ -94,7 +94,17 @@
   text-align: left;
 }
 
+.questionnaire-ssm-agreement {
+  display: flex;
+  margin: 1.5rem .5rem 1.5rem .5rem;
+}
 
+.questionnaire-ssm-agreement > input {
+  align-self:flex-start;
+  justify-self: flex-start;
+  width: 3rem;
+  transform: translate(0rem, .75rem);
+}
 
 @media (min-width: 50em) {
 
