@@ -6,7 +6,7 @@ const WhatsIncluded = () => {
         <ul>
             <li> most loyal and affectionate pawsonality well socialized kitten raised at home in warm and loving environment with other pets and children </li>
             <li> 2 vaccinations and deworming </li>
-            <li> Spay/Neuter and e-collar </li>
+            <li> Spay/Neuter</li>
             <li> TICA slip </li>
             <li> Nails clipped </li>
             <li> Microchip with free registration </li>
