@@ -65,7 +65,6 @@ const myConfig = {
     '$3000-$3500',
     '$2500-$3000',
     '$2000-$2500',
-    '$1500-$2000',
   ],
 
   // most important feature (of product - cat)
@@ -75,7 +74,6 @@ const myConfig = {
     'Appearance',
     'Show Quality',
     'Personality',
-    'Price',
   ],
   statusOptionsKitten: [
     'Available',
