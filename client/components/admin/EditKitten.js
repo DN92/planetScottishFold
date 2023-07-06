@@ -122,16 +122,6 @@ const EditKitten = () => {
               /> <br />
               </>
               <>
-                <label htmlFor="editKittenRegNum">Reg Num</label>
-                <input id="editKittenRegNum"
-                  type="text"
-                  name='regNum'
-                  placeholder='Registration Number'
-                  value={kittenToEdit.regNum}
-                  onChange={handleChange}
-                /> <br />
-              </>
-              <>
                 <label htmlFor="editKittenGender">Gender</label>
                 <select id="editKittenGender"
                   name="gender"

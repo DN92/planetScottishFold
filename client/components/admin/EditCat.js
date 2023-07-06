@@ -99,16 +99,6 @@ const EditCat = () => {
             /> <br />
           </>
           <>
-            <label htmlFor="catToEditRegNum">Registration#</label>
-            <input id="catToEditRegNum"
-              type="text"
-              name='regNum'
-              placeholder='Registration Number'
-              value={catToEdit.regNum}
-              onChange={handleChange}
-            /> <br />
-          </>
-          <>
             <label htmlFor="catToEditDob">Date of Birth</label>
             <input id="catToEditDob"
               type="text"

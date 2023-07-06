@@ -1,3 +1,5 @@
+'use client'
+
 import React from 'react'
 import AboutUs2 from './textComponents/AboutUs2'
 import MessageBox from './MessageBox'
@@ -8,7 +10,7 @@ const showMessageBox = true
 const homeComponent = () => {
 
   const messageArray = [
-    "Furry Summer Sale! Get 20% off any of our kittens till the end of June!"," All kittens come with a health guarantee, video chats available on request!",
+    "Summer Sale: 20% OFF any kitten. Get $400 OFF when getting two together. Sale ends 7/5/23!"," All kittens come with a health guarantee, video chats available on request!",
     <Link style={{color: 'var(--clr-500)'}} to='/waitinglistForm'>If interested, please apply here</Link>
   ]
 

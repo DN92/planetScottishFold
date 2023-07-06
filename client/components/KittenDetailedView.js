@@ -80,7 +80,6 @@ const KittenDetailedView = () => {
                 <p>{kitten.dob ? ('Date of Birth: ' + kitten.dob) : ''}</p>
                 <p>{kitten.mother ? ('Dam: ' + kitten.mother) : ''}</p>
                 <p>{kitten.father ? ('Sire: ' + kitten.father) : ''}</p>
-                <p>{kitten.regNum ? ('Registration Number: ' + kitten.regNum) : ''}</p>
                 <p>{kitten.description ?  ('Description: ' + kitten.description) : ''}</p>
               </div>
               <nav className='detailed-view-nav'>

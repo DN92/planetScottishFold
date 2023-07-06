@@ -60,7 +60,6 @@ const CatDetailedView = () => {
             <div className='detailedView-text'>
               <p>{cat.name}</p> <br />
               <p>{cat.breed}</p> <br />
-              <p>{cat.regNum ? ("Registration Number: " + cat.regNum) : ""}</p><br />
               <p> Ears: {cat.ears}</p> <br />
               <p> FurColor: {cat.furColor}</p> <br />
               <p> EyeColor: {cat.eyeColor}</p> <br />

@@ -71,7 +71,6 @@ const CreateCat = () => {
         <button onClick={handleRandomName}>Randomize Name</button>
       </>
       <>
-      </>
         <label htmlFor="catToCreateBreed">Breed</label>
         <input id="catToCreateBreed"
           type="text"
@@ -80,16 +79,7 @@ const CreateCat = () => {
           value={catToCreate.breed}
           onChange={handleChange}
       /> <br />
-      <>
       </>
-        <label htmlFor="catToCreateRegNum">Registration#</label>
-        <input id="catToCreateRegNum"
-          type="text"
-          name='regNum'
-          placeholder='Registration Number'
-          value={catToCreate.regNum}
-          onChange={handleChange}
-      /> <br />
       <>
         <label htmlFor="catToCreateDob">Date of Birth</label>
         <input id="catToCreateDob"
@@ -143,15 +133,6 @@ const CreateCat = () => {
           ))}
         </select>
       </>
-
-        {/* <input id='catToCreateLocation'
-          type='text'
-          name='location'
-          placeholder='Location'
-          value={catToCreate.location}
-          onChange={handleChange}
-        /> */}
-
       <>
         <label htmlFor="catToCreateDescription">Description</label>
         <textarea id="catToCreateDescription" name="description" cols="50" rows="8" placeholder='description'></textarea>

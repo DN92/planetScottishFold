@@ -108,16 +108,6 @@ const CreateKitten = () => {
             /> <br />
           </>
           <>
-            <label htmlFor="kittenToCreateRegNum">Registration#</label>
-            <input id="kittenToCreateRegNum"
-              type="text"
-              name='regNum'
-              placeholder='Registration Number'
-              value={kittenToCreate.regNum}
-              onChange={handleChange}
-            /> <br />
-          </>
-          <>
             <label htmlFor="kittenToCreateGender">Gender</label>
             <select id="kittenToCreateGender"
               name="gender"

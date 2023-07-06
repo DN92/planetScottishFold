@@ -28,9 +28,10 @@ module.exports = {
         loader: 'icon-maker'
       },
       {
-        test: /\.json$/,
-        loader: 'json-loader'
-      }
+        test: /\.json5$/,
+        loader: 'json5-loader',
+        type: 'javascript/auto', // Specify the type to avoid webpack warning
+      },
     ]
   }
 }
