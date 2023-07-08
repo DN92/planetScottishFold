@@ -5,12 +5,12 @@ import AboutUs2 from './textComponents/AboutUs2'
 import MessageBox from './MessageBox'
 import { Link } from 'react-router-dom'
 
-const showMessageBox = false
+const showMessageBox = true
 
 const homeComponent = () => {
 
   const messageArray = [
-    "Summer Sale: 20% OFF any kitten. Get $400 OFF when getting two together. Sale ends 7/5/23!"," All kittens come with a health guarantee, video chats available on request!",
+    "Summer Sale: 20% OFF any kitten. Get $400 OFF when getting two together"," All kittens come with a health guarantee, video chats available on request!",
     <Link style={{color: 'var(--clr-500)'}} to='/waitinglistForm'>If interested, please apply here</Link>
   ]
 
