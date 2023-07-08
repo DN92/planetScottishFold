@@ -5,7 +5,7 @@ import AboutUs2 from './textComponents/AboutUs2'
 import MessageBox from './MessageBox'
 import { Link } from 'react-router-dom'
 
-const showMessageBox = true
+const showMessageBox = false
 
 const homeComponent = () => {
 
