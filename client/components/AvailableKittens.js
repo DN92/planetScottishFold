@@ -132,13 +132,13 @@ const AvailableKittens = () => {
         </div>
         }
           <div>
-            <h3>Prices:</h3>
+            <h4>Prices:</h4>
             <p>Scottish Straight Kittens: $2000 - $2400</p>
             <p>Scottish Fold Kittens: $2500 - $3500</p>
-            <p>For Serious Inquiries, Apply <Link to='/availableKittens '>HERE</Link></p>
+            <p>For Serious Inquiries, Apply <Link to='/waitingListForm '>HERE</Link></p>
           </div>
           <div>
-            <h3>Delivery</h3>
+            <h4>Delivery:</h4>
             <p>For a LIMITED TIME only, we are offering discouted deliveries to all states.</p>
           </div>
           <div className='adv-search-wrapper'>
