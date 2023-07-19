@@ -12426,7 +12426,9 @@ const AvailableKittens = () => {
     onClick: handleViewIncluded
   }, "Whats Included")), showIncluded && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "waitingList-info"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_textComponents_WhatsIncluded__WEBPACK_IMPORTED_MODULE_5__["default"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_textComponents_WhatsIncluded__WEBPACK_IMPORTED_MODULE_5__["default"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h3", null, "Prices:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Scottish Straight Kittens: $2000 - $2400"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Scottish Fold Kittens: $2500 - $3500"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "For Serious Inquiries, Apply ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(Link, {
+    to: "/availableKittens"
+  }, "HERE"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "adv-search-wrapper"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
     id: "adv-search-checkbox",
@@ -13386,7 +13388,7 @@ __webpack_require__.r(__webpack_exports__);
 
 const showMessageBox = true;
 const homeComponent = () => {
-  const messageArray = ["Summer Sale: 20% OFF any kitten. Get $400 OFF when getting two together. Sale ends 7/5/23!", " All kittens come with a health guarantee, video chats available on request!", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+  const messageArray = ["Summer Sale: 20% OFF any kitten. Get $400 OFF when getting two together", " All kittens come with a health guarantee, video chats available on request!", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
     style: {
       color: 'var(--clr-500)'
     },
@@ -14006,7 +14008,9 @@ const SingleKitten = props => {
   } = kitten;
   const image = mainImageSrcValue ? mainImageSrcValue : "/catPictures/catError3.gif";
   const model = kitten?.isAdultCat ? 'catAsKitten' : 'kittens';
-  const adjustedPrice = Math.round(parseInt(kitten.price, 10) / 50 * _myModelsConfig__WEBPACK_IMPORTED_MODULE_2__.globalPriceModifier) * 50;
+
+  // const adjustedPrice = Math.round(((parseInt(kitten.price, 10) / 50) * globalPriceModifier)) * 50
+
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: kitten?.status === 'Available' ? 'singleKitten' : 'singleKitten kitten-sold'
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
@@ -14018,12 +14022,7 @@ const SingleKitten = props => {
     kitten: kitten
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "singleKittenInfo"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, kitten?.status === "Available" ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Hi I'm ", name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "I am a ", breed, " ", gender), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "My color is "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, furColor), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "I have ", eyeColor, " eyes"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_LineThroughPTagOverlay__WEBPACK_IMPORTED_MODULE_3__["default"], {
-    message: `Price: $${adjustedPrice}`,
-    classes: ['red']
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
-    className: "bold-green font-1-rem"
-  }, "Summer Sale: $", Math.floor(adjustedPrice * .8)), (0,_myModelsConfig__WEBPACK_IMPORTED_MODULE_2__.isPrivileged)(type) && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Mother: ", mother), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Father: ", father), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Status: ", status))) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, kitten.status), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Price: $", Math.round(parseInt(kitten.price, 10) / 50 * _myModelsConfig__WEBPACK_IMPORTED_MODULE_2__.globalPriceModifier) * 50)))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, kitten?.status === "Available" ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Hi I'm ", name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "I am a ", breed, " ", gender), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "My color is "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, furColor), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "I have ", eyeColor, " eyes"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Mother: ", mother), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Father: ", father), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Status: ", status)), "}") : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, kitten.status)))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "singleKitten__button"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
     to: (0,_myModelsConfig__WEBPACK_IMPORTED_MODULE_2__.isPrivileged)(type) ? '/editKitten' : `/kittenDetailed/${model}/${id}`,
@@ -14032,7 +14031,7 @@ const SingleKitten = props => {
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
     className: "btnS1"
-  }, (0,_myModelsConfig__WEBPACK_IMPORTED_MODULE_2__.isPrivileged)(type) ? 'Edit' : 'Price + Details'))));
+  }, (0,_myModelsConfig__WEBPACK_IMPORTED_MODULE_2__.isPrivileged)(type) ? 'Edit' : 'Details'))));
 };
 /* harmony default export */ __webpack_exports__["default"] = (SingleKitten);
 
@@ -16733,7 +16732,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 
 const WhatsIncluded = () => {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("ul", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, " most loyal and affectionate pawsonality well socialized kitten raised at home in warm and loving environment with other pets and children "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, " 2 vaccinations and deworming "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, " Spay/Neuter"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, " TICA slip "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, " Nails clipped "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, " Microchip with free registration "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, " 1 month Trupanion insurance (NY & FL excluded) "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, " 3 years health guarantee "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, " 1 year FIP disease coverage "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, " litter and scratch board trained kitten "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, " lifetime breeder support weekly updates with photos and/or videos "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, " mystery gift kit full of goodies FaceTime is available before or after the reservation "));
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("ul", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, " most loyal and affectionate pawsonality"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, " well socialized kitten raised at home in warm and loving environment with other pets and children "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, " 2 vaccinations and deworming "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, " Spay/Neuter"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, " TICA slip "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, " Nails clipped "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, " Microchip"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, " 1 month Trupanion insurance (NY & FL excluded) "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, " 3 years health guarantee "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, " 1 year FIP disease coverage "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, " litter and scratch board trained kitten "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, " lifetime breeder support"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, " weekly updates with photos and/or videos "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, " mystery gift kit full of goodies"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", null, " FaceTime is available before or after the reservation "));
 };
 /* harmony default export */ __webpack_exports__["default"] = (WhatsIncluded);
 
