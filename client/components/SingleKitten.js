@@ -55,7 +55,6 @@ const SingleKitten = (props) => {
                   <p>Father: {father}</p>
                   <p>Status: {status}</p>
                 </>
-              }
             </>
             :
             <>
