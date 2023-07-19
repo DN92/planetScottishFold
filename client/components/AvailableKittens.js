@@ -138,7 +138,8 @@ const AvailableKittens = () => {
             <p>For Serious Inquiries, Apply <Link to='/availableKittens '>HERE</Link></p>
           </div>
           <div>
-            <h3>For a LIMITED TIME only, we are offering discouted deliveries to all states.</h3>
+            <h3>Delivery</h3>
+            <p>For a LIMITED TIME only, we are offering discouted deliveries to all states.</p>
           </div>
           <div className='adv-search-wrapper'>
             <button
