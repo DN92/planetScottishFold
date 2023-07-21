@@ -12,7 +12,9 @@ const CatDetailedView = () => {
   const location = useLocation()
   const {type} =useContext(MeContext)
   const {MOTHERorFATHER, id} = useParams()
-  const [cat, setCat] = useState(location.state?.cat ?? null)
+  const [cat, setCat] = useState(
+    // location.state?.cat ?? null
+    )
   const [albumPaths, setAlbumPaths] = useState([])
   const [error, setError] = useState(location.state?.error ?? null)
 
