@@ -10,7 +10,6 @@ import MyCarousel from './carousel/MyCarousel.js'
 //  /catDetailed
 const CatDetailedView = () => {
   const location = useLocation()
-  console.log(location)
   const {type} =useContext(MeContext)
   const {MOTHERorFATHER, id} = useParams()
   const [cat, setCat] = useState(location.state?.cat ?? null)
@@ -18,7 +17,7 @@ const CatDetailedView = () => {
   const [error, setError] = useState(location.state?.error ?? null)
 
   useEffect(() => {
-    !cat && id && fetchEffect(
+    id && fetchEffect(
       [setCat, setError],
       'get',
       `/api/${MOTHERorFATHER}s?id=${id}`
