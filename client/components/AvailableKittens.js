@@ -4,6 +4,8 @@ import ErrorFill from './ErrorFill'
 import { fetchEffect } from './axiosHandlers/fetchEffect'
 import KittenFilter from './KittensFilter'
 import WhatsIncluded from './textComponents/WhatsIncluded'
+import { Link } from 'react-router-dom'
+
 
 //  /available Kittens
 const AvailableKittens = () => {
@@ -129,7 +131,16 @@ const AvailableKittens = () => {
             <WhatsIncluded />
         </div>
         }
-
+          <div>
+            <h4>Prices:</h4>
+            <p>Scottish Straight Kittens: $2000 - $3000</p>
+            <p>Scottish Fold Kittens: $2500 - $3900</p>
+            <p>For Serious Inquiries, Apply <Link to='/waitingListForm '>HERE</Link></p>
+          </div>
+          <div>
+            <h4>Delivery:</h4>
+            <p>For a LIMITED TIME only, we are offering discouted deliveries to all states.</p>
+          </div>
           <div className='adv-search-wrapper'>
             <button
               id='adv-search-checkbox'

@@ -26,7 +26,7 @@ const SingleKitten = (props) => {
   const image = mainImageSrcValue ? mainImageSrcValue : "/catPictures/catError3.gif"
   const model = kitten?.isAdultCat ? 'catAsKitten' : 'kittens'
 
-  const adjustedPrice = Math.round(((parseInt(kitten.price, 10) / 50) * globalPriceModifier)) * 50
+  // const adjustedPrice = Math.round(((parseInt(kitten.price, 10) / 50) * globalPriceModifier)) * 50
 
   return (
     <div className={kitten?.status === 'Available' ? 'singleKitten' : 'singleKitten kitten-sold'}>
@@ -44,24 +44,23 @@ const SingleKitten = (props) => {
               <p>My color is </p>
               <p>{furColor}</p>
               <p>I have {eyeColor} eyes</p>
-              <LineThroughPTagOverlay 
+              {/* <LineThroughPTagOverlay
                 message={`Price: $${adjustedPrice}`}
                 classes={['red', ]}
-              />
-              <p className='bold-green font-1-rem'>Summer Sale: ${Math.floor(adjustedPrice * .8)}</p>
-              {isPrivileged(type) &&
+              /> */}
+              {/* <p className='bold-green font-1-rem'>Summer Sale: ${Math.floor(adjustedPrice * .8)}</p>
+              {isPrivileged(type) && */}
                 <>
                   <p>Mother: {mother}</p>
                   <p>Father: {father}</p>
                   <p>Status: {status}</p>
                 </>
-              }
             </>
             :
             <>
               <p>{name}</p>
               <p>{kitten.status}</p>
-              <p>Price: ${(Math.round(((parseInt(kitten.price, 10) / 50) * globalPriceModifier ))) * 50}</p>
+              {/* <p>Price: ${(Math.round(((parseInt(kitten.price, 10) / 50) * globalPriceModifier ))) * 50}</p> */}
             </>
           }
         </>
@@ -71,7 +70,7 @@ const SingleKitten = (props) => {
         to={isPrivileged(type) ? '/editKitten' : `/kittenDetailed/${model}/${id}`}
         state={{kitten: kitten}}
         >
-          <button className='btnS1'>{isPrivileged(type) ? 'Edit' : 'Price + Details'}</button>
+          <button className='btnS1'>{isPrivileged(type) ? 'Edit' : 'Details'}</button>
         </Link>
       </div>
     </div>

@@ -146,16 +146,21 @@ const ClientQuestionnaire = () => {
           {showIncluded &&
             <div className='waitingList-info'>
               <ul>
-                <li>1 year health guarantee (covers hereditary defects and offers a replacement kitten)</li>
-                <li>age appropriate vaccinations and deworming </li>
-                <li>spay/neuter once kitten is at least 12 weeks old (only NC kittens)</li>
-                <li>microchip</li>
-                <li>well socialized kitten raised at home in warm and loving environment with other pets and children</li>
-                <li>weaned off and litter box trained kitten</li>
-                <li>weekly updates with photos and/or videos</li>
-                <li>lifetime breeder support</li>
-                <li>30 days FREE pet insurance (NY and FL excluded) </li>
-                <li>FaceTime is available before or after the reservation. </li>
+                <li> most loyal and affectionate pawsonality</li>
+                <li> well socialized kitten raised at home in warm and loving environment with other pets and children </li>
+                <li> 2 vaccinations and deworming </li>
+                <li> Spay/Neuter</li>
+                <li> TICA slip </li>
+                <li> Nails clipped </li>
+                <li> Microchip</li>
+                <li> 1 month Trupanion insurance (NY & FL excluded) </li>
+                <li> 3 years health guarantee </li>
+                <li> 1 year FIP disease coverage </li>
+                <li> litter and scratch board trained kitten </li>
+                <li> lifetime breeder support</li>
+                <li> weekly updates with photos and/or videos </li>
+                <li> mystery gift kit full of goodies</li>
+                <li> FaceTime is available before or after the reservation </li>
               </ul>
             </div>
 
@@ -406,9 +411,9 @@ const ClientQuestionnaire = () => {
           </form>
 
           <div className='questionnaire-ssm-agreement'>
-            <input 
-              type='checkbox' 
-              checked={ssmAgreement} 
+            <input
+              type='checkbox'
+              checked={ssmAgreement}
               onClick={()=>{setSsmAgreement(prev => !prev)}}>
             </input>
             <label>

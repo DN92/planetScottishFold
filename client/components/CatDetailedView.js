@@ -36,7 +36,7 @@ const CatDetailedView = () => {
       fetchEffect(
         [setCat, setError],
         'get',
-        `/api/kittens?id=${id}`
+        `/api/${MOTHERorFATHER}?id=${id}`
       )
     }
 
