@@ -135,6 +135,7 @@ const AvailableKittens = () => {
             <h4>Prices:</h4>
             <p>Scottish Straight Kittens: $2000 - $3000</p>
             <p>Scottish Fold Kittens: $2500 - $3900</p>
+            <p>Retirees $500-$800</p>
             <p>For Serious Inquiries, Apply <Link to='/waitingListForm '>HERE</Link></p>
           </div>
           <div>
