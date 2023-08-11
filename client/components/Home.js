@@ -10,7 +10,7 @@ const showMessageBox = true
 const homeComponent = () => {
 
   const messageArray = [
-    "End of Summer Sale."," All kittens are $500 until August 22nd."
+    "End of Summer Sale.", "$500 off all kittens until August 22nd."
   ]
 
   return (
