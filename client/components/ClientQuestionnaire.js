@@ -372,7 +372,7 @@ const ClientQuestionnaire = () => {
                 </div>
               </>
               <>
-                <label htmlFor="clientForm" className='required'>Budget</label>
+                <label htmlFor="clientForm" className='required'>{'Budget (delivery not included)'}</label>
                 <select name="budget" value={clientInfo.budget} onChange={handleChange} required>
                   <option value={''}></option>
                   {budgetRanges.map((range, index) => (

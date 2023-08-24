@@ -60,11 +60,21 @@ const myConfig = {
   defaultCatPictureSrc: '/catPictures/cat404.png',
 
   budgetRanges: [
-    '$4000+',
-    '$3500-$4000',
-    '$3000-$3500',
-    '$2500-$3000',
-    '$2000-$2500',
+    'under $1500',
+    '$1500 max',
+    '$1600 max',
+    '$1700 max',
+    '$1800 max',
+    '$1900 max',
+    '$2000 max',
+    '$2200 max',
+    '$2400 max',
+    '$2600 max',
+    '$2800 max',
+    '$3000 max',
+    '$3500 max',
+    '$4000 max',
+    'Above $4000',
   ],
 
   // most important feature (of product - cat)
@@ -136,7 +146,7 @@ const myConfig = {
     "",
     "High Point, North Carolina",
   ],
-  globalPriceModifier: 1.25, 
+  globalPriceModifier: 1.25,
 }
 
 myConfig.isPrivileged = (type) => (myConfig.userTypes.slice(2).includes(type))

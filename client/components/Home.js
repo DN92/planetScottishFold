@@ -10,7 +10,7 @@ const showMessageBox = true
 const homeComponent = () => {
 
   const messageArray = [
-    "End of Summer Sale.", "$500 off all kittens until August 22nd."
+    "Free Delivery within Continental United States on all kittens over $2000."
   ]
 
   return (
