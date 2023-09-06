@@ -13,9 +13,21 @@ const AvailableKittens = () => {
 
   const messageArray1 = [
     'New litters will be announced soon!',
-    <Link>
+    <Link to='/waitingListForm'>
       Apply here to be notified'
     </Link>,
+    ]
+
+    const messageArray2 = [
+      <>
+        <Link to='/catDetailedView/mother/11'>Vasilisa</Link> + <Link to='/catDetailedView/father/2'>Cupid</Link> = kittens born on 7/22/2023
+      </>,
+    ]
+
+    const messageArray3 = [
+      <>
+        <Link to='/catDetailedView/mother/12'>Nova</Link> + <Link to='/catDetailedView/father/2'>Cupid</Link> = kittens born on 8/12/2023
+      </>,
     ]
 
   const getWeight = (obj, filterer) => {
