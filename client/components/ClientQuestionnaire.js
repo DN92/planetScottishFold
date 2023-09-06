@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import {furColors, eyeColors, mifOptions, budgetRanges, earOptions, genderOptions, willBreedOptions, hasAllergiesOptions, foundUsByOptions} from "../../myModelsConfig"
+import {furColorsAdmin, eyeColors, mifOptions, budgetRanges, earOptions, genderOptions, willBreedOptions, hasAllergiesOptions, foundUsByOptions} from "../../myModelsConfig"
 import handleFormChange from '../customHandlers/handleFormChange'
 import useLocalStorage from '../customHooks/useLocalStorage'
 import MeContext from '../MeContextPro'
@@ -357,7 +357,7 @@ const ClientQuestionnaire = () => {
               <>
                 <label htmlFor='clientFormFurColors'>Fur Color Preferences</label>
                 <div id='clientFormFurColors' className='cq-furcolors-wrapper'>
-                  {furColors.map((fur, index) => (
+                  {furColorsAdmin.map((fur, index) => (
                     <div key={index} className='cq-single-color-wrapper'>
                       <input id={`cq-fur-${fur}`}
                         type='checkbox'
