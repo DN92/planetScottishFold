@@ -144,6 +144,18 @@ const AvailableKittens = () => {
           closeOnCLick: false,
         }}
       />
+      <MessageBox
+        messageArray={messageArray2}
+        options={{
+          closeOnCLick: false,
+        }}
+      />
+      <MessageBox
+        messageArray={messageArray3}
+        options={{
+          closeOnCLick: false,
+        }}
+      />
       <h2 style={{margin: 'auto'}}>Available Kittens</h2>
       {error && <ErrorFill msg={error} />}
       {!error &&
