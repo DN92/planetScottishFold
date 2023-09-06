@@ -5,10 +5,18 @@ import { fetchEffect } from './axiosHandlers/fetchEffect'
 import KittenFilter from './KittensFilter'
 import WhatsIncluded from './textComponents/WhatsIncluded'
 import { Link } from 'react-router-dom'
+import MessageBox from './MessageBox'
 
 
 //  /available Kittens
 const AvailableKittens = () => {
+
+  const messageArray1 = [
+    'New litters will be announced soon!',
+    <Link>
+      Apply here to be notified'
+    </Link>,
+    ]
 
   const getWeight = (obj, filterer) => {
     let score = 0;
@@ -118,6 +126,12 @@ const AvailableKittens = () => {
 
   return (
     <div className='kittens'>
+      <MessageBox
+        messageArray={messageArray1}
+        options={{
+          closeOnCLick: false,
+        }}
+      />
       <h2 style={{margin: 'auto'}}>Available Kittens</h2>
       {error && <ErrorFill msg={error} />}
       {!error &&
