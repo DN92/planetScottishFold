@@ -56,7 +56,7 @@ const ConfirmClientQuestionnaire = () => {
             <li>State:</li>
             <li>Gender Preference:</li>
             <li>Ear Preference:</li>
-            <li>Eye Color Preference</li>
+            {/* <li>Eye Color Preference</li> */}
             <li>Most Important Feature:</li>
             <li>Price Range:</li>
             <li>Found Us By:</li>
@@ -76,7 +76,7 @@ const ConfirmClientQuestionnaire = () => {
             <span>{clientInfo?.state}</span><br />
             <span>{clientInfo?.gender}</span><br />
             <span>{clientInfo?.ears}</span><br />
-            <span>{clientInfo?.eyeColor} </span><br />
+            {/* <span>{clientInfo?.eyeColor} </span><br /> */}
             <span>{clientInfo?.mif}</span><br />
             <span>{clientInfo?.budget}</span><br />
             <span>{clientInfo?.foundUsBy}</span><br />

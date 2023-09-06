@@ -345,7 +345,7 @@ const ClientQuestionnaire = () => {
                   ))}
                 </select>
               </>
-              <>
+              {/* <>
                 <label htmlFor="clientFormEyeColor">Eye Color</label>
                 <select id="clientFormEyeColor" name="eyeColor" value={clientInfo.eyeColor} onChange={handleChange}>
                 <option value={''}></option>
@@ -353,7 +353,7 @@ const ClientQuestionnaire = () => {
                     <option key={index} value={color}>{color}</option>
                   ))}
                 </select>
-              </>
+              </> */}
               <>
                 <label htmlFor='clientFormFurColors'>Fur Color Preferences</label>
                 <div id='clientFormFurColors' className='cq-furcolors-wrapper'>
@@ -381,7 +381,7 @@ const ClientQuestionnaire = () => {
                 </select>
               </>
               <>
-                <label htmlFor="clientFormMif" className='required'>What Is Most Important</label>
+                <label htmlFor="clientFormMif" className='required'>What Is Most Important to you?</label>
                 <select id='clientFormMif' name="mif" value={clientInfo.mif} onChange={handleChange} required>
                   <option value={''}></option>
                   {mifOptions.map((feature, index) => (
