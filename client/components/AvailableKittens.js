@@ -14,7 +14,7 @@ const AvailableKittens = () => {
   const messageArray1 = [
     'New litters will be announced soon!',
     <Link to='/waitingListForm'>
-      Apply here to be notified'
+      Apply here to be notified
     </Link>,
     ]
 
