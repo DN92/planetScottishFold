@@ -8,7 +8,7 @@ const NavBar = () => {
     <nav className='navBar'>
       <Link to="/home">HOME</Link>
       <Link className='shrink-text' to="/waitingListForm">APPLY TO ADOPT</Link>
-      <Link to="/availableKittens">OUR KITTENS</Link>
+      <Link to="/availableKittens">KITTENS</Link>
       <Link to='/viewCats'>DAMS AND SIRES</Link>
       <Link to="/reviews">REVIEWS</Link>
       <Link to="/contact">CONTACT</Link>

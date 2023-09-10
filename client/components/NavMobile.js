@@ -41,7 +41,7 @@ const NavMobile = ({setShowMobileNav}) => {
         :
         <>
           <Link to="/home">Home</Link>
-          <Link to="/availableKittens">Our Kittens</Link>
+          <Link to="/availableKittens">Kittens For Sale</Link>
           <Link to="/viewCats" >Dams and Sires</Link>
           <Link to="/reviews">Reviews</Link>
           <Link to="/waitingListForm">Apply To Adopt</Link>
