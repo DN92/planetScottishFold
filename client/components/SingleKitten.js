@@ -44,6 +44,7 @@ const SingleKitten = (props) => {
               <p>My color is </p>
               <p>{furColor}</p>
               <p>I have {eyeColor} eyes</p>
+              <p className='bold-green font-1-rem'>${kitten.price}</p>
               {/* <LineThroughPTagOverlay
                 message={`Price: $${adjustedPrice}`}
                 classes={['red', ]}

@@ -13,8 +13,8 @@ import LineThroughPTagOverlay from './LineThroughPTagOverlay'
 const KittenDetailedView = () => {
   const location = useLocation()
   const navigate = useNavigate()
-  const {type} =useContext(MeContext)
-  const {id} = useParams()
+  const { type } =useContext(MeContext)
+  const { id } = useParams()
 
   const fromEdit = location.state?.fromEdit
   const [kitten, setKitten] = useState(location.state?.kitten ?? null)
@@ -71,6 +71,7 @@ const KittenDetailedView = () => {
                 <p>Location: {kitten.location}</p>
                 {/* <p className='red' style={{textDecoration: 'line-through'}}>{`Price: $${adjustedPrice}`}</p> */}
                 {/* <p className='bold-green font-1-rem'>Summer Sale: ${Math.floor(adjustedPrice * .8)}</p> */}
+                <p className='bold-green  font-1-rem'>Price: ${kitten.price}</p>
                 <br />
                 <p>{kitten.breed}</p>
                 <p>Gender: {kitten.gender}</p>
