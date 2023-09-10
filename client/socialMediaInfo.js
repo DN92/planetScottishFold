@@ -1,7 +1,7 @@
 const socialMediaInfo = [
   {
     site: 'instagram',
-    href: 'https://www.instagram.com/floofylicious_cattery/',
+    href: 'https://www.instagram.com/planetscottishfoldcattery',
     iconSrc: '/socialMediaIcons/instagram.png'
   },
   {
