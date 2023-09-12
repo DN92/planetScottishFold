@@ -22,9 +22,6 @@ const AvailableKittens = () => {
       </Link>,
       <br />,
       <>
-        <Link to='/catDetailedView/mother/11'>Vasilisa</Link> + <Link to='/catDetailedView/father/2'>Cupid</Link> = kittens born on 7/22/2023
-      </>,
-      <>
         <Link to='/catDetailedView/mother/12'>Nova</Link> + <Link to='/catDetailedView/father/2'>Cupid</Link> = kittens born on 8/12/2023
       </>,
     ]
@@ -86,7 +83,7 @@ const AvailableKittens = () => {
       case 'init':
         return  kittens.filter(kitten => kitten.status === "Available")
           .sort((a, b) => {
-            if(b.mother < a.mother) {
+            if(Number(b.price) < Number(a.price)) {
               return 1
             } else {
               return -1
