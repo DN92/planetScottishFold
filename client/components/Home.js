@@ -9,7 +9,7 @@ const showMessageBox = true
 const homeComponent = () => {
 
   const messageArray = [
-    "Delivery to VA, MD, NJ, available on 9/27/2023"
+    "Delivery to VA, MD, PA, NJ, schedueled on 9/27/2023",
   ]
 
   return (
