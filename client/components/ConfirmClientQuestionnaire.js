@@ -1,7 +1,6 @@
   import React, {useState, useEffect} from "react";
 import ErrorFill from './ErrorFill'
 import { fetchEffect } from "./axiosHandlers/fetchEffect";
-import { getUserIP } from '../../myUtilFuncs.js'
 import { useNavigate, useLocation } from "react-router-dom";
 
 // props are pushed through local storage since we are using storage anyway, to make sure client doesn't have to reenter the same information ad nauseam
@@ -19,7 +18,6 @@ const ConfirmClientQuestionnaire = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault()
-    clientInfo.IPaddress = await getUserIP() ?? 0.00
 
     fetchEffect(
       [setInfoPosted,setError],
