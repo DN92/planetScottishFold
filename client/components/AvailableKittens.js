@@ -83,7 +83,7 @@ const AvailableKittens = () => {
       case 'init':
         return  kittens.filter(kitten => kitten.status === "Available")
           .sort((a, b) => {
-            if(Number(b.price) < Number(a.price)) {
+            if(Number(a.price) < Number(b.price)) {
               return 1
             } else {
               return -1
