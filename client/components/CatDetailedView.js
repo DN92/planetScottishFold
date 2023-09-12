@@ -23,7 +23,7 @@ const CatDetailedView = () => {
       'get',
       `/api/${MOTHERorFATHER}s?id=${id}`
     )
-  }, [])
+  }, [cat, id, MOTHERorFATHER])
 
   useEffect(() => {
     async function getPaths(id) {
