@@ -29,7 +29,7 @@ const CatDetailedView = () => {
     async function getPaths(id) {
       const response = await fetch(`/api/supabase/urlsByBucket?bucket=${MOTHERorFATHER.toLowerCase()}${id}&withToken=true`)
       const result =  await response.json()
-      setAlbumPaths(result)
+      result && setAlbumPaths(result)
     }
 
     if(!cat && id) {
