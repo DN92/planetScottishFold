@@ -18,12 +18,12 @@ const CatDetailedView = () => {
   const [error, setError] = useState(location.state?.error ?? null)
 
   useEffect(() => {
-    !cat && id && fetchEffect(
+    id && fetchEffect(
       [setCat, setError],
       'get',
       `/api/${MOTHERorFATHER}s?id=${id}`
     )
-  }, [cat, id, MOTHERorFATHER])
+  }, [id, MOTHERorFATHER])
 
   useEffect(() => {
     async function getPaths(id) {
