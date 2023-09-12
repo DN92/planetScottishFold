@@ -9,7 +9,7 @@ const showMessageBox = true
 const homeComponent = () => {
 
   const messageArray = [
-    "Free Delivery within Continental United States on all kittens over $2000."
+    "Delivery to VA, MD, NJ, available on 9/27/2023"
   ]
 
   return (

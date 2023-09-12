@@ -32,14 +32,6 @@ const CatDetailedView = () => {
       result && setAlbumPaths(result)
     }
 
-    // if(!cat && id) {
-    //   fetchEffect(
-    //     [setCat, setError],
-    //     'get',
-    //     `/api/${MOTHERorFATHER}?id=${id}`
-    //   )
-    // }
-
     if(id) {
       getPaths(id)
     }
