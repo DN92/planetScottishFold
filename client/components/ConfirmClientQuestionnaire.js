@@ -19,7 +19,7 @@ const ConfirmClientQuestionnaire = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault()
-    clientInfo.IPaddress = await getUserIP()
+    clientInfo.IPaddress = await getUserIP() ?? 0.00
 
     fetchEffect(
       [setInfoPosted,setError],
