@@ -61,7 +61,7 @@ const SingleKitten = (props) => {
             <>
               <p>{name}</p>
               <p>{kitten.status}</p>
-              <p className='bold-green font-1-rem'>${kitten.price}</p>
+              <p className='font-1-rem'>${kitten.price}</p>
               {/* <p>Price: ${(Math.round(((parseInt(kitten.price, 10) / 50) * globalPriceModifier ))) * 50}</p> */}
             </>
           }
