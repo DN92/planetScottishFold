@@ -10,7 +10,9 @@ router.get('/', async (req, res, next) => {
     if(req.query.id) {
       res.send(await Kitten.findByPk(req.query.id))
     } else {
-      res.send(await Kitten.findAll())
+      const kittens = await Kitten.findAll()
+      const shownOnly = kittens.filter(kitten => kitten.isHidden === 'false')
+      res.send(shownOnly)
     }
   } catch (err) {
     next(err)
