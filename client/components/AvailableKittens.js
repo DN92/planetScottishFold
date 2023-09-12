@@ -12,7 +12,7 @@ import MessageBox from './MessageBox'
 const AvailableKittens = () => {
 
   const messageArray1 = [
-    "Delivery to VA, MD, PA, NJ, schedueled on 9/27/2023",
+    "Delivery to VA, MD, PA, NJ, scheduled on 9/27/2023",
     ]
 
     const messageArray2 = [
@@ -23,6 +23,9 @@ const AvailableKittens = () => {
       <br />,
       <>
         <Link to='/catDetailedView/mother/12'>Nova</Link> + <Link to='/catDetailedView/father/2'>Cupid</Link> = kittens born on 8/12/2023
+      </>,
+      <>
+        <Link to='/catDetailedView/mother/7'>Ladybug</Link> + <Link to='/catDetailedView/father/2'>Cupid</Link> = kittens born on 8/27/2023
       </>,
     ]
 
@@ -160,9 +163,10 @@ const AvailableKittens = () => {
         </div>
         }
           <div>
-            <p>Free Delivery within Continental United States on all kittens over $2000.</p>
+            <p>Free Delivery within Continental United States on all kittens over $2500.</p>
             <p>For Serious Inquiries, Apply <Link to='/waitingListForm '>HERE</Link></p>
           </div>
+          <br />
           <div className='adv-search-wrapper'>
             <button
               id='adv-search-checkbox'
