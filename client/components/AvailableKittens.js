@@ -20,6 +20,7 @@ const AvailableKittens = () => {
       <Link to='/waitingListForm'>
         Apply here to be notified
       </Link>,
+      <br />,
       <>
         <Link to='/catDetailedView/mother/11'>Vasilisa</Link> + <Link to='/catDetailedView/father/2'>Cupid</Link> = kittens born on 7/22/2023
       </>,
@@ -77,7 +78,7 @@ const AvailableKittens = () => {
   const unavailableKittens = useMemo(() => {
     return kittens.filter(kitten => kitten.status !== "Available" )
       .sort((a, b) => Number(b.price) - Number(a.price))
-      .filter(kitten => kitten.price > 1799)
+      .filter(kitten => kitten.price > 1899)
   },[kittens]);
 
   const [availableKittens, dispatchAvailableKittens] = useReducer((state, action) => {
