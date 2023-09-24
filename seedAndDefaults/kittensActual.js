@@ -1,4 +1,3 @@
-
 kittensArray = []
 
 module.exports = kittensArray ;

@@ -32,7 +32,7 @@ const AboutUs = () => {
     </div>
    <h5>About Our Scottish Fold Cattery</h5>
    <article>
-    <p >Planet Scottish fold is a small cattery located in High Point, North Carolina USA. We breed Scottish fold and Scottish straight kittens as well as British Shorthair kittens with the intent to improve the breeds.
+    <p >Planet Scottish fold is a small cattery located in Winston Salem, North Carolina USA. We breed Scottish fold and Scottish straight kittens as well as British Shorthair kittens with the intent to improve the breeds.
     </p>
     <p>
       We also have sister catteries that are located in Bergenfield, New Jersey and Pompano Beach, Florida.

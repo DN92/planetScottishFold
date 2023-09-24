@@ -23,7 +23,7 @@ const OurStory = () => {
       <br/>
       <br/>
 
-      Today, my sister still breeds in Bergenfield, NJ while I am in High Point, NC.
+      Today, my sister still breeds in Bergenfield, NJ while I am in Winston Salem, NC.
       <br/>
       When you inquire, I am the one who responds and guides you through the buying process. I am also the one who provides life time breeders support. However, if my sister has to be involved, she's always there to give her support and guidance!
       <br/>
