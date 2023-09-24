@@ -12,7 +12,7 @@ import MessageBox from './MessageBox'
 const AvailableKittens = () => {
 
   const messageArray1 = [
-    "Delivery to VA, MD, PA, NJ, scheduled on 9/27/2023",
+    "Delivery to VA, MD, PA, NJ on 9/27/2023",
     ]
 
     const messageArray2 = [

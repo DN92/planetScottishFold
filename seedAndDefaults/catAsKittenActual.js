@@ -10,7 +10,7 @@ catAsKittenArray = [
     dob: 'August 3rd, 2020',
     description: `Iris is our 2 year old retiree. She is a very affectionate and loyal girl. She loves to be pet and wants to be the only cat in the house. It's important for her to find a household where she is the only cat. She will be ready for pickup in September, 2022. She will be spayed and will have up to date vaccinations`,
     price: 1500,
-    location: 'High Point, North Carolina',
+    location: 'Winston Salem, North Carolina',
     mainImageSrcValue: `/catPictures/sellIris.jpg`
   },
   {

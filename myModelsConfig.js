@@ -134,7 +134,7 @@ const myConfig = {
   emailsFrom: '"Planet Scottish Fold" <planetscottishfold@outlook.com>',
   locationOptions: [
     "",
-    "High Point, North Carolina",
+    "Winston Salem, North Carolina",
   ],
   globalPriceModifier: 1.25,
 }
