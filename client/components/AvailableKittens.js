@@ -11,10 +11,6 @@ import MessageBox from './MessageBox'
 //  /available Kittens
 const AvailableKittens = () => {
 
-  const messageArray1 = [
-    "Delivery to VA, MD, PA, NJ on 9/27/2023",
-    ]
-
     const messageArray2 = [
       'New litters will be announced soon!',
       <Link to='/waitingListForm'>
@@ -137,12 +133,6 @@ const AvailableKittens = () => {
 
   return (
     <div className='kittens'>
-      <MessageBox
-        messageArray={messageArray1}
-        options={{
-          closeOnCLick: false,
-        }}
-      />
       <MessageBox
         messageArray={messageArray2}
         options={{
