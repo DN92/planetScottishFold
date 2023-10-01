@@ -18,9 +18,6 @@ const AvailableKittens = () => {
       </Link>,
       <br />,
       <>
-        <Link to='/catDetailedView/mother/12'>Nova</Link> + <Link to='/catDetailedView/father/2'>Cupid</Link> = kittens born on 8/12/2023
-      </>,
-      <>
         <Link to='/catDetailedView/mother/7'>Ladybug</Link> + <Link to='/catDetailedView/father/2'>Cupid</Link> = kittens born on 8/27/2023
       </>,
     ]
