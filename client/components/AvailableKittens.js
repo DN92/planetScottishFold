@@ -153,7 +153,6 @@ const AvailableKittens = () => {
         </div>
         }
           <div>
-            <p>Free Delivery within Continental United States on all kittens over $2500.</p>
             <p>For Serious Inquiries, Apply <Link to='/waitingListForm '>HERE</Link></p>
           </div>
           <br />
