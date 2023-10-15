@@ -11,16 +11,23 @@ import MessageBox from './MessageBox'
 //  /available Kittens
 const AvailableKittens = () => {
 
-    const messageArray2 = [
-      'New litters will be announced soon!',
-      <Link to='/waitingListForm'>
-        Apply here to be notified
-      </Link>,
-      <br />,
-      <>
-        <Link to='/catDetailedView/mother/7'>Ladybug</Link> + <Link to='/catDetailedView/father/2'>Cupid</Link> = kittens born on 8/27/2023
-      </>,
-    ]
+  const messageArray1 = [
+    'We will be delivering to Philadelphia airport on October 21st.',
+    'We will be delivering to Seattle airport in November. Exact date, to be determined.',
+    'Reservation to these location will come at discounted transportation fees.',
+    'Spots are limited, first come, first serve.',
+  ]
+
+  const messageArray2 = [
+    'New litters will be announced soon!',
+    <Link to='/waitingListForm'>
+      Apply here to be notified
+    </Link>,
+    <br />,
+    <>
+      <Link to='/catDetailedView/mother/7'>Ladybug</Link> + <Link to='/catDetailedView/father/2'>Cupid</Link> = kittens born on 8/27/2023
+    </>,
+  ]
 
   const getWeight = (obj, filterer) => {
     let score = 0;
@@ -130,6 +137,12 @@ const AvailableKittens = () => {
 
   return (
     <div className='kittens'>
+      <MessageBox
+        messageArray={messageArray1}
+        options={{
+          closeOnCLick: false,
+        }}
+      />
       <MessageBox
         messageArray={messageArray2}
         options={{
