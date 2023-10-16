@@ -12,9 +12,8 @@ import MessageBox from './MessageBox'
 const AvailableKittens = () => {
 
   const messageArray1 = [
-    'We will be delivering to Philadelphia airport on October 21st.',
     'We will be delivering to Seattle airport in November. Exact date, to be determined.',
-    'Reservation to these location will come at discounted transportation fees.',
+    'Reservation to this location will come with discounted transportation fees.',
     'Spots are limited, first come, first serve.',
   ]
 
