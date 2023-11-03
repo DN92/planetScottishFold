@@ -20,7 +20,7 @@ const AvailableKittens = () => {
     <>
     <Link to='/catDetailedView/mother/10'>Lesya</Link> + <Link to='/catDetailedView/father/2'>Cupid</Link> = kittens born on 10/18/23</>,
     <Link to='/waitingListForm'>
-      Apply here to be notified
+      Apply here for text notifications
     </Link>,
   ]
 
