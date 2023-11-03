@@ -9,9 +9,16 @@ const showMessageBox = true
 const homeComponent = () => {
 
   const messageArray1 = [
-    'We will be delivering to Seattle airport in November. Exact date to be determined.',
-    'Reservation to this location will come with discounted transportation fees.',
-    'Spots are limited, first come, first serve.',
+    'DELIVERY TO SEATTLE ON 11/10/23. One spot available for 50% OFF delivery fee.'
+  ]
+
+  const messageArray2 = [
+    '8/27/23 kittens are SOLD OUT. Next available litter:',
+    <>
+    <Link to='/catDetailedView/mother/10'>Lesya</Link> + <Link to='/catDetailedView/father/2'>Cupid</Link> = kittens born on 10/18/23</>,
+    <Link to='/waitingListForm'>
+      Apply here to be notified
+    </Link>,
   ]
 
   return (
