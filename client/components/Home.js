@@ -30,6 +30,12 @@ const homeComponent = () => {
           closeOnCLick: false,
         }}
       />
+      <MessageBox
+        messageArray={messageArray2}
+        options={{
+          closeOnCLick: false,
+        }}
+      />
       <div className='home'>
         <div className='home__card1'>
           <img className='home__card1__img' src="/catPictures/homepage2.jpg" alt="cute cat image1" style={{maxHeight : '540px', width: 'auto'}}/>
