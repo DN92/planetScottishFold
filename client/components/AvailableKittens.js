@@ -11,9 +11,9 @@ import MessageBox from './MessageBox'
 //  /available Kittens
 const AvailableKittens = () => {
 
-  const messageArray1 = [
-    'DELIVERY TO SEATTLE ON 11/10/23. One spot available for 50% OFF delivery fee.'
-  ]
+  // const messageArray1 = [
+  //   'DELIVERY TO SEATTLE ON 11/10/23. One spot available for 50% OFF delivery fee.'
+  // ]
 
   const messageArray2 = [
     '8/27/23 kittens are SOLD OUT. Next available litter:',
