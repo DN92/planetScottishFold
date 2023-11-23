@@ -27,13 +27,13 @@ const homeComponent = () => {
       <MessageBox
         messageArray={messageArray1}
         options={{
-          closeOnCLick: false,
+          closeOnCLick: true,
         }}
       />
       <MessageBox
         messageArray={messageArray2}
         options={{
-          closeOnCLick: false,
+          closeOnCLick: true,
         }}
       />
       <div className='home'>

@@ -135,13 +135,13 @@ const AvailableKittens = () => {
       <MessageBox
         messageArray={messageArray1}
         options={{
-          closeOnCLick: false,
+          closeOnCLick: true,
         }}
       />
       <MessageBox
         messageArray={messageArray2}
         options={{
-          closeOnCLick: false,
+          closeOnCLick: true,
         }}
       />
       <h2 style={{margin: 'auto'}}>Available Kittens</h2>
