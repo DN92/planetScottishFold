@@ -10,7 +10,7 @@ const showMessageBox = true
 const homeComponent = () => {
 
   const messageArray1 = [
-    'DISCOUNTED DELIVERY TO LAGUARDIA AIRPORT, NYC ON 12/09/23.'
+    'DISCOUNTED DELIVERY TO LAGUARDIA/NEWARK AIRPORT, NYC ON 12/09/23.'
   ]
 
   const messageArray2 = [
