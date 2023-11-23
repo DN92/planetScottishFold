@@ -14,7 +14,7 @@ const homeComponent = () => {
   // ]
 
   const messageArray2 = [
-    '8/27/23 kittens are SOLD OUT. Next available litter:',
+    'New Kittens will be announced this week!',
     <>
     <Link to='/catDetailedView/mother/10'>Lesya</Link> + <Link to='/catDetailedView/father/2'>Cupid</Link> = kittens born on 10/18/23</>,
     <Link to='/waitingListForm'>
