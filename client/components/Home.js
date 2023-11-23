@@ -9,9 +9,9 @@ const showMessageBox = true
 
 const homeComponent = () => {
 
-  // const messageArray1 = [
-  //   'DELIVERY TO SEATTLE ON 11/10/23. One spot available for 50% OFF delivery fee.'
-  // ]
+  const messageArray1 = [
+    'DISCOUNTED DELIVERY TO LAGUARDIA AIRPORT, NYC ON 12/09/23.'
+  ]
 
   const messageArray2 = [
     'New Kittens will be announced this week!',
@@ -24,12 +24,12 @@ const homeComponent = () => {
 
   return (
     <>
-      {/* <MessageBox
+      <MessageBox
         messageArray={messageArray1}
         options={{
           closeOnCLick: false,
         }}
-      /> */}
+      />
       <MessageBox
         messageArray={messageArray2}
         options={{
