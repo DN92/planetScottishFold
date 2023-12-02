@@ -12,7 +12,7 @@ import MessageBox from './MessageBox'
 const AvailableKittens = () => {
 
   const messageArray1 = [
-    'DISCOUNTED DELIVERY TO LAGUARDIA/NEWARK AIRPORT, NYC ON 12/09/23.'
+    'We will be Discounting Delivery costs to Boston airport MA on 1/20/23'
   ]
 
   const messageArray2 = [
