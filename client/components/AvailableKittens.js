@@ -12,9 +12,10 @@ import MessageBox from './MessageBox'
 const AvailableKittens = () => {
 
   const messageArray1 = [
-    'WE ARE OFFERING DISCOUTED DELIVERY FEES TO THE FOLLOWING AIRPORTS AND DATES.',
-    'LAGUARDIA AIRPORT NEW YORK CITY and NEWARK AIRPORT NEW JERSEY, ON 12/09/23.',
-    'BOSTON AIRPORT MASSACHUSETTS ON 1/20/24.'
+    'Discounted Deliveries Are Available For:',
+    '12/09/23 to LGA airport (NYC)',
+    '12/09/23 to EWR airport (NJ)',
+    '1/20/24 to BOS aiport (MA)',
   ]
 
   const messageArray2 = [
@@ -140,12 +141,12 @@ const AvailableKittens = () => {
           closeOnCLick: true,
         }}
       />
-      <MessageBox
+      {/* <MessageBox
         messageArray={messageArray2}
         options={{
           closeOnCLick: true,
         }}
-      />
+      /> */}
       <h2 style={{margin: 'auto'}}>Available Kittens</h2>
       {error && <ErrorFill msg={error} />}
       {!error &&

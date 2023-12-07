@@ -10,9 +10,10 @@ const showMessageBox = true
 const homeComponent = () => {
 
   const messageArray1 = [
-    'WE ARE OFFERING DISCOUTED DELIVERY FEES TO THE FOLLOWING AIRPORTS AND DATES.',
-    'LAGUARDIA AIRPORT NEW YORK CITY and NEWARK AIRPORT NEW JERSEY, ON 12/09/23.',
-    'BOSTON AIRPORT MASSACHUSETTS ON 1/20/24.'
+    'Discounted Deliveries Are Available For:',
+    '12/09/23 to LGA airport (NYC)',
+    '12/09/23 to EWR airport (NJ)',
+    '1/20/24 to BOS aiport (MA)',
   ]
 
   const messageArray2 = [
@@ -32,12 +33,12 @@ const homeComponent = () => {
           closeOnCLick: true,
         }}
       />
-      <MessageBox
+      {/* <MessageBox
         messageArray={messageArray2}
         options={{
           closeOnCLick: true,
         }}
-      />
+      /> */}
       <div className='home'>
         <div className='home__card1'>
           <img className='home__card1__img' src="/catPictures/homepage2.jpg" alt="cute cat image1" style={{maxHeight : '540px', width: 'auto'}}/>
