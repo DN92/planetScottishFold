@@ -13,8 +13,6 @@ const AvailableKittens = () => {
 
   const messageArray1 = [
     'Discounted Deliveries Are Available For:',
-    '12/09/23 to LGA airport (NYC)',
-    '12/09/23 to EWR airport (NJ)',
     '1/20/24 to BOS aiport (MA)',
   ]
 
