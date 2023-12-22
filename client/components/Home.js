@@ -25,12 +25,12 @@ const homeComponent = () => {
 
   return (
     <>
-      <MessageBox
+      {/* <MessageBox
         messageArray={messageArray1}
         options={{
           closeOnCLick: true,
         }}
-      />
+      /> */}
       {/* <MessageBox
         messageArray={messageArray2}
         options={{
