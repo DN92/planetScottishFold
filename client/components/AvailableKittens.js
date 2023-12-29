@@ -11,18 +11,22 @@ import MessageBox from './MessageBox'
 //  /available Kittens
 const AvailableKittens = () => {
 
-  const messageArray1 = [
+  const messageArray2 = [
     'Discounted Deliveries Are Available For:',
     '1/20/24 to BOS aiport (MA)',
   ]
 
-  const messageArray2 = [
-    'New Kittens will be announced this week!',
+  const messageArray1 = [
+    'New upcoming Kittens!',
     <>
-    <Link to='/catDetailedView/mother/10'>Lesya</Link> + <Link to='/catDetailedView/father/2'>Cupid</Link> = kittens born on 10/18/23</>,
-    <Link to='/waitingListForm'>
+      <Link Link to='/catDetailedView/mother/6'> Frosty </Link> + <Link to='/catDetailedView/father/2'>Cupid </Link> = expected birthday 1/15/23
+    </>,
+    <>
+      <Link Link to='/catDetailedView/mother/11'> Vasilisa </Link> + <Link to='/catDetailedView/father/2'>Cupid </Link> = expected born on 1/25/23
+    </>,
+      <Link to='/waitingListForm'>
       Apply here for text notifications
-    </Link>,
+      </Link>,
   ]
 
   const getWeight = (obj, filterer) => {
@@ -133,18 +137,18 @@ const AvailableKittens = () => {
 
   return (
     <div className='kittens'>
-      {/* <MessageBox
+      <MessageBox
         messageArray={messageArray1}
         options={{
           closeOnCLick: true,
         }}
-      /> */}
-      {/* <MessageBox
+      />
+      <MessageBox
         messageArray={messageArray2}
         options={{
           closeOnCLick: true,
         }}
-      /> */}
+      />
       <h2 style={{margin: 'auto'}}>Available Kittens</h2>
       {error && <ErrorFill msg={error} />}
       {!error &&
