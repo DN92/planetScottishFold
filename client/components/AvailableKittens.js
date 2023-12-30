@@ -19,10 +19,10 @@ const AvailableKittens = () => {
   const messageArray1 = [
     'We are expecting New Kittens!',
     <>
-      <Link Link to='/catDetailedView/mother/6'> Frosty </Link> + <Link to='/catDetailedView/father/2'>Cupid </Link> = expected by 1/15/23
+      <Link Link to='/catDetailedView/mother/6'> Frosty </Link> + <Link to='/catDetailedView/father/2'>Cupid </Link> = expected by 1/15/24
     </>,
     <>
-      <Link Link to='/catDetailedView/mother/11'> Vasilisa </Link> + <Link to='/catDetailedView/father/2'>Cupid </Link> = expected by 1/25/23
+      <Link Link to='/catDetailedView/mother/11'> Vasilisa </Link> + <Link to='/catDetailedView/father/2'>Cupid </Link> = expected by 1/25/24
     </>,
       <Link to='/waitingListForm'>
       Apply here for SMS notifications
