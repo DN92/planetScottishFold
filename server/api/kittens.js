@@ -22,7 +22,7 @@ router.get('/', async (req, res, next) => {
 router.get('/fromMother', async (req, res, next) => {
   try {
     if(!req.query.mother) {
-      res.send([])
+      res.send(['didnt get a mother'])
       return
     }
     const fiveMostExpensiveKittensFromMotherWithId = await Kitten.findAll({
@@ -33,7 +33,7 @@ router.get('/fromMother', async (req, res, next) => {
       order: [['price', 'DESC']],
       limit: 5
     })
-    res.send(fiveMostExpensiveKittensFromMotherWithId)
+    res.send(fiveMostExpensiveKittensFromMotherWithId.concat('success?'))
   } catch (err) {
     next(err)
   }
