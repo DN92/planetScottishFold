@@ -1,3 +1,8 @@
+.kitten-in-gallery {
+  height: 200px;
+  width: 200px;
+}
+
 .singleKitten {
   flex-basis: 28%;
   border: solid black 1px;

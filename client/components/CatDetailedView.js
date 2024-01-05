@@ -56,8 +56,9 @@ const CatDetailedView = () => {
             placeHolderImagePath = '/otherPictures/photoComingSoon.png'
           />
           <div>
+            testing
             {kittensImages.map(kittenImageFile => (
-              <img className='singleKitten_card_img' src={kittenImageFile} alt='previous litter' />
+              <img className='kitten-in-gallery' src={kittenImageFile} alt='previous litter' />
             ))}
           </div>
           <div className='detailedView-text-wrapper'>
