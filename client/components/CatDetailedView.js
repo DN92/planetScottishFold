@@ -34,16 +34,6 @@ const CatDetailedView = () => {
     )
   }, [cat])
 
-  // for testing
-  useEffect(() => {
-    console.log('kittenImages:: ', kittensImages)
-  }, [kittensImages])
-
-  useEffect(() => {
-    console.log('name ',  cat.name)
-    console.log('type ', MOTHERorFATHER)
-  }, [cat])
-
   useEffect(() => {
     async function getPaths(id) {
       const response = await fetch(`/api/supabase/urlsByBucket?bucket=${MOTHERorFATHER.toLowerCase()}${id}&withToken=true`)
@@ -54,7 +44,6 @@ const CatDetailedView = () => {
     if(id) {
       getPaths(id)
     }
-
   }, [])
 
   return (
@@ -67,7 +56,7 @@ const CatDetailedView = () => {
             placeHolderImagePath = '/otherPictures/photoComingSoon.png'
           />
           <div>
-            testing
+            <p>Past Kittens</p>
             {kittensImages.map(kittenImageFile => (
               <img className='kitten-in-gallery' src={kittenImageFile} alt='previous litter' />
             ))}

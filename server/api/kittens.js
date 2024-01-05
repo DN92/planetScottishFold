@@ -34,7 +34,7 @@ router.get('/fromMother', async (req, res, next) => {
       limit: 5
     })
     const imageFiles = fiveMostExpensiveKittensFromMotherWithId.map(kitten => kitten.mainImageSrcValue);
-    res.send(imageFiles.concat('success?'))
+    res.send(imageFiles)
   } catch (err) {
     next(err)
   }
