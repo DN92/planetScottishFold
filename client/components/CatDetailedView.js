@@ -69,7 +69,7 @@ const CatDetailedView = () => {
           <div>
             testing
             {kittensImages.map(kittenImageFile => (
-              <img className='kitten-in-gallery' src={`${kittenImageFile}`} alt='previous litter' />
+              <img className='kitten-in-gallery' src={kittenImageFile} alt='previous litter' />
             ))}
           </div>
           <div className='detailedView-text-wrapper'>

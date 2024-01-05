@@ -33,7 +33,8 @@ router.get('/fromMother', async (req, res, next) => {
       order: [['price', 'DESC']],
       limit: 5
     })
-    res.send(fiveMostExpensiveKittensFromMotherWithId.concat('success?'))
+    const imageFiles = fiveMostExpensiveKittensFromMotherWithId.map(kitten => kitten.mainImageSrcValue);
+    res.send(imageFiles.concat('success?'))
   } catch (err) {
     next(err)
   }
