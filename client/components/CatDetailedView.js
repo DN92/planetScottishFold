@@ -36,7 +36,7 @@ const CatDetailedView = () => {
 
   // for testing
   useEffect(() => {
-    console.log(kittensImages)
+    console.log('kittenImages:: ', kittensImages)
   }, [kittensImages])
 
   useEffect(() => {
