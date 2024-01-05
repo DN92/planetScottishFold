@@ -26,7 +26,6 @@ const CatDetailedView = () => {
   }, [id, MOTHERorFATHER])
 
   useEffect(() => {
-    console.log('fetching images', cat.name, MOTHERorFATHER)
     MOTHERorFATHER === 'mother' && cat.name && fetchEffect(
       [setKittensImages, setError ],
       'get',
