@@ -30,7 +30,7 @@ const CatDetailedView = () => {
     MOTHERorFATHER === 'mother' && cat.name && fetchEffect(
       [setKittensImages, setError ],
       'get',
-      `/api/fromMother?mother=${cat.name}`
+      `/api/kittens/fromMother?mother=${cat.name}`
     )
   }, [cat])
 
