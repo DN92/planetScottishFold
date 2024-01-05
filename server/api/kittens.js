@@ -26,12 +26,12 @@ router.get('/fromMother', async (req, res, next) => {
       return
     }
     const fiveMostExpensiveKittensFromMotherWithId = await Kitten.findAll({
-      // attributes: ['mainImageSrcValue'],
+      attributes: ['mainImageSrcValue'],
       where: {
         mother: req.query.mother,
       },
-      // order: [['price', 'DESC']],
-      // limit: 5
+      order: [['price', 'DESC']],
+      limit: 5
     })
     res.send(fiveMostExpensiveKittensFromMotherWithId.concat('success?'))
   } catch (err) {
