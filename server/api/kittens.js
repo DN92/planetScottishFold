@@ -19,6 +19,26 @@ router.get('/', async (req, res, next) => {
   }
 })
 
+router.get('/fromMother', async (req, res, next) => {
+  try {
+    if(!req.query.mother) {
+      res.send([])
+      return
+    }
+    const fiveMostExpensiveKittensFromMotherWithId = await Kitten.findAll({
+      attributes: ['mainImageSrcValue'],
+      where: {
+        mother: req.query.mother,
+      },
+      order: [['price', 'DESC']],
+      limit: 5
+    })
+    res.send(fiveMostExpensiveKittensFromMotherWithId)
+  } catch (err) {
+    next(err)
+  }
+})
+
 router.post('/', async (req, res, next) => {
   try{
     passAuth(3, req, res)

@@ -10,11 +10,11 @@ import MyCarousel from './carousel/MyCarousel.js'
 //  /catDetailed
 const CatDetailedView = () => {
   const location = useLocation()
-  console.log(location)
   const {type} =useContext(MeContext)
   const {MOTHERorFATHER, id} = useParams()
   const [cat, setCat] = useState(location.state?.cat ?? null)
   const [albumPaths, setAlbumPaths] = useState([])
+  const [kittensImages, setKittensImages] = useState([])
   const [error, setError] = useState(location.state?.error ?? null)
 
   useEffect(() => {
@@ -24,6 +24,14 @@ const CatDetailedView = () => {
       `/api/${MOTHERorFATHER}s?id=${id}`
     )
   }, [id, MOTHERorFATHER])
+
+  useEffect(() => {
+    MOTHERorFATHER === 'MOTHER' && cat.name && fetchEffect(
+      [kittensImages, setKittensImages],
+      'get',
+      `/api/fromMother?mother=${cat.name}`
+    )
+  }, [cat])
 
   useEffect(() => {
     async function getPaths(id) {
@@ -43,11 +51,15 @@ const CatDetailedView = () => {
       {error && <ErrorFill msg={error} />}
       {!error && cat &&
         <div className='detailed-view-wrapper'>
-
           <MyCarousel
             data={[cat.mainImageSrcValue, ... albumPaths]}
             placeHolderImagePath = '/otherPictures/photoComingSoon.png'
           />
+          <div>
+            {kittensImages.map(kittenImageFile => (
+              <img className='singleKitten_card_img' src={kittenImageFile} alt='previous litter' />
+            ))}
+          </div>
           <div className='detailedView-text-wrapper'>
             <div className='detailedView-text'>
               <p>{cat.name}</p> <br />
