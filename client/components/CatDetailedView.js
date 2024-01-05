@@ -33,6 +33,16 @@ const CatDetailedView = () => {
     )
   }, [cat])
 
+  // for testing
+  useEffect(() => {
+    console.log(kittensImages)
+  }, [kittensImages])
+
+  useEffect(() => {
+    console.log('name ',  cat.name)
+    console.log('type ', MOTHERorFATHER)
+  }, [cat])
+
   useEffect(() => {
     async function getPaths(id) {
       const response = await fetch(`/api/supabase/urlsByBucket?bucket=${MOTHERorFATHER.toLowerCase()}${id}&withToken=true`)
