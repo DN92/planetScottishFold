@@ -54,12 +54,18 @@ const CatDetailedView = () => {
             data={[cat.mainImageSrcValue, ... albumPaths]}
             placeHolderImagePath = '/otherPictures/photoComingSoon.png'
           />
-          <div>
-            <p>Past Kittens</p>
-            {kittensImages.map(kittenImageFile => (
-              <img className='kitten-in-gallery' src={kittenImageFile} alt='previous litter' />
-            ))}
-          </div>
+          {kittenImages.length > 0 &&
+          <MyCarousel
+            data={[kittensImages]}
+            placeHolderImagePath='/otherPictures/photoComingSoon.png'
+          />
+          // <div>
+          //   <p>{`${cat.name}'s`} Past Kittens</p>
+          //   {kittensImages.map(kittenImageFile => (
+          //     <img className='kitten-in-gallery' src={kittenImageFile} alt='previous litter' />
+          //   ))}
+          // </div>
+          }
           <div className='detailedView-text-wrapper'>
             <div className='detailedView-text'>
               <p>{cat.name}</p> <br />
