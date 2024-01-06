@@ -50,21 +50,22 @@ const CatDetailedView = () => {
       {error && <ErrorFill msg={error} />}
       {!error && cat &&
         <div className='detailed-view-wrapper'>
-          <MyCarousel
-            data={[cat.mainImageSrcValue, ... albumPaths]}
-            placeHolderImagePath = '/otherPictures/photoComingSoon.png'
-          />
-          {kittenImages.length > 0 &&
-          <MyCarousel
-            data={kittenImages}
-            placeHolderImagePath='/otherPictures/photoComingSoon.png'
-          />
-          // <div>
-          //   <p>{`${cat.name}'s`} Past Kittens</p>
-          //   {kittenImages.map(kittenImageFile => (
-          //     <img className='kitten-in-gallery' src={kittenImageFile} alt='previous litter' />
-          //   ))}
-          // </div>
+          <>
+            <p>Hi I'm {cat.name ?? 'UNKNOWN'}</p>
+            <MyCarousel
+              data={[cat.mainImageSrcValue, ... albumPaths]}
+              placeHolderImagePath = '/otherPictures/photoComingSoon.png'
+            />
+          </>
+          {
+          kittenImages.length > 0 &&
+          <>
+            <p>{`${cat.name ?? 'UNKNOWN'}'s Past Kittens`}</p>
+            <MyCarousel
+              data={kittenImages}
+              placeHolderImagePath='/otherPictures/photoComingSoon.png'
+            />
+          </>
           }
           <div className='detailedView-text-wrapper'>
             <div className='detailedView-text'>
