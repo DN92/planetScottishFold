@@ -56,7 +56,7 @@ const CatDetailedView = () => {
           />
           {kittenImages.length > 0 &&
           <MyCarousel
-            data={[kittenImages]}
+            data={kittenImages}
             placeHolderImagePath='/otherPictures/photoComingSoon.png'
           />
           // <div>
