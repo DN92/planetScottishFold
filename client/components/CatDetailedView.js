@@ -51,7 +51,7 @@ const CatDetailedView = () => {
       {!error && cat &&
         <div className='detailed-view-wrapper'>
           <>
-            <p>Hi I'm {cat.name ?? 'UNKNOWN'}</p>
+            <p>Hello My Darlings! My Name is {cat.name ?? 'UNKNOWN'}</p>
             <MyCarousel
               data={[cat.mainImageSrcValue, ... albumPaths]}
               placeHolderImagePath = '/otherPictures/photoComingSoon.png'
