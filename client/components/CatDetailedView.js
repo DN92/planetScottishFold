@@ -14,7 +14,7 @@ const CatDetailedView = () => {
   const {MOTHERorFATHER, id} = useParams()
   const [cat, setCat] = useState(location.state?.cat ?? null)
   const [albumPaths, setAlbumPaths] = useState([])
-  const [kittensImages, setKittensImages] = useState([])
+  const [kittenImages, setKittensImages] = useState([])
   const [error, setError] = useState(location.state?.error ?? null)
 
   useEffect(() => {
@@ -56,12 +56,12 @@ const CatDetailedView = () => {
           />
           {kittenImages.length > 0 &&
           <MyCarousel
-            data={[kittensImages]}
+            data={[kittenImages]}
             placeHolderImagePath='/otherPictures/photoComingSoon.png'
           />
           // <div>
           //   <p>{`${cat.name}'s`} Past Kittens</p>
-          //   {kittensImages.map(kittenImageFile => (
+          //   {kittenImages.map(kittenImageFile => (
           //     <img className='kitten-in-gallery' src={kittenImageFile} alt='previous litter' />
           //   ))}
           // </div>
