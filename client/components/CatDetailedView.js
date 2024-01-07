@@ -26,10 +26,10 @@ const CatDetailedView = () => {
   }, [id, MOTHERorFATHER])
 
   useEffect(() => {
-    MOTHERorFATHER === 'mother' && cat.name && fetchEffect(
+    cat && MOTHERorFATHER === 'mother' && cat?.name && fetchEffect(
       [setKittensImages, setError ],
       'get',
-      `/api/kittens/fromMother?mother=${cat.name}`
+      `/api/kittens/fromMother?mother=${cat?.name}`
     )
   }, [cat])
 
@@ -57,7 +57,7 @@ const CatDetailedView = () => {
               placeHolderImagePath = '/otherPictures/photoComingSoon.png'
             />
           </>
-          {/* {
+          {
           kittenImages.length > 0 &&
           <>
             <p>{`${cat.name ?? 'UNKNOWN'}'s Past Kittens`}</p>
@@ -66,7 +66,7 @@ const CatDetailedView = () => {
               placeHolderImagePath='/otherPictures/photoComingSoon.png'
             />
           </>
-          } */}
+          }
           <div className='detailedView-text-wrapper'>
             <div className='detailedView-text'>
               <p>{cat.name}</p> <br />
