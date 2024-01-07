@@ -57,7 +57,7 @@ const CatDetailedView = () => {
               placeHolderImagePath = '/otherPictures/photoComingSoon.png'
             />
           </>
-          {
+          {/* {
           kittenImages.length > 0 &&
           <>
             <p>{`${cat.name ?? 'UNKNOWN'}'s Past Kittens`}</p>
@@ -66,7 +66,7 @@ const CatDetailedView = () => {
               placeHolderImagePath='/otherPictures/photoComingSoon.png'
             />
           </>
-          }
+          } */}
           <div className='detailedView-text-wrapper'>
             <div className='detailedView-text'>
               <p>{cat.name}</p> <br />
