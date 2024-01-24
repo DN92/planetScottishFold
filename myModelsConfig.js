@@ -12,13 +12,11 @@ const myConfig = {
     'Blue - Ticked/Tabby',
     'Lilac',
     'Tortoiseshell/Tricolor/Calico',
-    'Bicolor/Any Color with White',
     'Chocolate/Black/Cinnamon',
   ],
   // end last comment
   furColorsAdmin: [
     'No Preference',
-    'Bicolor (any color with white marks)',
     'Blue Gold Chinchilla (very rare!)',
     'Brown / Chocolate',
     'Colorpoint (Seamese pattern)',

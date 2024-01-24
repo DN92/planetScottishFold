@@ -11,7 +11,6 @@ const homeComponent = () => {
 
   const messageArray2 = [
     'Discounted Deliveries Are Available For:',
-    '1/20/24 to BOS aiport (MA)',
     '2/3/24 to LGA aiport (New York City)',
   ]
 
@@ -21,7 +20,7 @@ const homeComponent = () => {
       <Link Link to='/catDetailedView/mother/6'> Frosty </Link> + <Link to='/catDetailedView/father/2'>Cupid </Link> = Born on 1/10/24 &#128512;
     </>,
     <>
-      <Link Link to='/catDetailedView/mother/11'> Vasilisa </Link> + <Link to='/catDetailedView/father/2'>Cupid </Link> = expected by 1/25/24
+      <Link Link to='/catDetailedView/mother/11'> Vasilisa </Link> + <Link to='/catDetailedView/father/2'>Cupid </Link> = Born on 1/23/24 &#128512;
     </>,
       <Link to='/waitingListForm'>
       Apply here for SMS notifications
