@@ -13,16 +13,26 @@ myUtilFuncs.resetForm = (event) => {
 }
 
 myUtilFuncs.convertToPhoneNumber = (number) => {
-  number = number.split('')
-    .filter(char => char !== "-" && char !== " ")
-    .join('')
-  if(number.length < 4) {
-    return number
+  let cleanedNumber = number.trim().replace(/[^0-9]/g, '');
+
+  if(cleanedNumber.length < 4) {
+    return cleanedNumber;
   }
-  if(number.length < 7) {
-    return number.slice(0,3) + ' - ' + number.slice(3)
+
+  if(cleanedNumber.length < 7) {
+    return cleanedNumber.slice(0,3) + ' - ' + cleanedNumber.slice(3);
   }
-  return number.slice(0,3) + ' - ' + number.slice(3, 6) + ' - ' + number.slice(6,10)  //  will discard any digits after the tenth
+
+  return (
+    cleanedNumber.slice(0,3) + ' - ' +
+    cleanedNumber.slice(3, 6) + ' - ' +
+    cleanedNumber.slice(6, 10)  // Will discard any digits after the tenth
+  );
+}
+
+myUtilFuncs.veriftyTenDigitPhoneNumber = (numberString) => {
+  const cleanedString = numberString.trim().replace(/[- ]/g, '');
+  return /^[0-9]{10}$/.test(cleanedString);
 }
 
 myUtilFuncs.objectKeysToLowerCase = (object) => {

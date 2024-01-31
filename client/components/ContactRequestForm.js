@@ -1,9 +1,10 @@
 import React, { useState} from 'react'
-import {convertToPhoneNumber} from '../../myUtilFuncs.js'
 import handleControlledValueFieldToState from '../customHandlers/handleFormChange'
 import { fetchEffect } from './axiosHandlers/fetchEffect.js'
 import ErrorFill from './ErrorFill'
+import { convertToPhoneNumber, veriftyTenDigitPhoneNumber } from '../../myUtilFuncs.js'
 
+// TODO : phone number to 10 and error to screen
 
 const ContactRequestForm = () => {
 
@@ -18,9 +19,16 @@ const ContactRequestForm = () => {
   const [newReq, setNewReq] = useState(null)  // object
   const [done, setDone] = useState(false)
   const [error, setError] = useState('')
+  const [phoneEntryError, setPhoneEntryError] = useState('')
 
   const handleChange = (event) => {
     handleControlledValueFieldToState(event, setContactRequest)
+  }
+
+  const handlePhoneNumberChange = (event) => {
+    setContactRequest(prev => {
+      return {...prev, phone: convertToPhoneNumber(event.target.value)}
+    })
   }
 
   const handleKeyPress = (event) => {
@@ -33,7 +41,13 @@ const ContactRequestForm = () => {
 
   const handleSubmit1 = (event) => {
     event.preventDefault()
-    setNewReq(contactRequest)
+    console.log(veriftyTenDigitPhoneNumber(contactRequest.phone))
+    if (veriftyTenDigitPhoneNumber(contactRequest.phone)) {
+      setPhoneEntryError('')
+      setNewReq(contactRequest)
+    } else {
+      setPhoneEntryError('Please enter a valid 10 digit Phone Number')
+    }
   }
 
   const handleSubmit2 = (event) => {
@@ -64,15 +78,21 @@ const ContactRequestForm = () => {
                   </div>
                 </div>
                 <div className='contact__formContainer'>
-                  <form id="ContactRequest" className='contact__form' onKeyDown={handleKeyPress} onChange={handleChange} onSubmit={handleSubmit1}>
-                    <label className='required' htmlFor='yourName'>Full Name</label>
-                    <input id='contact__yourName' type="text" name="name" placeholder='Name' required/>
-                    <label htmlFor="contact__phone" className='required'>Phone Number</label>
-                    <input id='contact__phone' type="tel" name="phone" placeholder='Phone number' required/>
-                    <label htmlFor="contact__eMail" className='required'>Email</label>
-                    <input id='contact__eMail' type="email" name="eMail" placeholder='Email' required/>
-                    <label htmlFor="contact__aboutYou" className='required'>Message</label>
-                    <textarea id='contact__aboutYou' className='contact__textarea' type="textarea" name="message" cols="40" rows="5" placeholder='Type your message here..' required />
+                  <form id="ContactRequest" className='contact__form' onKeyDown={handleKeyPress} onSubmit={handleSubmit1}>
+                    <>
+                      <label className='required' htmlFor='yourName'>Full Name</label>
+                      <input id='contact__yourName' type="text" name="name" placeholder='Name' onChange={handleChange} required/>
+                    </>
+                      <label htmlFor="contact__phone" className= {phoneEntryError ? 'required red' : 'required'}> {phoneEntryError ? phoneEntryError : 'Phone Number'} </label>
+                      <input id='contact__phone' type="text" name="phone" placeholder='Phone number' value={contactRequest.phone} onChange={handlePhoneNumberChange} required/>
+                    <>
+                      <label htmlFor="contact__eMail" className='required'>Email</label>
+                      <input id='contact__eMail' type="email" name="eMail" placeholder='Email' onChange={handleChange} required/>
+                    </>
+                    <>
+                      <label htmlFor="contact__aboutYou" className='required'>Message</label>
+                      <textarea id='contact__aboutYou' className='contact__textarea' type="textarea" name="message" cols="40" rows="5" placeholder='Type your message here..' onChange={handleChange} required />
+                    </>
                     <input className='buttonStyle2' type="submit" />
                   </form>
                 </div>

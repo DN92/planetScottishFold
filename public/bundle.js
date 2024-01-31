@@ -13132,18 +13132,18 @@ __webpack_require__.r(__webpack_exports__);
 
 //  /available Kittens
 const AvailableKittens = () => {
-  const messageArray2 = ['Discounted Deliveries Are Available For:', '1/20/24 to BOS aiport (MA)'];
+  const messageArray2 = ['Discounted Deliveries Are Available For:', '2/3/24 to LGA aiport (New York City)'];
   const messageArray1 = ['We are expecting New Kittens!', /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_7__.Link, {
     Link: true,
     to: "/catDetailedView/mother/6"
   }, " Frosty "), " + ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_7__.Link, {
     to: "/catDetailedView/father/2"
-  }, "Cupid "), " = expected by 1/15/24"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_7__.Link, {
+  }, "Cupid "), " = Born on 1/10/24 \uD83D\uDE00"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_7__.Link, {
     Link: true,
     to: "/catDetailedView/mother/11"
   }, " Vasilisa "), " + ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_7__.Link, {
     to: "/catDetailedView/father/2"
-  }, "Cupid "), " = expected by 1/25/24"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_7__.Link, {
+  }, "Cupid "), " = Born on 1/23/24 \uD83D\uDE00"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_7__.Link, {
     to: "/waitingListForm"
   }, "Apply here for SMS notifications")];
   const getWeight = (obj, filterer) => {
@@ -13306,9 +13306,89 @@ const AvailableKittens = () => {
 /*!**********************************************!*\
   !*** ./client/components/CatDetailedView.js ***!
   \**********************************************/
-/***/ (function() {
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
-throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: /home/alex/Development/planetScottishFold/client/components/CatDetailedView.js: Missing semicolon. (49:6)\n\n\u001b[0m \u001b[90m 47 |\u001b[39m   }\u001b[33m,\u001b[39m [])\u001b[0m\n\u001b[0m \u001b[90m 48 |\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 49 |\u001b[39m   \u001b[33m<\u001b[39m\u001b[33mimg\u001b[39m className\u001b[33m=\u001b[39m\u001b[32m'singleKitten__card__img'\u001b[39m src\u001b[33m=\u001b[39m{mainImageSrcValue} alt\u001b[33m=\u001b[39m{\u001b[32m`${props.parent.name}'s picture `\u001b[39m} \u001b[33m/\u001b[39m\u001b[33m>\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m    |\u001b[39m       \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 50 |\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 51 |\u001b[39m   \u001b[36mreturn\u001b[39m (\u001b[0m\n\u001b[0m \u001b[90m 52 |\u001b[39m     \u001b[33m<\u001b[39m\u001b[33mdiv\u001b[39m key\u001b[33m=\u001b[39m{id\u001b[33m.\u001b[39mtoString() \u001b[33m+\u001b[39m \u001b[33mMOTHERorFATHER\u001b[39m}\u001b[33m>\u001b[39m\u001b[0m\n    at constructor (/home/alex/Development/planetScottishFold/node_modules/@babel/parser/lib/index.js:348:19)\n    at JSXParserMixin.raise (/home/alex/Development/planetScottishFold/node_modules/@babel/parser/lib/index.js:3202:19)\n    at JSXParserMixin.semicolon (/home/alex/Development/planetScottishFold/node_modules/@babel/parser/lib/index.js:3564:10)\n    at JSXParserMixin.parseExpressionStatement (/home/alex/Development/planetScottishFold/node_modules/@babel/parser/lib/index.js:13103:10)\n    at JSXParserMixin.parseStatementContent (/home/alex/Development/planetScottishFold/node_modules/@babel/parser/lib/index.js:12686:19)\n    at JSXParserMixin.parseStatementLike (/home/alex/Development/planetScottishFold/node_modules/@babel/parser/lib/index.js:12533:17)\n    at JSXParserMixin.parseStatementListItem (/home/alex/Development/planetScottishFold/node_modules/@babel/parser/lib/index.js:12513:17)\n    at JSXParserMixin.parseBlockOrModuleBlockBody (/home/alex/Development/planetScottishFold/node_modules/@babel/parser/lib/index.js:13134:61)\n    at JSXParserMixin.parseBlockBody (/home/alex/Development/planetScottishFold/node_modules/@babel/parser/lib/index.js:13127:10)\n    at JSXParserMixin.parseBlock (/home/alex/Development/planetScottishFold/node_modules/@babel/parser/lib/index.js:13115:10)\n    at JSXParserMixin.parseFunctionBody (/home/alex/Development/planetScottishFold/node_modules/@babel/parser/lib/index.js:11896:24)\n    at JSXParserMixin.parseArrowExpression (/home/alex/Development/planetScottishFold/node_modules/@babel/parser/lib/index.js:11871:10)\n    at JSXParserMixin.parseParenAndDistinguishExpression (/home/alex/Development/planetScottishFold/node_modules/@babel/parser/lib/index.js:11474:12)\n    at JSXParserMixin.parseExprAtom (/home/alex/Development/planetScottishFold/node_modules/@babel/parser/lib/index.js:11113:23)\n    at JSXParserMixin.parseExprAtom (/home/alex/Development/planetScottishFold/node_modules/@babel/parser/lib/index.js:6916:20)\n    at JSXParserMixin.parseExprSubscripts (/home/alex/Development/planetScottishFold/node_modules/@babel/parser/lib/index.js:10839:23)\n    at JSXParserMixin.parseUpdate (/home/alex/Development/planetScottishFold/node_modules/@babel/parser/lib/index.js:10822:21)\n    at JSXParserMixin.parseMaybeUnary (/home/alex/Development/planetScottishFold/node_modules/@babel/parser/lib/index.js:10798:23)\n    at JSXParserMixin.parseMaybeUnaryOrPrivate (/home/alex/Development/planetScottishFold/node_modules/@babel/parser/lib/index.js:10636:61)\n    at JSXParserMixin.parseExprOps (/home/alex/Development/planetScottishFold/node_modules/@babel/parser/lib/index.js:10641:23)\n    at JSXParserMixin.parseMaybeConditional (/home/alex/Development/planetScottishFold/node_modules/@babel/parser/lib/index.js:10618:23)\n    at JSXParserMixin.parseMaybeAssign (/home/alex/Development/planetScottishFold/node_modules/@babel/parser/lib/index.js:10579:21)\n    at /home/alex/Development/planetScottishFold/node_modules/@babel/parser/lib/index.js:10549:39\n    at JSXParserMixin.allowInAnd (/home/alex/Development/planetScottishFold/node_modules/@babel/parser/lib/index.js:12224:16)\n    at JSXParserMixin.parseMaybeAssignAllowIn (/home/alex/Development/planetScottishFold/node_modules/@babel/parser/lib/index.js:10549:17)\n    at JSXParserMixin.parseVar (/home/alex/Development/planetScottishFold/node_modules/@babel/parser/lib/index.js:13204:91)\n    at JSXParserMixin.parseVarStatement (/home/alex/Development/planetScottishFold/node_modules/@babel/parser/lib/index.js:13045:10)\n    at JSXParserMixin.parseStatementContent (/home/alex/Development/planetScottishFold/node_modules/@babel/parser/lib/index.js:12628:23)\n    at JSXParserMixin.parseStatementLike (/home/alex/Development/planetScottishFold/node_modules/@babel/parser/lib/index.js:12533:17)\n    at JSXParserMixin.parseModuleItem (/home/alex/Development/planetScottishFold/node_modules/@babel/parser/lib/index.js:12510:17)\n    at JSXParserMixin.parseBlockOrModuleBlockBody (/home/alex/Development/planetScottishFold/node_modules/@babel/parser/lib/index.js:13134:36)\n    at JSXParserMixin.parseBlockBody (/home/alex/Development/planetScottishFold/node_modules/@babel/parser/lib/index.js:13127:10)\n    at JSXParserMixin.parseProgram (/home/alex/Development/planetScottishFold/node_modules/@babel/parser/lib/index.js:12409:10)\n    at JSXParserMixin.parseTopLevel (/home/alex/Development/planetScottishFold/node_modules/@babel/parser/lib/index.js:12399:25)\n    at JSXParserMixin.parse (/home/alex/Development/planetScottishFold/node_modules/@babel/parser/lib/index.js:14295:10)\n    at parse (/home/alex/Development/planetScottishFold/node_modules/@babel/parser/lib/index.js:14336:38)\n    at parser (/home/alex/Development/planetScottishFold/node_modules/@babel/core/lib/parser/index.js:41:34)\n    at parser.next (<anonymous>)\n    at normalizeFile (/home/alex/Development/planetScottishFold/node_modules/@babel/core/lib/transformation/normalize-file.js:64:37)\n    at normalizeFile.next (<anonymous>)\n    at run (/home/alex/Development/planetScottishFold/node_modules/@babel/core/lib/transformation/index.js:21:50)\n    at run.next (<anonymous>)\n    at transform (/home/alex/Development/planetScottishFold/node_modules/@babel/core/lib/transform.js:22:33)\n    at transform.next (<anonymous>)\n    at step (/home/alex/Development/planetScottishFold/node_modules/gensync/index.js:261:32)\n    at /home/alex/Development/planetScottishFold/node_modules/gensync/index.js:273:13\n    at async.call.result.err.err (/home/alex/Development/planetScottishFold/node_modules/gensync/index.js:223:11)");
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _ErrorFill__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ErrorFill */ "./client/components/ErrorFill.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/dist/index.js");
+/* harmony import */ var _My404__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./My404 */ "./client/components/My404.js");
+/* harmony import */ var _MeContextPro__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../MeContextPro */ "./client/MeContextPro.js");
+/* harmony import */ var _myModelsConfig__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../myModelsConfig */ "./myModelsConfig.js");
+/* harmony import */ var _myModelsConfig__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_myModelsConfig__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _axiosHandlers_fetchEffect__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./axiosHandlers/fetchEffect */ "./client/components/axiosHandlers/fetchEffect.js");
+/* harmony import */ var _carousel_MyCarousel_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./carousel/MyCarousel.js */ "./client/components/carousel/MyCarousel.js");
+
+
+
+
+
+
+
+
+
+//  /catDetailed
+const CatDetailedView = () => {
+  const location = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_7__.useLocation)();
+  const {
+    type
+  } = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_MeContextPro__WEBPACK_IMPORTED_MODULE_3__["default"]);
+  const {
+    MOTHERorFATHER,
+    id
+  } = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_7__.useParams)();
+  const [cat, setCat] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(location.state?.cat ?? null);
+  const [albumPaths, setAlbumPaths] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]);
+  const [kittenImages, setKittensImages] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]);
+  const [error, setError] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(location.state?.error ?? null);
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+    id && (0,_axiosHandlers_fetchEffect__WEBPACK_IMPORTED_MODULE_5__.fetchEffect)([setCat, setError], 'get', `/api/${MOTHERorFATHER}s?id=${id}`);
+  }, [id, MOTHERorFATHER]);
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+    cat && MOTHERorFATHER === 'mother' && cat?.name && (0,_axiosHandlers_fetchEffect__WEBPACK_IMPORTED_MODULE_5__.fetchEffect)([setKittensImages, setError], 'get', `/api/kittens/fromMother?mother=${cat?.name}`);
+  }, [cat]);
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+    async function getPaths(id) {
+      const response = await fetch(`/api/supabase/urlsByBucket?bucket=${MOTHERorFATHER.toLowerCase()}${id}&withToken=true`);
+      const result = await response.json();
+      result && setAlbumPaths(result);
+    }
+    if (id) {
+      getPaths(id);
+    }
+  }, []);
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    key: id.toString() + MOTHERorFATHER
+  }, error && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ErrorFill__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    msg: error
+  }), !error && cat && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "detailed-view-wrapper"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Hello My Darlings! My Name is ", cat.name ?? 'UNKNOWN'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_carousel_MyCarousel_js__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    data: [cat.mainImageSrcValue, ...albumPaths],
+    placeHolderImagePath: "/otherPictures/photoComingSoon.png"
+  })), kittenImages.length > 0 && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, `${cat.name ?? 'UNKNOWN'}'s Past Kittens`), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_carousel_MyCarousel_js__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    data: kittenImages,
+    placeHolderImagePath: "/otherPictures/photoComingSoon.png"
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "detailedView-text-wrapper"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "detailedView-text"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, cat.name), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, cat.breed), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, " Ears: ", cat.ears), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, " FurColor: ", cat.furColor), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, " EyeColor: ", cat.eyeColor), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, " Date Of Birth: ", cat.dob), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, cat.description ? "Description: " + cat.description : ""), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null))), (0,_myModelsConfig__WEBPACK_IMPORTED_MODULE_4__.isPrivileged)(type) && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "buttonsWrapper"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Link, {
+    to: `/createCat/${MOTHERorFATHER}`
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    className: "buttonStyle2"
+  }, "Upload Another ", `${MOTHERorFATHER}`)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Link, {
+    to: `/viewCats/${MOTHERorFATHER}`
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    className: "buttonStyle2"
+  }, "Back to ", `${MOTHERorFATHER}s`)))), !error && !cat && !id && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_My404__WEBPACK_IMPORTED_MODULE_2__["default"], null)));
+};
+/* harmony default export */ __webpack_exports__["default"] = (CatDetailedView);
 
 /***/ }),
 
@@ -13901,15 +13981,18 @@ const ConfirmClientQuestionnaire = () => {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _myUtilFuncs_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../myUtilFuncs.js */ "./myUtilFuncs.js");
-/* harmony import */ var _myUtilFuncs_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_myUtilFuncs_js__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _customHandlers_handleFormChange__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../customHandlers/handleFormChange */ "./client/customHandlers/handleFormChange.js");
-/* harmony import */ var _axiosHandlers_fetchEffect_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./axiosHandlers/fetchEffect.js */ "./client/components/axiosHandlers/fetchEffect.js");
-/* harmony import */ var _ErrorFill__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./ErrorFill */ "./client/components/ErrorFill.js");
+/* harmony import */ var _customHandlers_handleFormChange__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../customHandlers/handleFormChange */ "./client/customHandlers/handleFormChange.js");
+/* harmony import */ var _axiosHandlers_fetchEffect_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./axiosHandlers/fetchEffect.js */ "./client/components/axiosHandlers/fetchEffect.js");
+/* harmony import */ var _ErrorFill__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./ErrorFill */ "./client/components/ErrorFill.js");
+/* harmony import */ var _myUtilFuncs_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../myUtilFuncs.js */ "./myUtilFuncs.js");
+/* harmony import */ var _myUtilFuncs_js__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_myUtilFuncs_js__WEBPACK_IMPORTED_MODULE_4__);
 
 
 
 
+
+
+// TODO : phone number to 10 and error to screen
 
 const ContactRequestForm = () => {
   const defaultContactRequest = {
@@ -13922,8 +14005,17 @@ const ContactRequestForm = () => {
   const [newReq, setNewReq] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null); // object
   const [done, setDone] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
   const [error, setError] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('');
+  const [phoneEntryError, setPhoneEntryError] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('');
   const handleChange = event => {
-    (0,_customHandlers_handleFormChange__WEBPACK_IMPORTED_MODULE_2__["default"])(event, setContactRequest);
+    (0,_customHandlers_handleFormChange__WEBPACK_IMPORTED_MODULE_1__["default"])(event, setContactRequest);
+  };
+  const handlePhoneNumberChange = event => {
+    setContactRequest(prev => {
+      return {
+        ...prev,
+        phone: (0,_myUtilFuncs_js__WEBPACK_IMPORTED_MODULE_4__.convertToPhoneNumber)(event.target.value)
+      };
+    });
   };
   const handleKeyPress = event => {
     event.code === 'Enter' && event.target.localName !== 'textarea' && event.preventDefault();
@@ -13933,16 +14025,22 @@ const ContactRequestForm = () => {
   };
   const handleSubmit1 = event => {
     event.preventDefault();
-    setNewReq(contactRequest);
+    console.log((0,_myUtilFuncs_js__WEBPACK_IMPORTED_MODULE_4__.veriftyTenDigitPhoneNumber)(contactRequest.phone));
+    if ((0,_myUtilFuncs_js__WEBPACK_IMPORTED_MODULE_4__.veriftyTenDigitPhoneNumber)(contactRequest.phone)) {
+      setPhoneEntryError('');
+      setNewReq(contactRequest);
+    } else {
+      setPhoneEntryError('Please enter a valid 10 digit Phone Number');
+    }
   };
   const handleSubmit2 = event => {
     event.preventDefault();
-    (0,_axiosHandlers_fetchEffect_js__WEBPACK_IMPORTED_MODULE_3__.fetchEffect)([setNewReq, setError], 'post', `api/contactRequests`, contactRequest);
+    (0,_axiosHandlers_fetchEffect_js__WEBPACK_IMPORTED_MODULE_2__.fetchEffect)([setNewReq, setError], 'post', `api/contactRequests`, contactRequest);
     setDone(true);
   };
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, !done && !error && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, newReq ? "Review Your Message" : "Contact Form"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "contact-pre"
-  }, error && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ErrorFill__WEBPACK_IMPORTED_MODULE_4__["default"], {
+  }, error && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ErrorFill__WEBPACK_IMPORTED_MODULE_3__["default"], {
     msg: error
   }), !newReq && !error && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "contact__msg"
@@ -13957,9 +14055,8 @@ const ContactRequestForm = () => {
     id: "ContactRequest",
     className: "contact__form",
     onKeyDown: handleKeyPress,
-    onChange: handleChange,
     onSubmit: handleSubmit1
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
     className: "required",
     htmlFor: "yourName"
   }, "Full Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
@@ -13967,17 +14064,20 @@ const ContactRequestForm = () => {
     type: "text",
     name: "name",
     placeholder: "Name",
+    onChange: handleChange,
     required: true
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
     htmlFor: "contact__phone",
-    className: "required"
-  }, "Phone Number"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    className: phoneEntryError ? 'required red' : 'required'
+  }, " ", phoneEntryError ? phoneEntryError : 'Phone Number', " "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
     id: "contact__phone",
-    type: "tel",
+    type: "text",
     name: "phone",
     placeholder: "Phone number",
+    value: contactRequest.phone,
+    onChange: handlePhoneNumberChange,
     required: true
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
     htmlFor: "contact__eMail",
     className: "required"
   }, "Email"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
@@ -13985,8 +14085,9 @@ const ContactRequestForm = () => {
     type: "email",
     name: "eMail",
     placeholder: "Email",
+    onChange: handleChange,
     required: true
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
     htmlFor: "contact__aboutYou",
     className: "required"
   }, "Message"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("textarea", {
@@ -13997,8 +14098,9 @@ const ContactRequestForm = () => {
     cols: "40",
     rows: "5",
     placeholder: "Type your message here..",
+    onChange: handleChange,
     required: true
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
     className: "buttonStyle2",
     type: "submit"
   })))), newReq && !error && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
@@ -14133,18 +14235,18 @@ __webpack_require__.r(__webpack_exports__);
 
 const showMessageBox = true;
 const homeComponent = () => {
-  const messageArray2 = ['Discounted Deliveries Are Available For:', '1/20/24 to BOS aiport (MA)'];
+  const messageArray2 = ['Discounted Deliveries Are Available For:', '2/3/24 to LGA aiport (New York City)'];
   const messageArray1 = ['We are expecting New Kittens!', /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
     Link: true,
     to: "/catDetailedView/mother/6"
   }, " Frosty "), " + ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
     to: "/catDetailedView/father/2"
-  }, "Cupid "), " = expected by 1/15/24"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+  }, "Cupid "), " = Born on 1/10/24 \uD83D\uDE00"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
     Link: true,
     to: "/catDetailedView/mother/11"
   }, " Vasilisa "), " + ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
     to: "/catDetailedView/father/2"
-  }, "Cupid "), " = expected by 1/25/24"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+  }, "Cupid "), " = Born on 1/23/24 \uD83D\uDE00"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
     to: "/waitingListForm"
   }, "Apply here for SMS notifications")];
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_MessageBox__WEBPACK_IMPORTED_MODULE_2__["default"], {
@@ -17858,9 +17960,9 @@ function emRemToPix(input, base = 16) {
 const myConfig = {
   //  furColors and eyeColors are used in the Cat Models Enum tables for their corresponding keys.
   //  FOR CLIENT Q FORM v2
-  furColors: ['White', 'Silver Chinchilla', 'Gold Chinchilla', 'Blue Gold Chinchilla', 'Colorpoint', 'Blue - Ticked/Tabby', 'Lilac', 'Tortoiseshell/Tricolor/Calico', 'Bicolor/Any Color with White', 'Chocolate/Black/Cinnamon'],
+  furColors: ['White', 'Silver Chinchilla', 'Gold Chinchilla', 'Blue Gold Chinchilla', 'Colorpoint', 'Blue - Ticked/Tabby', 'Lilac', 'Tortoiseshell/Tricolor/Calico', 'Chocolate/Black/Cinnamon'],
   // end last comment
-  furColorsAdmin: ['No Preference', 'Bicolor (any color with white marks)', 'Blue Gold Chinchilla (very rare!)', 'Brown / Chocolate', 'Colorpoint (Seamese pattern)', 'Gold Chinchilla (Black Golden shaded/shell)', 'Grey (aka Blue)', 'Lilac (very rare!)', 'Silver Chinchilla (Black silver shaded/shell)', 'Tabby pattern (striped or spotted)'],
+  furColorsAdmin: ['No Preference', 'Blue Gold Chinchilla (very rare!)', 'Brown / Chocolate', 'Colorpoint (Seamese pattern)', 'Gold Chinchilla (Black Golden shaded/shell)', 'Grey (aka Blue)', 'Lilac (very rare!)', 'Silver Chinchilla (Black silver shaded/shell)', 'Tabby pattern (striped or spotted)'],
   eyeColors: ['No Preference', 'Green', 'Blue', 'Yellow', 'Copper', 'Odd'],
   eyeColorsAdmin: ['Unknown', 'Green', 'Blue', 'Yellow', 'Copper', 'Odd'
   // 'No Preference'
@@ -17911,16 +18013,21 @@ myUtilFuncs.resetForm = event => {
   }
 };
 myUtilFuncs.convertToPhoneNumber = number => {
-  number = number.split('').filter(char => char !== "-" && char !== " ").join('');
-  if (number.length < 4) {
-    return number;
+  let cleanedNumber = number.trim().replace(/[^0-9]/g, '');
+  if (cleanedNumber.length < 4) {
+    return cleanedNumber;
   }
-  if (number.length < 7) {
-    return number.slice(0, 3) + ' - ' + number.slice(3);
+  if (cleanedNumber.length < 7) {
+    return cleanedNumber.slice(0, 3) + ' - ' + cleanedNumber.slice(3);
   }
-  return number.slice(0, 3) + ' - ' + number.slice(3, 6) + ' - ' + number.slice(6, 10); //  will discard any digits after the tenth
+  return cleanedNumber.slice(0, 3) + ' - ' + cleanedNumber.slice(3, 6) + ' - ' + cleanedNumber.slice(6, 10) // Will discard any digits after the tenth
+  ;
 };
 
+myUtilFuncs.veriftyTenDigitPhoneNumber = numberString => {
+  const cleanedString = numberString.trim().replace(/[- ]/g, '');
+  return /^[0-9]{10}$/.test(cleanedString);
+};
 myUtilFuncs.objectKeysToLowerCase = object => {
   try {
     Object.keys(object).forEach(key => {
