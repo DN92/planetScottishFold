@@ -11,7 +11,7 @@ const homeComponent = () => {
 
   const messageArray2 = [
     'Jet-Set Your Kittens Home!',
-    'Enjoy Our Affordable Air Delivery to PA, NY, NY, MA, FL, GA, EX, and more!',
+    'Enjoy Our Affordable Air Delivery to PA, NY, NJ, MA, FL, GA, TX, and more!',
   ]
 
   const messageArray1 = [
