@@ -10,12 +10,12 @@ const showMessageBox = true
 const homeComponent = () => {
 
   const messageArray2 = [
-    'Discounted Deliveries Are Available For:',
-    '2/3/24 to LGA aiport (New York City)',
+    'Jet-Set Your Kittens Home!',
+    'Enjoy Our Affordable Air Delivery to PA,NY, NY, MA, FL, GA, EX, and more!',
   ]
 
   const messageArray1 = [
-    'We are expecting New Kittens!',
+    'New kittens will be announced soon!',
     <>
       <Link Link to='/catDetailedView/mother/6'> Frosty </Link> + <Link to='/catDetailedView/father/2'>Cupid </Link> = Born on 1/10/24 &#128512;
     </>,
