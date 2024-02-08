@@ -45,7 +45,7 @@ const myConfig = {
   ],
 
   //  for public file serving
-  defaultCatPictureSrc: '/catPictures/cat404.png',
+  defaultCatPictureSrc: '/otherPictures/imageCommingSoon.jpg',
 
   budgetRanges: [
     'under $1500',

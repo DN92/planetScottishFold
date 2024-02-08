@@ -42,13 +42,15 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
+  gap: 2px;
 }
 
 .footer-img-tica {
   border: none;
 }
 
-.footer-img-kingpin {
+.footer-img-border {
   border: 2px solid white;
 }
 
@@ -64,6 +66,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.petnax-card {
+  width: 92%;
+  margin: auto;
 }
 
 @media (min-width: 50em) {

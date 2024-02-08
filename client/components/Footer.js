@@ -24,7 +24,10 @@ const Footer = () => {
               </div>
               <div className='footer__card kingpin-card'>
                 <a href='https://catkingpin.com/' target='_blank' >
-                  <img className='footer-img-kingpin' src="/otherPictures/catKingPinAffPic.webp" alt="Cat King Pin Affiliate Image" />
+                  <img className='footer-img-border' src="/otherPictures/catKingPinAffPic.webp" alt="Cat Kingpin homepage " />
+                </a>
+                <a href="https://petnax.com/" tarFFget='_blank'>
+                  <img className='footer-img-border petnax-card' src='/petnax/petnax.png' alt='Petnax homepage' />
                 </a>
               </div>
               <div className='footer__nav-wrapper'>

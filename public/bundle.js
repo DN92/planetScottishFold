@@ -13132,8 +13132,8 @@ __webpack_require__.r(__webpack_exports__);
 
 //  /available Kittens
 const AvailableKittens = () => {
-  const messageArray2 = ['Discounted Deliveries Are Available For:', '2/3/24 to LGA aiport (New York City)'];
-  const messageArray1 = ['We are expecting New Kittens!', /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_7__.Link, {
+  const messageArray2 = ['Jet-Set Your Kittens Home!', 'Enjoy Our Affordable Air Delivery to PA, NY, NJ, MA, FL, GA, TX, and more!'];
+  const messageArray1 = ['New kittens will be announced soon!', /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_7__.Link, {
     Link: true,
     to: "/catDetailedView/mother/6"
   }, " Frosty "), " + ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_7__.Link, {
@@ -14197,9 +14197,16 @@ const Footer = () => {
     href: "https://catkingpin.com/",
     target: "_blank"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
-    className: "footer-img-kingpin",
+    className: "footer-img-border",
     src: "/otherPictures/catKingPinAffPic.webp",
-    alt: "Cat King Pin Affiliate Image"
+    alt: "Cat Kingpin homepage "
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("a", {
+    href: "https://petnax.com/",
+    tarFFget: "_blank"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
+    className: "footer-img-border petnax-card",
+    src: "/petnax/petnax.png",
+    alt: "Petnax homepage"
   }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "footer__nav-wrapper"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Link, {
@@ -14235,8 +14242,8 @@ __webpack_require__.r(__webpack_exports__);
 
 const showMessageBox = true;
 const homeComponent = () => {
-  const messageArray2 = ['Discounted Deliveries Are Available For:', '2/3/24 to LGA aiport (New York City)'];
-  const messageArray1 = ['We are expecting New Kittens!', /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+  const messageArray2 = ['Jet-Set Your Kittens Home!', 'Enjoy Our Affordable Air Delivery to PA, NY, NJ, MA, FL, GA, TX, and more!'];
+  const messageArray1 = ['New kittens will be announced soon!', /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
     Link: true,
     to: "/catDetailedView/mother/6"
   }, " Frosty "), " + ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
@@ -17969,7 +17976,7 @@ const myConfig = {
   ],
 
   //  for public file serving
-  defaultCatPictureSrc: '/catPictures/cat404.png',
+  defaultCatPictureSrc: '/otherPictures/imageCommingSoon.jpg',
   budgetRanges: ['under $1500', '$1500 max', '$1600 max', '$1700 max', '$1800 max', '$1900 max', '$2000 max', '$2200 max', '$2400 max', '$2600 max', '$2800 max', '$3000 max', '$3500 max', '$4000 max', 'Above $4000'],
   // most important feature (of product - cat)
   mifOptions: ['No Preference', 'Health', 'Appearance', 'Show Quality', 'Personality'],
