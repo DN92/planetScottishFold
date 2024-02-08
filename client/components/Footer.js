@@ -26,7 +26,7 @@ const Footer = () => {
                 <a href='https://catkingpin.com/' target='_blank' >
                   <img className='footer-img-border' src="/otherPictures/catKingPinAffPic.webp" alt="Cat Kingpin homepage " />
                 </a>
-                <a href="https://petnax.com/" tarFFget='_blank'>
+                <a href="https://petnax.com/" target='_blank'>
                   <img className='footer-img-border petnax-card' src='/petnax/petnax.png' alt='Petnax homepage' />
                 </a>
               </div>
