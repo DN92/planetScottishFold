@@ -17,13 +17,16 @@ const homeComponent = () => {
   const messageArray1 = [
     'New kittens will be announced soon!',
     <>
-      <Link Link to='/catDetailedView/mother/6'> Frosty </Link> + <Link to='/catDetailedView/father/2'>Cupid </Link> = Born on 1/10/24 &#128512;
+      <>
+        <Link to='/catDetailedView/mother/11'> Vasilisa </Link> + <Link to='/catDetailedView/father/2'>Cupid </Link> = Born on 1/23/24 &#128512;
+      </>,
+        <Link  to='/catDetailedView/mother/12'> Nova </Link> + <Link to='/catDetailedView/father/2'> Cupid </Link> = Expected Birthday: 2/25/24
     </>,
     <>
-      <Link Link to='/catDetailedView/mother/11'> Vasilisa </Link> + <Link to='/catDetailedView/father/2'>Cupid </Link> = Born on 1/23/24 &#128512;
+      <Link Link to='/catDetailedView/mother/7'> Ladybug </Link> + <Link to='/catDetailedView/father/2'> Cupid </Link> = Expected Birthday: 3/01/24
     </>,
       <Link to='/waitingListForm'>
-      Apply here for SMS notifications
+        Apply here for SMS notifications
       </Link>,
   ]
 
