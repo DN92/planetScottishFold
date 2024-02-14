@@ -13134,18 +13134,21 @@ __webpack_require__.r(__webpack_exports__);
 const AvailableKittens = () => {
   const messageArray2 = ['Jet-Set Your Kittens Home!', 'Enjoy Our Affordable Air Delivery to PA, NY, NJ, MA, FL, GA, TX, and more!'];
   const messageArray1 = ['New kittens will be announced soon!', /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_7__.Link, {
-    Link: true,
-    to: "/catDetailedView/mother/6"
-  }, " Frosty "), " + ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_7__.Link, {
-    to: "/catDetailedView/father/2"
-  }, "Cupid "), " = Born on 1/10/24 \uD83D\uDE00"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_7__.Link, {
-    Link: true,
     to: "/catDetailedView/mother/11"
   }, " Vasilisa "), " + ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_7__.Link, {
     to: "/catDetailedView/father/2"
-  }, "Cupid "), " = Born on 1/23/24 \uD83D\uDE00"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_7__.Link, {
+  }, "Cupid "), " = Born on 1/23/24 \uD83D\uDE00"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_7__.Link, {
+    to: "/catDetailedView/mother/12"
+  }, " Nova "), " + ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_7__.Link, {
+    to: "/catDetailedView/father/2"
+  }, " Cupid "), " = Expected Birthday: 2/25/24"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_7__.Link, {
+    Link: true,
+    to: "/catDetailedView/mother/7"
+  }, " Ladybug "), " + ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_7__.Link, {
+    to: "/catDetailedView/father/2"
+  }, " Cupid "), " = Expected Birthday: 3/01/24"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_7__.Link, {
     to: "/waitingListForm"
-  }, "Apply here for SMS notifications")];
+  }, "Apply here for SMS notifications"))];
   const getWeight = (obj, filterer) => {
     let score = 0;
     for (const key in filterer) {
@@ -14202,7 +14205,7 @@ const Footer = () => {
     alt: "Cat Kingpin homepage "
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("a", {
     href: "https://petnax.com/",
-    tarFFget: "_blank"
+    target: "_blank"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
     className: "footer-img-border petnax-card",
     src: "/petnax/petnax.png",
@@ -14244,18 +14247,21 @@ const showMessageBox = true;
 const homeComponent = () => {
   const messageArray2 = ['Jet-Set Your Kittens Home!', 'Enjoy Our Affordable Air Delivery to PA, NY, NJ, MA, FL, GA, TX, and more!'];
   const messageArray1 = ['New kittens will be announced soon!', /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
-    Link: true,
-    to: "/catDetailedView/mother/6"
-  }, " Frosty "), " + ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
-    to: "/catDetailedView/father/2"
-  }, "Cupid "), " = Born on 1/10/24 \uD83D\uDE00"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
-    Link: true,
     to: "/catDetailedView/mother/11"
   }, " Vasilisa "), " + ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
     to: "/catDetailedView/father/2"
-  }, "Cupid "), " = Born on 1/23/24 \uD83D\uDE00"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+  }, "Cupid "), " = Born on 1/23/24 \uD83D\uDE00"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+    to: "/catDetailedView/mother/12"
+  }, " Nova "), " + ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+    to: "/catDetailedView/father/2"
+  }, " Cupid "), " = Expected Birthday: 2/25/24"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+    Link: true,
+    to: "/catDetailedView/mother/7"
+  }, " Ladybug "), " + ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+    to: "/catDetailedView/father/2"
+  }, " Cupid "), " = Expected Birthday: 3/01/24"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
     to: "/waitingListForm"
-  }, "Apply here for SMS notifications")];
+  }, "Apply here for SMS notifications"))];
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_MessageBox__WEBPACK_IMPORTED_MODULE_2__["default"], {
     messageArray: messageArray1,
     options: {
@@ -14272,7 +14278,7 @@ const homeComponent = () => {
     className: "home__card1"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
     className: "home__card1__img",
-    src: "/catPictures/homepage2.jpg",
+    src: "/catPictures/homepage/homepageImage.jpg",
     alt: "cute cat image1",
     style: {
       maxHeight: '540px',

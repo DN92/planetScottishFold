@@ -48,7 +48,7 @@ const homeComponent = () => {
       />
       <div className='home'>
         <div className='home__card1'>
-          <img className='home__card1__img' src="/catPictures/homepage2.jpg" alt="cute cat image1" style={{maxHeight : '540px', width: 'auto'}}/>
+          <img className='home__card1__img' src="/catPictures/homepage/homepageImage.jpg" alt="cute cat image1" style={{maxHeight : '540px', width: 'auto'}}/>
         </div>
         <AboutUs2 />
         <div className='home__card2'>
