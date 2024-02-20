@@ -16,6 +16,8 @@ const { Kitten, Mother, Stud, User, ContactRequest, CatAsKitten } = models
 
 async function seed() {
 
+  console.log('database', db)
+
   await db.sync({force: true, alter: true})  //  clears the db and matches models to tables
   await Promise.all([
     Promise.all(kittensActual.map(kitten => {
