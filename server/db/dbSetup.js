@@ -27,8 +27,8 @@ if(process.env.DATABASE_URL) {
 const db = new Sequelize(
   process.env.DATABASE_URL
   ||
-  // `postgres://postgres:postgres@localhost:4444/${'psf-test'}`, config
-  `postgres://localhost:5400/${databaseName}`, config
+  `postgres://postgres:postgres@127.0.0.1:5432/${'psf-test'}`, config
+  // `postgres://localhost:5400/${databaseName}`, config
 )
 
 module.exports = db

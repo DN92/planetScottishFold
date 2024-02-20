@@ -34,7 +34,7 @@ const homeComponent = () => {
 
   return (
     <>
-      <MessageBox
+      {/* <MessageBox
         messageArray={messageArray1}
         options={{
           closeOnCLick: true,
@@ -45,7 +45,7 @@ const homeComponent = () => {
         options={{
           closeOnCLick: true,
         }}
-      />
+      /> */}
       <div className='home'>
         <div className='home__card1'>
           <img className='home__card1__img' src="/catPictures/homepage/homepageImage.jpg" alt="cute cat image1" style={{maxHeight : '540px', width: 'auto'}}/>
