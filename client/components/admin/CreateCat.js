@@ -135,7 +135,7 @@ const CreateCat = () => {
       </>
       <>
         <label htmlFor="catToCreateDescription">Description</label>
-        <textarea id="catToCreateDescription" name="description" cols="50" rows="8" placeholder='description'></textarea>
+        <textarea id="catToCreateDescription" name="description" cols="50" rows="8" placeholder='description' onChange={handleChange}></textarea>
       </>
       <div className='buttonsWrapper'>
         <button className='buttonStyle2' type='submit'>Create</button>
