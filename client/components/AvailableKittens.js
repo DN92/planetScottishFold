@@ -15,8 +15,6 @@ const AvailableKittens = () => {
     'Jet-Set Your Kittens Home!',
     'Enjoy Our Affordable Air Delivery to PA, NY, NJ, MA, FL, GA, TX, and more!',
     'Upcoming Deliveries.',
-    'Dallas, TX - 3/10/24 - $150',
-    'Philadelphia, PA - 4/27/24 - $100',
     'LaGuardia, NY - 6/9/24 - $150',
     'Los Angeles, CA - 6/10/24 - $225',
     '* Some dates and prices are estimated',
