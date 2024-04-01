@@ -11,13 +11,19 @@ import MessageBox from './MessageBox'
 //  /available Kittens
 const AvailableKittens = () => {
 
-  const messageArray2 = [
+  const messageArray3 = [
     'Jet-Set Your Kittens Home!',
     'Enjoy Our Affordable Air Delivery to PA, NY, NJ, MA, FL, GA, TX, and more!',
     'Upcoming Deliveries.',
     'LaGuardia, NY - 6/9/24 - $150',
     'Los Angeles, CA - 6/10/24 - $225',
     '* Some dates and prices are estimated',
+  ]
+
+  const messageArray2 = [
+    'Free Delivery to Columbus Ohio',
+    'On 4/7/24',
+    'and On 4/14/24'
   ]
 
   const messageArray1 = [
@@ -152,12 +158,12 @@ const AvailableKittens = () => {
           closeOnCLick: true,
         }}
       />
-      {/* <MessageBox
+      <MessageBox
         messageArray={messageArray2}
         options={{
           closeOnCLick: true,
         }}
-      /> */}
+      />
       <h2 style={{margin: 'auto'}}>Available Kittens</h2>
       {error && <ErrorFill msg={error} />}
       {!error &&
