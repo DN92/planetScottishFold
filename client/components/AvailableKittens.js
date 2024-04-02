@@ -21,9 +21,10 @@ const AvailableKittens = () => {
   ]
 
   const messageArray2 = [
-    'Free Delivery to Columbus Ohio',
+    'FREE DELIVERY TO:',
+    'COLUMBUS, OHIO',
     'On 4/7/24',
-    'and On 4/14/24'
+    'On 4/14/24'
   ]
 
   const messageArray1 = [
