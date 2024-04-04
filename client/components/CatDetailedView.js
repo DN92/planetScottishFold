@@ -7,6 +7,8 @@ import { isPrivileged } from '../../myModelsConfig'
 import { fetchEffect } from './axiosHandlers/fetchEffect'
 import MyCarousel from './carousel/MyCarousel.js'
 
+//TODO add motehr and father information to this page.
+
 //  /catDetailed
 const CatDetailedView = () => {
   const location = useLocation()

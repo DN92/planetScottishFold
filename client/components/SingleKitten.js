@@ -17,8 +17,6 @@ const SingleKitten = (props) => {
     gender,
     furColor,
     eyeColor,
-    mother,
-    father,
     mainImageSrcValue,
     id,
     status,
@@ -43,7 +41,7 @@ const SingleKitten = (props) => {
               <p>I am a {breed} {gender}</p>
               <p>My color is </p>
               <p>{furColor}</p>
-              <p>I have {eyeColor} eyes</p>
+              <p>My eyes will be {eyeColor}.</p>
               <p className='bold-green font-1-rem'>${kitten.price}</p>
               {/* <LineThroughPTagOverlay
                 message={`Price: $${adjustedPrice}`}
@@ -52,8 +50,6 @@ const SingleKitten = (props) => {
               {/* <p className='bold-green font-1-rem'>Summer Sale: ${Math.floor(adjustedPrice * .8)}</p>
               {isPrivileged(type) && */}
                 <>
-                  <p>Mother: {mother}</p>
-                  <p>Father: {father}</p>
                   <p>Status: {status}</p>
                 </>
             </>
