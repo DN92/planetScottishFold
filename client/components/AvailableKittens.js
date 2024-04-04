@@ -29,9 +29,9 @@ const AvailableKittens = () => {
 
   const messageArray1 = [
     'New kittens will be announced soon!',
-    <>
-      <Link to='/catDetailedView/mother/11'> Vasilisa </Link> + <Link to='/catDetailedView/father/2'>Cupid </Link> = Born on 1/23/24 &#128512;
-    </>,
+    // <>
+    //   <Link to='/catDetailedView/mother/11'> Vasilisa </Link> + <Link to='/catDetailedView/father/2'>Cupid </Link> = Born on 1/23/24 &#128512;
+    // </>,
     <>
       <Link  to='/catDetailedView/mother/12'> Nova </Link> + <Link to='/catDetailedView/father/2'> Cupid </Link> = Born on 2/25/24
     </>,
@@ -94,7 +94,7 @@ const AvailableKittens = () => {
   const unavailableKittens = useMemo(() => {
     return kittens.filter(kitten => kitten.status !== "Available" )
       .sort((a, b) => Number(b.price) - Number(a.price))
-      .filter(kitten => kitten.price > 1899)
+      .filter(kitten => kitten.price > 1999)
   },[kittens]);
 
   const [availableKittens, dispatchAvailableKittens] = useReducer((state, action) => {
