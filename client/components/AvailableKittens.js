@@ -21,13 +21,10 @@ const AvailableKittens = () => {
   ]
 
   const messageArray2 = [
-    'FREE DELIVERY TO:',
-    'Charleston, WV',
-    'Columbus, Ohio',
-    'On 4/7/24',
-    'On 4/14/24',
-    'Queens, NY on 4/13/24',
-    'Orlando, FL on 4/20/24',
+    'FREE DELIVERY',
+    'to Philadelphia Airport',
+    'On 4/27/2024',
+
   ]
 
   const messageArray1 = [
@@ -161,13 +158,13 @@ const AvailableKittens = () => {
         options={{
           closeOnCLick: true,
         }}
-      />
+      /> */}
       <MessageBox
         messageArray={messageArray2}
         options={{
           closeOnCLick: true,
         }}
-      /> */}
+      />
       <h2 style={{margin: 'auto'}}>Available Kittens</h2>
       {error && <ErrorFill msg={error} />}
       {!error &&
