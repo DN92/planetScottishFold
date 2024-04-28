@@ -22,7 +22,7 @@ const AvailableKittens = () => {
 
   const messageArray2 = [
     'FREE DELIVERY',
-    'to Los Angelos Airport, CA',
+    'to Los Angeles Airport, CA',
     'On 5/5-5/6',
     '(applicable to kittens only)'
 
