@@ -22,8 +22,9 @@ const AvailableKittens = () => {
 
   const messageArray2 = [
     'FREE DELIVERY',
-    'to Philadelphia Airport',
-    'On 4/27/2024',
+    'to Los Angelos Airport, CA',
+    'On 5/5-5/6',
+    '(applicable to kittens only)'
 
   ]
 
