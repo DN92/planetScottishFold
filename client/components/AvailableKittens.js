@@ -21,18 +21,11 @@ const AvailableKittens = () => {
   ]
 
   const messageArray2 = [
-    'FREE DELIVERY',
-    'to Los Angeles Airport, CA',
-    'On 5/5-5/6',
-    '(applicable to kittens only)'
-
+    ''
   ]
 
   const messageArray1 = [
     'New kittens will be announced soon!',
-    // <>
-    //   <Link to='/catDetailedView/mother/11'> Vasilisa </Link> + <Link to='/catDetailedView/father/2'>Cupid </Link> = Born on 1/23/24 &#128512;
-    // </>,
     <>
       <Link  to='/catDetailedView/mother/12'> Nova </Link> + <Link to='/catDetailedView/father/2'> Cupid </Link> = Born on 2/25/24
     </>,
@@ -41,7 +34,7 @@ const AvailableKittens = () => {
     </>,
     <>
       <Link to='/waitingListForm'>
-        Apply here for SMS notifications
+        Apply here for SMS notifications.
       </Link>
     </>,
   ]
@@ -154,12 +147,12 @@ const AvailableKittens = () => {
 
   return (
     <div className='kittens'>
-      {/* <MessageBox
+      <MessageBox
         messageArray={messageArray1}
         options={{
           closeOnCLick: true,
         }}
-      /> */}
+      />
       <MessageBox
         messageArray={messageArray2}
         options={{
