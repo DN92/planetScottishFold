@@ -20,7 +20,8 @@ const AvailableKittens = () => {
   ]
 
   const messageArray2 = [
-    'MEMORIAL DAY SALE - $300 off any kitten until 5/31/24'
+    'MEMORIAL DAY SALE' ,
+    '$300 off any kitten until 5/31/24',
   ]
 
   const messageArray1 = [
