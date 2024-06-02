@@ -20,8 +20,9 @@ const AvailableKittens = () => {
   ]
 
   const messageArray2 = [
-    'MEMORIAL DAY SALE' ,
-    '$300 off any kitten until 5/31/24',
+    'FREE DELIVERY',
+    'TO ANY STATE WITHIN THE CONTINENTAL UNITED STATES',
+    '(limited time offer)'
   ]
 
   const messageArray1 = [
