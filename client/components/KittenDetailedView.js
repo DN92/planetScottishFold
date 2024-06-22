@@ -71,7 +71,7 @@ const KittenDetailedView = () => {
                 <p>Location: {kitten.location}</p>
                 {/* <p className='red' style={{textDecoration: 'line-through'}}>{`Price: $${adjustedPrice}`}</p> */}
                 {/* <p className='bold-green font-1-rem'>Summer Sale: ${Math.floor(adjustedPrice * .8)}</p> */}
-                <p className='bold-green  font-1-rem'>Price: ${kitten.price}</p>
+                {/* <p className='bold-green  font-1-rem'>Price: ${kitten.price}</p> */}
                 <br />
                 <p>{kitten.breed}</p>
                 <p>Gender: {kitten.gender}</p>
