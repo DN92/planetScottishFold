@@ -42,7 +42,7 @@ const SingleKitten = (props) => {
               <p>My color is </p>
               <p>{furColor}</p>
               <p>My eyes will be {eyeColor}.</p>
-              <p className='bold-green font-1-rem'>${kitten.price}</p>
+              {/* <p className='bold-green font-1-rem'>${kitten.price}</p> */}
               {/* <LineThroughPTagOverlay
                 message={`Price: $${adjustedPrice}`}
                 classes={['red', ]}
@@ -57,7 +57,7 @@ const SingleKitten = (props) => {
             <>
               <p>{name}</p>
               <p>{kitten.status}</p>
-              {/* <p className='font-1-rem'>${kitten.price}</p> */}
+              <p className='font-1-rem'>${kitten.price}</p>
               {/* <p>Price: ${(Math.round(((parseInt(kitten.price, 10) / 50) * globalPriceModifier ))) * 50}</p> */}
             </>
           }
