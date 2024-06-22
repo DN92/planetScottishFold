@@ -20,9 +20,9 @@ const AvailableKittens = () => {
   ]
 
   const messageArray2 = [
-    'FREE DELIVERY',
-    'TO ANY STATE WITHIN THE CONTINENTAL UNITED STATES',
-    '(limited time offer)'
+    <>
+      Please <Link to='/waitingListForm'> APPLY </Link> in order to see prices!
+    </>,
   ]
 
   const messageArray1 = [
