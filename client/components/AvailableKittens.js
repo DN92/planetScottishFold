@@ -34,8 +34,11 @@ const AvailableKittens = () => {
 
   const messageArray2 = [
     <>
-      We are moving! Need to find homes for all our babies. Get up to 40% OFF!! <Link to='/waitingListForm'> APPLY </Link>
+      We are moving! Need to find homes for all our babies.
     </>,
+    <>
+      Get up to 40% OFF!! <Link to='/waitingListForm'> APPLY </Link>
+    </>
   ]
 
   const messageArray1 = [
