@@ -19,7 +19,13 @@ const AvailableKittens = () => {
       7/29/24 to Tennessee & Kentucky
       </>,
       <>
-      7/30/24 to St. Louis, MO & Kansas City, KS 8/11/24 to Newark, NJ
+      7/30/24 to St. Louis, MO &
+      </>,
+      <>
+      Kansas City, KS
+      </>,
+      <>
+      8/11/24 to Newark, NJ
       </>,
       <>
       8/13/24 to Kansas City, MO
