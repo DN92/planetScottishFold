@@ -13,7 +13,7 @@ const AvailableKittens = () => {
 
   const messageArray3 = [
       <>
-      “Upcoming deliveries:
+      Upcoming deliveries:
       </>,
       <>
       7/29/24 to Tennessee & Kentucky
