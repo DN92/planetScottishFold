@@ -12,16 +12,26 @@ import MessageBox from './MessageBox'
 const AvailableKittens = () => {
 
   const messageArray3 = [
-    'Jet-Set Your Kittens Home!',
-    'Enjoy Our Affordable Air Delivery to PA, NY, NJ, MA, FL, GA, TX, and more!',
-    'Upcoming Deliveries.',
-    'LaGuardia, NY - 6/9/24 - $150',
-    'Los Angeles, CA - 6/10/24 - $225',
+    <>
+      <>
+      “Upcoming deliveries:
+      </>
+      <>
+      7/29/24 to Tennessee & Kentucky
+      </>
+      <>
+      7/30/24 to St. Louis, MO & Kansas City, KS 8/11/24 to Newark, NJ
+      </>
+      <>
+      8/13/24 to Kansas City, MO
+      </>
+
+    </>
   ]
 
   const messageArray2 = [
     <>
-      Please <Link to='/waitingListForm'> APPLY </Link> in order to see prices!
+      We are moving! Need to find homes for all our babies. Get up to 40% OFF!! <Link to='/waitingListForm'> APPLY </Link>
     </>,
   ]
 
