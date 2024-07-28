@@ -159,13 +159,13 @@ const AvailableKittens = () => {
   return (
     <div className='kittens'>
       <MessageBox
-        messageArray={messageArray1}
+        messageArray={messageArray2}
         options={{
           closeOnCLick: true,
         }}
       />
       <MessageBox
-        messageArray={messageArray2}
+        messageArray={messageArray3}
         options={{
           closeOnCLick: true,
         }}
