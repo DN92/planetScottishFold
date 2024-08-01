@@ -107,7 +107,7 @@ const AboutUs = () => {
     Our kittens well-being is very important, thus choosing the right owners for our babies is another priority! If you’re ready for your perfect baby, please fill out the <Link to='/waitingListForm'>Questionnaire.</Link>
     </p>
     <p>
-      What’s Included with North Carolina kittens:
+      What’s Included with Kansas City, Missouri kittens:
     </p>
     <WhatsIncluded />
     <h5>How will you receive your kitten?</h5>
