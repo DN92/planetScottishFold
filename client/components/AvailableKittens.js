@@ -12,15 +12,15 @@ import MessageBox from './MessageBox'
 const AvailableKittens = () => {
 
   const messageArray3 = [
-      <>
-      Upcoming deliveries:
-      </>,
-      <>
-      7/29/24 to Tennessee & Kentucky
-      </>,
-      <>
-      7/30/24 to St. Louis, MO &
-      </>,
+      // <>
+      // Upcoming deliveries:
+      // </>,
+      // <>
+      // 7/29/24 to Tennessee & Kentucky
+      // </>,
+      // <>
+      // 7/30/24 to St. Louis, MO &
+      // </>,
       <>
       Kansas City, KS
       </>,
@@ -170,12 +170,12 @@ const AvailableKittens = () => {
           closeOnCLick: true,
         }}
       />
-      {/* <MessageBox
+      <MessageBox
         messageArray={messageArray3}
         options={{
           closeOnCLick: true,
         }}
-      /> */}
+      />
       <h2 style={{margin: 'auto'}}>Available Kittens</h2>
       {error && <ErrorFill msg={error} />}
       {!error &&
