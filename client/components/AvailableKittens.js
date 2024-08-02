@@ -21,9 +21,9 @@ const AvailableKittens = () => {
       // <>
       // 7/30/24 to St. Louis, MO &
       // </>,
-      <>
-      Kansas City, KS
-      </>,
+      // <>
+      // Kansas City, KS
+      // </>,
       <>
       8/11/24 to Newark, NJ
       </>,
