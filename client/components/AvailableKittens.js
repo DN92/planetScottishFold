@@ -8,27 +8,66 @@ import { Link } from 'react-router-dom'
 import MessageBox from './MessageBox'
 
 
-//  /available Kittens
+//  /available Kittens7/29/24 to Tennessee & Kentucky
 const AvailableKittens = () => {
 
   const messageArray3 = [
       <>
-      Upcoming deliveries:
-      </>,
-      // <>
-      // 7/29/24 to Tennessee & Kentucky
-      // </>,
-      // <>
-      // 7/30/24 to St. Louis, MO &
-      // </>,
-      // <>
-      // Kansas City, KS
-      // </>,
-      <>
-      8/11/24 to Newark, NJ
+        Upcoming FREE DELIVERIES:
       </>,
       <>
-      8/13/24 to Kansas City, MO
+        -dates are approximate!-
+      </>,
+      <>
+        8/28/24 To Newark, NJ
+      </>,
+      <>
+         9/5/24 To Charlotte, NC
+      </>,
+      <>
+       9/6/24 To Salt Lake City, UT
+      </>,
+      <>
+        9/9/24 To Phoenix, AZ
+      </>,
+      <>
+        9/10/24 To Denver, CO
+      </>,
+      <>
+        9/11/24 To Atlanta, GA
+      </>,
+      <>
+        9/12/24 To Orlando, FL
+      </>,
+      <>
+        9/13/24 To New Orleans, LA
+      </>,
+      <>
+        9/14/24 To Last Vegas, NV
+      </>,
+      <>
+      9/17/24 To Boston, MA
+      </>,
+      <>
+      9/18/24 To Dallas, TX
+      </>,
+      <>
+      9/20/24 To Fort Lauderdale, FL
+      </>,
+      <>
+      9/24/24 To Chicago, IL
+      </>,
+      <>
+      9/25/24 To Los Angeles, CA
+      </>,
+      <>
+      9/27/24 To Houston, TX
+      </>,
+      <>
+      9/28/24 To San Francisco, CA
+      </>,
+      <>
+      <Link to='/waitingListForm'> Apply here to reserve your kitten! </Link>
       </>,
   ]
 
@@ -164,13 +203,13 @@ const AvailableKittens = () => {
 
   return (
     <div className='kittens'>
-      {/* <MessageBox
+      <MessageBox
         messageArray={messageArray2}
         options={{
           closeOnCLick: true,
         }}
       />
-      <MessageBox
+      {/* <MessageBox
         messageArray={messageArray3}
         options={{
           closeOnCLick: true,
