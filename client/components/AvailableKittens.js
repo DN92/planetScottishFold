@@ -204,7 +204,7 @@ const AvailableKittens = () => {
   return (
     <div className='kittens'>
       <MessageBox
-        messageArray={messageArray2}
+        messageArray={messageArray3}
         options={{
           closeOnCLick: true,
         }}
