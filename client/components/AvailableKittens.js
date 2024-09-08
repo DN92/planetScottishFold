@@ -18,15 +18,15 @@ const AvailableKittens = () => {
       <>
         -dates are approximate!-
       </>,
-      <>
-        8/28/24 To Newark, NJ
-      </>,
-      <>
-         9/5/24 To Charlotte, NC
-      </>,
-      <>
-       9/6/24 To Salt Lake City, UT
-      </>,
+      // <>
+      //   8/28/24 To Newark, NJ
+      // </>,
+      // <>
+      //    9/5/24 To Charlotte, NC
+      // </>,
+      // <>
+      //  9/6/24 To Salt Lake City, UT
+      // </>,
       <>
         9/9/24 To Phoenix, AZ
       </>,
