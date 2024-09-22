@@ -27,24 +27,24 @@ const AvailableKittens = () => {
       // <>
       //  9/6/24 To Salt Lake City, UT
       // </>,
-      <>
-        9/9/24 To Phoenix, AZ
-      </>,
-      <>
-        9/10/24 To Denver, CO
-      </>,
-      <>
-        9/11/24 To Atlanta, GA
-      </>,
-      <>
-        9/12/24 To Orlando, FL
-      </>,
-      <>
-        9/13/24 To New Orleans, LA
-      </>,
-      <>
-        9/14/24 To Last Vegas, NV
-      </>,
+      // <>
+      //   9/9/24 To Phoenix, AZ
+      // </>,
+      // <>
+      //   9/10/24 To Denver, CO
+      // </>,
+      // <>
+      //   9/11/24 To Atlanta, GA
+      // </>,
+      // <>
+      //   9/12/24 To Orlando, FL
+      // </>,
+      // <>
+      //   9/13/24 To New Orleans, LA
+      // </>,
+      // <>
+      //   9/14/24 To Last Vegas, NV
+      // </>,
       <>
       9/17/24 To Boston, MA
       </>,
