@@ -76,7 +76,7 @@ const AvailableKittens = () => {
       New litter is here!
     </>,
     <>
-      <Link to='/catDetailedView/mother/6/catDetailedView/mother/6'>Frosty</Link> + <Link to='/catDetailedView/father/5'>Boone</Link> = born on 9/19/24 <Link to='/waitingListForm'> Apply here to inquire!</Link>
+      <Link to='/catDetailedView/mother/6'>Frosty</Link> + <Link to='/catDetailedView/father/5'>Boone</Link> = born on 9/19/24 <Link to='/waitingListForm'> Apply here to inquire!</Link>
     </>
   ]
 
