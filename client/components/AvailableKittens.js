@@ -203,12 +203,12 @@ const AvailableKittens = () => {
 
   return (
     <div className='kittens'>
-      {/* <MessageBox
-        messageArray={messageArray3}
+      <MessageBox
+        messageArray={messageArray2}
         options={{
           closeOnCLick: true,
         }}
-      /> */}
+      />
       {/* <MessageBox
         messageArray={messageArray3}
         options={{
