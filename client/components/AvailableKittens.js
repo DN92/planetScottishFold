@@ -73,10 +73,10 @@ const AvailableKittens = () => {
 
   const messageArray2 = [
     <>
-      We are moving! Need to find homes for all our babies.
+      New litter is here!
     </>,
     <>
-      Get up to 40% OFF!! <Link to='/waitingListForm'> APPLY </Link>
+      <Link to='/catDetailedView/mother/6/catDetailedView/mother/6'>Frosty</Link> + <Link to='/catDetailedView/father/5'>Boone</Link> = born on 9/19/24 <Link to='/waitingListForm'> Apply here to inquire!</Link>
     </>
   ]
 
@@ -203,12 +203,12 @@ const AvailableKittens = () => {
 
   return (
     <div className='kittens'>
-      <MessageBox
+      {/* <MessageBox
         messageArray={messageArray3}
         options={{
           closeOnCLick: true,
         }}
-      />
+      /> */}
       {/* <MessageBox
         messageArray={messageArray3}
         options={{

@@ -13,7 +13,7 @@ const WhatsIncluded = () => {
             <li> Microchip</li>
             <li> 1 month Trupanion insurance (NY & FL excluded) </li>
             {/* <li> 3 years health guarantee </li> */}
-            <li> 1 year FIP disease coverage </li>
+            {/* <li> 1 year FIP disease coverage </li> */}
             <li> litter and scratch board trained kitten </li>
             <li> lifetime breeder support</li>
             <li> weekly updates with photos and/or videos </li>
