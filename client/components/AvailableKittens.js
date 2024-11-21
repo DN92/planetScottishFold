@@ -13,58 +13,13 @@ const AvailableKittens = () => {
 
   const messageArray3 = [
       <>
-        Upcoming FREE DELIVERIES:
+        FREE DELIVERY
       </>,
       <>
-        -dates are approximate!-
-      </>,
-      // <>
-      //   8/28/24 To Newark, NJ
-      // </>,
-      // <>
-      //    9/5/24 To Charlotte, NC
-      // </>,
-      // <>
-      //  9/6/24 To Salt Lake City, UT
-      // </>,
-      // <>
-      //   9/9/24 To Phoenix, AZ
-      // </>,
-      // <>
-      //   9/10/24 To Denver, CO
-      // </>,
-      // <>
-      //   9/11/24 To Atlanta, GA
-      // </>,
-      // <>
-      //   9/12/24 To Orlando, FL
-      // </>,
-      // <>
-      //   9/13/24 To New Orleans, LA
-      // </>,
-      // <>
-      //   9/14/24 To Last Vegas, NV
-      // </>,
-      <>
-      9/17/24 To Boston, MA
+         12/9-12/10 to Newark, NJ
       </>,
       <>
-      9/18/24 To Dallas, TX
-      </>,
-      <>
-      9/20/24 To Fort Lauderdale, FL
-      </>,
-      <>
-      9/24/24 To Chicago, IL
-      </>,
-      <>
-      9/25/24 To Los Angeles, CA
-      </>,
-      <>
-      9/27/24 To Houston, TX
-      </>,
-      <>
-      9/28/24 To San Francisco, CA
+         12/17/2024 to Boston, MA
       </>,
       <>
       <Link to='/waitingListForm'> Apply here to reserve your kitten! </Link>
